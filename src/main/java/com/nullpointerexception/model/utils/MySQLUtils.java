@@ -13,9 +13,5 @@ public class MySQLUtils {
 
     @Autowired
     private MySQLConfig mySQLConfig;
-    private final String URL = mySQLConfig.getURL();
-    private final String USERNAME = mySQLConfig.getUserName();
-    private final String PASSWORD = mySQLConfig.getPassword();
-
 
 }
