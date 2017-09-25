@@ -1,14 +1,15 @@
-package com.nullpointerexception.model.mock;
+package com.nullpointerexception.model.dev;
 
 import com.nullpointerexception.model.Service.DemoService;
 
 /**
  * Created by ss on 2017/9/21.
  */
-public class MockDemo implements DemoService {
+
+public class DevDemo implements DemoService {
 
     @Override
     public void sayHello() {
-        System.out.println("Mock Hello.");
+        System.out.println("Dev Hello.");
     }
 }
