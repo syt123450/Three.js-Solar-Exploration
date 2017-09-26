@@ -1,10 +1,10 @@
 package com.nullpointerexception.configuration;
 
-import com.nullpointerexception.model.Service.FuelDataService;
+import com.nullpointerexception.model.service.FuelDataService;
 import com.nullpointerexception.model.dev.DevDemo;
 import com.nullpointerexception.model.dev.FuelDataProvider;
 import com.nullpointerexception.model.mock.MockDemo;
-import com.nullpointerexception.model.Service.DemoService;
+import com.nullpointerexception.model.service.DemoService;
 import com.nullpointerexception.model.mock.MockFuelDataProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

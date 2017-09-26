@@ -1,0 +1,40 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body main {
+
+}
+
+body footer {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #ff4300;
+    display: block;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+body footer div {
+    height: 100%;
+    width: 10%;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+body footer div.checked {
+    border-top: 3px black solid;
+    background-color: #00ff00;
+    color: black;
+}
+
+body footer div.unchecked:hover {
+    background-color: #ab3800;
+    cursor: pointer;
+}

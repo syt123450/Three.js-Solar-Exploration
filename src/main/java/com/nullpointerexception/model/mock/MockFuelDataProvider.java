@@ -1,7 +1,7 @@
 package com.nullpointerexception.model.mock;
 
-import com.nullpointerexception.model.Service.FuelDataService;
-import com.nullpointerexception.model.bean.FuelInfo;
+import com.nullpointerexception.model.service.FuelDataService;
+import com.nullpointerexception.model.bean.FuelInfoBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,11 @@ import java.util.List;
 public class MockFuelDataProvider implements FuelDataService {
 
     @Override
-    public List<FuelInfo> getData(int year) {
+    public List<FuelInfoBean> getData(int year) {
 
-        List<FuelInfo> infoList = new ArrayList<>();
+        List<FuelInfoBean> infoList = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
-            infoList.add(new FuelInfo("country" + i, i, year, i * i));
+            infoList.add(new FuelInfoBean("country" + i, i, year, i * i));
         }
 
         return infoList;

@@ -1,7 +1,7 @@
 package com.nullpointerexception.model.utils;
 
 import com.nullpointerexception.configuration.MySQLConfig;
-import com.nullpointerexception.model.bean.FuelInfo;
+import com.nullpointerexception.model.bean.FuelInfoBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class MySQLUtils {
     @Autowired
     private MySQLConfig mySQLConfig;
 
-    public List<FuelInfo> getCountryDataByYear() {
+    public List<FuelInfoBean> getCountryDataByYear() {
 
         return null;
     }
