@@ -17,8 +17,12 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.radius = ( this.screen.width + this.screen.height ) / 4;
 
 	this.rotateSpeed = 1.5;
-	this.zoomSpeed = 1.0;
-	this.panSpeed = 0.3;
+	// this.zoomSpeed = 1.0;
+	// this.panSpeed = 0.3;
+
+    // this.rotateSpeed = 1;
+    // this.zoomSpeed = 1;
+    // this.panSpeed = 1;
 
 	this.noRotate = false;
 	this.noZoom = false;
@@ -30,7 +34,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.minDistance = 0.8;
 	this.maxDistance = 2;
 
-	this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
+	// this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
 
 	// internals
 
@@ -134,12 +138,12 @@ THREE.TrackballControls = function ( object, domElement ) {
 		var angle = Math.acos( _rotateStart.dot( _rotateEnd ) / _rotateStart.length() / _rotateEnd.length() );
         
 		if ( angle ) {
-           
-			var axis = new THREE.Vector3( Math.sin(23.5*Math.PI/180), Math.cos(23.5*Math.PI/180), 0 );
+
+			//在这里定义旋转轴
+			// var axis = new THREE.Vector3( Math.sin(23.5*Math.PI/180), Math.cos(23.5*Math.PI/180), 0 );
 //            
-//            	var axis = new THREE.Vector3( 0, 1, 0 );
-        
-            
+           	var axis = new THREE.Vector3( 0, 1, 0 );
+
             
             quaternion = new THREE.Quaternion();
 
