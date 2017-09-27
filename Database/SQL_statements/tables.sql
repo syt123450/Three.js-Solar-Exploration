@@ -26,6 +26,15 @@ CREATE TABLE Unit (
   PRIMARY KEY (unitID)
 );
 
+CREATE TABLE Geography (
+  geographyID INT NOT NULL AUTO_INCREMENT,
+  longitude DOUBLE(15, 10) NOT NULL,
+  latitude DOUBLE(15, 10) NOT NULL,
+  altitude DOUBLE(15, 10) DEFAULT 0,
+  countryID INT NOT NULL,
+  PRIMARY KEY (geographyID)
+);
+
 
 # For data collection and hash map style use
 CREATE TABLE NaturalGas (
