@@ -36,18 +36,25 @@ def writeToFile(countryList):
     fuel = response.json()["series"][0]["name"].split(", ")[0]
     units = response.json()["series"][0]["units"]
 
-    data = {}
-    data["Request"] = {}
-    data["Request"] = ({"Fuel": fuel, "Units": units})
-    data["Result"] = []
+    data = []
+    # data["Request"] = {}
+    # data["Request"] = ({"Fuel": fuel, "Units": units})
+    # data["Result"] = []
 
-    #Pulling data and writing to a json file in the end
+    #Pulling data, parsing and writing to a json file in the end
     for i in range(len(countryList)):
-        petroleum = requests.get("http://api.eia.gov/series/?api_key=" + apiKey + "&series_id=" + countryList[i])
-        PjsonRes = petroleum.json()
+        response = requests.get("http://api.eia.gov/series/?api_key=" + apiKey + "&series_id=" + countryList[i])
+        PjsonRes = response.json()
         country = PjsonRes["series"][0]["name"].split(", ")[1]
         grabedData = PjsonRes["series"][0]["data"]
-        data["Result"].append({country: grabedData })
+        for j in range(len(grabedData)):
+            grabedData[j].insert(0, country)
+            grabedData[j][1] = int(grabedData[j][1])
+            if isinstance( grabedData[j][2], int ):
+                pass
+            else:
+                grabedData[j][2] = 0
+        data.append(grabedData)
 
     with open(options[int(userInput)][1]+'.json', 'w') as outfile:
         json.dump(data, outfile)
