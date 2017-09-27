@@ -1,7 +1,7 @@
 package com.nullpointerexception.model.dev;
 
-import com.nullpointerexception.model.Service.FuelDataService;
-import com.nullpointerexception.model.bean.FuelInfo;
+import com.nullpointerexception.model.service.FuelDataService;
+import com.nullpointerexception.model.bean.FuelInfoBean;
 import com.nullpointerexception.model.utils.MySQLUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +16,7 @@ public class FuelDataProvider implements FuelDataService {
     private MySQLUtils mySQLUtils;
 
     @Override
-    public List<FuelInfo> getData(int year) {
+    public List<FuelInfoBean> getData(int year) {
         return mySQLUtils.getCountryDataByYear();
     }
 }

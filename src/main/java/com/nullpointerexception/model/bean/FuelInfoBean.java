@@ -9,9 +9,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class FuelInfo {
+public class FuelInfoBean {
 
-    private String name;
+    private String countryName;
     private double longitude;
     private double latitude;
     private double amount;

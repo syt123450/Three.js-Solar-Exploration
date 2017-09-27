@@ -1,4 +1,4 @@
-package com.nullpointerexception.model.Service;
+package com.nullpointerexception.model.service;
 
 /**
  * Created by ss on 2017/9/21.

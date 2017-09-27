@@ -2,8 +2,8 @@ package com.nullpointerexception.presenter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.nullpointerexception.model.Service.FuelDataService;
-import com.nullpointerexception.model.bean.FuelInfo;
+import com.nullpointerexception.model.service.FuelDataService;
+import com.nullpointerexception.model.bean.FuelInfoBean;
 import com.nullpointerexception.model.bean.YearRequestBean;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class Presenter {
 
         logger.info("Get request for year data.");
         YearRequestBean yearRequestBean = gson.fromJson(body, YearRequestBean.class);
-        List<FuelInfo> infoList = fuelDataService.getData(yearRequestBean.getYear());
+        List<FuelInfoBean> infoList = fuelDataService.getData(yearRequestBean.getYear());
 
         return gson.toJson(infoList);
     }
