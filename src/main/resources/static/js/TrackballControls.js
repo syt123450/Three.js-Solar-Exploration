@@ -17,12 +17,9 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.radius = ( this.screen.width + this.screen.height ) / 4;
 
 	this.rotateSpeed = 1.5;
-	// this.zoomSpeed = 1.0;
-	// this.panSpeed = 0.3;
+	this.zoomSpeed = 1.0;
+	this.panSpeed = 0.3;
 
-    // this.rotateSpeed = 1;
-    // this.zoomSpeed = 1;
-    // this.panSpeed = 1;
 
 	this.noRotate = false;
 	this.noZoom = false;
@@ -31,10 +28,11 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.staticMoving = true;
 	this.dynamicDampingFactor = 0.2;
 
-	this.minDistance = 0.8;
-	this.maxDistance = 2;
+	//在这里设置鼠标控制的距离
+	this.minDistance = 2;
+	this.maxDistance = 3;
 
-	// this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
+	this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
 
 	// internals
 
