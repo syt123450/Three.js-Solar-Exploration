@@ -29,8 +29,8 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.dynamicDampingFactor = 0.2;
 
 	//在这里设置鼠标控制的距离
-	this.minDistance = 2;
-	this.maxDistance = 3;
+	this.minDistance = 0;
+	this.maxDistance = 0;
 
 	this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
 

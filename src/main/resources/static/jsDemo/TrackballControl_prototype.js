@@ -14,6 +14,8 @@ camera.position.z = 3;
 //create controls object
 //also need to set some parameter in the library, see TrackballControl.js file
 var controls = new THREE.TrackballControls(camera,threeElement);
+controls.minDistance = 2;
+controls.maxDistance = 3;
 
 var renderer = new THREE.WebGLRenderer({canvas: threeElement, antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
