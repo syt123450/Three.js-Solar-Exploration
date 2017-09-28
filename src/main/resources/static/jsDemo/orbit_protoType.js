@@ -182,12 +182,14 @@ let animate = function () {
     pivot_moon.rotateY(0.05);
     pivot_earth_self.rotateY(0.0055);
     pivot_earth_to_moon.rotateY(0.0055);
-    pivot_sun_to_earth.rotateY(0.0015);
+    // pivot_sun_to_earth.rotateY(0.0015);
 
-    // earthOrbitAngle += earthOrbitSpeed;
-    // let radians = earthOrbitAngle * Math.PI / 180;
-    // pivot_earth_self.position.x = Math.cos(radians) * earthOrbitRadius;
-    // pivot_earth_self.position.z = Math.sin(radians) * earthOrbitRadius;
+    earthOrbitAngle += earthOrbitSpeed;
+    let radians = earthOrbitAngle * Math.PI / 180;
+    pivot_earth_self.position.x = Math.cos(radians) * earthOrbitRadius;
+    pivot_earth_to_moon.position.x = Math.cos(radians) * earthOrbitRadius;
+    pivot_earth_self.position.z = Math.sin(radians) * earthOrbitRadius;
+    pivot_earth_to_moon.position.z = Math.sin(radians) * earthOrbitRadius;
     //
     // moonOrbitAngle += moonOrbitSpeed;
     // let moonRadians = moonOrbitAngle * Math.PI / 180;
