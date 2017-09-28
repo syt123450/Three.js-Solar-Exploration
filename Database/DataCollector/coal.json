@@ -1,1 +1,737 @@
-[[["Aruba", 2014, 0]], [["Afghanistan", 2014, 0]], [["Africa", 2014, 0]], [["Angola", 2014, 0]], [["Albania", 2014, 0]], [["United Arab Emirates", 2014, 0]], [["Argentina", 2014, 0]], [["Armenia", 2014, 0]], [["American Samoa", 2014, 0]], [["Asia & Oceania", 2014, 0]], [["Antarctica", 2014, 0]], [["Antigua and Barbuda", 2014, 0]], [["Australia", 2014, 0]], [["Austria", 2014, 0]], [["Azerbaijan", 2014, 0]], [["Burundi", 2014, 0]], [["Belgium", 2014, 0]], [["Benin", 2014, 0]], [["Burkina Faso", 2014, 0]], [["Bangladesh", 2014, 0]], [["Bulgaria", 2014, 0]], [["Bahrain", 2014, 0]], [["Bahamas", 2014, 0]], [["Bosnia and Herzegovina", 2014, 0]], [["Belarus", 2014, 0]], [["Belize", 2014, 0]], [["Bermuda", 2014, 0]], [["Bolivia", 2014, 0]], [["Brazil", 2014, 0]], [["Barbados", 2014, 0]], [["Brunei", 2014, 0]], [["Bhutan", 2014, 0]], [["Botswana", 2014, 0]], [["Central African Republic", 2014, 0]], [["Canada", 2014, 0]], [["Switzerland", 2014, 0]], [["Chile", 2014, 0]], [["China", 2014, 0]], [["Cote dIvoire (IvoryCoast)", 2014, 0]], [["Cameroon", 2014, 0]], [["Congo (Kinshasa)", 2014, 0]], [["Congo (Brazzaville)", 2014, 0]], [["Cook Islands", 2014, 0]], [["Colombia", 2014, 0]], [["Comoros", 2014, 0]], [["Cape Verde", 2014, 0]], [["Costa Rica", 2014, 0]], [["Central & South America", 2014, 0]], [["Former Czechoslovakia", 2014, 0]], [["Cuba", 2014, 0]], [["Cayman Islands", 2014, 0]], [["Cyprus", 2014, 0]], [["Czech Republic", 2014, 0]], [["Germany", 2014, 0]], [["Germany", 2014, 0]], [["Germany", 2014, 0]], [["Djibouti", 2014, 0]], [["Dominica", 2014, 0]], [["Denmark", 2014, 0]], [["Dominican Republic", 2014, 0]], [["Algeria", 2014, 0]], [["Ecuador", 2014, 0]], [["Egypt", 2014, 0]], [["Eritrea", 2014, 0]], [["Western Sahara", 2014, 0]], [["Spain", 2014, 0]], [["Estonia", 2014, 0]], [["Ethiopia", 2014, 0]], [["EU-15", 2014, 0]], [["EU-27", 2014, 0]], [["Eurasia", 2014, 0]], [["Europe", 2014, 0]], [["Finland", 2014, 0]], [["Fiji", 2014, 0]], [["Falkland Islands (Islas Malvinas)", 2014, 0]], [["France", 2014, 0]], [["Faroe Islands", 2014, 0]], [["Gabon", 2014, 0]], [["United Kingdom", 2014, 0]], [["Georgia", 2014, 0]], [["Ghana", 2014, 0]], [["Gibraltar", 2014, 0]], [["Guinea", 2014, 0]], [["Guadeloupe", 2014, 0]], [["Gambia", 2014, 0]], [["Guinea-Bissau", 2014, 0]], [["Equatorial Guinea", 2014, 0]], [["Greece", 2014, 0]], [["Grenada", 2014, 0]], [["Greenland", 2014, 0]], [["Guatemala", 2014, 0]], [["French Guiana", 2014, 0]], [["Guam", 2014, 0]], [["Guyana", 2014, 0]], [["Hong Kong", 2014, 0]], [["Honduras", 2014, 0]], [["Croatia", 2014, 0]], [["Haiti", 2014, 0]], [["Hungary", 2014, 0]], [["Indonesia", 2014, 0]], [["IEA", 2014, 0]], [["India", 2014, 0]], [["Ireland", 2014, 0]], [["Iran", 2014, 0]], [["Iraq", 2014, 0]], [["Iceland", 2014, 0]], [["Israel", 2014, 0]], [["Italy", 2014, 0]], [["Jamaica", 2014, 0]], [["Jordan", 2014, 0]], [["Japan", 2014, 0]], [["Kazakhstan", 2014, 0]], [["Kenya", 2014, 0]], [["Kyrgyzstan", 2014, 0]], [["Cambodia", 2014, 0]], [["Kiribati", 2014, 0]], [["Saint Kitts and Nevis", 2014, 0]], [["Korea", 2014, 0]], [["Kuwait", 2014, 0]], [["Laos", 2014, 0]], [["Lebanon", 2014, 0]], [["Liberia", 2014, 0]], [["Libya", 2014, 0]], [["Saint Lucia", 2014, 0]], [["Sri Lanka", 2014, 0]], [["Lesotho", 2014, 0]], [["Lithuania", 2014, 0]], [["Luxembourg", 2014, 0]], [["Latvia", 2014, 0]], [["Macau", 2014, 0]], [["Morocco", 2014, 0]], [["Moldova", 2014, 0]], [["Madagascar", 2014, 0]], [["Maldives", 2014, 0]], [["Mexico", 2014, 0]], [["Middle East", 2014, 0]], [["Macedonia", 2014, 0]], [["Mali", 2014, 0]], [["Malta", 2014, 0]], [["Burma (Myanmar)", 2014, 0]], [["Montenegro", 2014, 0]], [["Mongolia", 2014, 0]], [["Mozambique", 2014, 0]], [["Mauritania", 2014, 0]], [["Montserrat", 2014, 0]], [["Martinique", 2014, 0]], [["Mauritius", 2014, 0]], [["Malawi", 2014, 0]], [["Malaysia", 2014, 0]], [["Namibia", 2014, 0]], [["New Caledonia", 2014, 0]], [["Niger", 2014, 0]], [["Nigeria", 2014, 0]], [["Nicaragua", 2014, 0]], [["Niue", 2014, 0]], [["Netherlands", 2014, 0]], [["Netherlands Antilles", 2014, 0]], [["North America", 2014, 0]], [["Non OECD", 2014, 0]], [["Norway", 2014, 0]], [["Nepal", 2014, 0]], [["Nauru", 2014, 0]], [["New Zealand", 2014, 0]], [["OECD-Asia And Oceania", 2014, 0]], [["OECD", 2014, 0]], [["OECD Europe", 2014, 0]], [["OECD-North America", 2014, 0]], [["Oman", 2014, 0]], [["OPEC-Africa", 2014, 0]], [["OPEC", 2014, 0]], [["OPEC-South America", 2014, 0]], [["Pakistan", 2014, 0]], [["Panama", 2014, 0]], [["Peru", 2014, 0]], [["Persian Gulf", 2014, 0]], [["Philippines", 2014, 0]], [["Papua New Guinea", 2014, 0]], [["Poland", 2014, 0]], [["Puerto Rico", 2014, 0]], [["Korea", 2014, 0]], [["Portugal", 2014, 0]], [["Paraguay", 2014, 0]], [["Palestinian Territories", 2014, 0]], [["French Polynesia", 2014, 0]], [["Qatar", 2014, 0]], [["Reunion", 2014, 0]], [["Romania", 2014, 0]], [["Russia", 2014, 0]], [["Rwanda", 2014, 0]], [["Saudi Arabia", 2014, 0]], [["Former Serbia and Montenegro", 2014, 0]], [["Sudan", 2014, 0]], [["Senegal", 2014, 0]], [["Singapore", 2014, 0]], [["Saint Helena", 2014, 0]], [["Solomon Islands", 2014, 0]], [["Sierra Leone", 2014, 0]], [["El Salvador", 2014, 0]], [["Somalia", 2014, 0]], [["Saint Pierre and Miquelon", 2014, 0]], [["Serbia", 2014, 0]], [["South Sudan", 2014, 0]], [["Sao Tome and Principe", 2014, 0]], [["Former U.S.S.R.", 2014, 0]], [["Suriname", 2014, 0]], [["Slovakia", 2014, 0]], [["Slovenia", 2014, 0]], [["Sweden", 2014, 0]], [["Swaziland", 2014, 0]], [["Seychelles", 2014, 0]], [["Syria", 2014, 0]], [["Turks and Caicos Islands", 2014, 0]], [["Chad", 2014, 0]], [["Togo", 2014, 0]], [["Thailand", 2014, 0]], [["Tajikistan", 2014, 0]], [["Turkmenistan", 2014, 0]], [["Timor-Leste (East Timor)", 2014, 0]], [["Tonga", 2014, 0]], [["Trinidad and Tobago", 2014, 0]], [["Tunisia", 2014, 0]], [["Turkey", 2014, 0]], [["Taiwan", 2014, 0]], [["Tanzania", 2014, 0]], [["Uganda", 2014, 0]], [["Ukraine", 2014, 0]], [["Kosovo", 2014, 0]], [["Uruguay", 2014, 0]], [["United States", 2014, 0]], [["U.S. Pacific Islands", 2014, 0]], [["Uzbekistan", 2014, 0]], [["Saint Vincent/Grenadines", 2014, 0]], [["Venezuela", 2014, 0]], [["Virgin Islands", 2014, 0]], [["Virgin Islands", 2014, 0]], [["Vietnam", 2014, 0]], [["Vanuatu", 2014, 0]], [["Wake Island", 2014, 0]], [["World", 2014, 0]], [["Samoa", 2014, 0]], [["Yemen", 2014, 0]], [["Former Yugoslavia", 2014, 0]], [["South Africa", 2014, 0]], [["Zambia", 2014, 0]], [["Zimbabwe", 2014, 0]]]
+[
+  [
+    ["Aruba", 2014, 0]
+  ],
+  [
+    ["Afghanistan", 2014, 73]
+  ],
+  [
+    ["Africa", 2014, 14640]
+  ],
+  [
+    ["Angola", 2014, 0]
+  ],
+  [
+    ["Albania", 2014, 575]
+  ],
+  [
+    ["United Arab Emirates", 2014, 0]
+  ],
+  [
+    ["Argentina", 2014, 551]
+  ],
+  [
+    ["Armenia", 2014, 180]
+  ],
+  [
+    ["American Samoa", 2014, 0]
+  ],
+  [
+    ["Asia & Oceania", 2014, 549070]
+  ],
+  [
+    ["Antarctica", 2014, 0]
+  ],
+  [
+    ["Antigua and Barbuda", 2014, 0]
+  ],
+  [
+    ["Australia", 2014, 117130]
+  ],
+  [
+    ["Austria", 2014, 0]
+  ],
+  [
+    ["Azerbaijan", 2014, 0]
+  ],
+  [
+    ["Burundi", 2014, 0]
+  ],
+  [
+    ["Belgium", 2014, 0]
+  ],
+  [
+    ["Benin", 2014, 0]
+  ],
+  [
+    ["Burkina Faso", 2014, 0]
+  ],
+  [
+    ["Bangladesh", 2014, 323]
+  ],
+  [
+    ["Bulgaria", 2014, 2608]
+  ],
+  [
+    ["Bahrain", 2014, 0]
+  ],
+  [
+    ["Bahamas", 2014, 0]
+  ],
+  [
+    ["Bosnia and Herzegovina", 2014, 2496]
+  ],
+  [
+    ["Belarus", 2014, 0]
+  ],
+  [
+    ["Belize", 2014, 0]
+  ],
+  [
+    ["Bermuda", 2014, 0]
+  ],
+  [
+    ["Bolivia", 2014, 1]
+  ],
+  [
+    ["Brazil", 2014, 7271]
+  ],
+  [
+    ["Barbados", 2014, 0]
+  ],
+  [
+    ["Brunei", 2014, 0]
+  ],
+  [
+    ["Bhutan", 2014, 7]
+  ],
+  [
+    ["Botswana", 2014, 44]
+  ],
+  [
+    ["Central African Republic", 2014, 3]
+  ],
+  [
+    ["Canada", 2014, 7256]
+  ],
+  [
+    ["Switzerland", 2014, 0]
+  ],
+  [
+    ["Chile", 2014, 1302]
+  ],
+  [
+    ["China", 2014, 281830]
+  ],
+  [
+    ["Cote dIvoire (IvoryCoast)", 2014, 0]
+  ],
+  [
+    ["Cameroon", 2014, 0]
+  ],
+  [
+    ["Congo (Kinshasa)", 2014, 97]
+  ],
+  [
+    ["Congo (Brazzaville)", 2014, 0]
+  ],
+  [
+    ["Cook Islands", 2014, 0]
+  ],
+  [
+    ["Colombia", 2014, 5380]
+  ],
+  [
+    ["Comoros", 2014, 0]
+  ],
+  [
+    ["Cape Verde", 2014, 0]
+  ],
+  [
+    ["Costa Rica", 2014, 0]
+  ],
+  [
+    ["Central & South America", 2014, 15449]
+  ],
+  [
+    ["Former Czechoslovakia", 2014, 0]
+  ],
+  [
+    ["Cuba", 2014, 0]
+  ],
+  [
+    ["Cayman Islands", 2014, 0]
+  ],
+  [
+    ["Cyprus", 2014, 0]
+  ],
+  [
+    ["Czech Republic", 2014, 4090]
+  ],
+  [
+    ["Germany", 2014, 0]
+  ],
+  [
+    ["Germany", 2014, 40037]
+  ],
+  [
+    ["Germany", 2014, 0]
+  ],
+  [
+    ["Djibouti", 2014, 0]
+  ],
+  [
+    ["Dominica", 2014, 0]
+  ],
+  [
+    ["Denmark", 2014, 0]
+  ],
+  [
+    ["Dominican Republic", 2014, 0]
+  ],
+  [
+    ["Algeria", 2014, 65]
+  ],
+  [
+    ["Ecuador", 2014, 26]
+  ],
+  [
+    ["Egypt", 2014, 18]
+  ],
+  [
+    ["Eritrea", 2014, 0]
+  ],
+  [
+    ["Western Sahara", 2014, 0]
+  ],
+  [
+    ["Spain", 2014, 1309]
+  ],
+  [
+    ["Estonia", 2014, 0]
+  ],
+  [
+    ["Ethiopia", 2014, 0]
+  ],
+  [
+    ["EU-15", 2014, 45208]
+  ],
+  [
+    ["EU-27", 2014, 79836]
+  ],
+  [
+    ["Eurasia", 2014, 283906]
+  ],
+  [
+    ["Europe", 2014, 107599]
+  ],
+  [
+    ["Finland", 2014, 0]
+  ],
+  [
+    ["Fiji", 2014, 0]
+  ],
+  [
+    ["Falkland Islands (Islas Malvinas)", 2014, 0]
+  ],
+  [
+    ["France", 2014, 8]
+  ],
+  [
+    ["Faroe Islands", 2014, 0]
+  ],
+  [
+    ["Gabon", 2014, 0]
+  ],
+  [
+    ["United Kingdom", 2014, 77]
+  ],
+  [
+    ["Georgia", 2014, 222]
+  ],
+  [
+    ["Ghana", 2014, 0]
+  ],
+  [
+    ["Gibraltar", 2014, 0]
+  ],
+  [
+    ["Guinea", 2014, 0]
+  ],
+  [
+    ["Guadeloupe", 2014, 0]
+  ],
+  [
+    ["Gambia", 2014, 0]
+  ],
+  [
+    ["Guinea-Bissau", 2014, 0]
+  ],
+  [
+    ["Equatorial Guinea", 2014, 0]
+  ],
+  [
+    ["Greece", 2014, 3170]
+  ],
+  [
+    ["Grenada", 2014, 0]
+  ],
+  [
+    ["Greenland", 2014, 202]
+  ],
+  [
+    ["Guatemala", 2014, 0]
+  ],
+  [
+    ["French Guiana", 2014, 0]
+  ],
+  [
+    ["Guam", 2014, 0]
+  ],
+  [
+    ["Guyana", 2014, 0]
+  ],
+  [
+    ["Hong Kong", 2014, 0]
+  ],
+  [
+    ["Honduras", 2014, 0]
+  ],
+  [
+    ["Croatia", 2014, 0]
+  ],
+  [
+    ["Haiti", 2014, 0]
+  ],
+  [
+    ["Hungary", 2014, 3206]
+  ],
+  [
+    ["Indonesia", 2014, 28295]
+  ],
+  [
+    ["IEA", 2014, 479896]
+  ],
+  [
+    ["India", 2014, 99512]
+  ],
+  [
+    ["Ireland", 2014, 0]
+  ],
+  [
+    ["Iran", 2014, 1326]
+  ],
+  [
+    ["Iraq", 2014, 0]
+  ],
+  [
+    ["Iceland", 2014, 0]
+  ],
+  [
+    ["Israel", 2014, 0]
+  ],
+  [
+    ["Italy", 2014, 19]
+  ],
+  [
+    ["Jamaica", 2014, 0]
+  ],
+  [
+    ["Jordan", 2014, 0]
+  ],
+  [
+    ["Japan", 2014, 386]
+  ],
+  [
+    ["Kazakhstan", 2014, 65263]
+  ],
+  [
+    ["Kenya", 2014, 0]
+  ],
+  [
+    ["Kyrgyzstan", 2014, 1070]
+  ],
+  [
+    ["Cambodia", 2014, 0]
+  ],
+  [
+    ["Kiribati", 2014, 0]
+  ],
+  [
+    ["Saint Kitts and Nevis", 2014, 0]
+  ],
+  [
+    ["Korea", 2014, 359]
+  ],
+  [
+    ["Kuwait", 2014, 0]
+  ],
+  [
+    ["Laos", 2014, 554]
+  ],
+  [
+    ["Lebanon", 2014, 0]
+  ],
+  [
+    ["Liberia", 2014, 0]
+  ],
+  [
+    ["Libya", 2014, 0]
+  ],
+  [
+    ["Saint Lucia", 2014, 0]
+  ],
+  [
+    ["Sri Lanka", 2014, 0]
+  ],
+  [
+    ["Lesotho", 2014, 0]
+  ],
+  [
+    ["Lithuania", 2014, 0]
+  ],
+  [
+    ["Luxembourg", 2014, 0]
+  ],
+  [
+    ["Latvia", 2014, 0]
+  ],
+  [
+    ["Macau", 2014, 0]
+  ],
+  [
+    ["Morocco", 2014, 15]
+  ],
+  [
+    ["Moldova", 2014, 0]
+  ],
+  [
+    ["Madagascar", 2014, 0]
+  ],
+  [
+    ["Maldives", 2014, 0]
+  ],
+  [
+    ["Mexico", 2014, 1335]
+  ],
+  [
+    ["Middle East", 2014, 1326]
+  ],
+  [
+    ["Macedonia", 2014, 366]
+  ],
+  [
+    ["Mali", 2014, 0]
+  ],
+  [
+    ["Malta", 2014, 0]
+  ],
+  [
+    ["Burma (Myanmar)", 2014, 7]
+  ],
+  [
+    ["Montenegro", 2014, 157]
+  ],
+  [
+    ["Mongolia", 2014, 2778]
+  ],
+  [
+    ["Mozambique", 2014, 1975]
+  ],
+  [
+    ["Mauritania", 2014, 0]
+  ],
+  [
+    ["Montserrat", 2014, 0]
+  ],
+  [
+    ["Martinique", 2014, 0]
+  ],
+  [
+    ["Mauritius", 2014, 0]
+  ],
+  [
+    ["Malawi", 2014, 2]
+  ],
+  [
+    ["Malaysia", 2014, 198]
+  ],
+  [
+    ["Namibia", 2014, 0]
+  ],
+  [
+    ["New Caledonia", 2014, 2]
+  ],
+  [
+    ["Niger", 2014, 78]
+  ],
+  [
+    ["Nigeria", 2014, 379]
+  ],
+  [
+    ["Nicaragua", 2014, 0]
+  ],
+  [
+    ["Niue", 2014, 0]
+  ],
+  [
+    ["Netherlands", 2014, 548]
+  ],
+  [
+    ["Netherlands Antilles", 2014, 0]
+  ],
+  [
+    ["North America", 2014, 264548]
+  ],
+  [
+    ["Non OECD", 2014, 753596]
+  ],
+  [
+    ["Norway", 2014, 2]
+  ],
+  [
+    ["Nepal", 2014, 1]
+  ],
+  [
+    ["Nauru", 2014, 0]
+  ],
+  [
+    ["New Zealand", 2014, 8350]
+  ],
+  [
+    ["OECD-Asia And Oceania", 2014, 126225]
+  ],
+  [
+    ["OECD", 2014, 482942]
+  ],
+  [
+    ["OECD Europe", 2014, 91069]
+  ],
+  [
+    ["OECD-North America", 2014, 264346]
+  ],
+  [
+    ["Oman", 2014, 0]
+  ],
+  [
+    ["OPEC-Africa", 2014, 444]
+  ],
+  [
+    ["OPEC", 2014, 30897]
+  ],
+  [
+    ["OPEC-South America", 2014, 832]
+  ],
+  [
+    ["Pakistan", 2014, 3377]
+  ],
+  [
+    ["Panama", 2014, 0]
+  ],
+  [
+    ["Peru", 2014, 112]
+  ],
+  [
+    ["Persian Gulf", 2014, 1326]
+  ],
+  [
+    ["Philippines", 2014, 349]
+  ],
+  [
+    ["Papua New Guinea", 2014, 0]
+  ],
+  [
+    ["Poland", 2014, 23845]
+  ],
+  [
+    ["Puerto Rico", 2014, 0]
+  ],
+  [
+    ["Korea", 2014, 662]
+  ],
+  [
+    ["Portugal", 2014, 39]
+  ],
+  [
+    ["Paraguay", 2014, 0]
+  ],
+  [
+    ["Palestinian Territories", 2014, 0]
+  ],
+  [
+    ["French Polynesia", 2014, 0]
+  ],
+  [
+    ["Qatar", 2014, 0]
+  ],
+  [
+    ["Reunion", 2014, 0]
+  ],
+  [
+    ["Romania", 2014, 321]
+  ],
+  [
+    ["Russia", 2014, 176771]
+  ],
+  [
+    ["Rwanda", 2014, 0]
+  ],
+  [
+    ["Saudi Arabia", 2014, 0]
+  ],
+  [
+    ["Former Serbia and Montenegro", 2014, 0]
+  ],
+  [
+    ["Sudan", 2014, 0]
+  ],
+  [
+    ["Senegal", 2014, 0]
+  ],
+  [
+    ["Singapore", 2014, 0]
+  ],
+  [
+    ["Saint Helena", 2014, 0]
+  ],
+  [
+    ["Solomon Islands", 2014, 0]
+  ],
+  [
+    ["Sierra Leone", 2014, 0]
+  ],
+  [
+    ["El Salvador", 2014, 0]
+  ],
+  [
+    ["Somalia", 2014, 0]
+  ],
+  [
+    ["Saint Pierre and Miquelon", 2014, 0]
+  ],
+  [
+    ["Serbia", 2014, 8283]
+  ],
+  [
+    ["South Sudan", 2014, 0]
+  ],
+  [
+    ["Sao Tome and Principe", 2014, 0]
+  ],
+  [
+    ["Former U.S.S.R.", 2014, 0]
+  ],
+  [
+    ["Suriname", 2014, 0]
+  ],
+  [
+    ["Slovakia", 2014, 149]
+  ],
+  [
+    ["Slovenia", 2014, 409]
+  ],
+  [
+    ["Sweden", 2014, 1]
+  ],
+  [
+    ["Swaziland", 2014, 159]
+  ],
+  [
+    ["Seychelles", 2014, 0]
+  ],
+  [
+    ["Syria", 2014, 0]
+  ],
+  [
+    ["Turks and Caicos Islands", 2014, 0]
+  ],
+  [
+    ["Chad", 2014, 0]
+  ],
+  [
+    ["Togo", 2014, 0]
+  ],
+  [
+    ["Thailand", 2014, 1172]
+  ],
+  [
+    ["Tajikistan", 2014, 413]
+  ],
+  [
+    ["Turkmenistan", 2014, 0]
+  ],
+  [
+    ["Timor-Leste (East Timor)", 2014, 0]
+  ],
+  [
+    ["Tonga", 2014, 0]
+  ],
+  [
+    ["Trinidad and Tobago", 2014, 0]
+  ],
+  [
+    ["Tunisia", 2014, 0]
+  ],
+  [
+    ["Turkey", 2014, 14160]
+  ],
+  [
+    ["Taiwan", 2014, 1]
+  ],
+  [
+    ["Tanzania", 2014, 297]
+  ],
+  [
+    ["Uganda", 2014, 0]
+  ],
+  [
+    ["Ukraine", 2014, 37892]
+  ],
+  [
+    ["Kosovo", 2014, 1724]
+  ],
+  [
+    ["Uruguay", 2014, 0]
+  ],
+  [
+    ["United States", 2014, 255755]
+  ],
+  [
+    ["U.S. Pacific Islands", 2014, 0]
+  ],
+  [
+    ["Uzbekistan", 2014, 2095]
+  ],
+  [
+    ["Saint Vincent/Grenadines", 2014, 0]
+  ],
+  [
+    ["Venezuela", 2014, 806]
+  ],
+  [
+    ["Virgin Islands", 2014, 0]
+  ],
+  [
+    ["Virgin Islands", 2014, 0]
+  ],
+  [
+    ["Vietnam", 2014, 3704]
+  ],
+  [
+    ["Vanuatu", 2014, 0]
+  ],
+  [
+    ["Wake Island", 2014, 0]
+  ],
+  [
+    ["World", 2014, 1236538]
+  ],
+  [
+    ["Samoa", 2014, 0]
+  ],
+  [
+    ["Yemen", 2014, 0]
+  ],
+  [
+    ["Former Yugoslavia", 2014, 0]
+  ],
+  [
+    ["South Africa", 2014, 10905]
+  ],
+  [
+    ["Zambia", 2014, 50]
+  ],
+  [
+    ["Zimbabwe", 2014, 553]
+  ]
+]
