@@ -122,33 +122,33 @@ let starMesh = new THREE.Mesh(
 );
 
 // Pivots
-let pivot_sun = new THREE.Object3D();
-let pivot_earth = new THREE.Object3D();
+let pivot_sun_to_earth = new THREE.Object3D();
+let pivot_earth_self = new THREE.Object3D();
 let pivot_earth_to_moon = new THREE.Object3D();
 let pivot_moon = new THREE.Object3D();
 
-// pivot_earth.add(pivot_moon);
+// pivot_earth_self.add(pivot_moon);
 pivot_earth_to_moon.add(pivot_moon);
-pivot_sun.add(pivot_earth);
-pivot_sun.add(pivot_earth_to_moon);
+pivot_sun_to_earth.add(pivot_earth_self);
+pivot_sun_to_earth.add(pivot_earth_to_moon);
 
 // Axis helper, used to visualize axis
 let sunAxes = new THREE.AxisHelper(0.5);
 let earthAxes = new THREE.AxisHelper(2);
 let moonAxes = new THREE.AxisHelper(0.5);
-pivot_earth.add(earthAxes);
+pivot_earth_self.add(earthAxes);
 pivot_moon.add(moonAxes);
-pivot_sun.add(sunAxes);
+pivot_sun_to_earth.add(sunAxes);
 
 // Apply mesh to pivot
-pivot_sun.add(sunMesh);
+pivot_sun_to_earth.add(sunMesh);
 
-pivot_earth.add(earthMesh);
-pivot_earth.add(atmosphereMesh);
-pivot_earth.position.x = 8;
+pivot_earth_self.add(earthMesh);
+pivot_earth_self.add(atmosphereMesh);
+pivot_earth_self.position.x = 8;
 pivot_earth_to_moon.position.x = 8;
 // Earth axial tilt
-pivot_earth.rotateZ(2 * Math.PI / 15);
+pivot_earth_self.rotateZ(2 * Math.PI / 15);
 
 pivot_moon.add(moonMesh);
 pivot_moon.position.x = 2.5;
@@ -159,7 +159,7 @@ pivot_moon.position.x = 2.5;
 // Apply to the scene
 scene.add(starMesh);
 scene.add(light);
-scene.add(pivot_sun);
+scene.add(pivot_sun_to_earth);
 // scene.add(camera);
 
 // let controls = new THREE.TrackballControls(camera);
@@ -177,17 +177,17 @@ let animate = function () {
 
     // Revolutions
     // pivot_moon.rotation.y +=0.05;
-    // pivot_earth.rotation.y +=0.0055;
-    // pivot_sun.rotation.y += 0.0015;
+    // pivot_earth_self.rotation.y +=0.0055;
+    // pivot_sun_to_earth.rotation.y += 0.0015;
     pivot_moon.rotateY(0.05);
-    pivot_earth.rotateY(0.0055);
+    pivot_earth_self.rotateY(0.0055);
     pivot_earth_to_moon.rotateY(0.0055);
-    pivot_sun.rotateY(0.0015);
+    pivot_sun_to_earth.rotateY(0.0015);
 
     // earthOrbitAngle += earthOrbitSpeed;
     // let radians = earthOrbitAngle * Math.PI / 180;
-    // pivot_earth.position.x = Math.cos(radians) * earthOrbitRadius;
-    // pivot_earth.position.z = Math.sin(radians) * earthOrbitRadius;
+    // pivot_earth_self.position.x = Math.cos(radians) * earthOrbitRadius;
+    // pivot_earth_self.position.z = Math.sin(radians) * earthOrbitRadius;
     //
     // moonOrbitAngle += moonOrbitSpeed;
     // let moonRadians = moonOrbitAngle * Math.PI / 180;
