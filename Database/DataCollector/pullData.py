@@ -50,7 +50,7 @@ def writeToFile(countryList):
         for j in range(len(grabedData)):
             grabedData[j].insert(0, country)
             grabedData[j][1] = int(grabedData[j][1])
-            if isinstance( grabedData[j][2], int ):
+            if isinstance( grabedData[j][2], float ):
                 pass
             else:
                 grabedData[j][2] = 0
