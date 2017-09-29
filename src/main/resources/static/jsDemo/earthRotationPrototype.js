@@ -91,7 +91,7 @@ function initEarth() {
     scene.add(aggregation);
 }
 
-function animate () {
+function animate() {
 
     requestAnimationFrame(animate);
 
