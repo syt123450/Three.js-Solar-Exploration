@@ -1,4 +1,3 @@
-let CAM_TO_EARTH, distance;
 
 
 // let TrackballControls = require('three-trackballcontrols');
@@ -166,7 +165,10 @@ scene.add(pivot_sun_to_earth);
 
 // let controls = new THREE.TrackballControls(camera);
 
-
+/**
+ * Variables added for camera control
+ */
+let CAM_TO_EARTH, distance;
 CAM_TO_EARTH = camera.position.distanceTo(pivot_earth_self.position);
 distance = CAM_TO_EARTH;
 let cameraDirection = new THREE.Vector3();
@@ -207,32 +209,33 @@ let animate = function () {
     // Background
     // starMesh.rotation.y += 0.0002;
     // var worldCoords = pivot_earth_self.localToWorld(pivot_earth_self.position);
-    camera.lookAt(pivot_earth_self.position);
-    camera.getWorldDirection(cameraDirection);
 
+
+    /**
+     * Keep the earth in the center of the screen,
+     * zoom in and zoom out alternately
+     */
+    camera.lookAt(pivot_earth_self.position);
+    camera.getWorldDirection(cameraDirection); // get the direction camera is looking at
+
+    // If camera is too close to the earth, increase distance; vise versa
     if (Math.abs(distance - 4) < 0.05 || Math.abs(distance - CAM_TO_EARTH) < 0.05) {
         sign *= -1;
     }
 
-    distance -= sign * 0.1;
+    // The speed that the camera is approaching or escaping from the earth
+    var speed = 0.1;
+    distance -= sign * speed;
 
     let newCamPosition = new THREE.Vector3(0, 0, 0);
     newCamPosition.x = pivot_earth_self.position.x - cameraDirection.x * distance;
     newCamPosition.y = pivot_earth_self.position.y - cameraDirection.y * distance;
     newCamPosition.z = pivot_earth_self.position.z - cameraDirection.z * distance;
+
     camera.position.set(newCamPosition.x, newCamPosition.y, newCamPosition.z);
-    console.log(cameraDirection.x);
+
     renderer.render(scene, camera);
 
 };
-
-function getDistance(point1, point2) {
-    let distance = 0;
-    distance += Math.pow(point1.x - point2.x, 2);
-    distance += Math.pow(point1.y - point2.y, 2);
-    distance += Math.pow(point1.z - point2.z, 2);
-    distance = Math.sqrt(distance);
-    return distance;
-}
 
 animate();
