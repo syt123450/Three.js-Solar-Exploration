@@ -2,41 +2,60 @@
  * Created by ss on 2017/9/25.
  */
 
-var threeElement = document.getElementById('sceneArea');
+var scene, camera, renderer, threeElement, controls;
 
+scene = new THREE.Scene();
+init();
+animate();
 
+function init() {
 
-var scene = new THREE.Scene();
+    initRenderer();
+    initCamera();
+    initCube();
+    initTrackballControls();
+}
 
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 3;
+function initRenderer() {
 
-//create controls object
-//also need to set some parameter in the library, see TrackballControl.js file
-var controls = new THREE.TrackballControls(camera,threeElement);
-controls.minDistance = 2;
-controls.maxDistance = 3;
+    threeElement = document.getElementById('sceneArea');
+    renderer = new THREE.WebGLRenderer({canvas: threeElement, antialias: true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+}
 
-var renderer = new THREE.WebGLRenderer({canvas: threeElement, antialias: true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+function initCamera() {
 
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({
-    map: THREE.ImageUtils.loadTexture('../images/crate.jpg')
-});
+    var aspect = window.innerWidth / window.innerHeight;
+    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
+    camera.position.z = 3;
+}
 
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+function initCube() {
 
-var render = function() {
-    requestAnimationFrame(render);
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('../images/crate.jpg')
+    });
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+}
 
+function initTrackballControls() {
+
+    //create controls object
+    //also need to set some parameter in the library, see TrackballControl.js file
+    controls = new THREE.TrackballControls(camera, threeElement);
+    controls.minDistance = 2;
+    controls.maxDistance = 3;
+}
+
+function animate() {
+
+    requestAnimationFrame(animate);
 
     //set update
     controls.update();
 
     renderer.render(scene, camera);
-};
-
-render();
+}
