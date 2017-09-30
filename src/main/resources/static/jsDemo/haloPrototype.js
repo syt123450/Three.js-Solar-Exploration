@@ -71,11 +71,11 @@ function addGlow(mesh) {
                 {
                     map: texture,
                     useScreenCoordinates: false,
-                    color: 0x0000ff,
-                    transparent: false,
+                    color: 0xffffff,
+                    transparent: true,
                 });
             var sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(100, 100, 1);
+            sprite.scale.set(80, 80, 1);
             mesh.add(sprite);
         });
 }
