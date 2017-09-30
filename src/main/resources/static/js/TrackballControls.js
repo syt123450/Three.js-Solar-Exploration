@@ -138,9 +138,9 @@ THREE.TrackballControls = function ( object, domElement ) {
 		if ( angle ) {
 
 			//在这里定义旋转轴
-			// var axis = new THREE.Vector3( Math.sin(23.5*Math.PI/180), Math.cos(23.5*Math.PI/180), 0 );
+			var axis = new THREE.Vector3( Math.sin(23.5*Math.PI/180), Math.cos(23.5*Math.PI/180), 0 );
 //            
-           	var axis = new THREE.Vector3( 0, 1, 0 );
+//            	var axis = new THREE.Vector3( 0, 1, 0 );
 
             
             quaternion = new THREE.Quaternion();
