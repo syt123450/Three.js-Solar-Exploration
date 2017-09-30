@@ -2,7 +2,8 @@
  * Created by ss on 2017/9/29.
  */
 
-var scene, camera, renderer, earthMesh, atmosphereMesh, moonMesh, threeElement, raycaster, mouse, controls, meteors = [];
+var scene, camera, renderer, earthMesh, atmosphereMesh, moonMesh, threeElement,
+    earthAggregation, raycaster, mouse, controls, meteors = [];
 var moonRotateRadius = 0.7;
 
 var stars = [];
@@ -17,9 +18,17 @@ var starPositions = [
     [8, -4, -15], [7, -2, -15], [10, 0, -15],
     [8, -4, -13], [6, -3, -15]];
 
+var earthScenePackage;
+
+var updateMoonMesh;
+
 scene = new THREE.Scene();
 init();
+packageEarthSceneObjects();
+addEarthPackage();
 animate();
+
+setTimeout(renderSceneAgain, 5000);
 
 function init() {
 
@@ -32,7 +41,41 @@ function init() {
     initMoon();
     initStars();
     initMeteors();
+    //There is something wrong with TrackballControl, to be decide
 //        initTrackballControls();
+}
+
+function packageEarthSceneObjects() {
+
+    earthScenePackage = new THREE.Object3D();
+    earthScenePackage.add(earthAggregation);
+    earthScenePackage.add(moonMesh);
+    earthScenePackage.add(meteors);
+    for (var i = 0; i < meteors.length; i++) {
+        earthScenePackage.add(meteors[i]);
+    }
+}
+
+function addEarthPackage() {
+    scene.add(earthScenePackage);
+}
+
+function removeEarthPackage() {
+    scene.remove(earthScenePackage);
+}
+
+function renderSceneAgain() {
+    removeEarthPackage();
+    drawCentralMoon();
+    moonAnimate();
+}
+
+function moonAnimate() {
+
+    requestAnimationFrame(moonAnimate);
+    animateFlashing();
+    updateMoonMesh.rotation.y += 0.001;
+    renderer.render(scene, camera);
 }
 
 function animate() {
@@ -46,6 +89,25 @@ function animate() {
 //        controls.update();
 
     renderer.render(scene, camera);
+}
+
+function addGlow(mesh) {
+
+    var loader = new THREE.TextureLoader();
+    loader.load(
+        '../images/glow.png',
+        function (texture) {
+            var spriteMaterial = new THREE.SpriteMaterial(
+                {
+                    map: texture,
+                    useScreenCoordinates: false,
+                    color: 0x0000ff,
+                    transparent: false,
+                });
+            var sprite = new THREE.Sprite(spriteMaterial);
+            sprite.scale.set(1.5, 1.5, 1);
+            mesh.add(sprite);
+        });
 }
 
 function initLight() {
@@ -114,12 +176,12 @@ function initEarth() {
         )
     );
 
-    var aggregation = new THREE.Object3D();
-    aggregation.add(earthMesh);
-    aggregation.add(atmosphereMesh);
-    aggregation.rotateZ(-Math.PI * 23.5 / 180);
+    earthAggregation = new THREE.Object3D();
+    earthAggregation.add(earthMesh);
+    earthAggregation.add(atmosphereMesh);
+    earthAggregation.rotateZ(-Math.PI * 23.5 / 180);
 
-    scene.add(aggregation);
+    // addGlow(earthAggregation);
 }
 
 function initMoon() {
@@ -138,7 +200,6 @@ function initMoon() {
         )
     );
     moonMesh.position.set(-moonRotateRadius, 0, 0);
-    scene.add(moonMesh);
 }
 
 function initStars() {
@@ -164,15 +225,12 @@ function initOneStar() {
 
 function initMeteors() {
 
-    var meteor0 = createMeteor();
-    var meteor1 = createMeteor();
-    meteors[0] = meteor0;
-    meteors[1] = meteor1;
-    scene.add(meteor0);
-    scene.add(meteor1);
+    meteors[0] = createMeteor();
+    meteors[1] = createMeteor();
 }
 
 function initRaycaster() {
+
     document.addEventListener('mousemove', onMouseMove, false);
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
@@ -195,7 +253,6 @@ function animateMoon() {
 
     moonMesh.rotateY(0.01);
     var timer = Date.now() * 0.0001;
-    //set x and z position to let camera to rotate around the cube
     moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
     moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
 }
@@ -256,6 +313,24 @@ function animateEarthWithStop() {
 }
 
 function onMouseMove() {
+
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+}
+
+function drawCentralMoon() {
+    updateMoonMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 32, 32),
+        new THREE.MeshPhongMaterial({
+                map: new THREE.TextureLoader().load(
+                    '../images/moonmap2k.jpg'
+                ),
+                bumpScale: 0.005,
+                bumpMap: new THREE.TextureLoader().load(
+                    '../images/elev_bump_4k.jpg'
+                )
+            }
+        )
+    );
+    scene.add(updateMoonMesh);
 }

@@ -63,12 +63,12 @@ var atmosphereMesh = new THREE.Mesh(
 // );
 
 //create a tilt container with 23.5 angle
-var aggregation = new THREE.Object3D();
-aggregation.add(earthMesh);
-aggregation.add(atmosphereMesh);
-aggregation.rotateZ(-Math.PI * 23.5 / 180);
+var earthAggregation = new THREE.Object3D();
+earthAggregation.add(earthMesh);
+earthAggregation.add(atmosphereMesh);
+earthAggregation.rotateZ(-Math.PI * 23.5 / 180);
 
-scene.add(aggregation);
+scene.add(earthAggregation);
 // scene.add(starMesh);
 
 var animate = function () {
