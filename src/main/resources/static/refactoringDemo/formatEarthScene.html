@@ -31,12 +31,16 @@
 
 <script>
 
+    //init a renderer
     var utils = new Utils();
     renderer = utils.createDefaultRenderer();
 
+    //create controller and let renderer to renderer an animation to the scene
     var earthSceneController = new EarthSceneController(renderer);
-    var moonSceneController = new MoonSceneController(renderer);
     earthSceneController.animate();
+
+    //5 seconds later, change the scene
+    var moonSceneController = new MoonSceneController(renderer);
     setTimeout(moonSceneController.animate, 5000);
 
 </script>
