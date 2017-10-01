@@ -29,5 +29,57 @@ UniverseUtils = function () {
         camera.updateProjectionMatrix();
 
         return camera;
+    };
+
+    this.createDefaultEarthMesh = function () {
+
+        var earthMesh = new THREE.Mesh();
+        earthMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        earthMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/2_no_clouds_4k.jpg'
+            ),
+            bumpScale: 0.05,
+            bumpMap: new THREE.TextureLoader().load(
+                '../images/earthbump1k.jpg'
+            ),
+            specular: new THREE.Color('grey'),
+            specularMap: new THREE.TextureLoader().load(
+                '../images/water_4k.png'
+            )
+        });
+
+        return earthMesh;
+    };
+
+    this.createDefaultAtmosphere = function () {
+
+        var atmosphereMesh = new THREE.Mesh();
+        atmosphereMesh.geometry = new THREE.SphereGeometry(0.504, 32, 32);
+        atmosphereMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/fair_clouds_4k.png'
+            ),
+            transparent: true
+        });
+
+        return atmosphereMesh;
+    };
+
+    this.createDefaultMoon = function () {
+
+        var moonMesh = new THREE.Mesh();
+        moonMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        moonMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/moonmap2k.jpg'
+            ),
+            bumpScale: 0.005,
+            bumpMap: new THREE.TextureLoader().load(
+                '../images/elev_bump_4k.jpg'
+            )
+        });
+
+        return moonMesh;
     }
 };
