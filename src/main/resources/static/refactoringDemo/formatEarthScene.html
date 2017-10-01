@@ -28,7 +28,18 @@
 <script src="../js/utils.js"></script>
 <script src="EarthScene.js"></script>
 <script src="MoonScene.js"></script>
-<script src="index.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    renderer = utils.createDefaultRenderer();
+
+    var earthSceneController = new EarthSceneController(renderer);
+    var moonSceneController = new MoonSceneController(renderer);
+    earthSceneController.animate();
+    setTimeout(moonSceneController.animate, 5000);
+
+</script>
 
 </body>
 </html>
