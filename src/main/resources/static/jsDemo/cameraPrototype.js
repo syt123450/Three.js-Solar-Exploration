@@ -2,60 +2,60 @@
  * Created by ss on 2017/9/25.
  */
 
-var scene, renderer, camera;
+CameraSceneController = function (renderer) {
 
-init();
-animate();
+    var cube = initCube();
+    var camera = initCamera();
+    var renderer = renderer;
+    var scene = init();
 
-function init() {
-    initScene();
-    initRenderer();
-    initCamera();
-    initCube();
-}
+    this.animate = cameraAnimate;
 
-function initScene() {
-    scene = new THREE.Scene();
-}
+    function init() {
 
-function initRenderer() {
-    var threeElement = document.getElementById('sceneArea');
-    renderer = new THREE.WebGLRenderer({canvas: threeElement, antialias: true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-}
+        var scene = new THREE.Scene();
+        scene.add(camera);
+        scene.add(cube);
 
-function initCamera() {
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    //set y position
-    camera.position.y = 4;
-}
+        return scene;
+    }
 
-function initCube() {
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({
-        map: THREE.ImageUtils.loadTexture('../images/crate.jpg')
-    });
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-}
+    function cameraAnimate() {
 
-function animate() {
-    requestAnimationFrame(animate);
+        requestAnimationFrame(cameraAnimate);
+        rotateCamera();
+        renderer.render(scene, camera);
+    }
 
-    animateCamera();
+    function initCamera() {
 
-    renderer.render(scene, camera);
-}
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        //set y position
+        camera.position.y = 4;
 
-//顺时针旋转
-function animateCamera() {
+        return camera;
+    }
 
-    var timer = Date.now() * 0.0001;
-    //set x and z position to let earthSceneCamera to rotate around the cube
-    camera.position.x = Math.cos(timer) * 8;
-    camera.position.z = Math.sin(timer) * 8;
+    function initCube() {
 
-    //let earthSceneCamera to look at earthSceneCamera while it is rotating around the cube
-    camera.lookAt(scene.position);
-}
+        var cube = new THREE.Mesh();
+        cube.geometry = new THREE.BoxGeometry(1, 1, 1);
+        cube.material = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('../images/crate.jpg')
+        });
+
+        return cube;
+    }
+
+    //顺时针旋转
+    function rotateCamera() {
+
+        var timer = Date.now() * 0.0001;
+        //set x and z position to let earthSceneCamera to rotate around the cube
+        camera.position.x = Math.cos(timer) * 8;
+        camera.position.z = Math.sin(timer) * 8;
+
+        //let earthSceneCamera to look at earthSceneCamera while it is rotating around the cube
+        camera.lookAt(scene.position);
+    }
+};
