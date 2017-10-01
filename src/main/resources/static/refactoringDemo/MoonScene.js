@@ -8,8 +8,8 @@ MoonSceneController = function (renderer) {
     var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
-
-    var moonMesh = universeUtils.createDefaultMoon();
+    //call the init function here
+    var moonMesh = initMoon();
     var moonRenderer = renderer;
     var moonScene = init();
 
@@ -24,6 +24,25 @@ MoonSceneController = function (renderer) {
         scene.add(moonMesh);
 
         return scene;
+    }
+
+    //if universeUtils.js do not support creating the object you want, you can use your own init function to init the object
+    function initMoon() {
+
+        var moon = new THREE.Mesh();
+        moon.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        moon.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/moonmap2k.jpg'
+            ),
+            bumpScale: 0.005,
+            bumpMap: new THREE.TextureLoader().load(
+                '../images/elev_bump_4k.jpg'
+            )
+        });
+
+        //return an initialized object
+        return moon;
     }
 
     function animateMoon() {

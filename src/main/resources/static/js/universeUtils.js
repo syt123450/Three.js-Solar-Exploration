@@ -80,7 +80,7 @@ UniverseUtils = function () {
     this.createDefaultMoon = function () {
 
         var moonMesh = new THREE.Mesh();
-        moonMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        moonMesh.geometry = new THREE.SphereGeometry(0.05, 32, 32);
         moonMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/moonmap2k.jpg'

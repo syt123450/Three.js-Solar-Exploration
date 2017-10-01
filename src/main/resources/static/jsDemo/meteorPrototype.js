@@ -21,7 +21,7 @@ EarthSceneController = function (renderer) {
 
         requestAnimationFrame(earthAnimate);
         rotateEarth();
-        animateMeteors();
+        sweepMeteors();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -49,20 +49,14 @@ EarthSceneController = function (renderer) {
         return aggregation;
     }
 
-    function rotateEarth() {
-
-        earthMesh.rotation.y += 0.001;
-        atmosphereMesh.rotation.y += 0.001;
-    }
-
-    function animateMeteors() {
+    function sweepMeteors() {
 
         for (var i = 0; i < meteors.length; i++) {
-            sweepMeteor(meteors[i]);
+            sweepOneMeteor(meteors[i]);
         }
     }
 
-    function sweepMeteor(meteor) {
+    function sweepOneMeteor(meteor) {
 
         if (meteor.position.x <= -4) {
             meteor.position.x = 3 * Math.random();
