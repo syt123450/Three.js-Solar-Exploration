@@ -3,6 +3,7 @@
  */
 
 //each scene corresponding to a scene controller, when we writing code, use one js file to write one controller, it is easier to maintain
+//If your function only contains one scene, you just need to write one SceneController
 EarthSceneController = function (renderer) {
 
     var universeUtils = new UniverseUtils();

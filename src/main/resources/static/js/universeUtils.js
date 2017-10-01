@@ -81,5 +81,30 @@ UniverseUtils = function () {
         });
 
         return moonMesh;
+    };
+
+    this.createDefaultMeteors = function () {
+
+        var meteors = [];
+        meteors[0] = createMeteor();
+        meteors[1] = createMeteor();
+
+        return meteors;
+    };
+
+    function createMeteor() {
+
+        var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.001);
+        var material = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('../images/meteor.png')
+        });
+
+        var meteor = new THREE.Mesh(geometry, material);
+
+        meteor.position.x = 3 * Math.random();
+        meteor.position.y = 3 * Math.random();
+        meteor.position.z = -3;
+
+        return meteor;
     }
 };
