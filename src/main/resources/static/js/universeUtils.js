@@ -4,6 +4,17 @@
 
 UniverseUtils = function () {
 
+    var starPositions = [
+        [-7, 3, -15], [-8, 4, -16],
+        [-9, 2, -14], [-10, 3, -15], [-8, 4, -10],
+        [-9, 5, -15],
+        [-6, -3, -15], [-6, -4, -15], [-7, -2, -15],
+        [-10, 0, -15], [-8, -4, -13],
+        [7, 3, -15], [8, 4, -16], [9, 2, -14],
+        [12, 3, -15], [3, 4, -11], [9, 5, -15],
+        [8, -4, -15], [7, -2, -15], [10, 0, -15],
+        [8, -4, -13], [6, -3, -15]];
+
     this.createDefaultUniverse = function () {
 
         var universeMesh = new THREE.Mesh();
@@ -86,13 +97,36 @@ UniverseUtils = function () {
     this.createDefaultMeteors = function () {
 
         var meteors = [];
-        meteors[0] = createMeteor();
-        meteors[1] = createMeteor();
+        meteors[0] = createOneMeteor();
+        meteors[1] = createOneMeteor();
 
         return meteors;
     };
 
-    function createMeteor() {
+    this.createDefaultStars = function () {
+
+        var stars = [];
+        for (var i = 0; i < starPositions.length; i++) {
+            stars[i] = createOneStar();
+            stars[i].position.x = starPositions[i][0];
+            stars[i].position.y = starPositions[i][1];
+            stars[i].position.z = starPositions[i][2];
+        }
+
+        return stars;
+    };
+
+    function createOneStar() {
+
+        var geometry = new THREE.SphereGeometry(0.03, 32, 32);
+        var material = new THREE.MeshBasicMaterial({color: 0xA0A0A0});
+
+        var star = new THREE.Mesh(geometry, material);
+        star.count = 0;
+        return star;
+    }
+
+    function createOneMeteor() {
 
         var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.001);
         var material = new THREE.MeshBasicMaterial({
