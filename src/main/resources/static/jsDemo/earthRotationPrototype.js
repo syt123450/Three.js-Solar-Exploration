@@ -25,8 +25,18 @@ function initLight() {
 function initCamera() {
 
     var aspect = window.innerWidth / window.innerHeight;
-    camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
+    // camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
+    // camera.position.set(0, 0, 1.5);
+
+    camera = new THREE.PerspectiveCamera();
+    camera.fov = 45;
+    camera.aspect = aspect;
+    camera.near = 0.1;
+    camera.far = 1500;
     camera.position.set(0, 0, 1.5);
+    camera.updateProjectionMatrix();
+
+
 }
 
 function initRenderer() {

@@ -52,10 +52,10 @@ function animate() {
 function animateCamera() {
 
     var timer = Date.now() * 0.0001;
-    //set x and z position to let camera to rotate around the cube
+    //set x and z position to let earthSceneCamera to rotate around the cube
     camera.position.x = Math.cos(timer) * 8;
     camera.position.z = Math.sin(timer) * 8;
 
-    //let camera to look at camera while it is rotating around the cube
+    //let earthSceneCamera to look at earthSceneCamera while it is rotating around the cube
     camera.lookAt(scene.position);
 }

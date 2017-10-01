@@ -1,8 +1,8 @@
 /**
- * Created by ss on 2017/9/29.
+ * Created by ss on 2017/9/30.
  */
 
-var earthScene, earthSceneCamera, renderer, earthMesh, atmosphereMesh, moonMesh, threeElement,
+var scene, camera, renderer, earthMesh, atmosphereMesh, moonMesh, threeElement,
     earthAggregation, raycaster, mouse, controls, meteors = [];
 var moonRotateRadius = 0.7;
 
@@ -18,11 +18,17 @@ var starPositions = [
     [8, -4, -15], [7, -2, -15], [10, 0, -15],
     [8, -4, -13], [6, -3, -15]];
 
+var earthScenePackage;
+
 var updateMoonMesh;
 
-earthScene = new THREE.Scene();
+scene = new THREE.Scene();
 init();
+packageEarthSceneObjects();
+addEarthPackage();
 animate();
+
+setTimeout(renderSceneAgain, 5000);
 
 function init() {
 
@@ -36,7 +42,32 @@ function init() {
     initStars();
     initMeteors();
     //There is something wrong with TrackballControl, to be decide
-       initTrackballControls();
+//        initTrackballControls();
+}
+
+function packageEarthSceneObjects() {
+
+    earthScenePackage = new THREE.Object3D();
+    earthScenePackage.add(earthAggregation);
+    earthScenePackage.add(moonMesh);
+    earthScenePackage.add(meteors);
+    for (var i = 0; i < meteors.length; i++) {
+        earthScenePackage.add(meteors[i]);
+    }
+}
+
+function addEarthPackage() {
+    scene.add(earthScenePackage);
+}
+
+function removeEarthPackage() {
+    scene.remove(earthScenePackage);
+}
+
+function renderSceneAgain() {
+    removeEarthPackage();
+    drawCentralMoon();
+    moonAnimate();
 }
 
 function moonAnimate() {
@@ -44,7 +75,7 @@ function moonAnimate() {
     requestAnimationFrame(moonAnimate);
     animateFlashing();
     updateMoonMesh.rotation.y += 0.001;
-    renderer.render(earthScene, earthSceneCamera);
+    renderer.render(scene, camera);
 }
 
 function animate() {
@@ -55,9 +86,9 @@ function animate() {
     animateMeteors();
     animateEarthWithStop();
     animateMoon();
-       controls.update();
+//        controls.update();
 
-    renderer.render(earthScene, earthSceneCamera);
+    renderer.render(scene, camera);
 }
 
 function addGlow(mesh) {
@@ -71,7 +102,7 @@ function addGlow(mesh) {
                     map: texture,
                     useScreenCoordinates: false,
                     color: 0x0000ff,
-                    transparent: true,
+                    transparent: false,
                 });
             var sprite = new THREE.Sprite(spriteMaterial);
             sprite.scale.set(1.5, 1.5, 1);
@@ -81,14 +112,14 @@ function addGlow(mesh) {
 
 function initLight() {
 
-    earthScene.add(new THREE.AmbientLight(0xffffff));
+    scene.add(new THREE.AmbientLight(0xffffff));
 }
 
 function initCamera() {
 
     var aspect = window.innerWidth / window.innerHeight;
-    earthSceneCamera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
-    earthSceneCamera.position.set(0, 0, 1.5);
+    camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
+    camera.position.set(0, 0, 1.5);
 }
 
 function initRenderer() {
@@ -111,7 +142,7 @@ function initUniverse() {
             }
         )
     );
-    earthScene.add(starMesh);
+    scene.add(starMesh);
 }
 
 function initEarth() {
@@ -151,8 +182,6 @@ function initEarth() {
     earthAggregation.rotateZ(-Math.PI * 23.5 / 180);
 
     // addGlow(earthAggregation);
-
-    earthScene.add(earthAggregation);
 }
 
 function initMoon() {
@@ -171,7 +200,6 @@ function initMoon() {
         )
     );
     moonMesh.position.set(-moonRotateRadius, 0, 0);
-    earthScene.add(moonMesh);
 }
 
 function initStars() {
@@ -181,7 +209,7 @@ function initStars() {
         stars[i].position.x = starPositions[i][0];
         stars[i].position.y = starPositions[i][1];
         stars[i].position.z = starPositions[i][2];
-        earthScene.add(stars[i]);
+        scene.add(stars[i]);
     }
 }
 
@@ -199,9 +227,6 @@ function initMeteors() {
 
     meteors[0] = createMeteor();
     meteors[1] = createMeteor();
-    for(var i = 0; i < meteors.length; i++) {
-        earthScene.add(meteors[i]);
-    }
 }
 
 function initRaycaster() {
@@ -213,7 +238,7 @@ function initRaycaster() {
 
 function initTrackballControls() {
 
-    controls = new THREE.TrackballControls(earthSceneCamera, threeElement);
+    controls = new THREE.TrackballControls(camera, threeElement);
     controls.minDistance = 1.2;
     controls.maxDistance = 1.8;
 }
@@ -279,8 +304,8 @@ function sweepMeteor(meteor) {
 
 function animateEarthWithStop() {
 
-    raycaster.setFromCamera(mouse, earthSceneCamera);
-    var intersects = raycaster.intersectObjects(earthScene.children, true);
+    raycaster.setFromCamera(mouse, camera);
+    var intersects = raycaster.intersectObjects(scene.children, true);
 
     if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
         animateEarth();
@@ -307,5 +332,5 @@ function drawCentralMoon() {
             }
         )
     );
-    earthScene.add(updateMoonMesh);
+    scene.add(updateMoonMesh);
 }

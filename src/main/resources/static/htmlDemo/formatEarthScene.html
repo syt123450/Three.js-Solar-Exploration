@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id="sceneArea"></canvas>
+<script src="../js/three.min.js"></script>
+<script src="../js/universeUtils.js"></script>
+
+<script>
+
+    MoonSceneController = function (renderer) {
+
+        var universeUtils = new UniverseUtils();
+        var light = new THREE.AmbientLight(0xffffff);
+        var camera = universeUtils.createDefaultCamera();
+        var universeMesh = universeUtils.createDefaultUniverse();
+
+        var moonMesh = new THREE.Mesh();
+        var moonRenderer = renderer;
+        var moonScene = init();
+
+        this.animate = animateMoon;
+
+        function animateMoon () {
+
+            requestAnimationFrame(animateMoon);
+            moonMesh.rotation.y += 0.001;
+            moonRenderer.render(moonScene, camera);
+        }
+
+        function init() {
+
+            var scene = new THREE.Scene();
+            scene.add(light);
+            scene.add(camera);
+            scene.add(universeMesh);
+            initMoon();
+            scene.add(moonMesh);
+
+            return scene;
+        }
+
+        function initMoon() {
+            moonMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+            moonMesh.material = new THREE.MeshPhongMaterial({
+                    map: new THREE.TextureLoader().load(
+                        '../images/moonmap2k.jpg'
+                    ),
+                    bumpScale: 0.005,
+                    bumpMap: new THREE.TextureLoader().load(
+                        '../images/elev_bump_4k.jpg'
+                    )
+                });
+        }
+    };
+
+    EarthSceneController = function (renderer) {
+
+        var universeUtils = new UniverseUtils();
+        var light = new THREE.AmbientLight(0xffffff);
+//        var camera = new THREE.PerspectiveCamera();
+        var camera = universeUtils.createDefaultCamera();
+        var universeMesh = universeUtils.createDefaultUniverse();
+        var earthMesh = new THREE.Mesh();
+        var atmosphereMesh = new THREE.Mesh();
+
+        var earthRenderer = renderer;
+        var earthScene = init();
+
+        this.animate = earthAnimate;
+
+        function earthAnimate() {
+
+            requestAnimationFrame(earthAnimate);
+            rotateEarth();
+            earthRenderer.render(earthScene, camera);
+        }
+
+        function init() {
+
+            var scene = new THREE.Scene();
+            scene.add(light);
+            scene.add(camera);
+            scene.add(universeMesh);
+            scene.add(initEarth());
+
+            return scene;
+        }
+
+        function initEarth() {
+
+            initEarthMesh();
+            initAtmosphereMesh();
+
+            var aggregation = new THREE.Object3D();
+            aggregation.add(earthMesh);
+            aggregation.add(atmosphereMesh);
+            aggregation.rotateZ(-Math.PI * 23.5 / 180);
+
+            return aggregation;
+        }
+
+        function initEarthMesh() {
+
+            earthMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+            earthMesh.material = new THREE.MeshPhongMaterial({
+                map: new THREE.TextureLoader().load(
+                    '../images/2_no_clouds_4k.jpg'
+                ),
+                bumpScale: 0.05,
+                bumpMap: new THREE.TextureLoader().load(
+                    '../images/earthbump1k.jpg'
+                ),
+                specular: new THREE.Color('grey'),
+                specularMap: new THREE.TextureLoader().load(
+                    '../images/water_4k.png'
+                )
+            });
+        }
+
+        function initAtmosphereMesh() {
+
+            atmosphereMesh.geometry = new THREE.SphereGeometry(0.504, 32, 32);
+            atmosphereMesh.material = new THREE.MeshPhongMaterial({
+                map: new THREE.TextureLoader().load(
+                    '../images/fair_clouds_4k.png'
+                ),
+                transparent: true
+            });
+        }
+
+        function rotateEarth() {
+
+            earthMesh.rotation.y += 0.001;
+            atmosphereMesh.rotation.y += 0.001;
+        }
+    };
+
+    renderer  = initRenderer();
+
+    var earthSceneController = new EarthSceneController(renderer);
+    var moonSceneController = new  MoonSceneController(renderer);
+    earthSceneController.animate();
+    setTimeout(moonSceneController.animate, 5000);
+
+    function initRenderer() {
+
+        var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('sceneArea'), antialias: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        return renderer;
+    }
+
+
+</script>
+
+</body>
+</html>

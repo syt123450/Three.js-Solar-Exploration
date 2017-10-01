@@ -526,8 +526,8 @@ THREE.TrackballControls = function ( object, domElement ) {
     
    
 //    function mouseDown( event ) {
-//    var camera = new THREE.PerspectiveCamera(45, window.innerWidth/ window.innerHeight, 0.1, 1000);
-//    camera.position.z = 1.5;
+//    var earthSceneCamera = new THREE.PerspectiveCamera(45, window.innerWidth/ window.innerHeight, 0.1, 1000);
+//    earthSceneCamera.position.z = 1.5;
 //        
 //  event.preventDefault();
 //  var vector = new THREE.Vector3(0,0,0);
@@ -535,7 +535,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 //    ( event.clientX / window.innerWidth ) * 2 - 1,
 //    - ( event.clientY / window.innerHeight ) * 2 + 1,
 //    0.5 );
-//  vector.unproject( camera );
+//  vector.unproject( earthSceneCamera );
 //  var raycaster = new THREE.Raycaster(this.position, vector.sub(this.position).normalize());
 //  var intersects = raycaster.intersectObjects(scene.children);
 //  if (intersects.length > 0) {
