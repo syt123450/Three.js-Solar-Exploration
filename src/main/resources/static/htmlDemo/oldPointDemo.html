@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Old Point Demo</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id="sceneArea"></canvas>
+<script src="../js/three.min.js"></script>
+<script src="../jsDemo/oldPointPrototype.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    var renderer = utils.createDefaultRenderer();
+
+    var pointController = new PointController(renderer);
+    pointController.animate();
+
+    setTimeout(pointController.removePoint, 5000);
+
+</script>
+
+</body>
+</html>
