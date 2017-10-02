@@ -25,8 +25,8 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        flashStars();
-        sweepMeteors();
+        stars.flashStars();
+        meteors.sweepMeteors();
         rotateEarthWithStop();
         rotateMoon();
         earthRenderer.render(earthScene, camera);
@@ -59,35 +59,6 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
-    }
-
-    function flashStars() {
-
-        for (var i = 0; i < stars.length; i++) {
-            stars[i].count += Math.random() > 0.5 ? 2 : 3;
-            if (stars[i].count > 40) {
-                stars[i].material.color.set(stars[i].material.color.getHex() == 0xd3d3d3 ? 0xffffff : 0xd3d3d3);
-                stars[i].count = 0;
-            }
-        }
-    }
-
-    function sweepMeteors() {
-
-        for (var i = 0; i < meteors.length; i++) {
-            sweepOneMeteor(meteors[i]);
-        }
-    }
-
-    function sweepOneMeteor(meteor) {
-
-        if (meteor.position.x <= -4) {
-            meteor.position.x = 3 * Math.random();
-            meteor.position.y = 3 * Math.random();
-        }
-
-        meteor.position.x -= 0.01;
-        meteor.position.y -= 0.01;
     }
 
     function rotateEarthWithStop() {

@@ -39,7 +39,7 @@ EarthSceneController = function (renderer) {
         var aggregation = new THREE.Object3D();
         aggregation.add(earthMesh);
         aggregation.add(atmosphereMesh);
-        aggregation.rotateZ(-Math.PI * 23.5 / 180);
+        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
     }

@@ -8,6 +8,7 @@ TrackController = function (renderer) {
     var controls = initTrackballControls();
     var cube = initCube();
     var renderer = renderer;
+    //get domElement from renderer
     var domElement = renderer.domElement;
     var scene = init();
 

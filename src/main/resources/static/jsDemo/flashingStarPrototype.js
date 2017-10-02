@@ -19,7 +19,8 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        flashStars();
+        //let stars to flash
+        stars.flashStars();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -29,6 +30,7 @@ EarthSceneController = function (renderer) {
         scene.add(light);
         scene.add(camera);
         scene.add(universeMesh);
+        //add stars to the scene
         stars.forEach(function addStar(star) {
             scene.add(star);
         });
@@ -45,16 +47,5 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
-    }
-
-    function flashStars() {
-
-        for (var i = 0; i < stars.length; i++) {
-            stars[i].count += Math.random() > 0.5 ? 2 : 3;
-            if (stars[i].count > 40) {
-                stars[i].material.color.set(stars[i].material.color.getHex() == 0xd3d3d3 ? 0xffffff : 0xd3d3d3);
-                stars[i].count = 0;
-            }
-        }
     }
 };

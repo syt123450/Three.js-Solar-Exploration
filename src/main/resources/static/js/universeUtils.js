@@ -100,6 +100,19 @@ UniverseUtils = function () {
         meteors[0] = createOneMeteor();
         meteors[1] = createOneMeteor();
 
+        meteors.sweepMeteors = function () {
+
+            this.forEach(function (meteor) {
+                if (meteor.position.x <= -4) {
+                    meteor.position.x = 3 * Math.random();
+                    meteor.position.y = 3 * Math.random();
+                }
+
+                meteor.position.x -= 0.01;
+                meteor.position.y -= 0.01;
+            });
+        };
+
         return meteors;
     };
 
@@ -113,29 +126,39 @@ UniverseUtils = function () {
             stars[i].position.z = starPositions[i][2];
         }
 
+        stars.flashStars = function () {
+            this.forEach(function (star) {
+                star.count += Math.random() > 0.5 ? 2 : 3;
+                if (star.count > 40) {
+                    star.material.color.set(star.material.color.getHex() == 0x727272 ? 0xffffff : 0x727272);
+                    star.count = 0;
+                }
+            });
+        };
+
         return stars;
     };
 
     function createOneStar() {
 
-        var geometry = new THREE.SphereGeometry(0.03, 32, 32);
-        var material = new THREE.MeshBasicMaterial({color: 0xA0A0A0});
-
-        var star = new THREE.Mesh(geometry, material);
+        var star = new THREE.Mesh();
+        star.geometry = new THREE.SphereGeometry(0.03, 32, 32);
+        star.material = new THREE.MeshBasicMaterial({color: 0x727272});
         star.count = 0;
+
         return star;
     }
 
     function createOneMeteor() {
 
-        var geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
-        var material = new THREE.MeshBasicMaterial({
+        var meteor = new THREE.Mesh();
+
+        meteor.geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
+        meteor.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load('../images/meteor.png'),
             opacity: 0.9,
             transparent: true
         });
-
-        var meteor = new THREE.Mesh(geometry, material);
 
         meteor.position.x = 3 * Math.random();
         meteor.position.y = 3 * Math.random();
