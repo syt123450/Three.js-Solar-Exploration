@@ -2,60 +2,61 @@
  * Created by ss on 2017/9/25.
  */
 
-var scene, camera, renderer, threeElement, controls;
+TrackController = function (renderer) {
 
-scene = new THREE.Scene();
-init();
-animate();
+    var camera = initCamera();
+    var controls = initTrackballControls();
+    var cube = initCube();
+    var renderer = renderer;
+    var domElement = renderer.domElement;
+    var scene = init();
 
-function init() {
+    this.animate = animateControls;
 
-    initRenderer();
-    initCamera();
-    initCube();
-    initTrackballControls();
-}
+    function animateControls () {
 
-function initRenderer() {
+        requestAnimationFrame(animateControls);
+        //set update
+        controls.update();
+        renderer.render(scene, camera);
+    }
 
-    threeElement = document.getElementById('sceneArea');
-    renderer = new THREE.WebGLRenderer({canvas: threeElement, antialias: true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-}
+    function init() {
+        var scene = new THREE.Scene();
+        scene.add(camera);
+        scene.add(cube);
 
-function initCamera() {
+        return scene;
+    }
 
-    var aspect = window.innerWidth / window.innerHeight;
-    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
-    camera.position.z = 3;
-}
+    function initCamera() {
 
-function initCube() {
+        var aspect = window.innerWidth / window.innerHeight;
+        var camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
+        camera.position.z = 3;
 
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('../images/crate.jpg')
-    });
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-}
+        return camera;
+    }
 
-function initTrackballControls() {
+    function initTrackballControls() {
 
-    //create controls object
-    //also need to set some parameter in the library, see TrackballControl.js file
-    controls = new THREE.TrackballControls(camera, threeElement);
-    controls.minDistance = 2;
-    controls.maxDistance = 3;
-}
+        //create controls object
+        //also need to set some parameter in the library, see TrackballControl.js file
+        var controls = new THREE.TrackballControls(camera, domElement);
+        controls.minDistance = 2;
+        controls.maxDistance = 3;
 
-function animate() {
+        return controls;
+    }
 
-    requestAnimationFrame(animate);
+    function initCube() {
 
-    //set update
-    controls.update();
+        var cube = new THREE.Mesh();
+        cube.geometry = new THREE.BoxGeometry(1, 1, 1);
+        cube.material = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('../images/crate.jpg')
+        });
 
-    renderer.render(scene, camera);
-}
+        return cube;
+    }
+};

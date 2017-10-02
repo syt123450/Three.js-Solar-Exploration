@@ -26,6 +26,17 @@
 <script src="../js/three.min.js"></script>
 <script src="../js/TrackballControls.js"></script>
 <script src="../jsDemo/TrackballControlPrototype.js"></script>
+<script src="../js/utils.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    var renderer = utils.createDefaultRenderer();
+
+    var controller = new TrackController(renderer);
+    controller.animate();
+
+</script>
 
 </body>
 </html>

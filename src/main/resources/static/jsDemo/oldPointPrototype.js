@@ -4,7 +4,10 @@
 
 PointController = function (renderer) {
 
-    var latitude = 37.3382, longitude = 121.8863, radius = 0.5;
+    //base on latitude and longitude, you can call my addPoint function to add a point to the earth
+    var latitude = 37.3382, longitude = 121.8863;
+    //you can change this parameter to let the point above the earth surface
+    var radius = 0.5;
 
     var universeUtils = new UniverseUtils();
     var light = new THREE.AmbientLight(0xffffff);
@@ -63,6 +66,7 @@ PointController = function (renderer) {
         return point;
     }
 
+    //you can use my setPointPosition function to add a cube to earth, as we need to add a flag to the earth, I will change the function latter
     function setPointPosition(point) {
 
         var phi = (90 - latitude) * (Math.PI / 180);
