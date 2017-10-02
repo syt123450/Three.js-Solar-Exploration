@@ -20,7 +20,6 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        rotateEarth();
         sweepMeteors();
         earthRenderer.render(earthScene, camera);
     }

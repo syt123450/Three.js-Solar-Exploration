@@ -128,9 +128,11 @@ UniverseUtils = function () {
 
     function createOneMeteor() {
 
-        var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.001);
+        var geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
         var material = new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load('../images/meteor.png')
+            map: new THREE.TextureLoader().load('../images/meteor.png'),
+            opacity: 0.9,
+            transparent: true
         });
 
         var meteor = new THREE.Mesh(geometry, material);
