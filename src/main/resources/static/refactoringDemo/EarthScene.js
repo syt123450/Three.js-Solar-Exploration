@@ -24,6 +24,7 @@ EarthSceneController = function (renderer) {
         requestAnimationFrame(earthAnimate);
         rotateEarth();
         earthRenderer.render(earthScene, camera);
+
     }
 
     //The init function is used to put object into the scene
