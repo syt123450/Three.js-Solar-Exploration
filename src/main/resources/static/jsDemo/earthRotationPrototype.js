@@ -41,6 +41,8 @@ EarthSceneController = function (renderer) {
         aggregation.add(atmosphereMesh);
         // aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
+        addGrow(aggregation);
+
         return aggregation;
     }
 
@@ -48,5 +50,21 @@ EarthSceneController = function (renderer) {
 
         earthMesh.rotation.y += 0.001;
         atmosphereMesh.rotation.y += 0.001;
+    }
+
+    function addGrow(aggregation) {
+
+        var spriteMaterial = new THREE.SpriteMaterial(
+            {
+                map: new THREE.TextureLoader().load(
+                    '../images/glow.png'
+                ),
+                useScreenCoordinates: false,
+                color: 0x0000ff,
+                transparent: false,
+            });
+        var sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(2, 2, 1);
+        aggregation.add(sprite);
     }
 };
