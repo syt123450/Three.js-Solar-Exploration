@@ -1,3 +1,7 @@
+/**
+ * Updated: 10/1/2017
+ * Bo
+ */
 HaloController = function (renderer) {
 
     var universeUtils = new UniverseUtils();
@@ -40,12 +44,6 @@ HaloController = function (renderer) {
         addHalo(aggregation);
 
         return aggregation;
-    }
-
-    function rotateEarth() {
-
-        earthMesh.rotation.y += 0.001;
-        atmosphereMesh.rotation.y += 0.001;
     }
 
     function addHalo(aggregation) {
