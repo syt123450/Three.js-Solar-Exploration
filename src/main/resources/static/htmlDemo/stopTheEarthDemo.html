@@ -25,6 +25,18 @@
 
 <script src="../js/three.min.js"></script>
 <script src="../jsDemo/stopTheEarthPrototype.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/universeUtils.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    var renderer = utils.createDefaultRenderer();
+
+    var stopEarthController = new StopEarthController(renderer);
+    stopEarthController.animate();
+
+</script>
 
 </body>
 </html>
