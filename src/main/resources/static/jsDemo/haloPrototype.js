@@ -19,7 +19,6 @@ HaloController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        rotateEarth();
         earthRenderer.render(earthScene, camera);
     }
 
