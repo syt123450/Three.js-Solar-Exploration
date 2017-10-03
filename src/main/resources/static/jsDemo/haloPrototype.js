@@ -1,65 +1,97 @@
 /************************************
- * Updated: 10/1/2017
- * Bo
+ *
  ************************************/
+var container, scene, renderer, camera, light, sphere;
 
-HaloController = function (renderer) {
 
-    var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
-    var camera = universeUtils.createDefaultCamera();
-    var universeMesh = universeUtils.createDefaultUniverse();
-    var earthMesh = universeUtils.createDefaultEarthMesh();
-    var atmosphereMesh = universeUtils.createDefaultAtmosphere();
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
-    var earthRenderer = renderer;
-    var earthScene = init();
+init();
 
-    this.animate = earthAnimate;
+animate();
+/**************************
+ * helper functions
+ **************************/
 
-    function earthAnimate() {
+function init() {
 
-        requestAnimationFrame(earthAnimate);
-        earthRenderer.render(earthScene, camera);
-    }
+    scene = new THREE.Scene();
 
-    function init() {
+    initCamera();
 
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        scene.add(initEarthAggregation());
+    initLighting();
 
-        return scene;
-    }
+    initRenderer();
 
-    function initEarthAggregation() {
+    createCube(20);
 
-        var aggregation = new THREE.Object3D();
-        aggregation.add(earthMesh);
-        aggregation.add(atmosphereMesh);
-        aggregation.rotateZ(-Math.PI * 23.5 / 180);
+    addGlow(sphere);
+}
 
-        addHalo(aggregation);
+function initRenderer() {
+    container = document.getElementById( 'ThreeJS' );
 
-        return aggregation;
-    }
+    var info = document.createElement('div');
+    info.style.position = 'absolute';
+    info.style.color = '#ffffff';
+    info.style.top = '30px';
+    info.style.width = '100%';
+    info.style.textAlign = 'center';
+    info.innerHTML = 'Halo Demo';
+    container.appendChild(info);
 
-    function addHalo(aggregation) {
-        var spriteMaterial = new THREE.SpriteMaterial(
-            {
-                map: new THREE.TextureLoader().load(
-                    '../images/glow.png'
-                ),
-                useScreenCoordinates: false,
-                color: 0x0000ff,
-                transparent: false,
-            });
-        var sprite = new THREE.Sprite(spriteMaterial);
-        sprite.scale.set(2, 2, 1);
-        aggregation.add(sprite);
-    }
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
-};
+}
+
+function initCamera() {
+
+    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(100, 100, 100);
+    camera.lookAt(scene.position);
+    camera.updateMatrixWorld();
+}
+
+function createCube(radius) {
+
+    var geometry = new THREE.SphereGeometry(radius, 32, 32);
+    var material = new THREE.MeshLambertMaterial({color: 0x009999});
+    sphere = new THREE.Mesh(geometry, material);
+    sphere.position.set(0,0,0);
+    scene.add(sphere);
+}
+
+function addGlow(mesh) {
+
+    var loader = new THREE.TextureLoader();
+    loader.load(
+        '../images/glow.png',
+        function(texture) {
+            var spriteMaterial = new THREE.SpriteMaterial(
+                {
+                    map: texture,
+                    useScreenCoordinates: false,
+                    color: 0x0000ff,
+                    transparent: false,
+                });
+            var sprite = new THREE.Sprite(spriteMaterial);
+            sprite.scale.set(100, 100, 1);
+            mesh.add(sprite);
+        });
+}
+
+function initLighting() {
+    light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(100, 100, 0);
+    scene.add(light);
+}
+
+function render() {
+    renderer.render(scene, camera);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    render();
+}
