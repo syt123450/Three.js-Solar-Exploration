@@ -52,7 +52,8 @@ HaloController = function (renderer) {
                 map: new THREE.TextureLoader().load('../images/glow.png'),
                 useScreenCoordinates: false,
                 color: 0x0000ff,
-                transparent: false,
+                transparent: true,
+                opacity: 0.5
             });
         var sprite = new THREE.Sprite(spriteMaterial);
         sprite.scale.set(2, 2, 1);
