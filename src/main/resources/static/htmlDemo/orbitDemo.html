@@ -19,16 +19,19 @@
 </head>
 <body>
 
-<canvas id = "myCanvas"></canvas>
-
+<canvas id="sceneArea"></canvas>
 <script src="../js/three.min.js"></script>
 <script src="../js/TrackballControls.js"></script>
 <script src="../jsDemo/orbitPrototype.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
 
 <script>
-    // Our Javascript will go here.
+    var utils = new Utils();
+    renderer = utils.createDefaultRenderer();
 
-
+    var orbitDemoController = new OrbitDemoController(renderer);
+    orbitDemoController.animate();
 
 </script>
 </body>

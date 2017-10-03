@@ -17,9 +17,7 @@ EarthSceneController = function (renderer) {
 
         requestAnimationFrame(earthAnimate);
 
-        earthMesh.rotation.y += 0.0055;
-        atmosphereMesh.rotation.y += 0.0045;
-        universeMesh.rotation.y += 0.0002;
+        rotateEarth();
 
         earthRenderer.render(earthScene, camera);
     }
@@ -45,5 +43,11 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
+    }
+
+    function rotateEarth(){
+        earthMesh.rotation.y += 0.0055;
+        atmosphereMesh.rotation.y += 0.0045;
+        universeMesh.rotation.y += 0.0002;
     }
 }
