@@ -14,11 +14,12 @@ OrbitDemoController = function (renderer) {
     var sunAggregation = initSunAggregation();
     var earthAggregation = initEarthAggregation();
     var moonAggregation = initMoonAggregation();
+    var earthToMoon = new THREE.Object3D();
 
-    // var CAM_TO_EARTH = camera.position.distanceTo(earthAggregation.position);
-    // var distance = CAM_TO_EARTH;
-    // var cameraDirection = new THREE.Vector3();
-    // var sign = -1;
+    var CAM_TO_EARTH = camera.position.distanceTo(earthAggregation.position);
+    var distance = CAM_TO_EARTH;
+    var cameraDirection = new THREE.Vector3();
+    var sign = -1;
 
     var earthOrbitRadius = 4,
         earthOrbitAngle = 0,
@@ -106,11 +107,13 @@ OrbitDemoController = function (renderer) {
     }
 
     function initOrbits(){
-        earthAggregation.add(moonAggregation);
+        earthToMoon.add(moonAggregation);
         sunAggregation.add(earthAggregation);
+        sunAggregation.add(earthToMoon);
 
         moonAggregation.position.x = 1.3;
         earthAggregation.position.x = 4;
+        earthToMoon.position.x = 4;
     }
 
     function rotationAndRevolution(){
@@ -120,15 +123,19 @@ OrbitDemoController = function (renderer) {
         moonMesh.rotateY(0.06);
 
         // Revolutions
+        earthToMoon.rotateY(0.0055);
+
         earthOrbitAngle += earthOrbitSpeed;
         var radians = earthOrbitAngle * Math.PI / 180;
         earthAggregation.position.x = Math.cos(radians) * earthOrbitRadius;
+        earthToMoon.position.x = Math.cos(radians) * earthOrbitRadius;
         earthAggregation.position.z = Math.sin(radians) * earthOrbitRadius;
+        earthToMoon.position.z = Math.sin(radians) * earthOrbitRadius;
 
-        moonOrbitAngle += moonOrbitSpeed;
-        var moonRadians = moonOrbitAngle * Math.PI / 180;
-        moonAggregation.position.x = Math.cos(moonRadians) * moonOrbitRadius;
-        moonAggregation.position.z = Math.sin(moonRadians) * moonOrbitRadius;
+        // moonOrbitAngle += moonOrbitSpeed;
+        // var moonRadians = moonOrbitAngle * Math.PI / 180;
+        // moonAggregation.position.x = Math.cos(moonRadians) * moonOrbitRadius;
+        // moonAggregation.position.z = Math.sin(moonRadians) * moonOrbitRadius;
     }
 
     function updateCamera(){
