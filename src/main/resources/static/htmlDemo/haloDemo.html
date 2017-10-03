@@ -24,7 +24,6 @@
 <canvas id = "sceneArea"></canvas>
 
 <script src="../js/three.min.js"></script>
-<script src="../refactoringDemo/EarthScene.js"></script>
 <script src="../js/universeUtils.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../jsDemo/haloPrototype.js"></script>
@@ -36,7 +35,7 @@
     renderer = utils.createDefaultRenderer();
 
     //create controller and let renderer to renderer an animation to the scene
-    var earthSceneController = new EarthSceneController(renderer);
+    var earthSceneController = new HaloController(renderer);
 
     earthSceneController.animate();
 
