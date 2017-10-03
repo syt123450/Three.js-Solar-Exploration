@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flashing Star Demo</title>
+    <title>Refactoring Demo</title>
 
     <style>
 
@@ -20,22 +20,30 @@
     </style>
 
 </head>
-
 <body>
 
 <canvas id="sceneArea"></canvas>
 <script src="../js/three.min.js"></script>
-<script src="../jsDemo/flashingStarPrototype.js"></script>
 <script src="../js/universeUtils.js"></script>
 <script src="../js/utils.js"></script>
+<script src="EarthScene.js"></script>
+<script src="MoonScene.js"></script>
 
 <script>
 
+    //init a renderer
     var utils = new Utils();
     renderer = utils.createDefaultRenderer();
 
+    //create controller and let renderer to renderer an animation to the scene
     var earthSceneController = new EarthSceneController(renderer);
     earthSceneController.animate();
+
+    //5 seconds later, change the scene
+    var moonSceneController = new MoonSceneController(renderer);
+    setTimeout(moonSceneController.animate, 5000);
+
+    setTimeout(earthSceneController.animate, 10000);
 
 </script>
 

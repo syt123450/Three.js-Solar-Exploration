@@ -2,107 +2,69 @@
  * Created by ss on 2017/9/26.
  */
 
-var scene, renderer, camera, earthMesh, atmosphereMesh;
+EarthSceneController = function (renderer) {
 
-scene = new THREE.Scene();
-init();
-animate();
+    var universeUtils = new UniverseUtils();
+    var light = new THREE.AmbientLight(0xffffff);
+    var camera = universeUtils.createDefaultCamera();
+    var universeMesh = universeUtils.createDefaultUniverse();
+    var earthMesh = universeUtils.createDefaultEarthMesh();
+    var atmosphereMesh = universeUtils.createDefaultAtmosphere();
 
-function init() {
+    var earthRenderer = renderer;
+    var earthScene = init();
 
-    initLight();
-    initRenderer();
-    initCamera();
-    initUniverse();
-    initEarth();
-}
+    this.animate = earthAnimate;
 
-function initLight() {
+    function earthAnimate() {
 
-    scene.add(new THREE.AmbientLight(0xffffff));
-}
+        requestAnimationFrame(earthAnimate);
+        rotateEarth();
+        earthRenderer.render(earthScene, camera);
+    }
 
-function initCamera() {
+    function init() {
 
-    var aspect = window.innerWidth / window.innerHeight;
-    camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500);
-    camera.position.set(0, 0, 1.5);
-}
+        var scene = new THREE.Scene();
+        scene.add(light);
+        scene.add(camera);
+        scene.add(universeMesh);
+        scene.add(initEarthAggregation());
 
-function initRenderer() {
+        return scene;
+    }
 
-    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('sceneArea'), antialias: true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-}
+    function initEarthAggregation() {
 
-function initUniverse() {
+        var aggregation = new THREE.Object3D();
+        aggregation.add(earthMesh);
+        aggregation.add(atmosphereMesh);
+        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
-    var starMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(90, 64, 64),
-        new THREE.MeshBasicMaterial({
+        addGrow(aggregation);
+
+        return aggregation;
+    }
+
+    function rotateEarth() {
+
+        earthMesh.rotation.y += 0.001;
+        atmosphereMesh.rotation.y += 0.001;
+    }
+
+    function addGrow(aggregation) {
+
+        var spriteMaterial = new THREE.SpriteMaterial(
+            {
                 map: new THREE.TextureLoader().load(
-                    '../images/galaxy_starfield.png'
+                    '../images/glow.png'
                 ),
-                side: THREE.BackSide
-            }
-        )
-    );
-    scene.add(starMesh);
-}
-
-function initEarth() {
-
-    earthMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(0.5, 32, 32),
-        new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/2_no_clouds_4k.jpg'
-                ),
-                bumpScale: 0.05,
-                bumpMap: new THREE.TextureLoader().load(
-                    '../images/earthbump1k.jpg'
-                ),
-                specular: new THREE.Color('grey'),
-                specularMap: new THREE.TextureLoader().load(
-                    '../images/water_4k.png'
-                )
-            }
-        )
-    );
-
-    atmosphereMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(0.504, 32, 32),
-        new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/fair_clouds_4k.png'
-                ),
-                transparent: true
-            }
-        )
-    );
-
-    //create a tilt container with 23.5 angle
-    var aggregation = new THREE.Object3D();
-    aggregation.add(earthMesh);
-    aggregation.add(atmosphereMesh);
-    aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-    scene.add(aggregation);
-}
-
-function animate() {
-
-    requestAnimationFrame(animate);
-
-    animateEarth();
-
-    renderer.render(scene, camera);
-}
-
-function animateEarth() {
-
-    //rotate the object in the container
-    earthMesh.rotation.y += 0.001;
-    atmosphereMesh.rotation.y += 0.001;
-}
+                useScreenCoordinates: false,
+                color: 0x0000ff,
+                transparent: false,
+            });
+        var sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(2, 2, 1);
+        aggregation.add(sprite);
+    }
+};

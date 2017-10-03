@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flashing Star Demo</title>
+    <title>Old Point Demo</title>
 
     <style>
 
@@ -12,7 +12,6 @@
         }
 
         body {
-            background-color: #000000;
             margin: 0;
             overflow: hidden;
         }
@@ -20,22 +19,23 @@
     </style>
 
 </head>
-
 <body>
 
 <canvas id="sceneArea"></canvas>
 <script src="../js/three.min.js"></script>
-<script src="../jsDemo/flashingStarPrototype.js"></script>
+<script src="../jsDemo/oldPointPrototype.js"></script>
 <script src="../js/universeUtils.js"></script>
 <script src="../js/utils.js"></script>
 
 <script>
 
     var utils = new Utils();
-    renderer = utils.createDefaultRenderer();
+    var renderer = utils.createDefaultRenderer();
 
-    var earthSceneController = new EarthSceneController(renderer);
-    earthSceneController.animate();
+    var pointController = new PointController(renderer);
+    pointController.animate();
+
+    setTimeout(pointController.removePoint, 5000);
 
 </script>
 
