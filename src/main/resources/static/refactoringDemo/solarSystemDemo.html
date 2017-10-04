@@ -26,8 +26,7 @@
 <script src="../js/three.min.js"></script>
 <script src="../js/universeUtils.js"></script>
 <script src="../js/utils.js"></script>
-<script src="earthScene.js"></script>
-<script src="moonScene.js"></script>
+<script src="solarSystemScene.js"></script>
 
 <script>
 
@@ -35,15 +34,9 @@
     var utils = new Utils();
     renderer = utils.createDefaultRenderer();
 
-    //create controller and let renderer to renderer an animation to the scene
-    var earthSceneController = new EarthSceneController(renderer);
-    earthSceneController.animate();
+    var solarSystemSceneController = new SolarSystemSceneController(renderer);
+    solarSystemSceneController.animate();
 
-    //5 seconds later, change the scene
-    var moonSceneController = new MoonSceneController(renderer);
-    setTimeout(moonSceneController.animate, 5000);
-
-    setTimeout(earthSceneController.animate, 10000);
 
 </script>
 
