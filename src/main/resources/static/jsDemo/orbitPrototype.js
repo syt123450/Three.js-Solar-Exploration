@@ -3,7 +3,6 @@ OrbitDemoController = function (renderer) {
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 0.75, 0);
     var camera = universeUtils.createDefaultCamera();
-    // var camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1500 );
 
     var universeMesh = universeUtils.createDefaultUniverse();
     var earthMesh = universeUtils.createDefaultEarthMesh();
@@ -56,8 +55,6 @@ OrbitDemoController = function (renderer) {
         scene.add(universeMesh);
         initOrbits();
         scene.add(sunAggregation);
-        // scene.add(earthAggregation);
-        // scene.add(moonAggregation);
 
         return scene;
     }
