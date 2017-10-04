@@ -145,6 +145,7 @@ UniverseUtils = function () {
         star.geometry = new THREE.SphereGeometry(0.03, 32, 32);
         star.material = new THREE.MeshBasicMaterial({color: 0x727272});
         star.count = 0;
+        addHaloToStar(star);
 
         return star;
     }
@@ -165,5 +166,20 @@ UniverseUtils = function () {
         meteor.position.z = -3;
 
         return meteor;
+    }
+
+    function addHaloToStar(star) {
+
+        var spriteMaterial = new THREE.SpriteMaterial(
+            {
+                map: new THREE.TextureLoader().load('../images/glow.png'),
+                useScreenCoordinates: false,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.5
+            });
+        var sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(0.25, 0.25, 1);
+        star.add(sprite);
     }
 };
