@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solar System Demo</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id="sceneArea"></canvas>
+<script src="../js/three.min.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../jsDemo/shaderPrototype.js"></script>
+
+<script>
+
+	//init a renderer
+	var utils = new Utils();
+	renderer = utils.createDefaultRenderer();
+
+	//create controller and let renderer to renderer an animation to the scene
+	var shaderController = new ShaderController(renderer);
+	shaderController.animate();
+
+</script>
+
+</body>
+</html>
