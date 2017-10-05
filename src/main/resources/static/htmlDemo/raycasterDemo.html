@@ -7,9 +7,23 @@
 </head>
 <body>
 
-
+<canvas id="sceneArea"></canvas>
 <script src="../js/three.min.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
+
 <script src="../jsDemo/raycasterPrototype.js"></script>
+
+
+<script>
+  //init a renderer
+  var utils = new Utils();
+  renderer = utils.createDefaultRenderer();
+
+  //create controller and let renderer to renderer an animation to the scene
+  var raycasterController = new RaycasterController(renderer);
+  raycasterController.animate();
+</script>
 
 </body>
 </html>
