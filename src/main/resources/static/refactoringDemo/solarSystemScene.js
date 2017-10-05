@@ -5,41 +5,50 @@ SolarSystemSceneController = function(renderer) {
         mercuryOrbitRadius = sunRadius +20,
         mercuryOrbitAngle = 0,
         mercuryOrbitSpeed = - 3,
+        mercuryRotateSpeed = 0.05,
 
         venusOrbitRadius = sunRadius +45,
         venusOrbitAngle = 0,
         venusOrbitSpeed = - 1.9,
+        venusRotateSpeed = 0.05,
 
         earthOrbitRadius = sunRadius +75,
         earthOrbitAngle = 0,
         earthOrbitSpeed = - 1,
+        earthRotateSpeed = 0.05,
 
         marsOrbitRadius = sunRadius +110,
         marsOrbitAngle = 0,
         marsOrbitSpeed = - 0.5,
+        marsRotateSpeed = 0.05,
 
         jupiterOrbitRadius = sunRadius +160,
         jupiterOrbitAngle = 0,
         jupiterOrbitSpeed = - 0.3,
+        jupiterRotateSpeed = 0.05,
 
         saturnOrbitRadius = sunRadius +210,
         saturnOrbitAngle = 0,
         saturnOrbitSpeed = - 0.17,
+        saturnRotateSpeed = 0.05,
 
         uranusOrbitRadius = sunRadius +255,
         uranusOrbitAngle = 0,
         uranusOrbitSpeed = - 0.12,
+        uranusRotateSpeed = 0.05,
 
         neptuneOrbitRadius = sunRadius +300,
         neptuneOrbitAngle = 0,
         neptuneOrbitSpeed = - 0.08,
+        neptuneRotateSpeed = 0.05,
 
         plutoOrbitRadius = sunRadius +335,
         plutoOrbitAngle = 0,
-        plutoOrbitSpeed = - 0.04;
+        plutoOrbitSpeed = - 0.04,
+        plutoRotateSpeed = 0.05;
 
     var universeUtils = new UniverseUtils();
-    var light = new THREE.PointLight(0xffffff, 1, 0);
+    var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
 
     var universeMesh = createUniverseMesh();
@@ -85,6 +94,10 @@ SolarSystemSceneController = function(renderer) {
 
     this.animate = solarSystemAnimate;
 
+    this.topView = updateCameaPosition(1);
+    this.sideView = updateCameaPosition(2);
+    this.upForwardView = updateCameaPosition(-1);
+
     function solarSystemAnimate() {
         requestAnimationFrame(solarSystemAnimate);
 
@@ -103,8 +116,7 @@ SolarSystemSceneController = function(renderer) {
 
         // Camera
         scene.add(camera);
-        camera.position.set(0, 275, 700);
-        camera.lookAt(sunAggregation.position);
+        updateCameaPosition(-1);
 
         // Background
         scene.add(universeMesh);
@@ -140,6 +152,19 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function rotationAndRevolution() {
+
+        // Rotations
+        mercuryAggregation.rotateY(mercuryRotateSpeed);
+        venusAggregation.rotateY(venusRotateSpeed);
+        earthAggregation.rotateY(earthRotateSpeed);
+        marsAggregation.rotateY(marsRotateSpeed);
+        jupiterAggregation.rotateY(jupiterRotateSpeed);
+        saturnAggregation.rotateY(saturnRotateSpeed);
+        uranusAggregation.rotateY(uranusRotateSpeed);
+        neptuneAggregation.rotateY(neptuneRotateSpeed);
+        plutoAggregation.rotateY(plutoRotateSpeed);
+
+        // Revolutions
         var radians = 0;
         mercuryOrbitAngle += mercuryOrbitSpeed;
         venusOrbitAngle += venusOrbitSpeed;
@@ -230,6 +255,25 @@ SolarSystemSceneController = function(renderer) {
         aggregation.add(new THREE.AxisHelper(0.5));
 
         return aggregation;
+    }
+
+    function updateCameaPosition(mode) {
+
+        // From the top of the system
+        if (mode == 1) {
+            camera.position.set(0, 600, 0);
+        }
+        // From the horizontal position
+        else if (mode == 2) {
+            camera.position.set(0, 0, 600);
+        }
+        // From the up-forward position
+        else {
+            camera.position.set(0, 300, 600);
+        }
+
+        camera.lookAt(sunAggregation.position);
+
     }
 
 }
