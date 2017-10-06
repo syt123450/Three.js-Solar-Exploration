@@ -276,4 +276,4 @@ SolarSystemSceneController = function(renderer) {
 
     }
 
-}
+};
