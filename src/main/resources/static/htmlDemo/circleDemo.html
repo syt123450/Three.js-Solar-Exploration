@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Solar System Demo</title>
+    <title>Circle Orbit Demo</title>
 
     <style>
 
@@ -26,7 +26,7 @@
 <script src="../js/three.min.js"></script>
 <script src="../js/universeUtils.js"></script>
 <script src="../js/utils.js"></script>
-<script src="../jsDemo/solarSystemScene.js"></script>
+<script src="../jsDemo/circlePrototype.js"></script>
 
 <script>
 
@@ -34,14 +34,8 @@
     var utils = new Utils();
     renderer = utils.createDefaultRenderer();
 
-    var solarSystemSceneController = new SolarSystemSceneController(renderer);
-    solarSystemSceneController.animate();
-
-//    setTimeout(solarSystemSceneController.topView, 5000);
-//    setTimeout(solarSystemSceneController.sideView, 10000);
-//    setTimeout(solarSystemSceneController.upForwardView, 15000);
-
-
+    var CircleController = new CircleController(renderer);
+    CircleController.animate();
 
 </script>
 
