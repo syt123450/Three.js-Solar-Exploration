@@ -98,6 +98,7 @@ SolarSystemSceneController = function(renderer) {
     this.sideView = updateCameaPosition(2);
     this.upForwardView = updateCameaPosition(-1);
 
+
     function solarSystemAnimate() {
         requestAnimationFrame(solarSystemAnimate);
 
@@ -129,6 +130,7 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function initSystemPositions() {
+        // Add planets to the sun
         sunAggregation.add(mercuryAggregation);
         sunAggregation.add(venusAggregation);
         sunAggregation.add(earthAggregation);
@@ -139,6 +141,7 @@ SolarSystemSceneController = function(renderer) {
         sunAggregation.add(neptuneAggregation);
         sunAggregation.add(plutoAggregation);
 
+        // Init. positions
         mercuryAggregation.position.x = (mercuryOrbitRadius);
         venusAggregation.position.x = (venusOrbitRadius);
         earthAggregation.position.x = (earthOrbitRadius);
@@ -149,6 +152,16 @@ SolarSystemSceneController = function(renderer) {
         neptuneAggregation.position.x = (neptuneOrbitRadius);
         plutoAggregation.position.x = (plutoOrbitRadius);
 
+        // Add orbits
+        sunAggregation.add(createOrbit(mercuryOrbitRadius));
+        sunAggregation.add(createOrbit(venusOrbitRadius));
+        sunAggregation.add(createOrbit(earthOrbitRadius));
+        sunAggregation.add(createOrbit(marsOrbitRadius));
+        sunAggregation.add(createOrbit(jupiterOrbitRadius));
+        sunAggregation.add(createOrbit(saturnOrbitRadius));
+        sunAggregation.add(createOrbit(uranusOrbitRadius));
+        sunAggregation.add(createOrbit(neptuneOrbitRadius));
+        sunAggregation.add(createOrbit(plutoOrbitRadius));
     }
 
     function rotationAndRevolution() {
@@ -257,6 +270,17 @@ SolarSystemSceneController = function(renderer) {
         return aggregation;
     }
 
+    function createOrbit(radius){
+        var geometry = new THREE.CircleGeometry( radius, 128, 0, 2.1*Math.PI ) ;
+        geometry.vertices.shift();
+        var orbit = new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial( { color: 0xddddff, linewidth: 0.2 } )
+        );
+        orbit.rotateX(0.5 * Math.PI);
+        return orbit;
+    }
+
     function updateCameaPosition(mode) {
 
         // From the top of the system
@@ -276,4 +300,4 @@ SolarSystemSceneController = function(renderer) {
 
     }
 
-}
+};
