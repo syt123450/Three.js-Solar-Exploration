@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Point Demo</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id = "sceneArea"></canvas>
+
+<script src="../js/three.min.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../jsDemo/alternativePinPrototype.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    var renderer = utils.createDefaultRenderer();
+
+    var pinController = new PinController(renderer);
+    pinController.animate();
+
+</script>
+
+</body>
+</html>
