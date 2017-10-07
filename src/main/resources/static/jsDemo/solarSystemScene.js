@@ -1,5 +1,7 @@
 
 SolarSystemSceneController = function(renderer) {
+
+    // Solar system basic parameters
     var sunRadius = 5,
 
         mercuryOrbitRadius = sunRadius +2,
@@ -47,46 +49,74 @@ SolarSystemSceneController = function(renderer) {
         plutoOrbitSpeed = - 0.04,
         plutoRotateSpeed = 0.05;
 
+    // Light and Camera
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
 
-    var universeMesh = createUniverseMesh();
 
-    var sunAggregation = createAggregation(
-        new THREE.Mesh(
+    // Meshes
+    var universeMesh = createUniverseMesh();
+    var sunMesh = new THREE.Mesh(
         new THREE.SphereGeometry(sunRadius, 32, 32),
         new THREE.MeshBasicMaterial({
             color: 'yellow'
-        }))
+        }));
+    var mercuryMesh = createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5);
+    var venusMesh = createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8);
+    var earthMesh = createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9);
+    var marsMesh = createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55);
+    var jupiterMesh = createSphereMesh('../images/planets/jupitermap.jpg' , 2);
+    var saturnMesh = createSphereMesh('../images/planets/saturnmap.jpg' , 1.8);
+    var uranusMesh = createSphereMesh('../images/planets/uranusmap.jpg' , 1.2);
+    var neptuneMesh = createSphereMesh('../images/planets/neptunemap.jpg' , 1.2);
+    var plutoMesh = createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3);
+
+    // Aggregation
+    var sunAggregation = createAggregation(
+        sunMesh
+        // new THREE.Mesh(
+        // new THREE.SphereGeometry(sunRadius, 32, 32),
+        // new THREE.MeshBasicMaterial({
+        //     color: 'yellow'
+        // }))
     );
 
     var mercuryAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5)
+        mercuryMesh
+        // createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5)
     );
     var venusAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8)
+        venusMesh
+        // createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8)
     );
     var earthAggregation = createAggregation(
-        createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9)
+        earthMesh
+        // createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9)
     );
     var marsAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55)
+        marsMesh
+        // createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55)
     );
     var jupiterAggregation = createAggregation(
-        createSphereMesh('../images/planets/jupitermap.jpg' , 2)
+        jupiterMesh
+        // createSphereMesh('../images/planets/jupitermap.jpg' , 2)
     );
     var saturnAggregation = createAggregation(
-        createSphereMesh('../images/planets/saturnmap.jpg' , 1.8)
+        saturnMesh
+        // createSphereMesh('../images/planets/saturnmap.jpg' , 1.8)
     );
     var uranusAggregation = createAggregation(
-        createSphereMesh('../images/planets/uranusmap.jpg' , 1.2)
+        uranusMesh
+        // createSphereMesh('../images/planets/uranusmap.jpg' , 1.2)
     );
     var neptuneAggregation = createAggregation(
-        createSphereMesh('../images/planets/neptunemap.jpg' , 1.2)
+        neptuneMesh
+        // createSphereMesh('../images/planets/neptunemap.jpg' , 1.2)
     );
     var plutoAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3)
+        plutoMesh
+        // createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3)
     );
 
     var solarSystemRenderer = renderer;
