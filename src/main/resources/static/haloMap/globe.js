@@ -104,6 +104,20 @@ DAT.Globe = function(container, colorFn) {
 
     scene = new THREE.Scene();
 
+      var universeMesh = new THREE.Mesh();
+
+      console.log(111);
+
+      universeMesh.geometry = new THREE.SphereGeometry(1000, 64, 64);
+      universeMesh.material = new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load(
+              '../images/galaxy_starfield.png'
+          ),
+          side: THREE.BackSide
+      });
+
+      scene.add(universeMesh);
+
     var geometry = new THREE.SphereGeometry(150, 40, 30);
 
     shader = Shaders['earth'];

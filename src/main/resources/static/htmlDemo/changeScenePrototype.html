@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Scene Demo</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id = "sceneArea"></canvas>
+
+<script src="../js/three.min.js"></script>
+<script src="../jsDemo/changeScenePrototype.js"></script>
+<script src="../jsDemo/combinePrototype.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
+
+<script>
+
+    var utils = new Utils();
+    renderer = utils.createDefaultRenderer();
+
+    var solarSystemSceneController = new SolarSystemSceneController(renderer);
+    solarSystemSceneController.animate();
+
+</script>
+
+</body>
+</html>
