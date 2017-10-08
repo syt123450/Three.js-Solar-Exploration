@@ -1,92 +1,122 @@
 
 SolarSystemSceneController = function(renderer) {
-    var sunRadius = 50,
 
-        mercuryOrbitRadius = sunRadius +20,
+    // Solar system basic parameters
+    var sunRadius = 5,
+
+        mercuryOrbitRadius = sunRadius +2,
         mercuryOrbitAngle = 0,
         mercuryOrbitSpeed = - 3,
         mercuryRotateSpeed = 0.05,
 
-        venusOrbitRadius = sunRadius +45,
+        venusOrbitRadius = sunRadius +4.5,
         venusOrbitAngle = 0,
         venusOrbitSpeed = - 1.9,
         venusRotateSpeed = 0.05,
 
-        earthOrbitRadius = sunRadius +75,
+        earthOrbitRadius = sunRadius +7.5,
         earthOrbitAngle = 0,
         earthOrbitSpeed = - 1,
         earthRotateSpeed = 0.05,
 
-        marsOrbitRadius = sunRadius +110,
+        marsOrbitRadius = sunRadius +11,
         marsOrbitAngle = 0,
         marsOrbitSpeed = - 0.5,
         marsRotateSpeed = 0.05,
 
-        jupiterOrbitRadius = sunRadius +160,
+        jupiterOrbitRadius = sunRadius +16,
         jupiterOrbitAngle = 0,
         jupiterOrbitSpeed = - 0.3,
         jupiterRotateSpeed = 0.05,
 
-        saturnOrbitRadius = sunRadius +210,
+        saturnOrbitRadius = sunRadius +21,
         saturnOrbitAngle = 0,
         saturnOrbitSpeed = - 0.17,
         saturnRotateSpeed = 0.05,
 
-        uranusOrbitRadius = sunRadius +255,
+        uranusOrbitRadius = sunRadius +25.5,
         uranusOrbitAngle = 0,
         uranusOrbitSpeed = - 0.12,
         uranusRotateSpeed = 0.05,
 
-        neptuneOrbitRadius = sunRadius +300,
+        neptuneOrbitRadius = sunRadius +30,
         neptuneOrbitAngle = 0,
         neptuneOrbitSpeed = - 0.08,
         neptuneRotateSpeed = 0.05,
 
-        plutoOrbitRadius = sunRadius +335,
+        plutoOrbitRadius = sunRadius +33.5,
         plutoOrbitAngle = 0,
         plutoOrbitSpeed = - 0.04,
         plutoRotateSpeed = 0.05;
 
+    // Light and Camera
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
 
-    var universeMesh = createUniverseMesh();
 
-    var sunAggregation = createAggregation(
-        new THREE.Mesh(
+    // Meshes
+    var universeMesh = createUniverseMesh();
+    var sunMesh = new THREE.Mesh(
         new THREE.SphereGeometry(sunRadius, 32, 32),
         new THREE.MeshBasicMaterial({
             color: 'yellow'
-        }))
+        }));
+    var mercuryMesh = createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5);
+    var venusMesh = createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8);
+    var earthMesh = createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9);
+    var marsMesh = createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55);
+    var jupiterMesh = createSphereMesh('../images/planets/jupitermap.jpg' , 2);
+    var saturnMesh = createSphereMesh('../images/planets/saturnmap.jpg' , 1.8);
+    var uranusMesh = createSphereMesh('../images/planets/uranusmap.jpg' , 1.2);
+    var neptuneMesh = createSphereMesh('../images/planets/neptunemap.jpg' , 1.2);
+    var plutoMesh = createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3);
+
+    // Aggregation
+    var sunAggregation = createAggregation(
+        sunMesh
+        // new THREE.Mesh(
+        // new THREE.SphereGeometry(sunRadius, 32, 32),
+        // new THREE.MeshBasicMaterial({
+        //     color: 'yellow'
+        // }))
     );
 
     var mercuryAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 5)
+        mercuryMesh
+        // createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5)
     );
     var venusAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 8)
+        venusMesh
+        // createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8)
     );
     var earthAggregation = createAggregation(
-        createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 9)
+        earthMesh
+        // createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9)
     );
     var marsAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 5.5)
+        marsMesh
+        // createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55)
     );
     var jupiterAggregation = createAggregation(
-        createSphereMesh('../images/planets/jupitermap.jpg' , 20)
+        jupiterMesh
+        // createSphereMesh('../images/planets/jupitermap.jpg' , 2)
     );
     var saturnAggregation = createAggregation(
-        createSphereMesh('../images/planets/saturnmap.jpg' , 18)
+        saturnMesh
+        // createSphereMesh('../images/planets/saturnmap.jpg' , 1.8)
     );
     var uranusAggregation = createAggregation(
-        createSphereMesh('../images/planets/uranusmap.jpg' , 12)
+        uranusMesh
+        // createSphereMesh('../images/planets/uranusmap.jpg' , 1.2)
     );
     var neptuneAggregation = createAggregation(
-        createSphereMesh('../images/planets/neptunemap.jpg' , 12)
+        neptuneMesh
+        // createSphereMesh('../images/planets/neptunemap.jpg' , 1.2)
     );
     var plutoAggregation = createAggregation(
-        createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 3)
+        plutoMesh
+        // createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3)
     );
 
     var solarSystemRenderer = renderer;
@@ -229,7 +259,7 @@ SolarSystemSceneController = function(renderer) {
     function createUniverseMesh() {
 
         var universeMesh = new THREE.Mesh();
-        universeMesh.geometry = new THREE.SphereGeometry(800, 64, 64);
+        universeMesh.geometry = new THREE.SphereGeometry(100, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/galaxy_starfield.png'
@@ -265,7 +295,7 @@ SolarSystemSceneController = function(renderer) {
     function createAggregation(sphereMesh) {
         var aggregation = new THREE.Object3D();
         aggregation.add(sphereMesh);
-        aggregation.add(new THREE.AxisHelper(0.5));
+        // aggregation.add(new THREE.AxisHelper(0.5));
 
         return aggregation;
     }
@@ -275,7 +305,7 @@ SolarSystemSceneController = function(renderer) {
         geometry.vertices.shift();
         var orbit = new THREE.Line(
             geometry,
-            new THREE.LineBasicMaterial( { color: 0xddddff, linewidth: 0.2 } )
+            new THREE.LineBasicMaterial( { color: 0x6d4587, linewidth: 0.2 } )
         );
         orbit.rotateX(0.5 * Math.PI);
         return orbit;
@@ -285,15 +315,15 @@ SolarSystemSceneController = function(renderer) {
 
         // From the top of the system
         if (mode == 1) {
-            camera.position.set(0, 600, 0);
+            camera.position.set(0, 60, 0);
         }
         // From the horizontal position
         else if (mode == 2) {
-            camera.position.set(0, 0, 600);
+            camera.position.set(0, 0, 60);
         }
         // From the up-forward position
         else {
-            camera.position.set(0, 300, 600);
+            camera.position.set(0, 30, 60);
         }
 
         camera.lookAt(sunAggregation.position);
