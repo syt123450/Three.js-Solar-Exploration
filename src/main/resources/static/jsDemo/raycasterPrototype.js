@@ -70,8 +70,9 @@ RaycasterController = function (renderer) {
 		
 		// Get all the intersecting objects
 		var intersects = raycaster.intersectObjects(earthScene.children, true);
-		
-		if (intersects === null || intersects.length === 0 || atmosphereMesh !== intersects[0].object) {
+		console.log(intersects);
+		console.log(earthAggregation);
+		if (intersects === null || intersects.length === 0 || earthAggregation !== intersects[0].object.parent) {
 			rotateEarth();
 		}
 	}
