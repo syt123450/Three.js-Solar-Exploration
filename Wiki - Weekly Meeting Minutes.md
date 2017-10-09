@@ -3,6 +3,30 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
+# **Week 1 Meeting**
+* Host: Chenhua
+* Attendees: Bo-you, Bo, Chenhua, Yuntian, Qi 
+* Time: 10/5/2017 (2 hours)
+* Recorder: Bo
+
+Topic 1: <br/>
+* What did we accomplished last week
+* What we will do next week
+* What challenges we have<br/>
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/Wiki%20-%20Group%20Weekly%20Work%20Summary.md)
+
+
+Topic 2: Discussion<br/>
+1. Introduced the new way to implement halo effect.
+2. Decided to apply different speeds to the rotation of the earth and its atmosphere.
+3. Decided to use two different styles for the earth for data visualization.
+4. Discussed what color scheme to use. UI designer decided to change the colors of the planet from warm to cold as their distance gets further away from the Sun.
+5. Discussed whether to increase the intensity of the meteoroids.
+6. Discussed how to adjust the light source.
+7. Discussed how to get object3D with Raycaster in Three.js.
+8. Dicusssed how to do animation with Three.js
+9. Discussed how to switch between solar scene and earth scene
+
 # **Week 2 Meeting 2**
 * Host: Chenhua
 * Attendees: Bo-you, Bo, Chenhua, Yuntian
@@ -13,7 +37,7 @@ Topic 1: <br/>
 * What did we accomplished last week
 * What we will do next week
 * What challenges we have<br/>
-Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/wiki/Weekly-Work-Summaries)
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/Wiki%20-%20Group%20Weekly%20Work%20Summary.md)
 
 # **Week 2 Meeting 1**
 * Host: N/A
@@ -37,7 +61,7 @@ Topic 1: <br/>
 * What did we accomplished last week
 * What we will do next week
 * What challenges we have<br/>
-Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/wiki/Weekly-Work-Summaries)
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/Wiki%20-%20Group%20Weekly%20Work%20Summary.md)
 
 
 Topic 2:<br/>
