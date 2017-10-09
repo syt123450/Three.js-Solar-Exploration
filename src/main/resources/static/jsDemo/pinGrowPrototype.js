@@ -71,12 +71,15 @@ PinController = function (renderer) {
     function initCone() {
 
         var coneMesh = new THREE.Mesh(
-            new THREE.CylinderGeometry( 0.03, 0, 0.09, 0.12, 0.03 ),
+            new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
             // new THREE.MeshBasicMaterial ({wireframe: true})
             new THREE.MeshPhongMaterial( { color: 0x085093 } )
         );
 
-        coneMesh.position.set(position.x, position.y, position.z)
+        coneMesh.position.set(position.x, position.y, position.z);
+        coneMesh.lookAt(earthMesh.position);
+
+        coneMesh.rotateX(Math.PI / 2);
 
         return coneMesh;
     }
@@ -113,7 +116,7 @@ PinController = function (renderer) {
 
     function rotateCone() {
 
-        cone.rotation.y += 0.05;
+        cone.rotateY(0.05);
     }
 
     function growPin() {
