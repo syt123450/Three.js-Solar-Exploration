@@ -1,12 +1,12 @@
-### Week3 Summaries - [Oct 1 - Oct5, 2017] 
+### Week3 Summaries - [Oct 1 - Oct5, 2017]
 
-Bou-yu 
+Bou-Yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
-| 1. Finished animation of the cone icon.| TO BE FILLED| 1. Could not point the cone to the center of the Earth.|
-| 2. Refactored demos pinAngledPrototype.js & pinGrowPrototype.js | TO BE FILLED| |
-||TO BE FILLED||
+| 1. Finished animation of the cone icon.| 1. Update previous demo code| 1. Could not point the cone to the center of the Earth|
+| 2. Refactored demos pinAngledPrototype.js & pinGrowPrototype.js | 2. Look up potential energy sources on different planets||
+3. Fixed pin angle||||
 
 
 Chenhua
@@ -36,9 +36,9 @@ Bo
 | 2. Proposed color scheme and UI mockup.| 2. Solve the problem of switching scenes.| |
 | 3. Wrote weekly meeting minutes and managed team wiki.| | |
 
-### Week2 Summaries - [Sep 24 - Sep 30, 2017] 
+### Week2 Summaries - [Sep 24 - Sep 30, 2017]
 
-Bou-yu 
+Bou-yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -76,9 +76,9 @@ Bo
 | 3. Wrote weekly meeting minutes and managed team wiki.| 3. Improve halo effect.| |
 
 
-### Week1 Summaries - [Sep 17 - Sep 23, 2017] 
+### Week1 Summaries - [Sep 17 - Sep 23, 2017]
 
-Bou-yu 
+Bou-yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -110,4 +110,3 @@ Bo
 | 1. Researched Three.js libraries and summarized useful examples.| 1. Draw prototype diagrams with Axure.| 1. Too many libraries to learn in Three.js.|
 | 2. Managed Github Team wiki folders. | 2. Study Projector class to get longitude and latitude. | |
 | | | |
-
