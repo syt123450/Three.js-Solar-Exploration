@@ -5,8 +5,8 @@ Bou-Yu
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
 | 1. Finished animation of the cone icon.| 1. Update previous demo code| 1. Could not point the cone to the center of the Earth|
-| 2. Refactored demos pinAngledPrototype.js & pinGrowPrototype.js | 2. Look up potential energy sources on different planets||
-3. Fixed pin angle||||
+| 2. Refactored demos pinAngledPrototype.js & pinGrowPrototype.js | 2. Look up potential energy sources on different planets| |
+3. Fixed pin angle | | | |
 
 
 Chenhua
