@@ -1,3 +1,6 @@
+### [Oct.08.2017] Moved personal log to .md
+* Moved personal log to .md
+
 ### [Oct.06.2017] Fixed cone angle
 * Fixed cone angle with Chenghua's help (Use rotateX instead of rotation.x = 
 
