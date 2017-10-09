@@ -3,7 +3,7 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
-# **Week 1 Meeting**
+# **Week 3 Meeting**
 * Host: Chenhua
 * Attendees: Bo-you, Bo, Chenhua, Yuntian, Qi 
 * Time: 10/5/2017 (2 hours)

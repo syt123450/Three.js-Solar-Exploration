@@ -1,4 +1,4 @@
-### Week2 Summaries - [Oct 1 - Oct5, 2017] 
+### Week3 Summaries - [Oct 1 - Oct5, 2017] 
 
 Bou-yu 
 
@@ -36,7 +36,7 @@ Bo
 | 2. Proposed color scheme and UI mockup.| 2. Solve the problem of switching scenes.| |
 | 3. Wrote weekly meeting minutes and managed team wiki.| | |
 
-### Week1 Summaries - [Sep 24 - Sep 30, 2017] 
+### Week2 Summaries - [Sep 24 - Sep 30, 2017] 
 
 Bou-yu 
 
@@ -76,7 +76,7 @@ Bo
 | 3. Wrote weekly meeting minutes and managed team wiki.| 3. Improve halo effect.| |
 
 
-### Week0 Summaries - [Sep 17 - Sep 23, 2017] 
+### Week1 Summaries - [Sep 17 - Sep 23, 2017] 
 
 Bou-yu 
 
