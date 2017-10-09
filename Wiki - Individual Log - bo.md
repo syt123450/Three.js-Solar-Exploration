@@ -1,4 +1,12 @@
 XP Core Value: Communication
+***
+### [Oct 8, 2017] - Update team wiki<br/>
+1. Updated weekly meeting minutes, weekly work summary and CFD diagram.
+
+***
+### [Oct 5, 2017] - Refactor code<br/>
+1. Refactored camZoomInAndZoomOutPrototype.js demo.
+2. Solved the problem that raycaster cannot acquire aggregated object in Three.js.
 
 ***
 ### [Oct 4, 2017] - Create ShaderMaterial demo<br/>

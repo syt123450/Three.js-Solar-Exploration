@@ -20,6 +20,7 @@ Which includes the following:
 3. [Weekly Meeting Minutes](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/Wiki%20-%20Weekly%20Meeting%20Minutes.md)<br/>
 4. [Cumulative Flow Chart/Burndown Chart](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1bWMVaQuS-0zET6jMfLjl1s13q0flpJJ-jsu5P5w4Vlc/edit?usp=sharing)
 5. [GitHub Commit History](https://github.com/nguyensjsu/cmpe202-nullpointerexception/commits/master)
+6. Core Value: Communication
 
 ## Part II: Project Introduction
 ### What does this application do?
