@@ -1,5 +1,9 @@
 XP Core Value: Communication
 ***
+### [Oct 9, 2017] - Created mouse click to stop earth demo<br/>
+1. Created demo which shows how to stop the earth from rotating using mouse click.
+
+***
 ### [Oct 8, 2017] - Update team wiki<br/>
 1. Updated weekly meeting minutes, weekly work summary and CFD diagram.
 
