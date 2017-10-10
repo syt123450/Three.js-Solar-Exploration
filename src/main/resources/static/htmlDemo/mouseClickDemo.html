@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Click Demo</title>
+</head>
+<body>
+
+<canvas id="sceneArea"></canvas>
+<script src="../js/three.min.js"></script>
+<script src="../jsDemo/mouseClickPrototype.js"></script>
+<script src="../js/universeUtils.js"></script>
+<script src="../js/utils.js"></script>
+
+<script>
+	var utils = new Utils();
+	renderer = utils.createDefaultRenderer();
+
+	var mouseClickController = new MouseClickController(renderer);
+	mouseClickController.animate();
+</script>
+
+</body>
+</html>
