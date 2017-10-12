@@ -1,5 +1,15 @@
 XP Core Value: Communication
 ***
+### [Oct 11, 2017] - Created change scene demo<br/>
+1. Created change scene demo.
+2. Spot some performance issue in existing code,
+which could significant hinder Webgl rendering speed.
+
+***
+### [Oct 10, 2017] - Researched issue<br/>
+1. Problem to solve: use raycaster to get an aggregated 3d obejct with Three.js.
+
+***
 ### [Oct 9, 2017] - Created mouse click to stop earth demo<br/>
 1. Created demo which shows how to stop the earth from rotating using mouse click.
 
