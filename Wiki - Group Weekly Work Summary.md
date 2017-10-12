@@ -22,10 +22,10 @@ Yuntian
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
-| 1. Define code style and created demos.| TO BE FILLED| 1. Raycaster could not get the aggregated object.|
-| 2. Refactor previous code and help other teammates to refactor code.| TO BE FILLED| 2. Creating planet using utils.|
-| 3. Combined existing features to create new demos.| TO BE FILLED| 3. Using google's webgl open source api.|
-| 4. Created and implemented more utils functions.| TO BE FILLED| 4. Continuously play animation.|
+| 1. Define code style and created demos.| 1. Learn how to use webgl-globe| 1. Raycaster could not get the aggregated object.|
+| 2. Refactor previous code and help other teammates to refactor code.| 2. Combine webgl-globe with previous planet| 2. Creating planet using utils.|
+| 3. Combined existing features to create new demos.| | 3. Using google's webgl open source api.|
+| 4. Created and implemented more utils functions.| | 4. Continuously play animation.|
 | | | 5. Render 'div' instead of 'canvas' with Three.js.|
 
 Bo
