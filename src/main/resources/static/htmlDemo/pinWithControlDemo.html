@@ -26,15 +26,26 @@
 <script src="../js/three.min.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/universeUtils.js"></script>
-<script src="../jsDemo/pinGrowWithControlPrototype.js"></script>
+<script src="../jsDemo/pinWithControlPrototype.js"></script>
 
 <script>
+
+    //assume that I have already get two geographic data from back, the first one is Beijing, and the second is San Jose
+    var geographicData = [[39.92, 116.46], [37.3382, -121.8863]];
 
     var utils = new Utils();
     var renderer = utils.createDefaultRenderer();
 
     var pinController = new PinController(renderer);
     pinController.animate();
+    //5 seconds later, two cones will be set to earth
+    setTimeout(addConeByPinController, 5000);
+    //10 seconds later, the two cones will be removed from earth.
+    setTimeout(pinController.clearCones, 10000);
+
+    function addConeByPinController() {
+        pinController.addCones(geographicData);
+    }
 
 </script>
 
