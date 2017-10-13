@@ -31,8 +31,7 @@
 
 <script>
 
-    var utils = new Utils();
-    renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
     var solarSystemSceneController = new SolarSystemSceneController(renderer);
     solarSystemSceneController.animate();

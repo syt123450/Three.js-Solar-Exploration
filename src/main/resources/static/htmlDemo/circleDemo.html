@@ -31,8 +31,7 @@
 <script>
 
     //init a renderer
-    var utils = new Utils();
-    renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
     var CircleController = new CircleController(renderer);
     CircleController.animate();

@@ -30,8 +30,7 @@
 
 <script>
 
-    var utils = new Utils();
-    var renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
     var stopEarthController = new StopEarthController(renderer);
     stopEarthController.animate();

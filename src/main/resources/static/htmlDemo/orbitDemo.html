@@ -27,8 +27,7 @@
 <script src="../js/utils.js"></script>
 
 <script>
-    var utils = new Utils();
-    renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
     var orbitDemoController = new OrbitDemoController(renderer);
     orbitDemoController.animate();

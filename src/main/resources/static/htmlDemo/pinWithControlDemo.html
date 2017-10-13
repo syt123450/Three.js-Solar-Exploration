@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pin Grow With Control Demo</title>
+    <title>Pin With Control Demo</title>
 
     <style>
 
@@ -31,10 +31,9 @@
 <script>
 
     //assume that I have already get two geographic data from back, the first one is Beijing, and the second is San Jose
-    var geographicData = [[39.92, 116.46], [37.3382, -121.8863]];
+    var geographicData = [{latitude: 39.92, longitude: 116.46}, {latitude: 37.3382, longitude: -121.8863}];
 
-    var utils = new Utils();
-    var renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
     var pinController = new PinController(renderer);
     pinController.animate();

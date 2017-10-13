@@ -46,7 +46,7 @@ PinController = function (renderer) {
     //add a new cone, remember that a cone need to be add to earthMesh and coneList both
     function addOneCone(cone) {
         var coneObject = initOneCone(cone);
-        coneList[coneList.length] = coneObject;
+        coneList.push(coneObject);
         earthMesh.add(coneObject);
     }
 
@@ -73,7 +73,7 @@ PinController = function (renderer) {
 
     function initOneCone(coneParameters) {
 
-        var position = calculatePosition(coneParameters[0], coneParameters[1]);
+        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
 
         var coneMesh = new THREE.Mesh(
             new THREE.ConeGeometry(0.03, 0.1, 0.09, 12),

@@ -13,8 +13,7 @@
 <script src="../js/utils.js"></script>
 
 <script>
-	var utils = new Utils();
-	renderer = utils.createDefaultRenderer();
+    var renderer = SolarEPUtils.getDefaultRenderer();
 
 	var mouseClickController = new MouseClickController(renderer);
 	mouseClickController.animate();
