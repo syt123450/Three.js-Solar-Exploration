@@ -1,3 +1,11 @@
+### [Oct. 12th, 2017]
+Development:
+  * Add .name property for the scene
+***
+### [Oct. 9th, 2017]
+Development:
+  * Coordinated the orbit color
+***
 ### [Oct. 8th, 2017]
 Development:
   * Move personal wiki .md file
