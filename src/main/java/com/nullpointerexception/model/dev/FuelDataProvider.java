@@ -17,6 +17,9 @@ public class FuelDataProvider implements FuelDataService {
 
     @Override
     public List<FuelInfoBean> getData(int year) {
-        return mySQLUtils.getCountryDataByYear();
+
+        mySQLUtils.getCountryDataByYear();
+
+        return null;
     }
 }

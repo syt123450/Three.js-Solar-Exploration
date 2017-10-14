@@ -11,7 +11,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class FuelInfoBean {
 
-    private String countryName;
+    private String areaName;
     private double longitude;
     private double latitude;
     private double amount;
