@@ -1,3 +1,8 @@
+### [Oct. 13th, 2017]
+Development:
+  * Configured MySQL database
+  * Setup MySQLUtils for further develpment
+***
 ### [Oct. 12th, 2017]
 Development:
   * Add .name property for the scene
