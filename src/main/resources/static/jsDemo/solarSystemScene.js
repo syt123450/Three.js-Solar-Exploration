@@ -123,6 +123,7 @@ SolarSystemSceneController = function(renderer) {
     var solarSystemScene = init();
 
     this.animate = solarSystemAnimate;
+    this.name = "SolarSystemScene";
 
     this.topView = updateCameaPosition(1);
     this.sideView = updateCameaPosition(2);
