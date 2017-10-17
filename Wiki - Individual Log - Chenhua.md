@@ -1,3 +1,9 @@
+### [Oct. 16th, 2017]
+Development:
+  * Parsing SQL ResultSet
+  * Generate List<FuelBean>
+  * Generate List<Double> (for Google earth demo)
+***
 ### [Oct. 13th, 2017]
 Development:
   * Configured MySQL database
