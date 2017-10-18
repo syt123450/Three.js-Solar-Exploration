@@ -1,3 +1,7 @@
+### [Oct. 17th, 2017]
+Development:
+  * 8 planets scene of solar system
+***
 ### [Oct. 16th, 2017]
 Development:
   * Parsing SQL ResultSet
