@@ -1,4 +1,13 @@
 XP Core Value: Communication
+
+### [Oct 17, 2017] - Created click cone demo (to be continued)<br/>
+1. Created new demo, which allows the user to click on the cone to stop the earth from rotating.
+2. Refactored code snippet to initialize cone and flag.
+
+### [Oct 16, 2017] <br/>
+1. Updated team project wiki.
+2. Studied how to do animation in Three.js.
+
 ***
 ### [Oct 11, 2017] - Created change scene demo<br/>
 1. Created change scene demo.
