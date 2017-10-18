@@ -7,10 +7,10 @@ NullPointerException
 
 ## Team Member
 (By last name):
-* Bou-yu Chen [project blog](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Bou%20Yu.md)
-* Bo Liu [project blog](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20bo.md)
-* Yuntian Shen [project blog](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Yuntian.md)
-* Chenhua Zhu [project blog](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Chenhua.md)
+* Bou-yu Chen [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Bou%20Yu.md)
+* Bo Liu [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20bo.md)
+* Yuntian Shen [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Yuntian.md)
+* Chenhua Zhu [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Chenhua.md)
 
 ## Part I: Wiki Journal Entry on XP/Agile Core Values 
 1. [Task Board](https://github.com/nguyensjsu/cmpe202-nullpointerexception/projects/1)
