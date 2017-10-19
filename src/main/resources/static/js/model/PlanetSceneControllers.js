@@ -1,6 +1,6 @@
 
 
-/* ***** SenceController for each planet ***** */
+/* ***** ScenceController for each planet ***** */
 
 // Mercury
 MercurySceneController = function (renderer) {
