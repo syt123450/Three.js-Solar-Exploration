@@ -25,7 +25,7 @@ UniverseUtils = function () {
             ),
             side: THREE.BackSide
         });
-
+        universeMesh.name = 'universeMesh';
         return universeMesh;
     };
 
@@ -38,7 +38,7 @@ UniverseUtils = function () {
         camera.far = 1500;
         camera.position.set(0, 0, 1.5);
         camera.updateProjectionMatrix();
-
+        camera.name = 'defaultCamera';
         return camera;
     };
 
@@ -59,7 +59,7 @@ UniverseUtils = function () {
                 '../images/water_4k.png'
             )
         });
-
+	    earthMesh.name = 'defaultEarthMesh';
         return earthMesh;
     };
 
@@ -73,7 +73,7 @@ UniverseUtils = function () {
             ),
             transparent: true
         });
-
+        atmosphereMesh.name = 'atmosphereMesh';
         return atmosphereMesh;
     };
 
@@ -90,7 +90,7 @@ UniverseUtils = function () {
                 '../images/elev_bump_4k.jpg'
             )
         });
-
+	    moonMesh.name = 'moonMesh';
         return moonMesh;
     };
 
@@ -112,7 +112,7 @@ UniverseUtils = function () {
                 meteor.position.y -= 0.01;
             });
         };
-
+        meteors.name = 'meteors';
         return meteors;
     };
 
@@ -135,7 +135,6 @@ UniverseUtils = function () {
                 }
             });
         };
-
         return stars;
     };
 
@@ -146,7 +145,6 @@ UniverseUtils = function () {
         star.material = new THREE.MeshBasicMaterial({color: 0x727272});
         star.count = 0;
         addHaloToStar(star);
-
         return star;
     }
 

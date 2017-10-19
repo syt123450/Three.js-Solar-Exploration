@@ -306,8 +306,11 @@ SolarSystemSceneController = function(renderer) {
         camera.lookAt(sunAggregation.position);
 
     }
-
-    var raycaster = new THREE.Raycaster();
+	
+	/************************
+     * Custom code
+	 ************************/
+	var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
 
     function judgeChangeScene() {
@@ -365,11 +368,7 @@ SolarSystemSceneController = function(renderer) {
 		// intersects[0] is atmosphere of the earth
 		// we use its .parent attribute to get the aggregated property
 		// so we can compare it to earthAggretation
-		if (intersects !== null && intersects.length > 0 && earthAggregation === intersects[0].object.parent) {
-			return true;
-		} else {
-			return false;
-		}
+		return intersects !== null && intersects.length > 0 && earthAggregation === intersects[0].object.parent;
 	}
 	
 	// mouse down event handler
