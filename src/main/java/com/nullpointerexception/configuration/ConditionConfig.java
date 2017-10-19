@@ -2,10 +2,10 @@ package com.nullpointerexception.configuration;
 
 import com.nullpointerexception.model.service.FuelDataService;
 import com.nullpointerexception.model.dev.DevDemo;
-import com.nullpointerexception.model.dev.FuelDataProvider;
+import com.nullpointerexception.model.dev.FuelDataImpl;
 import com.nullpointerexception.model.mock.MockDemo;
 import com.nullpointerexception.model.service.DemoService;
-import com.nullpointerexception.model.mock.MockFuelDataProvider;
+import com.nullpointerexception.model.mock.MockFuelDataService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -32,12 +32,12 @@ public class ConditionConfig {
     @Bean
     @Profile("dev")
     public FuelDataService devFuelDataService() {
-        return new FuelDataProvider();
+        return new FuelDataImpl();
     }
 
     @Bean
     @Profile("mock")
     public FuelDataService mockFuelDataService() {
-        return new MockFuelDataProvider();
+        return new MockFuelDataService();
     }
 }

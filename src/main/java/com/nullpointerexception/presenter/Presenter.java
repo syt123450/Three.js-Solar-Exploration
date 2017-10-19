@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,10 +33,20 @@ public class Presenter {
     @RequestMapping(value = "/year", method = RequestMethod.POST)
     private String getTopCountryData(@RequestBody String body) {
 
-        logger.info("Get request for year data.");
+        logger.info("Request for year data.");
         YearRequestBean yearRequestBean = gson.fromJson(body, YearRequestBean.class);
-        List<FuelInfoBean> infoList = fuelDataService.getData(yearRequestBean.getYear());
+        List<FuelInfoBean> infoList = fuelDataService.getYearlyData(yearRequestBean.getYear());
 
         return gson.toJson(infoList);
+    }
+
+    @RequestMapping("/all")
+    private String getAllData() {
+
+        logger.info("Request for all data");
+
+        List<Double> allDataList = fuelDataService.getAllData();
+
+        return gson.toJson(allDataList);
     }
 }

@@ -17,10 +17,26 @@ EarthSceneController = function (renderer) {
     var moonMesh = universeUtils.createDefaultMoon();
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
+
+    var coneList = [];
+
     var earthRenderer = renderer;
     var earthScene = init();
 
     this.animate = earthAnimate;
+
+    this.addCones = function (cones) {
+        cones.forEach(function (cone) {
+            addOneCone(cone);
+        });
+    };
+
+    this.clearCones = function () {
+        coneList.forEach(function (cone) {
+            earthMesh.remove(cone);
+        });
+        coneList = [];
+    };
 
     function earthAnimate() {
 
@@ -29,6 +45,7 @@ EarthSceneController = function (renderer) {
         meteors.sweepMeteors();
         rotateEarthWithStop();
         rotateMoon();
+        rotateCones();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -83,6 +100,52 @@ EarthSceneController = function (renderer) {
         var timer = Date.now() * 0.0001;
         moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
         moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
+    }
+
+    function addOneCone(cone) {
+        var coneObject = initOneCone(cone);
+        coneList.push(coneObject);
+        earthMesh.add(coneObject);
+    }
+
+    function initOneCone(coneParameters) {
+
+        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
+
+        var coneMesh = new THREE.Mesh(
+            new THREE.ConeGeometry(0.03, 0.1, 0.09, 12),
+            new THREE.MeshPhongMaterial({color: 0x085093})
+        );
+
+        coneMesh.position.set(position.x, position.y, position.z);
+        coneMesh.lookAt(earthMesh.position);
+
+        coneMesh.rotateX(Math.PI / 2);
+
+        return coneMesh;
+    }
+
+    function calculatePosition(latitude, longitude) {
+        var phi = (90 - latitude) * (Math.PI / 180);
+        var theta = (longitude + 180) * (Math.PI / 180);
+
+        var pointX = -((radius) * Math.sin(phi) * Math.cos(theta));
+        var pointY = ((radius) * Math.cos(phi));
+        var pointZ = ((radius) * Math.sin(phi) * Math.sin(theta));
+
+        var position = new THREE.Vector3();
+        position.x = pointX;
+        position.y = pointY;
+        position.z = pointZ;
+
+        return position;
+    }
+
+    function rotateCones() {
+
+        coneList.forEach(function (cone) {
+            cone.rotateY(0.05);
+        });
     }
 
     function addEvent() {

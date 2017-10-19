@@ -1,3 +1,8 @@
+### [Oct. 18th, 2017]
+Development:
+  * Complete 8 planet scenes of solar system
+  * Debug and explore other features
+***
 ### [Oct. 17th, 2017]
 Development:
   * 8 planets scene of solar system
