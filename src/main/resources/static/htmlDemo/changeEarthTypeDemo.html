@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Earth Rotation Demo</title>
+    <title>Change Earth Type Demo</title>
 
     <style>
 
@@ -27,10 +27,13 @@
 <script src="../js/utils/universeUtils.js"></script>
 <script src="../js/utils/utils.js"></script>
 <script src="../jsDemo/reGlobePrototype.js"></script>
+<script src="../jsDemo/combinePrototype.js"></script>
 
-<script type="text/javascript">
+<script>
 
     var renderer = SolarEPUtils.getDefaultRenderer();
+
+    var earthScene = new EarthSceneController(renderer);
 
     loadData();
 
@@ -43,12 +46,17 @@
             if ( xhr.readyState === 4 && xhr.status === 200 ){
 
                 var data = JSON.parse( xhr.responseText );
+
                 var globe = new DAT.Globe( renderer );
                 globe.setSurfaceImg("../images/world.jpg");
                 globe.init();
                 globe.addData(data, {format: 'magnitude'});
                 globe.createPoints();
-                globe.animate();
+
+                earthScene.animate();
+
+                setTimeout(globe.animate, 5000);
+                setTimeout(earthScene.animate, 10000);
             }
         };
 
