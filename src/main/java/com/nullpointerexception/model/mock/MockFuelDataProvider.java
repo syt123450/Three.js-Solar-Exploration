@@ -12,7 +12,7 @@ import java.util.List;
 public class MockFuelDataProvider implements FuelDataService {
 
     @Override
-    public List<FuelInfoBean> getData(int year) {
+    public List<FuelInfoBean> getYearlyData(int year) {
 
         List<FuelInfoBean> infoList = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
@@ -20,5 +20,10 @@ public class MockFuelDataProvider implements FuelDataService {
         }
 
         return infoList;
+    }
+
+    @Override
+    public List<Double> getAllData() {
+        return null;
     }
 }

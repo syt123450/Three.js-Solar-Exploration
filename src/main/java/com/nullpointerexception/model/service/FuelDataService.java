@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface FuelDataService {
 
-    List<FuelInfoBean> getData(int year);
+    List<FuelInfoBean> getYearlyData(int year);
+    List<Double> getAllData();
 }

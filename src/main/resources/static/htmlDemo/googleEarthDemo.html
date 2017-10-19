@@ -44,7 +44,7 @@
 
                 var data = JSON.parse( xhr.responseText );
                 var globe = new DAT.Globe( renderer );
-                globe.setSurfaceImg("../images/world.jpg");
+                globe.setSurfaceImg("/images/world.jpg");
                 globe.init();
                 globe.addData(data, {format: 'magnitude'});
                 globe.createPoints();
