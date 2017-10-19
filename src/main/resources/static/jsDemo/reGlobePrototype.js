@@ -63,8 +63,6 @@ DAT.Globe = function (renderer, colorFn) {
 
     var overRenderer;
 
-    var imgDir = '';
-
     var curZoomSpeed = 0;
     var zoomSpeed = 50;
 
@@ -153,13 +151,6 @@ DAT.Globe = function (renderer, colorFn) {
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
 
         point = new THREE.Mesh(geometry);
-
-        // renderer = new THREE.WebGLRenderer({canvas: container, antialias: true});
-        // renderer.setSize(w, h);
-        //
-        // renderer.domElement.style.position = 'absolute';
-        //
-        // // container.appendChild(renderer.domElement);
 
         document.body.appendChild(renderer.domElement);
 
