@@ -14,9 +14,20 @@ PinController = function (renderer) {
 	var earthMesh = universeUtils.createDefaultEarthMesh();
 	var atmosphereMesh = universeUtils.createDefaultAtmosphere();
 	var pinRenderer = renderer;
+	
+	
+	/**
+	 * dirty code
+	 */
+	var earthIntegration = initEarthAggregation();
+	
 	var pinScene = init();
 	
+	var count = 0;
 	var enableEarthRotation = true;
+	/**
+	 * dirty code
+	 */
 	
 	this.animate = pinAnimate;
 	
@@ -31,6 +42,11 @@ PinController = function (renderer) {
 		rotateCone();
 		pinRenderer.render(pinScene, camera);
 		
+		if (count++ % 60 === 0) {
+			var vector = new THREE.Vector3();
+			vector.setFromMatrixPosition( cone.matrixWorld );
+			console.log('cone cur pos', vector);
+		}
 	}
 	
 	function init() {
@@ -38,7 +54,7 @@ PinController = function (renderer) {
 		scene.add(light);
 		scene.add(camera);
 		scene.add(universeMesh);
-		scene.add(initEarthAggregation());
+		scene.add(earthIntegration);
 		return scene;
 	}
 	
@@ -47,7 +63,7 @@ PinController = function (renderer) {
 		var aggregation = new THREE.Object3D();
 		aggregation.add(earthMesh);
 		aggregation.add(atmosphereMesh);
-		aggregation.rotateZ(-Math.PI * 23.5 / 180);
+		// aggregation.rotateZ(-Math.PI * 23.5 / 180);
 		
 		return aggregation;
 	}
@@ -61,33 +77,48 @@ PinController = function (renderer) {
 	/********************
 	 * Custom code
 	 ********************/
-	var INIT_LATITUDE = 37.3382, INIT_LONGITUDE = -121.8863;
+	var raycaster = new THREE.Raycaster();
+	
+	var mouse = new THREE.Vector2();
+	
+	var INIT_LATITUDE = 0, INIT_LONGITUDE = -90;
+	
+	var INIT_LOOK_AT_DIRECTION = camera.getWorldDirection();
+	
+	var CAMERA_INIT_POSITION = new THREE.Vector3(0, 0, 2);
+	// var cameraLatestPosition = CAMERA_INIT_POSITION;
+	
 	var cone = initCone(INIT_LATITUDE, INIT_LONGITUDE);
+	
 	var flag = initFlag(cone);
 	
-	var raycaster = new THREE.Raycaster();
-	var mouse = new THREE.Vector2();
+	addAxisHelperToEarth();
 	
 	addConeAndFlagToEarth();
 	
-	document.addEventListener('mousedown', onMouseDown);
+	registerMouseDownListener(onMouseDown);
 	
+	/*******************************
+	 * Private functions
+	 ******************************/
+	function addAxisHelperToEarth() {
+		setObjectPosition(camera, CAMERA_INIT_POSITION);
+		var sphereAxis = new THREE.AxisHelper(0.8);
+		earthMesh.add(sphereAxis);
+	}
 	
 	// Init cone to specified latitude and longitude
 	function initCone(latitude, longitude) {
 		var coneMesh = new THREE.Mesh(
-			new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
-			new THREE.MeshBasicMaterial ({
-				wireframe: true
-			})
+			new THREE.ConeGeometry( 0.05, 0.2, 12 ),
+			new THREE.MeshBasicMaterial ()
 		);
-		
 		coneMesh.name = 'coneMesh';
 		
+		console.log('cone init pos', getCartesianCoordinates(latitude, longitude));
 		setObjectPosition(
 			coneMesh,
-			getConeInitPosition(latitude, longitude),
-			new THREE.Vector3(0, 0, 0)
+			getCartesianCoordinates(latitude, longitude)
 		);
 		
 		coneMesh.lookAt(earthMesh.position);
@@ -126,18 +157,19 @@ PinController = function (renderer) {
 		earthMesh.add(flag);
 	}
 	
-	function getConeInitPosition(latitude, longitude) {
+	function getCartesianCoordinates(latitude, longitude) {
 		var phi = (90 - latitude) * (Math.PI / 180);
 		var theta = (longitude + 180) * (Math.PI / 180);
 		
 		return new THREE.Vector3(
-			- RADIUS * Math.sin(phi) * Math.cos(theta), // x
-			RADIUS * Math.cos(phi), // y
-			RADIUS * Math.sin(phi) * Math.sin(theta) // z
+			- RADIUS * Math.sin(phi) * Math.cos(theta),
+			RADIUS * Math.cos(phi),
+			RADIUS * Math.sin(phi) * Math.sin(theta)
 		);
 	}
 	
 	function setObjectPosition(obj, position, offset) {
+		offset = offset || new THREE.Vector3(0, 0, 0);
 		obj.position.set(
 			position.x + offset.x,
 			position.y + offset.y,
@@ -146,7 +178,7 @@ PinController = function (renderer) {
 	}
 	
 	function rotateCone() {
-		cone.rotateY(0.05);
+		// cone.rotateY(0.05);
 	}
 	
 	// mouse down event handler
@@ -155,15 +187,50 @@ PinController = function (renderer) {
 		mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 		
 		if (isConeClicked()) {
+			
+			if (!enableEarthRotation) {
+				// if is rotating, set camera back to initial position
+				// and direction
+				setObjectPosition(camera, CAMERA_INIT_POSITION);
+				camera.lookAt(INIT_LOOK_AT_DIRECTION);
+				
+			} else {
+				// if cone is clicked, earth stops
+				// and ....
+				var vector = new THREE.Vector3();
+				vector.setFromMatrixPosition(cone.matrixWorld);
+				camera.position.set(
+					vector.x * 2,
+					vector.y * 2,
+					vector.z * 2
+				);
+				camera.lookAt(earthMesh.position);
+			}
+			
+			// Change rotation status
 			enableEarthRotation = !enableEarthRotation;
 		}
 	}
 	
+	// TODO: Sometime click will miss
 	function isConeClicked() {
 		raycaster.setFromCamera(mouse, camera);
 		var intersects = raycaster.intersectObjects(earthMesh.children, true);
 		console.log(intersects);
-		return intersects !== null && intersects.length > 0 && cone === intersects[0].object;
+		
+		if (intersects === null || intersects.length === 0) {
+			return false;
+		}
+		
+		for (var i = 0; i < intersects.length; i++) {
+			if (cone === intersects[i].object) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
+	function registerMouseDownListener(callback) {
+		document.addEventListener('mousedown', callback);
+	}
 };
