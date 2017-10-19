@@ -1,3 +1,9 @@
+[Oct.19.2017] Work Done Summary
+
+* Finish refactoring the google's webgl-globe library
+* Integrate google's earth with our own earth
+* Create mock API to provide data for google's earth
+
 [Oct.18.2017] Short Summary
 
 Work Done:
