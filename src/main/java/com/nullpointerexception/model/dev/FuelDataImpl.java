@@ -10,21 +10,20 @@ import java.util.List;
 /**
  * Created by ss on 2017/9/25.
  */
-public class FuelDataProvider implements FuelDataService {
+public class FuelDataImpl implements FuelDataService {
 
     @Autowired
     private MySQLUtils mySQLUtils;
 
     @Override
     public List<Double> getAllData() {
-        return null;
+
+        return mySQLUtils.getAllData();
     }
 
     @Override
     public List<FuelInfoBean> getYearlyData(int year) {
 
-        mySQLUtils.getCountryDataByYear();
-
-        return null;
+        return mySQLUtils.getCountryDataByYear();
     }
 }

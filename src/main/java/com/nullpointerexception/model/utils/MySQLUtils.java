@@ -91,6 +91,11 @@ public class MySQLUtils {
         return null;
     }
 
+    public List<Double> getAllData() {
+
+        return null;
+    }
+
     public List<Double> getGeoAmountData(){
         if (this.conn !=null){
             String query = "SELECT longitude, latitude, Quadrillion_BTU FROM v_totalenergy";

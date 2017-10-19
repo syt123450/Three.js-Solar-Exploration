@@ -45,7 +45,7 @@ public class Presenter {
 
         logger.info("Request for all data");
 
-        List<Double> allDataList = new ArrayList<>();
+        List<Double> allDataList = fuelDataService.getAllData();
 
         return gson.toJson(allDataList);
     }
