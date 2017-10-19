@@ -1,3 +1,19 @@
+[Oct.18.2017] Short Summary
+
+Work Done:
+* add some set function to google's library
+* refactor the action of the library, can import renderer to it
+* write a demo to show how to use it
+* change the cone function, now can add cone by scene's fucntion
+
+[Oct.12.2017] Weekly Summary
+
+Work Done:
+* Learn how to use google's webgl-globe library
+
+Problems: 
+* Google's webgl-globe library has several problem, such as it renderer on the div
+
 [Oct.6.2017] Brief Summary
 
 Work Done:
