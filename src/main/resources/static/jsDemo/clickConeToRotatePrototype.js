@@ -25,6 +25,7 @@ PinController = function (renderer) {
 	
 	var count = 0;
 	var enableEarthRotation = true;
+	var yRotation = 0.003;
 	/**
 	 * dirty code
 	 */
@@ -36,17 +37,15 @@ PinController = function (renderer) {
 		requestAnimationFrame(pinAnimate);
 		
 		if (enableEarthRotation) {
-			// rotateEarth();
+			rotateEarth();
 		}
 		
 		rotateCone();
 		pinRenderer.render(pinScene, camera);
 		
-		// if (count++ % 60 === 0) {
-		// 	var vector = new THREE.Vector3();
-		// 	vector.setFromMatrixPosition( cone.matrixWorld );
-		// 	console.log('cone cur pos', vector);
-		// }
+		if (count++ % 60 === 0) {
+			console.log(earthMesh.rotation.y);
+		}
 	}
 	
 	function init() {
@@ -63,7 +62,7 @@ PinController = function (renderer) {
 		var aggregation = new THREE.Object3D();
 		aggregation.add(earthMesh);
 		aggregation.add(atmosphereMesh);
-		// aggregation.rotateZ(-Math.PI * 23.5 / 180);
+		aggregation.rotateZ(-Math.PI * 23.5 / 180);
 		
 		return aggregation;
 	}
@@ -72,6 +71,8 @@ PinController = function (renderer) {
 		
 		earthMesh.rotation.y += 0.003; //TODO: changeback to 0.003
 		atmosphereMesh.rotation.y += 0.003;
+		// yRotation += 0.003;
+		// earthIntegration.rotateOnAxis(new THREE.Vector3(0, 1, 0), yRotation);
 	}
 	
 	/********************
@@ -81,7 +82,7 @@ PinController = function (renderer) {
 	
 	var mouse = new THREE.Vector2();
 	
-	var INIT_LATITUDE = 20, INIT_LONGITUDE = -60;
+	var INIT_LATITUDE = 20, INIT_LONGITUDE = -70;
 	
 	var INIT_LOOK_AT_DIRECTION = camera.getWorldDirection();
 	
@@ -266,31 +267,29 @@ PinController = function (renderer) {
 		} else {
 			// step 1: get initial coords of the cone in the Earth coords system
 			var origin = getCartesianCoordinates(INIT_LATITUDE, INIT_LONGITUDE);
-			console.log('init longitude: ', INIT_LONGITUDE);
-			console.log('init latitude: ', INIT_LATITUDE);
+			// console.log('init longitude: ', INIT_LONGITUDE);
+			// console.log('init latitude: ', INIT_LATITUDE);
+			//
+			// // step 2: get the coords of the center of the screen
+			// var dest = new THREE.Vector3(0, 0, RADIUS);
+			// // console.log('dest: ', dest);
+			//
 			
-			// step 2: get the coords of the center of the screen
-			var dest = new THREE.Vector3(0, 0, RADIUS);
-			// console.log('dest: ', dest);
-
-			var rotationAixs = new THREE.Vector3();
-			rotationAixs.crossVectors(origin, dest).normalize();
-			var rotationAngle = origin.angleTo(dest);
+			// rotationAixs.crossVectors(origin, dest).normalize();
+			// var rotationAngle = origin.angleTo(dest);
 			console.log('orgin: ', origin);
-			console.log('dest: ', dest);
-
+			// console.log('dest: ', dest);
+			//
+			// console.log('rotation axis: ', rotationAixs);
+			// console.log('rotation angle: ', rotationAngle / Math.PI * 180);
+			
+			earthIntegration.rotateOnAxis(new THREE.Vector3(0, 0, 1), Math.PI * 23.5 / 180);
+			earthIntegration.rotateOnAxis(new THREE.Vector3(0, 1, 0), -earthMesh.rotation.y - (90 + INIT_LONGITUDE) / 180 * Math.PI);
+			
+			var rotationAixs = new THREE.Vector3();
+			rotationAixs.crossVectors(new THREE.Vector3(0, 1, 0), origin).normalize();
 			console.log('rotation axis: ', rotationAixs);
-			console.log('rotation angle: ', rotationAngle / Math.PI * 180);
-
-			// earthIntegration.rotateOnAxis(new THREE.Vector3(0, 1, 0), -earthMesh.rotation.y);
-			// earthIntegration.rotateOnAxis(new THREE.Vector3(0, 1, 0), INIT_LONGITUDE / 180 * Math.PI);
-			// earthIntegration.rotateOnAxis(new THREE.Vector3(0, 1, 0), INIT_LONGITUDE / 180 * Math.PI);
-			earthIntegration.rotateOnAxis(rotationAixs, rotationAngle);
+			earthMesh.rotateOnAxis(rotationAixs, INIT_LATITUDE / 180 * Math.PI);
 		}
-	}
-	
-	// Given two points
-	function _getRotationAngle() {
-	
 	}
 };
