@@ -5,40 +5,63 @@
  * @constructor
  */
 PinController = function (renderer) {
-	// Create earth scene
+	
+	/** CONSTANTS **/
 	var RADIUS = 0.55;
+	var OBLIUITY = 23.5; // degrees
+	var X_AXIS = new THREE.Vector3(1, 0, 0),
+		Y_AXIS = new THREE.Vector3(0, 1, 0),
+		Z_AXIS = new THREE.Vector3(0, 0, 1);
+	var EARTH_ROTATION_SPEED = 0.01;
+	var CONE_INIT_LATITUDE = 20,
+		CONE_INIT_LONGITUDE = -80;
+	var CAMERA_INIT_POSITION = new THREE.Vector3(0, 0, 2);
+	/** CONSTANTS **/
+	
+	/** Create earth scene **/
 	var universeUtils = new UniverseUtils();
 	var light = new THREE.AmbientLight(0xffffff);
 	var camera = universeUtils.createDefaultCamera();
+	var INIT_LOOK_AT_DIRECTION = camera.getWorldDirection();
 	var universeMesh = universeUtils.createDefaultUniverse();
 	var earthMesh = universeUtils.createDefaultEarthMesh();
 	var atmosphereMesh = universeUtils.createDefaultAtmosphere();
 	var pinRenderer = renderer;
-	
+	var earthAggregation = initEarthAggregation();
+	var pinScene = init();
+	/** Create earth scene **/
 	
 	/**
 	 * dirty code
 	 */
-	var X_AXIS = new THREE.Vector3(1, 0, 0);
-	var Y_AXIS = new THREE.Vector3(0, 1, 0);
-	var Z_AXIS = new THREE.Vector3(0, 0, 1);
-	
-	var earthIntegration = initEarthAggregation();
-	
-	var pinScene = init();
 	
 	var count = 0;
 	var enableEarthRotation = true;
-	
 	var earthYRotationHistory = 0;
-	
-	var SPEED = 0.01;
 	
 	/**
 	 * dirty code
 	 */
 	
 	this.animate = pinAnimate;
+	
+	function init() {
+		var scene = new THREE.Scene();
+		scene.add(light);
+		scene.add(camera);
+		scene.add(universeMesh);
+		scene.add(earthAggregation);
+		return scene;
+	}
+	
+	function initEarthAggregation() {
+		var aggregation = new THREE.Object3D();
+		aggregation.add(earthMesh);
+		aggregation.add(atmosphereMesh);
+		aggregation.rotateZ(-Math.PI * OBLIUITY / 180);
+		
+		return aggregation;
+	}
 	
 	function pinAnimate() {
 		
@@ -48,7 +71,8 @@ PinController = function (renderer) {
 			rotateEarth();
 		}
 		
-		rotateCone();
+		_rotateCone();
+		
 		pinRenderer.render(pinScene, camera);
 		
 		if (count++ % 60 === 0) {
@@ -56,94 +80,56 @@ PinController = function (renderer) {
 		}
 	}
 	
-	function init() {
-		var scene = new THREE.Scene();
-		scene.add(light);
-		scene.add(camera);
-		scene.add(universeMesh);
-		scene.add(earthIntegration);
-		return scene;
-	}
-	
-	function initEarthAggregation() {
-		
-		var aggregation = new THREE.Object3D();
-		aggregation.add(earthMesh);
-		aggregation.add(atmosphereMesh);
-		aggregation.rotateZ(-Math.PI * 23.5 / 180);
-		
-		return aggregation;
-	}
-	
 	function rotateEarth() {
-		// // earthYRotationHistory += 0.003;
-		// earthMesh.rotateOnAxis(Y_AXIS, 0.003); //TODO: changeback to 0.003
-		// atmosphereMesh.rotateOnAxis(Y_AXIS, 0.003);
-		//
-		earthMesh.rotation.y += SPEED;
-		atmosphereMesh.rotation.y += SPEED;
-		
-		// if (earthMesh.rotation.y >= 2 * Math.PI) {
-		// 	earthMesh.rotation.y -= 2 * Math.PI;
-		// 	atmosphereMesh.rotation.y -= 2 * Math.PI;
-		// }
-		// yRotation += 0.003;
-		// earthIntegration.rotateOnAxis(Y_AXIS, yRotation);
+		earthMesh.rotation.y += EARTH_ROTATION_SPEED;
+		atmosphereMesh.rotation.y += EARTH_ROTATION_SPEED;
 	}
 	
-	/********************
+	/****************************
+	 * **************************
 	 * Custom code
-	 ********************/
-	var raycaster = new THREE.Raycaster();
+	 * **************************
+	 ***************************/
+	var raycaster, mouse;
 	
-	var mouse = new THREE.Vector2();
+	var cone;
 	
-	var INIT_LATITUDE = 20, INIT_LONGITUDE = -80;
+	_initCone(CONE_INIT_LATITUDE, CONE_INIT_LONGITUDE);
 	
-	var INIT_LOOK_AT_DIRECTION = camera.getWorldDirection();
+	_initRaycaster();
 	
-	var CAMERA_INIT_POSITION = new THREE.Vector3(0, 0, 2);
+	_addAxisHelperTo(earthMesh);
 	
+	_addConeAndFlagTo(earthMesh);
 	
+	_registerMouseDownListener(_onMouseDown('ROTATE_EARTH'));
 	
-	
-	
-	
-	var cone = initCone(INIT_LATITUDE, INIT_LONGITUDE);
-	
-	// var flag = initFlag(cone);
-	
-	addAxisHelperToEarth();
-	
-	addConeAndFlagToEarth();
-	
-	registerMouseDownListener(onMouseDown('ROTATE_EARTH'));
 	
 	/*******************************
-	 * Private functions
+	 * Method declarations
 	 ******************************/
-	function addAxisHelperToEarth() {
-		setObjectPosition(camera, CAMERA_INIT_POSITION);
-		var sphereAxis = new THREE.AxisHelper(0.8);
-		earthMesh.add(sphereAxis);
-	}
 	
 	// Init cone to specified latitude and longitude
-	function initCone(latitude, longitude) {
+	function _initCone(latitude, longitude) {
 		var coneMesh = new THREE.Mesh(
 			new THREE.ConeGeometry( 0.05, 0.2, 12 ),
 			new THREE.MeshBasicMaterial ()
 		);
 		coneMesh.name = 'coneMesh';
-		console.log('cone init position: ', getCartesianCoordinates(latitude, longitude));
-		setObjectPosition(
+		console.log('cone init position: ', _getCartesianCoordinates(latitude, longitude));
+		_setObjectPosition(
 			coneMesh,
-			getCartesianCoordinates(latitude, longitude)
+			_getCartesianCoordinates(latitude, longitude)
 		);
 		
 		coneMesh.lookAt(earthMesh.position);
 		coneMesh.rotateX(Math.PI / 2);
-		return coneMesh;
+		cone = coneMesh;
+	}
+	
+	function _initRaycaster() {
+		raycaster = new THREE.Raycaster();
+		mouse = new THREE.Vector2();
 	}
 	
 	// Initialize flag according to cone's position
@@ -162,7 +148,7 @@ PinController = function (renderer) {
 
 		flagMesh.name = 'flagMesh';
 		
-		setObjectPosition(
+		_setObjectPosition(
 			flagMesh,
 			cone.position,
 			new THREE.Vector3(0.02, 0.04, 0.14)
@@ -172,12 +158,18 @@ PinController = function (renderer) {
 	}
 	
 	// Add cone and flag to earth
-	function addConeAndFlagToEarth() {
-		earthMesh.add(cone);
+	function _addConeAndFlagTo(target) {
+		target.add(cone);
 		// earthMesh.add(flag);
 	}
 	
-	function getCartesianCoordinates(latitude, longitude) {
+	function _addAxisHelperTo(target) {
+		_setObjectPosition(camera, CAMERA_INIT_POSITION);
+		var sphereAxis = new THREE.AxisHelper(0.8);
+		target.add(sphereAxis);
+	}
+	
+	function _getCartesianCoordinates(latitude, longitude) {
 		var phi = (90 - latitude) * (Math.PI / 180);
 		var theta = (longitude + 180) * (Math.PI / 180);
 		
@@ -188,7 +180,7 @@ PinController = function (renderer) {
 		);
 	}
 	
-	function setObjectPosition(obj, position, offset) {
+	function _setObjectPosition(obj, position, offset) {
 		offset = offset || new THREE.Vector3(0, 0, 0);
 		obj.position.set(
 			position.x + offset.x,
@@ -197,17 +189,18 @@ PinController = function (renderer) {
 		);
 	}
 	
-	function rotateCone() {
+	function _rotateCone() {
 		// cone.rotateY(0.05);
 	}
 	
 	// mouse down event handler
-	function onMouseDown(strategy) {
+	function _onMouseDown(strategy) {
+		
 		return function () {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 			
-			if (isConeClicked()) {
+			if (_isTargetClicked(cone)) {
 				
 				switch (strategy) {
 					case 'ROTATE_CAMERA':
@@ -226,25 +219,27 @@ PinController = function (renderer) {
 		}
 	}
 	
-	// TODO: Sometime click will miss
-	function isConeClicked() {
+	function _isTargetClicked(target) {
+		
 		raycaster.setFromCamera(mouse, camera);
+		
 		var intersects = raycaster.intersectObjects(earthMesh.children, true);
+		
 		console.log(intersects);
-		//
+		
 		if (intersects === null || intersects.length === 0) {
 			return false;
 		}
 		
 		for (var i = 0; i < intersects.length; i++) {
-			if (cone === intersects[i].object) {
+			if (target === intersects[i].object) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	function registerMouseDownListener(callback) {
+	function _registerMouseDownListener(callback) {
 		document.addEventListener('mousedown', callback);
 	}
 	
@@ -256,7 +251,7 @@ PinController = function (renderer) {
 		if (!enableEarthRotation) {
 			// if is rotating, set camera back to initial position
 			// and direction
-			setObjectPosition(camera, CAMERA_INIT_POSITION);
+			_setObjectPosition(camera, CAMERA_INIT_POSITION);
 			camera.lookAt(INIT_LOOK_AT_DIRECTION);
 			
 		} else {
@@ -279,51 +274,50 @@ PinController = function (renderer) {
 	 * center the cone in the screen
 	 */
 	function _rotationStrategyTwo() {
-		if (!enableEarthRotation) {
-			console.log('resume rotation');
-			// if is rotating, set camera back to initial position
-			// and direction
-			// setObjectPosition(camera, CAMERA_INIT_POSITION);
-			// camera.lookAt(INIT_LOOK_AT_DIRECTION);
-			var origin = getCartesianCoordinates(INIT_LATITUDE, INIT_LONGITUDE);
+		
+		var initXyz = _getCartesianCoordinates(CONE_INIT_LATITUDE, CONE_INIT_LONGITUDE);
+		
+		var rotationAxis = (new THREE.Vector3())
+			.crossVectors(Y_AXIS, initXyz)
+			.normalize();
+		
+		if (enableEarthRotation) { // bring cone to the front
 			
-			var rotationAixs = (new THREE.Vector3())
-				.crossVectors(Y_AXIS, origin)
-				.normalize();
-			
-			earthMesh.rotateOnAxis(rotationAixs, -INIT_LATITUDE / 180 * Math.PI);
-			
-			var temp = earthYRotationHistory + (90 + INIT_LONGITUDE) / 180 * Math.PI;
-			
-			// if (temp - earthMesh.rotation.y >= Math.PI) {
-			// 	earthMesh.rotateOnAxis(Y_AXIS, Math.PI + earthMesh.rotation.y - 0.001);
-			// 	earthMesh.rotateOnAxis(Y_AXIS, temp - earthMesh.rotation.y - Math.PI);
-			// } else {
-			// 	earthMesh.rotateOnAxis(Y_AXIS, temp);
-			// }
-			console.log('resume, temp: ', (temp - earthMesh.rotation.y) / Math.PI * 180);
-			earthMesh.rotation.y += temp;
-			earthIntegration.rotateOnAxis(Z_AXIS, -Math.PI * 23.5 / 180);
-			
-		} else {
 			earthYRotationHistory = earthMesh.rotation.y;
 			
 			console.log('click history', earthYRotationHistory / Math.PI * 180);
 			
-			var origin = getCartesianCoordinates(INIT_LATITUDE, INIT_LONGITUDE);
+			earthAggregation.rotateOnAxis(
+				Z_AXIS,
+				Math.PI * OBLIUITY / 180
+			);
+			//
+			earthMesh.rotateOnAxis(
+				Y_AXIS,
+				-earthMesh.rotation.y - (90 + CONE_INIT_LONGITUDE) / 180 * Math.PI
+			);
+			//
+			earthMesh.rotateOnAxis(
+				rotationAxis,
+				CONE_INIT_LATITUDE / 180 * Math.PI
+			);
 			
-			earthIntegration.rotateOnAxis(Z_AXIS, Math.PI * 23.5 / 180);
+		} else { // resume cone location
 			
-			var temp = -earthMesh.rotation.y - (90 + INIT_LONGITUDE) / 180 * Math.PI;
+			earthMesh.rotateOnAxis(
+				rotationAxis,
+				-CONE_INIT_LATITUDE / 180 * Math.PI
+			);
 			
-			earthMesh.rotateOnAxis(Y_AXIS, temp);
-
-			var rotationAixs = (new THREE.Vector3())
-				.crossVectors(Y_AXIS, origin)
-				.normalize();
-
-			earthMesh.rotateOnAxis(rotationAixs, INIT_LATITUDE / 180 * Math.PI);
+			var rotationOnY = earthYRotationHistory + (90 + CONE_INIT_LONGITUDE) / 180 * Math.PI;
 			
+			// TODO: convert to rotateOnAxis()
+			
+			earthMesh.rotation.y += rotationOnY;
+			
+			earthAggregation.rotateOnAxis(
+				Z_AXIS,
+				-Math.PI * OBLIUITY / 180);
 		}
 	}
 };
