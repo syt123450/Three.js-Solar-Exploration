@@ -131,10 +131,12 @@ PinController = function (renderer) {
             cone.scale.x += 0.01;
             cone.scale.y += 0.01;
             cone.scale.z += 0.01;
+            cone.translateY(-.00055);
         }else{
             cone.scale.x -= 0.01;
             cone.scale.y -= 0.01;
             cone.scale.z -= 0.01;
+            cone.translateY(.00055);
         }
     }
 };

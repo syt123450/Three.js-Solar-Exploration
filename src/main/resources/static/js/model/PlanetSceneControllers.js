@@ -10,7 +10,7 @@ MercurySceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('mecury');
+    var mesh = createPlanetMesh('mercury');
 
     var renderer = renderer;
     var scene = init();
@@ -26,35 +26,16 @@ MercurySceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -82,35 +63,16 @@ VenusSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -138,35 +100,16 @@ MarsSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -194,35 +137,16 @@ JupiterSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -250,35 +174,16 @@ SaturnSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -306,35 +211,16 @@ UranusSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -362,35 +248,16 @@ NeptuneSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -418,35 +285,16 @@ PlutoSceneController = function (renderer) {
         renderer.render(scene, camera);
     }
 
-    function init() {
-        var scene = new THREE.Scene();
-        scene.add(light);
-        scene.add(camera);
-        scene.add(universeMesh);
-        stars.forEach(function addStar(star) {
-            scene.add(star);
-        });
-        meteors.forEach(function addMeteor(meteor) {
-            scene.add(meteor);
-        });
-        scene.add(aggregationInit());
-        // addEvent();
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
 
-        return scene;
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
-        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
-        return aggregation;
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.001;
-
+        return aggregationInitDefault(mesh);
     }
 };
 
@@ -533,4 +381,36 @@ function createPlanetMesh(planet){
     }
 
     return mesh;
+}
+
+function initDefault(light, camera, universeMesh, stars, meteors, aggregation) {
+    var scene = new THREE.Scene();
+    scene.add(light);
+    camera.position.set(0, 0, 2);
+    scene.add(camera);
+    scene.add(universeMesh);
+    stars.forEach(function addStar(star) {
+        scene.add(star);
+    });
+    meteors.forEach(function addMeteor(meteor) {
+        scene.add(meteor);
+    });
+    scene.add(aggregation);
+    // addEvent();
+
+    return scene;
+}
+
+function aggregationInitDefault(mesh) {
+    var aggregation = new THREE.Object3D();
+    aggregation.add(mesh);
+    // aggregation.rotateZ(-Math.PI * 23.5 / 180);
+
+    return aggregation;
+}
+
+function rotatePlanetDefault(mesh) {
+
+    mesh.rotation.y += 0.001;
+
 }
