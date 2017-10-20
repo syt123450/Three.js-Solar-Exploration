@@ -1,6 +1,7 @@
 ### [Oct. 19th, 2017]
 Development:
   * Refactor 8 planet scenes
+  * Processing Ring prototype
 ***
 ### [Oct. 18th, 2017]
 Development:
