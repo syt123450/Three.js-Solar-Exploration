@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Edition</title>
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/lib/bootstrap.min.js"></script>
+
+    <script src="../js/lib/three.min.js"></script>
+    <script src="../js/utils/universeUtils.js"></script>
+    <script src="../js/utils/utils.js"></script>
+    <script src="../js/model/EarthSceneController.js"></script>
+    <script src="../js/model/changeScenePrototype.js"></script>
+    <script src="../js/model/GlobeScene.js"></script>
+
+    <link rel="stylesheet" href="../css/index.css">
+
+</head>
+<body>
+
+<canvas id="sceneArea"></canvas>
+
+<script>
+
+    var geographicData = [
+        {latitude: 39.92, longitude: 116.46},
+        {latitude: 37.3382, longitude: -121.8863},
+        {latitude: 55.45, longitude: 37.35},
+        {latitude: 49, longitude: 2}
+    ];
+
+    var googleEarth = false;
+
+    var renderer = SolarEPUtils.getDefaultRenderer();
+
+    var earthSceneController = new EarthSceneController(renderer);
+    var solarSceneController = new SolarSystemSceneController(renderer);
+    var globe = new DAT.Globe( renderer );
+    globe.setSurfaceImg("../images/world.jpg");
+    globe.init();
+    solarSceneController.setEarthScene(earthSceneController);
+    solarSceneController.animate();
+
+    $(function () {
+
+        $("#all").click(function() {
+            $("body footer div").each(function () {
+                $(this).attr("class", "unchecked");
+            });
+            $(this).attr("class", "checked");
+            googleEarth = true;
+            loadData();
+        });
+
+        $("body footer div.year").click(function () {
+            $("body footer div").each(function () {
+                $(this).attr("class", "unchecked");
+            });
+            $(this).attr("class", "checked");
+            var year = $(this).text();
+
+            if (googleEarth) {
+                googleEarth = false;
+                earthSceneController.animate()
+            }
+
+            getYearData(year);
+        });
+    });
+
+    function getYearData(year) {
+
+        if(Math.random() > 0.5) {
+            earthSceneController.addCones(geographicData);
+        } else {
+            earthSceneController.clearCones();
+        }
+    }
+
+    function loadData() {
+
+        $.ajax({
+            url: '../data/rank.json',
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                globe.addData(data, {format: 'magnitude'});
+                globe.createPoints();
+                globe.animate();
+            }
+        });
+    }
+
+</script>
+
+<footer id="timeLine">
+    <div class="checked year">2008</div>
+    <div class="unchecked year">2009</div>
+    <div class="unchecked year">2010</div>
+    <div class="unchecked year">2011</div>
+    <div class="unchecked year">2012</div>
+    <div class="unchecked year">2013</div>
+    <div class="unchecked year">2014</div>
+    <div class="unchecked year">2015</div>
+    <div class="unchecked year">2016</div>
+    <div class="unchecked year">2017</div>
+    <div id="all" class="unchecked">All</div>
+</footer>
+
+</body>
+</html>

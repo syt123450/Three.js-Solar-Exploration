@@ -1,6 +1,11 @@
-html, body {
-    width: 100%;
+html, body, canvas {
     height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
 }
 
 body main {
@@ -13,14 +18,15 @@ body footer {
     position: absolute;
     bottom: 0;
     background-color: #ff4300;
-    display: block;
+    /*display: block;*/
     box-sizing: border-box;
     padding: 0 30px;
+    display: none;
 }
 
 body footer div {
     height: 100%;
-    width: 10%;
+    width: 9%;
     float: left;
     text-align: center;
     line-height: 40px;
