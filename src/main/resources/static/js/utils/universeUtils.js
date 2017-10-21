@@ -4,6 +4,7 @@
 
 UniverseUtils = function () {
 
+    var coneRadius = 0.55;
     var starPositions = [
         [-7, 3, -15], [-8, 4, -16],
         [-9, 2, -14], [-10, 3, -15], [-8, 4, -10],
@@ -137,6 +138,36 @@ UniverseUtils = function () {
         };
         return stars;
     };
+
+    this.createOneCone = function (coneParameters) {
+
+        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
+
+        var coneMesh = new THREE.Mesh(
+            new THREE.ConeGeometry(0.03, 0.1, 0.09, 12),
+            new THREE.MeshPhongMaterial({color: 0x085093})
+        );
+
+        coneMesh.position.set(position.x, position.y, position.z);
+
+        return coneMesh;
+    };
+
+    function calculatePosition(latitude, longitude) {
+        var phi = (90 - latitude) * (Math.PI / 180);
+        var theta = (longitude + 180) * (Math.PI / 180);
+
+        var pointX = -((coneRadius) * Math.sin(phi) * Math.cos(theta));
+        var pointY = ((coneRadius) * Math.cos(phi));
+        var pointZ = ((coneRadius) * Math.sin(phi) * Math.sin(theta));
+
+        var position = new THREE.Vector3();
+        position.x = pointX;
+        position.y = pointY;
+        position.z = pointZ;
+
+        return position;
+    }
 
     function createOneStar() {
 

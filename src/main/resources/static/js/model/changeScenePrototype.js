@@ -307,9 +307,7 @@ SolarSystemSceneController = function(renderer) {
 
     }
 	
-	/************************
-     * Custom code
-	 ************************/
+
 	var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
 
@@ -320,11 +318,8 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function addEvent() {
-	    /**
-	     * register mouse click event handler
-	     */
+
 	    document.addEventListener('mousedown', onMouseDown, false);
-	    
         document.addEventListener('mousemove', onMouseMove, false);
     }
 
@@ -333,25 +328,17 @@ SolarSystemSceneController = function(renderer) {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
-	
-	/**
-	 * @returns {boolean} True if earth is clicked
-	 */
+
 	function isEarthClicked() {
-		// Cast ray
+
 		raycaster.setFromCamera(mouse, camera);
-		
-		// Get intersections
 		var intersects = raycaster.intersectObjects(solarSystemScene.children, true);
-		
-		// intersects[0] is atmosphere of the earth
-		// we use its .parent attribute to get the aggregated property
-		// so we can compare it to earthAggretation
+
 		return intersects !== null && intersects.length > 0 && earthAggregation === intersects[0].object.parent;
 	}
-	
-	// mouse down event handler
+
 	function onMouseDown() {
+
 		mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 		mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 

@@ -4,7 +4,6 @@
 
 EarthSceneController = function (renderer) {
 
-    var radius = 0.55;
     var moonRotateRadius = 0.7;
 
     var universeUtils = new UniverseUtils();
@@ -104,42 +103,11 @@ EarthSceneController = function (renderer) {
     }
 
     function addOneCone(cone) {
-        var coneObject = initOneCone(cone);
+        var coneObject = universeUtils.createOneCone(cone);
+        coneObject.lookAt(earthMesh.position);
+        coneObject.rotateX(Math.PI / 2);
         coneList.push(coneObject);
         earthMesh.add(coneObject);
-    }
-
-    function initOneCone(coneParameters) {
-
-        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
-
-        var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.03, 0.1, 0.09, 12),
-            new THREE.MeshPhongMaterial({color: 0x085093})
-        );
-
-        coneMesh.position.set(position.x, position.y, position.z);
-        coneMesh.lookAt(earthMesh.position);
-
-        coneMesh.rotateX(Math.PI / 2);
-
-        return coneMesh;
-    }
-
-    function calculatePosition(latitude, longitude) {
-        var phi = (90 - latitude) * (Math.PI / 180);
-        var theta = (longitude + 180) * (Math.PI / 180);
-
-        var pointX = -((radius) * Math.sin(phi) * Math.cos(theta));
-        var pointY = ((radius) * Math.cos(phi));
-        var pointZ = ((radius) * Math.sin(phi) * Math.sin(theta));
-
-        var position = new THREE.Vector3();
-        position.x = pointX;
-        position.y = pointY;
-        position.z = pointZ;
-
-        return position;
     }
 
     function rotateCones() {
@@ -151,11 +119,17 @@ EarthSceneController = function (renderer) {
 
     function addEvent() {
         document.addEventListener('mousemove', onMouseMove, false);
+        document.addEventListener('mousedown', onMouseDown, false);
     }
 
     function onMouseMove() {
 
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    function onMouseDown() {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
     }
 };
