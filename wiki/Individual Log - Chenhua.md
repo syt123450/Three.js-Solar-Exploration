@@ -1,6 +1,7 @@
 ### [Oct. 20th, 2017]
 Development:
   * Tried on ring prototye, but decide to freeze the prototype for now
+  * Add solar system scene
 ***
 ### [Oct. 19th, 2017]
 Development:
