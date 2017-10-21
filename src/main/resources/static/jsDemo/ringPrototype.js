@@ -32,7 +32,7 @@ SaturnSceneController = function (renderer) {
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();
-        aggregation.add(mesh);
+        // aggregation.add(mesh);
         // aggregation.rotateZ(-Math.PI * 23.5 / 180);
         aggregation.add(ringMesh);
         return aggregation;
@@ -127,7 +127,9 @@ function createPlanetMesh(planet){
 function createRingMesh(planet){
     var mesh = new THREE.Mesh();
 
-    mesh.geometry = new THREE.RingGeometry(0.75, 1, 64, 5, 0, Math.PI * 2);
+    // mesh.geometry = new THREE.RingGeometry(0.75, 1, 50, 5, 0, Math.PI * 2);
+    mesh.geometry = new THREE.BufferGeometry().fromGeometry(
+        new THREEx.Planets._RingGeometry(0.75, 1, 64));
     switch (planet){
         case 'saturn':
             mesh.material = new THREE.MeshPhongMaterial({
