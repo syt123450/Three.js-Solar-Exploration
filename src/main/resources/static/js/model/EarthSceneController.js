@@ -4,6 +4,7 @@
 
 EarthSceneController = function (renderer) {
 
+    var radius = 0.55;
     var moonRotateRadius = 0.7;
 
     var universeUtils = new UniverseUtils();

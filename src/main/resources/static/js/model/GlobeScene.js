@@ -152,7 +152,7 @@ DAT.Globe = function (renderer, colorFn) {
 
         point = new THREE.Mesh(geometry);
 
-        document.body.appendChild(renderer.domElement);
+        // document.body.appendChild(renderer.domElement);
 
         container.addEventListener('mousedown', onMouseDown, false);
 
