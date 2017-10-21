@@ -1,3 +1,10 @@
+### [Oct.20.2017] Reasearch on how to make things explode
+* Research on how to make things explode
+
+### [Oct.19.2017] Fixed cone position
+* Fixed cone position so now it doesnt poke into earth
+* Looked for ways to make earth explode
+
 ### [Oct.08.2017] Moved personal log to .md
 * Moved personal log to .md
 
