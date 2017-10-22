@@ -145,7 +145,7 @@ OrbitDemoController = function (renderer) {
 
         distance -= sign * 0.1;
 
-        let newCamPosition = new THREE.Vector3(0, 0, 0);
+        var newCamPosition = new THREE.Vector3(0, 0, 0);
         newCamPosition.x = earthAggregation.position.x - cameraDirection.x * distance;
         newCamPosition.y = earthAggregation.position.y - cameraDirection.y * distance;
         newCamPosition.z = earthAggregation.position.z - cameraDirection.z * distance;
@@ -154,7 +154,7 @@ OrbitDemoController = function (renderer) {
     }
 
     function getDistance(point1, point2) {
-        let distance = 0;
+        var distance = 0;
         distance += Math.pow(point1.x - point2.x, 2);
         distance += Math.pow(point1.y - point2.y, 2);
         distance += Math.pow(point1.z - point2.z, 2);
