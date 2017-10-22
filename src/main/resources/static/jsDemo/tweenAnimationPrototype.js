@@ -4,7 +4,7 @@
  * @param renderer
  * @constructor
  */
-PinController = function (renderer) {
+TweenAnimationController = function (renderer) {
 	
 	/** CONSTANTS **/
 	var RADIUS = 0.55;
@@ -76,8 +76,10 @@ PinController = function (renderer) {
 		pinRenderer.render(pinScene, camera);
 		
 		if (count++ % 60 === 0) {
-			console.log(earthMesh.rotation.y / Math.PI * 180);
+			console.log('earth.z: ', earthAggregation.rotation.z / Math.PI * 180);
 		}
+		
+		TWEEN.update();
 	}
 	
 	function rotateEarth() {
@@ -104,7 +106,7 @@ PinController = function (renderer) {
 	
 	_registerMouseDownListener(_onMouseDown('ROTATE_EARTH'));
 	
-	
+	_initTweenAnimation();
 	/*******************************
 	 * Method declarations
 	 ******************************/
@@ -145,7 +147,7 @@ PinController = function (renderer) {
 				}
 			)
 		);
-
+		
 		flagMesh.name = 'flagMesh';
 		
 		_setObjectPosition(
@@ -285,24 +287,73 @@ PinController = function (renderer) {
 			
 			earthYRotationHistory = earthMesh.rotation.y;
 			
-			console.log('click history', earthYRotationHistory / Math.PI * 180);
+			// console.log('click history', earthYRotationHistory / Math.PI * 180);
 			
-			console.log('before z:', earthAggregation.rotation.z);
-			earthAggregation.rotateOnAxis(
-				Z_AXIS,
-				Math.PI * OBLIUITY / 180
-			);
-			console.log('after z:', earthAggregation.rotation.z);
+			var initARotation = 0;
+			var initYRotation = earthMesh.rotation.y;
+			var initZRotation = earthAggregation.rotation.z;
+			console.log('initial earth.y: ', initYRotation);
 			
-			earthMesh.rotateOnAxis(
-				Y_AXIS,
-				-earthMesh.rotation.y - (90 + CONE_INIT_LONGITUDE) / 180 * Math.PI
-			);
+			var finalARotation = CONE_INIT_LATITUDE / 180 * Math.PI;
+			var finalYRotation = - (90 + CONE_INIT_LONGITUDE) / 180 * Math.PI;
+			var finalZRotation = 0;
+			
+			var animationDuration = 2000; // mili-seconds
+			
+			var zRotation = {z: initZRotation};
+			var zTarget = {z: finalZRotation};
+			var tweenRotateZ = new TWEEN.Tween(zRotation)
+				.to(zTarget, animationDuration)
+				.start();
+			tweenRotateZ.onUpdate(function () {
+				// console.log('on update z rotation: ', rotation);
+				earthAggregation.rotation.z = zRotation.z;
+			});
+
+			var yRotation = {y: initYRotation};
+			var yTarget = {y: finalYRotation};
+			var tweenRotateY = new TWEEN.Tween(yRotation)
+				.to(yTarget, animationDuration)
+				.start();
+			tweenRotateY.onUpdate(function() {
+				earthMesh.rotation.y = yRotation.y;
+			});
+			
+			var aRotation = {a: initARotation};
+			var aTarget = {a: finalARotation};
+			var tweenRotateAxis = new TWEEN.Tween(aRotation)
+				.to(aTarget, animationDuration)
+				.start();
+			tweenRotateAxis.onUpdate(function() {
+				earthAggregation.rotation.x = aRotation.a;
+			});
+			
+			tweenRotateZ.chain(tweenRotateY.chain(tweenRotateAxis));
+			
+
+			
+			// earthAggregation.rotateOnAxis(
+			// 	Z_AXIS,
+			// 	Math.PI * OBLIUITY / 180
+			// );
 			//
-			earthMesh.rotateOnAxis(
-				rotationAxis,
-				CONE_INIT_LATITUDE / 180 * Math.PI
-			);
+			// tween.to(
+			// 		{y: finalYRotation},
+			// 		animationDuration
+			// 	)
+			// 	.start();
+			//
+			// tween.onUpdate(function(object) {
+			// 	earthMesh.rotateOnAxis(
+			// 		Y_AXIS,
+			// 		(finalYRotation - initYRotation) / 100
+			// 	);
+			// });
+			//
+			// earthMesh.rotateOnAxis(
+			// 	rotationAxis,
+			// 	CONE_INIT_LATITUDE / 180 * Math.PI
+			// );
 			
 		} else { // resume cone location
 			
@@ -321,5 +372,9 @@ PinController = function (renderer) {
 				Z_AXIS,
 				-Math.PI * OBLIUITY / 180);
 		}
+	}
+	
+	function _initTweenAnimation() {
+	
 	}
 };

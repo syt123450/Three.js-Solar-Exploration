@@ -1,5 +1,19 @@
 XP Core Value: Communication
 
+### [Oct 21, 2017] - Group meeeing<br/>
+1. Created new demo, which allows the user to click on the cone to stop the earth from rotating.
+2. Refactored code snippet to initialize cone and flag.
+
+### [Oct 20, 2017] - Animation Demo<br/>
+1. Created a demo, which implemented animation with Tween.js. The final effect is that we can rotate
+the Earth in a pre-defined manner, with specified duration.
+
+### [Oct 19, 2017] - Tween.js<br/>
+1. Studied how to use Tween.js to created animation in THREE.js.
+
+### [Oct 18, 2017] - Created click cone demo (finished)<br/>
+1. Finished click cone icon to rotate earth demo.
+
 ### [Oct 17, 2017] - Created click cone demo (to be continued)<br/>
 1. Created new demo, which allows the user to click on the cone to stop the earth from rotating.
 2. Refactored code snippet to initialize cone and flag.
