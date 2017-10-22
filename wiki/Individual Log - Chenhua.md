@@ -1,3 +1,11 @@
+### [Oct. 21st, 2017]
+Meeting #5:
+  * Discussed color designs for halo of planets, main site, background and other scenes
+  * Exchanged ideas about how to assemble different scenes and prototypes
+  * Agreed on how to present data including information DIV and animations
+  * Decided data format for Google API
+  * Discussed problems faced from last week.
+***
 ### [Oct. 20th, 2017]
 Development:
   * Tried on ring prototye, but decide to freeze the prototype for now
