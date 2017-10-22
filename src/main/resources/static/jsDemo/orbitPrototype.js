@@ -20,7 +20,7 @@ OrbitDemoController = function (renderer) {
     var cameraDirection = new THREE.Vector3();
     var sign = -1;
 
-    var earthOrbitRadius = 4,
+    var earthOrbitRadius = 3,
         earthOrbitAngle = 0,
         earthOrbitSpeed = - 0.1,
 
@@ -50,7 +50,7 @@ OrbitDemoController = function (renderer) {
         light.position.set(0, 0, 0);
         scene.add(new THREE.AmbientLight(0x222222));
         scene.add(camera);
-        camera.position.set(0, 0, 9);
+        camera.position.set(0, 0, 5);
 
         scene.add(universeMesh);
         initOrbits();
@@ -109,8 +109,8 @@ OrbitDemoController = function (renderer) {
         sunAggregation.add(earthToMoon);
 
         moonAggregation.position.x = 1.3;
-        earthAggregation.position.x = 4;
-        earthToMoon.position.x = 4;
+        earthAggregation.position.x = 3;
+        earthToMoon.position.x = 3;
     }
 
     function rotationAndRevolution(){
