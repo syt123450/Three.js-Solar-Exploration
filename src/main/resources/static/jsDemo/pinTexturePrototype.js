@@ -70,19 +70,48 @@ PinController = function (renderer) {
     }
 
     function initCone() {
+        var size = 10;
+        var point, face, color, numberOfSides, vertexIndex;
+        var faceIndices = [ 'a', 'b', 'c', 'd' ];
+        var texture = new THREE.TextureLoader().load('../images/fadeTest.jpg');
+        texture.wrapS =  THREE.RepeatWrapping;
+        // texture.wrapT = new THREE.MeshPhongMaterial( { color: 0x085093 } );
+        var coneGeometry = new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 );
 
-        var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
+        for ( var i = 0; i < coneGeometry.faces.length; i++ )
+        {
+            face = coneGeometry.faces[ i ];
+            // determine if current face is a tri or a quad
+            numberOfSides = ( face instanceof THREE.Face3 ) ? 3 : 4;
+            console.log(face);
+            // assign color to each vertex of current face
+            for( var j = 0; j < numberOfSides; j++ )
+            {
+                vertexIndex = face[ faceIndices[ j ] ];
+                // store coordinates of vertex
+                point = coneGeometry.vertices[ vertexIndex ];
+                // initialize color variable
+                color = new THREE.Color( 0xffffff );
+                color.setRGB( 0.5 + point.x / size, 0.5 + point.y / size, 0.5 + point.z / size );
+                face.vertexColors[ j ] = color;
+                face.vertexTextures = texture;
+            }
+        }
+
+
+        var coneMesh = new THREE.Mesh( coneGeometry
+
             // new THREE.MeshBasicMaterial ({wireframe: true})
-            new THREE.MeshBasicMaterial({
-                    map: new THREE.TextureLoader().load(
-                        '../images/fadeTest.jpg'
-                    ),
+            // new THREE.MeshBasicMaterial({
+            //         map: texture
                     // side: THREE.BackSide
-                })
+                // })
+            // new THREE.EquirectangularReflectionMapping
             // new THREE.MeshPhongMaterial( { color: 0x085093 } )
 
         );
+
+
 
         coneMesh.position.set(position.x, position.y, position.z);
         coneMesh.lookAt(earthMesh.position);
