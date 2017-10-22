@@ -1,3 +1,6 @@
+### [Oct.21.2017] Researched on mapping the cone
+* Researched and tested on how to map the cone with fading colors
+
 ### [Oct.20.2017] Reasearch on how to make things explode
 * Research on how to make things explode
 

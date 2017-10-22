@@ -528,11 +528,11 @@ CamZoomInController = function(renderer) {
 	function updateCameaPosition(mode) {
 		
 		// From the top of the system
-		if (mode == 1) {
+		if (mode === 1) {
 			camera.position.set(0, 600, 0);
 		}
 		// From the horizontal position
-		else if (mode == 2) {
+		else if (mode === 2) {
 			camera.position.set(0, 0, 600);
 		}
 		// From the up-forward position
@@ -544,9 +544,9 @@ CamZoomInController = function(renderer) {
 		
 	}
 	
-	/**
-	 * Added function to keep the earth in the center of the scene
-	 */
+	/*************************
+	 * Custom code
+	 *********************/
 	var cameraDirection = new THREE.Vector3();
 	var init_distance = camera.position.distanceTo(earthAggregation.position);
 	var current_distance = init_distance;

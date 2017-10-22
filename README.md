@@ -8,7 +8,7 @@ NullPointerException
 ## Team Member
 (By last name):
 * Bou-yu Chen [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Bou%20Yu.md)
-* Bo Liu [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20bo.md)
+* Bo Liu [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Bo.md)
 * Yuntian Shen [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Yuntian.md)
 * Chenhua Zhu [project log](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Individual%20Log%20-%20Chenhua.md)
 

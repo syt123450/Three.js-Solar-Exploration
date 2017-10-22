@@ -1,4 +1,43 @@
-### Week3 Summaries - [Oct 1 - Oct5, 2017]
+### Week4 Summaries - [Oct 15  - Oct 21, 2017]
+
+Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Studied how to user Tween.js library.  | 1. Implement the the cone explosion demo. | 1.  Cone explosion effect is complicated. Need to find more online resources. |
+| 2. Explored how to implement the cone icon explosion effect with THREE.js. | 2. Find flags images for selected countries. |
+||3. Create cone icon growing demo ||
+
+
+Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Implemented backend interfaced. | 1. Create more database views for frontend display. | 1. The solution found online to implement Saturn ring is obsolete. |
+| 2. Created 8 planets using THREE.js. | 2. Provide data to for Google API. ||
+| 3. Tried to implement Saturn ring prototype. | 3. Try to complete Saturn ring. ||
+
+Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Combined features together to create new demos.  | 1. Switch scene management. | 1. Takes time to understand other people's code. |
+| 2. Refactor an open source Google API to use in the project. | 2. Create new div in frontend to hold new scenes. | 2. Google API is not well documented, hard to use. |
+| 3. Added new features. | 3. Continue to implement backend interface. | |
+| 4. Built middleware between backend and frontend.  | 4. Continue to combine new features. | |
+| | 5. Try to solve problems in Google's API. ||
+||6. Service change. ||
+
+Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Created demo, which allows user to center the cone in the screen by clicking it. | 1. Refactor change screne demo with Chenhua. | 1. The matrix transformation is complicated when rotating the Earth. |
+| 2. Created a demo to show how to use Tween.js to do animation. | 2. Adjust click cone demo with Chenhua. | |
+| 3. Managed team wikis. | 3. Implement animation before scene switching. | |
+
+
+### Week3 Summaries - [Oct 1 - Oct 5, 2017]
 
 Bou-Yu
 

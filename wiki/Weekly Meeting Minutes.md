@@ -3,9 +3,26 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
+# **Week 4 Meeting**
+* Host: Chenhua
+* Attendees: Qi (UI designer), Bou-yu, Bo, Chenhua, Yuntian
+* Time: 10/21/2017 (2.5 hours)
+* Recorder: Bo
+
+Topic 1: <br/>
+* Qi showed the team multiple color scheme and design pictures to the team.
+* Discussed details about the color scheme and decided which one to use.
+
+Topic 2: <br/>
+* What did we accomplished last week
+* What we will do next week
+* What challenges we have<br/>
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)
+
+
 # **Week 3 Meeting**
 * Host: Chenhua
-* Attendees: Bo-you, Bo, Chenhua, Yuntian, Qi 
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian, Qi 
 * Time: 10/5/2017 (2 hours)
 * Recorder: Bo
 
@@ -29,7 +46,7 @@ Topic 2: Discussion<br/>
 
 # **Week 2 Meeting 2**
 * Host: Chenhua
-* Attendees: Bo-you, Bo, Chenhua, Yuntian
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
 * Time: 9/30/2017 (1 hour)
 * Recorder: Bo
 
@@ -41,7 +58,7 @@ Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointe
 
 # **Week 2 Meeting 1**
 * Host: N/A
-* Attendees: Bo-you, Bo, Chenhua, Yuntian
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
 * Time: 9/28/2017 (3 hours)
 * Recorder: Bo
 
@@ -50,7 +67,7 @@ Solving technical issues together.
 
 # **Week 1 Meeting**
 * Host: Chenhua
-* Attendees: Bo-you, Bo, Chenhua, Yuntian
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
 * Time: 9/23/2017 (3 hours)
 * Recorder: Bo
 
@@ -79,7 +96,7 @@ Discussed main functionalities of the app.
 
 # **Week 0 Meeting**
 * Host: Chenhua
-* Attendees: Bo-you, Bo, Chenhua, Yuntian
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
 * Time: 9/17/2017 (3 hours)
 * Recorder: Bo
 
@@ -129,7 +146,7 @@ user story
 
 ## Project Details
 What data to display?
-data source: (Bo-you)
+data source: (Bou-yu)
 https://www.kaggle.com/datasets
 Twitter, LinkedIn, Facebook, Github API
 
