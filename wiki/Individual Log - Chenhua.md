@@ -1,3 +1,11 @@
+### [Oct. 22nd, 2017]
+Development:
+  * Update total energy view
+    * Now, if a year of specific area has no value, but which has values from a different energy source, then the total energy will be calculated by default the nulll value as zero
+  * Communicate with YUNTIAN for total value range issue
+    * The required value range is around 1.0 (0.5~1.5)
+    * The actual values vary from 0.56 to 13000+
+***
 ### [Oct. 21st, 2017]
 Meeting #5:
   * Discussed color designs for halo of planets, main site, background and other scenes
