@@ -1,3 +1,7 @@
+### [Oct.22.2017] Worked on making things explode
+* Worked on making things explode
+* Researched on how to map different textures towards the edges and flat surface of the cone
+
 ### [Oct.21.2017] Researched on mapping the cone
 * Researched and tested on how to map the cone with fading colors
 
