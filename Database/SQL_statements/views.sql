@@ -12,21 +12,31 @@
 #
 CREATE OR REPLACE VIEW v_TotalEnergy AS
       (
-            SELECT
-                  ag.areaName, ag.latitude, ag.longitude,
-                  c.year,
-                  c.amount as Coal_Amount,
-                  co.amount as CrudeOil_Amount,
-                  ng.amount as NaturalGas_Amount,
-                  (c.amount*0.0227 + co.amount*5.6 + ng.amount*1.03) as Quadrillion_BTU
-            FROM
-                  Coal c, CrudeOil co, NaturalGas ng, AreaGeography ag
-            WHERE
-                  ag.areaName = c.countryName
-              AND c.countryName = co.countryName
-              AND c.year = co.year
-              AND c.countryName = ng.countryName
-              AND c.year = ng.year
+        SELECT
+              co.countryName, ag.latitude, ag.longitude,
+              co.year,
+              IFNULL(c.amount, 0) as Coal_Amount,
+              IFNULL(co.amount, 0) as CrudeOil_Amount,
+              IFNULL(ng.amount, 0) as NaturalGas_Amount,
+              (IFNULL(c.amount, 0)*0.0227 + IFNULL(co.amount, 0)*5.6 + IFNULL(ng.amount, 0)*1.03) as Quadrillion_BTU
+        FROM
+              CrudeOil co
+        LEFT JOIN
+              Coal c
+            ON
+              co.countryName = c.countryName
+            AND
+              co.year = c.year
+        LEFT JOIN
+              NaturalGas ng
+            ON
+              co.countryName = ng.countryName
+            AND
+              co.year = ng.year
+        LEFT JOIN
+              AreaGeography ag
+            ON
+              co.countryName = ag.areaName
       );
 
 # Coal View
