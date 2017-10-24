@@ -13,6 +13,19 @@ Development:
     * The required value range is around 1.0 (0.5~1.5)
     * The actual values vary from 0.56 to 13000+
 ***
+### [Week 4 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process for different parts
+    * Make sure each part is on schedule and ready to serve for other parts
+  * Communication
+    * Keep communicating with team members for 
+      * refactor demo/prototype codes for readability
+      * discussed List formats and mesh names visuability
+      * discussed MySQLUtils usage
+      * Three.js learning experience
+  * Decide as late as possible
+    * Generated circle orbit prototype and tried the ring prototype
+***
 ### [Oct. 21st, 2017]
 Meeting #5:
   * Discussed color designs for halo of planets, main site, background and other scenes
@@ -69,6 +82,18 @@ Development:
   * Alternate some solar system scales, including orbit radius, camera positions
   * Provide global variables of each mesh for now. This could be alternated if we find a proper solution on accessing aggregations without touching meshes
 ***
+### [Week 3 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process of different parts (Three.js and back end)
+  * Communication
+    * Keep communicating with team members for 
+      * refactor demo codes for readability
+      * generate proper data format for front end
+      * Three.js learning experience
+  * Decide as late as possible
+    * Different database views for selection
+    * Solar system scene prototype and rotation/revolution prototype
+***
 ### [Oct. 6th, 2017]
 Meeting #4:
   * Exchanged ideas for sperate planet scenes and solar system scene
@@ -92,6 +117,17 @@ Development:
   * Refactored all my demos
   * Re-orgnized the scene for the Sun, the Earth and the Moon
   * Prepared for the scene of the whole solar system
+***
+### [Week 2 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process of different parts (Three.js, data collection and back end)
+  * Communication
+    * Keep communicating with team members for 
+      * design ideas 
+      * Data collection process
+      * Three.js learning experience
+  * Decide as late as possible
+    * Produce prototypes of the solar system
 ***
 ### [Sept. 30th, 2017]
 Meeting #3:
@@ -137,6 +173,15 @@ Development:
 Development:
   * Three.js: Object3D
   * Three.js: local coordination and relative movement
+***
+### [Week 1 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Discussed on the project landscape, direction, standards and rules
+    * Divided the project to different work parts: data collection, front end UI, front end Three.js and back end (Spring boot + MySQL)
+  * Communication
+    * Keep communicating with team members for design ideas and Three.js learning experience
+  * Decide as late as possible
+    * Try to get all possible solutions then decide which one is better
 ***
 ### [Sept. 23rd, 2017]
 Meeting #2:
