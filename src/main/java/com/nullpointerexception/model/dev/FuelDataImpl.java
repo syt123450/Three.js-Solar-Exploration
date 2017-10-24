@@ -18,7 +18,7 @@ public class FuelDataImpl implements FuelDataService {
     @Override
     public List<Double> getAllData() {
 
-        return mySQLUtils.getAllData();
+        return mySQLUtils.getGeoAmountData();
     }
 
     @Override

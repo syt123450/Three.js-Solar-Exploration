@@ -13,8 +13,10 @@
 CREATE OR REPLACE VIEW v_TotalEnergy AS
       (
         SELECT
-              co.countryName, ag.latitude, ag.longitude,
-              co.year,
+              co.countryName as areaName,
+              ag.latitude as latitude,
+              ag.longitude as longitude,
+              co.year as year,
               IFNULL(c.amount, 0) as Coal_Amount,
               IFNULL(co.amount, 0) as CrudeOil_Amount,
               IFNULL(ng.amount, 0) as NaturalGas_Amount,

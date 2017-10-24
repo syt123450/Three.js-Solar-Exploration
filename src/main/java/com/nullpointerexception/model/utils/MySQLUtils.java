@@ -91,14 +91,9 @@ public class MySQLUtils {
         return null;
     }
 
-    public List<Double> getAllData() {
-
-        return null;
-    }
-
     public List<Double> getGeoAmountData(){
         if (this.conn !=null){
-            String query = "SELECT longitude, latitude, Quadrillion_BTU FROM v_totalenergy";
+            String query = "SELECT areaName, longitude, latitude, SUM(Quadrillion_BTU) as sum FROM v_totalenergy GROUP BY areaName, longitude, latitude";
             try {
                 preStmt = conn.prepareStatement(query);
 
@@ -152,18 +147,34 @@ public class MySQLUtils {
         Double longitude = 0.0;
         Double latitude = 0.0;
         Double amount = 0.0;
+        Double max = 0.0;
         try {
             while (resultSet.next()){
                 longitude = resultSet.getDouble("longitude");
                 latitude = resultSet.getDouble("latitude");
-                amount = resultSet.getDouble("Quadrillion_BTU");
-                System.out.println("Row[" + resultSet.getRow() + "]:\t" + longitude + "\t" + latitude + "\t" + amount);
+                amount = resultSet.getDouble("sum");
+//                System.out.println("Row[" + resultSet.getRow() + "]:\t" + longitude + "\t" + latitude + "\t" + amount);
                 ret.add(longitude);
                 ret.add(latitude);
                 ret.add(amount);
+                // update max
+                if (amount >max) {
+                    max = amount;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        max = max /1.8;
+        Double temp = 0.0;
+        for (int i =2; i <ret.size(); i+=3){
+            temp = ret.get(i) /max;
+            if (temp < 0.01){
+                temp = 0.01;
+            }
+//            System.out.println("IDX[" + i + "]: " + temp);
+            ret.set(i, temp);
         }
 
         return ret;
@@ -172,7 +183,7 @@ public class MySQLUtils {
     public static void main(String[] args){
         MySQLUtils mySQLUtils = new MySQLUtils();
         List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
-        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+//        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
         System.out.println("");
     }
 }
