@@ -1,15 +1,16 @@
-
-# Units for existed energy types in DB
-#     Coal        ==>   Million Short Ton       ==>   (0.907 * 10^6) t
-#     Crude Oil   ==>   Billion Barrels         ==>   (10^9) Barrels
-#     Natural Gas ==>   Trillion Cubic Feet     ==>   (10^12) Cubic Feet
-#
-#     General Energy Unit ==> BTU
-# Energy for existed energy types in DB
-#     Coal        ==>   (25 * 10^6) BTU/t       ==>   (0.0227 * 10^15) BTU    ==>   0.0227 Quadrillion (Peta) BTU
-#     Crude Oil   ==>   (5.6 * 10^6) BTU/Barrel ==>   (5.6 * 10^15) BTU       ==>   5.6 Quadrillion (Peta) BTU
-#     Natural Gas ==>   1030 BTU/Cubic Feet     ==>   (1.03 * 10^15) BTU      ==>   1.03 Quadrillion (Peta) BTU
-#
+ /*
+  * Units for existed energy types in DB
+  *     Coal        ==>   Million Short Ton       ==>   (0.907 * 10^6) t
+  *     Crude Oil   ==>   Billion Barrels         ==>   (10^9) Barrels
+  *     Natural Gas ==>   Trillion Cubic Feet     ==>   (10^12) Cubic Feet
+  *
+  *     General Energy Unit ==> BTU
+  * Energy for existed energy types in DB
+  *     Coal        ==>   (25 * 10^6) BTU/t       ==>   (0.0227 * 10^15) BTU    ==>   0.0227 Quadrillion (Peta) BTU
+  *     Crude Oil   ==>   (5.6 * 10^6) BTU/Barrel ==>   (5.6 * 10^15) BTU       ==>   5.6 Quadrillion (Peta) BTU
+  *     Natural Gas ==>   1030 BTU/Cubic Feet     ==>   (1.03 * 10^15) BTU      ==>   1.03 Quadrillion (Peta) BTU
+  *
+  */
 CREATE OR REPLACE VIEW v_TotalEnergy AS
       (
         SELECT
@@ -41,7 +42,7 @@ CREATE OR REPLACE VIEW v_TotalEnergy AS
               co.countryName = ag.areaName
       );
 
-# Coal View
+-- Coal View
 CREATE OR REPLACE VIEW v_Coal AS
       (
             SELECT
@@ -53,7 +54,7 @@ CREATE OR REPLACE VIEW v_Coal AS
                   ag.areaName = c.countryName
       );
 
-# Crude Oil View
+-- Crude Oil View
 CREATE OR REPLACE VIEW v_CrudeOil AS
       (
             SELECT
@@ -65,7 +66,7 @@ CREATE OR REPLACE VIEW v_CrudeOil AS
                   ag.areaName = co.countryName
       );
 
-# Natural Gas View
+-- Natural Gas View
 CREATE OR REPLACE VIEW v_NaturalGas AS
       (
             SELECT
