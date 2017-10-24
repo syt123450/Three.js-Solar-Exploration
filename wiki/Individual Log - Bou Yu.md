@@ -1,3 +1,19 @@
+### [Oct.23.2017 - Oct.29.2017] Core Values
+* See the whole
+  * Each member works on respective parts
+  * Keep work on schedule for timely delivery
+
+
+* Communication
+  * Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code
+
+
+* Decide as late as possible
+  * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
+
+### [Oct.23.2017] Researched more on how to make objects explode
+* Worked with Bo to find out more about raycaster and how to remove objects from aggregation
+
 ### [Oct.22.2017] Worked on making things explode
 * Worked on making things explode
 * Researched on how to map different textures towards the edges and flat surface of the cone
@@ -16,7 +32,7 @@
 * Moved personal log to .md
 
 ### [Oct.06.2017] Fixed cone angle
-* Fixed cone angle with Chenghua's help (Use rotateX instead of rotation.x = 
+* Fixed cone angle with Chenghua's help (Use rotateX instead of rotation.x =
 
 ### [Oct.05.2017] Added alternative pin design
 * Added Alternative pin design
@@ -31,7 +47,7 @@
 * Refactoring & fixing pin prototype
 
 ### [Sept.29.2017] Front-end pin icon & Country longitude and latitude data
-* Extract country coordinates from google api and uploaded to github 
+* Extract country coordinates from google api and uploaded to github
 * Managed to put in pin icon and flag, allowed cone to spin but I'm having trouble getting it in the right location and angle
 
 ### [Sept.28.2017] Fix data extraction script
@@ -75,4 +91,3 @@ Meeting, talking about projecting requirements
 ### [Sept.14.2017] Meeting #0
 
 Meeting, talking about project topic
-
