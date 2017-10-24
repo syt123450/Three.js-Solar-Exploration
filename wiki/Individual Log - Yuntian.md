@@ -1,3 +1,18 @@
+[Oct.23.2017] Summary
+
+* Finish the demo.html as our first edition
+
+[Core Value This Week] 
+
+* See the whole
+I find that half time is passed, we need to give out a milestone edition, so that we can have a potential deliverable product, this is the see the whole value in XP.
+
+* Communication
+In order to do the help teammates refactor their code, I make an appointment with the teammates, share the understanding of the code style, and refactor the code together, this process shows the communication value of XP
+
+* Decide as late as possible
+This week I refactor the google's webgl-globe library, however, there are still some bugs in it, but I think these bugs will not influence our milestone edition, so I decide to fix it later, this process shows the decide as late as possible value in XP
+
 [Oct.19.2017] Work Done Summary
 
 * Finish refactoring the google's webgl-globe library
@@ -19,6 +34,17 @@ Work Done:
 
 Problems: 
 * Google's webgl-globe library has several problem, such as it renderer on the div
+
+[Core Value This Week] 
+
+* See the whole
+I want to use the google's webgl-globe, but this library do not have the same as the "Scene" we defined in our project, I many cause some problem, so I propose it in our meeting, this shows the see the whole value in XP.
+
+* Communication
+As I face some problem using the third-party library, I propose this problem in our technique meeting, and we talk about this problem together and find out a work around, this process show the communication value of XP.
+
+* Decide as late as possible
+We talk about the problem about a third-party library, we decide to use a work around to fix it, although the work around can not solve the whole problem, but it can solve part of it, and we can solve left part later. This shows the decide as late as possible.
 
 [Oct.6.2017] Brief Summary
 
@@ -43,6 +69,17 @@ Good news:
 
 * We can use Google's webgl-globe in our project
 
+[Core Value This Week] 
+
+* See the whole
+I find that we have wrote many features, and I think that if I combine all these features, we can get a good first edition, so a write a combine demo, this shows the see the whole value in XP.
+
+* Communication
+This week, I communicate with the teammates about what they have done before, and combine them together into a demo. In the communication, we disscuss how to integrate their work into a combinedDemo, this process show the communication value of XP.
+
+* Decide as late as possible
+When I write the combine demo, I find that the switch scene is an important feature, but we have not implement yet. However, I won't use this feature in this feature, so I decide to implement it next week, it shows the principle decide as late as possible.
+
 [Sept.29.2017] Work Done
 
 * Create meteor in universe
@@ -63,6 +100,17 @@ Good news:
 
 * Still Work In Progress
 1. Create meteor in the universe
+
+[Core Value This Week]
+
+* See the whole
+We know we have three part: front end, back end, and database. So we let each one be responsible for at least one part, and go to learn some technique
+
+* Communication
+This week, I participate in the meeting and communicate with the team member about the design and technique use of our project, it show the communication value in XP.
+
+* Decide as late as possible
+As we are not familiar with the Three.js, we decide to write the prototype first, and then decide what we will do next, this show the decide as late as possible.
 
 [Sept.23.2017] Useful Demo
 
