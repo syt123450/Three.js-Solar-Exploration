@@ -1,3 +1,10 @@
+### [Oct. 23rd, 2017]
+Development:
+  * Update the SQL statement of getGeoAmountData() to catch data for all years as the sum
+  * Coordinate the implementation of transferGeoAmountData() method to satisfy:
+    * Count the maximum
+    * resize the value from 13000+ to around 0.01 ~ 1.8 range
+***
 ### [Oct. 22nd, 2017]
 Development:
   * Update total energy view
