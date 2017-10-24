@@ -1,4 +1,7 @@
-XP Core Value: Communication
+***
+|| XP CORE VALUES| 
+| ------| ------ | 
+| WEEK 4| **See the whole**</br>Starting from the 4th week, we begin to put all the pieces we have worked in the past together towards our final product as a whole.</br></br>**Communication**</br>Using wechat group, kept the teammate updated about my progress on implementing the prototypes.</br></br>**Decide as late as possible**</br>For the click to rotate the earth effect, there are different ways to present it. Then we decide not to make a decision at this point, instead we just make a minimum working prototype.</br>|
 
 ### [Oct 21, 2017] - Group meeeing<br/>
 1. Created new demo, which allows the user to click on the cone to stop the earth from rotating.
@@ -21,6 +24,11 @@ the Earth in a pre-defined manner, with specified duration.
 ### [Oct 16, 2017] <br/>
 1. Updated team project wiki.
 2. Studied how to do animation in Three.js.
+
+***
+|| XP CORE VALUES| 
+| ------| ------ | 
+| WEEK 3|**Communication**</br>In addition to the regular weekly meeting, we held an extra technical meeting, so that the teams members can help each others to solve the technical issues we had in the past weeeks.</br></br>**Decide as late as possible**</br>Instead of building the final product right away, we started with building smaller prototypes to verify our ideas. All these prototypes will be later be merged into our final product depending on our requirement at that time.</br></br><br/>
 
 ***
 ### [Oct 11, 2017] - Created change scene demo<br/>
@@ -63,6 +71,11 @@ cmpe202-nullpointerexception/src/main/resources/static/htmlDemo/shaderDemo.html
 Communication: Met with Yuntian in person to solve the opacity problem.
 
 ***
+|| XP CORE VALUES| 
+| ------| ------ | 
+| WEEK 2|**Communication**</br>Met with Yuntian in person to solve the opacity problem.</br></br>**Decide as late as possible**</br>Instead of building the final product right away, we started with building smaller prototypes to verify our ideas. All these prototypes will be later be merged into our final product depending on our requirement at that time.</br></br><br/>
+
+***
 ### [Sep 30, 2017] - Weekly Meeting<br/>
 1. Weekly meeting.
 2. Took notes for the meeting and wrote weekly meeting minutes.
@@ -100,6 +113,11 @@ https://github.com/mrdoob/three.js/blob/master/examples/webgl_interactive_cubes.
 
 **References**<br/>
 https://drive.google.com/file/d/0B3cyrrSDueDhWTZTOXhvUFJSd1E/view?usp=sharing
+
+***
+|| XP CORE VALUES| 
+| ------| ------ | 
+| WEEK 1|**Communication**</br>For better communication, we setup a Wechat group for daily discussion. The goal is to keep everyone updated on each others progress and solve technical or non-techincal issue ASAP through communication.</br></br>**Decide as late as possible**</br>Because most of the team members are not familiar with THREE.js, so we decided to make prototypes first, instead of making the final decision about what the UI will look like exactly.</br></br><br/>
 
 ***
 ### [Sep 22, 2017] - Three.js exploration<br/>

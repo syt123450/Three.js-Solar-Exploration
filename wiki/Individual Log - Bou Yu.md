@@ -16,7 +16,7 @@
 
 ___
 
-### [Oct.16.2017 - Oct.22.2017] Core Values
+### [Week 4 XP Core Values (or Lean/Kanban Principle)] 
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -46,7 +46,7 @@ ___
 
 ___
 
-### [Oct.02.2017 - Oct.08.2017] Core Values
+### [Week 3 XP Core Values (or Lean/Kanban Principle)] 
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -80,7 +80,7 @@ ___
 
 ___
 
-### [Sept.25.2017 - Oct.01.2017] Core Values
+### [Week 2 XP Core Values (or Lean/Kanban Principle)] 
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -108,7 +108,7 @@ ___
 
 ___
 
-### [Sept.18.2017] - Sept.24.2017] Core Values
+### [[Week 1 XP Core Values (or Lean/Kanban Principle)] 
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
