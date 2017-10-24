@@ -2,7 +2,7 @@
 
 * Finish the demo.html as our first edition
 
-[Core Value This Week] 
+[Week 4 XP Core Values (or Lean/Kanban Principle)] 
 
 * See the whole
 I find that half time is passed, we need to give out a milestone edition, so that we can have a potential deliverable product, this is the see the whole value in XP.
@@ -35,7 +35,7 @@ Work Done:
 Problems: 
 * Google's webgl-globe library has several problem, such as it renderer on the div
 
-[Core Value This Week] 
+[Week 3 XP Core Values (or Lean/Kanban Principle)] 
 
 * See the whole
 I want to use the google's webgl-globe, but this library do not have the same as the "Scene" we defined in our project, I many cause some problem, so I propose it in our meeting, this shows the see the whole value in XP.
@@ -69,7 +69,7 @@ Good news:
 
 * We can use Google's webgl-globe in our project
 
-[Core Value This Week] 
+[Week 2 XP Core Values (or Lean/Kanban Principle)] 
 
 * See the whole
 I find that we have wrote many features, and I think that if I combine all these features, we can get a good first edition, so a write a combine demo, this shows the see the whole value in XP.
@@ -101,7 +101,7 @@ When I write the combine demo, I find that the switch scene is an important feat
 * Still Work In Progress
 1. Create meteor in the universe
 
-[Core Value This Week]
+[Week 1 XP Core Values (or Lean/Kanban Principle)]
 
 * See the whole
 We know we have three part: front end, back end, and database. So we let each one be responsible for at least one part, and go to learn some technique

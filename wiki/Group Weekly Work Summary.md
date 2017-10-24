@@ -1,6 +1,6 @@
-### Week4 Summaries - [Oct 15  - Oct 21, 2017]
+## Week4 Summaries - [Oct 15  - Oct 21, 2017]
 
-Bou-Yu
+### Bou-Yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -9,7 +9,7 @@ Bou-Yu
 ||3. Create cone icon growing demo ||
 
 
-Chenhua
+### Chenhua
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -17,7 +17,7 @@ Chenhua
 | 2. Created 8 planets using THREE.js. | 2. Provide data to for Google API. ||
 | 3. Tried to implement Saturn ring prototype. | 3. Try to complete Saturn ring. ||
 
-Yuntian
+### Yuntian
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -28,7 +28,7 @@ Yuntian
 | | 5. Try to solve problems in Google's API. ||
 ||6. Service change. ||
 
-Bo
+### Bo
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -36,10 +36,21 @@ Bo
 | 2. Created a demo to show how to use Tween.js to do animation. | 2. Adjust click cone demo with Chenhua. | |
 | 3. Managed team wikis. | 3. Implement animation before scene switching. | |
 
+### XP Core Values
 
-### Week3 Summaries - [Oct 1 - Oct 5, 2017]
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **Communication**</br>Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code.</br></br>**Decide as late as possible**</br>Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need.</br>|
+| Chenhua| **See the whole**</br>Keep the development process for different parts.</br>Make sure each part is on schedule and ready to serve for other parts</br></br>**Decide as late as possible**</br>Generated circle orbit prototype and tried the ring prototype.</br></br>**Communication**</br>Keep communicating with team members for: refactor demo/prototype codes for readability, discussed List formats and mesh names visuability, discussed MySQLUtils usage, Three.js learning experience</br>
+| Yuntian| **See the whole**</br>I find that half time is passed, we need to give out a milestone edition, so that we can have a potential deliverable product, this is the see the whole value in XP.</br></br>**Communication**</br>In order to do the help teammates refactor their code, I make an appointment with the teammates, share the understanding of the code style, and refactor the code together, this process shows the communication value of XP.</br></br>**Decide as late as possible**</br>This week I refactor the google's webgl-globe library, however, there are still some bugs in it, but I think these bugs will not influence our milestone edition, so I decide to fix it later, this process shows the decide as late as possible value in XP.</br>|
+| Bo| **See the whole**</br>Starting from the 4th week, we begin to put all the pieces we have worked in the past together towards our final product as a whole.</br></br>**Communication**</br>Using wechat group, kept the teammate updated about my progress on implementing the prototypes.</br></br>**Decide as late as possible**</br>For the click to rotate the earth effect, there are different ways to present it. Then we decide not to make a decision at this point, instead we just make a minimum working prototype.</br>|
 
-Bou-Yu
+
+***
+
+## Week3 Summaries - [Oct 1 - Oct 5, 2017]
+
+### Bou-Yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -48,7 +59,7 @@ Bou-Yu
 |3. Fixed pin angle | | |
 
 
-Chenhua
+### Chenhua
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -57,7 +68,7 @@ Chenhua
 | 3. Implemented method to calculated total energy.| TO BE FILLED| |
 | | | |
 
-Yuntian
+### Yuntian
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -67,7 +78,7 @@ Yuntian
 | 4. Created and implemented more utils functions.| | 4. Continuously play animation.|
 | | | 5. Render 'div' instead of 'canvas' with Three.js.|
 
-Bo
+### Bo
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -75,9 +86,20 @@ Bo
 | 2. Proposed color scheme and UI mockup.| 2. Solve the problem of switching scenes.| |
 | 3. Wrote weekly meeting minutes and managed team wiki.| | |
 
-### Week2 Summaries - [Sep 24 - Sep 30, 2017]
+### XP Core Values
 
-Bou-yu
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **See the whole**</br>Each member works on respective parts.</br>Keep work on schedule for timely delivery.</br></br>**Communication**</br>Talked with team member about making the cone look better.</br>Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code.</br></br>**Decide as late as possible**</br>Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need.</br>|
+| Chenhua| **See the whole**</br>Keep the development process of different parts (Three.js and back end).</br></br>**Decide as late as possible**</br>Different database views for selection</br>Solar system scene prototype and rotation/revolution prototype</br></br>**Communication**</br>Keep communicating with team members for: refactor demo/prototype codes for readability, generate proper data format for front end, Three.js learning experience</br></br>
+| Yuntian| **See the whole**</br>I want to use the google's webgl-globe, but this library do not have the same as the "Scene" we defined in our project, I many cause some problem, so I propose it in our meeting, this shows the see the whole value in XP.</br></br>**Communication**</br>As I face some problem using the third-party library, I propose this problem in our technique meeting, and we talk about this problem together and find out a work around, this process show the communication value of XP.</br></br>**Decide as late as possible**</br>We talk about the problem about a third-party library, we decide to use a work around to fix it, although the work around can not solve the whole problem, but it can solve part of it, and we can solve left part later. This shows the decide as late as possible.</br>|
+| Bo| **Communication**</br>In addition to the regular weekly meeting, we held an extra technical meeting, so that the teams members can help each others to solve the technical issues we had in the past weeeks.</br></br>**Decide as late as possible**</br>Instead of building the final product right away, we started with building smaller prototypes to verify our ideas. All these prototypes will be later be merged into our final product depending on our requirement at that time.</br>|
+
+
+***
+## Week2 Summaries - [Sep 24 - Sep 30, 2017]
+
+### Bou-yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -86,7 +108,7 @@ Bou-yu
 ||3. Add grow/shrink animation to pin.||
 
 
-Chenhua
+### Chenhua
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -95,7 +117,7 @@ Chenhua
 | | 3. Create views of the database. | |
 | | 4.Implement algorithm for calculating total energy. | |
 
-Yuntian
+### Yuntian
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -106,7 +128,7 @@ Yuntian
 | 5. Made the earth rotate in the right angle and direction| | |
 | 4. Refactored JS code and combined features| | |
 
-Bo
+### Bo
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -115,9 +137,19 @@ Bo
 | 3. Wrote weekly meeting minutes and managed team wiki.| 3. Improve halo effect.| |
 
 
-### Week1 Summaries - [Sep 17 - Sep 23, 2017]
+### XP Core Values
 
-Bou-yu
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **See the whole**</br>Each member works on respective parts.</br>Keep work on schedule for timely delivery.</br></br>**Communication**</br>Solved the problem of the cone angle being wrong with help from team members.</br>Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code.</br></br>**Decide as late as possible**</br>Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need.</br>|
+| Chenhua| **See the whole**</br>Keep the development process of different parts (Three.js, data collection and back end).</br></br>**Decide as late as possible**</br>Produce prototypes of the solar system.</br></br>**Communication**</br>Keep communicating with team members for: Design ideas, Data collection process, Three.js learning experience. </br></br>
+| Yuntian| **See the whole**</br>I find that we have wrote many features, and I think that if I combine all these features, we can get a good first edition, so a write a combine demo, this shows the see the whole value in XP.</br></br>**Communication**</br>This week, I communicate with the teammates about what they have done before, and combine them together into a demo. In the communication, we disscuss how to integrate their work into a combinedDemo, this process show the communication value of XP.</br></br>**Decide as late as possible**</br>When I write the combine demo, I find that the switch scene is an important feature, but we have not implement yet. However, I won't use this feature in this feature, so I decide to implement it next week, it shows the principle decide as late as possible.</br>|
+| Bo| **Communication**</br>Met with other team members offline to discuss technical issues.</br></br>**Decide as late as possible**</br>Instead of building the final product right away, we started with building smaller prototypes to verify our ideas. All these prototypes will be later be merged into our final product depending on our requirement at that time.</br>|
+
+***
+## Week1 Summaries - [Sep 17 - Sep 23, 2017]
+
+### Bou-yu
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -126,7 +158,7 @@ Bou-yu
 | 3. Built 3D model for cloud and loaded into Three.js.| | |
 
 
-Chenhua
+### Chenhua
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -134,7 +166,7 @@ Chenhua
 | 2. Drew a 3D globe with Three.js.| 2. Design and create database tables and load data. | |
 | 3. Studied Three.js libraries and demos.| 3. Create solar system model. Simulate planets orbiting the sun.| |
 
-Yuntian
+### Yuntian
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
@@ -142,10 +174,19 @@ Yuntian
 | 2. Researched useful Three.js libraries.| 2. Learn how to output coordinates of a point on a globe. | |
 | 3. Summarized lot of Three.js examples.| 3. Create mock for API.| |
 
-Bo
+### Bo
 
 | Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
 | ------| ------ | ------ |
 | 1. Researched Three.js libraries and summarized useful examples.| 1. Draw prototype diagrams with Axure.| 1. Too many libraries to learn in Three.js.|
 | 2. Managed Github Team wiki folders. | 2. Study Projector class to get longitude and latitude. | |
 | | | |
+
+### XP Core Values
+
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **See the whole**</br>Each member works on respective parts.</br>Keep work on schedule for timely delivery.</br></br>**Communication**</br>Met with the whole group to see what needs to be done and what people are interested in doing.</br>Talked with team member about data format and how to make it easier to import.</br></br>**Decide as late as possible**</br>Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need.</br>|
+| Chenhua| **See the whole**</br>Discussed on the project landscape, direction, standards and rules.</br>Divided the project to different work parts: data collection, front end UI, front end Three.js and back end (Spring boot + MySQL)</br></br>**Decide as late as possible**</br>Try to get all possible solutions then decide which one is better.</br></br>**Communication**</br>Keep communicating with team members for design ideas and Three.js learning experience. </br></br>
+| Yuntian| **See the whole**</br>We know we have three part: front end, back end, and database. So we let each one be responsible for at least one part, and go to learn some technique.</br></br>**Communication**</br>This week, I participate in the meeting and communicate with the team member about the design and technique use of our project, it show the communication value in XP.</br></br>**Decide as late as possible**</br>As we are not familiar with the Three.js, we decide to write the prototype first, and then decide what we will do next, this show the decide as late as possible.</br>|
+| Bo| **Communication**</br>For better communication, we setup a Wechat group for daily discussion. The goal is to keep everyone updated on each others progress and solve technical or non-techincal issue ASAP through communication.</br></br>**Decide as late as possible**</br>Because most of the team members are not familiar with THREE.js, so we decided to make prototypes first, instead of making the final decision about what the UI will look like exactly.</br>|
