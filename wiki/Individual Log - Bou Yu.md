@@ -14,6 +14,22 @@
 ### [Oct.23.2017] Researched more on how to make objects explode
 * Worked with Bo to find out more about raycaster and how to remove objects from aggregation
 
+___
+
+### [Oct.16.2017 - Oct.22.2017] Core Values
+* See the whole
+  * Each member works on respective parts
+  * Keep work on schedule for timely delivery
+
+
+* Communication
+  * Talked with team member about making the cone look better
+  * Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code
+
+
+* Decide as late as possible
+  * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
+
 ### [Oct.22.2017] Worked on making things explode
 * Worked on making things explode
 * Researched on how to map different textures towards the edges and flat surface of the cone
@@ -27,6 +43,22 @@
 ### [Oct.19.2017] Fixed cone position
 * Fixed cone position so now it doesnt poke into earth
 * Looked for ways to make earth explode
+
+___
+
+### [Oct.02.2017 - Oct.08.2017] Core Values
+* See the whole
+  * Each member works on respective parts
+  * Keep work on schedule for timely delivery
+
+
+* Communication
+  * Solved the problem of the cone angle being wrong with help from team members
+  * Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code
+
+
+* Decide as late as possible
+  * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
 
 ### [Oct.08.2017] Moved personal log to .md
 * Moved personal log to .md
@@ -46,6 +78,23 @@
 ### [Oct.02.2017] Refactor code
 * Refactoring & fixing pin prototype
 
+___
+
+### [Sept.25.2017 - Oct.01.2017] Core Values
+* See the whole
+  * Each member works on respective parts
+  * Keep work on schedule for timely delivery
+
+
+* Communication
+  * Met with the team to decide on the design of the cone
+  * Met with other members of the group to talk about what they did, three.js learning experience, and refactoring code
+
+
+* Decide as late as possible
+  * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
+
+
 ### [Sept.29.2017] Front-end pin icon & Country longitude and latitude data
 * Extract country coordinates from google api and uploaded to github
 * Managed to put in pin icon and flag, allowed cone to spin but I'm having trouble getting it in the right location and angle
@@ -55,6 +104,24 @@
 
 ### [Sept.25.2017] Completed Data extraction script
 * Completed Data extraction script
+
+
+___
+
+### [Sept.18.2017] - Sept.24.2017] Core Values
+* See the whole
+  * Each member works on respective parts
+  * Keep work on schedule for timely delivery
+
+
+* Communication
+  * Met with the whole group to see what needs to be done and what people are interested in doing
+  * Talked with team member about data format and how to make it easier to import
+
+
+* Decide as late as possible
+  * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
+
 
 ### [Sept.24.2017] Data extraction script
 * Worked on the script
