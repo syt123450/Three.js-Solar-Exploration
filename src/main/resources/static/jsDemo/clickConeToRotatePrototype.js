@@ -201,7 +201,7 @@ PinController = function (renderer) {
 			mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 			
 			if (_isTargetClicked(cone)) {
-				
+				earthMesh.remove(cone);
 				switch (strategy) {
 					case 'ROTATE_CAMERA':
 						_rotationStrategyOne();

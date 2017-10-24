@@ -58,6 +58,5 @@ HaloController = function (renderer) {
         var sprite = new THREE.Sprite(spriteMaterial);
         sprite.scale.set(2, 2, 1);
         aggregation.add(sprite);
-
     }
 };
