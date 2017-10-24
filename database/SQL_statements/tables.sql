@@ -1,4 +1,4 @@
-# For formal use
+-- For formal use
 CREATE TABLE EnergyAmount (
   energyID INT NOT NULL,
   countryID INT NOT NULL,
@@ -20,14 +20,14 @@ CREATE TABLE Unit (
   PRIMARY KEY (unitID)
 );
 
-# Used for generating AreaGeography table (Deprecated as temp for AreaGeography)
+-- Used for generating AreaGeography table (Deprecated as temp for AreaGeography)
 CREATE TABLE Country (
   countryID INT NOT NULL AUTO_INCREMENT,
   countryName VARCHAR(100),
   PRIMARY KEY (countryID)
 );
 
-# Used for generating countryGeo table (temp table for AreaGeography)
+-- Used for generating countryGeo table (temp table for AreaGeography)
 CREATE TABLE countryGeo (
   countryName VARCHAR(100) NOT NULL,
   longitude DOUBLE(15,10) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE countryGeo (
   PRIMARY KEY (countryName)
 );
 
-# Used for generating Geography table (Deprecated, replaced by AreaGeography)
+-- Used for generating Geography table (Deprecated, replaced by AreaGeography)
 CREATE TABLE Geography (
   geographyID INT NOT NULL AUTO_INCREMENT,
   longitude DOUBLE(15, 10) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE Geography (
   PRIMARY KEY (geographyID)
 );
 
-# Used for generating AreaGeography table
+-- Used for generating AreaGeography table
 CREATE TABLE AreaGeography (
   areaID INT NOT NULL AUTO_INCREMENT,
   areaName VARCHAR(100) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE AreaGeography (
 );
 
 
-# For data collection and hash map style use
+-- For data collection and hash map style use
 CREATE TABLE NaturalGas (
   countryName VARCHAR(100) NOT NULL,
   year INT NOT NULL,
