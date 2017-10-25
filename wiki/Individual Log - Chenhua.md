@@ -1,5 +1,10 @@
 ### [Oct. 23rd, 2017]
 Development:
+  * Reviewed views for each energy sources
+  * Alternate comment style
+***
+### [Oct. 23rd, 2017]
+Development:
   * Update the SQL statement of getGeoAmountData() to catch data for all years as the sum
   * Coordinate the implementation of transferGeoAmountData() method to satisfy:
     * Count the maximum
