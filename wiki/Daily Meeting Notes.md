@@ -4,7 +4,7 @@
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
-| Chenhua |  |  |  |
+| Chenhua | ------ |------ | ------|
 | Yuntian | 1. update mock service | 1. prepare for joint debugging | 1. go well |
 
 ***
