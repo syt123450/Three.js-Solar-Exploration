@@ -31,11 +31,20 @@ DoubleHaloController = function (renderer) {
 	 ***************************/
 	var earthShaderMaterial;
 	var atmosphereShaderMaterial;
-	var glowMesh;
-	var SHADER_SCALE = 1.2;
-	var SHADER_COLOR = '#0000ff';
-	var SHADER_RADIUS = 0.504;
-	var ENABLE_SHADER = true;
+	var innerGlowMesh;
+	var INNER_GLOW_MESH_COLOR = '#0000ff';
+	var INNER_GLOW_MESH_OPACITY = 0.2;
+	var INNER_GLOW_MESH_RADIUS = 0.504;
+	var ENABLE_INNER_GLOW_MESH = true;
+	var innerFragmentShaderIntensity = 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );';
+	
+	var outerGlowMesh;
+	// var OUTER_SHADER_SCALE = 1.2;
+	var OUTER_GLOW_MESH_COLOR = '#ff0000';
+	var OUTER_GLOW_MESH_OPACITY = 0.2;
+	var OUTER_GLOW_MESH_RADIUS = 0.504;
+	var ENABLE_OUTER_GLOW_MESH = true;
+	var outerFragmentShaderIntensity = 'float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.1 );';
 	
 	/***************************
 	 * Halo settings
@@ -43,7 +52,7 @@ DoubleHaloController = function (renderer) {
 	var HALO_COLOR = 0x00ff00;
 	var HALO_OPACITY = 0.5;
 	var IS_HALO_TRANSPARENT = true;
-	var ENABLE_HALO = true;
+	var ENABLE_HALO = false;
 	
 	
 	_initController();
@@ -61,8 +70,12 @@ DoubleHaloController = function (renderer) {
 	 *****************************/
 	function _initController() {
 		
-		if (ENABLE_SHADER) {
-			_initShader(SHADER_COLOR, SHADER_SCALE, SHADER_RADIUS);
+		if (ENABLE_INNER_GLOW_MESH) {
+			_initInnerGlowMesh(INNER_GLOW_MESH_COLOR, INNER_GLOW_MESH_OPACITY, INNER_GLOW_MESH_RADIUS);
+		}
+		
+		if (ENABLE_OUTER_GLOW_MESH) {
+			_initOuterGlowMesh(OUTER_GLOW_MESH_COLOR, OUTER_GLOW_MESH_OPACITY, OUTER_GLOW_MESH_RADIUS);
 		}
 		
 		_initEarthAggregation();
@@ -76,32 +89,32 @@ DoubleHaloController = function (renderer) {
 	}
 	
 	//The init function is used to put object into the scene
-	function _initShader(shaderColor, shaderScale, shaderRadius) {
-		var shaders = getShader(new THREE.Color(shaderColor));
-		
-		// shader = shaders['earth'];
-		// earthShaderMaterial = new THREE.ShaderMaterial({
-		// 	uniforms: THREE.UniformsUtils.clone(shader.uniforms),
-		// 	vertexShader: shader.vertexShader,
-		// 	fragmentShader: shader.fragmentShader,
-		// 	transparent: true
-		// });
-		//
+	function _initInnerGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
+		innerGlowMesh = new THREE.Mesh();
+		innerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
+		innerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, innerFragmentShaderIntensity);
+		innerGlowMesh.scale.set(1.2, 1.2, 1.2);
+	}
+	
+	function _initOuterGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
+		outerGlowMesh = new THREE.Mesh();
+		outerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
+		outerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, outerFragmentShaderIntensity);
+		outerGlowMesh.scale.set(1.2, 1.2, 1.2);
+	}
+	
+	function _getShaderMaterial(glowMeshColor, opacity, intensityFunc) {
+		var shaders = getShader(new THREE.Color(glowMeshColor), intensityFunc);
 		shader = shaders['atmosphere'];
-		atmosphereShaderMaterial = new THREE.ShaderMaterial({
+		return new THREE.ShaderMaterial({
 			uniforms: THREE.UniformsUtils.clone(shader.uniforms),
 			vertexShader: shader.vertexShader,
 			fragmentShader: shader.fragmentShader,
 			side: THREE.BackSide,
 			blending: THREE.AdditiveBlending,
-			transparent: true
+			transparent: true,
+			opacity: opacity
 		});
-		
-		glowMesh = new THREE.Mesh();
-		glowMesh.geometry = new THREE.SphereGeometry(shaderRadius, 32, 32);
-		glowMesh.material = atmosphereShaderMaterial;
-		glowMesh.scale.set(shaderScale, shaderScale, shaderScale);
-		
 	}
 	
 	function _initEarthAggregation() {
@@ -112,9 +125,15 @@ DoubleHaloController = function (renderer) {
 		earthAggregation.add(earthMesh);
 		earthAggregation.add(atmosphereMesh);
 		
-		if (glowMesh !== undefined) {
-			earthAggregation.add(glowMesh);
+		if (ENABLE_INNER_GLOW_MESH) {
+			earthAggregation.add(innerGlowMesh);
 		}
+		
+		if (ENABLE_OUTER_GLOW_MESH) {
+			earthAggregation.add(outerGlowMesh);
+		}
+		
+		
 		
 		earthAggregation.rotateZ(-Math.PI * 23.5 / 180);
 	}
@@ -151,36 +170,11 @@ DoubleHaloController = function (renderer) {
 	
 };
 
-function getShader(color) {
+function getShader(color, intensityFunc) {
 	var colorR = color.r;
 	var colorG = color.g;
 	var colorB = color.b;
 	return Shaders = {
-		// 'earth' : {
-		// 	uniforms: {
-		// 		'texture': { type: 't', value: null }
-		// 	},
-		// 	vertexShader: [
-		// 		'varying vec3 vNormal;',
-		// 		'varying vec2 vUv;',
-		// 		'void main() {',
-		// 		'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-		// 		'vNormal = normalize( normalMatrix * normal );',
-		// 		'vUv = uv;',
-		// 		'}'
-		// 	].join('\n'),
-		// 	fragmentShader: [
-		// 		'uniform sampler2D texture;',
-		// 		'varying vec3 vNormal;',
-		// 		'varying vec2 vUv;',
-		// 		'void main() {',
-		// 		'vec3 diffuse = texture2D( texture, vUv ).xyz;',
-		// 		'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) );',
-		// 		'vec3 atmosphere = vec3( 1.0, 1.0, 1.0 ) * pow( intensity, 3.0 );',
-		// 		'gl_FragColor = vec4( diffuse + atmosphere, 1.0 );',
-		// 		'}'
-		// 	].join('\n')
-		// },
 		'atmosphere' : {
 			uniforms: {},
 			vertexShader: [
@@ -193,9 +187,8 @@ function getShader(color) {
 			fragmentShader: [
 				'varying vec3 vNormal;',
 				'void main() {',
-				'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );',
-				// 'float intensity = 1.005 - dot( vNormal, vec3( 0, 0, 1.0 ) );',
-				'gl_FragColor = vec4(' + colorR + ', ' + colorG + ', ' + colorB + ', 20 ) * intensity;',
+				intensityFunc,
+				'gl_FragColor = vec4(' + colorR + ', ' + colorG + ', ' + colorB + ', 1.0 ) * intensity;',
 				'}'
 			].join('\n')
 		}

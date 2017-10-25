@@ -1,3 +1,7 @@
+
+### [Oct 23, 2017] - Tried to create double halo demo<br/>
+1. Tried to combine sprites and ShaderMaterials together to create a composite halo effect for the Earth and other planets.
+
 ***
 || XP CORE VALUES| 
 | ------| ------ | 
