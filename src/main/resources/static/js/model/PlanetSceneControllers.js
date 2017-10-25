@@ -12,10 +12,20 @@ MercurySceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('mercury');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -31,11 +41,26 @@ MercurySceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -49,10 +74,20 @@ VenusSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('venus');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -68,11 +103,26 @@ VenusSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -86,10 +136,20 @@ MarsSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('mars');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -105,11 +165,26 @@ MarsSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -123,10 +198,20 @@ JupiterSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('jupiter');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -142,11 +227,26 @@ JupiterSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -207,51 +307,8 @@ SaturnSceneController = function (renderer) {
         document.addEventListener('mousemove', onMouseMove, false);
     }
 
-    function onMouseMove() {
-
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    }
-
-    function checkPlanetClicked() {
-        // Cast ray
-        raycaster.setFromCamera(mouse, camera);
-
-        // Get intersections
-        var intersects = raycaster.intersectObjects(scene.children, true);
-        console.log(intersects);
-
-        // intersects[0] is atmosphere of the earth
-        // we use its .parent attribute to get the aggregated property
-        // so we can compare it to earthAggretation
-
-        for (var i =0; i < intersects.length; i++) {
-            if (intersects[i].object.type === "Mesh"){
-                if (intersects !== null && intersects.length > 0 && planetAggregation === intersects[i].object.parent){
-                    console.log("Clicked Planet!");
-                    return "Planet";
-                }
-                else {
-                    console.log("Clicked Nothing!");
-                    return "Nothing";
-                }
-            }
-        }
-    }
-
-// mouse down event handler
     function onMouseDown() {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-        var result = checkPlanetClicked();
-        if (result != "Nothing"){
-            changeScene();
-        }
-    }
-
-    function changeScene(planet){
-        solarSystemSceneController.animate();
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -265,10 +322,20 @@ UranusSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('uranus');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -284,11 +351,26 @@ UranusSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -302,6 +384,13 @@ NeptuneSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('neptune');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
@@ -315,17 +404,35 @@ NeptuneSceneController = function (renderer) {
 
         renderer.render(scene, camera);
     }
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function rotatePlanet() {
         rotatePlanetDefault(mesh);
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -339,10 +446,20 @@ PlutoSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('pluto');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -358,11 +475,26 @@ PlutoSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseDown() {
+        mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController);
     }
 };
 
@@ -481,4 +613,50 @@ function rotatePlanetDefault(mesh) {
 
     mesh.rotation.y += 0.001;
 
+}
+
+function onMouseMove(mouse) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+}
+
+function checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation) {
+    // Cast ray
+    raycaster.setFromCamera(mouse, camera);
+
+    // Get intersections
+    var intersects = raycaster.intersectObjects(scene.children, true);
+    console.log(intersects);
+
+    // intersects[0] is atmosphere of the earth
+    // we use its .parent attribute to get the aggregated property
+    // so we can compare it to earthAggretation
+
+    for (var i =0; i < intersects.length; i++) {
+        if (intersects[i].object.type === "Mesh"){
+            if (intersects !== null && intersects.length > 0 && planetAggregation === intersects[i].object.parent){
+                console.log("Clicked Planet!");
+                return "Planet";
+            }
+            else {
+                console.log("Clicked Nothing!");
+                return "Nothing";
+            }
+        }
+    }
+}
+
+// mouse down event handler
+function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
+    if (result != "Nothing"){
+        changeScene(solarSystemSceneController);
+    }
+}
+
+function changeScene(solarSystemSceneController){
+    solarSystemSceneController.animate();
 }

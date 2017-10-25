@@ -47,7 +47,16 @@
     var plutoSceneController = new PlutoSceneController(renderer);
 
     // Cross setting Scene Controllers for each other
+    mercurySceneController.setSolarSystemSceneController(solarSystemSceneController);
+    venusSceneController.setSolarSystemSceneController(solarSystemSceneController);
+//    earthSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    marsSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    jupiterSceneController.setSolarSystemSceneController(solarSystemSceneController);
     saturnSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    uranusSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    neptuneSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    plutoSceneController.setSolarSystemSceneController(solarSystemSceneController);
+
     solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
     solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
 //    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
