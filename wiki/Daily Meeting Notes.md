@@ -1,10 +1,23 @@
-### [Oct. 23rd, 2017]
+
+### [Oct. 25th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
-| Chenhua | ------ |------ | ------|
+| Chenhua | 1. Reviewed SQL statements, update comments | 1. Complete scene change (with Bo) | 1. Fine |
+||| 2. Apply different prototypes into the scene (with Bo) ||
+| Yuntian | ------ | ------ | ------ |
+
+***
+
+### [Oct. 24th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | 1. Update SQL and impelemtation to generate proper data output | 1. Reviewed SQL statements, update comments | 1. Fine |
 | Yuntian | 1. update mock service | 1. prepare for joint debugging | 1. go well |
 
 ***
