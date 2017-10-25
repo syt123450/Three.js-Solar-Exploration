@@ -160,10 +160,20 @@ SaturnSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('saturn');
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var planetAggregation;
+    var solarSystemSceneController;
+
     var renderer = renderer;
     var scene = init();
 
     this.animate = animate;
+    this.setSolarSystemSceneController = function (sceneController) {
+        solarSystemSceneController = sceneController;
+    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -179,11 +189,69 @@ SaturnSceneController = function (renderer) {
     }
 
     function init() {
+        addEvent();
         return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
     }
 
     function aggregationInit() {
-        return aggregationInitDefault(mesh);
+        planetAggregation = aggregationInitDefault(mesh);
+        return planetAggregation;
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseMove() {
+
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    function checkPlanetClicked() {
+        // Cast ray
+        raycaster.setFromCamera(mouse, camera);
+
+        // Get intersections
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        console.log(intersects);
+
+        // intersects[0] is atmosphere of the earth
+        // we use its .parent attribute to get the aggregated property
+        // so we can compare it to earthAggretation
+
+        for (var i =0; i < intersects.length; i++) {
+            if (intersects[i].object.type === "Mesh"){
+                if (intersects !== null && intersects.length > 0 && planetAggregation === intersects[i].object.parent){
+                    console.log("Clicked Planet!");
+                    return "Planet";
+                }
+                else {
+                    console.log("Clicked Nothing!");
+                    return "Nothing";
+                }
+            }
+        }
+    }
+
+// mouse down event handler
+    function onMouseDown() {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+        var result = checkPlanetClicked();
+        if (result != "Nothing"){
+            changeScene();
+        }
+    }
+
+    function changeScene(planet){
+        solarSystemSceneController.animate();
     }
 };
 

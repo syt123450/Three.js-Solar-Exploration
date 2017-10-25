@@ -137,6 +137,42 @@ SolarSystemSceneController = function(renderer) {
     var solarSystemRenderer = renderer;
     var solarSystemScene = init();
 
+    // Set Planet Scene Controllers
+    this.setPlanetScene = function (planet, controller) {
+        switch (planet){
+            case "Mercury" :
+                mercurySceneController = controller;
+                break;
+            case "Venus" :
+                venusSceneController = controller;
+                break;
+            case "Earth" :
+                // Nothing
+                // earthSceneController = controller;
+                break;
+            case "Mars" :
+                marsSceneController = controller;
+                break;
+            case "Saturn" :
+                saturnSceneController = controller;
+                break;
+            case "Jupiter" :
+                jupiterSceneController = controller;
+                break;
+            case "Uranus" :
+                uranusSceneController = controller;
+                break;
+            case "Neptune" :
+                neptuneSceneController = controller;
+                break;
+            case "Pluto" :
+                plutoSceneController = controller;
+                break;
+            default:
+            //Nothing
+        }
+    };
+
     this.animate = solarSystemAnimate;
     this.name = "SolarSystemScene";
 
@@ -173,7 +209,7 @@ SolarSystemSceneController = function(renderer) {
         scene.add(sunAggregation);
 
         // Init. Planet Scent Controllers
-        initPlanetSceneControllers(renderer);
+        // initPlanetSceneControllers(renderer);
 
         addEvent();
 
@@ -213,18 +249,6 @@ SolarSystemSceneController = function(renderer) {
         sunAggregation.add(createOrbit(uranusOrbitRadius));
         sunAggregation.add(createOrbit(neptuneOrbitRadius));
         sunAggregation.add(createOrbit(plutoOrbitRadius));
-    }
-
-    function initPlanetSceneControllers(render){
-        mercurySceneController = new MercurySceneController(renderer);
-        venusSceneController = new VenusSceneController(renderer);
-        // earthSceneController = new EarthSceneController(renderer);
-        marsSceneController = new MarsSceneController(renderer);
-        jupiterSceneController = new JupiterSceneController(renderer);
-        saturnSceneController = new SaturnSceneController(renderer);
-        uranusSceneController = new UranusSceneController(renderer);
-        neptuneSceneController = new NeptuneSceneController(renderer);
-        plutoSceneController = new PlutoSceneController(renderer);
     }
 
     function rotationAndRevolution() {
@@ -467,6 +491,7 @@ SolarSystemSceneController = function(renderer) {
                 marsSceneController.animate();
                 break;
             case "Saturn" :
+                // Console.log(saturnSceneController);
                 saturnSceneController.animate();
                 break;
             case "Jupiter" :

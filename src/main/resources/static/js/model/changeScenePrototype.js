@@ -350,6 +350,6 @@ SolarSystemSceneController = function(renderer) {
 	var earthSceneController;
 
 	this.setEarthScene = function (controller) {
-	    earthSceneController = controller;
+        earthSceneController = controller;
     }
 };

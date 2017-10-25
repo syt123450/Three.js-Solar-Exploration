@@ -31,10 +31,33 @@
 
 <script>
 
-    //init a renderer
+    // init a renderer
     var renderer = SolarEPUtils.getDefaultRenderer();
 
+    // init Scene Controllers
     var solarSystemSceneController = new SolarSystemSceneController(renderer);
+    var mercurySceneController = new MercurySceneController(renderer);
+    var venusSceneController = new VenusSceneController(renderer);
+    //var earthSceneController = new EarthSceneController(renderer);
+    var marsSceneController = new MarsSceneController(renderer);
+    var jupiterSceneController = new JupiterSceneController(renderer);
+    var saturnSceneController = new SaturnSceneController(renderer);
+    var uranusSceneController = new UranusSceneController(renderer);
+    var neptuneSceneController = new NeptuneSceneController(renderer);
+    var plutoSceneController = new PlutoSceneController(renderer);
+
+    // Cross setting Scene Controllers for each other
+    saturnSceneController.setSolarSystemSceneController(solarSystemSceneController);
+    solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
+    solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
+//    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
+    solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
+    solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
+    solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
+    solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
+    solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
+    solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
+
     solarSystemSceneController.animate();
 
 //    setTimeout(solarSystemSceneController.topView, 5000);
