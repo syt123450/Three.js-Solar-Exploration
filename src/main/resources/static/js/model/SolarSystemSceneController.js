@@ -54,6 +54,9 @@ SolarSystemSceneController = function(renderer) {
     var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
 
+    // Raycaster and Mouse
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
 
     // Meshes
     var universeMesh = createUniverseMesh();
@@ -72,7 +75,7 @@ SolarSystemSceneController = function(renderer) {
     var neptuneMesh = createSphereMesh('../images/planets/neptunemap.jpg' , 1.2);
     var plutoMesh = createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3);
 
-    // Aggregation
+    // Aggregations
     var sunAggregation = createAggregation(
         sunMesh
         // new THREE.Mesh(
@@ -119,21 +122,33 @@ SolarSystemSceneController = function(renderer) {
         // createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3)
     );
 
+    // Scene Controllers
+    var mercurySceneController;
+    var venusSceneController;
+    var earthSceneController;
+    var marsSceneController;
+    var jupiterSceneController;
+    var saturnSceneController;
+    var uranusSceneController;
+    var neptuneSceneController;
+    var plutoSceneController;
+
+    // Init.
     var solarSystemRenderer = renderer;
     var solarSystemScene = init();
 
     this.animate = solarSystemAnimate;
     this.name = "SolarSystemScene";
 
-    this.topView = updateCameaPosition(1);
-    this.sideView = updateCameaPosition(2);
-    this.upForwardView = updateCameaPosition(-1);
+    this.topView = updateCameraPosition(1);
+    this.sideView = updateCameraPosition(2);
+    this.upForwardView = updateCameraPosition(-1);
 
 
     function solarSystemAnimate() {
         requestAnimationFrame(solarSystemAnimate);
 
-        rotationAndRevolution();
+        // rotationAndRevolution();
 
         solarSystemRenderer.render(solarSystemScene, camera);
     }
@@ -148,7 +163,7 @@ SolarSystemSceneController = function(renderer) {
 
         // Camera
         scene.add(camera);
-        updateCameaPosition(-1);
+        updateCameraPosition(-1);
 
         // Background
         scene.add(universeMesh);
@@ -156,6 +171,11 @@ SolarSystemSceneController = function(renderer) {
         // Apply the Sun
         initSystemPositions();
         scene.add(sunAggregation);
+
+        // Init. Planet Scent Controllers
+        initPlanetSceneControllers(renderer);
+
+        addEvent();
 
         return scene;
     }
@@ -193,6 +213,18 @@ SolarSystemSceneController = function(renderer) {
         sunAggregation.add(createOrbit(uranusOrbitRadius));
         sunAggregation.add(createOrbit(neptuneOrbitRadius));
         sunAggregation.add(createOrbit(plutoOrbitRadius));
+    }
+
+    function initPlanetSceneControllers(render){
+        mercurySceneController = new MercurySceneController(renderer);
+        venusSceneController = new VenusSceneController(renderer);
+        // earthSceneController = new EarthSceneController(renderer);
+        marsSceneController = new MarsSceneController(renderer);
+        jupiterSceneController = new JupiterSceneController(renderer);
+        saturnSceneController = new SaturnSceneController(renderer);
+        uranusSceneController = new UranusSceneController(renderer);
+        neptuneSceneController = new NeptuneSceneController(renderer);
+        plutoSceneController = new PlutoSceneController(renderer);
     }
 
     function rotationAndRevolution() {
@@ -312,7 +344,7 @@ SolarSystemSceneController = function(renderer) {
         return orbit;
     }
 
-    function updateCameaPosition(mode) {
+    function updateCameraPosition(mode) {
 
         // From the top of the system
         if (mode == 1) {
@@ -329,6 +361,129 @@ SolarSystemSceneController = function(renderer) {
 
         camera.lookAt(sunAggregation.position);
 
+    }
+
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+
+        document.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    function onMouseMove() {
+
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    function checkPlanetClicked() {
+        // Cast ray
+        raycaster.setFromCamera(mouse, camera);
+
+        // Get intersections
+        var intersects = raycaster.intersectObjects(sunAggregation.children, true);
+        console.log(intersects);
+
+        // intersects[0] is atmosphere of the earth
+        // we use its .parent attribute to get the aggregated property
+        // so we can compare it to earthAggretation
+
+        for (var i =0; i < intersects.length; i++) {
+            if (intersects[i].object.type === "Mesh"){
+                if (intersects !== null && intersects.length > 0 && mercuryAggregation === intersects[i].object.parent){
+                    console.log("Clicked Mercury!");
+                    return "Mercury";
+                }
+                else if (intersects !== null && intersects.length > 0 && venusAggregation === intersects[i].object.parent){
+                    console.log("Clicked Venus!");
+                    return "Venus";
+                }
+                else if (intersects !== null && intersects.length > 0 && earthAggregation === intersects[i].object.parent){
+                    console.log("Clicked Earth!");
+                    return "Earth";
+                }
+                else if (intersects !== null && intersects.length > 0 && marsAggregation === intersects[i].object.parent){
+                    console.log("Clicked Mars!");
+                    return "Mars";
+                }
+                else if (intersects !== null && intersects.length > 0 && saturnAggregation === intersects[i].object.parent){
+                    console.log("Clicked Saturn!");
+                    return "Saturn";
+                }
+                else if (intersects !== null && intersects.length > 0 && jupiterAggregation === intersects[i].object.parent){
+                    console.log("Clicked Jupiter!");
+                    return "Jupiter";
+                }
+                else if (intersects !== null && intersects.length > 0 && uranusAggregation === intersects[i].object.parent){
+                    console.log("Clicked Uranus!");
+                    return "Uranus";
+                }
+                else if (intersects !== null && intersects.length > 0 && neptuneAggregation === intersects[i].object.parent){
+                    console.log("Clicked Neptune!");
+                    return "Neptune";
+                }
+                else if (intersects !== null && intersects.length > 0 && plutoAggregation === intersects[i].object.parent){
+                    console.log("Clicked Pluto!");
+                    return "Pluto";
+                }
+                else {
+                    console.log("Clicked Nothing!");
+                    return "Nothing";
+                }
+            }
+        }
+
+
+
+        // return intersects !== null && intersects.length > 0 && targetAggregation === intersects[0].object.parent;
+    }
+
+    // mouse down event handler
+    function onMouseDown() {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+        var result = checkPlanetClicked();
+        if (result != "Nothing"){
+            changeScene(result);
+        }
+    }
+
+    function changeScene(planet){
+        switch (planet){
+            case "Mercury" :
+                mercurySceneController.animate();
+                break;
+            case "Venus" :
+                venusSceneController.animate();
+                break;
+            case "Earth" :
+                // Nothing
+                // earthSceneController.animate();
+                break;
+            case "Mars" :
+                marsSceneController.animate();
+                break;
+            case "Saturn" :
+                saturnSceneController.animate();
+                break;
+            case "Jupiter" :
+                jupiterSceneController.animate();
+                break;
+            case "Uranus" :
+                uranusSceneController.animate();
+                break;
+            case "Neptune" :
+                neptuneSceneController.animate();
+                break;
+            case "Pluto" :
+                plutoSceneController.animate();
+                break;
+            default:
+                //Nothing
+        }
     }
 
 };
