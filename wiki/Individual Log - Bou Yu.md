@@ -11,12 +11,15 @@
 * Decide as late as possible
   * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
 
+### [Oct.24.2017] Made cone explode prototype
+* Made cone capable of exploding
+
 ### [Oct.23.2017] Researched more on how to make objects explode
 * Worked with Bo to find out more about raycaster and how to remove objects from aggregation
 
 ___
 
-### [Week 4 XP Core Values (or Lean/Kanban Principle)] 
+### [Week 4 XP Core Values (or Lean/Kanban Principle)]
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -46,7 +49,7 @@ ___
 
 ___
 
-### [Week 3 XP Core Values (or Lean/Kanban Principle)] 
+### [Week 3 XP Core Values (or Lean/Kanban Principle)]
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -80,7 +83,7 @@ ___
 
 ___
 
-### [Week 2 XP Core Values (or Lean/Kanban Principle)] 
+### [Week 2 XP Core Values (or Lean/Kanban Principle)]
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
@@ -108,7 +111,7 @@ ___
 
 ___
 
-### [[Week 1 XP Core Values (or Lean/Kanban Principle)] 
+### [[Week 1 XP Core Values (or Lean/Kanban Principle)]
 * See the whole
   * Each member works on respective parts
   * Keep work on schedule for timely delivery
