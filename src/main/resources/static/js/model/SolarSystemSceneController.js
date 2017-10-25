@@ -57,6 +57,7 @@ SolarSystemSceneController = function(renderer) {
     // Raycaster and Mouse
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
+    var mouseListener = false;
 
     // Meshes
     var universeMesh = createUniverseMesh();
@@ -173,20 +174,31 @@ SolarSystemSceneController = function(renderer) {
         }
     };
 
-    this.animate = solarSystemAnimate;
-    this.name = "SolarSystemScene";
+    // this.animate = animate;
+    this.activateScene = activateScene;
+    this.name = "SolarSystemSceneController";
 
     this.topView = updateCameraPosition(1);
     this.sideView = updateCameraPosition(2);
     this.upForwardView = updateCameraPosition(-1);
 
 
-    function solarSystemAnimate() {
-        requestAnimationFrame(solarSystemAnimate);
+    function animate() {
+        if (!mouseListener){
+            addEvent();
+        }
+        requestAnimationFrame(animate);
 
         // rotationAndRevolution();
 
         solarSystemRenderer.render(solarSystemScene, camera);
+    }
+
+    function activateScene(){
+        if (!mouseListener){
+            addEvent();
+        }
+        animate();
     }
 
     function init() {
@@ -207,11 +219,6 @@ SolarSystemSceneController = function(renderer) {
         // Apply the Sun
         initSystemPositions();
         scene.add(sunAggregation);
-
-        // Init. Planet Scent Controllers
-        // initPlanetSceneControllers(renderer);
-
-        addEvent();
 
         return scene;
     }
@@ -392,8 +399,14 @@ SolarSystemSceneController = function(renderer) {
          * register mouse click event handler
          */
         document.addEventListener('mousedown', onMouseDown, false);
-
         document.addEventListener('mousemove', onMouseMove, false);
+        mouseListener = true;
+    }
+
+    function removeEvent() {
+        document.removeEventListener('mousedown', onMouseDown, false);
+        document.removeEventListener('mousemove', onMouseMove, false);
+        mouseListener = false;
     }
 
     function onMouseMove() {
@@ -408,7 +421,7 @@ SolarSystemSceneController = function(renderer) {
 
         // Get intersections
         var intersects = raycaster.intersectObjects(sunAggregation.children, true);
-        console.log(intersects);
+        // console.log(intersects);
 
         // intersects[0] is atmosphere of the earth
         // we use its .parent attribute to get the aggregated property
@@ -453,15 +466,14 @@ SolarSystemSceneController = function(renderer) {
                     return "Pluto";
                 }
                 else {
-                    console.log("Clicked Nothing!");
+                    console.log("Clicked Nothing_solar_0!");
                     return "Nothing";
                 }
             }
+            else {
+                console.log("Clicked Nothing_solar!");
+            }
         }
-
-
-
-        // return intersects !== null && intersects.length > 0 && targetAggregation === intersects[0].object.parent;
     }
 
     // mouse down event handler
@@ -471,6 +483,7 @@ SolarSystemSceneController = function(renderer) {
 
         var result = checkPlanetClicked();
         if (result != "Nothing"){
+            removeEvent();
             changeScene(result);
         }
     }
@@ -478,33 +491,33 @@ SolarSystemSceneController = function(renderer) {
     function changeScene(planet){
         switch (planet){
             case "Mercury" :
-                mercurySceneController.animate();
+                mercurySceneController.activateScene();
                 break;
             case "Venus" :
-                venusSceneController.animate();
+                venusSceneController.activateScene();
                 break;
             case "Earth" :
                 // Nothing
-                // earthSceneController.animate();
+                // earthSceneController.activateScene();
                 break;
             case "Mars" :
-                marsSceneController.animate();
+                marsSceneController.activateScene();
                 break;
             case "Saturn" :
                 // Console.log(saturnSceneController);
-                saturnSceneController.animate();
+                saturnSceneController.activateScene();
                 break;
             case "Jupiter" :
-                jupiterSceneController.animate();
+                jupiterSceneController.activateScene();
                 break;
             case "Uranus" :
-                uranusSceneController.animate();
+                uranusSceneController.activateScene();
                 break;
             case "Neptune" :
-                neptuneSceneController.animate();
+                neptuneSceneController.activateScene();
                 break;
             case "Pluto" :
-                plutoSceneController.animate();
+                plutoSceneController.activateScene();
                 break;
             default:
                 //Nothing
