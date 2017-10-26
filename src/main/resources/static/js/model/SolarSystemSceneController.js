@@ -1,7 +1,7 @@
 
 SolarSystemSceneController = function(renderer) {
 
-    // Solar system basic parameters
+    // Solar system basic constant parameters
     var sunRadius = 5,
 
         mercuryOrbitRadius = sunRadius +2,
@@ -123,7 +123,7 @@ SolarSystemSceneController = function(renderer) {
         // createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3)
     );
 
-    // Scene Controllers
+    // Planet Scene Controllers
     var mercurySceneController;
     var venusSceneController;
     var earthSceneController;
@@ -174,19 +174,21 @@ SolarSystemSceneController = function(renderer) {
         }
     };
 
+    /*
+     *  Deprecated to use "animate" function directly.
+     *  Use "activateScene" function for scene switching.
+     */
     // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "SolarSystemSceneController";
 
-    this.topView = updateCameraPosition(1);
+    // Camera position settings (NOT COMPLETE, N/A)
     this.sideView = updateCameraPosition(2);
     this.upForwardView = updateCameraPosition(-1);
+    this.topView = updateCameraPosition(1);
 
 
     function animate() {
-        if (!mouseListener){
-            addEvent();
-        }
         requestAnimationFrame(animate);
 
         // rotationAndRevolution();
@@ -410,7 +412,6 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function onMouseMove() {
-
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
@@ -472,6 +473,7 @@ SolarSystemSceneController = function(renderer) {
             }
             else {
                 console.log("Clicked Nothing_solar!");
+                return "Nothing";
             }
         }
     }
