@@ -17,7 +17,7 @@
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | 1. Reviewed SQL statements, update comments | 1. Complete scene change (with Bo) | 1. Fine |
 ||| 2. Apply different prototypes into the scene (with Bo) ||
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | 1. joint debugging for google earth, create backlogo | 1. add event to backlogo and combine feature | 1. joint debugging go well, yeah! |
 
 ***
 ### [Oct. 24th, 2017]
