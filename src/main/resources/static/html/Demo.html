@@ -40,6 +40,7 @@
     var globe = new DAT.Globe( renderer );
     globe.setSurfaceImg("../images/world.jpg");
     globe.init();
+    loadData();
     solarSceneController.setEarthScene(earthSceneController);
     solarSceneController.animate();
 
@@ -51,7 +52,8 @@
             });
             $(this).attr("class", "checked");
             googleEarth = true;
-            loadData();
+            globe.animate();
+
         });
 
         $("body footer div.year").click(function () {
@@ -82,7 +84,8 @@
     function loadData() {
 
         $.ajax({
-            url: '../data/rank.json',
+//            url: '../data/rank.json',
+            url: '/api/all',
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             async: true,
@@ -90,7 +93,6 @@
             success: function (data) {
                 globe.addData(data, {format: 'magnitude'});
                 globe.createPoints();
-                globe.animate();
             }
         });
     }

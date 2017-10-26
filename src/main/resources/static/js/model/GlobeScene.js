@@ -390,7 +390,6 @@ DAT.Globe = function (renderer, colorFn) {
             target.y = Math.PI / 5.0;
             rotation.y += (target.y - rotation.y) * 0.02;
         }
-        ;
 
         distance += (distanceTarget - distance) * 0.3;
 

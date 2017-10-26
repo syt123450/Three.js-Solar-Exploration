@@ -67,7 +67,7 @@ UniverseUtils = function () {
     this.createDefaultAtmosphere = function () {
 
         var atmosphereMesh = new THREE.Mesh();
-        atmosphereMesh.geometry = new THREE.SphereGeometry(0.504, 32, 32);
+        atmosphereMesh.geometry = new THREE.SphereGeometry(0.51, 32, 32);
         atmosphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/fair_clouds_4k.png'

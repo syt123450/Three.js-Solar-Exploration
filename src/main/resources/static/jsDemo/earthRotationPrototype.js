@@ -47,6 +47,6 @@ EarthSceneController = function (renderer) {
     function rotateEarth() {
 
         earthMesh.rotation.y += 0.001;
-        atmosphereMesh.rotation.y += 0.001;
+        atmosphereMesh.rotation.y += 0.0013;
     }
 };
