@@ -365,7 +365,7 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function createOrbit(radius){
-        var geometry = new THREE.CircleGeometry( radius, 128, 0, 2.1*Math.PI ) ;
+        var geometry = new THREE.CircleGeometry( radius, 256, 0, 2.01*Math.PI ) ;
         geometry.vertices.shift();
         var orbit = new THREE.Line(
             geometry,

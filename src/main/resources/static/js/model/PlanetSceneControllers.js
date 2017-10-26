@@ -760,6 +760,20 @@ function rotatePlanetDefault(mesh) {
 
 }
 
+// mouse down event handler
+function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
+    if (result != "Nothing"){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function onMouseMove(mouse) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -791,19 +805,6 @@ function checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation) 
     }
 }
 
-// mouse down event handler
-function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
-    if (result != "Nothing"){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 function changeScene(solarSystemSceneController){
     // removeEvent();
