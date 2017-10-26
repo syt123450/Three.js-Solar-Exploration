@@ -1,4 +1,14 @@
+### [Oct. 25th, 2017]
 
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | 1. Switch scenes between solar system and each planet (with Bo) | 1. Refactor scene code | 1. Bug when click for planet scene (solar scene still be clicked) |
+|| 2. Apply click on prototypes on the scenes (with Bo) | 2. Debug for click on action ||
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Oct. 25th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
@@ -10,7 +20,6 @@
 | Yuntian | ------ | ------ | ------ |
 
 ***
-
 ### [Oct. 24th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
@@ -21,7 +30,6 @@
 | Yuntian | 1. update mock service | 1. prepare for joint debugging | 1. go well |
 
 ***
-
 ### [Oct. 23rd, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

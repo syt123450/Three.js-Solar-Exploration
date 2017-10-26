@@ -1,4 +1,9 @@
-### [Oct. 23rd, 2017]
+### [Oct. 25th, 2017]
+Development:
+  * Apply change scene prototype to solar system scene and planet scenes (with Bo)
+  * Add click on prototype to solar system scene and plant scenes (with Bo)
+***
+### [Oct. 24th, 2017]
 Development:
   * Reviewed views for each energy sources
   * Alternate comment style
