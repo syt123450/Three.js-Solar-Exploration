@@ -397,7 +397,7 @@ SaturnSceneController = function (renderer) {
     function onMouseDown() {
         if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
             removeEvent();
-            solarSystemSceneController.animate();
+            changeScene(solarSystemSceneController);
         }
     }
 };
