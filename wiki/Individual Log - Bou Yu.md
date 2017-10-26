@@ -11,6 +11,9 @@
 * Decide as late as possible
   * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
 
+### [Oct.25.2017] Made earth explode prototype
+* Made earth capable of exploding
+
 ### [Oct.24.2017] Made cone explode prototype
 * Made cone capable of exploding
 
