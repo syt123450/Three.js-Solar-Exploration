@@ -330,31 +330,6 @@ TweenAnimationController = function (renderer) {
 			
 			tweenRotateZ.chain(tweenRotateY.chain(tweenRotateAxis));
 			
-
-			
-			// earthAggregation.rotateOnAxis(
-			// 	Z_AXIS,
-			// 	Math.PI * OBLIUITY / 180
-			// );
-			//
-			// tween.to(
-			// 		{y: finalYRotation},
-			// 		animationDuration
-			// 	)
-			// 	.start();
-			//
-			// tween.onUpdate(function(object) {
-			// 	earthMesh.rotateOnAxis(
-			// 		Y_AXIS,
-			// 		(finalYRotation - initYRotation) / 100
-			// 	);
-			// });
-			//
-			// earthMesh.rotateOnAxis(
-			// 	rotationAxis,
-			// 	CONE_INIT_LATITUDE / 180 * Math.PI
-			// );
-			
 		} else { // resume cone location
 			
 			earthMesh.rotateOnAxis(

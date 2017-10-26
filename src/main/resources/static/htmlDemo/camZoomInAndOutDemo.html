@@ -25,13 +25,15 @@
 <script src="../js/utils/utils.js"></script>
 <script src="../js/utils/universeUtils.js"></script>
 <script src="../jsDemo/camZoomInAndOutPrototype.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 
 <script>
     //init a renderer
     var renderer = SolarEPUtils.getDefaultRenderer();
 
-    // init solar scene
+    // init controller
     var camZoomInController = new CamZoomInController(renderer);
+
     camZoomInController.animate();
 
 
