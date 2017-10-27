@@ -6,7 +6,7 @@
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | 1. Switch scenes between solar system and each planet (with Bo) | 1. Refactor scene code | 1. Bug when click for planet scene (solar scene still be clicked) |
 || 2. Apply click on prototypes on the scenes (with Bo) | 2. Debug for click on action ||
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | 1. combine features with bo; 2. add back function; 3. solve some warnning | 1. add information board | 1. go well |
 
 ***
 ### [Oct. 25th, 2017]
