@@ -1,3 +1,9 @@
+### [Oct. 26th, 2017]
+Development:
+  * Debugged Solar System Scene
+  * Reviewed Solar System Scene
+  * Reviewed Data generated for Google Globe
+***
 ### [Oct. 25th, 2017]
 Development:
   * Apply change scene prototype to solar system scene and planet scenes (with Bo)

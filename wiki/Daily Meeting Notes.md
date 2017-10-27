@@ -1,3 +1,14 @@
+### [Oct. 27th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | 1. Debug on solar system scene | 1. Refactor scene code | 1. Fine |
+|| 2. Reviewed code and data |||
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Oct. 26th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
@@ -6,7 +17,7 @@
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | 1. Switch scenes between solar system and each planet (with Bo) | 1. Refactor scene code | 1. Bug when click for planet scene (solar scene still be clicked) |
 || 2. Apply click on prototypes on the scenes (with Bo) | 2. Debug for click on action ||
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | <ul><li>combine features with bo</li><li>add back function</li><li>solve some warnning</li></ul> | 1. add information board | 1. go well |
 
 ***
 ### [Oct. 25th, 2017]
@@ -17,7 +28,7 @@
 | Bou-Yu | 1. Made cone explode | 1. Make Earth explode | 1. Good |
 | Chenhua | 1. Reviewed SQL statements, update comments | 1. Complete scene change (with Bo) | 1. Fine |
 ||| 2. Apply different prototypes into the scene (with Bo) ||
-| Yuntian | 1. joint debugging for google earth, create backlogo | 1. add event to backlogo and combine feature | 1. joint debugging go well, yeah! |
+| Yuntian | <ul><li>1. joint debugging for google earth</li><li>2. create backlogo</li></ul> | 1. add event to backlogo and combine feature | 1. joint debugging go well, yeah! |
 
 ***
 ### [Oct. 24th, 2017]
