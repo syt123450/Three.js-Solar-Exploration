@@ -148,8 +148,7 @@ SolarSystemSceneController = function(renderer) {
                 venusSceneController = controller;
                 break;
             case "Earth" :
-                // Nothing
-                // earthSceneController = controller;
+                earthSceneController = controller;
                 break;
             case "Mars" :
                 marsSceneController = controller;
@@ -497,8 +496,8 @@ SolarSystemSceneController = function(renderer) {
                 venusSceneController.activateScene();
                 break;
             case "Earth" :
-                // Nothing
-                // earthSceneController.activateScene();
+                earthSceneController.animate();
+                $("#timeLine").show();
                 break;
             case "Mars" :
                 marsSceneController.activateScene();

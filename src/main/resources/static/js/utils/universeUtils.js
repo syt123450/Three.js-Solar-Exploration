@@ -202,7 +202,6 @@ UniverseUtils = function () {
         var spriteMaterial = new THREE.SpriteMaterial(
             {
                 map: new THREE.TextureLoader().load('../images/glow.png'),
-                useScreenCoordinates: false,
                 color: 0xffffff,
                 transparent: true,
                 opacity: 0.5
