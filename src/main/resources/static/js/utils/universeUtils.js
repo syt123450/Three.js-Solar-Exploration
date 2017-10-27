@@ -149,6 +149,7 @@ UniverseUtils = function () {
         );
 
         coneMesh.position.set(position.x, position.y, position.z);
+        coneMesh.parameters = coneParameters;
 
         return coneMesh;
     };

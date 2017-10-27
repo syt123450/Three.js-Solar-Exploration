@@ -15,9 +15,6 @@ EarthSceneController = function (renderer) {
     var earthMesh = universeUtils.createDefaultEarthMesh();
     var atmosphereMesh = universeUtils.createDefaultAtmosphere();
     var moonMesh = universeUtils.createDefaultMoon();
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    var solarSystemSceneController;
 
     var coneList = [];
 
@@ -26,9 +23,9 @@ EarthSceneController = function (renderer) {
 
     this.animate = earthAnimate;
 
-    this.addCones = function (cones) {
-        cones.forEach(function (cone) {
-            addOneCone(cone);
+    this.addCones = function (conesParameter) {
+        conesParameter.forEach(function (coneParameter) {
+            addOneCone(coneParameter);
         });
     };
 
@@ -103,8 +100,8 @@ EarthSceneController = function (renderer) {
         moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
     }
 
-    function addOneCone(cone) {
-        var coneObject = universeUtils.createOneCone(cone);
+    function addOneCone(coneParameter) {
+        var coneObject = universeUtils.createOneCone(coneParameter);
         coneObject.lookAt(earthMesh.position);
         coneObject.rotateX(Math.PI / 2);
         coneList.push(coneObject);
@@ -131,19 +128,42 @@ EarthSceneController = function (renderer) {
 
     function onMouseDown() {
         SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        SolarEPUtils.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
+
+        coneList.forEach(function (cone) {
+            if (intersects[0].object === cone) {
+                console.log("find a clicked cone.");
+                addTextToBoard(cone.parameters);
+                showInfo(cone.parameters.latitude, cone.parameters.longitude);
+            }
+        });
     }
 
-    function isConeClicked() {
-
+    function addTextToBoard(coneParameters) {
+        console.log(coneParameters);
+        $("#infoBoard").empty()
+            .append("<div>Latitude: " + coneParameters.latitude + "</div>")
+            .append("<div>Longitude: " + coneParameters.longitude + "</div>")
+            .append("<div>Total Amount: " + coneParameters.amount+ "</div>")
+            .append("<div>Coal Amount: " + coneParameters.coalAmount + "</div>")
+            .append("<div>Oil Amount: " + coneParameters.oilAmount + "</div>")
+            .append("<div>Gas Amount: " + coneParameters.gasAmount + "</div>")
     }
 
-    this.setSolarSystemSceneController = function(sceneController) {
-        solarSystemSceneController = sceneController;
+    function showInfo(latitude, longitude) {
+        $("#infoBoard").show();
+        infoBoard = true;
+        moveEarth(latitude, longitude);
+    }
+
+    this.restoreEarth = function () {
+
     };
 
-    function backToSolar() {
-
+    function moveEarth(latitude, longitude) {
+        console.log(latitude + "," + longitude);
     }
 };

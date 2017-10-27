@@ -15,17 +15,12 @@ MercurySceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('mercury');
     var planetAggregation;
-    var solarSystemSceneController;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "MercurySceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -65,17 +60,12 @@ VenusSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('venus');
     var planetAggregation;
-    var solarSystemSceneController;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "VenusSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -87,9 +77,6 @@ VenusSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -106,28 +93,6 @@ VenusSceneController = function (renderer) {
         planetAggregation.name = "VenusAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 // Mars
@@ -140,22 +105,12 @@ MarsSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('mars');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "MarsSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -167,9 +122,6 @@ MarsSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -186,28 +138,6 @@ MarsSceneController = function (renderer) {
         planetAggregation.name = "MarsAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 // Jupiter
@@ -220,22 +150,12 @@ JupiterSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('jupiter');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "JupiterSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -247,9 +167,6 @@ JupiterSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -266,28 +183,6 @@ JupiterSceneController = function (renderer) {
         planetAggregation.name = "JupiterAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 // Saturn
@@ -300,22 +195,12 @@ SaturnSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('saturn');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "SaturnSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -327,9 +212,6 @@ SaturnSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -346,28 +228,6 @@ SaturnSceneController = function (renderer) {
         planetAggregation.name = "SaturnAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         solarSystemSceneController.animate();
-    //     }
-    // }
 };
 
 // Uranus
@@ -380,22 +240,12 @@ UranusSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('uranus');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "UranusSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -407,9 +257,6 @@ UranusSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -426,28 +273,6 @@ UranusSceneController = function (renderer) {
         planetAggregation.name = "UranusAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 // Neptune
@@ -460,22 +285,12 @@ NeptuneSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('neptune');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
 
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "NeptuneSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -487,9 +302,6 @@ NeptuneSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -506,28 +318,6 @@ NeptuneSceneController = function (renderer) {
         planetAggregation.name = "NeptuneAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 // Pluto
@@ -540,12 +330,6 @@ PlutoSceneController = function (renderer) {
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = createPlanetMesh('pluto');
     var planetAggregation;
-    var solarSystemSceneController;
-
-    // Raycaster and Mouse
-    // var raycaster = new THREE.Raycaster();
-    // var mouse = new THREE.Vector2();
-    // var mouseListener = false;
 
     var renderer = renderer;
     var scene = init();
@@ -553,9 +337,6 @@ PlutoSceneController = function (renderer) {
     // this.animate = animate;
     this.activateScene = activateScene;
     this.name = "PlutoSceneController";
-    this.setSolarSystemSceneController = function (sceneController) {
-        solarSystemSceneController = sceneController;
-    };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -567,9 +348,6 @@ PlutoSceneController = function (renderer) {
     }
 
     function activateScene() {
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         animate();
     }
 
@@ -586,30 +364,6 @@ PlutoSceneController = function (renderer) {
         planetAggregation.name = "PlutoAggregation";
         return planetAggregation;
     }
-
-    // function addEvent() {
-    //     /**
-    //      * register mouse click event handler
-    //      */
-    //     document.addEventListener('mousedown', onMouseDown, false);
-    //     document.addEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = true;
-    //     console.log('added listener');
-    // }
-    //
-    // function removeEvent() {
-    //     document.removeEventListener('mousedown', onMouseDown, false);
-    //     document.removeEventListener('mousemove', onMouseMove, false);
-    //     mouseListener = false;
-    //     console.log('removed listener');
-    // }
-    //
-    // function onMouseDown() {
-    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-    //         removeEvent();
-    //         changeScene(solarSystemSceneController);
-    //     }
-    // }
 };
 
 /* ***** ***** Helper Functions ***** ***** */
@@ -718,7 +472,6 @@ function initDefault(light, camera, universeMesh, stars, meteors, aggregation, u
 function aggregationInitDefault(mesh) {
     var aggregation = new THREE.Object3D();
     aggregation.add(mesh);
-    // aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
     return aggregation;
 }
@@ -727,55 +480,4 @@ function rotatePlanetDefault(mesh) {
 
     mesh.rotation.y += 0.001;
 
-}
-
-// mouse down event handler
-// function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-//
-//     var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
-//     if (result != "Nothing"){
-//         return true;
-//     }
-//     else {
-//         return false;
-//     }
-// }
-
-// function onMouseMove(mouse) {
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-// }
-//
-// function checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation) {
-//     // Cast ray
-//     raycaster.setFromCamera(mouse, camera);
-//
-//     // Get intersections
-//     var intersects = raycaster.intersectObjects(scene.children, true);
-//     // console.log(intersects);
-//
-//     // intersects[0] is atmosphere of the earth
-//     // we use its .parent attribute to get the aggregated property
-//     // so we can compare it to earthAggretation
-//
-//     for (var i =0; i < intersects.length; i++) {
-//         if (intersects[i].object.type === "Mesh"){
-//             if (intersects !== null && intersects.length > 0 && planetAggregation === intersects[i].object.parent){
-//                 console.log("Clicked Planet!");
-//                 return "Planet";
-//             }
-//             else {
-//                 console.log("Clicked Nothing_planet!" + planetAggregation.name);
-//                 return "Nothing";
-//             }
-//         }
-//     }
-// }
-
-
-function changeScene(solarSystemSceneController){
-    // removeEvent();
-    solarSystemSceneController.activateScene();
 }

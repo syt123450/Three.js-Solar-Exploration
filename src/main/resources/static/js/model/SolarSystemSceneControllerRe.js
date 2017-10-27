@@ -5,7 +5,7 @@
 SolarSystemSceneController = function(renderer) {
 
     // Solar system basic constant parameters
-    var sunRadius = 5,
+    var sunRadius = SolarConfig.sunRadius,
 
         mercuryOrbitRadius = sunRadius +2,
         mercuryOrbitAngle = 0,
