@@ -1,6 +1,15 @@
+### XP Core Values: Communication
+
+### [Oct 25, 2017] - Code refactor<br/>
+1. Refactored the code use to switch scene betwen planet and the Sun with Chenhua.
+
+### [Oct 24, 2017] - Finished creating double halo demo<br/>
+1. Finished double halo demo by applying two ShaderMaterials.
+2. Communicated with UI Designer to discuss how to implement the double halo effect
 
 ### [Oct 23, 2017] - Tried to create double halo demo<br/>
 1. Tried to combine sprites and ShaderMaterials together to create a composite halo effect for the Earth and other planets.
+2. Communicated with Bou-yu. Helped him understand how to use raycaster.
 
 ***
 || XP CORE VALUES| 

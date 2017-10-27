@@ -379,6 +379,7 @@ SaturnSceneController = function (renderer) {
         return planetAggregation;
     }
 
+<<<<<<< HEAD
     // function addEvent() {
     //     /**
     //      * register mouse click event handler
@@ -400,6 +401,29 @@ SaturnSceneController = function (renderer) {
     //         solarSystemSceneController.animate();
     //     }
     // }
+=======
+    function addEvent() {
+        /**
+         * register mouse click event handler
+         */
+        document.addEventListener('mousedown', onMouseDown, false);
+        document.addEventListener('mousemove', onMouseMove, false);
+        mouseListener = true;
+    }
+
+    function removeEvent() {
+        document.removeEventListener('mousedown', onMouseDown, false);
+        document.removeEventListener('mousemove', onMouseMove, false);
+        mouseListener = false;
+    }
+
+    function onMouseDown() {
+        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+            removeEvent();
+            changeScene(solarSystemSceneController);
+        }
+    }
+>>>>>>> bb79bfb223dfe4450223c0d1e2b9174c4a36de2d
 };
 
 // Uranus
@@ -760,6 +784,20 @@ function rotatePlanetDefault(mesh) {
 
 }
 
+// mouse down event handler
+function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
+    if (result != "Nothing"){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function onMouseMove(mouse) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -791,19 +829,6 @@ function checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation) 
     }
 }
 
-// mouse down event handler
-function mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    var result = checkPlanetClicked(mouse, raycaster, camera, scene, planetAggregation);
-    if (result != "Nothing"){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 function changeScene(solarSystemSceneController){
     // removeEvent();

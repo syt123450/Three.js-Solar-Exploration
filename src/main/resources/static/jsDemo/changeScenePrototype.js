@@ -74,6 +74,9 @@ SolarSystemSceneController = function(renderer) {
     var earthAggregation = createAggregation(
         createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 9)
     );
+	earthAggregation.name = 'earthAggregation';
+	console.log('earth aggregation:', earthAggregation);
+	
     var marsAggregation = createAggregation(
         createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 5.5)
     );
@@ -137,6 +140,8 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function initSystemPositions() {
+    	
+    	console.log('this is', this);
         // Add planets to the sun
         sunAggregation.add(mercuryAggregation);
         sunAggregation.add(venusAggregation);
@@ -266,6 +271,24 @@ SolarSystemSceneController = function(renderer) {
             bumpMap: new THREE.TextureLoader().load(bumpPath)
         });
 
+        console.log('path', path);
+        
+        if (path === '../images/planets/mercurymap.jpg') {
+        	sphereMesh.name = 'mercury mesh';
+        }
+	
+	    if (path === '../images/planets/venusmap.jpg') {
+		    sphereMesh.name = 'venus mesh';
+	    }
+	
+	    if (path === '../images/earthmap1k.jpg') {
+        	console.log('creating earth mesh');
+		    sphereMesh.name = 'earth mesh';
+	    }
+	
+	    if (path === '../images/planets/marsmap1k.jpg') {
+		    sphereMesh.name = 'mars mesh';
+	    }
         return sphereMesh;
     }
 
@@ -364,6 +387,7 @@ SolarSystemSceneController = function(renderer) {
 		
 		// Get intersections
 		var intersects = raycaster.intersectObjects(solarSystemScene.children, true);
+		console.log('intersections', intersects);
 		
 		// intersects[0] is atmosphere of the earth
 		// we use its .parent attribute to get the aggregated property
@@ -377,7 +401,7 @@ SolarSystemSceneController = function(renderer) {
 		mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
 		if (isEarthClicked()) {
-			changeSceneToEarth();
+			// changeSceneToEarth();
 		}
 	}
 };
