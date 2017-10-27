@@ -15,8 +15,8 @@ EarthSceneController = function (renderer) {
     var earthMesh = universeUtils.createDefaultEarthMesh();
     var atmosphereMesh = universeUtils.createDefaultAtmosphere();
     var moonMesh = universeUtils.createDefaultMoon();
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
+    // var raycaster = new THREE.Raycaster();
+    // var mouse = new THREE.Vector2();
     var solarSystemSceneController;
 
     var coneList = [];
@@ -81,8 +81,8 @@ EarthSceneController = function (renderer) {
 
     function rotateEarthWithStop() {
 
-        raycaster.setFromCamera(mouse, camera);
-        var intersects = raycaster.intersectObjects(earthScene.children, true);
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
 
         if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
             rotateEarth();
@@ -125,13 +125,13 @@ EarthSceneController = function (renderer) {
 
     function onMouseMove() {
 
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
 
     function onMouseDown() {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
     }
 

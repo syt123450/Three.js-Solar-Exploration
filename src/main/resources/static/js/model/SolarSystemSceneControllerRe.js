@@ -1,3 +1,7 @@
+/**
+ * Created by ss on 2017/10/26.
+ */
+
 SolarSystemSceneController = function(renderer) {
 
     // Solar system basic constant parameters
@@ -52,11 +56,6 @@ SolarSystemSceneController = function(renderer) {
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
-
-    // Raycaster and Mouse
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
-    var mouseListener = false;
 
     // Meshes
     var universeMesh = createUniverseMesh();
@@ -147,8 +146,7 @@ SolarSystemSceneController = function(renderer) {
                 venusSceneController = controller;
                 break;
             case "Earth" :
-                // Nothing
-                // earthSceneController = controller;
+                earthSceneController = controller;
                 break;
             case "Mars" :
                 marsSceneController = controller;
@@ -196,9 +194,10 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function activateScene(){
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
+        addEvent();
         animate();
     }
 
@@ -396,36 +395,26 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function addEvent() {
-        /**
-         * register mouse click event handler
-         */
+
         document.addEventListener('mousedown', onMouseDown, false);
         document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
     }
 
     function removeEvent() {
         document.removeEventListener('mousedown', onMouseDown, false);
         document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
     }
 
     function onMouseMove() {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
 
     function checkPlanetClicked() {
-        // Cast ray
-        raycaster.setFromCamera(mouse, camera);
 
-        // Get intersections
-        var intersects = raycaster.intersectObjects(sunAggregation.children, true);
-        // console.log(intersects);
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
 
-        // intersects[0] is atmosphere of the earth
-        // we use its .parent attribute to get the aggregated property
-        // so we can compare it to earthAggretation
+        var intersects = SolarEPUtils.raycaster.intersectObjects(sunAggregation.children, true);
 
         for (var i =0; i < intersects.length; i++) {
             if (intersects[i].object.type === "Mesh"){
@@ -479,8 +468,11 @@ SolarSystemSceneController = function(renderer) {
 
     // mouse down event handler
     function onMouseDown() {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+        console.log("mouse down");
+
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
         var result = checkPlanetClicked();
         if (result != "Nothing"){
@@ -498,8 +490,8 @@ SolarSystemSceneController = function(renderer) {
                 venusSceneController.activateScene();
                 break;
             case "Earth" :
-                // Nothing
-                // earthSceneController.activateScene();
+                earthSceneController.animate();
+                $("#timeLine").show();
                 break;
             case "Mars" :
                 marsSceneController.activateScene();
@@ -521,7 +513,7 @@ SolarSystemSceneController = function(renderer) {
                 plutoSceneController.activateScene();
                 break;
             default:
-                //Nothing
+            //Nothing
         }
     }
 

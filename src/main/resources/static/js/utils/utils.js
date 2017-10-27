@@ -11,7 +11,8 @@ var SolarEPUtils = {
         document.body.appendChild(renderer.domElement);
 
         return renderer;
-    }
+    },
 
-
+    raycaster: new THREE.Raycaster(),
+    mouse:  new THREE.Vector2()
 };
