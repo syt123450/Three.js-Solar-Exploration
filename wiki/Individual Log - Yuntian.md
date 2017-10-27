@@ -1,3 +1,22 @@
+[Oct.26.2017]  Phase Summary
+
+Work Done:
+
+* Refactor the raycaster
+* Add back ico in front end
+* Add Info board and show information on it
+* Combine the latest solar to demo.html
+* Change the action of the planet scene
+* Fix warnning in front end caused by depreating of Three.js's library
+* Change the service in back end
+
+Problem:
+
+* The design need to be defined
+* Need to do some research in amimate function, the planet will rotate quicker
+* The picture of the planet need to be resized
+* The solar system's config define and use
+
 [Oct.23.2017] Summary
 
 * Finish the demo.html as our first edition
