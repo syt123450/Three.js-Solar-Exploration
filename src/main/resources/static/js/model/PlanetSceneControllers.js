@@ -50,7 +50,7 @@ MercurySceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -130,7 +130,7 @@ VenusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -210,7 +210,7 @@ MarsSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -290,7 +290,7 @@ JupiterSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -370,7 +370,7 @@ SaturnSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -379,7 +379,6 @@ SaturnSceneController = function (renderer) {
         return planetAggregation;
     }
 
-<<<<<<< HEAD
     // function addEvent() {
     //     /**
     //      * register mouse click event handler
@@ -401,29 +400,6 @@ SaturnSceneController = function (renderer) {
     //         solarSystemSceneController.animate();
     //     }
     // }
-=======
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
->>>>>>> bb79bfb223dfe4450223c0d1e2b9174c4a36de2d
 };
 
 // Uranus
@@ -474,7 +450,7 @@ UranusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -554,7 +530,7 @@ NeptuneSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -634,7 +610,7 @@ PlutoSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -753,7 +729,7 @@ function createPlanetMesh(planet){
     return mesh;
 }
 
-function initDefault(light, camera, universeMesh, stars, meteors, aggregation) {
+function initDefault(light, camera, universeMesh, stars, meteors, aggregation, universeUtils) {
     var scene = new THREE.Scene();
     scene.add(light);
     camera.position.set(0, 0, 2);
@@ -762,6 +738,7 @@ function initDefault(light, camera, universeMesh, stars, meteors, aggregation) {
     stars.forEach(function addStar(star) {
         scene.add(star);
     });
+    universeUtils.addDoubleHalos(aggregation, "#ff0000", "#00ff00");
     meteors.forEach(function addMeteor(meteor) {
         scene.add(meteor);
     });

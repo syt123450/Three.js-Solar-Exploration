@@ -60,7 +60,7 @@ UniverseUtils = function () {
                 '../images/water_4k.png'
             )
         });
-	    earthMesh.name = 'defaultEarthMesh';
+        earthMesh.name = 'defaultEarthMesh';
         return earthMesh;
     };
 
@@ -91,7 +91,7 @@ UniverseUtils = function () {
                 '../images/elev_bump_4k.jpg'
             )
         });
-	    moonMesh.name = 'moonMesh';
+        moonMesh.name = 'moonMesh';
         return moonMesh;
     };
 
@@ -151,6 +151,93 @@ UniverseUtils = function () {
         coneMesh.position.set(position.x, position.y, position.z);
 
         return coneMesh;
+    };
+
+    this.addDoubleHalos = function (target, innerColor, outerColor) {
+        // innerGlowMesh settings
+        var _innerGlowMesh;
+        var INNER_GLOW_MESH_COLOR = innerColor;
+        var INNER_GLOW_MESH_OPACITY = 0.2;
+        var INNER_GLOW_MESH_RADIUS = 0.504;
+        var innerFragmentShaderIntensity = 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );';
+
+        var _outerGlowMesh;
+        var OUTER_GLOW_MESH_COLOR = outerColor;
+        var OUTER_GLOW_MESH_OPACITY = 0.2;
+        var OUTER_GLOW_MESH_RADIUS = 0.504;
+        var outerFragmentShaderIntensity = 'float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.1 );';
+
+        _init();
+
+        /*************************
+         * @private
+         ************************/
+        function _init() {
+            if (innerColor !== '') {
+                _initInnerGlowMesh(INNER_GLOW_MESH_COLOR, INNER_GLOW_MESH_OPACITY, INNER_GLOW_MESH_RADIUS);
+                target.add(_innerGlowMesh);
+            }
+
+            if (outerColor !== '') {
+                _initOuterGlowMesh(OUTER_GLOW_MESH_COLOR, OUTER_GLOW_MESH_OPACITY, OUTER_GLOW_MESH_RADIUS);
+                target.add(_outerGlowMesh);
+            }
+        }
+
+        //The init function is used to put object into the scene
+        function _initInnerGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
+            _innerGlowMesh = new THREE.Mesh();
+            _innerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
+            _innerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, innerFragmentShaderIntensity);
+            _innerGlowMesh.scale.set(1.2, 1.2, 1.2);
+        }
+
+        function _initOuterGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
+            _outerGlowMesh = new THREE.Mesh();
+            _outerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
+            _outerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, outerFragmentShaderIntensity);
+            _outerGlowMesh.scale.set(1.2, 1.2, 1.2);
+        }
+
+        function _getShaderMaterial(glowMeshColor, opacity, intensityFunc) {
+            var shaders = _getShader(new THREE.Color(glowMeshColor), intensityFunc);
+            shader = shaders['atmosphere'];
+            return new THREE.ShaderMaterial({
+                uniforms: THREE.UniformsUtils.clone(shader.uniforms),
+                vertexShader: shader.vertexShader,
+                fragmentShader: shader.fragmentShader,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                opacity: opacity
+            });
+        }
+
+        function _getShader(color, intensityFunc) {
+            var colorR = color.r;
+            var colorG = color.g;
+            var colorB = color.b;
+            return Shaders = {
+                'atmosphere': {
+                    uniforms: {},
+                    vertexShader: [
+                        'varying vec3 vNormal;',
+                        'void main() {',
+                        'vNormal = normalize( normalMatrix * normal );',
+                        'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
+                        '}'
+                    ].join('\n'),
+                    fragmentShader: [
+                        'varying vec3 vNormal;',
+                        'void main() {',
+                        intensityFunc,
+                        'gl_FragColor = vec4(' + colorR + ', ' + colorG + ', ' + colorB + ', 1.0 ) * intensity;',
+                        '}'
+                    ].join('\n')
+                }
+            };
+        }
+
     };
 
     function calculatePosition(latitude, longitude) {
