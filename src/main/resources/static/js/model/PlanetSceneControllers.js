@@ -39,9 +39,9 @@ MercurySceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -59,27 +59,27 @@ MercurySceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
 
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Venus
@@ -119,9 +119,9 @@ VenusSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -139,27 +139,27 @@ VenusSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Mars
@@ -199,9 +199,9 @@ MarsSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -219,27 +219,27 @@ MarsSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Jupiter
@@ -279,9 +279,9 @@ JupiterSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -299,27 +299,27 @@ JupiterSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Saturn
@@ -359,9 +359,9 @@ SaturnSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -379,6 +379,29 @@ SaturnSceneController = function (renderer) {
         return planetAggregation;
     }
 
+<<<<<<< HEAD
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         solarSystemSceneController.animate();
+    //     }
+    // }
+=======
     function addEvent() {
         /**
          * register mouse click event handler
@@ -400,6 +423,7 @@ SaturnSceneController = function (renderer) {
             changeScene(solarSystemSceneController);
         }
     }
+>>>>>>> bb79bfb223dfe4450223c0d1e2b9174c4a36de2d
 };
 
 // Uranus
@@ -439,9 +463,9 @@ UranusSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -459,27 +483,27 @@ UranusSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Neptune
@@ -519,9 +543,9 @@ NeptuneSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -539,27 +563,27 @@ NeptuneSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 // Pluto
@@ -599,9 +623,9 @@ PlutoSceneController = function (renderer) {
     }
 
     function activateScene() {
-        if (!mouseListener){
-            addEvent();
-        }
+        // if (!mouseListener){
+        //     addEvent();
+        // }
         animate();
     }
 
@@ -619,29 +643,29 @@ PlutoSceneController = function (renderer) {
         return planetAggregation;
     }
 
-    function addEvent() {
-        /**
-         * register mouse click event handler
-         */
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-        mouseListener = true;
-        console.log('added listener');
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
-        mouseListener = false;
-        console.log('removed listener');
-    }
-
-    function onMouseDown() {
-        if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
-            removeEvent();
-            changeScene(solarSystemSceneController);
-        }
-    }
+    // function addEvent() {
+    //     /**
+    //      * register mouse click event handler
+    //      */
+    //     document.addEventListener('mousedown', onMouseDown, false);
+    //     document.addEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = true;
+    //     console.log('added listener');
+    // }
+    //
+    // function removeEvent() {
+    //     document.removeEventListener('mousedown', onMouseDown, false);
+    //     document.removeEventListener('mousemove', onMouseMove, false);
+    //     mouseListener = false;
+    //     console.log('removed listener');
+    // }
+    //
+    // function onMouseDown() {
+    //     if (mouseDownAction(mouse, raycaster, camera, scene, planetAggregation, solarSystemSceneController)){
+    //         removeEvent();
+    //         changeScene(solarSystemSceneController);
+    //     }
+    // }
 };
 
 /* ***** ***** Helper Functions ***** ***** */

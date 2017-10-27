@@ -15,4 +15,7 @@ public class FuelInfoBean {
     private double longitude;
     private double latitude;
     private double amount;
+    private double coalAmount;
+    private double oilAmount;
+    private double gasAmount;
 }

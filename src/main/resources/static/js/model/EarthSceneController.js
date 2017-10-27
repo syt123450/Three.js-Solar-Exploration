@@ -17,6 +17,7 @@ EarthSceneController = function (renderer) {
     var moonMesh = universeUtils.createDefaultMoon();
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
+    var solarSystemSceneController;
 
     var coneList = [];
 
@@ -135,6 +136,14 @@ EarthSceneController = function (renderer) {
     }
 
     function isConeClicked() {
+
+    }
+
+    this.setSolarSystemSceneController = function(sceneController) {
+        solarSystemSceneController = sceneController;
+    };
+
+    function backToSolar() {
 
     }
 };

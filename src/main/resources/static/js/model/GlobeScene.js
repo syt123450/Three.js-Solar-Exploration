@@ -115,7 +115,8 @@ DAT.Globe = function (renderer, colorFn) {
         shader = Shaders['earth'];
         uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
-        uniforms['texture'].value = THREE.ImageUtils.loadTexture(surfaceImg);
+        uniforms['texture'].value = new new THREE.TextureLoader().load(surfaceImg);
+            // THREE.ImageUtils.loadTexture(surfaceImg);
 
         material = new THREE.ShaderMaterial({
 
@@ -279,7 +280,8 @@ DAT.Globe = function (renderer, colorFn) {
 
         }
 
-        THREE.GeometryUtils.merge(subgeo, point);
+        // THREE.GeometryUtils.merge(subgeo, point);
+        subgeo.merge(point.geometry, point.matrix);
     }
 
     function onMouseDown(event) {
