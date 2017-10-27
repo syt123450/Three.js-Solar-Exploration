@@ -14,8 +14,9 @@ NullPointerException
 
 ## Part I: Wiki Journal Entry on XP/Agile Core Values 
 1. [Task Board](https://github.com/nguyensjsu/cmpe202-nullpointerexception/projects/1)
-2. [Daily Standup Meeting](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Daily%20Meeting%20Notes.md)
-3. [Weekly Work Summary](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md): (**XP Core Values** included)
+2. [Daily Standup Meeting - Scrum](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Daily%20Meeting%20Notes.md)
+3. [Weekly Work Summary](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)</br>
+**XP Core Values** like Communication, See the Whole and Decide as late as possible are included
 * What we have accomplished last week.
 * What we are going to do next week.
 * What challenges we had last week.
