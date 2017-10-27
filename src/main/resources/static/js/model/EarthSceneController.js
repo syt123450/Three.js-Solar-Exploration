@@ -155,7 +155,6 @@ EarthSceneController = function (renderer) {
 
     function showInfo(latitude, longitude) {
         $("#infoBoard").animate({width:'toggle'},350);
-        // $("#infoBoard").show();
         infoBoard = true;
         moveEarth(latitude, longitude);
     }

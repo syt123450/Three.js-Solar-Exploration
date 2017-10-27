@@ -4,54 +4,6 @@
 
 SolarSystemSceneController = function(renderer) {
 
-    // Solar system basic constant parameters
-    var sunRadius = SolarConfig.sunRadius,
-
-        mercuryOrbitRadius = sunRadius +2,
-        mercuryOrbitAngle = 0,
-        mercuryOrbitSpeed = - 3,
-        mercuryRotateSpeed = 0.05,
-
-        venusOrbitRadius = sunRadius +4.5,
-        venusOrbitAngle = 0,
-        venusOrbitSpeed = - 1.9,
-        venusRotateSpeed = 0.05,
-
-        earthOrbitRadius = sunRadius +7.5,
-        earthOrbitAngle = 0,
-        earthOrbitSpeed = - 1,
-        earthRotateSpeed = 0.05,
-
-        marsOrbitRadius = sunRadius +11,
-        marsOrbitAngle = 0,
-        marsOrbitSpeed = - 0.5,
-        marsRotateSpeed = 0.05,
-
-        jupiterOrbitRadius = sunRadius +16,
-        jupiterOrbitAngle = 0,
-        jupiterOrbitSpeed = - 0.3,
-        jupiterRotateSpeed = 0.05,
-
-        saturnOrbitRadius = sunRadius +21,
-        saturnOrbitAngle = 0,
-        saturnOrbitSpeed = - 0.17,
-        saturnRotateSpeed = 0.05,
-
-        uranusOrbitRadius = sunRadius +25.5,
-        uranusOrbitAngle = 0,
-        uranusOrbitSpeed = - 0.12,
-        uranusRotateSpeed = 0.05,
-
-        neptuneOrbitRadius = sunRadius +30,
-        neptuneOrbitAngle = 0,
-        neptuneOrbitSpeed = - 0.08,
-        neptuneRotateSpeed = 0.05,
-
-        plutoOrbitRadius = sunRadius +33.5,
-        plutoOrbitAngle = 0,
-        plutoOrbitSpeed = - 0.04,
-        plutoRotateSpeed = 0.05;
-
     // Light and Camera
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 1.2, 0);
@@ -60,19 +12,19 @@ SolarSystemSceneController = function(renderer) {
     // Meshes
     var universeMesh = createUniverseMesh();
     var sunMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(sunRadius, 32, 32),
+        new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
         new THREE.MeshBasicMaterial({
             color: 'yellow'
         }));
-    var mercuryMesh = createBumpSphereMesh('../images/planets/mercurymap.jpg', '../images/planets/mercurybump.jpg', 0.5);
-    var venusMesh = createBumpSphereMesh('../images/planets/venusmap.jpg', '../images/planets/venusbump.jpg', 0.8);
-    var earthMesh = createBumpSphereMesh('../images/earthmap1k.jpg', '../images/earthbump1k.jpg', 0.9);
-    var marsMesh = createBumpSphereMesh('../images/planets/marsmap1k.jpg', '../images/planets/marsbump1k.jpg', 0.55);
-    var jupiterMesh = createSphereMesh('../images/planets/jupitermap.jpg' , 2);
-    var saturnMesh = createSphereMesh('../images/planets/saturnmap.jpg' , 1.8);
-    var uranusMesh = createSphereMesh('../images/planets/uranusmap.jpg' , 1.2);
-    var neptuneMesh = createSphereMesh('../images/planets/neptunemap.jpg' , 1.2);
-    var plutoMesh = createBumpSphereMesh('../images/planets/plutomap1k.jpg', '../images/planets/plutobump1k.jpg', 0.3);
+    var mercuryMesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, 0.5);
+    var venusMesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, 0.8);
+    var earthMesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, 0.9);
+    var marsMesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, 0.55);
+    var jupiterMesh = createSphereMesh(SolarConfig.jupiter.map , 2);
+    var saturnMesh = createSphereMesh(SolarConfig.saturn.map , 1.8);
+    var uranusMesh = createSphereMesh(SolarConfig.uranus.map , 1.2);
+    var neptuneMesh = createSphereMesh(SolarConfig.neptune.map , 1.2);
+    var plutoMesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, 0.3);
 
     // Aggregations
     var sunAggregation = createAggregation(
@@ -194,9 +146,6 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function activateScene(){
-        // if (!mouseListener){
-        //     addEvent();
-        // }
         addEvent();
         animate();
     }
@@ -236,88 +185,91 @@ SolarSystemSceneController = function(renderer) {
         sunAggregation.add(plutoAggregation);
 
         // Init. positions
-        mercuryAggregation.position.x = (mercuryOrbitRadius);
-        venusAggregation.position.x = (venusOrbitRadius);
-        earthAggregation.position.x = (earthOrbitRadius);
-        marsAggregation.position.x = (marsOrbitRadius);
-        jupiterAggregation.position.x = (jupiterOrbitRadius);
-        saturnAggregation.position.x = (saturnOrbitRadius);
-        uranusAggregation.position.x = (uranusOrbitRadius);
-        neptuneAggregation.position.x = (neptuneOrbitRadius);
-        plutoAggregation.position.x = (plutoOrbitRadius);
+        mercuryAggregation.position.x = (SolarConfig.mercury.orbitRadius);
+        venusAggregation.position.x = (SolarConfig.venus.orbitRadius);
+        earthAggregation.position.x = (SolarConfig.earth.orbitRadius);
+        marsAggregation.position.x = (SolarConfig.mars.orbitRadius);
+        jupiterAggregation.position.x = (SolarConfig.jupiter.orbitRadius);
+        saturnAggregation.position.x = (SolarConfig.saturn.orbitRadius);
+        uranusAggregation.position.x = (SolarConfig.uranus.orbitRadius);
+        neptuneAggregation.position.x = (SolarConfig.neptune.orbitRadius);
+        plutoAggregation.position.x = (SolarConfig.pluto.orbitRadius);
+
+        console.log("init");
+        console.log(SolarConfig);
 
         // Add orbits
-        sunAggregation.add(createOrbit(mercuryOrbitRadius));
-        sunAggregation.add(createOrbit(venusOrbitRadius));
-        sunAggregation.add(createOrbit(earthOrbitRadius));
-        sunAggregation.add(createOrbit(marsOrbitRadius));
-        sunAggregation.add(createOrbit(jupiterOrbitRadius));
-        sunAggregation.add(createOrbit(saturnOrbitRadius));
-        sunAggregation.add(createOrbit(uranusOrbitRadius));
-        sunAggregation.add(createOrbit(neptuneOrbitRadius));
-        sunAggregation.add(createOrbit(plutoOrbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.mercury.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.venus.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.earth.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.mars.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.jupiter.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.saturn.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.uranus.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.neptune.orbitRadius));
+        sunAggregation.add(createOrbit(SolarConfig.pluto.orbitRadius));
     }
 
     function rotationAndRevolution() {
 
         // Rotations
-        mercuryAggregation.rotateY(mercuryRotateSpeed);
-        venusAggregation.rotateY(venusRotateSpeed);
-        earthAggregation.rotateY(earthRotateSpeed);
-        marsAggregation.rotateY(marsRotateSpeed);
-        jupiterAggregation.rotateY(jupiterRotateSpeed);
-        saturnAggregation.rotateY(saturnRotateSpeed);
-        uranusAggregation.rotateY(uranusRotateSpeed);
-        neptuneAggregation.rotateY(neptuneRotateSpeed);
-        plutoAggregation.rotateY(plutoRotateSpeed);
+        mercuryAggregation.rotateY(SolarConfig.mercury.rotateSpeed);
+        venusAggregation.rotateY(SolarConfig.venus.rotateSpeed);
+        earthAggregation.rotateY(SolarConfig.earth.rotateSpeed);
+        marsAggregation.rotateY(SolarConfig.mars.rotateSpeed);
+        jupiterAggregation.rotateY(SolarConfig.jupiter.rotateSpeed);
+        saturnAggregation.rotateY(SolarConfig.saturn.rotateSpeed);
+        uranusAggregation.rotateY(SolarConfig.uranus.rotateSpeed);
+        neptuneAggregation.rotateY(SolarConfig.neptune.rotateSpeed);
+        plutoAggregation.rotateY(SolarConfig.pluto.rotateSpeed);
 
         // Revolutions
         var radians = 0;
-        mercuryOrbitAngle += mercuryOrbitSpeed;
-        venusOrbitAngle += venusOrbitSpeed;
-        earthOrbitAngle += earthOrbitSpeed;
-        marsOrbitAngle += marsOrbitSpeed;
-        jupiterOrbitAngle += jupiterOrbitSpeed;
-        saturnOrbitAngle += saturnOrbitSpeed;
-        uranusOrbitAngle += uranusOrbitSpeed;
-        neptuneOrbitAngle += neptuneOrbitSpeed;
-        plutoOrbitAngle += plutoOrbitSpeed;
+        SolarConfig.mercury.orbitAngle += SolarConfig.mercury.orbitSpeed;
+        SolarConfig.venus.orbitAngle += SolarConfig.venus.orbitSpeed;
+        SolarConfig.earth.orbitAngle += SolarConfig.earth.orbitSpeed;
+        SolarConfig.mars.orbitAngle += SolarConfig.mars.orbitSpeed;
+        SolarConfig.jupiter.orbitAngle += SolarConfig.jupiter.orbitSpeed;
+        SolarConfig.saturn.orbitAngle += SolarConfig.saturn.orbitSpeed;
+        SolarConfig.uranus.orbitAngle += SolarConfig.uranus.orbitSpeed;
+        SolarConfig.neptune.orbitAngle += SolarConfig.neptune.orbitSpeed;
+        SolarConfig.pluto.orbitAngle += SolarConfig.pluto.orbitSpeed;
 
-        radians = mercuryOrbitAngle * Math.PI / 180;
-        mercuryAggregation.position.x = Math.cos(radians) * mercuryOrbitRadius;
-        mercuryAggregation.position.z = Math.sin(radians) * mercuryOrbitRadius;
+        radians = SolarConfig.mercury.orbitAngle * Math.PI / 180;
+        mercuryAggregation.position.x = Math.cos(radians) * SolarConfig.mercury.orbitRadius;
+        mercuryAggregation.position.z = Math.sin(radians) * SolarConfig.mercury.orbitRadius;
 
-        radians = venusOrbitAngle * Math.PI / 180;
-        venusAggregation.position.x = Math.cos(radians) * venusOrbitRadius;
-        venusAggregation.position.z = Math.sin(radians) * venusOrbitRadius;
+        radians = SolarConfig.venus.orbitAngle * Math.PI / 180;
+        venusAggregation.position.x = Math.cos(radians) * SolarConfig.venus.orbitRadius;
+        venusAggregation.position.z = Math.sin(radians) * SolarConfig.venus.orbitRadius;
 
-        radians = earthOrbitAngle * Math.PI / 180;
-        earthAggregation.position.x = Math.cos(radians) * earthOrbitRadius;
-        earthAggregation.position.z = Math.sin(radians) * earthOrbitRadius;
+        radians = SolarConfig.earth.orbitAngle * Math.PI / 180;
+        earthAggregation.position.x = Math.cos(radians) * SolarConfig.earth.orbitRadius;
+        earthAggregation.position.z = Math.sin(radians) * SolarConfig.earth.orbitRadius;
 
-        radians = marsOrbitAngle * Math.PI / 180;
-        marsAggregation.position.x = Math.cos(radians) * marsOrbitRadius;
-        marsAggregation.position.z = Math.sin(radians) * marsOrbitRadius;
+        radians = SolarConfig.mars.orbitAngle * Math.PI / 180;
+        marsAggregation.position.x = Math.cos(radians) * SolarConfig.mars.orbitRadius;
+        marsAggregation.position.z = Math.sin(radians) * SolarConfig.mars.orbitRadius;
 
-        radians = jupiterOrbitAngle * Math.PI / 180;
-        jupiterAggregation.position.x = Math.cos(radians) * jupiterOrbitRadius;
-        jupiterAggregation.position.z = Math.sin(radians) * jupiterOrbitRadius;
+        radians = SolarConfig.jupiter.orbitAngle * Math.PI / 180;
+        jupiterAggregation.position.x = Math.cos(radians) * SolarConfig.jupiter.orbitRadius;
+        jupiterAggregation.position.z = Math.sin(radians) * SolarConfig.jupiter.orbitRadius;
 
-        radians = saturnOrbitAngle * Math.PI / 180;
-        saturnAggregation.position.x = Math.cos(radians) * saturnOrbitRadius;
-        saturnAggregation.position.z = Math.sin(radians) * saturnOrbitRadius;
+        radians = SolarConfig.saturn.orbitAngle * Math.PI / 180;
+        saturnAggregation.position.x = Math.cos(radians) * SolarConfig.saturn.orbitRadius;
+        saturnAggregation.position.z = Math.sin(radians) * SolarConfig.saturn.orbitRadius;
 
-        radians = uranusOrbitAngle * Math.PI / 180;
-        uranusAggregation.position.x = Math.cos(radians) * uranusOrbitRadius;
-        uranusAggregation.position.z = Math.sin(radians) * uranusOrbitRadius;
+        radians = SolarConfig.uranus.orbitAngle * Math.PI / 180;
+        uranusAggregation.position.x = Math.cos(radians) * SolarConfig.uranus.orbitRadius;
+        uranusAggregation.position.z = Math.sin(radians) * SolarConfig.uranus.orbitRadius;
 
-        radians = neptuneOrbitAngle * Math.PI / 180;
-        neptuneAggregation.position.x = Math.cos(radians) * neptuneOrbitRadius;
-        neptuneAggregation.position.z = Math.sin(radians) * neptuneOrbitRadius;
+        radians = SolarConfig.neptune.orbitAngle * Math.PI / 180;
+        neptuneAggregation.position.x = Math.cos(radians) * SolarConfig.neptune.orbitRadius;
+        neptuneAggregation.position.z = Math.sin(radians) * SolarConfig.neptune.orbitRadius;
 
-        radians = plutoOrbitAngle * Math.PI / 180;
-        plutoAggregation.position.x = Math.cos(radians) * plutoOrbitRadius;
-        plutoAggregation.position.z = Math.sin(radians) * plutoOrbitRadius;
+        radians = SolarConfig.pluto.orbitAngle * Math.PI / 180;
+        plutoAggregation.position.x = Math.cos(radians) * SolarConfig.pluto.orbitRadius;
+        plutoAggregation.position.z = Math.sin(radians) * SolarConfig.pluto.orbitRadius;
     }
 
     function createUniverseMesh() {
@@ -497,7 +449,6 @@ SolarSystemSceneController = function(renderer) {
                 marsSceneController.activateScene();
                 break;
             case "Saturn" :
-                // Console.log(saturnSceneController);
                 saturnSceneController.activateScene();
                 break;
             case "Jupiter" :
@@ -516,5 +467,4 @@ SolarSystemSceneController = function(renderer) {
             //Nothing
         }
     }
-
 };
