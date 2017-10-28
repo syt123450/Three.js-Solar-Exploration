@@ -4,7 +4,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | <ul><li> Downloaded country flags</li><li>Tried combining earth explosion and cone explosion into the same code</li><ul> | 1. Work on cone textures | 1. Good |
 | Chenhua | 1. Reviewed FuelInfoBean | 1. Review and refactor solar scene code | 1. Fine |
 ||| 2. Weekly Meeting ||
 | Yuntian | ------ | ------ | ------ |
@@ -15,7 +15,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | 1. Made Earth Explode | <ul><li> Downloaded country flags</li><li>Tried combining earth explosion and cone explosion into the same code</li><ul>  | 1. Raycaster capturing multiple objects |
 | Chenhua | 1. Debug on solar system scene | 1. Refactor scene code | 1. Fine |
 || 2. Reviewed code and data |||
 | Yuntian | 1. refactor solar config | <ul><li>combine cone's feature</li><li>add tween's feature</li></ul> | 1. Aggregation in solar need to be discussed |
@@ -26,7 +26,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | 1. Made cone explode | 1. Make earth explode | 1. Raycaster capturing multiple objects |
 | Chenhua | 1. Switch scenes between solar system and each planet (with Bo) | 1. Refactor scene code | 1. Bug when click for planet scene (solar scene still be clicked) |
 || 2. Apply click on prototypes on the scenes (with Bo) | 2. Debug for click on action ||
 | Yuntian | <ul><li>combine features with bo</li><li>add back function</li><li>solve some warnning</li></ul> | 1. add information board | 1. go well |
@@ -37,7 +37,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo |Refactored the code use to switch scene betwen planet and the Sun with Chenhua.|Refactor code with Yuntian.|Fix bugs during code refactor.|
-| Bou-Yu | 1. Made cone explode | 1. Make Earth explode | 1. Good |
+| Bou-Yu | 1. Made cone explode | 1. Make earth explode 2. Looked into cone textures | 1. Good |
 | Chenhua | 1. Reviewed SQL statements, update comments | 1. Complete scene change (with Bo) | 1. Fine |
 ||| 2. Apply different prototypes into the scene (with Bo) ||
 | Yuntian | <ul><li>1. joint debugging for google earth</li><li>2. create backlogo</li></ul> | 1. add event to backlogo and combine feature | 1. joint debugging go well, yeah! |
