@@ -16,15 +16,15 @@ SolarSystemSceneController = function(renderer) {
         new THREE.MeshBasicMaterial({
             color: 'yellow'
         }));
-    var mercuryMesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, 0.5);
-    var venusMesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, 0.8);
-    var earthMesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, 0.9);
-    var marsMesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, 0.55);
-    var jupiterMesh = createSphereMesh(SolarConfig.jupiter.map , 2);
-    var saturnMesh = createSphereMesh(SolarConfig.saturn.map , 1.8);
-    var uranusMesh = createSphereMesh(SolarConfig.uranus.map , 1.2);
-    var neptuneMesh = createSphereMesh(SolarConfig.neptune.map , 1.2);
-    var plutoMesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, 0.3);
+    var mercuryMesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
+    var venusMesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
+    var earthMesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
+    var marsMesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, SolarConfig.mars.radius);
+    var jupiterMesh = createSphereMesh(SolarConfig.jupiter.map , SolarConfig.jupiter.radius);
+    var saturnMesh = createSphereMesh(SolarConfig.saturn.map , SolarConfig.saturn.radius);
+    var uranusMesh = createSphereMesh(SolarConfig.uranus.map , SolarConfig.uranus.radius);
+    var neptuneMesh = createSphereMesh(SolarConfig.neptune.map , SolarConfig.neptune.radius);
+    var plutoMesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, SolarConfig.pluto.radius);
 
     // Aggregations
     var sunAggregation = createAggregation(
