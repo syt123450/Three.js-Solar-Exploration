@@ -129,7 +129,7 @@ function createRingMesh(planet){
 
     // mesh.geometry = new THREE.RingGeometry(0.75, 1, 50, 5, 0, Math.PI * 2);
     mesh.geometry = new THREE.BufferGeometry().fromGeometry(
-        new THREEx.Planets._RingGeometry(0.75, 1, 64));
+        new THREE.RingGeometry(0.75, 1, 64));
     switch (planet){
         case 'saturn':
             mesh.material = new THREE.MeshPhongMaterial({
