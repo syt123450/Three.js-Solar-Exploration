@@ -1,6 +1,6 @@
 PinController = function (renderer) {
-    //-24.716882, 128.226551
-    var latitude = 37.3382, longitude = -121.8863;  //TODO change latitude = 37.3382
+
+    var latitude = 37.3382, longitude = -121.8863;
     var radius = 0.55;
     var position = initPosition(latitude, longitude);
 
@@ -15,6 +15,7 @@ PinController = function (renderer) {
 
     var pinRenderer = renderer;
     var pinScene = init();
+    var grow = true; //Allow the cone to grow when loaded
 
     this.animate = pinAnimate;
 
@@ -23,8 +24,8 @@ PinController = function (renderer) {
         requestAnimationFrame(pinAnimate);
         rotateEarth();
         rotateCone();
+        growPin();
         pinRenderer.render(pinScene, camera);
-
     }
 
     function init() {
@@ -64,53 +65,26 @@ PinController = function (renderer) {
         position.y = pointY;
         position.z = pointZ;
 
-        console.log(position);
-
         return position;
     }
 
     function initCone() {
-        var size = 10;
-        var point, face, color, numberOfSides, vertexIndex;
-        var faceIndices = [ 'a', 'b', 'c', 'd' ];
-        var texture = new THREE.TextureLoader().load('../images/fadeTest.jpg');
-        texture.wrapS =  THREE.RepeatWrapping;
-        // texture.wrapT = new THREE.MeshPhongMaterial( { color: 0x085093 } );
-        var coneGeometry = new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 );
-
-        for ( var i = 0; i < coneGeometry.faces.length; i++ )
-        {
-            face = coneGeometry.faces[ i ];
-            // determine if current face is a tri or a quad
-            numberOfSides = ( face instanceof THREE.Face3 ) ? 3 : 4;
-            console.log(face);
-            // assign color to each vertex of current face
-            for( var j = 0; j < numberOfSides; j++ )
-            {
-                vertexIndex = face[ faceIndices[ j ] ];
-                // store coordinates of vertex
-                point = coneGeometry.vertices[ vertexIndex ];
-                // initialize color variable
-                color = new THREE.Color( 0xffffff );
-                color.setRGB( 0.5 + point.x / size, 0.5 + point.y / size, 0.5 + point.z / size );
-                face.vertexColors[ j ] = color;
-                face.vertexTextures = texture;
-            }
-        }
-
-
-        var coneMesh = new THREE.Mesh( coneGeometry
-
-            // new THREE.MeshBasicMaterial ({wireframe: true})
-            // new THREE.MeshBasicMaterial({
-            //         map: texture
-                    // side: THREE.BackSide
-                // })
-            // new THREE.EquirectangularReflectionMapping
-            // new THREE.MeshPhongMaterial( { color: 0x085093 } )
-
+        var coneFlat = new THREE.MeshPhongMaterial( { color: 0xFF0000 } );
+        var coneSide = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load(
+            '../images/fadeTest.jpg'
+        ),
+            side: THREE.BackSide } );
+        var materialsArray = [];
+        materialsArray.push(coneSide);
+        materialsArray.push(coneSide);
+        materialsArray.push(coneFlat);
+        var coneMesh = new THREE.Mesh(
+            new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
+            materialsArray
         );
 
+        console.log(materialsArray);
+        console.log(coneMesh);
 
 
         coneMesh.position.set(position.x, position.y, position.z);
@@ -122,7 +96,6 @@ PinController = function (renderer) {
     }
 
     function initFlag() {
-
         var flagMesh = new THREE.Mesh(
             new THREE.BoxGeometry( 0.12, 0.052, 0.012 ),
             new THREE.MeshBasicMaterial({
@@ -147,13 +120,33 @@ PinController = function (renderer) {
 
     function rotateEarth() {
 
-        earthMesh.rotation.y += 0.003; //TODO: changeback to 0.003
+        earthMesh.rotation.y += 0.003;
         atmosphereMesh.rotation.y += 0.003;
     }
 
     function rotateCone() {
 
         cone.rotateY(0.05);
-        // console.log(cone.rotation.x);
+    }
+
+    function growPin() {
+
+        if(cone.scale.x > 2) {
+            grow = false;
+        }
+        if(cone.scale.x < 1) {
+            grow = true;
+        }
+        if(grow) {
+            cone.scale.x += 0.01;
+            cone.scale.y += 0.01;
+            cone.scale.z += 0.01;
+            cone.translateY(-.00055);
+        }else{
+            cone.scale.x -= 0.01;
+            cone.scale.y -= 0.01;
+            cone.scale.z -= 0.01;
+            cone.translateY(.00055);
+        }
     }
 };
