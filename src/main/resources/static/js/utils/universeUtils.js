@@ -16,6 +16,14 @@ UniverseUtils = function () {
         [8, -4, -15], [7, -2, -15], [10, 0, -15],
         [8, -4, -13], [6, -3, -15]];
 
+    this.createDefaultSun = function () {
+        return new THREE.Mesh(
+            new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
+            new THREE.MeshBasicMaterial({
+                color: 'yellow'
+            }));
+    };
+
     this.createDefaultUniverse = function () {
 
         var universeMesh = new THREE.Mesh();

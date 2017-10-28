@@ -11,11 +11,7 @@ SolarSystemSceneController = function(renderer) {
 
     // Meshes
     var universeMesh = createUniverseMesh();
-    var sunMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
-        new THREE.MeshBasicMaterial({
-            color: 'yellow'
-        }));
+    var sunMesh = universeUtils.createDefaultSun();
     var mercuryMesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
     var venusMesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
     var earthMesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
