@@ -11,6 +11,18 @@
 * Decide as late as possible
   * Every team member works on a prototype of the different functionalities and we will be able to decide on functionalities best suite our need
 
+
+### [Oct.28.2017] Made earth explode prototype
+* Finished working on cone textures
+
+### [Oct.27.2017] Made earth explode prototype
+* Downloaded country maps
+* Tried combining earth explosion and cone explosion into the same code
+
+### [Oct.26.2017] Made earth explode prototype
+* Tweaked earth explosion
+* Looked into cone textures
+
 ### [Oct.25.2017] Made earth explode prototype
 * Made earth capable of exploding
 
