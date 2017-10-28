@@ -2,6 +2,7 @@
 OrbitDemoController = function (renderer) {
     var universeUtils = new UniverseUtils();
     var light = new THREE.PointLight(0xffffff, 0.75, 0);
+    var hemi_light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
     var camera = universeUtils.createDefaultCamera();
 
     var universeMesh = universeUtils.createDefaultUniverse();
@@ -49,11 +50,12 @@ OrbitDemoController = function (renderer) {
         scene.add(light);
         light.position.set(0, 0, 0);
         scene.add(new THREE.AmbientLight(0x222222));
+        scene.add(hemi_light);
         scene.add(camera);
         camera.position.set(0, 0, 5);
 
         scene.add(universeMesh);
-        initOrbits();
+        // initOrbits();
         scene.add(sunAggregation);
 
         return scene;
@@ -61,18 +63,17 @@ OrbitDemoController = function (renderer) {
 
     function createSunMesh(){
         return new THREE.Mesh(
-            new THREE.SphereGeometry(0.1, 32, 32),
-            // new THREE.MeshPhongMaterial({
-            //         // map: textureLoader.load(
-            //         //     '../images/sunmap.jpg'
-            //         //     // '../images/earthmap1k.jpg'
-            //         // ),
-            //         color: 0xffffe0
-            //     }
-            // )
-            new THREE.MeshBasicMaterial({
-                color: 'yellow'
-            })
+            new THREE.SphereGeometry(1, 32, 32),
+            new THREE.MeshPhongMaterial({
+                    map: new THREE.TextureLoader().load(
+                        '../images/fire2.jpg'
+                        // '../images/earthmap1k.jpg'
+                    )
+                }
+            )
+            // new THREE.MeshBasicMaterial({
+            //     color: 'yellow'
+            // })
         );
     }
 
