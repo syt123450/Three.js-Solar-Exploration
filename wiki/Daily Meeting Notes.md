@@ -18,7 +18,7 @@
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | 1. Debug on solar system scene | 1. Refactor scene code | 1. Fine |
 || 2. Reviewed code and data |||
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | 1. refactor solar config | <ul><li>combine cone's feature</li><li>add tween's feature</li></ul> | 1. Aggregation in solar need to be discussed |
 
 ***
 ### [Oct. 26th, 2017]
