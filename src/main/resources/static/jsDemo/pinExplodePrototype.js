@@ -85,7 +85,7 @@ PinController = function (renderer) {
         pinRenderer.render(pinScene, camera);
 
         if (count++ % 60 === 0) {
-            console.log(earthMesh.rotation.y / Math.PI * 180);
+            // console.log(earthMesh.rotation.y / Math.PI * 180);
         }
     }
 
@@ -212,21 +212,14 @@ PinController = function (renderer) {
             if (_isTargetClicked(cone)) {
                 earthMesh.remove(cone);
                 // explosion(cone.position);
-                addExplosion(cone.position);
-                // explode = true;
-                // switch (strategy) {
-                //     case 'ROTATE_CAMERA':
-                //         _rotationStrategyOne();
-                //         break;
-                //     case 'ROTATE_EARTH':
-                //         _rotationStrategyTwo();
-                //         break;
-                //     default:
-                //         _rotationStrategyTwo();
-                //         break;
-                // }
+                addExplosion(cone.position, "cone");
+            }
 
-                // enableEarthRotation = !enableEarthRotation;
+            if (_isTargetClicked(earthMesh)) {
+                earthAggregation.remove(atmosphereMesh);
+                earthAggregation.remove(earthMesh);
+                // explosion(cone.position);
+                addExplosion(earthMesh.position, "earth");
             }
         }
     }
@@ -235,18 +228,38 @@ PinController = function (renderer) {
 
         raycaster.setFromCamera(mouse, camera);
 
-        var intersects = raycaster.intersectObjects(earthMesh.children, true);
+        var intersects = raycaster.intersectObjects(earthAggregation.children, true); //earthMesh, earthAggregation
+        var intersects2 = raycaster.intersectObjects(earthMesh.children, false);
 
         console.log(intersects);
 
-        if (intersects === null || intersects.length === 0) {
-            return false;
+        // if (intersects === null || intersects.length === 0) {
+        //     return false;
+        // }
+
+        if (target === intersects2[1].object) {
+            console.log(intersects2[1].object);
+            return true;
         }
 
+        //
+        // for (var j = 0; j < intersects2.length; j++) {
+        //     if (target === intersects2[j].object) {
+        //         return true;
+        //     }
+        // }
+
         for (var i = 0; i < intersects.length; i++) {
-            if (target === intersects[i].object) {
-                return true;
+            if (intersects[i].object.name === "coneMesh")
+            {
+                console.log("test");
+                return false;
+            }else{
+                if (target === intersects[i].object) {
+                    return true;
+                }
             }
+
         }
         return false;
     }
@@ -255,13 +268,13 @@ PinController = function (renderer) {
         document.addEventListener('mousedown', callback);
     }
 
-    function addExplosion(point){
+    function addExplosion(point, blowUp){
 
         var timeNow = clock.getElapsedTime();
         // earthMesh.children.remove;
         explode = false;
         for (var i = 0; i < 4; i++) {
-            var geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+            var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.1);
             var material = new THREE.MeshBasicMaterial({
                 color: 0x999999
             });
@@ -271,9 +284,15 @@ PinController = function (renderer) {
             part.position.z = point.z;
             part.name = "part" + i;
             part.birthDay = timeNow;
-            earthMesh.add(part);
+            //Because of raycaster limitation we need the if else statement to identify if the cone is blowing up or the earth is blowing up
+            if (blowUp === "cone") {
+                earthMesh.add(part);
+            }else{
+                earthAggregation.add(part);
+            }
+
             particles.push(part);
-            console.log("created", i)
+            // console.log("created", i)
         }
        }
 
@@ -287,22 +306,22 @@ PinController = function (renderer) {
                         //elem.rotateX(1);
                         elem.rotation.y += 0.1;
                         elem.rotation.z += 0.1;
-                        console.log("part0");
+                        // console.log("part0");
                         break;
                     case "part1":
                         elem.position.y -= 0.1;
                         elem.position.x -= 0.1;
-                        console.log(elem.position);
+                        // console.log(elem.position);
                         break;
                     case "part2":
                         elem.position.y += 0.1;
                         elem.position.x -= 0.1;
 
-                        console.log("part2");
+                        // console.log("part2");
                         break;
                     case "part3":
                         elem.position.y -= 0.1;
-                        console.log("part3");
+                        // console.log("part3");
                         break;
                     default:
                         break;
