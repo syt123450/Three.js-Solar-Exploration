@@ -1,3 +1,7 @@
+### [Oct. 27th, 2017]
+Development:
+  * Update FuelInfoBean
+***
 ### [Oct. 26th, 2017]
 Development:
   * Debugged Solar System Scene

@@ -1,3 +1,15 @@
+
+### [Oct. 28th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | 1. Reviewed FuelInfoBean | 1. Review and refactor solar scene code | 1. Fine |
+||| 2. Weekly Meeting ||
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Oct. 27th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

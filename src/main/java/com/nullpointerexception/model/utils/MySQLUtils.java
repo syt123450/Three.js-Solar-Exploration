@@ -66,7 +66,7 @@ public class MySQLUtils {
     public List<FuelInfoBean> getCountryDataByYear() {
 
         if (this.conn !=null){
-            String query = "SELECT areaName, longitude, latitude, Quadrillion_BTU FROM v_totalenergy";
+            String query = "SELECT areaName, longitude, latitude, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
             try {
                 preStmt = conn.prepareStatement(query);
 
@@ -125,14 +125,20 @@ public class MySQLUtils {
         Double longitude = 0.0;
         Double latitude = 0.0;
         Double amount = 0.0;
+        Double coalAmount = 0.0;
+        Double crudeOilAmount = 0.0;
+        Double naturalGasAmount = 0.0;
         try {
             while (resultSet.next()){
                 areaName = resultSet.getString("areaName");
                 longitude = resultSet.getDouble("longitude");
                 latitude = resultSet.getDouble("latitude");
                 amount = resultSet.getDouble("Quadrillion_BTU");
+                coalAmount = resultSet.getDouble("Coal_Amount");
+                crudeOilAmount = resultSet.getDouble("CrudeOil_Amount");
+                naturalGasAmount = resultSet.getDouble("NaturalGas_Amount");
 //                System.out.println("Row[" + resultSet.getRow() + "]:\t" + areaName + "\t" + longitude + "\t" + latitude + "\t" + amount);
-                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount));
+                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount, coalAmount, crudeOilAmount, naturalGasAmount));
             }
         } catch (SQLException e) {
             e.printStackTrace();
