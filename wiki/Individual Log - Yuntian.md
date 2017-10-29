@@ -1,3 +1,14 @@
+[Week 5 XP Core Values (or Lean/Kanban Principle)] 
+
+* See the whole
+The universeUtils and SolarSceneController has some same responsibility, so I refactor it to avoid duplicate
+
+* Communication
+This week, I communicate with bo to implement some features and joint debugging with chen to ensure the usability of the backend service
+
+* Decide as late as possible
+I did a info board in the front end regardless with the design, I only show function and we can decide the design later.
+
 [Oct.26.2017]  Phase Summary
 
 Work Done:
