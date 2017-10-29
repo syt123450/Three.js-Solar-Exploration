@@ -32,8 +32,51 @@ SaturnSceneController = function (renderer) {
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();
-        // aggregation.add(mesh);
+        aggregation.add(mesh);
         // aggregation.rotateZ(-Math.PI * 23.5 / 180);
+        ringMesh.rotateX( 0.5 * Math.PI );
+        aggregation.add(ringMesh);
+        return aggregation;
+    }
+};
+
+UranusSceneController = function (renderer) {
+    var universeUtils = new UniverseUtils();
+    var light = new THREE.AmbientLight(0xffffff);
+    var camera = universeUtils.createDefaultCamera();
+    var universeMesh = universeUtils.createDefaultUniverse();
+    var stars = universeUtils.createDefaultStars();
+    var meteors = universeUtils.createDefaultMeteors();
+    var mesh = createPlanetMesh('uranus');
+    var ringMesh = createRingMesh('uranus');
+
+    var renderer = renderer;
+    var scene = init();
+
+    this.animate = animate;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        stars.flashStars();
+        meteors.sweepMeteors();
+        rotatePlanet();
+
+        renderer.render(scene, camera);
+    }
+
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
+
+    function init() {
+        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit());
+    }
+
+    function aggregationInit() {
+        var aggregation = new THREE.Object3D();
+        aggregation.add(mesh);
+        // aggregation.rotateZ(-Math.PI * 23.5 / 180);
+        ringMesh.rotateX( 0.5 * Math.PI );
         aggregation.add(ringMesh);
         return aggregation;
     }
@@ -129,26 +172,26 @@ function createRingMesh(planet){
 
     // mesh.geometry = new THREE.RingGeometry(0.75, 1, 50, 5, 0, Math.PI * 2);
     mesh.geometry = new THREE.BufferGeometry().fromGeometry(
-        new THREE.RingGeometry(0.75, 1, 64));
+        new THREE.RingGeometry(0.6, 1.2, 64));
     switch (planet){
         case 'saturn':
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
-                    '../images/planets/saturnringcolortrans.png'
+                    '../images/planets/saturnringcolortransRing.png'
                 ),
                 side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 0.8
+                opacity: 1
             });
             break;
         case 'uranus':
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
-                    '../images/planets/uranusringcolortrans.png'
+                    '../images/planets/uranusringcolortransRing.png'
                 ),
                 side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 0.8
+                opacity: 1
             });
             break;
         default:
@@ -163,7 +206,7 @@ function createRingMesh(planet){
 function initDefault(light, camera, universeMesh, stars, meteors, aggregation) {
     var scene = new THREE.Scene();
     scene.add(light);
-    camera.position.set(0, 0, 2);
+    camera.position.set(0, 1.5, 3);
     scene.add(camera);
     scene.add(universeMesh);
     stars.forEach(function addStar(star) {
@@ -173,7 +216,7 @@ function initDefault(light, camera, universeMesh, stars, meteors, aggregation) {
         scene.add(meteor);
     });
     scene.add(aggregation);
-    // addEvent();
+    camera.lookAt(aggregation.position);
 
     return scene;
 }
