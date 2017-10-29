@@ -1,4 +1,14 @@
-### XP Core Values: Communication
+## XP Core Values: Communication
+
+### [Oct 28, 2017] - Managed documentations.<br/>
+1. Weekly group meeting.
+2. Updated team wiki, meeting notes and etc.
+
+### [Oct 27, 2017] - Finished tween animation demo<br/>
+1. Finisehd tween animation demo, so that when cone is clicked, the earth slide to the left side.
+
+### [Oct 26, 2017] - Code refactor<br/>
+1. Started to refactor tween animation demo.
 
 ### [Oct 25, 2017] - Code refactor<br/>
 1. Refactored the code use to switch scene betwen planet and the Sun with Chenhua.

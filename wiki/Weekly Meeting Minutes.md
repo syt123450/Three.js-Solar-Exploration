@@ -10,12 +10,12 @@ Location: TBD EB376 or Library
 * Recorder: Bo
 
 Topic 1: <br/>
-* Discussed with our UI Designer about the frontend designs
+* Discussed with our UI Designer about the front end design questions.
 
 Topic 2: <br/>
 * What did we accomplished last week
 * What we will do next week
-* What challenges we have<br/>
+* A lot of challenges we have last week<br/>
 Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)
 
 # **Week 4 Meeting**
