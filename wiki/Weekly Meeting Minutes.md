@@ -3,6 +3,21 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
+# **Week 5 Meeting**
+* Host: Chenhua
+* Attendees: Qi (UI designer), Bou-yu, Bo, Chenhua, Yuntian
+* Time: 10/28/2017 (2 hours)
+* Recorder: Bo
+
+Topic 1: <br/>
+* Discussed with our UI Designer about the frontend designs
+
+Topic 2: <br/>
+* What did we accomplished last week
+* What we will do next week
+* What challenges we have<br/>
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)
+
 # **Week 4 Meeting**
 * Host: Chenhua
 * Attendees: Qi (UI designer), Bou-yu, Bo, Chenhua, Yuntian

@@ -1,3 +1,42 @@
+## Week5 Summaries - [Oct 24  - Oct 28, 2017]
+
+### Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Collected national flags for over 100 countries.  | 1. Provide more data for each country for display pourpose. | 1. Took a long time to match country names to their flags.|
+| 2. Implemented explosion effect on cone and the Earth. | 2. Adjust the path name of flags for database insertion. |2. Not enough pieces during explosion. |
+||3. Finish integration from last week. ||
+
+
+### Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Provided backend data for Google earth api. | 1. Create more database views for frontend display. | 1. Finish the Saturn ring implementation. |
+| 2. Completed major solar system scene code refactor. | 2. Provide data to for Google API. | 2. Refactor solar system scene. |
+|3. Experimented how to implement Saturn ring using Three.js. || 3.Update the flag paths in database. |
+
+### Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Refactored code for raycaster.  | 1. Switch scene management. |1.Update the implementation of timeline widget. |
+| 2. Backend service modification. | 2. Create new div in frontend to hold new scenes. | 2. Update design of the information board. |
+| 3. Implemented information board with HTML&CSS. | 3. Continue to implement backend interface. | 3. Update backend service. |
+| 4. Implemented back button with jQuery.| 4. Continue to combine new features. | 4. Feature integrations with other team members. |
+|5. Elinated runtime javascirpt warnings.| 5. Try to solve problems in Google's API. | 5. Refactor solar/planet scene controllers. |
+|6. Combined smaller features into the final demo. |6. Service change. ||
+
+### Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+|1. Implemented double halo demo using dual ShaderMaterials and tweaked WebGL parameters. | 1. Implement halo for all 8 planets. | 1. Hard to tweak the WebGL parameters to get best visual effect for double halos. |
+|2. Improved tweenAnimationPrototype.js. Wrapped the funcitons for easier code reuse. | 2. Integrate the tween animation into the final demo with Yuntian. | |
+|3. Refactored code with Chenhua and Yuntian| 3. Try to solve the rotation speeds up problem with Yuntian. ||
+| 4. Managed team wikis. | | |
+
 ## Week4 Summaries - [Oct 15  - Oct 21, 2017]
 
 ### Bou-Yu
