@@ -3,18 +3,17 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
-| Bou-Yu | <ul><li> Downloaded country flags</li><li>Tried combining earth explosion and cone explosion into the same code</li><ul> | 1. Work on cone textures | 1. Good |
-| Chenhua | 1. Reviewed FuelInfoBean | 1. Review and refactor solar scene code | 1. Fine |
-||| 2. Weekly Meeting ||
-| Yuntian | ------ | ------ | ------ |
+| Bo |1. Update team wiki and github repos|<ol><li>Updated team wiki, meeting notes, xp core values, burn down charts.</li><li>Weekly Meeting</li></ol>| 1. Documentation is very time consuming.... |
+| Bou-Yu | <ol><li> Downloaded country flags</li><li>Tried combining earth explosion and cone explosion into the same code</li><ol> | 1. Work on cone textures | 1. Good |
+| Chenhua | 1. Reviewed FuelInfoBean | <ol><li>Review and refactor solar scene code</li><li>Weekly Meeting</li></ol> | 1. Fine |
+| Yuntian | 1. Combined smaller features into the final demo. | 1. Weekly meeting. | 1. Debug is takes a long time. |
 
 ***
 ### [Oct. 27th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo |1. Finish tween animation refactor| 1. Update team wiki and github repos | 1. Initially unable to redo the action. |
 | Bou-Yu | 1. Made Earth Explode | <ul><li> Downloaded country flags</li><li>Tried combining earth explosion and cone explosion into the same code</li><ul>  | 1. Raycaster capturing multiple objects |
 | Chenhua | 1. Debug on solar system scene | 1. Refactor scene code | 1. Fine |
 || 2. Reviewed code and data |||
@@ -25,18 +24,19 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | 1. Finished refactor tweenAnimationPrototype.js  | 1. Finish tween animation refactor | 1. N/A |
 | Bou-Yu | 1. Made earth explode | <ul><li> Tweaked earth explosion </li><li> Looked into cone textures</li></ul> | 1. Raycaster capturing multiple objects |
 | Chenhua | 1. Switch scenes between solar system and each planet (with Bo) | 1. Refactor scene code | 1. Bug when click for planet scene (solar scene still be clicked) |
 || 2. Apply click on prototypes on the scenes (with Bo) | 2. Debug for click on action ||
 | Yuntian | <ul><li>combine features with bo</li><li>add back function</li><li>solve some warnning</li></ul> | 1. add information board | 1. go well |
 
 ***
+
 ### [Oct. 25th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo |Refactored the code use to switch scene betwen planet and the Sun with Chenhua.|Refactor code with Yuntian.|Fix bugs during code refactor.|
+| Bo |Refactored the code use to switch scene between planet and the Sun with Chenhua.|Refactor code with Yuntian.|Fix bugs during code refactor.|
 | Bou-Yu | 1. Made cone explode | 1. Make earth explode | 1. Good |
 | Chenhua | 1. Reviewed SQL statements, update comments | 1. Complete scene change (with Bo) | 1. Fine |
 ||| 2. Apply different prototypes into the scene (with Bo) ||
