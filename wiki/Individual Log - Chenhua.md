@@ -3,11 +3,6 @@
     * Keep the development process for different parts
     * Keep the ideas from different parts
     * Coordinate the progress among different parts
-  * Communication
-    * Keep communicating with team members for 
-      * refactor demo/prototype codes for readability
-      * front end service and back end implementations
-      * Three.js learning experience
   * Decide as late as possible
     * Update prototypes for different scenes
 ***
