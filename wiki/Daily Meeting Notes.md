@@ -1,4 +1,14 @@
 
+### [Oct. 30th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | 1. Code review | 1. Refactor SolarSceneController (remove extra aggregations) | 1. re-consider sun representation |
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Oct. 28th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
