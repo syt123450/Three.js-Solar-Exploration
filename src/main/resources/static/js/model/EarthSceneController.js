@@ -24,6 +24,8 @@ EarthSceneController = function (renderer) {
     this.activateScene = activateScene;
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
@@ -121,13 +123,9 @@ EarthSceneController = function (renderer) {
     }
 
     function addEvent() {
-        document.addEventListener('mousemove', onMouseMove, false);
-        document.addEventListener('mousedown', onMouseDown, false);
-    }
 
-    function removeEvent() {
-        document.removeEventListener('mousemove', onMouseMove, false);
-        document.removeEventListener('mousedown', onMouseDown, false);
+        EventManager.registerEvent('mousemove', onMouseMove);
+        EventManager.registerEvent('mousedown', onMouseDown);
     }
 
     function onMouseMove() {

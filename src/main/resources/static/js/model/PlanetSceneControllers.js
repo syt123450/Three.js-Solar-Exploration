@@ -32,6 +32,8 @@ MercurySceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -78,6 +80,8 @@ VenusSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -124,6 +128,8 @@ MarsSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -170,6 +176,8 @@ JupiterSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -216,6 +224,8 @@ SaturnSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -262,6 +272,8 @@ UranusSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -308,6 +320,8 @@ NeptuneSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
@@ -355,6 +369,8 @@ PlutoSceneController = function (renderer) {
     }
 
     function activateScene() {
+
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }

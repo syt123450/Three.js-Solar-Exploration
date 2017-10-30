@@ -153,21 +153,18 @@ DAT.Globe = function (renderer, colorFn) {
     }
 
     function addEvent() {
-        document.addEventListener('mousedown', onMouseDown, false);
 
-        document.addEventListener('mousewheel', onMouseWheel, false);
-
-        document.addEventListener('keydown', onDocumentKeyDown, false);
-
+        EventManager.registerEvent('mousedown', onMouseDown);
+        EventManager.registerEvent('mousewheel', onMouseWheel);
+        EventManager.registerEvent('keydown', onDocumentKeyDown);
         //window.addEventListener('resize', onWindowResize, false);
 
-        document.addEventListener('mouseover', function () {
+        EventManager.registerEvent('mouseover', function () {
             overRenderer = true;
-        }, false);
-
-        document.addEventListener('mouseout', function () {
+        });
+        EventManager.registerEvent('mouseout', function () {
             overRenderer = false;
-        }, false);
+        });
     }
 
     addData = function (data, opts) {
@@ -371,11 +368,13 @@ DAT.Globe = function (renderer, colorFn) {
     }
 
     function animate() {
+
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         render();
     }
 
     function activateScene() {
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();

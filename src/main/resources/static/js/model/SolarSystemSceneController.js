@@ -106,6 +106,7 @@ SolarSystemSceneController = function(renderer) {
 
     function activateScene(){
 
+        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
@@ -259,13 +260,8 @@ SolarSystemSceneController = function(renderer) {
 
     function addEvent() {
 
-        document.addEventListener('mousedown', onMouseDown, false);
-        document.addEventListener('mousemove', onMouseMove, false);
-    }
-
-    function removeEvent() {
-        document.removeEventListener('mousedown', onMouseDown, false);
-        document.removeEventListener('mousemove', onMouseMove, false);
+        EventManager.registerEvent('mousedown', onMouseDown);
+        EventManager.registerEvent('mousemove', onMouseMove);
     }
 
     function onMouseMove() {
@@ -339,7 +335,6 @@ SolarSystemSceneController = function(renderer) {
 
         var result = checkPlanetClicked();
         if (result != "Nothing"){
-            removeEvent();
             changeScene(result);
         }
     }
