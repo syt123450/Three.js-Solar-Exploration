@@ -1,3 +1,18 @@
+### [Week 5 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process for different parts
+    * Keep the ideas from different parts
+    * Coordinate the progress among different parts
+  * Decide as late as possible
+    * Update prototypes for different scenes
+***
+### [Oct. 28th, 2017]
+Meeting #5:
+  * Discussed the process about prototype and scene assemble
+  * Exchanged the ideas about information board, timeline bar and halo color config
+  * Agreed on the information displayed on the information board
+  * Discussed next step problems and progress
+***
 ### [Oct. 27th, 2017]
 Development:
   * Update FuelInfoBean

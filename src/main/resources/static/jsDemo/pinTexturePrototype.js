@@ -73,11 +73,13 @@ PinController = function (renderer) {
         var coneSide = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load(
             '../images/fadeTest.jpg'
         ),
-            side: THREE.BackSide } );
+            side: THREE.DoubleSide } );
+        var green = new THREE.MeshPhongMaterial( { color: 0X008000});
         var materialsArray = [];
         materialsArray.push(coneSide);
         materialsArray.push(coneSide);
-        materialsArray.push(coneFlat);
+        materialsArray.push(green);
+        materialsArray.push(green);
         var coneMesh = new THREE.Mesh(
             new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
             materialsArray

@@ -1,3 +1,51 @@
+## Week 5 Summaries - [Oct 24  - Oct 28, 2017]
+### XP Core Values
+
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **Communication**</br>Talk to team members about how to work together to achieve maximum work efficiency</br>|
+| Chenhua| **See the whole**</br>1. Keep the development process for different parts.</br>2. Keep the ideas from different parts.</br>3. Coordinate the progress among different parts.</br></br>**Decide as late as possible**</br>Generated circle orbit prototype and tried the ring prototype.</br></br>**Communication**</br>Keep communicating with team members for: </br>refactor demo/prototype codes for readability, front end service and back end implementations, Three.js learning experience.</br>
+| Yuntian| **See the whole**</br>I find that half time is passed, we need to give out a milestone edition, so that we can have a potential deliverable product, this is the see the whole value in XP.</br></br>**Communication**</br>In order to do the help teammates refactor their code, I make an appointment with the teammates, share the understanding of the code style, and refactor the code together, this process shows the communication value of XP.</br></br>**Decide as late as possible**</br>This week I refactor the google's webgl-globe library, however, there are still some bugs in it, but I think these bugs will not influence our milestone edition, so I decide to fix it later, this process shows the decide as late as possible value in XP.</br>|
+| Bo| **Communication**</br>1. Updated my work progress with team members in the chat group we setup daily.</br>2. Met with each team member in person, to do code refactor. Discussed varies technical issues. </br>3. For example, after I finished the double halos demo, I notified our designer immediately. By doing this, the waiting time on other people's work is reduced.|
+
+### Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Collected national flags for over 100 countries.  | 1. Provide more data for each country for display pourpose. | 1. Took a long time to match country names to their flags.|
+| 2. Implemented explosion effect on cone and the Earth. | 2. Adjust the path name of flags for database insertion. |2. Not enough pieces during explosion. |
+||3. Finish integration from last week. ||
+
+
+### Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Provided backend data for Google earth api. | 1. Finish the Saturn ring implementation.| 1. Rayaster will be trigger on multiple scenes. Solved. |
+| 2. Completed major solar system scene code refactor. | 2. Refactor solar system scene. |  |
+|3. Experimented how to implement Saturn ring using Three.js. |3. Update the flag paths in database. | |
+
+### Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Refactored code for raycaster.  | 1. Update the implementation of timeline widget.  | 1. Color scheme of information board not ready yet. |
+| 2. Backend service modification. | 2. Update design of the information board. | 2. Rotation speeds up after scene switch.|
+| 3. Implemented information board with HTML&CSS. | 3. Update backend service. | 3. Solar scene controller needs to be refactored. |
+| 4. Implemented back button with jQuery.| 4. Feature integrations with other team members. | 4. Pic size need to be adjusted.|
+|5. Eliminated runtime javascirpt warnings.| 5. Refactor solar/planet scene controllers. |  |
+|6. Combined smaller features into the final demo. | ||
+
+### Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+|1. Implemented double halo demo using dual ShaderMaterials and tweaked WebGL parameters. | 1. Implement halo for all 8 planets. | 1. Hard to tweak the WebGL parameters to get best visual effect for double halos. |
+|2. Improved tweenAnimationPrototype.js. Wrapped the funcitons for easier code reuse. | 2. Integrate the tween animation into the final demo with Yuntian. | |
+|3. Refactored code with Chenhua and Yuntian| 3. Try to solve the rotation speeds up problem with Yuntian. ||
+| 4. Managed team wikis. | | |
+
+***
 ## Week4 Summaries - [Oct 15  - Oct 21, 2017]
 
 ### Bou-Yu
