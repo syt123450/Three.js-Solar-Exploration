@@ -98,8 +98,6 @@ DAT.Globe = function (renderer, colorFn) {
 
         var universeMesh = new THREE.Mesh();
 
-        console.log(111);
-
         universeMesh.geometry = new THREE.SphereGeometry(1000, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
@@ -152,22 +150,22 @@ DAT.Globe = function (renderer, colorFn) {
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
 
         point = new THREE.Mesh(geometry);
+    }
 
-        // document.body.appendChild(renderer.domElement);
+    function addEvent() {
+        document.addEventListener('mousedown', onMouseDown, false);
 
-        container.addEventListener('mousedown', onMouseDown, false);
-
-        container.addEventListener('mousewheel', onMouseWheel, false);
+        document.addEventListener('mousewheel', onMouseWheel, false);
 
         document.addEventListener('keydown', onDocumentKeyDown, false);
 
         //window.addEventListener('resize', onWindowResize, false);
 
-        container.addEventListener('mouseover', function () {
+        document.addEventListener('mouseover', function () {
             overRenderer = true;
         }, false);
 
-        container.addEventListener('mouseout', function () {
+        document.addEventListener('mouseout', function () {
             overRenderer = false;
         }, false);
     }
@@ -290,9 +288,9 @@ DAT.Globe = function (renderer, colorFn) {
         k = 0;
         f = true;
 
-        container.addEventListener('mousemove', onMouseMove, false);
-        container.addEventListener('mouseup', onMouseUp, false);
-        container.addEventListener('mouseout', onMouseOut, false);
+        document.addEventListener('mousemove', onMouseMove, false);
+        document.addEventListener('mouseup', onMouseUp, false);
+        document.addEventListener('mouseout', onMouseOut, false);
 
         target.y = rotation.y;
 
@@ -302,7 +300,7 @@ DAT.Globe = function (renderer, colorFn) {
         targetOnDown.x = target.x;
         targetOnDown.y = target.y;
 
-        container.style.cursor = 'move';
+        document.body.style.cursor = 'move';
     }
 
     function onMouseMove(event) {
@@ -323,10 +321,10 @@ DAT.Globe = function (renderer, colorFn) {
         k = ROTATIONSPEED;
         f = false;
 
-        container.removeEventListener('mousemove', onMouseMove, false);
-        container.removeEventListener('mouseup', onMouseUp, false);
-        container.removeEventListener('mouseout', onMouseOut, false);
-        container.style.cursor = 'auto';
+        document.removeEventListener('mousemove', onMouseMove, false);
+        document.removeEventListener('mouseup', onMouseUp, false);
+        document.removeEventListener('mouseout', onMouseOut, false);
+        document.body.style.cursor = 'auto';
     }
 
     function onMouseOut(event) {
@@ -334,9 +332,9 @@ DAT.Globe = function (renderer, colorFn) {
         k = ROTATIONSPEED;
         f = false;
 
-        container.removeEventListener('mousemove', onMouseMove, false);
-        container.removeEventListener('mouseup', onMouseUp, false);
-        container.removeEventListener('mouseout', onMouseOut, false);
+        document.removeEventListener('mousemove', onMouseMove, false);
+        document.removeEventListener('mouseup', onMouseUp, false);
+        document.removeEventListener('mouseout', onMouseOut, false);
     }
 
     function onMouseWheel(event) {
@@ -379,6 +377,7 @@ DAT.Globe = function (renderer, colorFn) {
 
     function activateScene() {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        addEvent();
         animate();
     }
 

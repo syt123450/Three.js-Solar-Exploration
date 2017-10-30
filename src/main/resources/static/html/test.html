@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="../js/utils/eventManager.js"></script>-->
+</head>
+<body>
+
+<script>
+
+
+    EventManagerClass = function() {
+        var eventList = {};
+
+        this.registerEvent = function(eventType, eventName) {
+            eventList[eventType] = eventName;
+        };
+
+        this.clearEvent = function() {
+            var keys = Object.keys(eventList);
+            for (var key in keys) {
+                console.log(111);
+                document.removeEventListener(key, eventList[key], false);
+            }
+            eventList = {};
+        };
+
+        this.print = function () {
+            console.log(eventList);
+        }
+    };
+
+    var EventManager = new EventManagerClass();
+
+    var onMouseDown = function () {
+//        console.log(222);
+        EventManager.print();
+    };
+
+    document.addEventListener("mousedown", onMouseDown, false);
+    EventManager.registerEvent("mousedown", onMouseDown);
+
+    setTimeout(EventManager.clearEvent, 10000);
+
+//    setTimeout(remove, 10000, false);
+//
+//    function remove() {
+//        console.log(111);
+//        console.log(onMouseDown);
+//        document.removeEventListener("mousedown", onMouseDown, false);
+//    }
+
+</script>
+
+</body>
+</html>

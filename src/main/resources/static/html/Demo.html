@@ -16,6 +16,7 @@
     <script src="../js/model/SolarSystemSceneControllerRe.js"></script>
     <script src="../js/model/PlanetSceneControllersRe.js"></script>
     <script src="../js/model/GlobeScene.js"></script>
+    <script src="../js/demo.js"></script>
 
     <link rel="stylesheet" href="../css/index.css">
 
@@ -32,108 +33,6 @@
     <div id="oil"></div>
     <div id="gas"></div>
 </div>
-
-<script>
-
-    var googleEarth = false;
-    var infoBoard = false;
-
-    var renderer = SolarEPUtils.getDefaultRenderer();
-
-    var solarSystemSceneController = new SolarSystemSceneController(renderer);
-    var mercurySceneController = new MercurySceneController(renderer);
-    var venusSceneController = new VenusSceneController(renderer);
-    var earthSceneController = new EarthSceneController(renderer);
-    var marsSceneController = new MarsSceneController(renderer);
-    var jupiterSceneController = new JupiterSceneController(renderer);
-    var saturnSceneController = new SaturnSceneController(renderer);
-    var uranusSceneController = new UranusSceneController(renderer);
-    var neptuneSceneController = new NeptuneSceneController(renderer);
-    var plutoSceneController = new PlutoSceneController(renderer);
-
-    solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
-    solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
-    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
-    solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
-    solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
-    solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
-    solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
-    solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
-    solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
-
-    solarSystemSceneController.activateScene();
-    var globe = new DAT.Globe(renderer);
-    globe.setSurfaceImg("../images/world.jpg");
-    globe.init();
-    loadData();
-
-    $(function () {
-
-        $("#all").click(function () {
-            $("body footer div").each(function () {
-                $(this).attr("class", "unchecked");
-            });
-            $(this).attr("class", "checked");
-            googleEarth = true;
-            globe.activateScene();
-
-        });
-
-        $("body footer div.year").click(function () {
-            $("body footer div").each(function () {
-                $(this).attr("class", "unchecked");
-            });
-            $(this).attr("class", "checked");
-            var year = $(this).text();
-
-            if (googleEarth) {
-                googleEarth = false;
-                earthSceneController.activateScene()
-            }
-
-            getYearData(year);
-        });
-
-        $("#backLogo").click(function () {
-            solarSystemSceneController.activateScene();
-            $("#timeLine").hide();
-        });
-
-        $("#infoBoard").click(function () {
-            if (infoBoard) {
-                earthSceneController.restoreEarth();
-                $(this).animate({width:'toggle'},350);
-                infoBoard = false;
-            }
-        });
-    });
-
-    function getYearData(year) {
-
-        if (Math.random() > 0.5) {
-            earthSceneController.addCones(geographicData);
-        } else {
-            earthSceneController.clearCones();
-        }
-    }
-
-    function loadData() {
-
-        $.ajax({
-            url: '../data/rank.json',
-//            url: '/api/all',
-            type: 'GET',
-            contentType: "application/json; charset=utf-8",
-            async: true,
-            dataType: 'json',
-            success: function (data) {
-                globe.addData(data, {format: 'magnitude'});
-                globe.createPoints();
-            }
-        });
-    }
-
-</script>
 
 <footer id="timeLine">
     <div class="checked year">2008</div>

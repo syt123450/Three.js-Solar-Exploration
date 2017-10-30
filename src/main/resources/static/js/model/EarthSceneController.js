@@ -25,6 +25,7 @@ EarthSceneController = function (renderer) {
 
     function activateScene() {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        addEvent();
         animate();
     }
 
@@ -66,7 +67,6 @@ EarthSceneController = function (renderer) {
         });
         scene.add(initEarthAggregation());
         scene.add(moonMesh);
-        addEvent();
 
         return scene;
     }
@@ -123,6 +123,11 @@ EarthSceneController = function (renderer) {
     function addEvent() {
         document.addEventListener('mousemove', onMouseMove, false);
         document.addEventListener('mousedown', onMouseDown, false);
+    }
+
+    function removeEvent() {
+        document.removeEventListener('mousemove', onMouseMove, false);
+        document.removeEventListener('mousedown', onMouseDown, false);
     }
 
     function onMouseMove() {

@@ -15,7 +15,7 @@ var SolarEPUtils = {
 
     raycaster: new THREE.Raycaster(),
 
-    mouse:  new THREE.Vector2(),
+    mouse: new THREE.Vector2(),
 
     animationFrame: null
 };
