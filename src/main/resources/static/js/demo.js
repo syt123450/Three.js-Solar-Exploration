@@ -20,15 +20,26 @@ $(function () {
     neptuneSceneController = new NeptuneSceneController(renderer);
     plutoSceneController = new PlutoSceneController(renderer);
 
-    solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
-    solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
-    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
-    solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
-    solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
-    solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
-    solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
-    solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
-    solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
+    //use for old version
+    // solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
+    // solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
+    // solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
+    // solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
+    // solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
+    // solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
+    // solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
+    // solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
+    // solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
+
+    solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
+    solarSystemSceneController.setPlanetScene("venus", venusSceneController);
+    solarSystemSceneController.setPlanetScene("earth", earthSceneController);
+    solarSystemSceneController.setPlanetScene("mars", marsSceneController);
+    solarSystemSceneController.setPlanetScene("jupiter", jupiterSceneController);
+    solarSystemSceneController.setPlanetScene("saturn", saturnSceneController);
+    solarSystemSceneController.setPlanetScene("uranus", uranusSceneController);
+    solarSystemSceneController.setPlanetScene("neptune", neptuneSceneController);
+    solarSystemSceneController.setPlanetScene("pluto", plutoSceneController);
 
     solarSystemSceneController.activateScene();
     globe = new DAT.Globe(renderer);

@@ -25,6 +25,7 @@ EarthSceneController = function (renderer) {
 
     function activateScene() {
 
+        $("#timeLine").show();
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
