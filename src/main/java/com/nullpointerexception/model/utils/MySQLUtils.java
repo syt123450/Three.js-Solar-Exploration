@@ -138,7 +138,7 @@ public class MySQLUtils {
                 crudeOilAmount = resultSet.getDouble("CrudeOil_Amount");
                 naturalGasAmount = resultSet.getDouble("NaturalGas_Amount");
 //                System.out.println("Row[" + resultSet.getRow() + "]:\t" + areaName + "\t" + longitude + "\t" + latitude + "\t" + amount);
-                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount, coalAmount, crudeOilAmount, naturalGasAmount));
+                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount, coalAmount, crudeOilAmount, naturalGasAmount, ""));
             }
         } catch (SQLException e) {
             e.printStackTrace();
