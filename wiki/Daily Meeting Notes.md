@@ -6,7 +6,7 @@
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | 1. Code review | 1. Refactor SolarSceneController (remove extra aggregations) | 1. re-consider sun representation |
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | 1. refactor SolarSceneController (object creation) | <ol><li>write event manager to manage event</li><li>fix speed up problem</li></ol> | Go well |
 
 ***
 ### [Oct. 28th, 2017]
