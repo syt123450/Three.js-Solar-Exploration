@@ -128,9 +128,9 @@ SolarSystemSceneController = function(renderer) {
     this.name = "SolarSystemSceneController";
 
     // Camera position settings (NOT COMPLETE, N/A)
+    // this.upForwardView = updateCameraPosition(-1);
+    // this.topView = updateCameraPosition(1);
     this.sideView = updateCameraPosition(2);
-    this.upForwardView = updateCameraPosition(-1);
-    this.topView = updateCameraPosition(1);
 
 
     function animate() {
@@ -274,7 +274,7 @@ SolarSystemSceneController = function(renderer) {
         universeMesh.geometry = new THREE.SphereGeometry(100, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/galaxy_starfield.png'
+                '../images/background1.png'
             ),
             side: THREE.BackSide
         });
