@@ -373,9 +373,13 @@ DAT.Globe = function (renderer, colorFn) {
     }
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         render();
+    }
 
+    function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        animate();
     }
 
     function render() {
@@ -442,7 +446,8 @@ DAT.Globe = function (renderer, colorFn) {
     this.renderer = renderer;
     this.scene = scene;
     this.init = init;
-    this.animate = animate;
+    // this.animate = animate;
+    this.activateScene = activateScene;
 
     return this;
 

@@ -134,7 +134,7 @@ SolarSystemSceneController = function(renderer) {
 
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
         // rotationAndRevolution();
 
@@ -142,6 +142,8 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function activateScene(){
+
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
     }
@@ -388,7 +390,7 @@ SolarSystemSceneController = function(renderer) {
                 venusSceneController.activateScene();
                 break;
             case "Earth" :
-                earthSceneController.animate();
+                earthSceneController.activateScene();
                 $("#timeLine").show();
                 break;
             case "Mars" :

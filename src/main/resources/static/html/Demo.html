@@ -75,7 +75,7 @@
             });
             $(this).attr("class", "checked");
             googleEarth = true;
-            globe.animate();
+            globe.activateScene();
 
         });
 
@@ -88,7 +88,7 @@
 
             if (googleEarth) {
                 googleEarth = false;
-                earthSceneController.animate()
+                earthSceneController.activateScene()
             }
 
             getYearData(year);

@@ -21,7 +21,12 @@ EarthSceneController = function (renderer) {
     var earthRenderer = renderer;
     var earthScene = init();
 
-    this.animate = earthAnimate;
+    this.activateScene = activateScene;
+
+    function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        animate();
+    }
 
     this.addCones = function (conesParameter) {
         conesParameter.forEach(function (coneParameter) {
@@ -36,9 +41,9 @@ EarthSceneController = function (renderer) {
         coneList = [];
     };
 
-    function earthAnimate() {
+    function animate() {
 
-        requestAnimationFrame(earthAnimate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotateEarthWithStop();

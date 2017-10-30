@@ -23,7 +23,7 @@ MercurySceneController = function (renderer) {
     this.name = "MercurySceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -32,6 +32,7 @@ MercurySceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -68,7 +69,7 @@ VenusSceneController = function (renderer) {
     this.name = "VenusSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -77,6 +78,7 @@ VenusSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -113,7 +115,7 @@ MarsSceneController = function (renderer) {
     this.name = "MarsSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -122,6 +124,7 @@ MarsSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -158,7 +161,7 @@ JupiterSceneController = function (renderer) {
     this.name = "JupiterSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -167,6 +170,7 @@ JupiterSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -203,7 +207,7 @@ SaturnSceneController = function (renderer) {
     this.name = "SaturnSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -212,6 +216,7 @@ SaturnSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -248,7 +253,7 @@ UranusSceneController = function (renderer) {
     this.name = "UranusSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -257,6 +262,7 @@ UranusSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -293,7 +299,7 @@ NeptuneSceneController = function (renderer) {
     this.name = "NeptuneSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -302,6 +308,7 @@ NeptuneSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
@@ -339,7 +346,7 @@ PlutoSceneController = function (renderer) {
     this.name = "PlutoSceneController";
 
     function animate() {
-        requestAnimationFrame(animate);
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
         meteors.sweepMeteors();
         rotatePlanet();
@@ -348,6 +355,7 @@ PlutoSceneController = function (renderer) {
     }
 
     function activateScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         animate();
     }
 
