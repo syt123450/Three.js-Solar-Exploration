@@ -177,26 +177,26 @@ UniverseUtils = function () {
 
     this.createPlanetsList = function () {
 
-        var planetsList = {};
+        var planetsList = {
+            "mercury": {},
+            "venus": {},
+            "earth": {},
+            "mars": {},
+            "jupiter": {},
+            "saturn": {},
+            "uranus": {},
+            "neptune": {},
+            "pluto": {}
+        };
 
-        planetsList["mercury"] = {};
         planetsList["mercury"].mesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
-        planetsList["mercury"].orbit = createOrbit(SolarConfig.mercury.orbitRadius);
-        planetsList["venus"] = {};
         planetsList["venus"].mesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
-        planetsList["earth"] = {};
         planetsList["earth"].mesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
-        planetsList["mars"] = {};
         planetsList["mars"].mesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, SolarConfig.mars.radius);
-        planetsList["jupiter"] = {};
         planetsList["jupiter"].mesh = createSphereMesh(SolarConfig.jupiter.map, SolarConfig.jupiter.radius);
-        planetsList["saturn"] = {};
         planetsList["saturn"].mesh = createSphereMesh(SolarConfig.jupiter.map, SolarConfig.jupiter.radius);
-        planetsList["uranus"] = {};
         planetsList["uranus"].mesh = createSphereMesh(SolarConfig.uranus.map, SolarConfig.uranus.radius);
-        planetsList["neptune"] = {};
         planetsList["neptune"].mesh = createSphereMesh(SolarConfig.neptune.map, SolarConfig.neptune.radius);
-        planetsList["pluto"] = {};
         planetsList["pluto"].mesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, SolarConfig.pluto.radius);
 
         for (var planet in planetsList) {
@@ -293,55 +293,6 @@ UniverseUtils = function () {
         }
 
     };
-
-    /*************************
-     * @if we want to use latest version of SolarSystemSceneController, the functions below useless
-     ************************/
-
-    this.createDefaultSun = function () {
-        return new THREE.Mesh(
-            new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
-            new THREE.MeshBasicMaterial({
-                color: 'yellow'
-            }));
-    };
-
-    this.createBumpSphereMesh = function (path, bumpPath, radius) {
-        var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
-        sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path),
-            bumpScale: 0.005,
-            bumpMap: new THREE.TextureLoader().load(bumpPath)
-        });
-
-        return sphereMesh;
-    };
-
-    this.createSphereMesh = function (path, radius) {
-        var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
-        sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path)
-        });
-
-        return sphereMesh;
-    };
-
-    this.createOrbit = function (radius) {
-        var geometry = new THREE.CircleGeometry(radius, 256, 0, 2.01 * Math.PI);
-        geometry.vertices.shift();
-        var orbit = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial({color: 0x6d4587, linewidth: 0.2})
-        );
-        orbit.rotateX(0.5 * Math.PI);
-        return orbit;
-    };
-
-    /*************************
-     * @if we want to use latest version of SolarSystemSceneController, the functions above useless
-     ************************/
 
     function createDefaultSun() {
         return new THREE.Mesh(
