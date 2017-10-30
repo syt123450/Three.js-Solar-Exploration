@@ -24,8 +24,10 @@
 
 <canvas id="sceneArea"></canvas>
 <script src="../js/lib/three.min.js"></script>
+<script src="../js/config/solarConfig.js"></script>
 <script src="../js/utils/universeUtils.js"></script>
 <script src="../js/utils/utils.js"></script>
+<script src="../js/model/EarthSceneController.js"></script>
 <script src="../js/model/PlanetSceneControllers.js"></script>
 <script src="../js/model/SolarSystemSceneController.js"></script>
 
@@ -38,7 +40,7 @@
     var solarSystemSceneController = new SolarSystemSceneController(renderer);
     var mercurySceneController = new MercurySceneController(renderer);
     var venusSceneController = new VenusSceneController(renderer);
-    //var earthSceneController = new EarthSceneController(renderer);
+    var earthSceneController = new EarthSceneController(renderer);
     var marsSceneController = new MarsSceneController(renderer);
     var jupiterSceneController = new JupiterSceneController(renderer);
     var saturnSceneController = new SaturnSceneController(renderer);
@@ -46,20 +48,9 @@
     var neptuneSceneController = new NeptuneSceneController(renderer);
     var plutoSceneController = new PlutoSceneController(renderer);
 
-    // Cross setting Scene Controllers for each other
-    mercurySceneController.setSolarSystemSceneController(solarSystemSceneController);
-    venusSceneController.setSolarSystemSceneController(solarSystemSceneController);
-//    earthSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    marsSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    jupiterSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    saturnSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    uranusSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    neptuneSceneController.setSolarSystemSceneController(solarSystemSceneController);
-    plutoSceneController.setSolarSystemSceneController(solarSystemSceneController);
-
     solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
     solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
-//    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
+    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
     solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
     solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
     solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
