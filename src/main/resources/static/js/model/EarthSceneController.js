@@ -143,14 +143,15 @@ EarthSceneController = function (renderer) {
     }
 
     function addTextToBoard(coneParameters) {
+
         console.log(coneParameters);
-        $("#infoBoard").empty()
-            .append("<div>Latitude: " + coneParameters.latitude + "</div>")
-            .append("<div>Longitude: " + coneParameters.longitude + "</div>")
-            .append("<div>Total Amount: " + coneParameters.amount+ "</div>")
-            .append("<div>Coal Amount: " + coneParameters.coalAmount + "</div>")
-            .append("<div>Oil Amount: " + coneParameters.oilAmount + "</div>")
-            .append("<div>Gas Amount: " + coneParameters.gasAmount + "</div>")
+        $("#flag").attr("src", coneParameters.flagPath);
+        $("#latitude").text("Latitude: " + coneParameters.latitude);
+        $("#longitude").text("Longitude: " + coneParameters.longitude);
+        $("#total").text("Total Amount: " + coneParameters.amount);
+        $("#coal").text("Coal Amount: " + coneParameters.coalAmount);
+        $("#oil").text("Oil Amount: " + coneParameters.oilAmount);
+        $("#gas").text("Gas Amount: " + coneParameters.gasAmount);
     }
 
     function showInfo(latitude, longitude) {

@@ -16,7 +16,13 @@ public class MockFuelDataService implements FuelDataService {
 
         List<FuelInfoBean> infoList = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
-            infoList.add(new FuelInfoBean("country" + i, i, year, i * i, i + 1, i + 2, i + 3));
+            infoList.add(new FuelInfoBean(
+                    "country" + i, i, year,
+                    i * i,
+                    i + 1,
+                    i + 2,
+                    i + 3,
+                    "../images/flags/Abkhazia.png"));
         }
 
         return infoList;

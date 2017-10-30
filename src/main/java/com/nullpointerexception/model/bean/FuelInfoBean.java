@@ -18,4 +18,5 @@ public class FuelInfoBean {
     private double coalAmount;
     private double oilAmount;
     private double gasAmount;
+    private String flagPath;
 }

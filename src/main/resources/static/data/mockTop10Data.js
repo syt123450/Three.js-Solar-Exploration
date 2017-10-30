@@ -9,7 +9,8 @@ var geographicData = [
         amount: 1,
         coalAmount : 2,
         oilAmount: 3,
-        gasAmount: 4
+        gasAmount: 4,
+        flagPath: "../images/flags/Abkhazia.png"
     },
     {
         areaName: "San Jose",
@@ -18,7 +19,8 @@ var geographicData = [
         amount: 1,
         coalAmount : 2,
         oilAmount: 3,
-        gasAmount: 4
+        gasAmount: 4,
+        flagPath: "../images/flags/Abkhazia.png"
     },
     {
         areaName: "Moscow",
@@ -27,7 +29,8 @@ var geographicData = [
         amount: 1,
         coalAmount : 2,
         oilAmount: 3,
-        gasAmount: 4
+        gasAmount: 4,
+        flagPath: "../images/flags/Abkhazia.png"
     },
     {
         areaName: "Paris",
@@ -36,6 +39,7 @@ var geographicData = [
         amount: 1,
         coalAmount : 2,
         oilAmount: 3,
-        gasAmount: 4
+        gasAmount: 4,
+        flagPath: "../images/flags/Abkhazia.png"
     }
 ];
