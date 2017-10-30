@@ -162,6 +162,53 @@ UniverseUtils = function () {
         return coneMesh;
     };
 
+    this.createSolarUniverse = function () {
+
+        var universeMesh = new THREE.Mesh();
+        universeMesh.geometry = new THREE.SphereGeometry(100, 64, 64);
+        universeMesh.material = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/background1.png'
+            ),
+            side: THREE.BackSide
+        });
+
+        return universeMesh;
+    };
+
+    this.createBumpSphereMesh = function (path, bumpPath, radius) {
+        var sphereMesh = new THREE.Mesh();
+        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
+        sphereMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(path),
+            bumpScale: 0.005,
+            bumpMap: new THREE.TextureLoader().load(bumpPath)
+        });
+
+        return sphereMesh;
+    };
+
+    this.createSphereMesh = function (path, radius) {
+        var sphereMesh = new THREE.Mesh();
+        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
+        sphereMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(path)
+        });
+
+        return sphereMesh;
+    };
+
+    this.createOrbit = function (radius) {
+        var geometry = new THREE.CircleGeometry(radius, 256, 0, 2.01 * Math.PI);
+        geometry.vertices.shift();
+        var orbit = new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial({color: 0x6d4587, linewidth: 0.2})
+        );
+        orbit.rotateX(0.5 * Math.PI);
+        return orbit;
+    };
+
     this.addDoubleHalos = function (target, innerColor, outerColor) {
         // innerGlowMesh settings
         var _innerGlowMesh;

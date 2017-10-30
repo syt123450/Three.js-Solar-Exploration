@@ -10,17 +10,17 @@ SolarSystemSceneController = function(renderer) {
     var camera = universeUtils.createDefaultCamera();
 
     // Meshes
-    var universeMesh = createUniverseMesh();
+    var universeMesh = universeUtils.createSolarUniverse();
     var sunMesh = universeUtils.createDefaultSun();
-    var mercuryMesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
-    var venusMesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
-    var earthMesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
-    var marsMesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, SolarConfig.mars.radius);
-    var jupiterMesh = createSphereMesh(SolarConfig.jupiter.map , SolarConfig.jupiter.radius);
-    var saturnMesh = createSphereMesh(SolarConfig.saturn.map , SolarConfig.saturn.radius);
-    var uranusMesh = createSphereMesh(SolarConfig.uranus.map , SolarConfig.uranus.radius);
-    var neptuneMesh = createSphereMesh(SolarConfig.neptune.map , SolarConfig.neptune.radius);
-    var plutoMesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, SolarConfig.pluto.radius);
+    var mercuryMesh = universeUtils.createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
+    var venusMesh = universeUtils.createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
+    var earthMesh = universeUtils.createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
+    var marsMesh = universeUtils.createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, SolarConfig.mars.radius);
+    var jupiterMesh = universeUtils.createSphereMesh(SolarConfig.jupiter.map , SolarConfig.jupiter.radius);
+    var saturnMesh = universeUtils.createSphereMesh(SolarConfig.saturn.map , SolarConfig.saturn.radius);
+    var uranusMesh = universeUtils.createSphereMesh(SolarConfig.uranus.map , SolarConfig.uranus.radius);
+    var neptuneMesh = universeUtils.createSphereMesh(SolarConfig.neptune.map , SolarConfig.neptune.radius);
+    var plutoMesh = universeUtils.createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, SolarConfig.pluto.radius);
 
     // Aggregations
     var sunAggregation = createAggregation(
@@ -129,8 +129,8 @@ SolarSystemSceneController = function(renderer) {
 
     // Camera position settings (NOT COMPLETE, N/A)
     // this.upForwardView = updateCameraPosition(-1);
-    // this.topView = updateCameraPosition(1);
-    this.sideView = updateCameraPosition(2);
+    this.topView = updateCameraPosition(1);
+    // this.sideView = updateCameraPosition(2);
 
 
     function animate() {
@@ -181,29 +181,26 @@ SolarSystemSceneController = function(renderer) {
         sunAggregation.add(plutoAggregation);
 
         // Init. positions
-        mercuryAggregation.position.x = (SolarConfig.mercury.orbitRadius);
-        venusAggregation.position.x = (SolarConfig.venus.orbitRadius);
-        earthAggregation.position.x = (SolarConfig.earth.orbitRadius);
-        marsAggregation.position.x = (SolarConfig.mars.orbitRadius);
-        jupiterAggregation.position.x = (SolarConfig.jupiter.orbitRadius);
-        saturnAggregation.position.x = (SolarConfig.saturn.orbitRadius);
-        uranusAggregation.position.x = (SolarConfig.uranus.orbitRadius);
-        neptuneAggregation.position.x = (SolarConfig.neptune.orbitRadius);
-        plutoAggregation.position.x = (SolarConfig.pluto.orbitRadius);
-
-        console.log("init");
-        console.log(SolarConfig);
+        mercuryAggregation.position.x = SolarConfig.mercury.orbitRadius;
+        venusAggregation.position.x = SolarConfig.venus.orbitRadius;
+        earthAggregation.position.x = SolarConfig.earth.orbitRadius;
+        marsAggregation.position.x = SolarConfig.mars.orbitRadius;
+        jupiterAggregation.position.x = SolarConfig.jupiter.orbitRadius;
+        saturnAggregation.position.x = SolarConfig.saturn.orbitRadius;
+        uranusAggregation.position.x = SolarConfig.uranus.orbitRadius;
+        neptuneAggregation.position.x = SolarConfig.neptune.orbitRadius;
+        plutoAggregation.position.x = SolarConfig.pluto.orbitRadius;
 
         // Add orbits
-        sunAggregation.add(createOrbit(SolarConfig.mercury.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.venus.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.earth.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.mars.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.jupiter.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.saturn.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.uranus.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.neptune.orbitRadius));
-        sunAggregation.add(createOrbit(SolarConfig.pluto.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.mercury.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.venus.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.earth.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.mars.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.jupiter.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.saturn.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.uranus.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.neptune.orbitRadius));
+        sunAggregation.add(universeUtils.createOrbit(SolarConfig.pluto.orbitRadius));
     }
 
     function rotationAndRevolution() {
@@ -268,59 +265,12 @@ SolarSystemSceneController = function(renderer) {
         plutoAggregation.position.z = Math.sin(radians) * SolarConfig.pluto.orbitRadius;
     }
 
-    function createUniverseMesh() {
-
-        var universeMesh = new THREE.Mesh();
-        universeMesh.geometry = new THREE.SphereGeometry(100, 64, 64);
-        universeMesh.material = new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load(
-                '../images/background1.png'
-            ),
-            side: THREE.BackSide
-        });
-
-        return universeMesh;
-    }
-
-    function createSphereMesh(path, radius) {
-        var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
-        sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path)
-        });
-
-        return sphereMesh;
-    }
-
-    function createBumpSphereMesh(path, bumpPath, radius){
-        var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
-        sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path),
-            bumpScale: 0.005,
-            bumpMap: new THREE.TextureLoader().load(bumpPath)
-        });
-
-        return sphereMesh;
-    }
-
     function createAggregation(sphereMesh) {
         var aggregation = new THREE.Object3D();
         aggregation.add(sphereMesh);
         // aggregation.add(new THREE.AxisHelper(0.5));
 
         return aggregation;
-    }
-
-    function createOrbit(radius){
-        var geometry = new THREE.CircleGeometry( radius, 256, 0, 2.01*Math.PI ) ;
-        geometry.vertices.shift();
-        var orbit = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial( { color: 0x6d4587, linewidth: 0.2 } )
-        );
-        orbit.rotateX(0.5 * Math.PI);
-        return orbit;
     }
 
     function updateCameraPosition(mode) {
