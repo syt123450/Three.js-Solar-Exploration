@@ -2,6 +2,11 @@
 * Communication
   * Talk to team members about how to work together to achieve maximum work efficiency
 
+### [Oct.30.2017] Talked to Yuntian
+* Talked to Yuntian to refactor and integrate code
+* Discussed strategies of refining explosion
+
+
 ### [Oct.23.2017 - Oct.29.2017] Core Values
 * See the whole
   * Each member works on respective parts
