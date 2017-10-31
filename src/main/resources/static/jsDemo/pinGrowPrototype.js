@@ -1,7 +1,8 @@
 PinController = function (renderer) {
 
+    var coneInitSize = 0.01;
     var latitude = 37.3382, longitude = -121.8863;
-    var radius = 0.55;
+    var radius = 0.52;
     var position = initPosition(latitude, longitude);
 
     var universeUtils = new UniverseUtils();
@@ -16,6 +17,7 @@ PinController = function (renderer) {
     var pinRenderer = renderer;
     var pinScene = init();
     var grow = true; //Allow the cone to grow when loaded
+
 
     this.animate = pinAnimate;
 
@@ -70,8 +72,12 @@ PinController = function (renderer) {
 
     function initCone() {
 
+        // coneHeight = coneRadius * 3;
+        // coneRSegment = coneRadius * 3;
+        // coneHSegment = coneHeight * 120;
+        console.log(coneInitSize);
         var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
+            new THREE.ConeGeometry( coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize),
             // new THREE.MeshBasicMaterial ({wireframe: true})
             new THREE.MeshPhongMaterial( { color: 0x085093 } )
         );
@@ -121,22 +127,25 @@ PinController = function (renderer) {
 
     function growPin() {
 
-        if(cone.scale.x > 2) {
+        if(cone.scale.x > 1.2) {
             grow = false;
         }
         if(cone.scale.x < 1) {
             grow = true;
         }
         if(grow) {
-            cone.scale.x += 0.01;
-            cone.scale.y += 0.01;
-            cone.scale.z += 0.01;
-            cone.translateY(-.00055);
+            cone.scale.x += 0.005;
+            cone.scale.y += 0.005;
+            cone.scale.z += 0.005;
+
+            cone.translateY(-coneInitSize/20);
+            // cone.translateY(-0.0005);
         }else{
-            cone.scale.x -= 0.01;
-            cone.scale.y -= 0.01;
-            cone.scale.z -= 0.01;
-            cone.translateY(.00055);
+            cone.scale.x -= 0.005;
+            cone.scale.y -= 0.005;
+            cone.scale.z -= 0.005;
+            cone.translateY(coneInitSize/20);
+            // cone.translateY(0.0005);
         }
     }
 };

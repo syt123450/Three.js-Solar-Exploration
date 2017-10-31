@@ -69,7 +69,6 @@ PinController = function (renderer) {
     }
 
     function initCone() {
-        var coneFlat = new THREE.MeshPhongMaterial( { color: 0xFF0000 } );
         var coneSide = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load(
             '../images/fadeTest.jpg'
         ),
@@ -79,7 +78,8 @@ PinController = function (renderer) {
         materialsArray.push(coneSide);
         materialsArray.push(coneSide);
         materialsArray.push(green);
-        materialsArray.push(green);
+        // materialsArray.push(green);
+
         var coneMesh = new THREE.Mesh(
             new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
             materialsArray
