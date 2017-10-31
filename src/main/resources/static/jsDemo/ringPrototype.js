@@ -5,8 +5,8 @@ SaturnSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('saturn');
-    var ringMesh = createRingMesh('saturn');
+    var mesh = createPlanetMesh('saturn', 0.5);
+    var ringMesh = createRingMesh('saturn', 0.5);
 
     var renderer = renderer;
     var scene = init();
@@ -47,8 +47,8 @@ UranusSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('uranus');
-    var ringMesh = createRingMesh('uranus');
+    var mesh = createPlanetMesh('uranus', 0.5);
+    var ringMesh = createRingMesh('uranus', 0.5);
 
     var renderer = renderer;
     var scene = init();
@@ -83,10 +83,10 @@ UranusSceneController = function (renderer) {
 };
 
 /* ***** ***** Helper Functions ***** ***** */
-function createPlanetMesh(planet){
+function createPlanetMesh(planet, radius){
     var mesh = new THREE.Mesh();
 
-    mesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+    mesh.geometry = new THREE.SphereGeometry(radius, 64, 64);
     switch (planet){
         case 'mercury':
             mesh.material = new THREE.MeshPhongMaterial({
@@ -167,14 +167,16 @@ function createPlanetMesh(planet){
     return mesh;
 }
 
-function createRingMesh(planet){
+function createRingMesh(planet, radius){
     var mesh = new THREE.Mesh();
+    var innerRadius;
+    var outerRadius;
 
-    // mesh.geometry = new THREE.RingGeometry(0.75, 1, 50, 5, 0, Math.PI * 2);
-    mesh.geometry = new THREE.BufferGeometry().fromGeometry(
-        new THREE.RingGeometry(0.6, 1.2, 64));
     switch (planet){
         case 'saturn':
+            innerRadius = (radius * 1.2);
+            outerRadius = innerRadius *2;
+            mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
                     '../images/planets/saturnringcolortransRing.png'
@@ -185,6 +187,9 @@ function createRingMesh(planet){
             });
             break;
         case 'uranus':
+            innerRadius = (radius * 1.3);
+            outerRadius = (radius * 2);
+            mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
                     '../images/planets/uranusringcolortransRing.png'
