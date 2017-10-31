@@ -6,7 +6,7 @@
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | ------ | ------ | ------ |
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | <ol><li>write event manager to manage event</li><li>fix speed up problem</li><li>combine cone feature</li></ol> | 1. combine tween feature | 1. tween may has some bugs when integrate it into demo |
 
 ***
 ### [Oct. 30th, 2017]
