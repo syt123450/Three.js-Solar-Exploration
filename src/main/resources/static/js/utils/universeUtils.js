@@ -228,15 +228,15 @@ UniverseUtils = function () {
             "pluto": {}
         };
 
-        planetsList["mercury"].mesh = createBumpSphereMesh(SolarConfig.mercury.map, SolarConfig.mercury.bumpMap, SolarConfig.mercury.radius);
-        planetsList["venus"].mesh = createBumpSphereMesh(SolarConfig.venus.map, SolarConfig.venus.bumpMap, SolarConfig.venus.radius);
-        planetsList["earth"].mesh = createBumpSphereMesh(SolarConfig.earth.map, SolarConfig.earth.bumpMap, SolarConfig.earth.radius);
-        planetsList["mars"].mesh = createBumpSphereMesh(SolarConfig.mars.map, SolarConfig.mars.bumpMap, SolarConfig.mars.radius);
-        planetsList["jupiter"].mesh = createSphereMesh(SolarConfig.jupiter.map, SolarConfig.jupiter.radius);
-        planetsList["saturn"].mesh = createSphereMesh(SolarConfig.jupiter.map, SolarConfig.jupiter.radius);
-        planetsList["uranus"].mesh = createSphereMesh(SolarConfig.uranus.map, SolarConfig.uranus.radius);
-        planetsList["neptune"].mesh = createSphereMesh(SolarConfig.neptune.map, SolarConfig.neptune.radius);
-        planetsList["pluto"].mesh = createBumpSphereMesh(SolarConfig.pluto.map, SolarConfig.pluto.map, SolarConfig.pluto.radius);
+        planetsList["mercury"].mesh = createTerrestrialPlanet(SolarConfig.mercury);
+        planetsList["venus"].mesh = createTerrestrialPlanet(SolarConfig.venus);
+        planetsList["earth"].mesh = createTerrestrialPlanet(SolarConfig.earth);
+        planetsList["mars"].mesh = createTerrestrialPlanet(SolarConfig.mars);
+        planetsList["jupiter"].mesh = createJovianPlanet(SolarConfig.jupiter);
+        planetsList["saturn"].mesh = createJovianPlanet(SolarConfig.saturn);
+        planetsList["uranus"].mesh = createJovianPlanet(SolarConfig.uranus);
+        planetsList["neptune"].mesh = createJovianPlanet(SolarConfig.neptune);
+        planetsList["pluto"].mesh = createTerrestrialPlanet(SolarConfig.pluto);
 
         for (var planet in planetsList) {
             planetsList[planet].orbit = createOrbit(SolarConfig[planet].orbitRadius);
@@ -245,6 +245,10 @@ UniverseUtils = function () {
 
         return planetsList;
     };
+
+    this.createTerrestrialPlanet = createTerrestrialPlanet;
+
+    this.createJovianPlanet = createJovianPlanet;
 
     this.addDoubleHalos = function (target, innerColor, outerColor) {
         // innerGlowMesh settings
@@ -341,23 +345,23 @@ UniverseUtils = function () {
             }));
     }
 
-    function createBumpSphereMesh(path, bumpPath, radius) {
+    function createTerrestrialPlanet(planetParameters) {
         var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
+        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 32, 32);
         sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path),
-            bumpScale: 0.005,
-            bumpMap: new THREE.TextureLoader().load(bumpPath)
+            map: new THREE.TextureLoader().load(planetParameters.map),
+            bumpScale: 0.05,
+            bumpMap: new THREE.TextureLoader().load(planetParameters.bumpMap)
         });
 
         return sphereMesh;
     }
 
-    function createSphereMesh(path, radius) {
+    function createJovianPlanet(planetParameters) {
         var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(radius, 32, 32);
+        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 32, 32);
         sphereMesh.material = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(path)
+            map: new THREE.TextureLoader().load(planetParameters.map)
         });
 
         return sphereMesh;

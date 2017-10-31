@@ -13,7 +13,7 @@ MercurySceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('mercury');
+    var mesh = universeUtils.createTerrestrialPlanet(PlanetConfig.mercury);
     var planetAggregation;
 
     var renderer = renderer;
@@ -61,7 +61,7 @@ VenusSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('venus');
+    var mesh = universeUtils.createTerrestrialPlanet(PlanetConfig.venus);
     var planetAggregation;
 
     var renderer = renderer;
@@ -109,7 +109,7 @@ MarsSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('mars');
+    var mesh = universeUtils.createTerrestrialPlanet(PlanetConfig.mars);
     var planetAggregation;
 
     var renderer = renderer;
@@ -157,7 +157,7 @@ JupiterSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('jupiter');
+    var mesh = universeUtils.createJovianPlanet(PlanetConfig.jupiter);
     var planetAggregation;
 
     var renderer = renderer;
@@ -205,7 +205,7 @@ SaturnSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('saturn');
+    var mesh = universeUtils.createJovianPlanet(PlanetConfig.saturn);
     var planetAggregation;
 
     var renderer = renderer;
@@ -253,7 +253,7 @@ UranusSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('uranus');
+    var mesh = universeUtils.createJovianPlanet(PlanetConfig.uranus);
     var planetAggregation;
 
     var renderer = renderer;
@@ -301,7 +301,7 @@ NeptuneSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('neptune');
+    var mesh = universeUtils.createJovianPlanet(PlanetConfig.neptune);
     var planetAggregation;
 
     var renderer = renderer;
@@ -349,7 +349,7 @@ PlutoSceneController = function (renderer) {
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
-    var mesh = createPlanetMesh('pluto');
+    var mesh = universeUtils.createTerrestrialPlanet(PlanetConfig.pluto);
     var planetAggregation;
 
     var renderer = renderer;
@@ -391,89 +391,89 @@ PlutoSceneController = function (renderer) {
 };
 
 /* ***** ***** Helper Functions ***** ***** */
-function createPlanetMesh(planet){
-    var mesh = new THREE.Mesh();
-
-    mesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
-    switch (planet){
-        case 'mercury':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/mercurymap.jpg'
-                ),
-                bumpScale: 0.05,
-                bumpMap: new THREE.TextureLoader().load(
-                    '../images/planets/mercurybump.jpg'
-                )
-            });
-            break;
-        case 'venus':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/venusmap.jpg'
-                ),
-                bumpScale: 0.05,
-                bumpMap: new THREE.TextureLoader().load(
-                    '../images/planets/venusbump.jpg'
-                )
-            });
-            break;
-        case 'mars':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/marsmap1k.jpg'
-                ),
-                bumpScale: 0.05,
-                bumpMap: new THREE.TextureLoader().load(
-                    '../images/planets/marsbump1k.jpg'
-                )
-            });
-            break;
-        case 'jupiter':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/jupitermap.jpg'
-                )
-            });
-            break;
-        case 'saturn':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/saturnmap.jpg'
-                )
-            });
-            break;
-        case 'uranus':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/uranusmap.jpg'
-                )
-            });
-            break;
-        case 'neptune':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/neptunemap.jpg'
-                )
-            });
-            break;
-        case 'pluto':
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/plutomap1k.jpg'
-                ),
-                bumpScale: 0.05,
-                bumpMap: new THREE.TextureLoader().load(
-                    '../images/planets/plutobump1k.jpg'
-                )
-            });
-            break;
-        default:
-            mesh.material = new THREE.MeshPhongMaterial();
-    }
-
-    return mesh;
-}
+// function createPlanetMesh(planet){
+//     var mesh = new THREE.Mesh();
+//
+//     mesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+//     switch (planet){
+//         case 'mercury':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/mercurymap.jpg'
+//                 ),
+//                 bumpScale: 0.05,
+//                 bumpMap: new THREE.TextureLoader().load(
+//                     '../images/planets/mercurybump.jpg'
+//                 )
+//             });
+//             break;
+//         case 'venus':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/venusmap.jpg'
+//                 ),
+//                 bumpScale: 0.05,
+//                 bumpMap: new THREE.TextureLoader().load(
+//                     '../images/planets/venusbump.jpg'
+//                 )
+//             });
+//             break;
+//         case 'mars':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/marsmap1k.jpg'
+//                 ),
+//                 bumpScale: 0.05,
+//                 bumpMap: new THREE.TextureLoader().load(
+//                     '../images/planets/marsbump1k.jpg'
+//                 )
+//             });
+//             break;
+//         case 'jupiter':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/jupitermap.jpg'
+//                 )
+//             });
+//             break;
+//         case 'saturn':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/saturnmap.jpg'
+//                 )
+//             });
+//             break;
+//         case 'uranus':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/uranusmap.jpg'
+//                 )
+//             });
+//             break;
+//         case 'neptune':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/neptunemap.jpg'
+//                 )
+//             });
+//             break;
+//         case 'pluto':
+//             mesh.material = new THREE.MeshPhongMaterial({
+//                 map: new THREE.TextureLoader().load(
+//                     '../images/planets/plutomap1k.jpg'
+//                 ),
+//                 bumpScale: 0.05,
+//                 bumpMap: new THREE.TextureLoader().load(
+//                     '../images/planets/plutobump1k.jpg'
+//                 )
+//             });
+//             break;
+//         default:
+//             mesh.material = new THREE.MeshPhongMaterial();
+//     }
+//
+//     return mesh;
+// }
 
 function initDefault(light, camera, universeMesh, stars, meteors, aggregation, universeUtils) {
     var scene = new THREE.Scene();

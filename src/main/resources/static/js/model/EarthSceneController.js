@@ -33,6 +33,9 @@ EarthSceneController = function (renderer) {
     }
 
     this.addCones = function (conesParameter) {
+        coneList.forEach(function(cone) {
+            earthMesh.remove(cone);
+        });
         conesParameter.forEach(function (coneParameter) {
             addOneCone(coneParameter);
         });

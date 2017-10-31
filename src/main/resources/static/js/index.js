@@ -42,16 +42,4 @@ function getYearData(year) {
     } else {
         earthSceneController.clearCones();
     }
-
-    // $.ajax({
-    //     url: "/api/year",
-    //     type: 'POST',
-    //     contentType: "application/json; charset=utf-8",
-    //     async: true,
-    //     data: JSON.stringify({"year": year}),
-    //     dataType: 'json',
-    //     success: function (yearData) {
-    //         earthSceneController.addCones(yearData);
-    //     }
-    // });
 }
