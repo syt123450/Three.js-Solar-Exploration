@@ -4,7 +4,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | 1. Code review | 1. Refactored and integrated code | Good |
 | Chenhua | 1. Code review | 1. Refactor SolarSceneController (remove extra aggregations) | 1. re-consider sun representation |
 | Yuntian | 1. refactor SolarSceneController (object creation) | <ol><li>write event manager to manage event</li><li>fix speed up problem</li></ol> | Go well |
 
