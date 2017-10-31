@@ -33,6 +33,7 @@ PinController = function (renderer) {
 
     var particles = [];
     var clock = new THREE.Clock();
+    var timeNow;
 
 
     var explode = false;
@@ -270,11 +271,12 @@ PinController = function (renderer) {
 
     function addExplosion(point, blowUp){
 
-        var timeNow = clock.getElapsedTime();
+        timeNow = clock.getElapsedTime();
+        console.log(timeNow)
         // earthMesh.children.remove;
         explode = false;
-        for (var i = 0; i < 4; i++) {
-            var geometry = new THREE.BoxGeometry(0.2, 0.2, 0.1);
+        for (var i = 0; i < 16; i++) {
+            var geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
             var material = new THREE.MeshBasicMaterial({
                 color: 0x999999
             });
@@ -297,38 +299,77 @@ PinController = function (renderer) {
        }
 
     function explosion(point){
+        var explosionSpeed = 0.02;
         if (particles.length > 0) {
             // console.log("particles")
             particles.forEach(function(elem, index, array) {
                 switch (elem.name) {
                     case "part0":
-                        elem.position.x += 0.1;
-                        //elem.rotateX(1);
-                        elem.rotation.y += 0.1;
-                        elem.rotation.z += 0.1;
-                        // console.log("part0");
+                        elem.position.x += explosionSpeed;
                         break;
                     case "part1":
-                        elem.position.y -= 0.1;
-                        elem.position.x -= 0.1;
-                        // console.log(elem.position);
+                        elem.position.y += explosionSpeed;
                         break;
                     case "part2":
-                        elem.position.y += 0.1;
-                        elem.position.x -= 0.1;
-
-                        // console.log("part2");
+                        elem.position.z -= explosionSpeed; //need to change
                         break;
                     case "part3":
-                        elem.position.y -= 0.1;
-                        // console.log("part3");
+                        elem.position.x -= explosionSpeed;
                         break;
+                    case "part4":
+                        elem.position.y -= explosionSpeed;
+                        break;
+                    case "part5":
+                        elem.position.z -= explosionSpeed; //finished on axis
+                        break;
+                    case "part6":
+                        elem.position.x += explosionSpeed; //
+                        elem.position.y += explosionSpeed;
+                        elem.position.z += explosionSpeed;
+                        break;
+                    case "part7":
+                        elem.position.x -= explosionSpeed; //
+                        elem.position.y += explosionSpeed;
+                        elem.position.z += explosionSpeed;
+                        break;
+                    case "part8":
+                        elem.position.x -= explosionSpeed; //
+                        elem.position.y -= explosionSpeed;
+                        elem.position.z += explosionSpeed;
+                        break;
+                    case "part9":
+                        elem.position.x -= explosionSpeed; //
+                        elem.position.y -= explosionSpeed;
+                        elem.position.z -= explosionSpeed;
+                        break;
+                    case "part10":
+                        elem.position.x += explosionSpeed; //
+                        elem.position.y -= explosionSpeed;
+                        elem.position.z += explosionSpeed;
+                        break;
+                    case "part11":
+                        elem.position.x += explosionSpeed; //
+                        elem.position.y -= explosionSpeed;
+                        elem.position.z -= explosionSpeed;
+                        break;
+                    case "part12":
+                        elem.position.x += explosionSpeed; //
+                        elem.position.y += explosionSpeed;
+                        elem.position.z -= explosionSpeed;
+                        break;
+                    case "part13":
+                        elem.position.x -= explosionSpeed; //
+                        elem.position.y += explosionSpeed;
+                        elem.position.z -= explosionSpeed;
+                        break;
+
                     default:
                         break;
                 }
-
-                if (elem.birthDay - clock.getElapsedTime() < -2) {
-                    earthMesh.remove(elem);
+                console.log(timeNow);
+                console.log(clock.getElapsedTime());
+                if (elem.birthDay - clock.getElapsedTime() < -1) {
+                    earthAggregation.remove(elem);
                     particles.splice(index, 1);
                 }
 
