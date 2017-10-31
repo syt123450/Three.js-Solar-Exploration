@@ -1,3 +1,10 @@
+### [Oct. 30th, 2017]
+Development:
+  * Update ring prototype/demo
+    * Fixed ratio between planet radius and ring radius (inner/outer)
+    * Add ring pngs (special thx for Qi Liu)
+  * Refactored SolarSystemScene (finally agreed on the version from Yuantian)
+***
 ### [Week 5 XP Core Values (or Lean/Kanban Principle)] 
   * See the whole
     * Keep the development process for different parts
