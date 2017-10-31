@@ -115,18 +115,18 @@ TweenAnimationController = function (renderer) {
 	/**
 	 * @param coneInitialLatitude: in degree
 	 * @param coneInitialLongitude: in degree
-	 * @param slideLeftDistance: how far we want the earth to slide to left
-	 * @param yRotationAdjustmentInDegree: in degree
 	 * @returns {number} In radius. How much the earth have rotated around Y axis when cone is clicked
 	 */
-	function onConeClicked(coneInitialLatitude, coneInitialLongitude, slideLeftDistance, yRotationAdjustmentInDegree) {
+	function onConeClicked(coneInitialLatitude, coneInitialLongitude) {
 		console.log('cone clicked');
 		/************************
 		 * CONSTANTS
 		 ************************/
 		var ANIMATION_DURATION = 3000;
 		var OBLIUITY = 23.5;
-		
+	
+		var slideLeftDistance = 0.8;
+		var yRotationAdjustmentInDegree = 0;
 		slideLeftDistance = slideLeftDistance || 0.8;
 		yRotationAdjustmentInDegree = yRotationAdjustmentInDegree || 0;
 		_yAxisRotationHistory = earthMesh.rotation.y;
@@ -192,9 +192,8 @@ TweenAnimationController = function (renderer) {
 	
 	/**
 	 * @param yRotationHistoryInRadian: How much the Earth have rotated when the cone is clicked
-	 * * @param yRotationAdjustmentInDegree: in degree
 	 */
-	function resumeFromOnConeClicked(yRotationHistoryInRadian, yRotationAdjustmentInDegree) {
+	function resumeFromOnConeClicked(yRotationHistoryInRadian) {
 		
 		/************************
 		 * CONSTANTS
@@ -202,7 +201,7 @@ TweenAnimationController = function (renderer) {
 		var ANIMATION_DURATION = 3000;
 		var OBLIUITY = 23.5;
 		
-		
+		var yRotationAdjustmentInDegree = 0;
 		TWEEN.removeAll(); // In case cone is clicked before last animation completes
 		
 		
@@ -355,9 +354,9 @@ TweenAnimationController = function (renderer) {
 						break;
 					case 'ROTATE_EARTH':
 						if (!isConeClicked) {
-							yRotationHistory = onConeClicked(CONE_INIT_LATITUDE, CONE_INIT_LONGITUDE, 0.8, 0)
+							yRotationHistory = onConeClicked(CONE_INIT_LATITUDE, CONE_INIT_LONGITUDE)
 						} else {
-							resumeFromOnConeClicked(yRotationHistory, 0)
+							resumeFromOnConeClicked(yRotationHistory)
 						}
 						break;
 					default:
