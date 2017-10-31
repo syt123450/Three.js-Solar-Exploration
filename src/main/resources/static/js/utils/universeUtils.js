@@ -4,7 +4,8 @@
 
 UniverseUtils = function () {
 
-    var coneRadius = 0.55;
+    var coneRadius = 0.52;
+    var coneInitSize = 0.01;
     var starPositions = [
         [-7, 3, -15], [-8, 4, -16],
         [-9, 2, -14], [-10, 3, -15], [-8, 4, -10],
@@ -148,15 +149,53 @@ UniverseUtils = function () {
 
     this.createOneCone = function (coneParameters) {
 
-        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
+        var coneSide = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                '../images/fadeTest.jpg'
+            ),
+            side: THREE.DoubleSide
+        });
+        var green = new THREE.MeshPhongMaterial({color: 0X008000});
+        var materialsArray = [];
+        materialsArray.push(coneSide);
+        materialsArray.push(coneSide);
+        materialsArray.push(green);
 
         var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.03, 0.1, 0.09, 12),
-            new THREE.MeshPhongMaterial({color: 0x085093})
+            new THREE.ConeGeometry(coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize),
+            materialsArray
         );
 
+        var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
         coneMesh.position.set(position.x, position.y, position.z);
         coneMesh.parameters = coneParameters;
+
+        coneMesh.rotate = function () {
+            this.rotateY(0.05);
+        };
+
+        coneMesh.isGrow = true;
+        coneMesh.initSize = coneInitSize;
+        coneMesh.grow = function () {
+            if (this.scale.x > 1.2) {
+                this.isGrow = false;
+            }
+            if (this.scale.x < 1) {
+                this.isGrow = true;
+            }
+            if (this.isGrow) {
+                this.scale.x += 0.005;
+                this.scale.y += 0.005;
+                this.scale.z += 0.005;
+
+                this.translateY(-this.initSize / 20);
+            } else {
+                this.scale.x -= 0.005;
+                this.scale.y -= 0.005;
+                this.scale.z -= 0.005;
+                this.translateY(this.initSize / 20);
+            }
+        };
 
         return coneMesh;
     };
@@ -324,7 +363,7 @@ UniverseUtils = function () {
         return sphereMesh;
     }
 
-    function createOrbit (radius) {
+    function createOrbit(radius) {
         var geometry = new THREE.CircleGeometry(radius, 256, 0, 2.01 * Math.PI);
         geometry.vertices.shift();
         var orbit = new THREE.Line(

@@ -52,7 +52,7 @@ EarthSceneController = function (renderer) {
         meteors.sweepMeteors();
         rotateEarthWithStop();
         rotateMoon();
-        rotateCones();
+        animateCones();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -116,10 +116,11 @@ EarthSceneController = function (renderer) {
         earthMesh.add(coneObject);
     }
 
-    function rotateCones() {
+    function animateCones() {
 
         coneList.forEach(function (cone) {
-            cone.rotateY(0.05);
+            cone.rotate();
+            cone.grow();
         });
     }
 
