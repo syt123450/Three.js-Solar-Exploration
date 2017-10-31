@@ -2,6 +2,9 @@
 * Communication
   * Talk to team members about how to work together to achieve maximum work efficiency
 
+### [Oct.31.2017] Refined flag data
+* Refined flag data 
+
 ### [Oct.30.2017] Talked to Yuntian
 * Talked to Yuntian to refactor and integrate code
 * Discussed strategies of refining explosion
