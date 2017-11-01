@@ -74,7 +74,10 @@ var SolarConfig = {
                 orbitSpeed: -0.17,
                 rotateSpeed: 0.05,
                 map: '../images/planets/saturnmap.jpg',
-                radius: 1.8
+                radius: 1.8,
+                ringMap: '../images/planets/saturnringcolortransRing.png',
+                ringInnerRadius: 2.16,
+                ringOuterRadius: 4.32
             }
         },
 
@@ -85,7 +88,10 @@ var SolarConfig = {
                 orbitSpeed: -0.12,
                 rotateSpeed: 0.05,
                 map: '../images/planets/uranusmap.jpg',
-                radius: 1.2
+                radius: 1.2,
+                ringMap: '../images/planets/uranusringcolortransRing.png',
+                ringInnerRadius: 1.56,
+                ringOuterRadius: 2.4
             }
         },
 
