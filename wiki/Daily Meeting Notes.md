@@ -4,7 +4,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | <ol><li>Refined flag data</li><li>Refined explosion debris</li><li>Updated cone texture</li></ol> | Create Path file to flag | Good |
 | Chenhua | ------ | ------ | ------ |
 | Yuntian | 1. combine tween feature | 1. refactor and technique meeting | 1. tween has some problem with earth rotation |
 
