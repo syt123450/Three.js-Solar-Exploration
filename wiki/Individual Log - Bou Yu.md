@@ -4,6 +4,8 @@
 
 ### [Oct.31.2017] Refined flag data
 * Refined flag data 
+* Refined explosion debris
+* Updated cone texture
 
 ### [Oct.30.2017] Talked to Yuntian
 * Talked to Yuntian to refactor and integrate code

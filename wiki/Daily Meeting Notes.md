@@ -14,7 +14,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
-| Bou-Yu | ------ | ------ | ------ |
+| Bou-Yu | <ol><li>Refactored and integrated code</li></ol> | <ol><li>Refined flag data</li><li>Refined explosion debris</li><li>Updated cone texture</li></ol> | Good |
 | Chenhua | <ol><li>Reviewed database code, wait for flag path data insertion</li><li>Saturn Ring demo</li></ol> | <ol><li>Ring demo and integration</li><li>Discussion on controller integration</li><li>sun coronal study</li></ol> | 1. ring size ratio with fixed ring png |
 | Yuntian | <ol><li>write event manager to manage event</li><li>fix speed up problem</li><li>combine cone feature</li></ol> | 1. combine tween feature | 1. tween may has some bugs when integrate it into demo |
 
