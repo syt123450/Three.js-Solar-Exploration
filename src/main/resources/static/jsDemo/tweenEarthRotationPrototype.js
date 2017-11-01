@@ -1,5 +1,5 @@
 /**
- * Created by ss on 2017/9/26.
+ * Created by ss on 2017/10/31.
  */
 
 EarthSceneController = function (renderer) {
@@ -19,7 +19,7 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        rotateEarth();
+        TWEEN.update();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -30,8 +30,30 @@ EarthSceneController = function (renderer) {
         scene.add(camera);
         scene.add(universeMesh);
         scene.add(initEarthAggregation());
+        initTween();
 
         return scene;
+    }
+
+    function initTween() {
+
+        var startAngle = {yAngle: 0};
+        var endAngle = {yAngle: 2 * Math.PI};
+
+        var rotateTween = new TWEEN.Tween(startAngle).to(endAngle, 5000);
+        rotateTween.easing(TWEEN.Easing.Linear.None);
+        rotateTween.onUpdate(function() {
+            if (earthMesh.rotation.y > 2 * Math.PI) {
+                earthMesh.rotation.y = 0;
+                atmosphereMesh.rotation.y = 0;
+            }
+            earthMesh.rotation.y = this.yAngle;
+            atmosphereMesh.rotation.y = this.yAngle;
+            console.log(earthMesh.rotation.y);
+        });
+        
+        rotateTween.repeat(Infinity);
+        rotateTween.start();
     }
 
     function initEarthAggregation() {
@@ -42,12 +64,5 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
-    }
-
-    function rotateEarth() {
-
-        earthMesh.rotation.y += 0.01;
-        atmosphereMesh.rotation.y += 0.013;
-        console.log(earthMesh.rotation.y);
     }
 };
