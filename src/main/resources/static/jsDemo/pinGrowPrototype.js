@@ -26,7 +26,7 @@ PinController = function (renderer) {
         requestAnimationFrame(pinAnimate);
         rotateEarth();
         rotateCone();
-        growPin();
+
         pinRenderer.render(pinScene, camera);
     }
 
@@ -72,19 +72,23 @@ PinController = function (renderer) {
 
     function initCone() {
 
-        // coneHeight = coneRadius * 3;
-        // coneRSegment = coneRadius * 3;
-        // coneHSegment = coneHeight * 120;
-        console.log(coneInitSize);
+        // console.log(coneInitSize);
+        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        texture.flipY = false; //Need to do this to flip texture upside down
+        var coneSide = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
+        var coneBottom = new THREE.MeshPhongMaterial( { color: 0Xff8533});
+        var materialsArray = [];
+        materialsArray.push(coneSide);
+        materialsArray.push(coneSide);
+        materialsArray.push(coneBottom);
+
         var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry( coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize),
-            // new THREE.MeshBasicMaterial ({wireframe: true})
-            new THREE.MeshPhongMaterial( { color: 0x085093 } )
+            new THREE.ConeGeometry( coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize ),
+            materialsArray
         );
 
         coneMesh.position.set(position.x, position.y, position.z);
         coneMesh.lookAt(earthMesh.position);
-
         coneMesh.rotateX(Math.PI / 2);
 
         return coneMesh;
