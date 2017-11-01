@@ -6,7 +6,7 @@
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | ------ | ------ | ------ |
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | 1. combine tween feature | 1. refactor and technique meeting | 1. tween has some problem with earth rotation |
 
 ***
 ### [Oct. 31st, 2017]
