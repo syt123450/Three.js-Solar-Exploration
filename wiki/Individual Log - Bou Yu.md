@@ -2,8 +2,11 @@
 * Communication
   * Talk to team members about how to work together to achieve maximum work efficiency
 
+### [Nov.01.2017] Create Path file to flag
+* Create Path file to flag
+
 ### [Oct.31.2017] Refined flag data
-* Refined flag data 
+* Refined flag data
 * Refined explosion debris
 * Updated cone texture
 
