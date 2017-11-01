@@ -31,11 +31,13 @@ SaturnSceneController = function (renderer) {
     }
 
     function aggregationInit() {
+
         var aggregation = new THREE.Object3D();
+        ringMesh.rotateX( 0.5 * Math.PI );
+        mesh.add(ringMesh);
         aggregation.add(mesh);
         // aggregation.rotateZ(-Math.PI * 23.5 / 180);
-        ringMesh.rotateX( 0.5 * Math.PI );
-        aggregation.add(ringMesh);
+        // aggregation.add(ringMesh);
         return aggregation;
     }
 };
