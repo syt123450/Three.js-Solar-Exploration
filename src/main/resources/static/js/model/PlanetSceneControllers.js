@@ -241,7 +241,6 @@ SaturnSceneController = function (renderer) {
 
     function aggregationInit() {
         planetAggregation = aggregationInitDefault(mesh);
-        ringMesh.rotateX( 0.5 * Math.PI );
         planetAggregation.add(ringMesh);
         planetAggregation.name = "SaturnAggregation";
         return planetAggregation;
@@ -292,7 +291,6 @@ UranusSceneController = function (renderer) {
 
     function aggregationInit() {
         planetAggregation = aggregationInitDefault(mesh);
-        ringMesh.rotateX( 0.5 * Math.PI );
         planetAggregation.add(ringMesh);
         planetAggregation.name = "UranusAggregation";
         return planetAggregation;

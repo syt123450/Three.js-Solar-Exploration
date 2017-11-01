@@ -54,7 +54,7 @@ UniverseUtils = function () {
     this.createDefaultEarthMesh = function () {
 
         var earthMesh = new THREE.Mesh();
-        earthMesh.geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        earthMesh.geometry = new THREE.SphereGeometry(0.5, 64, 64);
         earthMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/2_no_clouds_4k.jpg'
@@ -75,7 +75,7 @@ UniverseUtils = function () {
     this.createDefaultAtmosphere = function () {
 
         var atmosphereMesh = new THREE.Mesh();
-        atmosphereMesh.geometry = new THREE.SphereGeometry(0.51, 32, 32);
+        atmosphereMesh.geometry = new THREE.SphereGeometry(0.51, 64, 64);
         atmosphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/fair_clouds_4k.png'
@@ -89,7 +89,7 @@ UniverseUtils = function () {
     this.createDefaultMoon = function () {
 
         var moonMesh = new THREE.Mesh();
-        moonMesh.geometry = new THREE.SphereGeometry(0.05, 32, 32);
+        moonMesh.geometry = new THREE.SphereGeometry(0.05, 64, 64);
         moonMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/moonmap2k.jpg'
@@ -243,6 +243,10 @@ UniverseUtils = function () {
             planetsList[planet].mesh.position.x = SolarConfig[planet].orbitRadius;
         }
 
+        // Add ring to Saturn and Uranus
+        planetsList["saturn"].mesh.add(createRing(SolarConfig.saturn));
+        planetsList["uranus"].mesh.add(createRing(SolarConfig.uranus));
+
         return planetsList;
     };
 
@@ -381,6 +385,7 @@ UniverseUtils = function () {
         });
         ringMesh.receiveShadow = true;
         ringMesh.castShadow = true;
+        ringMesh.rotateX( 0.5 * Math.PI );
 
         return ringMesh;
     }

@@ -32,7 +32,7 @@ SolarSystemSceneController = function(renderer) {
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
-        // rotationAndRevolution();
+        rotationAndRevolution();
 
         solarSystemRenderer.render(solarSystemScene, camera);
     }
