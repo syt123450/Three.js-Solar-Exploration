@@ -54,6 +54,7 @@ CREATE TABLE AreaGeography (
   altitude DOUBLE(15,10) DEFAULT 0,
   PRIMARY KEY (areaID)
 );
+ALTER TABLE AreaGeography ADD ifFlagImage BOOLEAN DEFAULT FALSE NOT NULL;
 
 
 -- For data collection and hash map style use

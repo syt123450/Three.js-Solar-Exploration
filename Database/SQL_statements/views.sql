@@ -17,6 +17,7 @@ CREATE OR REPLACE VIEW v_TotalEnergy AS
               co.countryName as areaName,
               ag.latitude as latitude,
               ag.longitude as longitude,
+              ag.ifFlagImage as ifFlagImage,
               co.year as year,
               IFNULL(c.amount, 0) as Coal_Amount,
               IFNULL(co.amount, 0) as CrudeOil_Amount,
@@ -46,7 +47,7 @@ CREATE OR REPLACE VIEW v_TotalEnergy AS
 CREATE OR REPLACE VIEW v_Coal AS
       (
             SELECT
-                  ag.areaName, ag.latitude, ag.longitude,
+                  ag.areaName, ag.latitude, ag.longitude, ag.ifFlagImage,
                   c.year, c.amount
             FROM
                   AreaGeography ag, Coal c
@@ -58,7 +59,7 @@ CREATE OR REPLACE VIEW v_Coal AS
 CREATE OR REPLACE VIEW v_CrudeOil AS
       (
             SELECT
-                  ag.areaName, ag.latitude, ag.longitude,
+                  ag.areaName, ag.latitude, ag.longitude, ag.ifFlagImage,
                   co.year, co.amount
             FROM
                   AreaGeography ag, CrudeOil co
@@ -70,7 +71,7 @@ CREATE OR REPLACE VIEW v_CrudeOil AS
 CREATE OR REPLACE VIEW v_NaturalGas AS
       (
             SELECT
-                  ag.areaName, ag.latitude, ag.longitude,
+                  ag.areaName, ag.latitude, ag.longitude, ag.ifFlagImage,
                  ng.year, ng.amount
             FROM
                   AreaGeography ag, NaturalGas ng
