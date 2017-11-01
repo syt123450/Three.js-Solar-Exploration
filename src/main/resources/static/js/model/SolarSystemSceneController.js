@@ -32,7 +32,7 @@ SolarSystemSceneController = function(renderer) {
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
-        rotationAndRevolution();
+        // rotationAndRevolution();
 
         solarSystemRenderer.render(solarSystemScene, camera);
     }
@@ -94,7 +94,7 @@ SolarSystemSceneController = function(renderer) {
 
         // From the top of the system
         if (mode == 1) {
-            camera.position.set(0, 60, 0);
+            camera.position.set(0, 90, 0);
         }
         // From the horizontal position
         else if (mode == 2) {
