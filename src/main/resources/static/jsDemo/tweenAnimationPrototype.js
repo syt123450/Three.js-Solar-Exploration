@@ -142,9 +142,14 @@ TweenAnimationController = function (renderer) {
 		var _zAxisFinal = {z: _finalZAxisRotation};
 		var _tweenRotateZ = new TWEEN.Tween(_zAxisStart)
 			.to(_zAxisFinal, ANIMATION_DURATION)
+			.onStart(function () {
+				// set global variable
+				// Earth will stop rotating
+				enableEarthRotation = false;
+			})
 			.start();
 		_tweenRotateZ.onUpdate(function () {
-			earthAggregation.rotation.z = _zAxisStart.z;
+			earthMesh.parent.rotation.z = _zAxisStart.z;
 		});
 		
 		/***********************************************
@@ -177,7 +182,7 @@ TweenAnimationController = function (renderer) {
 			.start();
 		tweenTranslation
 			.onUpdate(function() {
-				earthAggregation.position.x = _translationStart.t;
+				earthMesh.parent.position.x = _translationStart.t;
 			});
 		
 		_tweenRotateZ.chain(
@@ -231,7 +236,7 @@ TweenAnimationController = function (renderer) {
 			.to(_zAxisFinal, ANIMATION_DURATION)
 			.start();
 		_tweenRotateZ.onUpdate(function () {
-			earthAggregation.rotation.z = _zAxisStart.z;
+			earthMesh.parent.rotation.z = _zAxisStart.z;
 		});
 		
 		/***********************************************
@@ -245,7 +250,12 @@ TweenAnimationController = function (renderer) {
 			.to(_translationFinal, ANIMATION_DURATION)
 			.start();
 		_tweenTranslation.onUpdate(function() {
-			earthAggregation.position.x = _translationStart.t;
+			earthMesh.parent.position.x = _translationStart.t;
+		});
+		_tweenTranslation.onComplete(function() {
+			// Set the global variable "enableEarthRotation"
+			// Earth will resume rotation
+			enableEarthRotation = true;
 		});
 		
 		_tweenRotateY.chain(
@@ -363,7 +373,7 @@ TweenAnimationController = function (renderer) {
 						break;
 				}
 				
-				enableEarthRotation = !enableEarthRotation;
+				// enableEarthRotation = !enableEarthRotation;
 			}
 		}
 	}
