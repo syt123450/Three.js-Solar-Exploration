@@ -5,7 +5,7 @@
 | ------ | ------ | ------ | ------ |
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | <ol><li>Refined flag data</li><li>Refined explosion debris</li><li>Updated cone texture</li></ol> | Create Path file to flag | Good |
-| Chenhua | ------ | ------ | ------ |
+| Chenhua | 1. Rings demo and refactoring | <ol><li>Code integration</li><li>Flag path insertion</li></ol> | 1. Apply ring to solar scene |
 | Yuntian | 1. combine tween feature | 1. refactor and technique meeting | 1. tween has some problem with earth rotation |
 
 ***
