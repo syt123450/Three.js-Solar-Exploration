@@ -1,3 +1,10 @@
+### [Oct. 31st, 2017]
+Development:
+  * Apply ring prototype/demo
+    * Add "createRing" to the universeUtil
+    * Apply to Saturn and Uranus scene with refactored code
+    * Update SolarScene config (apply to solar scene may be applied tomorrow)
+***
 ### [Oct. 30th, 2017]
 Development:
   * Update ring prototype/demo

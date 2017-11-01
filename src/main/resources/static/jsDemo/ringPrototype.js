@@ -175,34 +175,33 @@ function createRingMesh(planet, radius){
     switch (planet){
         case 'saturn':
             innerRadius = (radius * 1.2);
-            outerRadius = innerRadius *2;
-            mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
+            outerRadius = (radius * 2.4);
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
                     '../images/planets/saturnringcolortransRing.png'
                 ),
                 side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 1
+                opacity: 0.95
             });
             break;
         case 'uranus':
             innerRadius = (radius * 1.3);
             outerRadius = (radius * 2);
-            mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
             mesh.material = new THREE.MeshPhongMaterial({
                 map: new THREE.TextureLoader().load(
                     '../images/planets/uranusringcolortransRing.png'
                 ),
                 side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 1
+                opacity: 0.65
             });
             break;
         default:
             mesh.material = new THREE.MeshPhongMaterial();
     }
 
+    mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
     mesh.receiveShadow = true;
     mesh.castShadow = true;
     return mesh;

@@ -29,12 +29,18 @@ var PlanetConfig = {
 
     saturn: {
         map: '../images/planets/saturnmap.jpg',
-        radius: 0.5
+        radius: 0.5,
+        ringMap: '../images/planets/saturnringcolortransRing.png',
+        ringInnerRadius: 0.6,
+        ringOuterRadius: 1.2
     },
 
     uranus: {
         map: '../images/planets/uranusmap.jpg',
-        radius: 0.5
+        radius: 0.5,
+        ringMap: '../images/planets/uranusringcolortransRing.png',
+        ringInnerRadius: 0.65,
+        ringOuterRadius: 1
     },
 
     neptune: {
