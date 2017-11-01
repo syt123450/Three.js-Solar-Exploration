@@ -249,6 +249,7 @@ UniverseUtils = function () {
     this.createTerrestrialPlanet = createTerrestrialPlanet;
 
     this.createJovianPlanet = createJovianPlanet;
+    this.createRing = createRing;
 
     this.addDoubleHalos = function (target, innerColor, outerColor) {
         // innerGlowMesh settings
@@ -365,6 +366,23 @@ UniverseUtils = function () {
         });
 
         return sphereMesh;
+    }
+
+    function createRing(planetParameters) {
+        var ringMesh = new THREE.Mesh();
+        ringMesh.geometry = new THREE.RingGeometry(planetParameters.ringInnerRadius, planetParameters.ringOuterRadius, 64, 16, 0, Math.PI * 2);
+        ringMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(
+                planetParameters.ringMap
+            ),
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 0.65
+        });
+        ringMesh.receiveShadow = true;
+        ringMesh.castShadow = true;
+
+        return ringMesh;
     }
 
     function createOrbit(radius) {

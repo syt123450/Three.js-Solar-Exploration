@@ -206,7 +206,7 @@ SaturnSceneController = function (renderer) {
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = universeUtils.createJovianPlanet(PlanetConfig.saturn);
-    var ringMesh = createRingMesh('saturn', 0.5);
+    var ringMesh = universeUtils.createRing(PlanetConfig.saturn);
     var planetAggregation;
 
     var renderer = renderer;
@@ -241,7 +241,7 @@ SaturnSceneController = function (renderer) {
 
     function aggregationInit() {
         planetAggregation = aggregationInitDefault(mesh);
-        // ringMesh.rotateX( 0.5 * Math.PI );
+        ringMesh.rotateX( 0.5 * Math.PI );
         planetAggregation.add(ringMesh);
         planetAggregation.name = "SaturnAggregation";
         return planetAggregation;
@@ -257,7 +257,7 @@ UranusSceneController = function (renderer) {
     var stars = universeUtils.createDefaultStars();
     var meteors = universeUtils.createDefaultMeteors();
     var mesh = universeUtils.createJovianPlanet(PlanetConfig.uranus);
-    var ringMesh = createRingMesh('uranus', 0.5);
+    var ringMesh = universeUtils.createRing(PlanetConfig.uranus);
     var planetAggregation;
 
     var renderer = renderer;
@@ -292,7 +292,7 @@ UranusSceneController = function (renderer) {
 
     function aggregationInit() {
         planetAggregation = aggregationInitDefault(mesh);
-        // ringMesh.rotateX( 0.5 * Math.PI );
+        ringMesh.rotateX( 0.5 * Math.PI );
         planetAggregation.add(ringMesh);
         planetAggregation.name = "UranusAggregation";
         return planetAggregation;
@@ -417,48 +417,6 @@ function initDefault(light, camera, universeMesh, stars, meteors, aggregation, u
     scene.add(aggregation);
 
     return scene;
-}
-
-function createRingMesh(planet, radius){
-    var mesh = new THREE.Mesh();
-    var innerRadius;
-    var outerRadius;
-
-    switch (planet){
-        case 'saturn':
-            innerRadius = (radius * 1.2);
-            outerRadius = (radius * 2.4);
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/saturnringcolortransRing.png'
-                ),
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.95
-            });
-            break;
-        case 'uranus':
-            innerRadius = (radius * 1.3);
-            outerRadius = (radius * 2);
-            mesh.material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load(
-                    '../images/planets/uranusringcolortransRing.png'
-                ),
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.65
-            });
-            break;
-        default:
-            mesh.material = new THREE.MeshPhongMaterial();
-    }
-
-    mesh.geometry = new THREE.RingGeometry(innerRadius, outerRadius, 64, 16, 0, Math.PI * 2);
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    mesh.rotateX( 0.5 * Math.PI );
-
-    return mesh;
 }
 
 function aggregationInitDefault(mesh) {
