@@ -5,7 +5,8 @@
  * @constructor
  */
 PinController = function (renderer) {
-
+    var coneInitSize = 0.01;
+    var grow = true;
     /** CONSTANTS **/
     var RADIUS = 0.55;
     var OBLIUITY = 23.5; // degrees
@@ -44,6 +45,7 @@ PinController = function (renderer) {
 
     var count = 0;
     var enableEarthRotation = true;
+
     var earthYRotationHistory = 0;
 
     /**
@@ -78,6 +80,7 @@ PinController = function (renderer) {
             rotateEarth();
         }
 
+        growPin();
         explosion(cone.point);
 
         // cone.rotateY(0.05);
@@ -121,10 +124,20 @@ PinController = function (renderer) {
 
     // Init cone to specified latitude and longitude
     function _initCone(latitude, longitude) {
+        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        texture.flipY = false; //Need to do this to flip texture upside down
+        var coneSide = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
+        var coneBottom = new THREE.MeshPhongMaterial( { color: 0Xff8533});
+        var materialsArray = [];
+        materialsArray.push(coneSide);
+        materialsArray.push(coneSide);
+        materialsArray.push(coneBottom);
+
         var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry( 0.05, 0.2, 12 ),
-            new THREE.MeshBasicMaterial ()
+            new THREE.ConeGeometry( coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize ),
+            materialsArray
         );
+
         coneMesh.name = 'coneMesh';
         console.log('cone init position: ', _getCartesianCoordinates(latitude, longitude));
         _setObjectPosition(
@@ -211,16 +224,14 @@ PinController = function (renderer) {
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
             if (_isTargetClicked(cone)) {
-                earthMesh.remove(cone);
-                // explosion(cone.position);
                 addExplosion(cone.position, "cone");
+                earthMesh.remove(cone);
             }
 
             if (_isTargetClicked(earthMesh)) {
+                addExplosion(earthMesh.position, "earth");
                 earthAggregation.remove(atmosphereMesh);
                 earthAggregation.remove(earthMesh);
-                // explosion(cone.position);
-                addExplosion(earthMesh.position, "earth");
             }
         }
     }
@@ -273,13 +284,11 @@ PinController = function (renderer) {
 
         timeNow = clock.getElapsedTime();
         console.log(timeNow)
-        // earthMesh.children.remove;
+        var texture = new THREE.TextureLoader().load('../images/boulderTexture.jpg');
         explode = false;
-        for (var i = 0; i < 16; i++) {
-            var geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-            var material = new THREE.MeshBasicMaterial({
-                color: 0x999999
-            });
+        for (var i = 0; i < 13; i++) {
+            var geometry = new THREE.OctahedronGeometry(0.05, 1);
+            var material = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
             var part = new THREE.Mesh(geometry, material);
             part.position.x = point.x;
             part.position.y = point.y;
@@ -297,6 +306,29 @@ PinController = function (renderer) {
             // console.log("created", i)
         }
        }
+    function growPin() {
+
+        if(cone.scale.x > 1.2) {
+            grow = false;
+        }
+        if(cone.scale.x < 1) {
+            grow = true;
+        }
+        if(grow) {
+            cone.scale.x += 0.005;
+            cone.scale.y += 0.005;
+            cone.scale.z += 0.005;
+
+            cone.translateY(-coneInitSize/20);
+            // cone.translateY(-0.0005);
+        }else{
+            cone.scale.x -= 0.005;
+            cone.scale.y -= 0.005;
+            cone.scale.z -= 0.005;
+            cone.translateY(coneInitSize/20);
+            // cone.translateY(0.0005);
+        }
+    }
 
     function explosion(point){
         var explosionSpeed = 0.02;
@@ -306,61 +338,89 @@ PinController = function (renderer) {
                 switch (elem.name) {
                     case "part0":
                         elem.position.x += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part1":
                         elem.position.y += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part2":
                         elem.position.z -= explosionSpeed; //need to change
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part3":
                         elem.position.x -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part4":
                         elem.position.y -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part5":
                         elem.position.z -= explosionSpeed; //finished on axis
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part6":
                         elem.position.x += explosionSpeed; //
                         elem.position.y += explosionSpeed;
                         elem.position.z += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part7":
                         elem.position.x -= explosionSpeed; //
                         elem.position.y += explosionSpeed;
                         elem.position.z += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part8":
                         elem.position.x -= explosionSpeed; //
                         elem.position.y -= explosionSpeed;
                         elem.position.z += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part9":
                         elem.position.x -= explosionSpeed; //
                         elem.position.y -= explosionSpeed;
                         elem.position.z -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part10":
                         elem.position.x += explosionSpeed; //
                         elem.position.y -= explosionSpeed;
                         elem.position.z += explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part11":
                         elem.position.x += explosionSpeed; //
                         elem.position.y -= explosionSpeed;
                         elem.position.z -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part12":
                         elem.position.x += explosionSpeed; //
                         elem.position.y += explosionSpeed;
                         elem.position.z -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
                     case "part13":
                         elem.position.x -= explosionSpeed; //
                         elem.position.y += explosionSpeed;
                         elem.position.z -= explosionSpeed;
+                        elem.rotateX(0.1);
+                        elem.rotateY(0.1);
                         break;
 
                     default:
