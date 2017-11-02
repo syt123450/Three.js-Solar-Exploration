@@ -6,81 +6,135 @@
  */
 // "use strict";
 
+/************
+ * Mercury
+ ************/
+// var INNER_GLOW_MESH_OPACITY = 0.2;
+// var INNER_GLOW_MESH_RADIUS = 0.504;
+// var innerFragmentShaderIntensity = 'float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 8.0 );';
+// var OUTER_GLOW_MESH_OPACITY = 0.2;
+// var OUTER_GLOW_MESH_RADIUS = 0.504;
+// var outerFragmentShaderIntensity = 'float intensity = pow( 0.5 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.6 );';
+
+
+// addHaloToTarget(planetAggregation, "#F8D6B3", "#AE8045"); // MERCURY
+// addHaloToTarget(planetAggregation, "#FBCA64", "#C68424"); // venus
+// addHaloToTarget(planetAggregation, "#A6C8DA", "#0C6097"); // EARTH
+// addHaloToTarget(planetAggregation, "#F29339", "#C06536"); // MARS
+// addHaloToTarget(planetAggregation, "#F5D8B6", "#C2976D"); // JUPITER
+// addHaloToTarget(planetAggregation, "#F8D6B3", "#A18778"); // SATURN
+// addHaloToTarget(planetAggregation, "#8EAFBD", "#7795A2"); // URANUS
+// addHaloToTarget(planetAggregation, "#83C4FC", "#5C6FBE"); // NEPTUNE
+// addHaloToTarget(planetAggregation, "#D0D9E0", "#93A0A7"); // PLUTO
+
+
+
+
 DoubleHaloController = function (renderer) {
 	
 	var universeUtils = new UniverseUtils();
+	var light = new THREE.AmbientLight(0xffffff);
+	var camera = universeUtils.createDefaultCamera();
+	var universeMesh = universeUtils.createDefaultUniverse();
+	var stars = universeUtils.createDefaultStars();
+	var meteors = universeUtils.createDefaultMeteors();
+	var mesh = universeUtils.createDefaultEarthMesh();
+	var atmosphereMesh = universeUtils.createDefaultAtmosphere();
+	var planetAggregation;
 	
-	/******************************
-	 * Initialized in _initScene()
-	 *****************************/
-	var camera;
-	var universeMesh;
-	var light;
-	var earthRenderer;
-	var earthScene;
+	var renderer = renderer;
+	var scene = init();
 	
-	/*****************************************
-	 * Initialized in _initEarthAggregation()
-	 ****************************************/
-	var earthMesh;
-	var atmosphereMesh;
-	var earthAggregation;
-	
-	/***************************
-	 * Initialized in _initShader()
-	 ***************************/
-	var earthShaderMaterial;
-	var atmosphereShaderMaterial;
+	this.activateScene = activateScene;
+	this.name = "MercurySceneController";
 	
 	
-	_initController();
+	function animate() {
+		SolarEPUtils.animationFrame = requestAnimationFrame(animate);
+		stars.flashStars();
+		meteors.sweepMeteors();
+		rotatePlanet();
+		
+		renderer.render(scene, camera);
+	}
 	
-	// Public: will be called from outside
-	this.animate = function earthAnimate() {
-		requestAnimationFrame(earthAnimate);
-		earthRenderer.render(earthScene, camera);
-	};
+	function activateScene() {
+		
+		EventManager.removeEvents();
+		window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+		animate();
+	}
 	
+	function rotatePlanet() {
+		rotatePlanetDefault(mesh);
+	}
 	
 	/******************************
 	 * Private functions
 	 *****************************/
-	function _initController() {
-		
-		_initEarthAggregation();
-		
-		addHaloToTarget(earthMesh, '#0000ff', '#ff0000');
-		
-		_initScene();
-		
+	
+	function init() {
+		return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
 	}
 	
-	function _initEarthAggregation() {
-		earthMesh = universeUtils.createDefaultEarthMesh();
-		atmosphereMesh = universeUtils.createDefaultAtmosphere();
-
-		earthAggregation = new THREE.Object3D();
-		earthAggregation.add(earthMesh);
-		earthAggregation.add(atmosphereMesh);
+	function aggregationInit() {
+		planetAggregation = initEarthAggregation();
 		
-		earthAggregation.rotateZ(-Math.PI * 23.5 / 180);
-	}
-
-	function _initScene() {
-		earthRenderer = renderer;
-		camera = universeUtils.createDefaultCamera();
-		universeMesh = universeUtils.createDefaultUniverse();
-		light = new THREE.AmbientLight(0xffffff);
-		earthScene = new THREE.Scene();
-
-		earthScene.add(light);
-		earthScene.add(camera);
-		earthScene.add(universeMesh);
-		earthScene.add(earthAggregation);
-
-		console.log("test");
+		addHaloToTarget(planetAggregation, "#A6C8DA", "#0C6097"); // EARTH
+		// 		planetAggregation.name = "MercuryAggregation";
+		return planetAggregation;
 	}
 	
+	function initEarthAggregation() {
+		
+		var aggregation = new THREE.Object3D();
+		aggregation.add(mesh);
+		aggregation.add(atmosphereMesh);
+		aggregation.rotateZ(-Math.PI * 23.5 / 180);
+		
+		return aggregation;
+	}
+	function aggregationInitDefault(mesh) {
+		var aggregation = new THREE.Object3D();
+		aggregation.add(mesh);
+		
+		return aggregation;
+	}
+	
+	function activateScene() {
+		
+		EventManager.removeEvents();
+		window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+		animate();
+	}
+	
+	function rotatePlanet() {
+		// rotatePlanetDefault(mesh);
+	}
+	
+	function initDefault(light, camera, universeMesh, stars, meteors, aggregation, universeUtils) {
+		var scene = new THREE.Scene();
+		scene.add(light);
+		camera.position.set(0, 0.75, 2.5);
+		camera.lookAt(aggregation.position);
+		scene.add(camera);
+		scene.add(universeMesh);
+		stars.forEach(function addStar(star) {
+			scene.add(star);
+		});
+		meteors.forEach(function addMeteor(meteor) {
+			scene.add(meteor);
+		});
+		scene.add(aggregation);
+		
+		return scene;
+	}
+	
+	function rotatePlanetDefault(mesh) {
+		
+		mesh.rotation.y += 0.001;
+		
+	}
 	/**
 	 *
 	 * @param target
@@ -93,13 +147,13 @@ DoubleHaloController = function (renderer) {
 		var INNER_GLOW_MESH_COLOR = innerColor;
 		var INNER_GLOW_MESH_OPACITY = 0.2;
 		var INNER_GLOW_MESH_RADIUS = 0.504;
-		var innerFragmentShaderIntensity = 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );';
+		var innerFragmentShaderIntensity = 'float intensity = pow( 0.63 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 8.0 );';
 		
 		var _outerGlowMesh;
 		var OUTER_GLOW_MESH_COLOR = outerColor;
 		var OUTER_GLOW_MESH_OPACITY = 0.2;
 		var OUTER_GLOW_MESH_RADIUS = 0.504;
-		var outerFragmentShaderIntensity = 'float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.1 );';
+		var outerFragmentShaderIntensity = 'float intensity = pow( 0.3 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.2 );';
 		
 		_init();
 		
@@ -161,7 +215,13 @@ DoubleHaloController = function (renderer) {
 						'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
 						'}'
 					].join('\n'),
-					fragmentShader: webgl
+					fragmentShader: [
+						'varying vec3 vNormal;',
+						'void main() {',
+						intensityFunc,
+						'gl_FragColor = vec4(' + colorR + ',' + colorG + ', ' + colorB +', 1.0 ) * intensity;',
+						'}'
+					].join('\n')
 				}
 			};
 		}
@@ -171,14 +231,7 @@ DoubleHaloController = function (renderer) {
 };
 
 
-var webgl =
-`
-varying vec3 vNormal;
-void main() {
-	intensityFunc
-	gl_FragColor = vec4( 2.0, 1.0, 1.0, 1.0 ) * intensity;
-}
-`;
+
 
 // var test = `
 // \`Shader Inputs
