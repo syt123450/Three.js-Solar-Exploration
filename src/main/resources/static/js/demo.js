@@ -66,10 +66,10 @@ $(function () {
         $("#timeLine").hide();
     });
 
-    $("#infoBoard").click(function () {
+    $("#closeBoard").click(function () {
         if (infoBoard) {
             earthSceneController.restoreEarth();
-            $(this).animate({width:'toggle'},350);
+            $("#infoBoard").animate({width:'toggle'},350);
             infoBoard = false;
         }
     });

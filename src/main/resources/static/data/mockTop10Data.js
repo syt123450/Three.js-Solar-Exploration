@@ -14,8 +14,8 @@ var geographicData = [
     },
     {
         areaName: "San Jose",
-        latitude: 37.3382,
-        longitude: -121.8863,
+        latitude: 37.33,
+        longitude: -121.88,
         amount: 1,
         coalAmount : 2,
         oilAmount: 3,

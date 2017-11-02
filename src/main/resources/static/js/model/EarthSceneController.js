@@ -322,6 +322,12 @@ EarthSceneController = function (renderer) {
             earthMesh.parent.position.x = _translationStart.t;
         });
 
+        _tweenTranslation.onComplete(function() {
+            // Set the global variable "enableEarthRotation"
+            // Earth will resume rotation
+            enableNormalAnimate = true;
+        });
+
         _tweenRotateY.chain(
             _tweenRotateZ.chain(
                 _tweenTranslation
