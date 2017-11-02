@@ -42,7 +42,7 @@ MercurySceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -90,7 +90,7 @@ VenusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -137,7 +137,7 @@ MarsSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -184,7 +184,7 @@ JupiterSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -232,7 +232,7 @@ SaturnSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -281,7 +281,7 @@ UranusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -329,7 +329,7 @@ NeptuneSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -377,7 +377,7 @@ PlutoSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
     }
 
     function aggregationInit() {
@@ -387,23 +387,70 @@ PlutoSceneController = function (renderer) {
     }
 };
 
+// Planet
+PlanetSceneController = function (renderer, config) {
+    var universeUtils = new UniverseUtils();
+    var camera = universeUtils.createDefaultCamera();
+    var universeMesh = universeUtils.createDefaultUniverse();
+    var stars = universeUtils.createDefaultStars();
+    var meteors = universeUtils.createDefaultMeteors();
+    var mesh = universeUtils.createTerrestrialPlanet(config);
+    var planetAggregation;
+
+    var renderer = renderer;
+    var scene = init();
+
+    // this.animate = animate;
+    this.activateScene = activateScene;
+    this.name = config.planetName + "Controller";
+
+    function animate() {
+        SolarEPUtils.animationFrame = requestAnimationFrame(animate);
+        stars.flashStars();
+        meteors.sweepMeteors();
+        rotatePlanet();
+
+        renderer.render(scene, camera);
+    }
+
+    function activateScene() {
+
+        EventManager.removeEvents();
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        animate();
+    }
+
+    function rotatePlanet() {
+        rotatePlanetDefault(mesh);
+    }
+
+    function init() {
+        return initDefault(camera, mesh, universeMesh, stars, meteors);
+    }
+
+    function aggregationInit() {
+        planetAggregation = aggregationInitDefault(mesh);
+        planetAggregation.name = config.planetName + "Aggregation";
+        return planetAggregation;
+    }
+};
+
 
 
 /* ***** ***** Helper Functions ***** ***** */
 
-function initDefault(camera, universeMesh, stars, meteors, aggregation, universeUtils) {
+function initDefault(camera, mesh, universeMesh, stars, meteors, aggregation, lights) {
     var scene = new THREE.Scene();
-    // var light = new THREE.AmbientLight(0xf7f7f7, 1);
-    var light = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
-    var light_src = new THREE.SpotLight( 0xf7f7f7, 0.8, 100, Math.PI/3, 1, 1);
-    // var light_src = new THREE.RectAreaLight(0xf7f7f7, 1, 20, 20);
-    light_src.position.set(30, 30, -6);
-    light_src.lookAt(aggregation.position);
-    scene.add(light);
-    scene.add(light_src);
+
+    aggregation = aggregation || aggregationInitDefault(mesh);
+    lights = lights || lightsInitDefault(aggregation);
+    lights.forEach(function addLight(light) {
+        scene.add(light);
+    });
     camera.position.set(0, 0.75, 2.5);
     camera.lookAt(aggregation.position);
     scene.add(camera);
+
     scene.add(universeMesh);
     stars.forEach(function addStar(star) {
         scene.add(star);
@@ -421,6 +468,18 @@ function aggregationInitDefault(mesh) {
     aggregation.add(mesh);
 
     return aggregation;
+}
+
+function lightsInitDefault(aggregation){
+    var lights = [];
+
+    lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
+    lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 100, Math.PI/3, 1, 1);
+
+    lights[1].position.set(30, 30, -6);
+    lights[1].lookAt(aggregation.position);
+
+    return lights;
 }
 
 function rotatePlanetDefault(mesh) {

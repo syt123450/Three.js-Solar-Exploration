@@ -32,7 +32,15 @@
 <script>
     var renderer = SolarEPUtils.getDefaultRenderer();
 
-    var planetSceneController = new NeptuneSceneController(renderer);
+//    var planetSceneController = new MercurySceneController(renderer);
+//    var planetSceneController = new VenusSceneController(renderer);
+//    var planetSceneController = new MarsSceneController(renderer);
+//    var planetSceneController = new JupiterSceneController(renderer);
+//    var planetSceneController = new SaturnSceneController(renderer);
+//    var planetSceneController = new UranusSceneController(renderer);
+//    var planetSceneController = new NeptuneSceneController(renderer);
+//    var planetSceneController = new PlutoSceneController(renderer);
+    var planetSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto)
     planetSceneController.activateScene();
 
 </script>
