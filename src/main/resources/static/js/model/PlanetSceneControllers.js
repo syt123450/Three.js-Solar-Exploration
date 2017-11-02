@@ -48,6 +48,7 @@ MercurySceneController = function (renderer) {
 
     function aggregationInit() {
         planetAggregation = aggregationInitDefault(mesh);
+	    universeUtils.addDoubleHalos(planetAggregation, "#FBCA64", "#C68424");
         planetAggregation.name = "MercuryAggregation";
         return planetAggregation;
     }
@@ -408,7 +409,6 @@ function initDefault(light, camera, universeMesh, stars, meteors, aggregation, u
     stars.forEach(function addStar(star) {
         scene.add(star);
     });
-    universeUtils.addDoubleHalos(aggregation, "#ff0000", "#00ff00");
     meteors.forEach(function addMeteor(meteor) {
         scene.add(meteor);
     });
