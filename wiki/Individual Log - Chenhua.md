@@ -1,3 +1,12 @@
+### [Nov. 1st, 2017]
+Development:
+  * Apply ring prototype to solar system scene
+  * Generate flag path of different areas
+    * Add ifFlagImage field for the AreaGeography table
+    * Update corresponding views
+    * Update service implementation to provide proper flag path
+  * Test different lights for planet scene
+***
 ### [Oct. 31st, 2017]
 Development:
   * Apply ring prototype/demo
