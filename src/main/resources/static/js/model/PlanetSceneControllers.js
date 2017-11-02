@@ -8,7 +8,6 @@
 // Mercury
 MercurySceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -43,7 +42,7 @@ MercurySceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -56,7 +55,6 @@ MercurySceneController = function (renderer) {
 // Venus
 VenusSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -91,7 +89,7 @@ VenusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -104,7 +102,6 @@ VenusSceneController = function (renderer) {
 // Mars
 MarsSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -139,7 +136,7 @@ MarsSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -152,7 +149,6 @@ MarsSceneController = function (renderer) {
 // Jupiter
 JupiterSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -187,7 +183,7 @@ JupiterSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -200,7 +196,6 @@ JupiterSceneController = function (renderer) {
 // Saturn
 SaturnSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -236,7 +231,7 @@ SaturnSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -250,7 +245,6 @@ SaturnSceneController = function (renderer) {
 // Uranus
 UranusSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -286,7 +280,7 @@ UranusSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -300,7 +294,6 @@ UranusSceneController = function (renderer) {
 // Neptune
 NeptuneSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -335,7 +328,7 @@ NeptuneSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -348,7 +341,6 @@ NeptuneSceneController = function (renderer) {
 // Pluto
 PlutoSceneController = function (renderer) {
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -384,7 +376,7 @@ PlutoSceneController = function (renderer) {
     }
 
     function init() {
-        return initDefault(light, camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
+        return initDefault(camera, universeMesh, stars, meteors, aggregationInit(), universeUtils);
     }
 
     function aggregationInit() {
@@ -398,9 +390,16 @@ PlutoSceneController = function (renderer) {
 
 /* ***** ***** Helper Functions ***** ***** */
 
-function initDefault(light, camera, universeMesh, stars, meteors, aggregation, universeUtils) {
+function initDefault(camera, universeMesh, stars, meteors, aggregation, universeUtils) {
     var scene = new THREE.Scene();
+    // var light = new THREE.AmbientLight(0xf7f7f7, 1);
+    var light = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
+    var light_src = new THREE.SpotLight( 0xf7f7f7, 0.8, 100, Math.PI/3, 1, 1);
+    // var light_src = new THREE.RectAreaLight(0xf7f7f7, 1, 20, 20);
+    light_src.position.set(30, 30, -6);
+    light_src.lookAt(aggregation.position);
     scene.add(light);
+    scene.add(light_src);
     camera.position.set(0, 0.75, 2.5);
     camera.lookAt(aggregation.position);
     scene.add(camera);

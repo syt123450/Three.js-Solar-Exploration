@@ -22,15 +22,18 @@
 <canvas id="sceneArea"></canvas>
 <script src="../js/lib/three.min.js"></script>
 <script src="../js/lib/TrackballControls.js"></script>
-<script src="../jsDemo/PlanetSceneControllers_orig.js"></script>
+<!--<script src="../jsDemo/PlanetSceneControllers_orig.js"></script>-->
+<script src="../js/model/PlanetSceneControllers.js"></script>
+<script src="../js/config/planetConfig.js"></script>
 <script src="../js/utils/universeUtils.js"></script>
+<script src="../js/utils/eventManager.js"></script>
 <script src="../js/utils/utils.js"></script>
 
 <script>
     var renderer = SolarEPUtils.getDefaultRenderer();
 
-    var planetSceneController = new MercurySceneController(renderer);
-    planetSceneController.animate();
+    var planetSceneController = new NeptuneSceneController(renderer);
+    planetSceneController.activateScene();
 
 </script>
 
