@@ -387,6 +387,8 @@ UniverseUtils = function () {
         ringMesh.castShadow = true;
         ringMesh.rotateX( 0.5 * Math.PI );
 
+        console.log('Before Return' + ringMesh);
+
         return ringMesh;
     }
 

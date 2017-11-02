@@ -1,4 +1,14 @@
 
+### [Nov. 2nd, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | <ol><li>Apply ring prototype to solar system scene</li><li>Updates for flag path</li><li>Light testing</li></ol> | 1. light testing | <oll><li>hard to find a proper light setting</li><li>no fixed lights</li></ol> |
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Nov. 1st, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

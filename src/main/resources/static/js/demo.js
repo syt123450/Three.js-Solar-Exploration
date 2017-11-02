@@ -10,15 +10,25 @@ $(function () {
     renderer = SolarEPUtils.getDefaultRenderer();
 
     solarSystemSceneController = new SolarSystemSceneController(renderer);
-    mercurySceneController = new MercurySceneController(renderer);
-    venusSceneController = new VenusSceneController(renderer);
+    mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
+    venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
     earthSceneController = new EarthSceneController(renderer);
-    marsSceneController = new MarsSceneController(renderer);
-    jupiterSceneController = new JupiterSceneController(renderer);
-    saturnSceneController = new SaturnSceneController(renderer);
-    uranusSceneController = new UranusSceneController(renderer);
-    neptuneSceneController = new NeptuneSceneController(renderer);
-    plutoSceneController = new PlutoSceneController(renderer);
+    marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
+    jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
+    saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
+    uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
+    neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
+    plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
+
+    // mercurySceneController = new MercurySceneController(renderer);
+    // venusSceneController = new VenusSceneController(renderer);
+    // earthSceneController = new EarthSceneController(renderer);
+    // marsSceneController = new MarsSceneController(renderer);
+    // jupiterSceneController = new JupiterSceneController(renderer);
+    // saturnSceneController = new SaturnSceneController(renderer);
+    // uranusSceneController = new UranusSceneController(renderer);
+    // neptuneSceneController = new NeptuneSceneController(renderer);
+    // plutoSceneController = new PlutoSceneController(renderer);
 
     solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
     solarSystemSceneController.setPlanetScene("venus", venusSceneController);

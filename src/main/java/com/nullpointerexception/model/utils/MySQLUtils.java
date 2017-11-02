@@ -5,8 +5,10 @@ import com.nullpointerexception.model.bean.FuelInfoBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.HTMLDocument;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -66,7 +68,7 @@ public class MySQLUtils {
     public List<FuelInfoBean> getCountryDataByYear() {
 
         if (this.conn !=null){
-            String query = "SELECT areaName, longitude, latitude, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
+            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
             try {
                 preStmt = conn.prepareStatement(query);
 
@@ -128,17 +130,19 @@ public class MySQLUtils {
         Double coalAmount = 0.0;
         Double crudeOilAmount = 0.0;
         Double naturalGasAmount = 0.0;
+        boolean ifFlagImage = false;
         try {
             while (resultSet.next()){
                 areaName = resultSet.getString("areaName");
                 longitude = resultSet.getDouble("longitude");
                 latitude = resultSet.getDouble("latitude");
+                ifFlagImage = resultSet.getBoolean("ifFlagImage");
                 amount = resultSet.getDouble("Quadrillion_BTU");
                 coalAmount = resultSet.getDouble("Coal_Amount");
                 crudeOilAmount = resultSet.getDouble("CrudeOil_Amount");
                 naturalGasAmount = resultSet.getDouble("NaturalGas_Amount");
 //                System.out.println("Row[" + resultSet.getRow() + "]:\t" + areaName + "\t" + longitude + "\t" + latitude + "\t" + amount);
-                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount, coalAmount, crudeOilAmount, naturalGasAmount, ""));
+                ret.add(new FuelInfoBean(areaName, longitude, latitude, amount, coalAmount, crudeOilAmount, naturalGasAmount, generateFlagPath(areaName, ifFlagImage)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,9 +190,26 @@ public class MySQLUtils {
         return ret;
     }
 
+    public String generateFlagPath(String areaName, boolean ifFlagImage){
+        String ret = "../images/flags/World.png";        // Default to "World.png"
+
+        if (ifFlagImage){
+            ret = "../images/flags/" + areaName + ".png";
+        }
+
+        return ret;
+    }
+
     public static void main(String[] args){
         MySQLUtils mySQLUtils = new MySQLUtils();
-        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
+//        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
+//        Iterator<FuelInfoBean> itr = myList_1.iterator();
+//        FuelInfoBean tempBean;
+//        while (itr.hasNext()){
+//            tempBean = itr.next();
+//            System.out.println(tempBean.getFlagPath());
+//        }
+
 //        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
         System.out.println("");
     }

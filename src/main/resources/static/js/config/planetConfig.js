@@ -5,29 +5,34 @@
 var PlanetConfig = {
 
     mercury: {
+        planetName: 'Mercury',
         map: '../images/planets/mercurymap.jpg',
         bumpMap: '../images/planets/mercurybump.jpg',
         radius: 0.5
     },
 
     venus: {
+        planetName: 'Venus',
         map: '../images/planets/venusmap.jpg',
         bumpMap: '../images/planets/venusbump.jpg',
         radius: 0.5
     },
 
     mars: {
+        planetName: 'Mars',
         map: '../images/planets/marsmap1k.jpg',
         bumpMap: '../images/planets/marsbump1k.jpg',
         radius: 0.5
     },
 
     jupiter: {
+        planetName: 'Jupiter',
         map: '../images/planets/jupitermap.jpg',
         radius: 0.5
     },
 
     saturn: {
+        planetName: 'Saturn',
         map: '../images/planets/saturnmap.jpg',
         radius: 0.5,
         ringMap: '../images/planets/saturnringcolortransRing.png',
@@ -36,6 +41,7 @@ var PlanetConfig = {
     },
 
     uranus: {
+        planetName: 'Uranus',
         map: '../images/planets/uranusmap.jpg',
         radius: 0.5,
         ringMap: '../images/planets/uranusringcolortransRing.png',
@@ -44,11 +50,13 @@ var PlanetConfig = {
     },
 
     neptune: {
+        planetName: 'Neptune',
         map: '../images/planets/neptunemap.jpg',
         radius: 0.5
     },
 
     pluto: {
+        planetName: 'Pluto',
         map: '../images/planets/plutomap1k.jpg',
         bumpMap: '../images/planets/plutobump1k.jpg',
         radius: 0.5
