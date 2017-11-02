@@ -45,7 +45,8 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function rotatePlanet() {
-        mesh.rotation.y += 0.001;
+        mesh.rotation.y += 0.0005;
+        planetAggregation.rotateY(0.001);
     }
 
     /* Initialization Functions */
