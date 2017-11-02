@@ -83,6 +83,14 @@ $(function () {
             infoBoard = false;
         }
     });
+
+    $("#curtain").click(function() {
+        if (infoBoard) {
+            earthSceneController.restoreEarth();
+            $("#infoBoard").animate({width:'toggle'},350);
+            infoBoard = false;
+        }
+    });
 });
 
 function getYearData(year) {
