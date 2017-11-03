@@ -77,7 +77,7 @@ PlanetSceneController = function (renderer, config) {
 
         aggregation.name = config.planetName + "Aggregation";
         aggregation.add(mesh);
-        if (config.planetName == 'Saturn' || config.planetName == 'Uranus'){
+        if (config.planetName === 'Saturn' || config.planetName === 'Uranus'){
             aggregation.add(universeUtils.createRing(config));
         }
 
@@ -88,7 +88,7 @@ PlanetSceneController = function (renderer, config) {
         var lights = [];
 
         lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
-        lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 100, Math.PI/3, 1, 1);
+        lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
 
         lights[1].position.set(30, 30, -6);
         lights[1].lookAt(planetAggregation.position);
