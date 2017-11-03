@@ -79,7 +79,7 @@ body footer div.unchecked:hover {
 }
 
 #infoArea {
-    width: 50%;
+    width: 60%;
     height: 100%;
     float: right;
 }
@@ -99,7 +99,7 @@ body footer div.unchecked:hover {
     height: 250px;
     display: block;
     box-sizing: border-box;
-    padding-left: 20%;
+    padding-left: 10%;
     font-weight: 800;
 }
 
@@ -110,12 +110,12 @@ body footer div.unchecked:hover {
     padding: 0 20px;
 }
 
-#infoBoard > div:nth-child(1) {
-    width: 50%;
+#infoDetail > div:nth-child(1) {
+    width: 55%;
 }
 
-#infoBoard > div:nth-child(2) {
-    width: 30%;
+#infoDetail > div:nth-child(2) {
+    width: 35%;
 }
 
 #flag > img {

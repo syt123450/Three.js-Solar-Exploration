@@ -168,7 +168,8 @@ EarthSceneController = function (renderer) {
     function addTextToBoard(coneParameters) {
 
         console.log(coneParameters);
-        $("#flag").attr("src", coneParameters.flagPath);
+        $("#infoTitle").text(coneParameters.areaName);
+        $("#flag img").attr("src", coneParameters.flagPath);
         $("#latitude").text("Latitude: " + coneParameters.latitude);
         $("#longitude").text("Longitude: " + coneParameters.longitude);
         $("#total").text("Total Amount: " + coneParameters.amount);

@@ -61,7 +61,6 @@ EarthSceneController = function (renderer) {
 
         if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
             isClickEarth = true;
-            console.log(isClickEarth);
         }
     }
 
