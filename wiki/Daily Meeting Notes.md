@@ -1,4 +1,14 @@
 
+### [Nov. 3rd, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | ------ | ------ | ------ |
+| Bou-Yu | ------ | ------ | ------ |
+| Chenhua | <ol><li>Refactored PlanetSceneControllers</li><li>Fix ring rotation</li><li>Light testing</li></ol> | 1. Light testing | 1. light testing issue |
+| Yuntian | ------ | ------ | ------ |
+
+***
 ### [Nov. 2nd, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

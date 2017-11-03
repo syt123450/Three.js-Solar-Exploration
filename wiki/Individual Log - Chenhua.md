@@ -1,3 +1,10 @@
+### [Nov. 2nd, 2017]
+Development:
+  * Refactored PlanetSceneControllers
+    * Combined creation of all planets (except Earth)
+    * Combined the feature with ring rotation
+    * Apply default lights coordination
+***
 ### [Nov. 1st, 2017]
 Development:
   * Apply ring prototype to solar system scene
