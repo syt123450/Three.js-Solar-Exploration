@@ -15,6 +15,7 @@ EarthSceneController = function (renderer) {
     var mouse = new THREE.Vector2();
 
     var isClickEarth = false;
+    var speed;
 
     var earthRenderer = renderer;
     var earthScene = init();
@@ -24,6 +25,7 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
+        TWEEN.update();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -64,8 +66,10 @@ EarthSceneController = function (renderer) {
     }
 
     function onMouseUp() {
-        isClickEarth = false;
-        console.log(isClickEarth);
+        if (isClickEarth) {
+            isClickEarth = false;
+            inertia();
+        }
     }
 
     function addEvent() {
@@ -81,7 +85,7 @@ EarthSceneController = function (renderer) {
         var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
         if (isClickEarth) {
-            var speed = 1.5 * (mouseX - mouse.x);
+            speed = 1.5 * (mouseX - mouse.x);
             rotateEarth(speed);
             mouse.x = mouseX;
             mouse.y = mouseY;
@@ -92,5 +96,20 @@ EarthSceneController = function (renderer) {
 
         earthMesh.rotation.y += speed;
         atmosphereMesh.rotation.y += speed;
+    }
+
+    function inertia() {
+
+        var startSpeed = {speed: speed};
+        var endSpeed = {speed: 0};
+
+        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
+        inertiaTween.easing(TWEEN.Easing.Linear.None);
+        inertiaTween.onUpdate(function() {
+            earthMesh.rotation.y += this.speed;
+            atmosphereMesh.rotation.y += this.speed;
+        });
+
+        inertiaTween.start();
     }
 };
