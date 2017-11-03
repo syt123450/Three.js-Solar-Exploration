@@ -80,6 +80,7 @@ $(function () {
         if (infoBoard) {
             earthSceneController.restoreEarth();
             $("#infoBoard").animate({width:'toggle'},350);
+            $("#curtain").hide();
             infoBoard = false;
         }
     });
@@ -88,6 +89,7 @@ $(function () {
         if (infoBoard) {
             earthSceneController.restoreEarth();
             $("#infoBoard").animate({width:'toggle'},350);
+            $("#curtain").hide();
             infoBoard = false;
         }
     });
