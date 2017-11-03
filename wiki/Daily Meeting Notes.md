@@ -13,7 +13,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | <ol><li>Made double halo prototype for each of the planets.</li></ol> | <ol><li>Adjust the double halo for planets with rings.</li></ol> | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | <ol><li>Apply ring prototype to solar system scene</li><li>Updates for flag path</li><li>Light testing</li></ol> | 1. light testing | <oll><li>hard to find a proper light setting</li><li>no fixed lights</li></ol> |
 | Yuntian | <ol><li>change the style of info board</li><li>write tween demo for earth rotation</li></ol> | 1. change timeline demo | go well |
@@ -23,7 +23,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | <ol><li>Code reafactor with Chenhua and Yuntian.</li></ol> | <ol><li>Made double halo prototype for each of the planets.</li></ol> | Adjusting halo parameters|
 | Bou-Yu | <ol><li>Refined flag data</li><li>Refined explosion debris</li><li>Updated cone texture</li></ol> | Create Path file to flag | Good |
 | Chenhua | 1. Rings demo and refactoring | <ol><li>Code integration</li><li>Flag path insertion</li></ol> | 1. Apply ring to solar scene |
 | Yuntian | 1. combine tween feature | 1. refactor and technique meeting | 1. tween has some problem with earth rotation |
@@ -33,7 +33,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | <ol><li>Integrate tweenAnimation into final demo with Yuntian.</li></ol> | <ol><li>Code reafactor with Chenhua and Yuntian.</li></ol> | Went well |
 | Bou-Yu | <ol><li>Refactored and integrated code</li></ol> | <ol><li>Refined flag data</li><li>Refined explosion debris</li><li>Updated cone texture</li></ol> | Good |
 | Chenhua | <ol><li>Reviewed database code, wait for flag path data insertion</li><li>Saturn Ring demo</li></ol> | <ol><li>Ring demo and integration</li><li>Discussion on controller integration</li><li>sun coronal study</li></ol> | 1. ring size ratio with fixed ring png |
 | Yuntian | <ol><li>write event manager to manage event</li><li>fix speed up problem</li><li>combine cone feature</li></ol> | 1. combine tween feature | 1. tween may has some bugs when integrate it into demo |
@@ -43,10 +43,11 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | N/A (Sunday) | <ol><li>Integrate tweenAnimation into final demo with Yuntian.</li></ol> | N/A |
 | Bou-Yu | 1. Code review | 1. Refactored and integrated code | Good |
 | Chenhua | 1. Code review | 1. Refactor SolarSceneController (remove extra aggregations) | 1. re-consider sun representation |
 | Yuntian | 1. refactor SolarSceneController (object creation) | <ol><li>write event manager to manage event</li><li>fix speed up problem</li></ol> | Go well |
+
 
 ***
 ### [Oct. 28th, 2017]

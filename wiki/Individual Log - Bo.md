@@ -1,5 +1,15 @@
 ## XP Core Values: Communication
 
+### [Nov 1, 2017] - Finalized Double Halos for planets<br/>
+1. Made double halos for all the planets.
+2. Met with Yuantian and Chenhua to refactor code.
+
+### [Oct 31, 2017] - Double Halos for planets<br/>
+1. Started to make double halos effect for all the planets.
+
+### [Oct 30, 2017] - Feature Integration<br/>
+1. Met Yuntian for 3 hours to integrate tween animation into the final demos.
+
 ### [Oct 28, 2017] - Managed documentations.<br/>
 1. Weekly group meeting.
 2. Updated team wiki, meeting notes and etc.
