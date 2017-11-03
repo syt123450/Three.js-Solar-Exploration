@@ -35,18 +35,16 @@ EarthSceneController = function (renderer) {
         return scene;
     }
 
+    var rotateTween;
+
     function initTween() {
 
         var startAngle = {yAngle: 0};
         var endAngle = {yAngle: 2 * Math.PI};
 
-        var rotateTween = new TWEEN.Tween(startAngle).to(endAngle, 5000);
+        rotateTween = new TWEEN.Tween(startAngle).to(endAngle, 10000);
         rotateTween.easing(TWEEN.Easing.Linear.None);
         rotateTween.onUpdate(function() {
-            if (earthMesh.rotation.y > 2 * Math.PI) {
-                earthMesh.rotation.y = 0;
-                atmosphereMesh.rotation.y = 0;
-            }
             earthMesh.rotation.y = this.yAngle;
             atmosphereMesh.rotation.y = this.yAngle;
             console.log(earthMesh.rotation.y);
@@ -54,7 +52,20 @@ EarthSceneController = function (renderer) {
         
         rotateTween.repeat(Infinity);
         rotateTween.start();
+
+        rotateTween.onStart(function() {
+            earthMesh.rotation.y -= 2 * Math.PI;
+            atmosphereMesh.rotation.y -= 2 * Math.PI;
+        });
     }
+
+    // this.stop = function() {
+    //     rotateTween.stop();
+    // };
+    //
+    // this.start = function() {
+    //     rotateTween.start();
+    // };
 
     function initEarthAggregation() {
 

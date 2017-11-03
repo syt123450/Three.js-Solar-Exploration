@@ -179,6 +179,7 @@ EarthSceneController = function (renderer) {
 
     function showInfo(latitude, longitude) {
         $("#infoBoard").animate({width:'toggle'},350);
+        $("#curtain").show();
         infoBoard = true;
         moveEarth(latitude, longitude);
     }
@@ -320,6 +321,12 @@ EarthSceneController = function (renderer) {
             .start();
         _tweenTranslation.onUpdate(function() {
             earthMesh.parent.position.x = _translationStart.t;
+        });
+
+        _tweenTranslation.onComplete(function() {
+            // Set the global variable "enableEarthRotation"
+            // Earth will resume rotation
+            enableNormalAnimate = true;
         });
 
         _tweenRotateY.chain(

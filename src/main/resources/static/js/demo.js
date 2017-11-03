@@ -76,10 +76,20 @@ $(function () {
         $("#timeLine").hide();
     });
 
-    $("#infoBoard").click(function () {
+    $("#closeBoard").click(function () {
         if (infoBoard) {
             earthSceneController.restoreEarth();
-            $(this).animate({width:'toggle'},350);
+            $("#infoBoard").animate({width:'toggle'},350);
+            $("#curtain").hide();
+            infoBoard = false;
+        }
+    });
+
+    $("#curtain").click(function() {
+        if (infoBoard) {
+            earthSceneController.restoreEarth();
+            $("#infoBoard").animate({width:'toggle'},350);
+            $("#curtain").hide();
             infoBoard = false;
         }
     });

@@ -6,7 +6,7 @@
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | <ol><li>Apply ring prototype to solar system scene</li><li>Updates for flag path</li><li>Light testing</li></ol> | 1. light testing | <oll><li>hard to find a proper light setting</li><li>no fixed lights</li></ol> |
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | <ol><li>change the style of info board</li><li>write tween demo for earth rotation</li></ol> | 1. change timeline demo | go well |
 
 ***
 ### [Nov. 1st, 2017]
