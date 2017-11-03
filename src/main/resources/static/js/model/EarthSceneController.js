@@ -92,7 +92,7 @@ EarthSceneController = function (renderer) {
         aggregation.add(earthMesh);
         aggregation.add(atmosphereMesh);
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
-
+        universeUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
         return aggregation;
     }
 

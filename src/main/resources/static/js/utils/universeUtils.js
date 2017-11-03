@@ -261,13 +261,13 @@ UniverseUtils = function () {
         var INNER_GLOW_MESH_COLOR = innerColor;
         var INNER_GLOW_MESH_OPACITY = 0.2;
         var INNER_GLOW_MESH_RADIUS = 0.504;
-        var innerFragmentShaderIntensity = 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );';
+        var innerFragmentShaderIntensity = 'float intensity = pow( 0.55 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 7.0 );';
 
         var _outerGlowMesh;
         var OUTER_GLOW_MESH_COLOR = outerColor;
         var OUTER_GLOW_MESH_OPACITY = 0.2;
         var OUTER_GLOW_MESH_RADIUS = 0.504;
-        var outerFragmentShaderIntensity = 'float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.1 );';
+        var outerFragmentShaderIntensity = 'float intensity = pow( 0.3 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.2 );';
 
         _init();
 

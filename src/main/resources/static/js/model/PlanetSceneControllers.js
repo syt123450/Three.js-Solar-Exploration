@@ -80,7 +80,7 @@ PlanetSceneController = function (renderer, config) {
         if (config.planetName === 'Saturn' || config.planetName === 'Uranus'){
             aggregation.add(universeUtils.createRing(config));
         }
-
+        universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
         return aggregation;
     }
 
