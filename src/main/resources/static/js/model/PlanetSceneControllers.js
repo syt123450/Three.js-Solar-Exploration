@@ -92,7 +92,15 @@ PlanetSceneController = function (renderer, config) {
 
         lights[1].position.set(30, 30, -6);
         lights[1].lookAt(planetAggregation.position);
+	
+		// // Lighting options 2
+	    // lights[0] = new THREE.DirectionalLight(0xffffff, 1);
+	    // lights[1] = new THREE.DirectionalLight(0xffffff, 0.2);
+	    //
+	    // lights[0].position.set(30, 30, 6);
+	    // lights[1].position.set(-30, -30, -3);
 
-        return lights;
+	    
+	    return lights;
     }
 };
