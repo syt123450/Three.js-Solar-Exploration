@@ -87,20 +87,20 @@ PlanetSceneController = function (renderer, config) {
     function lightsInit(){
         var lights = [];
 
+        // Lights Combination
         lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
-        lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
 
-        lights[1].position.set(30, 30, -6);
-        lights[1].lookAt(planetAggregation.position);
-	
-		// // Lighting options 2
-	    // lights[0] = new THREE.DirectionalLight(0xffffff, 1);
-	    // lights[1] = new THREE.DirectionalLight(0xffffff, 0.2);
-	    //
-	    // lights[0].position.set(30, 30, 6);
-	    // lights[1].position.set(-30, -30, -3);
+        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.5);
+        lights[2] = new THREE.DirectionalLight(0xf7f7f7, 0.2);
 
-	    
+        lights[1].position.set(30, 30, 3);
+        lights[2].position.set(-30, -30, -3);
+
+        // Legacy setting
+        // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
+        // lights[1].position.set(30, 30, -6);
+        // lights[1].lookAt(planetAggregation.position);
+
 	    return lights;
     }
 };
