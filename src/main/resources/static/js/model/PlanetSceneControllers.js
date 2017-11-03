@@ -90,9 +90,9 @@ PlanetSceneController = function (renderer, config) {
         // Lights Combination
         lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
 
-        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.5);
+        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.45);
         lights[2] = new THREE.DirectionalLight(0xf7f7f7, 0.2);
-
+        //
         lights[1].position.set(30, 30, 3);
         lights[2].position.set(-30, -30, -3);
 
