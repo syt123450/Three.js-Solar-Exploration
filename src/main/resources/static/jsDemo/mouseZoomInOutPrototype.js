@@ -1,5 +1,5 @@
 /**
- * Created by ss on 2017/10/31.
+ * Created by ss on 2017/11/3.
  */
 
 EarthSceneController = function (renderer) {
@@ -19,7 +19,7 @@ EarthSceneController = function (renderer) {
     function earthAnimate() {
 
         requestAnimationFrame(earthAnimate);
-        TWEEN.update();
+        // rotateEarth();
         earthRenderer.render(earthScene, camera);
     }
 
@@ -30,42 +30,15 @@ EarthSceneController = function (renderer) {
         scene.add(camera);
         scene.add(universeMesh);
         scene.add(initEarthAggregation());
-        initTween();
+
+        addEvent();
 
         return scene;
     }
 
-    var rotateTween;
-
-    function initTween() {
-
-        var startAngle = {xPos: 0};
-        var endAngle = {xPos: 2 * Math.PI};
-
-        rotateTween = new TWEEN.Tween(startAngle).to(endAngle, 10000);
-        rotateTween.easing(TWEEN.Easing.Linear.None);
-        rotateTween.onUpdate(function() {
-            earthMesh.rotation.y = this.xPos;
-            atmosphereMesh.rotation.y = this.xPos;
-            console.log(earthMesh.rotation.y);
-        });
-        
-        rotateTween.repeat(Infinity);
-        rotateTween.start();
-
-        rotateTween.onStart(function() {
-            earthMesh.rotation.y -= 2 * Math.PI;
-            atmosphereMesh.rotation.y -= 2 * Math.PI;
-        });
+    function addEvent() {
+        document.addEventListener('mousewheel', onMouseWheel, false);
     }
-
-    // this.stop = function() {
-    //     rotateTween.stop();
-    // };
-    //
-    // this.start = function() {
-    //     rotateTween.start();
-    // };
 
     function initEarthAggregation() {
 
@@ -75,5 +48,27 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * 23.5 / 180);
 
         return aggregation;
+    }
+
+    function onMouseWheel() {
+
+        var minScale = 1.3;
+        var maxScale = 2;
+        var speed = 0.3;
+        var delta;
+
+        if ( event.wheelDelta ) {
+            delta = event.wheelDelta / 40;
+        } else if ( event.detail ) {
+            delta = - event.detail / 3;
+        }
+
+        if (delta > 0 && camera.position.z < maxScale) {
+            camera.position.z = Math.min(maxScale, camera.position.z + delta * speed);
+        }
+
+        if (delta < 0 && camera.position.z > minScale) {
+            camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
+        }
     }
 };
