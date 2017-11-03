@@ -6,7 +6,7 @@
 | Bo | ------ | ------ | ------ |
 | Bou-Yu | ------ | ------ | ------ |
 | Chenhua | <ol><li>Refactored PlanetSceneControllers</li><li>Fix ring rotation</li><li>Light testing</li></ol> | 1. Light testing | 1. light testing issue |
-| Yuntian | ------ | ------ | ------ |
+| Yuntian | <ol><li>write demo to show how to control earth by mouse</li><li>add inertia to demo</li><li>fix info board bug</li></ol> | <ol><li>integrate mouse control into demo</li> | 1. time line has some problem |
 
 ***
 ### [Nov. 2nd, 2017]
