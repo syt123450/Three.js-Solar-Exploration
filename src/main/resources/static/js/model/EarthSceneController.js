@@ -209,7 +209,7 @@ EarthSceneController = function (renderer) {
         var _yAxisRotationHistory = earthMesh.rotation.y;
 
         TWEEN.removeAll(); // In case cone is clicked before last animation completes
-
+        
         /***********************************************
          * Rotate around Z-axis of the earthAggregation
          **********************************************/
@@ -223,7 +223,9 @@ EarthSceneController = function (renderer) {
         _tweenRotateZ.onUpdate(function () {
             earthMesh.parent.rotation.z = _zAxisStart.z;
         });
-
+	
+        
+	    
         /***********************************************
          * Rotate around Y-axis of earthMesh
          **********************************************/
