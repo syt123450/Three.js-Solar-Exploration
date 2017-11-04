@@ -86,7 +86,7 @@ $(function () {
 
     $("#closeBoard").click(function () {
         if (infoBoard) {
-            earthSceneController.restoreEarth();
+            earthSceneController.restoreScene();
             $("#infoBoard").animate({width:'toggle'},350);
             $("#curtain").hide();
             $("#timeLine").show();
@@ -96,7 +96,7 @@ $(function () {
 
     $("#curtain").click(function() {
         if (infoBoard) {
-            earthSceneController.restoreEarth();
+            earthSceneController.restoreScene();
             $("#infoBoard").animate({width:'toggle'},350);
             $("#curtain").hide();
             $("#timeLine").show();
