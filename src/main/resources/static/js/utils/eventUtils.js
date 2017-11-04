@@ -25,6 +25,4 @@ EventUtils = function() {
             camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
         }
     }
-
-
 };

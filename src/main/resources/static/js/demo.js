@@ -9,7 +9,15 @@ $(function () {
 
     renderer = SolarEPUtils.getDefaultRenderer();
 
+
     solarSystemSceneController = new SolarSystemSceneController(renderer);
+    solarSystemSceneController.activateScene();
+
+    // $.getScript("../data/mockTop10Data.js");
+    // $.getScript("../js/config/planetConfig.js");
+    // $.getScript("../js/model/PlanetSceneControllers.js");
+    // $.getScript("../js/model/GlobeSceneController.js");
+
     mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
     venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
     earthSceneController = new EarthSceneController(renderer);
@@ -40,7 +48,7 @@ $(function () {
     solarSystemSceneController.setPlanetScene("neptune", neptuneSceneController);
     solarSystemSceneController.setPlanetScene("pluto", plutoSceneController);
 
-    solarSystemSceneController.activateScene();
+
     globe = new DAT.Globe(renderer);
     globe.setSurfaceImg("../images/world.jpg");
     globe.init();
@@ -78,18 +86,20 @@ $(function () {
 
     $("#closeBoard").click(function () {
         if (infoBoard) {
-            earthSceneController.restoreEarth();
+            earthSceneController.restoreScene();
             $("#infoBoard").animate({width:'toggle'},350);
             $("#curtain").hide();
+            $("#timeLine").show();
             infoBoard = false;
         }
     });
 
     $("#curtain").click(function() {
         if (infoBoard) {
-            earthSceneController.restoreEarth();
+            earthSceneController.restoreScene();
             $("#infoBoard").animate({width:'toggle'},350);
             $("#curtain").hide();
+            $("#timeLine").show();
             infoBoard = false;
         }
     });
