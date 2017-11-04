@@ -4,6 +4,11 @@
 
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
+    // Renderer
+    var renderer = renderer;
+    // renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+
     // Utils
     var universeUtils = new UniverseUtils();
 
@@ -20,8 +25,7 @@ PlanetSceneController = function (renderer, config) {
     var camera = universeUtils.createDefaultCamera();
     var lights = lightsInit();
 
-    // Renderer and Scene
-    var renderer = renderer;
+    // Init. Scene
     var scene = init();
 
     // Interfaces
@@ -95,13 +99,17 @@ PlanetSceneController = function (renderer, config) {
         var lights = [];
 
         // Lights Combination
-        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
+        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
 
-        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.45);
-        lights[2] = new THREE.DirectionalLight(0xf7f7f7, 0.2);
-        //
+        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
         lights[1].position.set(30, 30, 3);
-        lights[2].position.set(-30, -30, -3);
+        lights[1].target = planetAggregation;
+        lights[1].castShadow = true;            // default is false
+        //Set up shadow properties for the light
+        // lights[1].shadow.mapSize.width = 1024;  // default
+        // lights[1].shadow.mapSize.height = 1024; // default
+        // lights[1].shadow.camera.near = 0.5;    // default
+        // lights[1].shadow.camera.far = 500;     // default
 
         // Legacy setting
         // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
