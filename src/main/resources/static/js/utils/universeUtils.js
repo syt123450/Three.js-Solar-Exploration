@@ -358,6 +358,8 @@ UniverseUtils = function () {
             bumpScale: 0.05,
             bumpMap: new THREE.TextureLoader().load(planetParameters.bumpMap)
         });
+        sphereMesh.castShadow = true;       //default is false
+        sphereMesh.receiveShadow = true;    //default is false
 
         return sphereMesh;
     }
@@ -383,11 +385,9 @@ UniverseUtils = function () {
             transparent: true,
             opacity: 0.65
         });
-        ringMesh.receiveShadow = true;
-        ringMesh.castShadow = true;
+        ringMesh.castShadow = true;         //default is false
+        ringMesh.receiveShadow = true;      //default is false
         ringMesh.rotateX( 0.5 * Math.PI );
-
-        console.log('Before Return' + ringMesh);
 
         return ringMesh;
     }
