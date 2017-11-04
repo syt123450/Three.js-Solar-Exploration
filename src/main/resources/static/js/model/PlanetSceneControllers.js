@@ -32,10 +32,15 @@ PlanetSceneController = function (renderer, config) {
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
-        meteors.sweepMeteors();
+        // meteors.sweepMeteors();
         rotatePlanet();
+        TWEEN.update();
 
         renderer.render(scene, camera);
+    }
+
+    function initTween() {
+        meteors.initSweepTween();
     }
 
     function activateScene() {
@@ -68,6 +73,8 @@ PlanetSceneController = function (renderer, config) {
             scene.add(meteor);
         });
         scene.add(planetAggregation);
+
+        initTween();
 
         return scene;
     }

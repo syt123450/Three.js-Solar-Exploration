@@ -109,17 +109,22 @@ UniverseUtils = function () {
         meteors[0] = createOneMeteor();
         meteors[1] = createOneMeteor();
 
-        meteors.sweepMeteors = function () {
-
-            this.forEach(function (meteor) {
-                if (meteor.position.x <= -4) {
-                    meteor.position.x = 3 * Math.random();
-                    meteor.position.y = 3 * Math.random();
-                }
-
-                meteor.position.x -= 0.01;
-                meteor.position.y -= 0.01;
-            });
+        // meteors.sweepMeteors = function () {
+        //
+        //     this.forEach(function (meteor) {
+        //         if (meteor.position.x <= -4) {
+        //             meteor.position.x = 3 * Math.random();
+        //             meteor.position.y = 3 * Math.random();
+        //         }
+        //
+        //         meteor.position.x -= 0.01;
+        //         meteor.position.y -= 0.01;
+        //     });
+        // };
+        meteors.initSweepTween = function() {
+            this.forEach(function(meteor) {
+                meteor.tween.start();
+            })
         };
         meteors.name = 'meteors';
         return meteors;
@@ -440,9 +445,25 @@ UniverseUtils = function () {
             transparent: true
         });
 
-        meteor.position.x = 3 * Math.random();
-        meteor.position.y = 3 * Math.random();
         meteor.position.z = -3;
+
+        var initSeed = 3 * Math.random();
+
+        meteor.tween = new TWEEN.Tween({x: initSeed})
+            .to({x: -4}, 6000);
+        meteor.tween.onUpdate(function() {
+            meteor.position.x = meteor.initX - (initSeed - this.x);
+            meteor.position.y = meteor.initY - (initSeed - this.x);
+            if (this.x == -4) {
+                meteor.initX = 3 * Math.random();
+                meteor.initY = 3 * Math.random();
+            }
+        });
+        // meteor.tween.onStart(function() {
+        //     meteor.initX = 3 * Math.random();
+        //     meteor.initY = 3 * Math.random();
+        // });
+        meteor.tween.repeat(Infinity);
 
         return meteor;
     }

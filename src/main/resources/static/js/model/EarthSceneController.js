@@ -62,7 +62,7 @@ EarthSceneController = function (renderer) {
 
         if (enableNormalAnimate) {
             stars.flashStars();
-            meteors.sweepMeteors();
+            // meteors.sweepMeteors();
             rotateEarthWithStop();
             rotateMoon();
             animateCones();
@@ -209,6 +209,7 @@ EarthSceneController = function (renderer) {
         tweenMap.resumeCone = resumeConeTween();
         tweenMap.resumeEarth = resumeEarthTween();
         tweenMap.translateBack = null;
+        meteors.initSweepTween();
     }
 
     function moveEarthAggregation(coneLongitude) {
@@ -313,12 +314,9 @@ EarthSceneController = function (renderer) {
     function resumeConeTween() {
 
         var initPosY = earthMesh.rotation.y;
-        // var finalPosY = yHistory + (controlParameter / 180 * Math.PI);
         var posStart = {y: initPosY};
-        // var posEnd = {y: finalPosY};
 
         var tween = new TWEEN.Tween(posStart);
-            // .to(posEnd, clickConeAnimateTime);
         tween.onUpdate(function () {
             earthMesh.rotation.y = posStart.y;
             atmosphereMesh.rotation.y = posStart.y;
@@ -347,7 +345,6 @@ EarthSceneController = function (renderer) {
 
         var initPosX = aggregationPos;
         var finalPosX = 0;
-        console.log("===" + initPosX);
         var posStart = {pos: initPosX};
         var posEnd = {pos: finalPosX};
 
