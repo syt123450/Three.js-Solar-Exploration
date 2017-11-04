@@ -119,7 +119,7 @@ TweenAnimationController = function (renderer) {
 	 */
 	function onConeClicked(coneInitialLatitude, coneInitialLongitude) {
 		console.log('cone clicked');
-		yAxisRotationHistory = earthMesh.rotation.y;
+		yHistory = earthMesh.rotation.y;
 		
 		TWEEN.removeAll(); // In case cone is clicked before last animation completes
 		
@@ -142,7 +142,7 @@ TweenAnimationController = function (renderer) {
 		tweenTranslation.start();
 		
 		isConeClicked = true;
-		return yAxisRotationHistory;
+		return yHistory;
 	}
 	
 	/**
@@ -189,7 +189,7 @@ TweenAnimationController = function (renderer) {
 	
 	function getConeClickRotateYaxisTween(coneInitialLongitude) {
 		var yRotationAdjustmentInDegree = yRotationAdjustmentInDegree || 0;
-		var initialYAxisRotation = yAxisRotationHistory;
+		var initialYAxisRotation = yHistory;
 		var finalYAxisRotation = - (90 + coneInitialLongitude + yRotationAdjustmentInDegree) / 180 * Math.PI;
 		while (initialYAxisRotation - finalYAxisRotation >= Math.PI * 2) {
 			finalYAxisRotation += Math.PI * 2;
