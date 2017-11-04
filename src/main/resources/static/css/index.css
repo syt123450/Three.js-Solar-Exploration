@@ -13,11 +13,11 @@ body main {
 }
 
 body footer {
-    height: 40px;
+    height: 35px;
     width: 100%;
     position: absolute;
-    bottom: 0;
-    background-color: #ff4300;
+    bottom: 10px;
+    background-color: #000;
     /*display: block;*/
     box-sizing: border-box;
     padding: 0 30px;
@@ -29,20 +29,29 @@ body footer div {
     width: 9%;
     float: left;
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
     font-weight: bold;
     box-sizing: border-box;
+    border-bottom: 3px #d6d6d6 solid;
+    border-left: 0;
+    border-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    opacity: 0.6;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
 }
 
 body footer div.checked {
-    border-top: 3px black solid;
-    background-color: #00ff00;
-    color: black;
+    background-color: #959595;
+    color: #000;
+    opacity: 1;
 }
 
 body footer div.unchecked:hover {
-    background-color: #ab3800;
+    background-color: #767676;
     cursor: pointer;
+    opacity: 1;
 }
 
 #backLogo {
