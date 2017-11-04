@@ -1,4 +1,14 @@
 
+### [Nov. 4th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>Light and shadow testing</li></ol> | <ol><li>Weekly meeting</li><li>Try Asteroid Belt</li></ol> | <ol><li>Light test result is acceptable but not as perfect as expect</li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+
+***
 ### [Nov. 3rd, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

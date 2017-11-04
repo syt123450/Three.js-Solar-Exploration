@@ -1,3 +1,21 @@
+### [Week 6 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process for both front and back ends
+    * Keep the ideas from different parts
+    * Coordinate the progress among different parts
+  * Decide as late as possible
+    * Finally refactored PlanetSceneControllers with almost all functionality fixed
+***
+### [Nov. 4th, 2017]
+Meeting #6:
+  TBA
+***
+### [Nov. 3rd, 2017]
+Development:
+  * Planet scene light and shadow tests
+    * Coordinate the lights combination for the best view for the scene
+    * Tried to apply shadow to the ring (though the result is pretty bad)
+***
 ### [Nov. 2nd, 2017]
 Development:
   * Refactored PlanetSceneControllers
