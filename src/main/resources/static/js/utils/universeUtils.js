@@ -109,18 +109,34 @@ UniverseUtils = function () {
         meteors[0] = createOneMeteor();
         meteors[1] = createOneMeteor();
 
-        meteors.sweepMeteors = function () {
+        // meteors.sweepMeteors = function () {
+        //
+        //     this.forEach(function (meteor) {
+        //
+        //         if (meteor.position.x <= -4) {
+        //             meteor.position.x = 3 * Math.random();
+        //             meteor.position.y = 3 * Math.random();
+        //         }
+        //
+        //         meteor.position.x -= 0.01;
+        //         meteor.position.y -= 0.01;
+        //     });
+        // };
 
-            this.forEach(function (meteor) {
-                if (meteor.position.x <= -4) {
-                    meteor.position.x = 3 * Math.random();
-                    meteor.position.y = 3 * Math.random();
-                }
-
-                meteor.position.x -= 0.01;
-                meteor.position.y -= 0.01;
-            });
-        };
+        meteors.forEach(function(meteor) {
+	        var startPosition = {x: 0};
+	        console.log(meteor);
+	        var tween = new TWEEN.Tween(startPosition)
+		        .to({ x: -4 }, 6000);
+            tween.onUpdate(function() {
+			        if ( meteor.position.x <= -4) {
+				        meteor.position.x = 3 * Math.random();
+				        meteor.position.y = 3 * Math.random();
+			        }
+			        meteor.position.x = startPosition.x;
+		        });
+	        tween.start();
+        });
         meteors.name = 'meteors';
         return meteors;
     };

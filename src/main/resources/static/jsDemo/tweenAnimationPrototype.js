@@ -128,6 +128,10 @@ TweenAnimationController = function (renderer) {
 
 		//  Rotate around Y-axis of earthMesh
 		var tweenRotateY = getConeClickRotateYaxisTween(coneInitialLongitude);
+		console.log(new TWEEN.Tween());
+		// var yAxisStart = {y: earthMesh.rotation.y};
+		// // tweenRotateY._valuesEnd = tweenRotateY._object.concat(tweenRotateY._valuesEnd);
+		// tweenRotateY._valuesStart = yAxisStart;
 		
 		// Rotate around Y-axis of earthMesh
 		var tweenTranslation = getConeClickTranslationTween();
@@ -152,7 +156,11 @@ TweenAnimationController = function (renderer) {
 		
 		TWEEN.removeAll(); // In case cone is clicked before last animation completes
 		
-		var tweenRotateY = getResumeFromConeClickYaxisTween(yRotationHistoryInRadian);
+		var tweenRotateY = getResumeFromConeClickYaxisTween();
+		var yRotationAdjustmentInDegree = 0;
+		var finalYAxisRotation = yRotationHistoryInRadian + (yRotationAdjustmentInDegree / 180 * Math.PI);
+		var yAxisFinal = {y: finalYAxisRotation};
+		tweenRotateY.to(yAxisFinal, 3000);
 		
 		var tweenRotateZ = getResumeFromConeClickZaxisTween();
 		
@@ -171,9 +179,8 @@ TweenAnimationController = function (renderer) {
 	}
 	
 	function getOnConeClickRotateZaxisTween() {
-		var OBLIUITY = 23.5;
-		
-		var initialZAxisRotation = - OBLIUITY / 180 * Math.PI;
+		var OBLIQUITY = 23.5;
+		var initialZAxisRotation = - OBLIQUITY / 180 * Math.PI;
 		var finalZAxisRotation = 0;
 		var zAxisStart = {z: initialZAxisRotation};
 		var zAxisFinal = {z: finalZAxisRotation};
@@ -188,8 +195,8 @@ TweenAnimationController = function (renderer) {
 	}
 	
 	function getConeClickRotateYaxisTween(coneInitialLongitude) {
-		var yRotationAdjustmentInDegree = yRotationAdjustmentInDegree || 0;
-		var initialYAxisRotation = yAxisRotationHistory;
+		var yRotationAdjustmentInDegree = 0;
+		var initialYAxisRotation = 0;
 		var finalYAxisRotation = - (90 + coneInitialLongitude + yRotationAdjustmentInDegree) / 180 * Math.PI;
 		while (initialYAxisRotation - finalYAxisRotation >= Math.PI * 2) {
 			finalYAxisRotation += Math.PI * 2;
@@ -216,13 +223,10 @@ TweenAnimationController = function (renderer) {
 		return tween;
 	}
 	
-	function getResumeFromConeClickYaxisTween(yRotationHistoryInRadian) {
-		var yRotationAdjustmentInDegree = 0;
+	function getResumeFromConeClickYaxisTween() {
 		var initialYAxisRotation = earthMesh.rotation.y;
-		var finalYAxisRotation = yRotationHistoryInRadian + (yRotationAdjustmentInDegree / 180 * Math.PI);
 		var yAxisStart = {y: initialYAxisRotation};
-		var yAxisFinal = {y: finalYAxisRotation};
-		var tweenRotateY = getTween(yAxisStart, yAxisFinal, function() {
+		var tweenRotateY = getTween(yAxisStart, null, function() {
 			earthMesh.rotation.y = yAxisStart.y;
 			atmosphereMesh.rotation.y = yAxisStart.y;
 		});
@@ -230,9 +234,7 @@ TweenAnimationController = function (renderer) {
 	}
 	
 	function getResumeFromConeClickZaxisTween() {
-		/***********************************************
-		 * Rotate around Z-axis of the earthAggregation
-		 **********************************************/
+		var OBLIUITY = 23.5;
 		var initialZAxisRotation = 0;
 		var finalZAxisRotation = - OBLIUITY / 180 * Math.PI;
 		var zAxisStart = {z: initialZAxisRotation};
@@ -260,8 +262,10 @@ TweenAnimationController = function (renderer) {
 	
 	function getTween(from, to, onUpdate) {
 		const ANIMATION_DURATION = 3000;
-		const tween = new TWEEN.Tween(from)
-			.to(to, ANIMATION_DURATION);
+		const tween = new TWEEN.Tween(from);
+		if (to) {
+			tween.to(to, ANIMATION_DURATION);
+		}
 		tween.onUpdate(onUpdate);
 		return tween;
 	}
