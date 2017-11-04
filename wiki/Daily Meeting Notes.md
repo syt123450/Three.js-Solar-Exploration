@@ -6,7 +6,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Chenhua | <ol><li>Light and shadow testing</li></ol> | <ol><li>Weekly meeting</li><li>Try Asteroid Belt</li></ol> | <ol><li>Light test result is acceptable but not as perfect as expect</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>implement rotate with mouse control</li><li>implement mouse wheel zoom in and out</li><li>combine above two feature into earth scene and planet scene</li><li>refactor tween in earth scene</li><li>update time line</li></ol> | <ol><li>weekly meeting</li><li>refactor tween</li><li>fix event bug</li></ol> | <ol><li>event has bugs</li><li>tween is hard to unify</li></ol> |
 
 ***
 ### [Nov. 3rd, 2017]
