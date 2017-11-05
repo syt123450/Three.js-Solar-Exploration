@@ -112,6 +112,10 @@ UniverseUtils = function () {
         // meteors.sweepMeteors = function () {
         //
         //     this.forEach(function (meteor) {
+<<<<<<< HEAD
+        //
+=======
+>>>>>>> 9bc66120c0d77046b3ef5c60055c63fd99e7db9e
         //         if (meteor.position.x <= -4) {
         //             meteor.position.x = 3 * Math.random();
         //             meteor.position.y = 3 * Math.random();
@@ -121,11 +125,29 @@ UniverseUtils = function () {
         //         meteor.position.y -= 0.01;
         //     });
         // };
+<<<<<<< HEAD
+
+        meteors.forEach(function(meteor) {
+	        var startPosition = {x: 0};
+	        console.log(meteor);
+	        var tween = new TWEEN.Tween(startPosition)
+		        .to({ x: -4 }, 6000);
+            tween.onUpdate(function() {
+			        if ( meteor.position.x <= -4) {
+				        meteor.position.x = 3 * Math.random();
+				        meteor.position.y = 3 * Math.random();
+			        }
+			        meteor.position.x = startPosition.x;
+		        });
+	        tween.start();
+        });
+=======
         meteors.initSweepTween = function() {
             this.forEach(function(meteor) {
                 meteor.tween.start();
             })
         };
+>>>>>>> 9bc66120c0d77046b3ef5c60055c63fd99e7db9e
         meteors.name = 'meteors';
         return meteors;
     };
