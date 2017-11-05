@@ -72,8 +72,8 @@ PlanetSceneController = function (renderer, config) {
         lights.forEach(function addLight(light) {
             scene.add(light);
         });
-        camera.position.set(0, 0.75, 2.5);
-        camera.lookAt(planetAggregation.position);
+        // camera.position.set(0, 0.75, 2.5);
+        // camera.lookAt(planetAggregation.position);
         scene.add(camera);
 
         scene.add(universeMesh);
@@ -99,6 +99,7 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
+
         return aggregation;
     }
 
