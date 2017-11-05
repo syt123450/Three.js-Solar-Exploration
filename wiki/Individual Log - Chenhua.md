@@ -1,14 +1,21 @@
 ### [Week 6 XP Core Values (or Lean/Kanban Principle)] 
   * See the whole
-    * Keep the development process for both front and back ends
-    * Keep the ideas from different parts
+    * Keep the development process for both front (PlanetSceneControllers) and back (FlagPath) ends
     * Coordinate the progress among different parts
+      * Generated proper flag path to satisfy front end usage
+      * Separate front end planet configurations and back end planet display information
   * Decide as late as possible
     * Finally refactored PlanetSceneControllers with almost all functionality fixed
 ***
 ### [Nov. 4th, 2017]
 Meeting #6:
-  TBA
+  * Exchange ideas on font end UI
+  * Find some bugs from Tween
+  * Discussed next week tasks:
+    * Optimization on loading scenes
+    * Combining features into the scene
+    * Debugging (Tween, PlanetSceneController)
+    * Updates on decorated data
 ***
 ### [Nov. 3rd, 2017]
 Development:
