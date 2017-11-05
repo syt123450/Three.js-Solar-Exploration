@@ -1,3 +1,48 @@
+## Week 6 Summaries - [Oct 30  - Nov 4, 2017]
+### XP Core Values
+
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **Communication**</br>1. Talked to team members about how to work together to achieve maximum work efficiency.</br></br>2. Met with Yuntian for 3 hours to do code refactor together, and discussed solutions of animation related technical issues.</br>|
+| Chenhua| **See the whole**</br>1.Keep the development process for both front and back ends.</br>2. Keep the ideas from different parts.</br>3. Coordinate the progress among different parts.</br></br>**Decide as late as possible**</br>Finally refactored PlanetSceneControllers with almost all functionality fixed.</br>
+| Yuntian| **See the whole**</br>This week, I added Bo's tween animation into demo, however, I found a different to implement the animation as we done before, so we need to refactor previous animation, so that we can use a unified process to implement the animation in the feature. It shows the see the whole value.</br></br>**Communication**</br>This week, I integrated and refactored the animation with Bo, and integrate the cone feature with the bouyu, we meet and write code together, and communicate a lot. It shows the communication value.</br></br>**Decide as late as possible**</br>I found the event handling has some concurreny issues, but I still integrate the event features into our demo, because I think this problem can be solved later, and we can decide how to solve as late as possible.</br>|
+| Bo| **Communication**</br>1.Whenever I finished any task, I will updated it in the chat group, to make everyone is awared of it. So that people have dependency on my job can proceed.</br></br>2.Spent around 5 hours with Yuntian in the library to discuss how to fix issues caused by using Tween.js.</br>|
+
+### Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Flag paths provided to backend. | 1.Update webgl mock data.| 1. Webgl mock data. |
+| 2. Improved explosion with more pieces. | 2. Improve explosion effect.|2. Explosion effect has some glitch. |
+| 3. Added more styles to the cone. |3. Update planet information. ||
+
+
+### Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Refactored PlanetSceneController. | 1.Implement asteroid belt area. | PlanetSceneController refactor missed something. |
+| 2. Added flag paths to the backend service. | 2.Sun surface material. | 2. Lighting for different scenes.|
+| 3. Adjusted lightings in different scenes. |3. Update scene camera settings. | |
+
+### Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Wrote event handler managers for various mouse event.  | 1.System performance optimization.| 1.Reuse tween objects.|
+| 2. Refactored tween animation. | 2.Lazy initialization. | 2.Background stars flashing. |
+| 3. Updated information board. | 3.Implement timeline. | 3.Concurrencies of event handlers. |
+| 4. Updated flag paths. || 4.Loading of html page is slow.|
+
+### Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Created double halos for all planets. | 1. Fix bug in tween animation. | 1.Coordinating tween animations.|
+| 2. Refactored tween animation interface. | 2. Fix the bug in double halo. | 2.Halo parameters.|
+| 3. Managed team wikis. | | |
+
+***
 ## Week 5 Summaries - [Oct 24  - Oct 28, 2017]
 ### XP Core Values
 

@@ -1,7 +1,7 @@
 [Week 6 XP Core Values (or Lean/Kanban Principle)]
 
 * See the whole
-This week, I add bo's tween animation into demo, however, I found it a different to implement the animation as we done before, so we need to refactor previous animation, so that we can use a unified process to implement the animation in the feature. It shows the see the whole value.
+This week, I add bo's tween animation into demo, however, I found a different to implement the animation as we done before, so we need to refactor previous animation, so that we can use a unified process to implement the animation in the feature. It shows the see the whole value.
 
 * Communication
 This week, I integrate and refactor the animation with the bo, and integrate the cone feature with the bouyu, we meet and write code together, and communicate a lot. It shows the communication value.
