@@ -112,7 +112,10 @@ UniverseUtils = function () {
         // meteors.sweepMeteors = function () {
         //
         //     this.forEach(function (meteor) {
+<<<<<<< HEAD
         //
+=======
+>>>>>>> 9bc66120c0d77046b3ef5c60055c63fd99e7db9e
         //         if (meteor.position.x <= -4) {
         //             meteor.position.x = 3 * Math.random();
         //             meteor.position.y = 3 * Math.random();
@@ -122,6 +125,7 @@ UniverseUtils = function () {
         //         meteor.position.y -= 0.01;
         //     });
         // };
+<<<<<<< HEAD
 
         meteors.forEach(function(meteor) {
 	        var startPosition = {x: 0};
@@ -137,6 +141,13 @@ UniverseUtils = function () {
 		        });
 	        tween.start();
         });
+=======
+        meteors.initSweepTween = function() {
+            this.forEach(function(meteor) {
+                meteor.tween.start();
+            })
+        };
+>>>>>>> 9bc66120c0d77046b3ef5c60055c63fd99e7db9e
         meteors.name = 'meteors';
         return meteors;
     };
@@ -374,6 +385,8 @@ UniverseUtils = function () {
             bumpScale: 0.05,
             bumpMap: new THREE.TextureLoader().load(planetParameters.bumpMap)
         });
+        sphereMesh.castShadow = true;       //default is false
+        sphereMesh.receiveShadow = true;    //default is false
 
         return sphereMesh;
     }
@@ -399,11 +412,9 @@ UniverseUtils = function () {
             transparent: true,
             opacity: 0.65
         });
-        ringMesh.receiveShadow = true;
-        ringMesh.castShadow = true;
+        ringMesh.castShadow = true;         //default is false
+        ringMesh.receiveShadow = true;      //default is false
         ringMesh.rotateX( 0.5 * Math.PI );
-
-        console.log('Before Return' + ringMesh);
 
         return ringMesh;
     }
@@ -456,9 +467,25 @@ UniverseUtils = function () {
             transparent: true
         });
 
-        meteor.position.x = 3 * Math.random();
-        meteor.position.y = 3 * Math.random();
         meteor.position.z = -3;
+
+        var initSeed = 3 * Math.random();
+
+        meteor.tween = new TWEEN.Tween({x: initSeed})
+            .to({x: -4}, 6000);
+        meteor.tween.onUpdate(function() {
+            meteor.position.x = meteor.initX - (initSeed - this.x);
+            meteor.position.y = meteor.initY - (initSeed - this.x);
+            if (this.x == -4) {
+                meteor.initX = 3 * Math.random();
+                meteor.initY = 3 * Math.random();
+            }
+        });
+        // meteor.tween.onStart(function() {
+        //     meteor.initX = 3 * Math.random();
+        //     meteor.initY = 3 * Math.random();
+        // });
+        meteor.tween.repeat(Infinity);
 
         return meteor;
     }

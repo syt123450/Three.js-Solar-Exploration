@@ -9,6 +9,7 @@ EarthSceneController = function (renderer) {
     var clickConeAnimateTime = 3000;
     var controlParameter = 0;
 
+
     var universeUtils = new UniverseUtils();
     var light = new THREE.AmbientLight(0xffffff);
     var camera = universeUtils.createDefaultCamera();
@@ -26,6 +27,9 @@ EarthSceneController = function (renderer) {
     var earthScene = init();
 
     var enableNormalAnimate = true;
+    var isClickEarth = false;
+    var selfRotate = true;
+    var speed;
     var yHistory;
 
 
@@ -62,8 +66,10 @@ EarthSceneController = function (renderer) {
 
         if (enableNormalAnimate) {
             stars.flashStars();
-            meteors.sweepMeteors();
-            rotateEarthWithStop();
+            if (selfRotate) {
+                rotateEarth();
+            }
+            // rotateEarthWithStop();
             rotateMoon();
             animateCones();
         }
@@ -104,8 +110,14 @@ EarthSceneController = function (renderer) {
 
     function rotateEarthWithStop() {
 
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
+
+        console.log("work");
+        console.log(intersects[0].object);
 
         if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
             rotateEarth();
@@ -113,6 +125,8 @@ EarthSceneController = function (renderer) {
     }
 
     function rotateEarth() {
+
+        console.log("rotate earth.");
 
         earthMesh.rotation.y += 0.001;
         atmosphereMesh.rotation.y += 0.001;
@@ -146,12 +160,8 @@ EarthSceneController = function (renderer) {
 
         EventManager.registerEvent('mousemove', onMouseMove);
         EventManager.registerEvent('mousedown', onMouseDown);
-    }
-
-    function onMouseMove() {
-
-        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        EventManager.registerEvent('mousewheel', onMouseWheel);
+        EventManager.registerEvent('mouseup', onMouseUp);
     }
 
     function onMouseDown() {
@@ -169,6 +179,83 @@ EarthSceneController = function (renderer) {
                 showInfo(cone.parameters.latitude, cone.parameters.longitude);
             }
         });
+
+        if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
+            isClickEarth = true;
+        }
+    }
+
+    function onMouseUp() {
+        if (isClickEarth) {
+            isClickEarth = false;
+            inertia();
+        }
+    }
+
+    function onMouseMove(event) {
+
+        var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        if (isClickEarth) {
+            speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
+            rotateWithSpeed(speed);
+        }
+
+        SolarEPUtils.mouse.x = mouseX;
+        SolarEPUtils.mouse.y = mouseY;
+
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
+
+        if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
+            selfRotate = true;
+        } else {
+            selfRotate = false;
+        }
+    }
+
+    function rotateWithSpeed(speed) {
+
+        earthMesh.rotation.y += speed;
+        atmosphereMesh.rotation.y += speed;
+    }
+
+    function inertia() {
+
+        var startSpeed = {speed: speed};
+        var endSpeed = {speed: 0};
+
+        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
+        inertiaTween.easing(TWEEN.Easing.Linear.None);
+        inertiaTween.onUpdate(function() {
+            earthMesh.rotation.y += this.speed;
+            atmosphereMesh.rotation.y += this.speed;
+        });
+
+        inertiaTween.start();
+    }
+
+    function onMouseWheel() {
+
+        var minScale = 1.3;
+        var maxScale = 2;
+        var speed = 0.3;
+        var delta;
+
+        if (event.wheelDelta) {
+            delta = event.wheelDelta / 40;
+        } else if (event.detail) {
+            delta = -event.detail / 3;
+        }
+
+        if (delta > 0 && camera.position.z < maxScale) {
+            camera.position.z = Math.min(maxScale, camera.position.z + delta * speed);
+        }
+
+        if (delta < 0 && camera.position.z > minScale) {
+            camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
+        }
     }
 
     function addTextToBoard(coneParameters) {
@@ -209,6 +296,7 @@ EarthSceneController = function (renderer) {
         tweenMap.resumeCone = resumeConeTween();
         tweenMap.resumeEarth = resumeEarthTween();
         tweenMap.translateBack = null;
+        meteors.initSweepTween();
     }
 
     function moveEarthAggregation(coneLongitude) {
@@ -313,12 +401,9 @@ EarthSceneController = function (renderer) {
     function resumeConeTween() {
 
         var initPosY = earthMesh.rotation.y;
-        // var finalPosY = yHistory + (controlParameter / 180 * Math.PI);
         var posStart = {y: initPosY};
-        // var posEnd = {y: finalPosY};
 
         var tween = new TWEEN.Tween(posStart);
-            // .to(posEnd, clickConeAnimateTime);
         tween.onUpdate(function () {
             earthMesh.rotation.y = posStart.y;
             atmosphereMesh.rotation.y = posStart.y;
@@ -347,7 +432,6 @@ EarthSceneController = function (renderer) {
 
         var initPosX = aggregationPos;
         var finalPosX = 0;
-        console.log("===" + initPosX);
         var posStart = {pos: initPosX};
         var posEnd = {pos: finalPosX};
 

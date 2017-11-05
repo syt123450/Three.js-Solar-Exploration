@@ -4,6 +4,11 @@
 
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
+    // Renderer
+    var renderer = renderer;
+    // renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+
     // Utils
     var universeUtils = new UniverseUtils();
 
@@ -19,10 +24,13 @@ PlanetSceneController = function (renderer, config) {
     // Camera and Lights
     var camera = universeUtils.createDefaultCamera();
     var lights = lightsInit();
-
-    // Renderer and Scene
-    var renderer = renderer;
+    // Init. Scene
     var scene = init();
+
+    var isPlanetClicked;
+    var speed;
+    var selfRotate;
+    var isInertia = false;
 
     // Interfaces
     this.activateScene = activateScene;
@@ -32,15 +40,23 @@ PlanetSceneController = function (renderer, config) {
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         stars.flashStars();
-        meteors.sweepMeteors();
-        rotatePlanet();
+        // meteors.sweepMeteors();
+        if (selfRotate && !isInertia) {
+            rotatePlanet();
+        }
+        TWEEN.update();
 
         renderer.render(scene, camera);
+    }
+
+    function initTween() {
+        meteors.initSweepTween();
     }
 
     function activateScene() {
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        addEvent();
         animate();
     }
 
@@ -69,6 +85,8 @@ PlanetSceneController = function (renderer, config) {
         });
         scene.add(planetAggregation);
 
+        initTween();
+
         return scene;
     }
 
@@ -88,13 +106,17 @@ PlanetSceneController = function (renderer, config) {
         var lights = [];
 
         // Lights Combination
-        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 1);
+        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
 
-        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.45);
-        lights[2] = new THREE.DirectionalLight(0xf7f7f7, 0.2);
-        //
+        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
         lights[1].position.set(30, 30, 3);
-        lights[2].position.set(-30, -30, -3);
+        lights[1].target = planetAggregation;
+        lights[1].castShadow = true;            // default is false
+        //Set up shadow properties for the light
+        // lights[1].shadow.mapSize.width = 1024;  // default
+        // lights[1].shadow.mapSize.height = 1024; // default
+        // lights[1].shadow.camera.near = 0.5;    // default
+        // lights[1].shadow.camera.far = 500;     // default
 
         // Legacy setting
         // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
@@ -102,5 +124,101 @@ PlanetSceneController = function (renderer, config) {
         // lights[1].lookAt(planetAggregation.position);
 
 	    return lights;
+    }
+
+    function addEvent() {
+
+        EventManager.registerEvent('mousemove', onMouseMove);
+        EventManager.registerEvent('mousedown', onMouseDown);
+        EventManager.registerEvent('mousewheel', onMouseWheel);
+        EventManager.registerEvent('mouseup', onMouseUp);
+    }
+
+    function onMouseDown() {
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
+
+        if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
+            isPlanetClicked = true;
+        }
+    }
+
+    function onMouseUp() {
+        if (isPlanetClicked) {
+            isPlanetClicked = false;
+            inertia();
+        }
+    }
+
+    function onMouseMove(event) {
+
+        var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        if (isPlanetClicked) {
+            speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
+            rotateWithSpeed(speed);
+        }
+
+        SolarEPUtils.mouse.x = mouseX;
+        SolarEPUtils.mouse.y = mouseY;
+
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
+
+        if (intersects === null || intersects.length === 0 || intersects[0].object !== mesh) {
+            selfRotate = true;
+        } else {
+            selfRotate = false;
+        }
+    }
+
+
+    function rotateWithSpeed(speed) {
+
+        planetAggregation.rotation.y += speed;
+    }
+
+    function inertia() {
+
+        isInertia = true;
+
+        var startSpeed = {speed: speed};
+        var endSpeed = {speed: 0};
+
+        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
+        inertiaTween.easing(TWEEN.Easing.Linear.None);
+        inertiaTween.onUpdate(function() {
+            planetAggregation.rotation.y += this.speed;
+        }).onComplete(function () {
+            isInertia = false;
+        });
+
+        inertiaTween.start();
+    }
+
+    function onMouseWheel() {
+
+        var minScale = 1.3;
+        var maxScale = 3;
+        var speed = 0.3;
+        var delta;
+
+        if (event.wheelDelta) {
+            delta = event.wheelDelta / 40;
+        } else if (event.detail) {
+            delta = -event.detail / 3;
+        }
+
+        if (delta > 0 && camera.position.z < maxScale) {
+            camera.position.z = Math.min(maxScale, camera.position.z + delta * speed);
+        }
+
+        if (delta < 0 && camera.position.z > minScale) {
+            camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
+        }
     }
 };

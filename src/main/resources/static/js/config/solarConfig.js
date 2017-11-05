@@ -56,6 +56,16 @@ var SolarConfig = {
             }
         },
 
+        asteroidBelt: function (sunRadius) {
+            return {
+                orbitRadius: sunRadius + 12,
+                orbitRadiusWidth: 5,
+                orbitRadiusThickness: 2,
+                orbitSpeed: -0.25,
+                rotateSpeed: 0.05
+            }
+        },
+
         jupiter: function (sunRadius) {
             return {
                 orbitRadius: sunRadius + 20,
@@ -126,6 +136,7 @@ var SolarConfig = {
         this.venus = this.ConfigHelper.venus(this.sunRadius);
         this.earth = this.ConfigHelper.earth(this.sunRadius);
         this.mars = this.ConfigHelper.mars(this.sunRadius);
+        this.asteroidBelt = this.ConfigHelper.asteroidBelt(this.sunRadius);
         this.jupiter = this.ConfigHelper.jupiter(this.sunRadius);
         this.saturn = this.ConfigHelper.saturn(this.sunRadius);
         this.uranus = this.ConfigHelper.uranus(this.sunRadius);

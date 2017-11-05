@@ -2,6 +2,15 @@
 * Communication
   * Talk to team members about how to work together to achieve maximum work efficiency
 
+### [Nov.04.2017] Create Path file to flag
+* Worked on mock data
+
+### [Nov.03.2017] Create Path file to flag
+* Worked on mock data
+
+### [Nov.02.2017] Create Path file to flag
+* Worked on mock data
+
 ### [Nov.01.2017] Create Path file to flag
 * Create Path file to flag
 
