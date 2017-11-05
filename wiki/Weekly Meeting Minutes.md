@@ -3,6 +3,24 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
+# **Week 6 Meeting**
+* Host: Chenhua
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
+* Time: 11/4/2017 (2 hours)
+* Recorder: Bo
+
+Topic 1: </br>
+* What did we accomplished last week
+* Assigned tasks for next week
+* A lot of challenges we have last week<br/>
+
+Topic 2: </br>
+* Discussed how can we improve the loading time of our application.
+* Discussed how can we manage all the animations effectively without errors.
+
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)
+
+
 # **Week 5 Meeting**
 * Host: Chenhua
 * Attendees: Qi (UI designer), Bou-yu, Bo, Chenhua, Yuntian

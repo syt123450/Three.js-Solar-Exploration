@@ -3,7 +3,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Refactored tween animation code to use it on the meteoroids.</li></ol> | <ol><li>Group weekly meeting.</li></ol> | <ol><li>Went well.</li></ol> |
 | Bou-Yu | <ol><li>Worked on mock data</li></ol> | <ol><li>Work on mock data</li></ol> | <ol><li>Still having trouble with mock data</li></ol> |
 | Chenhua | <ol><li>Light and shadow testing</li></ol> | <ol><li>Weekly meeting</li><li>Try Asteroid Belt</li></ol> | <ol><li>Light test result is acceptable but not as perfect as expect</li></ol> |
 | Yuntian | <ol><li>implement rotate with mouse control</li><li>implement mouse wheel zoom in and out</li><li>combine above two feature into earth scene and planet scene</li><li>refactor tween in earth scene</li><li>update time line</li></ol> | <ol><li>weekly meeting</li><li>refactor tween</li><li>fix event bug</li></ol> | <ol><li>event has bugs</li><li>tween is hard to unify</li></ol> |
@@ -13,7 +13,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | ------ | ------ | ------ |
+| Bo | <ol><li>Adjust the double halo for planets with rings.</li></ol> | <ol><li>Refactor tween animation code with Yuntian.</li></ol> | Tween animation has some glitches. |
 | Bou-Yu | <ol><li> Worked on mock data</ol></li> | <ol><li>Work on mock data more</ol></li> | <ol><li>Having trouble with mock data</ol></li> |
 | Chenhua | <ol><li>Refactored PlanetSceneControllers</li><li>Fix ring rotation</li><li>Light testing</li></ol> | 1. Light testing | 1. light testing issue |
 | Yuntian | <ol><li>write demo to show how to control earth by mouse</li><li>add inertia to demo</li><li>fix info board bug</li></ol> | <ol><li>integrate mouse control into demo</li> | 1. time line has some problem |
@@ -23,7 +23,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li>Made double halo prototype for each of the planets.</li></ol> | <ol><li>Adjust the double halo for planets with rings.</li></ol> | ------ |
+| Bo | <ol><li>Made double halo prototype for each of the planets.</li></ol> | <ol><li>Adjust the double halo for planets with rings.</li></ol> | Went well |
 | Bou-Yu | <ol><li>Refined flag data</li></ol> | <ol><li> Work on mock data</li></ol> | <ol><li>Good </li></ol>|
 | Chenhua | <ol><li>Apply ring prototype to solar system scene</li><li>Updates for flag path</li><li>Light testing</li></ol> | 1. light testing | <oll><li>hard to find a proper light setting</li><li>no fixed lights</li></ol> |
 | Yuntian | <ol><li>change the style of info board</li><li>write tween demo for earth rotation</li></ol> | 1. change timeline demo | go well |

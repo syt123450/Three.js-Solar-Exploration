@@ -1,5 +1,16 @@
 ## XP Core Values: Communication
 
+### [Nov 4, 2017] - Weekly meeting<br/>
+1. Weekly meeting.
+2. Updated team wiki and logs.
+
+### [Nov 3, 2017] - Code refactor<br/>
+1. Spent 4 hours with Yuntian to refactor the tween animation code.
+
+### [Nov 2, 2017] - Lighting adjustment<br/>
+1. Adjusted lighting for all the scenes.
+2. Refactored code of earth animation.
+
 ### [Nov 1, 2017] - Finalized Double Halos for planets<br/>
 1. Made double halos for all the planets.
 2. Met with Yuantian and Chenhua to refactor code.
