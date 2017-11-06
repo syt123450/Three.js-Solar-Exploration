@@ -6,7 +6,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Yuntian | <ol><li>meeting</li></ol> | <ol><li>try to fix events bugs</li><li></ol> | <ol><li>go well</li></ol> |
+| Yuntian | <ol><li>meeting</li></ol> | <ol><li>try to fix events bugs</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 ### [Nov. 4th, 2017]
