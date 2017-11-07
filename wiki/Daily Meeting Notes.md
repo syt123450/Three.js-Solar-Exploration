@@ -5,8 +5,8 @@
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>meeting</li></ol> | <ol><li>add asteroid belt</li><li>debug on scene controller</li></ol> | <ol><li>fine</li></ol> |
+| Yuntian | <ol><li>meeting</li></ol> | <ol><li>try to fix events bugs</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 ### [Nov. 4th, 2017]

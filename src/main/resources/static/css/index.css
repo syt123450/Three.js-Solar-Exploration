@@ -16,7 +16,7 @@ body footer {
     height: 35px;
     width: 100%;
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     background-color: #000;
     /*display: block;*/
     box-sizing: border-box;
