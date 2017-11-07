@@ -24,12 +24,16 @@
 
 <canvas id="sceneArea"></canvas>
 <script src="../js/lib/three.min.js"></script>
+<script src="../js/lib/tween.min.js"></script>
 <script src="../js/config/solarConfig.js"></script>
 <script src="../js/utils/universeUtils.js"></script>
 <script src="../js/utils/utils.js"></script>
+<script src="../js/utils/eventUtils.js"></script>
+<script src="../js/utils/eventManager.js"></script>
+<script src="../js/config/planetConfig.js"></script>
 <script src="../js/model/EarthSceneController.js"></script>
 <script src="../js/model/PlanetSceneControllers.js"></script>
-<script src="../jsDemo/SolarSystemSceneController_orig2.js"></script>
+<script src="../js/model/SolarSystemSceneController.js"></script>
 
 <script>
 
@@ -38,25 +42,25 @@
 
     // init Scene Controllers
     var solarSystemSceneController = new SolarSystemSceneController(renderer);
-    var mercurySceneController = new MercurySceneController(renderer);
-    var venusSceneController = new VenusSceneController(renderer);
-    var earthSceneController = new EarthSceneController(renderer);
-    var marsSceneController = new MarsSceneController(renderer);
-    var jupiterSceneController = new JupiterSceneController(renderer);
-    var saturnSceneController = new SaturnSceneController(renderer);
-    var uranusSceneController = new UranusSceneController(renderer);
-    var neptuneSceneController = new NeptuneSceneController(renderer);
-    var plutoSceneController = new PlutoSceneController(renderer);
+//    var mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
+//    var venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
+//    var earthSceneController = new EarthSceneController(renderer);
+//    var marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
+//    var jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
+//    var saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
+//    var uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
+//    var neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
+//    var plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 
-    solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
-    solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
-    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
-    solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
-    solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
-    solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
-    solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
-    solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
-    solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
+//    solarSystemSceneController.setPlanetScene("Mercury", mercurySceneController);
+//    solarSystemSceneController.setPlanetScene("Venus", venusSceneController);
+//    solarSystemSceneController.setPlanetScene("Earth", earthSceneController);
+//    solarSystemSceneController.setPlanetScene("Mars", marsSceneController);
+//    solarSystemSceneController.setPlanetScene("Jupiter", jupiterSceneController);
+//    solarSystemSceneController.setPlanetScene("Saturn", saturnSceneController);
+//    solarSystemSceneController.setPlanetScene("Uranus", uranusSceneController);
+//    solarSystemSceneController.setPlanetScene("Neptune", neptuneSceneController);
+//    solarSystemSceneController.setPlanetScene("Pluto", plutoSceneController);
 
     solarSystemSceneController.activateScene();
 

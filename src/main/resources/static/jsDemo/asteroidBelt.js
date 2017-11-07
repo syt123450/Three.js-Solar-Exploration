@@ -17,6 +17,7 @@ var universeMesh = universeUtils.createSolarUniverse();
 scene.add(camera);
 scene.add(universeMesh);
 
+/* Creation */
 var material = new THREE.PointCloudMaterial({
     color: 0xffffcc,
     size: 0.1
@@ -38,17 +39,19 @@ for (j =0; j <10; j++){
     pointClouds[j] = pointCloud;
 }
 
+/* Add to the scene */
 pointClouds.forEach(function addLight(pc) {
     scene.add(pc);
 });
 
+
+/* Rotation animation */
 function rotateBelts(){
     var k;
     for (k=0; k <pointClouds.length; k++){
         pointClouds[k].rotateY(0.00003*(k+1));
     }
 }
-
 function animate() {
     window.requestAnimationFrame(animate);
     rotateBelts();

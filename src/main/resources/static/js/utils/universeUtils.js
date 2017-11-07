@@ -426,6 +426,31 @@ UniverseUtils = function () {
         return ringMesh;
     }
 
+    function createAsteroidBelt(){
+        var pointClouds = [];
+        var material = new THREE.PointCloudMaterial({
+            color: SolarConfig["asteroidBelt"].color,
+            size: SolarConfig["asteroidBelt"].size
+        });
+
+        var i, j, r, theta, x, y, z;
+        for (j =0; j <10; j++){
+            var geometry = new THREE.Geometry();
+            for (i =0; i <500; i++){
+                r = SolarConfig["asteroidBelt"].orbitRadius + (Math.random() *  SolarConfig["asteroidBelt"].orbitRadiusWidth);
+                theta =  (Math.random() * 2 * Math.PI);
+                x = Math.cos(theta) * r;
+                y = ( -1 * Math.random() +0.5) * SolarConfig["asteroidBelt"].orbitRadiusThickness;
+                z = Math.sin(theta) * r;
+
+                geometry.vertices.push(new THREE.Vector3(x, y, z));
+            }
+            pointClouds[j] = new THREE.PointCloud(geometry, material);
+        }
+
+        return pointClouds;
+    }
+
     function createOrbit(radius) {
         var geometry = new THREE.CircleGeometry(radius, 256, 0, 2.01 * Math.PI);
         geometry.vertices.shift();
