@@ -52,7 +52,7 @@ DoubleHaloController = function (renderer) {
 	function animate() {
 		SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 		stars.flashStars();
-		meteors.sweepMeteors();
+		// meteors.sweepMeteors();
 		rotatePlanet();
 		
 		renderer.render(scene, camera);
