@@ -61,7 +61,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function rotatePlanet() {
-        mesh.rotation.y += 0.0005;
+        mesh.rotateY(0.0005);
         planetAggregation.rotateY(0.001);
     }
 
@@ -99,7 +99,7 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
-
+        aggregation.rotateX(0.1 * Math.PI);
         return aggregation;
     }
 

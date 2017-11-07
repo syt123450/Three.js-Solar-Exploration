@@ -408,7 +408,7 @@ UniverseUtils = function () {
         });
         ringMesh.castShadow = true;         //default is false
         ringMesh.receiveShadow = true;      //default is false
-        ringMesh.rotateX( 0.5 * Math.PI );
+        ringMesh.rotateX( 0.5 * Math.PI );  //rotate to fit actual angle
 
         return ringMesh;
     }
