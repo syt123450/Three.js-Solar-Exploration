@@ -1,4 +1,15 @@
 
+### [Nov. 7th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>add events demo</li><li>fix concurrent bug in event</li></ol> | <ol><li>try to solve performance problem</li></ol> | <ol><li>go well</li></ol> |
+
+***
+
 ### [Nov. 6th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
