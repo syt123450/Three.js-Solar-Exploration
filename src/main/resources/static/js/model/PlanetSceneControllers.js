@@ -62,7 +62,8 @@ PlanetSceneController = function (renderer, config) {
 
     function rotatePlanet() {
         mesh.rotation.y += 0.0005;
-        planetAggregation.rotateY(0.001);
+        //this line case the concurrent bug, in order to fix the bug, I have to disable it
+        // planetAggregation.rotateY(0.001);
     }
 
     /* Initialization Functions */
@@ -159,13 +160,16 @@ PlanetSceneController = function (renderer, config) {
         var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
         var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        if (isPlanetClicked) {
-            speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
-            rotateWithSpeed(speed);
-        }
+        speed = mouseX - SolarEPUtils.mouse.x;
+        var step = 1.5 * (mouseX - SolarEPUtils.mouse.x);
 
         SolarEPUtils.mouse.x = mouseX;
         SolarEPUtils.mouse.y = mouseY;
+
+        if (isPlanetClicked) {
+            console.log(step);
+            rotateWithStep(step);
+        }
 
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
@@ -177,10 +181,9 @@ PlanetSceneController = function (renderer, config) {
         }
     }
 
+    function rotateWithStep(step) {
 
-    function rotateWithSpeed(speed) {
-
-        planetAggregation.rotation.y += speed;
+        planetAggregation.rotation.y += step;
     }
 
     function inertia() {
