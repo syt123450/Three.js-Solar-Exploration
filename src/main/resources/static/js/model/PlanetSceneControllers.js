@@ -18,7 +18,7 @@ PlanetSceneController = function (renderer, config) {
     var meteors = universeUtils.createDefaultMeteors();
 
     // Mesh and Aggregation
-    var mesh = universeUtils.createTerrestrialPlanet(config);
+    var mesh = universeUtils.createPlanetMesh(config);
     var planetAggregation = aggregationInit();
 
     // Camera and Lights
