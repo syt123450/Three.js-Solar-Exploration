@@ -1,3 +1,9 @@
+### [Nov. 6th, 2017]
+Development:
+  * Add AsteroidBelt Demo
+  * Add sample data output for decoration
+  * Debug on PlanetSceneControllers
+***
 ### [Week 6 XP Core Values (or Lean/Kanban Principle)] 
   * See the whole
     * Keep the development process for both front (PlanetSceneControllers) and back (FlagPath) ends

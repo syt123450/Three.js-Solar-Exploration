@@ -5,7 +5,7 @@
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>Added asteroid belt demo</li><li>Debug on PlanetSceneControllers</li><li>generate sample output data</li></ol> | <ol><li>Apply asteroid demo to the SolarSystemScene</li></ol> | <ol><li>Fine</li></ol> |
 | Yuntian | <ol><li>add events demo</li><li>fix concurrent bug in event</li></ol> | <ol><li>try to solve performance problem</li></ol> | <ol><li>go well</li></ol> |
 
 ***
