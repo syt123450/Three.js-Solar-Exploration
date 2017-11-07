@@ -9,50 +9,54 @@ $(function () {
 
     renderer = SolarEPUtils.getDefaultRenderer();
 
-
     solarSystemSceneController = new SolarSystemSceneController(renderer);
     solarSystemSceneController.activateScene();
 
-    // $.getScript("../data/mockTop10Data.js");
-    // $.getScript("../js/config/planetConfig.js");
-    // $.getScript("../js/model/PlanetSceneControllers.js");
-    // $.getScript("../js/model/GlobeSceneController.js");
+    $.getScript("../js/config/planetConfig.js", function() {
+        $.getScript("../js/model/PlanetSceneControllers.js", function() {
+            mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
+            venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
+            marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
+            jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
+            saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
+            uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
+            neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
+            plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 
-    mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
-    venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
-    earthSceneController = new EarthSceneController(renderer);
-    marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
-    jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
-    saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
-    uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
-    neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
-    plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
+            // mercurySceneController = new MercurySceneController(renderer);
+            // venusSceneController = new VenusSceneController(renderer);
+            // earthSceneController = new EarthSceneController(renderer);
+            // marsSceneController = new MarsSceneController(renderer);
+            // jupiterSceneController = new JupiterSceneController(renderer);
+            // saturnSceneController = new SaturnSceneController(renderer);
+            // uranusSceneController = new UranusSceneController(renderer);
+            // neptuneSceneController = new NeptuneSceneController(renderer);
+            // plutoSceneController = new PlutoSceneController(renderer);
 
-    // mercurySceneController = new MercurySceneController(renderer);
-    // venusSceneController = new VenusSceneController(renderer);
-    // earthSceneController = new EarthSceneController(renderer);
-    // marsSceneController = new MarsSceneController(renderer);
-    // jupiterSceneController = new JupiterSceneController(renderer);
-    // saturnSceneController = new SaturnSceneController(renderer);
-    // uranusSceneController = new UranusSceneController(renderer);
-    // neptuneSceneController = new NeptuneSceneController(renderer);
-    // plutoSceneController = new PlutoSceneController(renderer);
+            solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
+            solarSystemSceneController.setPlanetScene("venus", venusSceneController);
+            solarSystemSceneController.setPlanetScene("mars", marsSceneController);
+            solarSystemSceneController.setPlanetScene("jupiter", jupiterSceneController);
+            solarSystemSceneController.setPlanetScene("saturn", saturnSceneController);
+            solarSystemSceneController.setPlanetScene("uranus", uranusSceneController);
+            solarSystemSceneController.setPlanetScene("neptune", neptuneSceneController);
+            solarSystemSceneController.setPlanetScene("pluto", plutoSceneController);
+        });
+    });
 
-    solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
-    solarSystemSceneController.setPlanetScene("venus", venusSceneController);
-    solarSystemSceneController.setPlanetScene("earth", earthSceneController);
-    solarSystemSceneController.setPlanetScene("mars", marsSceneController);
-    solarSystemSceneController.setPlanetScene("jupiter", jupiterSceneController);
-    solarSystemSceneController.setPlanetScene("saturn", saturnSceneController);
-    solarSystemSceneController.setPlanetScene("uranus", uranusSceneController);
-    solarSystemSceneController.setPlanetScene("neptune", neptuneSceneController);
-    solarSystemSceneController.setPlanetScene("pluto", plutoSceneController);
+    $.getScript("../js/model/EarthSceneController.js", function() {
+        earthSceneController = new EarthSceneController(renderer);
+        solarSystemSceneController.setPlanetScene("earth", earthSceneController);
+    });
 
+    $.getScript("../js/model/GlobeSceneController.js", function() {
+        globe = new DAT.Globe(renderer);
+        globe.setSurfaceImg("../images/world.jpg");
+        globe.init();
+        loadData();
+    });
 
-    globe = new DAT.Globe(renderer);
-    globe.setSurfaceImg("../images/world.jpg");
-    globe.init();
-    loadData();
+    $.getScript("../data/mockTop10Data.js");
 
     $("#all").click(function () {
         $("body footer div").each(function () {
@@ -87,17 +91,17 @@ $(function () {
     $("#closeBoard").click(function () {
         if (infoBoard) {
             earthSceneController.restoreScene();
-            $("#infoBoard").animate({width:'toggle'},350);
+            $("#infoBoard").animate({width: 'toggle'}, 350);
             $("#curtain").hide();
             $("#timeLine").show();
             infoBoard = false;
         }
     });
 
-    $("#curtain").click(function() {
+    $("#curtain").click(function () {
         if (infoBoard) {
             earthSceneController.restoreScene();
-            $("#infoBoard").animate({width:'toggle'},350);
+            $("#infoBoard").animate({width: 'toggle'}, 350);
             $("#curtain").hide();
             $("#timeLine").show();
             infoBoard = false;

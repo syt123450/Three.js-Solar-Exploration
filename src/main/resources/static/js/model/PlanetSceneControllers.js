@@ -168,7 +168,6 @@ PlanetSceneController = function (renderer, config) {
         SolarEPUtils.mouse.y = mouseY;
 
         if (isPlanetClicked) {
-            console.log(step);
             rotateWithStep(step);
         }
 
