@@ -18,7 +18,7 @@ PlanetSceneController = function (renderer, config) {
     var meteors = universeUtils.createDefaultMeteors();
 
     // Mesh and Aggregation
-    var mesh = universeUtils.createTerrestrialPlanet(config);
+    var mesh = universeUtils.createPlanetMesh(config);
     var planetAggregation = aggregationInit();
 
     // Camera and Lights
@@ -61,6 +61,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function rotatePlanet() {
+
         mesh.rotation.y += 0.0005;
         //this line case the concurrent bug, in order to fix the bug, I have to disable it
         // planetAggregation.rotateY(0.001);
@@ -100,7 +101,7 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
-
+        aggregation.rotateX(0.1 * Math.PI);
         return aggregation;
     }
 

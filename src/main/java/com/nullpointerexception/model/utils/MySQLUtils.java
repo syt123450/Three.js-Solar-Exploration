@@ -176,7 +176,7 @@ public class MySQLUtils {
             e.printStackTrace();
         }
 
-        max = max /1.8;
+        max = max /1.5;
         Double temp = 0.0;
         for (int i =2; i <ret.size(); i+=3){
             temp = ret.get(i) /max;
@@ -211,6 +211,15 @@ public class MySQLUtils {
 //        }
 
 //        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+//        Iterator<Double> itr = myList_2.iterator();
+//        Double tempDouble;
+//        String output = "[";
+//        while (itr.hasNext()){
+//            tempDouble = itr.next();
+//            output +=(tempDouble + ",");
+//        }
+//        output = output.substring(0, output.length()-1) + "]";
+//        System.out.println(output);
         System.out.println("");
     }
 }
