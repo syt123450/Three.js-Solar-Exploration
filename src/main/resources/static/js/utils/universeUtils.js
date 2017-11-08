@@ -277,6 +277,7 @@ UniverseUtils = function () {
     this.createJovianPlanet = createJovianPlanet;
 
     this.createRing = createRing;
+    this.createAsteroidBelt = createAsteroidBelt;
 
     this.addDoubleHalos = function (target, innerColor, outerColor) {
         // innerGlowMesh settings
@@ -434,9 +435,9 @@ UniverseUtils = function () {
         });
 
         var i, j, r, theta, x, y, z;
-        for (j =0; j <10; j++){
+        for (j =0; j <SolarConfig["asteroidBelt"].cloudNumber; j++){
             var geometry = new THREE.Geometry();
-            for (i =0; i <500; i++){
+            for (i =0; i <SolarConfig["asteroidBelt"].cloudSize; i++){
                 r = SolarConfig["asteroidBelt"].orbitRadius + (Math.random() *  SolarConfig["asteroidBelt"].orbitRadiusWidth);
                 theta =  (Math.random() * 2 * Math.PI);
                 x = Math.cos(theta) * r;

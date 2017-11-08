@@ -11,6 +11,7 @@ SolarSystemSceneController = function(renderer) {
 
     var universeMesh = universeUtils.createSolarUniverse();
     var solarAggregation = universeUtils.createSolarAggregation();
+    var asteroidBeltClouds = universeUtils.createAsteroidBelt();
     var planetsList = universeUtils.createPlanetsList();
 
     var solarSystemRenderer = renderer;
@@ -24,15 +25,15 @@ SolarSystemSceneController = function(renderer) {
     this.name = "SolarSystemSceneController";
 
     // Camera position settings (NOT COMPLETE, N/A)
-    // this.upForwardView = updateCameraPosition(-1);
-    this.topView = updateCameraPosition(1);
+    this.upForwardView = updateCameraPosition(-1);
+    // this.topView = updateCameraPosition(1);
     // this.sideView = updateCameraPosition(2);
 
 
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
-        // rotationAndRevolution();
+        rotationAndRevolution();
 
         solarSystemRenderer.render(solarSystemScene, camera);
     }
@@ -64,6 +65,11 @@ SolarSystemSceneController = function(renderer) {
         initSystemPositions();
         scene.add(solarAggregation);
 
+        // Apply Asteroid Belt
+        asteroidBeltClouds.forEach(function addPointCloud(pointCloud) {
+            scene.add(pointCloud);
+        });
+
         return scene;
     }
 
@@ -87,6 +93,11 @@ SolarSystemSceneController = function(renderer) {
             var radians = SolarConfig[planet].orbitAngle * Math.PI / 180;
             planetsList[planet].mesh.position.x = Math.cos(radians) * SolarConfig[planet].orbitRadius;
             planetsList[planet].mesh.position.z = Math.sin(radians) * SolarConfig[planet].orbitRadius;
+        }
+
+        var k;
+        for (k=0; k <asteroidBeltClouds.length; k++){
+            asteroidBeltClouds[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k+1));
         }
     }
 

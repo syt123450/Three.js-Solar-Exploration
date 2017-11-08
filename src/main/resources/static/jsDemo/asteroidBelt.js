@@ -40,7 +40,7 @@ for (j =0; j <10; j++){
 }
 
 /* Add to the scene */
-pointClouds.forEach(function addLight(pc) {
+pointClouds.forEach(function addPointCloud(pc) {
     scene.add(pc);
 });
 

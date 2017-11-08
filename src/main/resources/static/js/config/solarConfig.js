@@ -60,11 +60,12 @@ var SolarConfig = {
             return {
                 color: 0xffffcc,
                 size: 0.1,
+                cloudNumber: 9,
+                cloudSize: 500,
                 orbitRadius: sunRadius + 12,
                 orbitRadiusWidth: 4,
-                orbitRadiusThickness: 1.5,
-                orbitSpeed: -0.25,
-                rotateSpeed: 0.05
+                orbitRadiusThickness: 0.2,
+                orbitSpeed: 0.00001
             }
         },
 
