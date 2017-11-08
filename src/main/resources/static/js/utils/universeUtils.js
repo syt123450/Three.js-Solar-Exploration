@@ -125,7 +125,7 @@ UniverseUtils = function () {
 
         meteors.forEach(function(meteor) {
 	        var startPosition = {x: 0};
-	        console.log(meteor);
+	        // console.log(meteor);
 	        var tween = new TWEEN.Tween(startPosition)
 		        .to({ x: -4 }, 6000);
             tween.onUpdate(function() {
@@ -313,6 +313,7 @@ UniverseUtils = function () {
         //The init function is used to put object into the scene
         function _initInnerGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
             _innerGlowMesh = new THREE.Mesh();
+	        _innerGlowMesh.name = 'inner glow mesh';
             _innerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
             _innerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, innerFragmentShaderIntensity);
             _innerGlowMesh.scale.set(1.2, 1.2, 1.2);
@@ -320,6 +321,7 @@ UniverseUtils = function () {
 
         function _initOuterGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
             _outerGlowMesh = new THREE.Mesh();
+	        _outerGlowMesh.name = 'outer glow mesh';
             _outerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
             _outerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, outerFragmentShaderIntensity);
             _outerGlowMesh.scale.set(1.2, 1.2, 1.2);

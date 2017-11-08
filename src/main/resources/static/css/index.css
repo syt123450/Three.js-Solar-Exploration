@@ -49,7 +49,7 @@ body footer div.checked {
 }
 
 body footer div.unchecked:hover {
-    background-color: #767676;
+    background-color: #2a2a2a;
     cursor: pointer;
     opacity: 1;
 }
@@ -61,7 +61,15 @@ body footer div.unchecked:hover {
     left: 10px;
     position: fixed;
     border-radius: 50%;
-    border: 1px solid red;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#backLogo:hover {
+    /*background-color: #3f3f3f;*/
+    /*opacity: 0.6;*/
+    border: 1px solid #414141;
 }
 
 #infoBoard {

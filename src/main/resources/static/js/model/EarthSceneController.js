@@ -105,6 +105,7 @@ EarthSceneController = function (renderer) {
         aggregation.add(atmosphereMesh);
         aggregation.rotateZ(-Math.PI * obliquity / 180);
         universeUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
+        console.log('earth aggregation:', aggregation);
         return aggregation;
     }
 
@@ -116,8 +117,8 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
 
-        console.log("work");
-        console.log(intersects[0].object);
+        // console.log("work");
+        // console.log(intersects[0].object);
 
         if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
             rotateEarth();
@@ -126,7 +127,7 @@ EarthSceneController = function (renderer) {
 
     function rotateEarth() {
 
-        console.log("rotate earth.");
+        // console.log("rotate earth.");
 
         earthMesh.rotation.y += 0.001;
         atmosphereMesh.rotation.y += 0.001;
@@ -173,7 +174,7 @@ EarthSceneController = function (renderer) {
 
         coneList.forEach(function (cone) {
             if (intersects[0].object === cone) {
-                console.log("find a clicked cone.");
+                // console.log("find a clicked cone.");
                 enableNormalAnimate = false;
                 addTextToBoard(cone.parameters);
                 showInfo(cone.parameters.latitude, cone.parameters.longitude);
@@ -393,6 +394,8 @@ EarthSceneController = function (renderer) {
             .to(posEnd, clickConeAnimateTime);
         tween.onUpdate(function () {
             earthMesh.parent.position.x = posStart.pos;
+	        earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
+	        earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
         });
 
         return tween;
@@ -439,6 +442,8 @@ EarthSceneController = function (renderer) {
             .to(posEnd, clickConeAnimateTime);
         tween.onUpdate(function () {
             earthMesh.parent.position.x = posStart.pos;
+	        earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
+	        earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
         });
 
         return tween;
