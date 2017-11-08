@@ -23,16 +23,6 @@ $(function () {
             neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
             plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 
-            // mercurySceneController = new MercurySceneController(renderer);
-            // venusSceneController = new VenusSceneController(renderer);
-            // earthSceneController = new EarthSceneController(renderer);
-            // marsSceneController = new MarsSceneController(renderer);
-            // jupiterSceneController = new JupiterSceneController(renderer);
-            // saturnSceneController = new SaturnSceneController(renderer);
-            // uranusSceneController = new UranusSceneController(renderer);
-            // neptuneSceneController = new NeptuneSceneController(renderer);
-            // plutoSceneController = new PlutoSceneController(renderer);
-
             solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
             solarSystemSceneController.setPlanetScene("venus", venusSceneController);
             solarSystemSceneController.setPlanetScene("mars", marsSceneController);
@@ -88,26 +78,6 @@ $(function () {
         $("#timeLine").hide();
     });
 
-    $("#closeBoard").click(function () {
-        if (infoBoard) {
-            earthSceneController.restoreScene();
-            $("#infoBoard").animate({width: 'toggle'}, 350);
-            $("#curtain").hide();
-            $("#timeLine").show();
-            infoBoard = false;
-        }
-    });
-
-    $("#curtain").click(function () {
-        if (infoBoard) {
-            earthSceneController.restoreScene();
-            $("#infoBoard").animate({width: 'toggle'}, 350);
-            $("#curtain").hide();
-            $("#timeLine").show();
-            infoBoard = false;
-        }
-    });
-
     $("#closeBoard").hover(
         function () {
             $(this).attr("src", "../images/close_hover.png");
@@ -115,6 +85,16 @@ $(function () {
         function () {
             $(this).attr("src", "../images/close.png");
         });
+
+    $("#curtain, #closeBoard").click(function () {
+        if (infoBoard) {
+            earthSceneController.restoreScene();
+            $("#infoBoard").animate({width: 'toggle'}, 350);
+            $("#curtain").hide();
+            $("#timeLine").show();
+            infoBoard = false;
+        }
+    });
 });
 
 function getYearData(year) {
