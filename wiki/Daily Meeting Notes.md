@@ -1,4 +1,15 @@
 
+### [Nov. 8th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>Apply asteroid belt to solar system scene</li><li>Update solar system scene camera and lights</li></ol> | <ol><li>Update sun mesh</li><li>Coordinate solar system light</li></ol> | <ol><li>so far, hard to see the changes from light settings</li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+
+***
+
 ### [Nov. 7th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
