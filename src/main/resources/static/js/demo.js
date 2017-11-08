@@ -12,8 +12,8 @@ $(function () {
     solarSystemSceneController = new SolarSystemSceneController(renderer);
     solarSystemSceneController.activateScene();
 
-    $.getScript("../js/config/planetConfig.js", function() {
-        $.getScript("../js/model/PlanetSceneControllers.js", function() {
+    $.getScript("../js/config/planetConfig.js", function () {
+        $.getScript("../js/model/PlanetSceneControllers.js", function () {
             mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
             venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
             marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
@@ -44,12 +44,12 @@ $(function () {
         });
     });
 
-    $.getScript("../js/model/EarthSceneController.js", function() {
+    $.getScript("../js/model/EarthSceneController.js", function () {
         earthSceneController = new EarthSceneController(renderer);
         solarSystemSceneController.setPlanetScene("earth", earthSceneController);
     });
 
-    $.getScript("../js/model/GlobeSceneController.js", function() {
+    $.getScript("../js/model/GlobeSceneController.js", function () {
         globe = new DAT.Globe(renderer);
         globe.setSurfaceImg("../images/world.jpg");
         globe.init();
@@ -107,6 +107,14 @@ $(function () {
             infoBoard = false;
         }
     });
+
+    $("#closeBoard").hover(
+        function () {
+            $(this).attr("src", "../images/close_hover.png");
+        },
+        function () {
+            $(this).attr("src", "../images/close.png");
+        });
 });
 
 function getYearData(year) {
