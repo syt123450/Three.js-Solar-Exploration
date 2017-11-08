@@ -228,7 +228,7 @@ UniverseUtils = function () {
         universeMesh.geometry = new THREE.SphereGeometry(100, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/background1.png'
+                '../images/background_2.jpg'
             ),
             side: THREE.BackSide
         });
