@@ -94,6 +94,7 @@ EarthSceneController = function (renderer) {
         });
         scene.add(initEarthAggregation());
         scene.add(moonMesh);
+        loadAudio();
         initTween();
 
         return scene;
@@ -290,6 +291,19 @@ EarthSceneController = function (renderer) {
     function moveEarth(latitude, longitude) {
         console.log(latitude + "," + longitude);
         moveEarthAggregation(longitude);
+    }
+
+    function loadAudio() {
+
+        var loader = new THREE.AudioLoader();
+
+        loader.load(
+            "../music/Earth.mp3",
+            function (audioBuffer) {
+                SolarEPUtils.sound.setBuffer(audioBuffer);
+                SolarEPUtils.sound.play();
+            }
+        )
     }
 
     function initTween() {
