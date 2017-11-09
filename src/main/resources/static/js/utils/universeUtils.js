@@ -152,20 +152,20 @@ UniverseUtils = function () {
         var stars = [];
         for (var i = 0; i < starPositions.length; i++) {
             stars[i] = createOneStar();
-            stars[i].position.x = starPositions[i][0];
-            stars[i].position.y = starPositions[i][1];
-            stars[i].position.z = starPositions[i][2];
+            stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
 
         stars.flashStars = function () {
+
             this.forEach(function (star) {
                 star.count += Math.random() > 0.5 ? 2 : 3;
-                if (star.count > 40) {
-                    star.material.color.set(star.material.color.getHex() == 0x727272 ? 0xffffff : 0x727272);
+                if (star.count > 30) {
+                    star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
                     star.count = 0;
                 }
             });
         };
+
         return stars;
     };
 
@@ -488,35 +488,34 @@ UniverseUtils = function () {
 
     function createOneStar() {
 
-        var star = new THREE.Mesh();
-        star.geometry = new THREE.SphereGeometry(0.03, 32, 32);
-        star.material = new THREE.MeshBasicMaterial({color: 0x727272});
+        var star = new THREE.Sprite();
+
+        star.material = new THREE.SpriteMaterial({
+            color: 0xffffff,
+            opacity: 0.9,
+            transparent: true,
+            map: new THREE.TextureLoader().load('../images/glow.png')
+        });
+
+        star.scale.set(0.15, 0.15, 0.0001);
         star.count = 0;
-        addHaloToStar(star);
+
         return star;
     }
 
     function createOneMeteor() {
 
         var meteor = new THREE.Sprite();
-        // var meteor = new THREE.Mesh();
-
-        // meteor.geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
-        // // meteor.material = new THREE.MeshBasicMaterial({
-        // //     map: new THREE.TextureLoader().load('../images/meteor.png'),
-        // //     opacity: 0.9,
-        // //     transparent: true
-        // // });
 
         meteor.material = new THREE.SpriteMaterial({
-            opacity: 0.9,
+            opacity: 0.5,
             transparent: true,
             map: new THREE.TextureLoader().load('../images/meteor.png')
         });
 
         meteor.position.z = -3;
 
-        meteor.scale.set(0.4, 0.4, 0.001);
+        meteor.scale.set(0.5, 0.5, 0.001);
 
         var initSeed = 3 * Math.random();
 
@@ -536,17 +535,17 @@ UniverseUtils = function () {
         return meteor;
     }
 
-    function addHaloToStar(star) {
-
-        var spriteMaterial = new THREE.SpriteMaterial(
-            {
-                map: new THREE.TextureLoader().load('../images/glow.png'),
-                color: 0xffffff,
-                transparent: true,
-                opacity: 0.5
-            });
-        var sprite = new THREE.Sprite(spriteMaterial);
-        sprite.scale.set(0.25, 0.25, 1);
-        star.add(sprite);
-    }
+    // function addHaloToStar(star) {
+    //
+    //     var spriteMaterial = new THREE.SpriteMaterial(
+    //         {
+    //             map: new THREE.TextureLoader().load('../images/glow.png'),
+    //             color: 0xffffff,
+    //             transparent: true,
+    //             opacity: 0.5
+    //         });
+    //     var sprite = new THREE.Sprite(spriteMaterial);
+    //     sprite.scale.set(0.25, 0.25, 1);
+    //     star.add(sprite);
+    // }
 };
