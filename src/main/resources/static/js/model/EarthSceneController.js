@@ -399,7 +399,10 @@ EarthSceneController = function (renderer) {
         }).onStart(function() {
             console.log(this.pos);
         });
-
+	
+	    tween.onComplete(function() {
+		    posStart.pos = initPosX;
+        });
         return tween;
     }
 
@@ -447,7 +450,9 @@ EarthSceneController = function (renderer) {
 	        earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 	        earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
         });
-
+	    tween.onComplete(function() {
+		    posStart.pos = initPosX;
+	    });
         return tween;
     }
 };
