@@ -5,6 +5,7 @@
 var SolarConfig = {
 
     sunRadius: 5,
+    audio: "../music/Epic.mp3",
 
     ConfigHelper: {
         sun: function (sunRadius) {

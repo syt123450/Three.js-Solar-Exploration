@@ -5,6 +5,7 @@
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
     // Renderer
+
     var renderer = renderer;
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
@@ -20,6 +21,7 @@ PlanetSceneController = function (renderer, config) {
     // Mesh and Aggregation
     var mesh = universeUtils.createPlanetMesh(config);
     var planetAggregation = aggregationInit();
+    var audio = universeUtils.loadAudio(config.audio);
 
     // Camera and Lights
     var camera = universeUtils.createDefaultCamera();
@@ -35,6 +37,9 @@ PlanetSceneController = function (renderer, config) {
     // Interfaces
     this.activateScene = activateScene;
     this.name = config.planetName + "Controller";
+    this.pauseAudio = function() {
+        audio.pause();
+    };
 
     /* Action Functions */
     function animate() {
@@ -54,6 +59,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function activateScene() {
+        audio.play();
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();

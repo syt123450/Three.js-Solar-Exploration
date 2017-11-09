@@ -9,7 +9,8 @@ var PlanetConfig = {
         bumpMap: '../images/planets/mercurybump.jpg',
         radius: 0.5,
         innerGlowColor: "#F8D6B3",
-        outerGlowColor: "#AE8045"
+        outerGlowColor: "#AE8045",
+        audio: "../music/Mercury.mp3"
     },
 
     venus: {
@@ -18,7 +19,8 @@ var PlanetConfig = {
         bumpMap: '../images/planets/venusbump.jpg',
         radius: 0.5,
 	    innerGlowColor: "#FBCA64",
-	    outerGlowColor: "#C68424"
+	    outerGlowColor: "#C68424",
+        audio: "../music/Venus.mp3"
     },
     
     mars: {
@@ -27,7 +29,8 @@ var PlanetConfig = {
         bumpMap: '../images/planets/marsbump1k.jpg',
         radius: 0.5,
 	    innerGlowColor: "#F29339",
-	    outerGlowColor: "#C06536"
+	    outerGlowColor: "#C06536",
+        audio: "../music/Mars.mp3"
     },
 
     jupiter: {
@@ -35,7 +38,8 @@ var PlanetConfig = {
         map: '../images/planets/jupitermap.jpg',
         radius: 0.5,
 	    innerGlowColor: "#F5D8B6",
-	    outerGlowColor: "#C2976D"
+	    outerGlowColor: "#C2976D",
+        audio: "../music/Jupiter.mp3"
     },
     
     saturn: {
@@ -46,7 +50,8 @@ var PlanetConfig = {
         ringInnerRadius: 0.6,
         ringOuterRadius: 1.2,
 	    innerGlowColor: "#F8D6B3",
-	    outerGlowColor: "#A18778"
+	    outerGlowColor: "#A18778",
+        audio: "../music/Saturn.mp3"
     },
     
     uranus: {
@@ -57,7 +62,8 @@ var PlanetConfig = {
         ringInnerRadius: 0.65,
         ringOuterRadius: 1,
 	    innerGlowColor: "#8EAFBD",
-	    outerGlowColor: "#7795A2"
+	    outerGlowColor: "#7795A2",
+        audio: "../music/Uranus.mp3"
     },
     
     neptune: {
@@ -65,7 +71,8 @@ var PlanetConfig = {
         map: '../images/planets/neptunemap.jpg',
         radius: 0.5,
         innerGlowColor: "#83C4FC",
-	    outerGlowColor: "#5C6FBE"
+	    outerGlowColor: "#5C6FBE",
+        audio: "../music/Neptune.mp3"
     },
 
     pluto: {
@@ -74,7 +81,8 @@ var PlanetConfig = {
         bumpMap: '../images/planets/plutobump1k.jpg',
         radius: 0.5,
 	    innerGlowColor: "#D0D9E0",
-	    outerGlowColor: "#93A0A7"
+	    outerGlowColor: "#93A0A7",
+        audio: "../music/Pluto.mp3"
     }
 	
 	// addHaloToTarget(planetAggregation, "#D0D9E0", "#93A0A7"); // PLUTO

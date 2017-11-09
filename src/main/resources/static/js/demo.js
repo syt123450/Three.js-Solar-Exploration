@@ -12,6 +12,8 @@ $(function () {
     solarSystemSceneController = new SolarSystemSceneController(renderer);
     solarSystemSceneController.activateScene();
 
+    activatedScene = solarSystemSceneController;
+
     $.getScript("../js/config/planetConfig.js", function () {
         $.getScript("../js/model/PlanetSceneControllers.js", function () {
             mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
@@ -74,6 +76,8 @@ $(function () {
     });
 
     $("#backLogo").click(function () {
+        activatedScene.pauseAudio();
+        solarSystemSceneController.playAudio();
         solarSystemSceneController.activateScene();
         $("#timeLine").hide();
     });
