@@ -181,9 +181,12 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
 
+        console.log(intersects[0].object);
+
         coneList.forEach(function (cone) {
+            console.log("in");
             if (intersects[0].object === cone) {
-                // console.log("find a clicked cone.");
+                console.log("find a clicked cone.");
                 enableNormalAnimate = false;
                 addTextToBoard(cone.parameters);
                 showInfo(cone.parameters.latitude, cone.parameters.longitude);

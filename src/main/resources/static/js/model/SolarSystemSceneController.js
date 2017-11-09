@@ -154,6 +154,7 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
                         console.log(planet + " clicked!");
+                        enableBackLogo();
                         activatedScene = planetsList[planet].controller;
                         audio.pause();
                         planetsList[planet].controller.activateScene();
