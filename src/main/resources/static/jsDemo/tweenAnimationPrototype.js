@@ -195,13 +195,8 @@ TweenAnimationController = function (renderer) {
 	}
 	
 	function getConeClickRotateYaxisTween(coneInitialLongitude) {
-<<<<<<< HEAD
-		var yRotationAdjustmentInDegree = 0;
-		var initialYAxisRotation = 0;
-=======
 		var yRotationAdjustmentInDegree = yRotationAdjustmentInDegree || 0;
 		var initialYAxisRotation = yHistory;
->>>>>>> 395f884954153f5886d8192ad6afa98e8dd55168
 		var finalYAxisRotation = - (90 + coneInitialLongitude + yRotationAdjustmentInDegree) / 180 * Math.PI;
 		while (initialYAxisRotation - finalYAxisRotation >= Math.PI * 2) {
 			finalYAxisRotation += Math.PI * 2;
