@@ -148,6 +148,7 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
                         console.log(planet + " clicked!");
+                        activatedScene = planetsList[planet].controller;
                         planetsList[planet].controller.activateScene();
                     }
                 }

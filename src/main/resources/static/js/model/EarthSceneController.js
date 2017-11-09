@@ -8,6 +8,7 @@ EarthSceneController = function (renderer) {
     var obliquity = 23.5;
     var clickConeAnimateTime = 3000;
     var controlParameter = 0;
+    var audioSource = "../music/Earth.mp3";
 
 
     var universeUtils = new UniverseUtils();
@@ -19,6 +20,7 @@ EarthSceneController = function (renderer) {
     var earthMesh = universeUtils.createDefaultEarthMesh();
     var atmosphereMesh = universeUtils.createDefaultAtmosphere();
     var moonMesh = universeUtils.createDefaultMoon();
+    var audio = universeUtils.loadAudio(audioSource);
 
     var coneList = [];
     var tweenMap = {};
@@ -35,15 +37,9 @@ EarthSceneController = function (renderer) {
 
 
     this.activateScene = activateScene;
-
-    function activateScene() {
-
-        $("#timeLine").show();
-        EventManager.removeEvents();
-        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
-        addEvent();
-        animate();
-    }
+    this.pauseAudio = function() {
+        audio.pause();
+    };
 
     this.addCones = function (conesParameter) {
         coneList.forEach(function (cone) {
@@ -60,6 +56,16 @@ EarthSceneController = function (renderer) {
         });
         coneList = [];
     };
+
+    function activateScene() {
+
+        audio.play();
+        $("#timeLine").show();
+        EventManager.removeEvents();
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        addEvent();
+        animate();
+    }
 
     function animate() {
 
@@ -94,7 +100,6 @@ EarthSceneController = function (renderer) {
         });
         scene.add(initEarthAggregation());
         scene.add(moonMesh);
-        loadAudio();
         initTween();
 
         return scene;
@@ -291,19 +296,6 @@ EarthSceneController = function (renderer) {
     function moveEarth(latitude, longitude) {
         console.log(latitude + "," + longitude);
         moveEarthAggregation(longitude);
-    }
-
-    function loadAudio() {
-
-        var loader = new THREE.AudioLoader();
-
-        loader.load(
-            "../music/Earth.mp3",
-            function (audioBuffer) {
-                SolarEPUtils.sound.setBuffer(audioBuffer);
-                SolarEPUtils.sound.play();
-            }
-        )
     }
 
     function initTween() {

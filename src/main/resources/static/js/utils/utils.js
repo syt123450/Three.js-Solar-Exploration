@@ -21,6 +21,3 @@ var SolarEPUtils = {
 
     listener: new THREE.AudioListener()
 };
-
-SolarEPUtils.sound = new THREE.Audio(SolarEPUtils.listener);
-SolarEPUtils.sound.setLoop(true);
