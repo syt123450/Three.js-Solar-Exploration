@@ -4,7 +4,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Prototyped explosion animation</li></ol> | <ol><li>Refine explosion animation</li></ol> | <ol><li>Slow progress</li></ol> |
 | Chenhua | <ol><li>Apply asteroid belt to solar system scene</li><li>Update solar system scene camera and lights</li></ol> | <ol><li>Update sun mesh</li><li>Coordinate solar system light</li></ol> | <ol><li>so far, hard to see the changes from light settings</li></ol> |
 | Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 
@@ -15,7 +15,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Studied explosion animation</li></ol> | <ol><li>Prototyping explosion animation</li></ol> | <ol><li>Slow progress</li></ol> |
 | Chenhua | <ol><li>Added asteroid belt demo</li><li>Debug on PlanetSceneControllers</li><li>generate sample output data</li></ol> | <ol><li>Apply asteroid demo to the SolarSystemScene</li></ol> | <ol><li>Fine</li></ol> |
 | Yuntian | <ol><li>add events demo</li><li>fix concurrent bug in event</li></ol> | <ol><li>try to solve performance problem</li></ol> | <ol><li>go well</li></ol> |
 
@@ -26,7 +26,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>meeting</li></ol> | <ol><li>stuided explosion animation</li></ol> | <ol><li>slow progress</li></ol> |
 | Chenhua | <ol><li>meeting</li></ol> | <ol><li>add asteroid belt</li><li>debug on scene controller</li></ol> | <ol><li>fine</li></ol> |
 | Yuntian | <ol><li>meeting</li></ol> | <ol><li>try to fix events bugs</li></ol> | <ol><li>go well</li></ol> |
 
