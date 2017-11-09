@@ -11,7 +11,7 @@ SolarSystemSceneController = function(renderer) {
 
     var universeMesh = universeUtils.createSolarUniverse();
     var solarAggregation = universeUtils.createSolarAggregation();
-    var asteroidBeltClouds = universeUtils.createAsteroidBelt();
+    var asteroidBeltPoints = universeUtils.createAsteroidBelt();
     var planetsList = universeUtils.createPlanetsList();
 
     var solarSystemRenderer = renderer;
@@ -66,8 +66,8 @@ SolarSystemSceneController = function(renderer) {
         scene.add(solarAggregation);
 
         // Apply Asteroid Belt
-        asteroidBeltClouds.forEach(function addPointCloud(pointCloud) {
-            scene.add(pointCloud);
+        asteroidBeltPoints.forEach(function addPoints(points) {
+            scene.add(points);
         });
 
         return scene;
@@ -96,8 +96,8 @@ SolarSystemSceneController = function(renderer) {
         }
 
         var k;
-        for (k=0; k <asteroidBeltClouds.length; k++){
-            asteroidBeltClouds[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k+1));
+        for (k=0; k <asteroidBeltPoints.length; k++){
+            asteroidBeltPoints[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k+1));
         }
     }
 

@@ -430,8 +430,13 @@ UniverseUtils = function () {
     }
 
     function createAsteroidBelt(){
-        var pointClouds = [];
-        var material = new THREE.PointCloudMaterial({
+        var points = [];
+        // var material = new THREE.PointCloudMaterial({
+        //     color: SolarConfig["asteroidBelt"].color,
+        //     size: SolarConfig["asteroidBelt"].size
+        // });
+
+        var material = new THREE.PointsMaterial({
             color: SolarConfig["asteroidBelt"].color,
             size: SolarConfig["asteroidBelt"].size
         });
@@ -448,10 +453,10 @@ UniverseUtils = function () {
 
                 geometry.vertices.push(new THREE.Vector3(x, y, z));
             }
-            pointClouds[j] = new THREE.PointCloud(geometry, material);
+            points[j] = new THREE.Points(geometry, material);
         }
 
-        return pointClouds;
+        return points;
     }
 
     function createOrbit(radius) {
