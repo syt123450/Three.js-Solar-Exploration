@@ -5,7 +5,7 @@
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>add sun texture</li><li>light coordination</li><li>bug fixing</li></ol> | <ol><li>Light coordinations</li></ol> | <ol><li>Three.js currently doesn't support limit lights on specific objects</li></ol> |
 | Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 
 ***
