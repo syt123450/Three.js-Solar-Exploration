@@ -1,3 +1,13 @@
+
+### [Nov.08.2017] Explosion animation
+* Refining explosion animation
+
+### [Nov.07.2017] Explosion animation
+* Prototyping explosion animation
+
+### [Nov.06.2017] Explosion animation
+* Studied explosion animation
+
 ### [Oct.30.2017 - Nov.05.2017] Core Values
 * Communication
   * Talk to team members about how to work together to achieve maximum work efficiency

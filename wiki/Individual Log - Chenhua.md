@@ -1,3 +1,8 @@
+### [Nov. 7th, 2017]
+Development:
+  * Apply Asteroid Belt to the solar system scene
+  * Update camera direction and light settings of solar system scene
+***
 ### [Nov. 6th, 2017]
 Development:
   * Add AsteroidBelt Demo
