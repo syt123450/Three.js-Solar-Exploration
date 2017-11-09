@@ -6,7 +6,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li>Prototyped explosion animation</li></ol> | <ol><li>Refine explosion animation</li></ol> | <ol><li>Slow progress</li></ol> |
 | Chenhua | <ol><li>Apply asteroid belt to solar system scene</li><li>Update solar system scene camera and lights</li></ol> | <ol><li>Update sun mesh</li><li>Coordinate solar system light</li></ol> | <ol><li>so far, hard to see the changes from light settings</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>solve performance problem</li><li>update front end</li></ol> | <ol><li>update images</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 
