@@ -384,6 +384,23 @@ UniverseUtils = function () {
         return sound;
     };
 
+    this.loadSolarAudio = function(audioSource) {
+
+        var sound = new THREE.Audio(SolarEPUtils.listener);
+        sound.setLoop(true);
+        var loader = new THREE.AudioLoader();
+
+        loader.load(
+            audioSource,
+            function (audioBuffer) {
+                sound.setBuffer(audioBuffer);
+                sound.play();
+            }
+        );
+
+        return sound;
+    };
+
     function createDefaultSun() {
         return new THREE.Mesh(
             new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),

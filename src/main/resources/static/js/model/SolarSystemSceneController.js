@@ -13,6 +13,7 @@ SolarSystemSceneController = function(renderer) {
     var solarAggregation = universeUtils.createSolarAggregation();
     var asteroidBeltPoints = universeUtils.createAsteroidBelt();
     var planetsList = universeUtils.createPlanetsList();
+    var audio = universeUtils.loadSolarAudio(SolarConfig.audio);
 
     var solarSystemRenderer = renderer;
     var solarSystemScene = init();
@@ -30,6 +31,10 @@ SolarSystemSceneController = function(renderer) {
     // this.sideView = updateCameraPosition(2);
 
 
+    this.playAudio = function() {
+        audio.play();
+    };
+
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
@@ -40,6 +45,7 @@ SolarSystemSceneController = function(renderer) {
 
     function activateScene(){
 
+        // audio.play();
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
@@ -149,6 +155,7 @@ SolarSystemSceneController = function(renderer) {
                     if (intersects[i].object === planetsList[planet].mesh) {
                         console.log(planet + " clicked!");
                         activatedScene = planetsList[planet].controller;
+                        audio.pause();
                         planetsList[planet].controller.activateScene();
                     }
                 }

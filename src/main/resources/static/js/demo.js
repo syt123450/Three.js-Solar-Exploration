@@ -77,6 +77,7 @@ $(function () {
 
     $("#backLogo").click(function () {
         activatedScene.pauseAudio();
+        solarSystemSceneController.playAudio();
         solarSystemSceneController.activateScene();
         $("#timeLine").hide();
     });
