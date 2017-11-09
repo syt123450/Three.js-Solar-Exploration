@@ -396,6 +396,8 @@ EarthSceneController = function (renderer) {
             earthMesh.parent.position.x = posStart.pos;
 	        earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 	        earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
+        }).onStart(function() {
+            console.log(this.pos);
         });
 
         return tween;

@@ -493,16 +493,25 @@ UniverseUtils = function () {
 
     function createOneMeteor() {
 
-        var meteor = new THREE.Mesh();
+        var meteor = new THREE.Sprite();
+        // var meteor = new THREE.Mesh();
 
-        meteor.geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
-        meteor.material = new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load('../images/meteor.png'),
+        // meteor.geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
+        // // meteor.material = new THREE.MeshBasicMaterial({
+        // //     map: new THREE.TextureLoader().load('../images/meteor.png'),
+        // //     opacity: 0.9,
+        // //     transparent: true
+        // // });
+
+        meteor.material = new THREE.SpriteMaterial({
             opacity: 0.9,
-            transparent: true
+            transparent: true,
+            map: new THREE.TextureLoader().load('../images/meteor.png')
         });
 
         meteor.position.z = -3;
+
+        meteor.scale.set(0.4, 0.4, 0.001);
 
         var initSeed = 3 * Math.random();
 
