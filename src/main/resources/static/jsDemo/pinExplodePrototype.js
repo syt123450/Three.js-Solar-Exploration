@@ -8,6 +8,11 @@ PinController = function (renderer) {
     var coneInitSize = 0.015;
     var grow = true;
     var allowExplode = false;
+    var startExplode = false;
+    var explodeStageOne = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_one.jpg');
+    var explodeStageTwo = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_two.jpg');
+    var explodeStageThree = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_three.jpg');
+    var explodeStageFour = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_four.jpg');
     /** CONSTANTS **/
     var RADIUS = 0.55;
     var OBLIUITY = 23.5; // degrees
@@ -73,7 +78,7 @@ PinController = function (renderer) {
             rotateEarth();
         }
 
-        if (allowExplode){
+        if (startExplode){
             explosion(cone.point);
         }
 
@@ -202,10 +207,10 @@ PinController = function (renderer) {
             }
 
             if (_isTargetClicked(earthMesh)) {
-                allowExplode = true;
+                startExplode = true;
                 explodeStart = clock.getElapsedTime();
                 earthAggregation.remove(atmosphereMesh);
-                earthAggregation.remove(earthMesh);
+                // earthAggregation.remove(earthMesh); //TODO
             }
 
             // if (_isTargetClicked(cone)) {
@@ -298,342 +303,373 @@ PinController = function (renderer) {
     }
 
     function explosion(point){
-        var explosionSpeed = 0.02;
-        if (particles.length > 0) {
-            // console.log("particles")
-            particles.forEach(function(elem, index, array) {
-                switch (elem.name) {
-                    case "part0":
-                        elem.position.x += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part1":
-                        elem.position.y += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part2":
-                        elem.position.z -= explosionSpeed; //need to change
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part3":
-                        elem.position.x -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part4":
-                        elem.position.y -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part5":
-                        elem.position.z -= explosionSpeed; //finished on axis
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part6":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part7":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part8":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part9":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part10":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part11":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part12":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part13":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part14":
-                        elem.position.x -= explosionSpeed/2; //////////////////////////////////////////////
-                        elem.position.y += explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part15":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part16":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part17":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part18":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part19":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part20":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part21":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part22":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part23":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part24":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part25":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part26":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part27":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part28":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part29":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part30":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part31":
-                        elem.position.x -= explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                    break;
-                    case "part32":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part33":
-                        elem.position.x -= explosionSpeed; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part34":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part35":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part36":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.position.z -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part37":
-                        elem.position.x += explosionSpeed/2; ///////////////////////////////
-                        elem.position.y += explosionSpeed;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part38":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part39":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part40":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part41":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y += explosionSpeed;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part42":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.position.z += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part43":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y += explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part44":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y += explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part45":                          ////////////////
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part46":
-                        elem.position.x += explosionSpeed; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
-                    case "part47":
-                        elem.position.x += explosionSpeed/2; //
-                        elem.position.y -= explosionSpeed/2;
-                        elem.rotateX(0.1);
-                        elem.rotateY(0.1);
-                        break;
 
-                    default:
-                        break;
-                }
-                console.log(timeNow);
-                console.log(clock.getElapsedTime());
-                if (explodeStart - clock.getElapsedTime() < -1.5) {
-                    earthAggregation.remove(elem);
-                    particles.splice(index, 1);
-                }
+        if (earthMesh.scale.x > 0.15){
+            earthMesh.scale.x -= 0.005;
+            earthMesh.scale.y -= 0.005;
+            earthMesh.scale.z -= 0.005;
+        }
 
-            })
+        if (earthMesh.scale.x < 1 && earthMesh.scale.x > 0.8)
+        {
+            earthMesh.material.map = explodeStageOne;
+        }
+
+        if (earthMesh.scale.x < 0.8 && earthMesh.scale.x > 0.6)
+        {
+            earthMesh.material.map = explodeStageTwo;
+        }
+
+        if (earthMesh.scale.x < 0.6 && earthMesh.scale.x > 0.3)
+        {
+            earthMesh.material.map = explodeStageThree;
+
+        }
+
+        if (earthMesh.scale.x < 0.16)
+        {
+            earthAggregation.remove(earthMesh);
+            allowExplode = true;
+        }
+
+        if (allowExplode === true){
+            var explosionSpeed = 0.02;   //0.02
+            if (particles.length > 0) {
+                // console.log("particles")
+                particles.forEach(function(elem, index, array) {
+                    switch (elem.name) {
+                        case "part0":
+                            elem.position.x += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part1":
+                            elem.position.y += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part2":
+                            elem.position.z -= explosionSpeed; //need to change
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part3":
+                            elem.position.x -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part4":
+                            elem.position.y -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part5":
+                            elem.position.z -= explosionSpeed; //finished on axis
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part6":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part7":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part8":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part9":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part10":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part11":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part12":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part13":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part14":
+                            elem.position.x -= explosionSpeed/2; //////////////////////////////////////////////
+                            elem.position.y += explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part15":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part16":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part17":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part18":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part19":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part20":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part21":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part22":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part23":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part24":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part25":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part26":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part27":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part28":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part29":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part30":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part31":
+                            elem.position.x -= explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part32":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part33":
+                            elem.position.x -= explosionSpeed; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part34":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part35":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part36":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.position.z -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part37":
+                            elem.position.x += explosionSpeed/2; ///////////////////////////////
+                            elem.position.y += explosionSpeed;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part38":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part39":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part40":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part41":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y += explosionSpeed;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part42":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.position.z += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part43":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y += explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part44":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y += explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part45":                          ////////////////
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part46":
+                            elem.position.x += explosionSpeed; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+                        case "part47":
+                            elem.position.x += explosionSpeed/2; //
+                            elem.position.y -= explosionSpeed/2;
+                            elem.rotateX(0.1);
+                            elem.rotateY(0.1);
+                            break;
+
+                        default:
+                            break;
+                    }
+                    console.log(timeNow);
+                    console.log(clock.getElapsedTime());
+                    if (explodeStart - clock.getElapsedTime() < -5) {
+                        earthAggregation.remove(elem);
+                        particles.splice(index, 1);
+                    }
+
+                })
+            }
         }
     }
 
