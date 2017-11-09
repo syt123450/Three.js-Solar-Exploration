@@ -1,4 +1,15 @@
 
+### [Nov. 9th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+
+***
+
 ### [Nov. 8th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
