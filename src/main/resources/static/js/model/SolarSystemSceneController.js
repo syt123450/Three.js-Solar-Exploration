@@ -6,7 +6,6 @@ SolarSystemSceneController = function(renderer) {
 
     // Light and Camera
     var universeUtils = new UniverseUtils();
-    var light = new THREE.PointLight(0xffffff, 1.2, 0);
     var camera = universeUtils.createDefaultCamera();
 
     var universeMesh = universeUtils.createSolarUniverse();
@@ -50,9 +49,29 @@ SolarSystemSceneController = function(renderer) {
         var scene = new THREE.Scene();
 
         // Lights
-        scene.add(new THREE.AmbientLight(0x222222));
-        scene.add(light);
-        light.position.set(0, 0, 0);
+        var lights = [];
+        lights[0] = new THREE.PointLight(0xffffff, 0.82, 0);
+        lights[0].position.set(0, 0, 0);
+        lights[1] = new THREE.AmbientLight(0xf5f5f5, 0.45);
+
+        lights[2] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[2].position.set(0, 10, 0);
+        lights[2].target = solarAggregation;
+        lights[3] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[3].position.set(0, -10, 0);
+        lights[3].target = solarAggregation;
+        lights[4] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[4].position.set(0, 0, 10);
+        lights[4].target = solarAggregation;
+        lights[5] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[5].position.set(0, 0, -10);
+        lights[5].target = solarAggregation;
+
+
+        lights.forEach(function addLight(light) {
+            scene.add(light);
+        });
+
 
         // Camera
         scene.add(camera);
@@ -84,6 +103,8 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function rotationAndRevolution() {
+
+        // solarAggregation.rotation.y += SolarConfig['sun'].rotateSpeed;
 
         for (var planet in planetsList) {
             // Rotations
