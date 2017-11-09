@@ -1,3 +1,11 @@
+### [Nov. 8th, 2017]
+Development:
+  * Bug fixing
+    * Update deprecated pointCloud to points
+    * Fix rotateY conflicts with tween
+  * Update sun texture
+  * Coordinate solar scene light configs
+***
 ### [Nov. 7th, 2017]
 Development:
   * Apply Asteroid Belt to the solar system scene

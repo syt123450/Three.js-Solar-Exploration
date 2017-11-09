@@ -8,6 +8,13 @@ var SolarConfig = {
     audio: "../music/Epic.mp3",
 
     ConfigHelper: {
+        sun: function (sunRadius) {
+            return {
+                rotateSpeed: 0.05,
+                map: '../images/fire2.jpg',
+                radius: sunRadius
+            }
+        },
 
         mercury: function (sunRadius) {
             return {
@@ -136,6 +143,7 @@ var SolarConfig = {
     },
 
     init: function() {
+        this.sun = this.ConfigHelper.sun(this.sunRadius);
         this.mercury = this.ConfigHelper.mercury(this.sunRadius);
         this.venus = this.ConfigHelper.venus(this.sunRadius);
         this.earth = this.ConfigHelper.earth(this.sunRadius);

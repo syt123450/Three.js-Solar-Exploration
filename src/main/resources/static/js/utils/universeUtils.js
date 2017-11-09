@@ -402,11 +402,20 @@ UniverseUtils = function () {
     };
 
     function createDefaultSun() {
-        return new THREE.Mesh(
-            new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
-            new THREE.MeshBasicMaterial({
-                color: 'yellow'
-            }));
+        // return new THREE.Mesh(
+        //     new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
+        //     new THREE.MeshBasicMaterial({
+        //         color: 'yellow'
+        //     }));
+
+        var sphereMesh = new THREE.Mesh();
+        sphereMesh.geometry = new THREE.SphereGeometry(SolarConfig['sun'].radius, 64, 64);
+        sphereMesh.material = new THREE.MeshPhongMaterial({
+            map: new THREE.TextureLoader().load(SolarConfig['sun'].map)
+        });
+        sphereMesh.castShadow = false;       //default is false
+        sphereMesh.receiveShadow = false;    //default is false
+        return sphereMesh;
     }
 
     function createPlanetMesh(planetParameters){
@@ -420,7 +429,7 @@ UniverseUtils = function () {
 
     function createTerrestrialPlanet(planetParameters) {
         var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 32, 32);
+        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 64, 64);
         sphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(planetParameters.map),
             bumpScale: 0.05,
@@ -434,7 +443,7 @@ UniverseUtils = function () {
 
     function createJovianPlanet(planetParameters) {
         var sphereMesh = new THREE.Mesh();
-        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 32, 32);
+        sphereMesh.geometry = new THREE.SphereGeometry(planetParameters.radius, 64, 64);
         sphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(planetParameters.map)
         });
