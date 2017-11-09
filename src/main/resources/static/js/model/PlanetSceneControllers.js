@@ -62,9 +62,8 @@ PlanetSceneController = function (renderer, config) {
 
     function rotatePlanet() {
 
-        mesh.rotation.y += 0.0005;
-        //this line case the concurrent bug, in order to fix the bug, I have to disable it
-        // planetAggregation.rotateY(0.001);
+        mesh.rotation.y += 0.0005;              // Rotate planet mesh
+        planetAggregation.rotation.y += 0.001;  // Rotate for potential Ring
     }
 
     /* Initialization Functions */
