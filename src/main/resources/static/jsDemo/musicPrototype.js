@@ -11,6 +11,7 @@ EarthSceneController = function (renderer) {
     var earthMesh = universeUtils.createDefaultEarthMesh();
     var atmosphereMesh = universeUtils.createDefaultAtmosphere();
     var listener = new THREE.AudioListener();
+    var sound = new THREE.Audio(listener);
 
     var earthRenderer = renderer;
     var earthScene = init();
@@ -47,12 +48,11 @@ EarthSceneController = function (renderer) {
     }
 
     function loadAudio() {
-        var sound = new THREE.Audio(listener);
         sound.setLoop(true);
         var loader = new THREE.AudioLoader();
 
         loader.load(
-            "../music/Earth.mp3",
+            "../music/Finale.mp3",
             function (audioBuffer) {
                 sound.setBuffer(audioBuffer);
                 sound.play();

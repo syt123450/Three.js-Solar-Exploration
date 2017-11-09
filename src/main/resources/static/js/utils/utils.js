@@ -17,5 +17,10 @@ var SolarEPUtils = {
 
     mouse: new THREE.Vector2(),
 
-    animationFrame: null
+    animationFrame: null,
+
+    listener: new THREE.AudioListener()
 };
+
+SolarEPUtils.sound = new THREE.Audio(SolarEPUtils.listener);
+SolarEPUtils.sound.setLoop(true);
