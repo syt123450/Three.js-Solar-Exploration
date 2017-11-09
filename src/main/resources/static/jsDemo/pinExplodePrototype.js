@@ -320,10 +320,14 @@ PinController = function (renderer) {
             earthMesh.material.map = explodeStageTwo;
         }
 
-        if (earthMesh.scale.x < 0.6 && earthMesh.scale.x > 0.3)
+        if (earthMesh.scale.x < 0.6 && earthMesh.scale.x > 0.4)
         {
             earthMesh.material.map = explodeStageThree;
+        }
 
+        if (earthMesh.scale.x < 0.4 && earthMesh.scale.x > 0.3)
+        {
+            earthMesh.material.map = explodeStageFour;
         }
 
         if (earthMesh.scale.x < 0.16)
