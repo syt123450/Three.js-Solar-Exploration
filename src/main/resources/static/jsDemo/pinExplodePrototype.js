@@ -5,14 +5,24 @@
  * @constructor
  */
 PinController = function (renderer) {
-    var coneInitSize = 0.015;
+    var coneInitSize = 0.02;   //0.03
     var grow = true;
     var allowExplode = false;
     var startExplode = false;
-    var explodeStageOne = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_one.jpg');
-    var explodeStageTwo = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_two.jpg');
-    var explodeStageThree = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_three.jpg');
-    var explodeStageFour = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_four.jpg');
+    // var explodeStageOne = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_one.jpg');
+    // var explodeStageTwo = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_two.jpg');
+    // var explodeStageThree = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_three.jpg');
+    // var explodeStageFour = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_four.jpg');
+    var explode10 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_10.jpg');
+    var explode20 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_20.jpg');
+    var explode30 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_30.jpg');
+    var explode40 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_40.jpg');
+    var explode50 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_50.jpg');
+    var explode60 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_60.jpg');
+    var explode70 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_70.jpg');
+    var explode80 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_80.jpg');
+    var explode90 = new THREE.TextureLoader().load('../images/explosion/earthmap1k_90.jpg');
+
     /** CONSTANTS **/
     var RADIUS = 0.55;
     var OBLIUITY = 23.5; // degrees
@@ -198,25 +208,18 @@ PinController = function (renderer) {
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
             if (_isTargetClicked(cone)) {
-                console.log("test");
-                console.log(earthMesh);
-                earthMesh.material.map = new THREE.TextureLoader().load('../images/explosion/2_no_clouds_4k - explode_stage_one.jpg');    //make red earth image
+                earthMesh.material.map = explode10;    //make red earth image
                 earthAggregation.remove(atmosphereMesh);
-
-                console.log("test2");
             }
 
             if (_isTargetClicked(earthMesh)) {
                 startExplode = true;
                 explodeStart = clock.getElapsedTime();
                 earthAggregation.remove(atmosphereMesh);
+                earthMesh.remove(cone);
                 // earthAggregation.remove(earthMesh); //TODO
             }
 
-            // if (_isTargetClicked(cone)) {
-            //     addExplosion(cone.position, "cone");
-            //     earthMesh.remove(cone);
-            // }
         }
     }
 
@@ -257,7 +260,7 @@ PinController = function (renderer) {
 
         timeNow = clock.getElapsedTime();
         console.log(timeNow);
-        var texture = new THREE.TextureLoader().load('../images/boulderTexture.jpg');
+        var texture = new THREE.TextureLoader().load('../images/explosion/fireTexture1.jpg'); //'../images/boulderTexture.jpg'
         for (var i = 0; i < 47; i++) {
             var geometry = new THREE.OctahedronGeometry(0.05, 1);
             var material = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
@@ -277,7 +280,7 @@ PinController = function (renderer) {
             particles.push(part);
 
         }
-       }
+    }
     function growPin() {
 
         if(cone.scale.x > 1.2) {
@@ -304,33 +307,21 @@ PinController = function (renderer) {
 
     function explosion(point){
 
-        if (earthMesh.scale.x > 0.15){
+        if (earthMesh.scale.x > 0.1){
             earthMesh.scale.x -= 0.005;
             earthMesh.scale.y -= 0.005;
             earthMesh.scale.z -= 0.005;
         }
+        if (earthMesh.scale.x < 0.9 && earthMesh.scale.x > 0.8){earthMesh.material.map = explode10;}
+        if (earthMesh.scale.x < 0.8 && earthMesh.scale.x > 0.7){earthMesh.material.map = explode20;}
+        if (earthMesh.scale.x < 0.7 && earthMesh.scale.x > 0.6){earthMesh.material.map = explode30;}
+        if (earthMesh.scale.x < 0.6 && earthMesh.scale.x > 0.5){earthMesh.material.map = explode40;}
+        if (earthMesh.scale.x < 0.5 && earthMesh.scale.x > 0.4){earthMesh.material.map = explode50;}
+        if (earthMesh.scale.x < 0.4 && earthMesh.scale.x > 0.3){earthMesh.material.map = explode60;}
+        if (earthMesh.scale.x < 0.3 && earthMesh.scale.x > 0.2){earthMesh.material.map = explode70;}
+        if (earthMesh.scale.x < 0.2 && earthMesh.scale.x > 0.1){earthMesh.material.map = explode80;}
 
-        if (earthMesh.scale.x < 1 && earthMesh.scale.x > 0.8)
-        {
-            earthMesh.material.map = explodeStageOne;
-        }
-
-        if (earthMesh.scale.x < 0.8 && earthMesh.scale.x > 0.6)
-        {
-            earthMesh.material.map = explodeStageTwo;
-        }
-
-        if (earthMesh.scale.x < 0.6 && earthMesh.scale.x > 0.4)
-        {
-            earthMesh.material.map = explodeStageThree;
-        }
-
-        if (earthMesh.scale.x < 0.4 && earthMesh.scale.x > 0.3)
-        {
-            earthMesh.material.map = explodeStageFour;
-        }
-
-        if (earthMesh.scale.x < 0.16)
+        if (earthMesh.scale.x < 0.11)
         {
             earthAggregation.remove(earthMesh);
             allowExplode = true;
@@ -353,7 +344,8 @@ PinController = function (renderer) {
                             elem.rotateY(0.1);
                             break;
                         case "part2":
-                            elem.position.z -= explosionSpeed; //need to change
+                            elem.position.y -= explosionSpeed/2; //camera axis
+                            elem.position.x += explosionSpeed/2;
                             elem.rotateX(0.1);
                             elem.rotateY(0.1);
                             break;
@@ -368,7 +360,8 @@ PinController = function (renderer) {
                             elem.rotateY(0.1);
                             break;
                         case "part5":
-                            elem.position.z -= explosionSpeed; //finished on axis
+                            elem.position.y += explosionSpeed/2; //camera axis
+                            elem.position.x += explosionSpeed/2;
                             elem.rotateX(0.1);
                             elem.rotateY(0.1);
                             break;
