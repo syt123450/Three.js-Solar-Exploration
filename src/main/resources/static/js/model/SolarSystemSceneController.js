@@ -60,18 +60,25 @@ SolarSystemSceneController = function(renderer) {
         lights[0].position.set(0, 0, 0);
         lights[1] = new THREE.AmbientLight(0xf5f5f5, 0.45);
 
-        lights[2] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        var distance = 15;
+        lights[2] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
         lights[2].position.set(0, 10, 0);
         lights[2].target = solarAggregation;
-        lights[3] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[3] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
         lights[3].position.set(0, -10, 0);
         lights[3].target = solarAggregation;
-        lights[4] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[4] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
         lights[4].position.set(0, 0, 10);
         lights[4].target = solarAggregation;
-        lights[5] = new THREE.SpotLight(0xffffff, 1.5, 12, Math.PI/2, 0);
+        lights[5] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
         lights[5].position.set(0, 0, -10);
         lights[5].target = solarAggregation;
+        lights[6] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
+        lights[6].position.set(10, 0, 0);
+        lights[6].target = solarAggregation;
+        lights[7] = new THREE.SpotLight(0xffffff, 1.5, distance, Math.PI/2, 0);
+        lights[7].position.set(-10, 0, 0);
+        lights[7].target = solarAggregation;
 
 
         lights.forEach(function addLight(light) {
