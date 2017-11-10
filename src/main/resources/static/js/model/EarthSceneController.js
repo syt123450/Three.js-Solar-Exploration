@@ -304,16 +304,6 @@ EarthSceneController = function (renderer) {
 
     function initTween() {
 
-<<<<<<< HEAD
-        // tweenMap.adjustEarth = adjustEarthTween();
-        // tweenMap.translate = translateTween();
-        // console.log('translation tween=================', tweenMap.translate);
-        // tweenMap.adjustCone = null;
-        // tweenMap.resumeCone = resumeConeTween();
-        // tweenMap.resumeEarth = resumeEarthTween();
-        // tweenMap.translateBack = null;
-        meteors.initSweepTween();
-=======
         tweenMap.adjustEarth = adjustEarthTween();
         tweenMap.translate = translateTween();
         console.log('translation tween=================', tweenMap.translate);
@@ -323,7 +313,6 @@ EarthSceneController = function (renderer) {
         tweenMap.translateBack = null;
         meteors.createSweepTween().start();
         stars.createFlashTween().start();
->>>>>>> a3d214009332abdf15851f20da7eeca2ef9e9ada
     }
 
     function moveEarthAggregation(coneLongitude) {
