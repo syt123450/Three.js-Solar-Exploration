@@ -424,7 +424,7 @@ UniverseUtils = function () {
 
         var sphereMesh = new THREE.Mesh();
         sphereMesh.geometry = new THREE.SphereGeometry(SolarConfig['sun'].radius, 64, 64);
-        sphereMesh.material = new THREE.MeshPhongMaterial({
+        sphereMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(SolarConfig['sun'].map)
         });
         sphereMesh.castShadow = false;       //default is false
