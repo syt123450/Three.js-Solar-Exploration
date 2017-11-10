@@ -1,3 +1,8 @@
+### [Nov. 9th, 2017]
+Development:
+  * Coordinate light config - Add 6 Spotlights for the sun
+  * Make sun mesh rotation
+***
 ### [Nov. 8th, 2017]
 Development:
   * Bug fixing

@@ -1,4 +1,15 @@
 
+### [Nov. 10th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>Sun light coordination</li><li>sun mesh rotation</li></ol> | <ol><li>Meeting</li><li>sun light coordination</li></ol> | <ol><li>spotlight has a larger range than expectation</li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+
+***
+
 ### [Nov. 9th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

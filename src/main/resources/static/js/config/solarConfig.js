@@ -10,7 +10,7 @@ var SolarConfig = {
     ConfigHelper: {
         sun: function (sunRadius) {
             return {
-                rotateSpeed: 0.05,
+                rotateSpeed: 0.001,
                 map: '../images/fire2.jpg',
                 radius: sunRadius
             }
