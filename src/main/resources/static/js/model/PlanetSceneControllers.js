@@ -55,7 +55,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function initTween() {
-        meteors.initSweepTween();
+        meteors.createSweepTween().start();
     }
 
     function activateScene() {

@@ -109,40 +109,30 @@ UniverseUtils = function () {
         meteors[0] = createOneMeteor();
         meteors[1] = createOneMeteor();
 
-        // meteors.sweepMeteors = function () {
-        //
-        //     this.forEach(function (meteor) {
-        //
-        //         if (meteor.position.x <= -4) {
-        //             meteor.position.x = 3 * Math.random();
-        //             meteor.position.y = 3 * Math.random();
-        //         }
-        //
-        //         meteor.position.x -= 0.01;
-        //         meteor.position.y -= 0.01;
-        //     });
-        // };
+        meteors.createSweepTween = function() {
 
-        meteors.forEach(function(meteor) {
-	        var startPosition = {x: 0};
-	        // console.log(meteor);
-	        var tween = new TWEEN.Tween(startPosition)
-		        .to({ x: -4 }, 6000);
-            tween.onUpdate(function() {
-			        if ( meteor.position.x <= -4) {
-				        meteor.position.x = 3 * Math.random();
-				        meteor.position.y = 3 * Math.random();
-			        }
-			        meteor.position.x = startPosition.x;
-		        });
-	        tween.start();
-        });
+            var meteors = this;
 
-        meteors.initSweepTween = function() {
-            this.forEach(function(meteor) {
-                meteor.tween.start();
-            })
+            var sweepTween = new TWEEN.Tween({x: 0})
+                .to({x: 1}, 6000);
+
+            sweepTween.onUpdate(function() {
+
+                meteors.forEach(function(meteor) {
+                    meteor.position.x -= 0.01;
+                    meteor.position.y -= 0.01;
+                    if (meteor.position.x <= -4 || meteor.position.y <= -4) {
+                        meteor.position.x = 3 * Math.random();
+                        meteor.position.y = 3 * Math.random();
+                    }
+                });
+            });
+
+            sweepTween.repeat(Infinity);
+
+            return sweepTween;
         };
+
         meteors.name = 'meteors';
         return meteors;
     };
@@ -556,34 +546,9 @@ UniverseUtils = function () {
             transparent: true
         });
 
+        meteor.position.x -= 3 * Math.random();
+        meteor.position.y -= 3 * Math.random();
         meteor.position.z = -3;
-
-        // var meteor = new THREE.Sprite();
-        //
-        // meteor.material = new THREE.SpriteMaterial({
-        //     opacity: 0.5,
-        //     transparent: true,
-        //     map: new THREE.TextureLoader().load('../images/meteor.png')
-        // });
-        //
-        // meteor.position.z = -3;
-        //
-        // meteor.scale.set(0.5, 0.5, 0.001);
-
-        var initSeed = 3 * Math.random();
-
-        meteor.tween = new TWEEN.Tween({x: initSeed})
-            .to({x: -4}, 6000);
-        meteor.tween.onUpdate(function() {
-            meteor.position.x = meteor.initX - (initSeed - this.x);
-            meteor.position.y = meteor.initY - (initSeed - this.x);
-            if (this.x == -4) {
-                meteor.initX = 3 * Math.random();
-                meteor.initY = 3 * Math.random();
-            }
-        });
-
-        meteor.tween.repeat(Infinity);
 
         return meteor;
     }

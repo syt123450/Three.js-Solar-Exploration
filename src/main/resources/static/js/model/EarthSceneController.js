@@ -310,7 +310,7 @@ EarthSceneController = function (renderer) {
         tweenMap.resumeCone = resumeConeTween();
         tweenMap.resumeEarth = resumeEarthTween();
         tweenMap.translateBack = null;
-        meteors.initSweepTween();
+        meteors.createSweepTween().start();
     }
 
     function moveEarthAggregation(coneLongitude) {
