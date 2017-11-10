@@ -1,0 +1,125 @@
+Mercury
+Discovery: Known to the ancients and visible to the naked eye
+Named for: Messenger of the Roman gods
+Diameter: 3031 miles (4,878 km)
+Mass: 3.3011×10^23kg (0.055 Earths)
+Orbital Period: 88 Earth days
+Rotation Period: 58.6 Earth days
+Composition by volume:
+42% molecular oxygen
+29.0% sodium
+22.0% hydrogen
+6.0% helium
+0.5% potassium
+Trace amounts of argon, nitrogen, carbon dioxide, water vapor, xenon, krypton, and neon
+
+Venus
+Discovery: Known to the ancients and visible to the naked eye
+Named for: Roman goddess of love and beauty
+Diameter: 7,521 miles (12,104 km)
+Mass: 4.8675×10^24kg (0.815 Earths)
+Orbital Period: 225 Earth days
+Rotation Period: 241 Earth days
+Composition by volume:
+96.5% carbon dioxide
+3.5% nitrogen
+0.015% sulfur dioxide
+0.007% argon
+0.002% water vapour
+0.0017% carbon monoxide
+0.0012% helium
+0.0007% neon
+Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride
+
+Earth
+Diameter: 7,926 miles (12,760 km)
+Mass: 5.97237×10^24kg
+Orbital Period: 365.24 days
+Rotation Period: 23 hours, 56 minutes
+Composition by volume:
+78.08% nitrogen (N2; dry air)
+20.95% oxygen (O2)
+0.930% argon
+0.0402% carbon dioxide
+~ 1% water vapor (climate-variable)
+
+Mars
+Discovery: Known to the ancients and visible to the naked eye
+Named for: Roman god of war
+Diameter: 4,217 miles (6,787 km)
+Mass: 6.4171×10^23kg (0.107 Earths)
+Orbital Period: 687 Earth days
+Rotation Period: Just more than one Earth day (24 hours, 37 minutes)
+Composition by volume:
+95.97% carbon dioxide
+1.93% argon
+1.89% nitrogen
+0.146% oxygen
+0.0557% carbon monoxide
+
+Jupiter
+Discovery: Known to the ancients and visible to the naked eye
+Named for: Ruler of the Roman gods
+Diameter: 86,881 miles (139,822 km)
+Mass: 1.8982×10^27kg (317.8 Earths)
+Orbital Period: 11.9 Earth years
+Rotation Period: 9.8 Earth hours
+Composition by volume:
+89.8±2.0%	hydrogen (H2)
+10.2±2.0%	helium (He)
+0.3±0.1%	methane (CH4)
+0.026±0.004%	ammonia (NH3)
+0.0028±0.001%	hydrogen deuteride (HD)
+0.0006±0.0002%	ethane (C2H6)
+0.0004±0.0004%	water (H2O)
+
+Saturn
+Discovery: Known to the ancients and visible to the naked eye
+Named for: Roman god of agriculture
+Diameter: 74,900 miles (120,500 km)
+Mass: 5.6834×10^26kg (95.159 Earths)
+Orbital Period: 29.5 Earth years
+Rotation Period: About 10.5 Earth hours
+Composition by volume:
+96.3±2.4%	hydrogen (H2)
+3.25±2.4%	helium (He)
+0.45±0.2%	methane (CH4)
+0.0125±0.0075%	ammonia (NH3)
+0.0110±0.0058%	hydrogen deuteride (HD)
+0.0007±0.00015%	ethane (C2H6)
+
+Uranus
+Discovery: 1781 by William Herschel (was thought previously to be a star)
+Named for: Personification of heaven in ancient myth
+Diameter: 31,763 miles (51,120 km)
+Mass: 8.68×10^25kg (14.536 Earths)
+Orbital Period: 84 Earth years
+Rotation Period: 18 Earth hours
+Composition by volume:
+83 ± 3% hydrogen (H2)
+15 ± 3% helium (He)
+2.3% methane (CH4)
+0.009% (0.007–0.015%) hydrogen deuteride (HD)
+
+Neptune
+Discovery: 1846
+Named for: Roman god of water
+Diameter: 30,775 miles (49,530 km)
+Mass: 1.0243×10^26kg (17.147 Earths)
+Orbital Period: 165 Earth years
+Rotation Period: 19 Earth hours
+Composition by volume	Gases:
+80%±3.2% hydrogen (H2)
+19%±3.2% helium (He)
+1.5%±0.5% methane (CH4)
+~0.019% hydrogen deuteride (HD)
+~0.00015% ethane (C2H6)
+
+Pluto
+Discovery: 1930 by Clyde Tombaugh
+Named for: Roman god of the underworld, Hades
+Diameter: 1,430 miles (2,301 km)
+Mass: 1.303×10^22 kg (0.00218 Earths)
+Orbital Period: 248 Earth years
+Rotation Period: 6.4 Earth day
+Composition: Nitrogen, methane, carbon monoxide
