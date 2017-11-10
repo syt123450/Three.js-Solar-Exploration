@@ -44,7 +44,7 @@ PlanetSceneController = function (renderer, config) {
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
-        stars.flashStars();
+        // stars.flashStars();
         // meteors.sweepMeteors();
         if (selfRotate && !isInertia) {
             rotatePlanet();
@@ -55,7 +55,8 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function initTween() {
-        meteors.initSweepTween();
+        meteors.createSweepTween().start();
+        stars.createFlashTween().start();
     }
 
     function activateScene() {
