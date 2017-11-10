@@ -37,14 +37,14 @@ PlanetSceneController = function (renderer, config) {
     // Interfaces
     this.activateScene = activateScene;
     this.name = config.planetName + "Controller";
-    this.pauseAudio = function() {
+    this.pauseAudio = function () {
         audio.pause();
     };
 
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
-        stars.flashStars();
+        // stars.flashStars();
         // meteors.sweepMeteors();
         if (selfRotate && !isInertia) {
             rotatePlanet();
@@ -55,7 +55,8 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function initTween() {
-        meteors.initSweepTween();
+        meteors.createSweepTween().start();
+        stars.createFlashTween().start();
     }
 
     function activateScene() {
@@ -70,6 +71,21 @@ PlanetSceneController = function (renderer, config) {
 
         mesh.rotation.y += 0.0005;              // Rotate planet mesh
         planetAggregation.rotation.y += 0.001;  // Rotate for potential Ring
+    }
+
+    function createRotationTween() {
+        var rotateTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
+
+        rotateTween.onUpdate(function () {
+
+            mesh.rotation.y += 0.0005;
+            planetAggregation.rotation.y += 0.001;
+        });
+
+        rotateTween.repeat(Infinity);
+
+        return rotateTween;
     }
 
     /* Initialization Functions */
@@ -102,7 +118,7 @@ PlanetSceneController = function (renderer, config) {
 
         aggregation.name = config.planetName + "Aggregation";
         aggregation.add(mesh);
-        if (config.planetName === 'Saturn' || config.planetName === 'Uranus'){
+        if (config.planetName === 'Saturn' || config.planetName === 'Uranus') {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
@@ -110,7 +126,7 @@ PlanetSceneController = function (renderer, config) {
         return aggregation;
     }
 
-    function lightsInit(){
+    function lightsInit() {
         var lights = [];
 
         // Lights Combination
@@ -131,7 +147,7 @@ PlanetSceneController = function (renderer, config) {
         // lights[1].position.set(30, 30, -6);
         // lights[1].lookAt(planetAggregation.position);
 
-	    return lights;
+        return lights;
     }
 
     function addEvent() {
@@ -200,7 +216,7 @@ PlanetSceneController = function (renderer, config) {
 
         var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
         inertiaTween.easing(TWEEN.Easing.Linear.None);
-        inertiaTween.onUpdate(function() {
+        inertiaTween.onUpdate(function () {
             planetAggregation.rotation.y += this.speed;
         }).onComplete(function () {
             isInertia = false;

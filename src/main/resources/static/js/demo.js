@@ -104,13 +104,17 @@ function getYearData(year) {
 }
 
 function enableBackLogo() {
-    $("#backLogo").hover(function() {
-        $(this).css("border", "border: 1px solid #414141");
-    }).css("cursor", "pointer").click(backToSolar);
+    $("#backLogo").hover(
+        function () {
+            $(this).css("border", "1px solid #414141");
+        },
+        function () {
+            $(this).css("border", "0");
+        }).css("cursor", "pointer").click(backToSolar);
 }
 
 function disableBackLogo() {
-    $("#backLogo").hover(function() {
+    $("#backLogo").hover(function () {
         $(this).css("border", "0");
     }).css("cursor", "default").unbind("click");
 }
