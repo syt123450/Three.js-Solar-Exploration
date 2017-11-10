@@ -1,3 +1,22 @@
+[Nov.10.2017] Phases Summary
+
+* Work Done
+
+* Fix events bug
+* Adjust performance
+* Add audio music
+* change tweens 
+* help adjust image
+* update UI
+
+* Problem
+
+* Raycaster sometimes can not work
+* Tween refactoring has not finished yet
+* Music need to be decided
+* Add some story board before going into scene
+* Switch tween need to be added
+
 [Week 6 XP Core Values (or Lean/Kanban Principle)]
 
 * See the whole
