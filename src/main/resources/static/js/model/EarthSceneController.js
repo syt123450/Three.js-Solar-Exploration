@@ -23,7 +23,10 @@ EarthSceneController = function (renderer) {
     var audio = universeUtils.loadAudio(audioSource);
 
     var coneList = [];
-    var tweenMap = {};
+    var tweenManager = {
+        groupMap: {},
+        singleMap: {}
+    };
 
     var earthRenderer = renderer;
     var earthScene = init();
@@ -304,39 +307,32 @@ EarthSceneController = function (renderer) {
 
     function initTween() {
 
-        tweenMap.adjustEarth = adjustEarthTween();
-        tweenMap.translate = translateTween();
-        console.log('translation tween=================', tweenMap.translate);
-        tweenMap.adjustCone = null;
-        tweenMap.resumeCone = resumeConeTween();
-        tweenMap.resumeEarth = resumeEarthTween();
-        tweenMap.translateBack = null;
         meteors.createSweepTween().start();
         stars.createFlashTween().start();
     }
 
     function moveEarthAggregation(coneLongitude) {
-        TWEEN.removeAll();
-	    tweenMap.adjustEarth = adjustEarthTween();
-        tweenMap.adjustCone = adjustConeTween(coneLongitude);
-        tweenMap.translate = translateTween();
-	    
-        tweenMap.adjustEarth.start();
-        tweenMap.adjustCone.start();
-        tweenMap.translate.start();
+        // TWEEN.removeAll();
+        // tweenMap.adjustEarth = adjustEarthTween();
+        // tweenMap.adjustCone = adjustConeTween(coneLongitude);
+        // tweenMap.translate = translateTween();
+        //
+        // tweenMap.adjustEarth.start();
+        // tweenMap.adjustCone.start();
+        // tweenMap.translate.start();
     }
 
     function resumeScene() {
 
-        TWEEN.removeAll();
+        // TWEEN.removeAll();
         
-        tweenMap.translateBack = translateBackTween();
-        tweenMap.resumeCone = resumeConeTween();
-	    tweenMap.resumeEarth = resumeEarthTween();
-	    
-        tweenMap.resumeCone.start();
-        tweenMap.resumeEarth.start();
-        tweenMap.translateBack.start();
+        // tweenMap.translateBack = translateBackTween();
+        // tweenMap.resumeCone = resumeConeTween();
+        // tweenMap.resumeEarth = resumeEarthTween();
+        //
+        // tweenMap.resumeCone.start();
+        // tweenMap.resumeEarth.start();
+        // tweenMap.translateBack.start();
     }
 
     // Rotate earthAggregation around its Z-axis CCW
