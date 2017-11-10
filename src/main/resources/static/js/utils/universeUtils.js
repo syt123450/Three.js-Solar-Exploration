@@ -145,15 +145,38 @@ UniverseUtils = function () {
             stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
 
-        stars.flashStars = function () {
+        // stars.flashStars = function () {
+        //
+        //     this.forEach(function (star) {
+        //         star.count += Math.random() > 0.5 ? 2 : 3;
+        //         if (star.count > 30) {
+        //             star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
+        //             star.count = 0;
+        //         }
+        //     });
+        // };
 
-            this.forEach(function (star) {
-                star.count += Math.random() > 0.5 ? 2 : 3;
-                if (star.count > 30) {
-                    star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
-                    star.count = 0;
-                }
+        stars.createFlashTween = function () {
+
+            var stars = this;
+
+            var flashTween = new TWEEN.Tween({x: 0})
+                .to({x: 1}, 6000);
+
+            flashTween.onUpdate(function() {
+
+                stars.forEach(function(star) {
+                    star.count += Math.random() > 0.5 ? 2 : 3;
+                    if (star.count > 30) {
+                        star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
+                        star.count = 0;
+                    }
+                });
             });
+
+            flashTween.repeat(Infinity);
+
+            return flashTween;
         };
 
         return stars;

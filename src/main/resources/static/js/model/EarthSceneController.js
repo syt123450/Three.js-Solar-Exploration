@@ -72,7 +72,7 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
         if (enableNormalAnimate) {
-            stars.flashStars();
+            // stars.flashStars();
             if (selfRotate) {
                 rotateEarth();
             }
@@ -311,6 +311,7 @@ EarthSceneController = function (renderer) {
         tweenMap.resumeEarth = resumeEarthTween();
         tweenMap.translateBack = null;
         meteors.createSweepTween().start();
+        stars.createFlashTween().start();
     }
 
     function moveEarthAggregation(coneLongitude) {
