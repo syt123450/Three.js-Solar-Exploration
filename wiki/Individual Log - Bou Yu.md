@@ -1,3 +1,14 @@
+### [Nov.06.2017 - Nov.12.2017] Core Values
+* Simplicity
+  * Build the explosion effects bit by bit starting with lesser debris and no texture mapping.
+  * Planned before generating the mock data to get best result
+  * Did multiple refinements on the cone and explosion to get best result
+
+### [Nov.09.2017] Explosion, cone, planet info, mock database
+* Further refined explosion
+* Finalized cone texture/size
+* Added planet info
+* Added mock data
 
 ### [Nov.08.2017] Explosion animation
 * Refining explosion animation

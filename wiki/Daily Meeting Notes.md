@@ -4,7 +4,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Refined Explosion</li></ol> | <ol><li>Further refined explosion</li><li>Finalized cone texture</li><li>Planet info</li><li>mock data</li></ol> | <ol><li>ok</li></ol> |
 | Chenhua | <ol><li>add sun texture</li><li>light coordination</li><li>bug fixing</li></ol> | <ol><li>Light coordinations</li></ol> | <ol><li>Three.js currently doesn't support limit lights on specific objects</li></ol> |
 | Yuntian | <ol><li>update meteor and star material</li><li>change flash of stars to random</li></ol> | <ol><li>add audio demo</li><li>combine audio to demo.html</li></ol> | <ol><li>meteor conflict with helo</li></ol> |
 
