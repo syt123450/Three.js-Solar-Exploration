@@ -1,5 +1,5 @@
 PinController = function (renderer) {
-
+    var coneInitSize = 0.02;
     var latitude = 37.3382, longitude = -121.8863;
     var radius = 0.55;
     var position = initPosition(latitude, longitude);
@@ -69,19 +69,17 @@ PinController = function (renderer) {
     }
 
     function initCone() {
-        var coneSide = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load(
-            '../images/fadeTest.jpg'
-        ),
-            side: THREE.DoubleSide } );
-        var green = new THREE.MeshPhongMaterial( { color: 0X008000});
+        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        texture.flipY = false; //Need to do this to flip texture upside down
+        var coneSide = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
+        var coneBottom = new THREE.MeshPhongMaterial( { color: 0Xff8533});
         var materialsArray = [];
         materialsArray.push(coneSide);
         materialsArray.push(coneSide);
-        materialsArray.push(green);
-        // materialsArray.push(green);
+        materialsArray.push(coneBottom);
 
         var coneMesh = new THREE.Mesh(
-            new THREE.ConeGeometry( 0.03, 0.1, 0.09, 12 ),
+            new THREE.ConeGeometry( coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize ),
             materialsArray
         );
 
@@ -133,22 +131,22 @@ PinController = function (renderer) {
 
     function growPin() {
 
-        if(cone.scale.x > 2) {
+        if(cone.scale.x > 1.2) {
             grow = false;
         }
         if(cone.scale.x < 1) {
             grow = true;
         }
         if(grow) {
-            cone.scale.x += 0.01;
-            cone.scale.y += 0.01;
-            cone.scale.z += 0.01;
-            cone.translateY(-.00055);
+            cone.scale.x += 0.005;
+            cone.scale.y += 0.005;
+            cone.scale.z += 0.005;
+            cone.translateY(-coneInitSize/20);
         }else{
-            cone.scale.x -= 0.01;
-            cone.scale.y -= 0.01;
-            cone.scale.z -= 0.01;
-            cone.translateY(.00055);
+            cone.scale.x -= 0.005;
+            cone.scale.y -= 0.005;
+            cone.scale.z -= 0.005;
+            cone.translateY(coneInitSize/20);
         }
     }
 };
