@@ -117,7 +117,7 @@ SolarSystemSceneController = function(renderer) {
 
     function rotationAndRevolution() {
 
-        // solarAggregation.rotation.y += SolarConfig['sun'].rotateSpeed;
+        solarAggregation.mesh.rotation.y += SolarConfig['sun'].rotateSpeed;
 
         for (var planet in planetsList) {
             // Rotations

@@ -19,7 +19,8 @@ UniverseUtils = function () {
 
     this.createSolarAggregation = function () {
         var aggregation = new THREE.Object3D();
-        aggregation.add(createDefaultSun());
+        aggregation.mesh = createDefaultSun();
+        aggregation.add(aggregation.mesh);
 
         return aggregation;
     };
