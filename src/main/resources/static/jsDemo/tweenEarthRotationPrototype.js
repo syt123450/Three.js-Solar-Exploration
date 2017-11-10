@@ -30,42 +30,41 @@ EarthSceneController = function (renderer) {
         scene.add(camera);
         scene.add(universeMesh);
         scene.add(initEarthAggregation());
-        initTween();
+        initEarthTween();
+        initAtmosphereTween();
 
         return scene;
     }
 
     var rotateTween;
 
-    function initTween() {
+    function initEarthTween() {
 
-        var startAngle = {xPos: 0};
-        var endAngle = {xPos: 2 * Math.PI};
+        rotateTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
 
-        rotateTween = new TWEEN.Tween(startAngle).to(endAngle, 10000);
-        rotateTween.easing(TWEEN.Easing.Linear.None);
         rotateTween.onUpdate(function() {
-            earthMesh.rotation.y = this.xPos;
-            atmosphereMesh.rotation.y = this.xPos;
-            console.log(earthMesh.rotation.y);
+
+            earthMesh.rotation.y += 0.001;
         });
-        
+
         rotateTween.repeat(Infinity);
         rotateTween.start();
-
-        rotateTween.onStart(function() {
-            earthMesh.rotation.y -= 2 * Math.PI;
-            atmosphereMesh.rotation.y -= 2 * Math.PI;
-        });
     }
 
-    // this.stop = function() {
-    //     rotateTween.stop();
-    // };
-    //
-    // this.start = function() {
-    //     rotateTween.start();
-    // };
+    function initAtmosphereTween() {
+        rotateTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
+
+        rotateTween.onUpdate(function() {
+
+            atmosphereMesh.rotation.y += 0.0013;
+        });
+
+        rotateTween.repeat(Infinity);
+        rotateTween.start();
+    }
+
 
     function initEarthAggregation() {
 

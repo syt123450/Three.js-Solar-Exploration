@@ -149,21 +149,21 @@ EarthSceneController = function (renderer) {
         return aggregation;
     }
 
-    function rotateEarthWithStop() {
-
-        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
-        var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
-
-        // console.log("work");
-        // console.log(intersects[0].object);
-
-        if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
-            rotateEarth();
-        }
-    }
+    // function rotateEarthWithStop() {
+    //
+    //     SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    //     SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    //
+    //     SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+    //     var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
+    //
+    //     // console.log("work");
+    //     // console.log(intersects[0].object);
+    //
+    //     if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
+    //         rotateEarth();
+    //     }
+    // }
 
     function rotateEarth() {
 
@@ -171,6 +171,11 @@ EarthSceneController = function (renderer) {
 
         earthMesh.rotation.y += 0.003;
         atmosphereMesh.rotation.y += 0.003;
+    }
+
+    function createEarthRotationTween() {
+
+
     }
 
     function rotateMoon() {
