@@ -25,7 +25,9 @@ EarthSceneController = function (renderer) {
     var coneList = [];
     var tweenManager = {
         groupMap: {},
-        singleMap: {}
+        singleMap: {
+            rotateConesTween: null
+        }
     };
 
     var earthRenderer = renderer;
@@ -37,7 +39,6 @@ EarthSceneController = function (renderer) {
     var speed;
     var yHistory;
     // var xHistory = {x: initPosX};
-
 
     this.activateScene = activateScene;
     this.pauseAudio = function() {
@@ -51,6 +52,7 @@ EarthSceneController = function (renderer) {
         conesParameter.forEach(function (coneParameter) {
             addOneCone(coneParameter);
         });
+
     };
 
     this.clearCones = function () {
@@ -59,6 +61,32 @@ EarthSceneController = function (renderer) {
         });
         coneList = [];
     };
+
+    // function animateCones() {
+    //
+    //     coneList.forEach(function (cone) {
+    //         cone.rotate();
+    //         cone.grow();
+    //     });
+    // }
+
+    function createConesTween() {
+
+        var rotateTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
+
+        rotateTween.onUpdate(function() {
+
+            coneList.forEach(function(cone) {
+                cone.rotate();
+                cone.grow();
+            });
+        });
+
+        rotateTween.repeat(Infinity);
+
+        return rotateTween;
+    }
 
     function activateScene() {
 
@@ -81,7 +109,7 @@ EarthSceneController = function (renderer) {
             }
             // rotateEarthWithStop();
             rotateMoon();
-            animateCones();
+            // animateCones();
         }
 
         TWEEN.update();
@@ -159,14 +187,6 @@ EarthSceneController = function (renderer) {
         coneObject.rotateX(Math.PI / 2);
         coneList.push(coneObject);
         earthMesh.add(coneObject);
-    }
-
-    function animateCones() {
-
-        coneList.forEach(function (cone) {
-            cone.rotate();
-            cone.grow();
-        });
     }
 
     function addEvent() {
@@ -309,6 +329,7 @@ EarthSceneController = function (renderer) {
 
         meteors.createSweepTween().start();
         stars.createFlashTween().start();
+        createConesTween().start();
     }
 
     function moveEarthAggregation(coneLongitude) {
