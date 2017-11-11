@@ -4,7 +4,7 @@
 
 var SolarConfig = {
 
-    sunRadius: 5,
+    sunRadius: 0.25,
     audio: "../music/Epic.mp3",
 
     ConfigHelper: {
@@ -18,126 +18,126 @@ var SolarConfig = {
 
         mercury: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 2.45,
+                orbitRadius: sunRadius + 0.125,
                 orbitAngle: 0,
                 orbitSpeed: -1.5,
                 rotateSpeed: 0.05,
                 map: '../images/planets/mercurymap.jpg',
                 bumpMap: '../images/planets/mercurybump.jpg',
-                radius: 0.5
+                radius: 0.025
             }
         },
 
         venus: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 4.4,
+                orbitRadius: sunRadius + 0.22,
                 orbitAngle: 0,
                 orbitSpeed: -0.9,
                 rotateSpeed: 0.05,
                 map: '../images/planets/venusmap.jpg',
                 bumpMap: '../images/planets/venusbump.jpg',
-                radius: 0.8
+                radius: 0.04
             }
         },
 
         earth: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 7.3,
+                orbitRadius: sunRadius + 0.365,
                 orbitAngle: 0,
                 orbitSpeed: -0.45,
                 rotateSpeed: 0.05,
                 map: '../images/earthmap1k.jpg',
                 bumpMap: '../images/earthbump1k.jpg',
-                radius: 0.9
+                radius: 0.045
             }
         },
 
         mars: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 9.25,
+                orbitRadius: sunRadius + 0.4625,
                 orbitAngle: 0,
                 orbitSpeed: -0.25,
                 rotateSpeed: 0.05,
                 map: '../images/planets/marsmap1k.jpg',
                 bumpMap: '../images/planets/marsbump1k.jpg',
-                radius: 0.55
+                radius: 0.0275
             }
         },
 
         asteroidBelt: function (sunRadius) {
             return {
                 color: 0xffffcc,
-                size: 0.1,
+                size: 0.01,
                 cloudNumber: 9,
                 cloudSize: 500,
-                orbitRadius: sunRadius + 12,
-                orbitRadiusWidth: 4,
-                orbitRadiusThickness: 0.2,
+                orbitRadius: sunRadius + 0.6,
+                orbitRadiusWidth: 0.2,
+                orbitRadiusThickness: 0.01,
                 orbitSpeed: 0.00001
             }
         },
 
         jupiter: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 20,
+                orbitRadius: sunRadius + 1,
                 orbitAngle: 0,
                 orbitSpeed: -0.15,
                 rotateSpeed: 0.05,
                 map: '../images/planets/jupitermap.jpg',
-                radius: 2
+                radius: 0.1
             }
         },
 
         saturn: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 27.5,
+                orbitRadius: sunRadius + 1.375,
                 orbitAngle: 0,
                 orbitSpeed: -0.09,
                 rotateSpeed: 0.05,
                 map: '../images/planets/saturnmap.jpg',
-                radius: 1.8,
+                radius: 0.09,
                 ringMap: '../images/planets/saturnringcolortransRing.png',
-                ringInnerRadius: 2.16,
-                ringOuterRadius: 4.32
+                ringInnerRadius: 0.108,
+                ringOuterRadius: 0.216
             }
         },
 
         uranus: function (sunRadius) {
             return {
-                orbitRadius: sunRadius + 35,
+                orbitRadius: sunRadius + 1.75,
                 orbitAngle: 0,
                 orbitSpeed: -0.06,
                 rotateSpeed: 0.05,
                 map: '../images/planets/uranusmap.jpg',
-                radius: 1.2,
+                radius: 0.06,
                 ringMap: '../images/planets/uranusringcolortransRing.png',
-                ringInnerRadius: 1.56,
-                ringOuterRadius: 2.4
+                ringInnerRadius: 0.078,
+                ringOuterRadius: 0.12
             }
         },
 
         neptune: function (sunRadius) {
 
             return {
-                orbitRadius: sunRadius + 41.5,
+                orbitRadius: sunRadius + 2.075,
                 orbitAngle: 0,
                 orbitSpeed: -0.04,
                 rotateSpeed: 0.05,
                 map: '../images/planets/neptunemap.jpg',
-                radius: 1.2
+                radius: 0.06
             }
         },
 
         pluto: function (sunRadius) {
 
             return {
-                orbitRadius: sunRadius + 46,
+                orbitRadius: sunRadius + 2.3,
                 orbitAngle: 0,
                 orbitSpeed: -0.02,
                 rotateSpeed: 0.05,
                 map: '../images/planets/plutomap1k.jpg',
                 bumpMap: '../images/planets/plutobump1k.jpg',
-                radius: 0.3
+                radius: 0.015
             }
         }
     },
