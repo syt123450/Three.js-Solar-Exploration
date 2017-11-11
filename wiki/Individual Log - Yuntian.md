@@ -1,6 +1,22 @@
+[Week 7 XP Core Values (or Lean/Kanban Principle)]
+
+* See the whole
+
+1. change the animation with tween, convient for later development<br>
+2. as time is limited, cut some features so that we can finish our project in time<br>
+
+* Communication
+1. communicate with bo to refactor old animation<br>
+2. communicate with chen for the size of the scene<br>
+3. communicate with the UI to fix the size of the resource<br>
+
+* Decide as late as possible
+1. create info board first, let adding of the information later<br>
+2. implement function first, then refactor it later for better design pattern
+
 [Nov.10.2017] Phases Summary
 
-* Work Done
+Work Done:<br>
 
 * Fix events bug
 * Adjust performance
@@ -9,7 +25,7 @@
 * help adjust image
 * update UI
 
-* Problem
+Problem:<br>
 
 * Raycaster sometimes can not work
 * Tween refactoring has not finished yet
