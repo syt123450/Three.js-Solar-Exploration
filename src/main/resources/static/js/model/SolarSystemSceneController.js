@@ -60,25 +60,25 @@ SolarSystemSceneController = function(renderer) {
         lights[0].position.set(0, 0, 0);
         lights[1] = new THREE.AmbientLight(0xf7f7f7, 0.45);
 
-        var distance = 5;
+        var distance = 0.25;
         var density = 1;
         lights[2] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 1);
-        lights[2].position.set(0, (5 * Math.sqrt(2)), 0);
+        lights[2].position.set(0, (distance * Math.sqrt(2)), 0);
         lights[2].target = solarAggregation;
         lights[3] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 1);
-        lights[3].position.set(0, -(5 * Math.sqrt(2)), 0);
+        lights[3].position.set(0, -(distance * Math.sqrt(2)), 0);
         lights[3].target = solarAggregation;
         lights[4] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[4].position.set(0, 0, (5 * Math.sqrt(2)));
+        lights[4].position.set(0, 0, (distance * Math.sqrt(2)));
         lights[4].target = solarAggregation;
         lights[5] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[5].position.set(0, 0, -(5 * Math.sqrt(2)));
+        lights[5].position.set(0, 0, -(distance * Math.sqrt(2)));
         lights[5].target = solarAggregation;
         lights[6] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[6].position.set((5 * Math.sqrt(2)), 0, 0);
+        lights[6].position.set((distance * Math.sqrt(2)), 0, 0);
         lights[6].target = solarAggregation;
         lights[7] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[7].position.set(-(5 * Math.sqrt(2)), 0, 0);
+        lights[7].position.set(-(distance * Math.sqrt(2)), 0, 0);
         lights[7].target = solarAggregation;
 
 
@@ -142,15 +142,15 @@ SolarSystemSceneController = function(renderer) {
 
         // From the top of the system
         if (mode == 1) {
-            camera.position.set(0, 90, 0);
+            camera.position.set(0, 4.5, 0);
         }
         // From the horizontal position
         else if (mode == 2) {
-            camera.position.set(0, 0, 60);
+            camera.position.set(0, 0, 3);
         }
         // From the up-forward position
         else {
-            camera.position.set(0, 30, 60);
+            camera.position.set(0, 1.5, 3);
         }
 
         camera.lookAt(solarAggregation.position);

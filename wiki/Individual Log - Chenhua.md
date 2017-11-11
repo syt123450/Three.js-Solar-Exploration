@@ -1,3 +1,8 @@
+### [Nov. 10th, 2017]
+Development:
+  * Fix light issue by replacing to basic mesh (thx to Bo)
+  * Resize solar system scale (it's now X20 smaller than before) to fix texture issue of the background
+***
 ### [Nov. 9th, 2017]
 Development:
   * Coordinate light config - Add 6 Spotlights for the sun
