@@ -4,8 +4,8 @@
 
 UniverseUtils = function () {
 
-    var coneRadius = 0.52;
-    var coneInitSize = 0.01;
+    var coneRadius = 0.54;
+    var coneInitSize = 0.02;
     var starPositions = [
         [-7, 3, -15], [-8, 4, -16],
         [-9, 2, -14], [-10, 3, -15], [-8, 4, -10],
@@ -185,13 +185,14 @@ UniverseUtils = function () {
 
     this.createOneCone = function (coneParameters) {
 
+        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        texture.flipY = false; //Need to do this to flip texture upside down
+
         var coneSide = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load(
-                '../images/fadeTest.jpg'
-            ),
+            map: texture,
             side: THREE.DoubleSide
         });
-        var green = new THREE.MeshPhongMaterial({color: 0X008000});
+        var green = new THREE.MeshPhongMaterial({color: 0Xff8533});
         var materialsArray = [];
         materialsArray.push(coneSide);
         materialsArray.push(coneSide);
