@@ -1,5 +1,24 @@
 ## XP Core Values: Communication
 
+### [Nov 10, 2017] - Update documentation<br/>
+1. Updated weekly meeting notes, xp core values, burndown chart and etc.
+
+### [Nov 10, 2017] - Weekly meeting<br/>
+1. Weekly meeting (3hrs). Discussed technical issues.
+
+### [Nov 9, 2017] - Fixed issues in earth animation tween<br/>
+1. Fixed bug in earth animation tween.
+
+### [Nov 8, 2017] - Debug issues in earth animation tween<br/>
+1. Started debugging issues in the earth animation tween.
+
+### [Nov 7, 2017] - Halo bug fixed<br/>
+1. Fixed the bug in halo effect.
+
+### [Nov 6, 2017] - Halo bug<br/>
+1. Tried to fix the bug in halo effect.
+
+
 ### [Nov 4, 2017] - Weekly meeting<br/>
 1. Weekly meeting.
 2. Updated team wiki and logs.
