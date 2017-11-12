@@ -2,7 +2,7 @@
 
 * See the whole
 
-1. change the animation with tween, convient for later development<br>
+1. change the animation with tween, convient for later development.<br>
 2. as time is limited, cut some features so that we can finish our project in time<br>
 
 * Communication
