@@ -107,7 +107,7 @@ EarthSceneController = function (renderer) {
             coneMesh.translateY(-coneMesh.initSize / 30);
             coneMesh.rotateY(0.05);
         }).onStart(function() {
-            setConeInitPos();
+            coneMesh.setConeInitPos();
         });
 
         return tween;
@@ -143,7 +143,7 @@ EarthSceneController = function (renderer) {
             coneMesh.translateY(-coneMesh.initSize / 30);
             coneMesh.rotateY(0.05);
         }).onStart(function() {
-            setConeInitPos();
+            coneMesh.setConeInitPos();
         });
 
         return tween;
@@ -169,7 +169,7 @@ EarthSceneController = function (renderer) {
     function createOneCone(coneParameters) {
 
         var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
-        texture.flipY = false; //Need to do this to flip texture upside down
+        texture.flipY = false;
 
         var coneSide = new THREE.MeshPhongMaterial({
             map: texture,
@@ -190,25 +190,14 @@ EarthSceneController = function (renderer) {
         coneMesh.position.set(position.x, position.y, position.z);
         coneMesh.parameters = coneParameters;
         coneMesh.scaleSize = 1.2;
-
         coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
-        // coneMesh.isGrow = true;
         coneMesh.initSize = coneInitSize;
-        // coneMesh.grow = function () {
-        //     if (this.scale.x > this.scaleSize) {
-        //         this.isGrow = false;
-        //     }
-        //     if (this.scale.x < 1) {
-        //         this.isGrow = true;
-        //     }
-        //     if (this.isGrow) {
-        //         this.scale.set(this.scale.x + 0.005, this.scale.y + 0.005, this.scale.z + 0.005);
-        //         this.translateY(-this.initSize / 20);
-        //     } else {
-        //         this.scale.set(this.scale.x - 0.005, this.scale.y - 0.005, this.scale.z - 0.005);
-        //         this.translateY(this.initSize / 20);
-        //     }
-        // };
+
+        coneMesh.setConeInitPos = function() {
+            this.position.x = this.basicPos[0];
+            this.position.y = this.basicPos[1];
+            this.position.z = this.basicPos[2];
+        };
 
         return coneMesh;
     }
@@ -227,11 +216,5 @@ EarthSceneController = function (renderer) {
         position.z = pointZ;
 
         return position;
-    }
-
-    function setConeInitPos() {
-        coneMesh.position.x = coneMesh.basicPos[0];
-        coneMesh.position.y = coneMesh.basicPos[1];
-        coneMesh.position.z = coneMesh.basicPos[2];
     }
 };

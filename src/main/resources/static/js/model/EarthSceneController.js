@@ -9,8 +9,8 @@ EarthSceneController = function (renderer) {
 	var clickConeAnimateTime = 3000;
 	var controlParameter = 0;
 	var audioSource = "../music/Earth.mp3";
-	
-	
+    var coneInitTweenSize = {size: 1};
+
 	var universeUtils = new UniverseUtils();
 	var light = new THREE.AmbientLight(0xffffff);
 	var camera = universeUtils.createDefaultCamera();
@@ -55,7 +55,8 @@ EarthSceneController = function (renderer) {
 		conesParameter.forEach(function (coneParameter) {
 			addOneCone(coneParameter);
 		});
-		
+		console.log(coneList);
+        createConesTween().start();
 	};
 	
 	this.clearCones = function () {
@@ -75,20 +76,27 @@ EarthSceneController = function (renderer) {
 	
 	function createConesTween() {
 		
-		var rotateTween = new TWEEN.Tween({x: 0})
-			.to({x: 1}, 6000);
-		
-		rotateTween.onUpdate(function() {
-			
-			coneList.forEach(function(cone) {
-				cone.rotate();
-				cone.grow();
-			});
-		});
-		
-		rotateTween.repeat(Infinity);
-		
-		return rotateTween;
+		// var rotateTween = new TWEEN.Tween({x: 0})
+		// 	.to({x: 1}, 6000);
+		//
+		// rotateTween.onUpdate(function() {
+		//
+		// 	coneList.forEach(function(cone) {
+		// 		cone.rotate();
+		// 		cone.grow();
+		// 	});
+		// });
+		//
+		// rotateTween.repeat(Infinity);
+		//
+		// return rotateTween;
+
+        var growUpTween = coneGrowUpTween();
+        var growDownTween = coneGrowDownTween();
+        growUpTween.chain(growDownTween);
+        growDownTween.chain(growUpTween);
+
+        return growUpTween;
 	}
 	
 	function activateScene() {
@@ -193,6 +201,7 @@ EarthSceneController = function (renderer) {
 	}
 	
 	function addOneCone(coneParameter) {
+		console.log("add one cone");
 		var coneObject = universeUtils.createOneCone(coneParameter);
 		coneObject.lookAt(earthMesh.position);
 		coneObject.rotateX(Math.PI / 2);
@@ -341,9 +350,52 @@ EarthSceneController = function (renderer) {
 	function initTween() {
 		meteors.createSweepTween().start();
 		stars.createFlashTween().start();
-		createConesTween().start();
+		// createConesTween().start();
 	}
-	
+
+    function coneGrowUpTween() {
+
+        var initPos = coneInitTweenSize;
+        var endPos = {size: 1.2};
+
+        var tween = new TWEEN.Tween(initPos)
+            .to(endPos, 1000);
+
+        tween.onUpdate(function () {
+        	var scale = this.size;
+        	coneList.forEach(function(coneMesh) {
+                coneMesh.scale.set(coneInitTweenSize.size, coneInitTweenSize.size, coneInitTweenSize.size);
+                coneMesh.translateY(-coneMesh.initSize / 30);
+                coneMesh.rotateY(0.05);
+			});
+        }).onStart(function() {
+        	coneList.forEach(function(coneMesh) {
+                coneMesh.setConeInitPos();
+			});
+        });
+
+        return tween;
+    }
+
+    function coneGrowDownTween() {
+
+        var initPos = coneInitTweenSize;
+        var endPos = {size: 1};
+
+        var tween = new TWEEN.Tween(initPos)
+            .to(endPos, 1000);
+
+        tween.onUpdate(function () {
+            coneList.forEach(function(coneMesh) {
+                coneMesh.scale.set(coneInitTweenSize.size, coneInitTweenSize.size, coneInitTweenSize.size);
+                coneMesh.translateY(coneMesh.initSize / 30);
+                coneMesh.rotateY(0.05);
+            });
+        });
+
+        return tween;
+    }
+
 	function moveEarthAggregation(coneLongitude) {
 		tweenManager.groupMap.resumeScene.forEach(function(tween) {
 			if (tween && typeof tween !== 'undefined') {
@@ -519,13 +571,5 @@ EarthSceneController = function (renderer) {
 			enableNormalAnimate = true;
 		});
 		return tween;
-	}
-
-	function increaseCone() {
-
-	}
-
-	function decreaseCone() {
-
 	}
 };

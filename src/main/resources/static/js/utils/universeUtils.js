@@ -185,8 +185,67 @@ UniverseUtils = function () {
 
     this.createOneCone = function (coneParameters) {
 
+        // var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        // texture.flipY = false; //Need to do this to flip texture upside down
+        //
+        // var coneSide = new THREE.MeshPhongMaterial({
+        //     map: texture,
+        //     side: THREE.DoubleSide
+        // });
+        // var green = new THREE.MeshPhongMaterial({color: 0Xff8533});
+        // var materialsArray = [];
+        // materialsArray.push(coneSide);
+        // materialsArray.push(coneSide);
+        // materialsArray.push(green);
+        //
+        // var coneMesh = new THREE.Mesh(
+        //     new THREE.ConeGeometry(coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize),
+        //     materialsArray
+        // );
+        //
+        // var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
+        // coneMesh.position.set(position.x, position.y, position.z);
+        // coneMesh.parameters = coneParameters;
+        //
+        // coneMesh.rotate = function () {
+        //     this.rotateY(0.05);
+        // };
+        //
+        // coneMesh.scaleSize = 1.2;
+        // // coneMesh.translateY(0.03);
+        //
+        // coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
+        //
+        // coneMesh.isGrow = true;
+        // coneMesh.initSize = coneInitSize;
+        // coneMesh.grow = function () {
+        //     if (this.scale.x > this.scaleSize) {
+        //         this.isGrow = false;
+        //     }
+        //     if (this.scale.x < 1) {
+        //         this.isGrow = true;
+        //     }
+        //     if (this.isGrow) {
+        //         this.scale.x += 0.005;
+        //         this.scale.y += 0.005;
+        //         this.scale.z += 0.005;
+        //         // this.translateY(-this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 3));
+        //     } else {
+        //         this.scale.x -= 0.005;
+        //         this.scale.y -= 0.005;
+        //         this.scale.z -= 0.005;
+        //         // this.translateY(this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 3));
+        //     }
+        // };
+        //
+        // coneMesh.setConeInitPos = function() {
+        //     this.position.x = this.basicPos[0];
+        //     this.position.y = this.basicPos[1];
+        //     this.position.z = this.basicPos[2];
+        // };
+
         var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
-        texture.flipY = false; //Need to do this to flip texture upside down
+        texture.flipY = false;
 
         var coneSide = new THREE.MeshPhongMaterial({
             map: texture,
@@ -206,34 +265,14 @@ UniverseUtils = function () {
         var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
         coneMesh.position.set(position.x, position.y, position.z);
         coneMesh.parameters = coneParameters;
-
-        coneMesh.rotate = function () {
-            this.rotateY(0.05);
-        };
-
-        coneMesh.scaleSize = 2;
-
-        coneMesh.isGrow = true;
+        coneMesh.scaleSize = 1.2;
+        coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
         coneMesh.initSize = coneInitSize;
-        coneMesh.grow = function () {
-            if (this.scale.x > this.scaleSize) {
-                this.isGrow = false;
-            }
-            if (this.scale.x < 1) {
-                this.isGrow = true;
-            }
-            if (this.isGrow) {
-                this.scale.x += 0.005;
-                this.scale.y += 0.005;
-                this.scale.z += 0.005;
 
-                this.translateY(-this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 2));
-            } else {
-                this.scale.x -= 0.005;
-                this.scale.y -= 0.005;
-                this.scale.z -= 0.005;
-                this.translateY(this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 2));
-            }
+        coneMesh.setConeInitPos = function() {
+            this.position.x = this.basicPos[0];
+            this.position.y = this.basicPos[1];
+            this.position.z = this.basicPos[2];
         };
 
         return coneMesh;
