@@ -3,7 +3,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Weekly meeting.</li></ol> | <ol><li>Update team wiki.</li></ol> | <ol><li>Went well.</li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
 | Chenhua | <ol><li>fix light issue with sun mesh</li><li>resize solar system</li><li>Meeting</li></ol> | <ol><li>feedback on resized solar system</li></ol> | <ol><li>May need to resize solar system even smaller</li></ol> |
 | Yuntian | <ol><li>meeting</li></ol> | <ol><li>combine some tweens</li><li>write cone tween</li></ol> | <ol><li>load a little bit heavy</li></ol> |
@@ -14,7 +14,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Fixed the issue in earth rotation tween.</li></ol> | <ol><li>Weekly meeting.</li></ol> | <ol><li>Went well</li></ol> |
 | Bou-Yu | <ol><li>Further refined explosion</li><li>Finalized cone texture</li><li>Planet info</li><li>mock data</li></ol> | <ol><li>Come up with theme/design </li></ol> | <ol><li>writer's block</li></ol> |
 | Chenhua | <ol><li>Sun light coordination</li><li>sun mesh rotation</li></ol> | <ol><li>Meeting</li><li>sun light coordination</li></ol> | <ol><li>spotlight has a larger range than expectation</li></ol> |
 | Yuntian | <ol><li>refactor tween</li><li>optimize audio</li></ol> | <ol><li>meeting</li></ol> | <ol><li>raycaster has bug</li></ol> |
@@ -25,7 +25,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Debugged the earth rotation tween.</li></ol> | <ol><li>Fixed the issue in earth rotation tween.</li></ol> | <ol><li>Grouping in Three.js not working right.</li></ol> |
 | Bou-Yu | <ol><li>Refined Explosion</li></ol> | <ol><li>Further refined explosion</li><li>Finalized cone texture</li><li>Planet info</li><li>mock data</li></ol> | <ol><li>ok</li></ol> |
 | Chenhua | <ol><li>add sun texture</li><li>light coordination</li><li>bug fixing</li></ol> | <ol><li>Light coordinations</li></ol> | <ol><li>Three.js currently doesn't support limit lights on specific objects</li></ol> |
 | Yuntian | <ol><li>update meteor and star material</li><li>change flash of stars to random</li></ol> | <ol><li>add audio demo</li><li>combine audio to demo.html</li></ol> | <ol><li>meteor conflict with helo</li></ol> |
@@ -36,7 +36,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Fixed the issue in the halo effect.</li></ol> | <ol><li>Debug the earth rotation tween.</li></ol> | <ol><li>Chaining of tweens.</li></ol> |
 | Bou-Yu | <ol><li>Prototyped explosion animation</li></ol> | <ol><li>Refine explosion animation</li></ol> | <ol><li>Slow progress</li></ol> |
 | Chenhua | <ol><li>Apply asteroid belt to solar system scene</li><li>Update solar system scene camera and lights</li></ol> | <ol><li>Update sun mesh</li><li>Coordinate solar system light</li></ol> | <ol><li>so far, hard to see the changes from light settings</li></ol> |
 | Yuntian | <ol><li>solve performance problem</li><li>update front end</li></ol> | <ol><li>update images</li></ol> | <ol><li>go well</li></ol> |
@@ -47,7 +47,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Found the issue in halo effect</li></ol> | <ol><li>Fixed the issue in the halo effect</li></ol> | <ol><li>Went well.</li></ol> |
 | Bou-Yu | <ol><li>Studied explosion animation</li></ol> | <ol><li>Prototyping explosion animation</li></ol> | <ol><li>Slow progress</li></ol> |
 | Chenhua | <ol><li>Added asteroid belt demo</li><li>Debug on PlanetSceneControllers</li><li>generate sample output data</li></ol> | <ol><li>Apply asteroid demo to the SolarSystemScene</li></ol> | <ol><li>Fine</li></ol> |
 | Yuntian | <ol><li>add events demo</li><li>fix concurrent bug in event</li></ol> | <ol><li>try to solve performance problem</li></ol> | <ol><li>go well</li></ol> |
@@ -58,7 +58,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>meeting</li></ol> | <ol><li>Debug the issue in Halo effect.</li></ol> | <ol><li>Can't get ShaderMaterial to work right.</li></ol> |
 | Bou-Yu | <ol><li>meeting</li></ol> | <ol><li>stuided explosion animation</li></ol> | <ol><li>slow progress</li></ol> |
 | Chenhua | <ol><li>meeting</li></ol> | <ol><li>add asteroid belt</li><li>debug on scene controller</li></ol> | <ol><li>fine</li></ol> |
 | Yuntian | <ol><li>meeting</li></ol> | <ol><li>try to fix events bugs</li></ol> | <ol><li>go well</li></ol> |
