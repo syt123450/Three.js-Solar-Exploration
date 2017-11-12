@@ -520,4 +520,12 @@ EarthSceneController = function (renderer) {
 		});
 		return tween;
 	}
+
+	function increaseCone() {
+
+	}
+
+	function decreaseCone() {
+
+	}
 };

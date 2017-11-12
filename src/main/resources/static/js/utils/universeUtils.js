@@ -211,10 +211,12 @@ UniverseUtils = function () {
             this.rotateY(0.05);
         };
 
+        coneMesh.scaleSize = 2;
+
         coneMesh.isGrow = true;
         coneMesh.initSize = coneInitSize;
         coneMesh.grow = function () {
-            if (this.scale.x > 1.2) {
+            if (this.scale.x > this.scaleSize) {
                 this.isGrow = false;
             }
             if (this.scale.x < 1) {
@@ -225,12 +227,12 @@ UniverseUtils = function () {
                 this.scale.y += 0.005;
                 this.scale.z += 0.005;
 
-                this.translateY(-this.initSize / 20);
+                this.translateY(-this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 2));
             } else {
                 this.scale.x -= 0.005;
                 this.scale.y -= 0.005;
                 this.scale.z -= 0.005;
-                this.translateY(this.initSize / 20);
+                this.translateY(this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 2));
             }
         };
 

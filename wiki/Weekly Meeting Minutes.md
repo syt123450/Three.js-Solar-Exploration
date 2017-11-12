@@ -6,6 +6,26 @@ Location: TBD EB376 or Library
 # **Week 6 Meeting**
 * Host: Chenhua
 * Attendees: Bou-yu, Bo, Chenhua, Yuntian
+* Time: 11/10/2017 (3 hours)
+* Recorder: Bo
+
+Topic 1: </br>
+* What did we accomplished last week
+* Assigned tasks for next week
+* A lot of challenges we have last week<br/>
+
+Topic 2: </br>
+* Discussed how we should design and implement scene transition.
+* Discussed what should done in the last week to wrapped up the project.
+* Discussed what to do for the extra credit of the project.
+* Discussed how to do presentation.
+
+Link to [Weekly Work Summaries](https://github.com/nguyensjsu/cmpe202-nullpointerexception/blob/master/wiki/Group%20Weekly%20Work%20Summary.md)
+
+
+# **Week 6 Meeting**
+* Host: Chenhua
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
 * Time: 11/4/2017 (2 hours)
 * Recorder: Bo
 

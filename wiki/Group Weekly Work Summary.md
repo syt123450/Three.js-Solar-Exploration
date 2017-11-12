@@ -1,3 +1,51 @@
+## Week 7 Summaries - [Nov 6  - Nov 11, 2017]
+### XP Core Values
+
+
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **Simplicity**</br>1.Build the explosion effects bit by bit starting with lesser debris and no texture mapping.</br>2.Planned before generating the mock data to get best result.</br>3.Did multiple refinements on the cone and explosion to get best result.|
+| Chenhua| **See the whole**</br>1.Keep the development process for both front and back ends.</br>2. Keep the ideas from different parts.</br>3. Coordinate the progress among different parts.</br></br>**Decide as late as possible**</br>Finally refactored PlanetSceneControllers with almost all functionality fixed.</br>
+| Yuntian| **See the whole**</br>1. Change the animation with tween, convenient for later development.</br>2. As time is limited, cut some features so that we can finish our project in time.</br></br>**Communication**</br>1.Communicate with Bo to refactor old animation.</br>2.Communicate with Chenhua for the size of the scene.</br>3.Communicate with the UI to fix the size of the resource.</br></br>**Decide as late as possible**</br>1.Created info board first, and postponed adding information.</br>2.Completed functionalities first, then refactor it later for better design pattern.|
+| Bo| **Communication**</br>1.Whenever a member posted any question or request for comment for a deign in the chat group, I will try my best to reply ASAP.</br></br>2.When discuss with team members, always repeat questions from others first to make sure the question is understood correctly.</br>|
+
+### Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Improved explosion effect. | 1.Further improve explosion effect with point material.| 1.How to improve explosion effect with point material.|
+| 2. Provided data for google api. | 2.Design story board of scene transitions.| |
+| 3. Updated design of cone icon. | 3.Planet description design.||
+
+
+### Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1.Implemented asteroid belt area.| 1.Earth scene lighting configuration.| 1.Config planet size in planet scenes. |
+| 2.Updated lighting design of all planets and solar system. | 2.Refine data for GlobeGL.| 2.Config scale of the solar system.|
+| 3.Updated camera position for all scenes. |3.Coordinate solar system scene scales.| |
+
+### Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1.Fixed bugs in event handling.  | 1.Integrate tween into scene.| 1.Raycaster does not capture object correctly sometimes.|
+| 2.Reduced the UI loading time by 70%. | 2.Implement scene transition sotry board.| 2.Tween refactoring. |
+| 3.Added and edited backgroud music to all scenes.| 3.Implement info board of each planet scenes.| 3.Music needs to be further editted.|
+| 4.Refactored tween animation management code. |4.Change animation to Tween.| 4.Need some story text when switching scenes.|
+| 5.Adjusted the resolution of all images. |5.Add new tween to scene change.| 5.Scene switch needs to be changed to using Tween.js|
+| 6.Updated UIcomponents. |||
+
+### Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1.Fixed bug in halo effect of planets.| 1.Change camera zooming to use tween.js| 1.Raycaster capturing objects.|
+| 2.Fixed bug in earth rotation tween.| 2.Fix bug in capturing objects with raycaster.| 2.Update animatio to use TWEEN.js|
+| 3.Managed document and burndown chart. | 3.Code refactor with Yuntian.| |
+
+***
 ## Week 6 Summaries - [Oct 30  - Nov 4, 2017]
 ### XP Core Values
 
