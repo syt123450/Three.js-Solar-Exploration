@@ -150,7 +150,7 @@ SolarSystemSceneController = function(renderer) {
         }
         // From the up-forward position
         else {
-            camera.position.set(0, 1.5, 3);
+            camera.position.set(0, 1.8, 3);
         }
 
         camera.lookAt(solarAggregation.position);
