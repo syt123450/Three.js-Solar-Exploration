@@ -29,12 +29,14 @@ EarthSceneController = function (renderer) {
 			resumeScene: []
 		},
 		singleMap: {
-			// rotateConesTween: null
 			conesAnimation: null,
 			meteorsSweep: null,
-			starsFlashing: null
+			starsFlashing: null,
+			clickedConeAnimation: null
 		}
 	};
+
+	var clickedCone;
 	
 	var earthRenderer = renderer;
 	var earthScene = init();
@@ -58,7 +60,6 @@ EarthSceneController = function (renderer) {
 		conesParameter.forEach(function (coneParameter) {
 			addOneCone(coneParameter);
 		});
-		console.log(coneList);
 	};
 	
 	this.clearCones = function () {
@@ -72,6 +73,16 @@ EarthSceneController = function (renderer) {
 
         var growUpTween = coneGrowUpTween();
         var growDownTween = coneGrowDownTween();
+        growUpTween.chain(growDownTween);
+        growDownTween.chain(growUpTween);
+
+        return growUpTween;
+	}
+
+	function createClickedConeTween() {
+
+        var growUpTween = clickedConeGrowUpTween();
+        var growDownTween = clickedConeGrowDownTween();
         growUpTween.chain(growDownTween);
         growDownTween.chain(growUpTween);
 
@@ -195,6 +206,7 @@ EarthSceneController = function (renderer) {
 			// console.log('earth x=====', earthMesh.parent.position.x);
 			if (intersects[0].object === cone) {
 				console.log("find a clicked cone.");
+                clickedCone = cone;
 				enableNormalAnimate = false;
 				tweenManager.singleMap.conesAnimation.stop();
 				addTextToBoard(cone.parameters);
@@ -318,6 +330,7 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.starsFlashing.start();
         tweenManager.singleMap.conesAnimation = createConesTween();
         tweenManager.singleMap.conesAnimation.start();
+        tweenManager.singleMap.clickedConeAnimation = createClickedConeTween();
 	}
 
     function coneGrowUpTween() {
@@ -363,6 +376,40 @@ EarthSceneController = function (renderer) {
         return tween;
     }
 
+    function clickedConeGrowUpTween() {
+
+        var initPos = coneInitTweenSize;
+        var endPos = {size: 1.5};
+
+        var tween = new TWEEN.Tween(initPos)
+            .to(endPos, 1000);
+
+        tween.onUpdate(function () {
+            clickedCone.scale.set(this.size, this.size, this.size);
+            clickedCone.translateY(-clickedCone.initSize / 30);
+            clickedCone.rotateY(0.05);
+        });
+
+        return tween;
+    }
+
+    function clickedConeGrowDownTween() {
+
+        var initPos = coneInitTweenSize;
+        var endPos = {size: 1};
+
+        var tween = new TWEEN.Tween(initPos)
+            .to(endPos, 1000);
+
+        tween.onUpdate(function () {
+        	clickedCone.scale.set(this.size, this.size, this.size);
+        	clickedCone.translateY(clickedCone.initSize / 30);
+        	clickedCone.rotateY(0.05);
+        });
+
+        return tween;
+    }
+
 	function moveEarthAggregation(coneLongitude) {
 		tweenManager.groupMap.resumeScene.forEach(function(tween) {
 			if (tween && typeof tween !== 'undefined') {
@@ -373,6 +420,10 @@ EarthSceneController = function (renderer) {
 		var adjustEarth = adjustEarthTween();
 		var adjustCone = adjustConeTween(coneLongitude);
 		var translate = translateTween();
+
+		translate.onComplete(function() {
+            tweenManager.singleMap.clickedConeAnimation.start();
+		});
 		
 		tweenManager.groupMap.moveEarthAggregation.push(adjustEarth);
 		tweenManager.groupMap.moveEarthAggregation.push(adjustCone);
@@ -464,6 +515,12 @@ EarthSceneController = function (renderer) {
 		var translateBack = translateBackTween();
 		var resumeCone = resumeConeTween();
 		var resumeEarth = resumeEarthTween();
+
+		translateBack.onComplete(function() {
+            tweenManager.singleMap.clickedConeAnimation.stop();
+            enableNormalAnimate = true;
+            tweenManager.singleMap.conesAnimation.start();
+		});
 		
 		tweenManager.groupMap.resumeScene.push(translateBack);
 		tweenManager.groupMap.resumeScene.push(resumeCone);
