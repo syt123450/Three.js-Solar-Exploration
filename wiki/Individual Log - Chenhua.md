@@ -1,3 +1,14 @@
+### [Week 7 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process for both front end and back end
+      * Solar scene updates: sun mesh, rotation, lights settings, asteroid belt and scale configs
+      * Planet scene updates: camera/object positions
+      * Data decorations
+      * Refresh DB dump
+    * Coordinate the progress among different parts
+      * Bugs tracking on scene animations
+      * Time estimation towards to the final submission
+***
 ### [Nov. 10th, 2017]
 Development:
   * Fix light issue by replacing to basic mesh (thx to Bo)
