@@ -29,7 +29,10 @@ EarthSceneController = function (renderer) {
 			resumeScene: []
 		},
 		singleMap: {
-			rotateConesTween: null
+			// rotateConesTween: null
+			conesAnimation: null,
+			meteorsSweep: null,
+			starsFlashing: null
 		}
 	};
 	
@@ -56,7 +59,6 @@ EarthSceneController = function (renderer) {
 			addOneCone(coneParameter);
 		});
 		console.log(coneList);
-        createConesTween().start();
 	};
 	
 	this.clearCones = function () {
@@ -66,30 +68,7 @@ EarthSceneController = function (renderer) {
 		coneList = [];
 	};
 	
-	// function animateCones() {
-	//
-	//     coneList.forEach(function (cone) {
-	//         cone.rotate();
-	//         cone.grow();
-	//     });
-	// }
-	
 	function createConesTween() {
-		
-		// var rotateTween = new TWEEN.Tween({x: 0})
-		// 	.to({x: 1}, 6000);
-		//
-		// rotateTween.onUpdate(function() {
-		//
-		// 	coneList.forEach(function(cone) {
-		// 		cone.rotate();
-		// 		cone.grow();
-		// 	});
-		// });
-		//
-		// rotateTween.repeat(Infinity);
-		//
-		// return rotateTween;
 
         var growUpTween = coneGrowUpTween();
         var growDownTween = coneGrowDownTween();
@@ -163,22 +142,6 @@ EarthSceneController = function (renderer) {
 		return aggregation;
 	}
 	
-	// function rotateEarthWithStop() {
-	//
-	//     SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-	//     SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-	//
-	//     SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
-	//     var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
-	//
-	//     // console.log("work");
-	//     // console.log(intersects[0].object);
-	//
-	//     if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
-	//         rotateEarth();
-	//     }
-	// }
-	
 	function rotateEarth() {
 		
 		// console.log("rotate earth.");
@@ -233,6 +196,7 @@ EarthSceneController = function (renderer) {
 			if (intersects[0].object === cone) {
 				console.log("find a clicked cone.");
 				enableNormalAnimate = false;
+				tweenManager.singleMap.conesAnimation.stop();
 				addTextToBoard(cone.parameters);
 				showInfo(cone.parameters.latitude, cone.parameters.longitude);
 			}
@@ -348,9 +312,12 @@ EarthSceneController = function (renderer) {
 	}
 	
 	function initTween() {
-		meteors.createSweepTween().start();
-		stars.createFlashTween().start();
-		// createConesTween().start();
+        tweenManager.singleMap.meteorsSweep = meteors.createSweepTween();
+        tweenManager.singleMap.meteorsSweep.start();
+        tweenManager.singleMap.starsFlashing = stars.createFlashTween();
+        tweenManager.singleMap.starsFlashing.start();
+        tweenManager.singleMap.conesAnimation = createConesTween();
+        tweenManager.singleMap.conesAnimation.start();
 	}
 
     function coneGrowUpTween() {
