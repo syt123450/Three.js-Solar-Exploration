@@ -61,11 +61,8 @@ PlanetSceneController = function (renderer, config) {
     function initTween() {
 
         tweenManager.meteorsSweep = meteors.createSweepTween();
-        tweenManager.meteorsSweep.start();
         tweenManager.starsFlashing = stars.createFlashTween();
-        tweenManager.starsFlashing.start();
         tweenManager.rotationTween = createRotationTween();
-        tweenManager.rotationTween.start();
     }
 
     function activateScene() {
@@ -74,6 +71,7 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
+        startTween();
     }
 
     function createRotationTween() {
@@ -114,6 +112,12 @@ PlanetSceneController = function (renderer, config) {
         initTween();
 
         return scene;
+    }
+
+    function startTween() {
+        tweenManager.meteorsSweep.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.rotationTween.start();
     }
 
     function aggregationInit() {
