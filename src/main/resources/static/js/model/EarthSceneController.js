@@ -157,21 +157,21 @@ EarthSceneController = function (renderer) {
         return aggregation;
     }
 
-    function rotateEarth() {
-
-        // console.log("rotate earth.");
-
-        earthMesh.rotation.y += 0.003;
-        atmosphereMesh.rotation.y += 0.003;
-    }
-
-    function rotateMoon() {
-
-        moonMesh.rotateY(0.01);
-        var timer = Date.now() * 0.0001;
-        moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
-        moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
-    }
+    // function rotateEarth() {
+    //
+    //     // console.log("rotate earth.");
+    //
+    //     earthMesh.rotation.y += 0.003;
+    //     atmosphereMesh.rotation.y += 0.003;
+    // }
+    //
+    // function rotateMoon() {
+    //
+    //     moonMesh.rotateY(0.01);
+    //     var timer = Date.now() * 0.0001;
+    //     moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
+    //     moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
+    // }
 
     function addOneCone(coneParameter) {
         console.log("add one cone");
@@ -206,7 +206,8 @@ EarthSceneController = function (renderer) {
             if (intersects[0].object === cone) {
                 console.log("find a clicked cone.");
                 clickedCone = cone;
-                enableNormalAnimate = false;
+                isInfoBoard = true;
+                // enableNormalAnimate = false;
                 tweenManager.singleMap.conesAnimation.stop();
                 addTextToBoard(cone.parameters);
                 showInfo(cone.parameters.latitude, cone.parameters.longitude);
@@ -219,9 +220,16 @@ EarthSceneController = function (renderer) {
     }
 
     function onMouseUp() {
+        // if (isClickEarth) {
+        //     isClickEarth = false;
+        //     inertia();
+        // }
+
         if (isClickEarth) {
             isClickEarth = false;
-            inertia();
+            isInertia = true;
+            tweenManager.inertia = createInertiaTween();
+            tweenManager.inertia.start();
         }
     }
 
@@ -230,10 +238,7 @@ EarthSceneController = function (renderer) {
         var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
         var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        if (isClickEarth) {
-            speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
-            rotateWithSpeed(speed);
-        }
+        speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
 
         SolarEPUtils.mouse.x = mouseX;
         SolarEPUtils.mouse.y = mouseY;
@@ -241,17 +246,72 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
 
-        if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
-            selfRotate = true;
-        } else {
-            selfRotate = false;
+        if (!isInfoBoard) {
+
+            if (isClickEarth) {
+                rotateWithSpeed(speed);
+            } else if (isInertia) {
+
+            } else {
+                if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
+                    if (!isStoppedRotation) {
+                        isStoppedRotation = true;
+                        tweenManager.singleMap.meshRotation.stop();
+                        tweenManager.singleMap.atmosphereRotation.stop();
+                        tweenManager.singleMap.moonRotation.stop();
+                    }
+                } else {
+                    if (isStoppedRotation) {
+                        isStoppedRotation = false;
+                        tweenManager.singleMap.meshRotation.start();
+                        tweenManager.singleMap.atmosphereRotation.start();
+                        tweenManager.singleMap.moonRotation.start();
+                    }
+                }
+            }
         }
+
+        // if (isClickEarth) {
+        //     speed = 1.5 * (mouseX - SolarEPUtils.mouse.x);
+        //     rotateWithSpeed(speed);
+        // }
+        //
+        // SolarEPUtils.mouse.x = mouseX;
+        // SolarEPUtils.mouse.y = mouseY;
+        //
+        // SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        // var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
+        //
+        // if (intersects === null || intersects.length === 0 || intersects[0].object !== atmosphereMesh) {
+        //     selfRotate = true;
+        // } else {
+        //     selfRotate = false;
+        // }
+
+
     }
 
     function rotateWithSpeed(speed) {
 
         earthMesh.rotation.y += speed;
         atmosphereMesh.rotation.y += speed;
+    }
+
+    function createInertiaTween() {
+
+        var startSpeed = {speed: speed};
+        var endSpeed = {speed: 0};
+
+        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
+        inertiaTween.easing(TWEEN.Easing.Linear.None);
+        inertiaTween.onUpdate(function () {
+            earthMesh.rotation.y += this.speed;
+            atmosphereMesh.rotation.y += this.speed;
+        }).onComplete(function () {
+            isInertia = false;
+        });
+
+        return inertiaTween;
     }
 
     function inertia() {
@@ -504,9 +564,9 @@ EarthSceneController = function (renderer) {
         var tween = new TWEEN.Tween(obliquityStart);
         tween.to(obliquityEnd, clickConeAnimateTime);
 
-        tween.onStart(function () {
-            enableNormalAnimate = false;
-        });
+        // tween.onStart(function () {
+        //     enableNormalAnimate = false;
+        // });
 
         tween.onUpdate(function () {
             console.log('adjust earth******');
