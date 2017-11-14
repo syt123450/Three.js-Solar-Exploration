@@ -277,17 +277,18 @@ UniverseUtils = function () {
     this.createAsteroidBelt = createAsteroidBelt;
 
     this.addDoubleHalos = function (target, innerColor, outerColor) {
+        console.log('target++++', target);
         // innerGlowMesh settings
         var _innerGlowMesh;
         var INNER_GLOW_MESH_COLOR = innerColor;
         var INNER_GLOW_MESH_OPACITY = 0.2;
-        var INNER_GLOW_MESH_RADIUS = 0.504;
-        var innerFragmentShaderIntensity = 'float intensity = pow( 0.55 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 7.0 );';
+        var INNER_GLOW_MESH_RADIUS = target.children[0].geometry.parameters.radius * 1.008;
+        var innerFragmentShaderIntensity = 'float intensity = pow( 0.45 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 10.0 );';
 
         var _outerGlowMesh;
         var OUTER_GLOW_MESH_COLOR = outerColor;
         var OUTER_GLOW_MESH_OPACITY = 0.2;
-        var OUTER_GLOW_MESH_RADIUS = 0.504;
+        var OUTER_GLOW_MESH_RADIUS = target.children[0].geometry.parameters.radius * 1.008;
         var outerFragmentShaderIntensity = 'float intensity = pow( 0.3 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 1.2 );';
 
         _init();
