@@ -1,4 +1,15 @@
 
+### [Nov. 13th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>Scale redesign</li><li>light configs</li></ol> | <ol><li>EarthScene light configs</li><li>PlanetScene planet resize</li></ol> | <ol><li>so far so good</li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+
+***
+
 ### [Nov. 11th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

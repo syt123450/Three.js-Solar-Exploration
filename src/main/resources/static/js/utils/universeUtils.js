@@ -4,7 +4,7 @@
 
 UniverseUtils = function () {
 
-    var coneRadius = 0.54;
+    var coneRadius = 0.55;
     var coneInitSize = 0.02;
     var starPositions = [
         [-7, 3, -15], [-8, 4, -16],
@@ -184,65 +184,6 @@ UniverseUtils = function () {
     };
 
     this.createOneCone = function (coneParameters) {
-
-        // var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
-        // texture.flipY = false; //Need to do this to flip texture upside down
-        //
-        // var coneSide = new THREE.MeshPhongMaterial({
-        //     map: texture,
-        //     side: THREE.DoubleSide
-        // });
-        // var green = new THREE.MeshPhongMaterial({color: 0Xff8533});
-        // var materialsArray = [];
-        // materialsArray.push(coneSide);
-        // materialsArray.push(coneSide);
-        // materialsArray.push(green);
-        //
-        // var coneMesh = new THREE.Mesh(
-        //     new THREE.ConeGeometry(coneInitSize, 3 * coneInitSize, 3 * coneInitSize, 360 * coneInitSize),
-        //     materialsArray
-        // );
-        //
-        // var position = calculatePosition(coneParameters.latitude, coneParameters.longitude);
-        // coneMesh.position.set(position.x, position.y, position.z);
-        // coneMesh.parameters = coneParameters;
-        //
-        // coneMesh.rotate = function () {
-        //     this.rotateY(0.05);
-        // };
-        //
-        // coneMesh.scaleSize = 1.2;
-        // // coneMesh.translateY(0.03);
-        //
-        // coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
-        //
-        // coneMesh.isGrow = true;
-        // coneMesh.initSize = coneInitSize;
-        // coneMesh.grow = function () {
-        //     if (this.scale.x > this.scaleSize) {
-        //         this.isGrow = false;
-        //     }
-        //     if (this.scale.x < 1) {
-        //         this.isGrow = true;
-        //     }
-        //     if (this.isGrow) {
-        //         this.scale.x += 0.005;
-        //         this.scale.y += 0.005;
-        //         this.scale.z += 0.005;
-        //         // this.translateY(-this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 3));
-        //     } else {
-        //         this.scale.x -= 0.005;
-        //         this.scale.y -= 0.005;
-        //         this.scale.z -= 0.005;
-        //         // this.translateY(this.initSize / 20 / Math.pow(this.scaleSize / 1.2, 3));
-        //     }
-        // };
-        //
-        // coneMesh.setConeInitPos = function() {
-        //     this.position.x = this.basicPos[0];
-        //     this.position.y = this.basicPos[1];
-        //     this.position.z = this.basicPos[2];
-        // };
 
         var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
         texture.flipY = false;
@@ -618,18 +559,4 @@ UniverseUtils = function () {
 
         return meteor;
     }
-
-    // function addHaloToStar(star) {
-    //
-    //     var spriteMaterial = new THREE.SpriteMaterial(
-    //         {
-    //             map: new THREE.TextureLoader().load('../images/glow.png'),
-    //             color: 0xffffff,
-    //             transparent: true,
-    //             opacity: 0.5
-    //         });
-    //     var sprite = new THREE.Sprite(spriteMaterial);
-    //     sprite.scale.set(0.25, 0.25, 1);
-    //     star.add(sprite);
-    // }
 };

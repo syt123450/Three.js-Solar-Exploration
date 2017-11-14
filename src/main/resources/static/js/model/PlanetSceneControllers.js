@@ -23,15 +23,23 @@ PlanetSceneController = function (renderer, config) {
     var planetAggregation = aggregationInit();
     var audio = universeUtils.loadAudio(config.audio);
 
+    var tweenManager = {
+        rotationTween: null,
+        meteorsSweep: null,
+        starsFlashing: null,
+        inertia: null
+    };
+
     // Camera and Lights
     var camera = universeUtils.createDefaultCamera();
     var lights = lightsInit();
     // Init. Scene
     var scene = init();
 
-    var isPlanetClicked;
     var speed;
-    var selfRotate;
+
+    var isStoppedRotation = false;
+    var isPlanetClicked = false;
     var isInertia = false;
 
     // Interfaces
@@ -44,19 +52,17 @@ PlanetSceneController = function (renderer, config) {
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
-        // stars.flashStars();
-        // meteors.sweepMeteors();
-        if (selfRotate && !isInertia) {
-            rotatePlanet();
-        }
+
         TWEEN.update();
 
         renderer.render(scene, camera);
     }
 
     function initTween() {
-        meteors.createSweepTween().start();
-        stars.createFlashTween().start();
+
+        tweenManager.meteorsSweep = meteors.createSweepTween();
+        tweenManager.starsFlashing = stars.createFlashTween();
+        tweenManager.rotationTween = createRotationTween();
     }
 
     function activateScene() {
@@ -65,12 +71,7 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-    }
-
-    function rotatePlanet() {
-
-        mesh.rotation.y += 0.0005;              // Rotate planet mesh
-        planetAggregation.rotation.y += 0.001;  // Rotate for potential Ring
+        startTween();
     }
 
     function createRotationTween() {
@@ -113,6 +114,12 @@ PlanetSceneController = function (renderer, config) {
         return scene;
     }
 
+    function startTween() {
+        tweenManager.meteorsSweep.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.rotationTween.start();
+    }
+
     function aggregationInit() {
         var aggregation = new THREE.Object3D();
 
@@ -122,7 +129,7 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
-        aggregation.rotateX(0.1 * Math.PI);
+        aggregation.rotateX(0.105 * Math.PI);
         return aggregation;
     }
 
@@ -133,7 +140,7 @@ PlanetSceneController = function (renderer, config) {
         lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
 
         lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
-        lights[1].position.set(30, 30, 3);
+        lights[1].position.set(30, 12, 3);
         lights[1].target = planetAggregation;
         lights[1].castShadow = true;            // default is false
         //Set up shadow properties for the light
@@ -171,9 +178,12 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function onMouseUp() {
+
         if (isPlanetClicked) {
             isPlanetClicked = false;
-            inertia();
+            isInertia = true;
+            tweenManager.inertia = createInertiaTween();
+            tweenManager.inertia.start();
         }
     }
 
@@ -183,22 +193,33 @@ PlanetSceneController = function (renderer, config) {
         var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
         speed = mouseX - SolarEPUtils.mouse.x;
-        var step = 1.5 * (mouseX - SolarEPUtils.mouse.x);
 
         SolarEPUtils.mouse.x = mouseX;
         SolarEPUtils.mouse.y = mouseY;
 
-        if (isPlanetClicked) {
-            rotateWithStep(step);
-        }
-
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
 
-        if (intersects === null || intersects.length === 0 || intersects[0].object !== mesh) {
-            selfRotate = true;
+        if (isPlanetClicked) {
+
+            var step = 1.5 * speed;
+            rotateWithStep(step);
+
+        } else if (isInertia) {
+
         } else {
-            selfRotate = false;
+
+            if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
+                if (!isStoppedRotation) {
+                    isStoppedRotation = true;
+                    tweenManager.rotationTween.stop();
+                }
+            } else {
+                if (isStoppedRotation) {
+                    isStoppedRotation = false;
+                    tweenManager.rotationTween.start();
+                }
+            }
         }
     }
 
@@ -207,9 +228,7 @@ PlanetSceneController = function (renderer, config) {
         planetAggregation.rotation.y += step;
     }
 
-    function inertia() {
-
-        isInertia = true;
+    function createInertiaTween() {
 
         var startSpeed = {speed: speed};
         var endSpeed = {speed: 0};
@@ -222,7 +241,7 @@ PlanetSceneController = function (renderer, config) {
             isInertia = false;
         });
 
-        inertiaTween.start();
+        return inertiaTween;
     }
 
     function onMouseWheel() {

@@ -21,6 +21,7 @@ EarthSceneController = function (renderer) {
 
     var coneMesh;
     var coneInitTweenSize = {size: 1};
+    var coneLastTweenSize = {size: 1};
     var growUpTween;
 
     var earthRenderer = renderer;
@@ -31,7 +32,7 @@ EarthSceneController = function (renderer) {
     // this.increase = increaseConeTween;
     // this.decrease = decreaseConeTween;
 
-    this.startTween = function() {
+    this.startTween = function () {
         growUpTween.start();
     };
 
@@ -56,16 +57,16 @@ EarthSceneController = function (renderer) {
         scene.add(initEarthAggregation());
         addOneCone(coneParameter);
 
-        // growUpTween = coneGrowUpTween();
+        growUpTween = coneGrowUpTween();
         // var growDownTween = coneGrowDownTween();
         // growUpTween.chain(growDownTween);
         // growDownTween.chain(growUpTween);
 
 
-        growUpTween = growUpClickedCone();
-        var growDownTween = growDownClickedCone();
-        growUpTween.chain(growDownTween);
-        growDownTween.chain(growUpTween);
+        // growUpTween = growUpClickedCone();
+        // var growDownTween = growDownClickedCone();
+        // growUpTween.chain(growDownTween);
+        // growDownTween.chain(growUpTween);
 
         return scene;
     }
@@ -102,13 +103,18 @@ EarthSceneController = function (renderer) {
         var tween = new TWEEN.Tween(initPos)
             .to(endPos, 1000);
 
-        tween.onUpdate(function () {
-            coneMesh.scale.set(this.size, this.size, this.size);
-            coneMesh.translateY(-coneMesh.initSize / 30);
-            coneMesh.rotateY(0.05);
-        }).onStart(function() {
-            coneMesh.setConeInitPos();
-        });
+        tween
+            .onUpdate(function () {
+                coneMesh.scale.set(this.size, this.size, this.size);
+                coneMesh.translateY(coneMesh.initSize / 30 * ((coneInitTweenSize.size - coneLastTweenSize.size) > 0 ? -1 : 1));
+                coneLastTweenSize.size = coneInitTweenSize.size;
+                coneMesh.rotateY(0.05);
+            })
+            .repeat(Infinity)
+            .yoyo(true)
+            .onStart(function () {
+                coneMesh.setConeInitPos();
+            });
 
         return tween;
     }
@@ -140,9 +146,11 @@ EarthSceneController = function (renderer) {
 
         tween.onUpdate(function () {
             coneMesh.scale.set(this.size, this.size, this.size);
-            coneMesh.translateY(-coneMesh.initSize / 30);
+            console.log((coneInitTweenSize.size - coneInitTweenSize.size) > 0 ? -1 : 1);
+            coneMesh.translateY(coneMesh.initSize / 30 * ((coneInitTweenSize.size - coneInitTweenSize.size) > 0 ? -1 : 1));
+            coneLastTweenSize.size = coneInitTweenSize.size;
             coneMesh.rotateY(0.05);
-        }).onStart(function() {
+        }).onStart(function () {
             coneMesh.setConeInitPos();
         });
 
@@ -193,7 +201,7 @@ EarthSceneController = function (renderer) {
         coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
         coneMesh.initSize = coneInitSize;
 
-        coneMesh.setConeInitPos = function() {
+        coneMesh.setConeInitPos = function () {
             this.position.x = this.basicPos[0];
             this.position.y = this.basicPos[1];
             this.position.z = this.basicPos[2];

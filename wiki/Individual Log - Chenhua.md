@@ -1,3 +1,8 @@
+### [Nov. 13th, 2017]
+Development:
+  * Light config for EarthScene
+  * Resize for each planet of PlanetScene
+***
 ### [Week 7 XP Core Values (or Lean/Kanban Principle)] 
   * See the whole
     * Keep the development process for both front end and back end
@@ -8,6 +13,10 @@
     * Coordinate the progress among different parts
       * Bugs tracking on scene animations
       * Time estimation towards to the final submission
+***
+### [Nov. 11th, 2017]
+Development:
+  * Solar system scale redesign
 ***
 ### [Nov. 10th, 2017]
 Development:
