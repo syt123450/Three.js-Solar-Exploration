@@ -17,7 +17,7 @@ EarthSceneController = function (renderer) {
     var clickedConeLastTweenSize = {size: 1};
 
     var universeUtils = new UniverseUtils();
-    var light = new THREE.AmbientLight(0xffffff);
+    var lights = lightsInit();
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
     var stars = universeUtils.createDefaultStars();
@@ -114,7 +114,9 @@ EarthSceneController = function (renderer) {
     function init() {
 
         var scene = new THREE.Scene();
-        scene.add(light);
+        lights.forEach(function addLight(light) {
+            scene.add(light);
+        });
         scene.add(camera);
         scene.add(universeMesh);
         stars.forEach(function addStar(star) {
@@ -129,6 +131,22 @@ EarthSceneController = function (renderer) {
 
 
         return scene;
+    }
+
+    function lightsInit() {
+        var lights = [];
+
+        // Lights Combination
+        lights[0] = new THREE.HemisphereLight(0xffffff, 0x000000, 1.3);
+
+        lights[1] = new THREE.DirectionalLight(0xf9f9f9, 0.45);
+        // lights[1] = new THREE.SpotLight( 0xf7f7f7 );
+        // lights[1] = new THREE.PointLight(0xf7f7f7);
+        lights[1].position.set(-25, 0, -1);
+        // lights[1].target = planetAggregation;
+        lights[1].castShadow = true;            // default is false
+
+        return lights;
     }
 
     function initEarthAggregation() {
