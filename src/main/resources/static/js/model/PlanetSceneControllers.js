@@ -129,7 +129,7 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(universeUtils.createRing(config));
         }
         universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
-        aggregation.rotateX(0.1 * Math.PI);
+        aggregation.rotateX(0.105 * Math.PI);
         return aggregation;
     }
 
@@ -140,7 +140,7 @@ PlanetSceneController = function (renderer, config) {
         lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
 
         lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
-        lights[1].position.set(30, 30, 3);
+        lights[1].position.set(30, 12, 3);
         lights[1].target = planetAggregation;
         lights[1].castShadow = true;            // default is false
         //Set up shadow properties for the light
