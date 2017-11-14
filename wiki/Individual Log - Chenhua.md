@@ -1,3 +1,8 @@
+### [Nov. 14th, 2017]
+Development:
+  * Light for the solar system scene
+  * Orbits for the solar system scene
+***
 ### [Nov. 13th, 2017]
 Development:
   * Light config for EarthScene
