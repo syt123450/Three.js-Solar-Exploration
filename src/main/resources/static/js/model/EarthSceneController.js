@@ -20,6 +20,7 @@ EarthSceneController = function (renderer) {
 	var earthMesh = universeUtils.createDefaultEarthMesh();
 	var atmosphereMesh = universeUtils.createDefaultAtmosphere();
 	var moonMesh = universeUtils.createDefaultMoon();
+	moonMesh.rotationHistory = 0;
 	var audio = universeUtils.loadAudio(audioSource);
 	
 	var coneList = [];
@@ -33,7 +34,8 @@ EarthSceneController = function (renderer) {
 			meteorsSweep: null,
 			starsFlashing: null,
 			clickedConeAnimation: null
-		}
+		},
+		moonTween: null
 	};
 
 	var clickedCone;
@@ -109,7 +111,7 @@ EarthSceneController = function (renderer) {
 				rotateEarth();
 			}
 			// rotateEarthWithStop();
-			rotateMoon();
+			// rotateMoon();
 			// animateCones();
 		}
 		
@@ -331,6 +333,8 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.conesAnimation = createConesTween();
         tweenManager.singleMap.conesAnimation.start();
         tweenManager.singleMap.clickedConeAnimation = createClickedConeTween();
+        tweenManager.moonTween = getMoonTweenPrototype(moonMesh);
+		tweenManager.moonTween.start();
 	}
 
     function coneGrowUpTween() {
@@ -416,8 +420,9 @@ EarthSceneController = function (renderer) {
 				TWEEN.remove(tween);
 			}
 		});
+		TWEEN.remove(tweenManager.moonTween);
 		
-		var adjustEarth = adjustEarthTween();
+		// var adjustEarth = adjustEarthTween();
 		var adjustCone = adjustConeTween(coneLongitude);
 		var translate = translateTween();
 
@@ -425,7 +430,7 @@ EarthSceneController = function (renderer) {
             tweenManager.singleMap.clickedConeAnimation.start();
 		});
 		
-		tweenManager.groupMap.moveEarthAggregation.push(adjustEarth);
+		// tweenManager.groupMap.moveEarthAggregation.push(adjustEarth);
 		tweenManager.groupMap.moveEarthAggregation.push(adjustCone);
 		tweenManager.groupMap.moveEarthAggregation.push(translate);
 		
@@ -450,7 +455,7 @@ EarthSceneController = function (renderer) {
 		});
 		
 		tween.onUpdate(function () {
-			console.log('adjust earth******');
+			// console.log('adjust earth******');
 			earthMesh.parent.rotation.z = obliquityStart.obliquity;
 		});
 		
@@ -472,9 +477,16 @@ EarthSceneController = function (renderer) {
 		
 		tween.to(posEnd, clickConeAnimateTime);
 		tween.onUpdate(function () {
-			console.log('adjust cone++++++');
+			// console.log('adjust cone++++++');
 			earthMesh.rotation.y = posStart.pos;
 			atmosphereMesh.rotation.y = posStart.pos;
+			
+			// moonMesh.position.x = 0.7 * Math.cos(23.5 / 180 * Math.PI) * Math.sin(moonMesh.rotationHistory + posStart.pos - initPosY);
+			// moonMesh.position.z = 0.7 * Math.cos(23.5 / 180 * Math.PI) * Math.cos(moonMesh.rotationHistory + posStart.pos - initPosY);
+			// moonMesh.position.y = 0.7 * Math.sin(23.5 / 180 * Math.PI) * Math.sin(moonMesh.rotationHistory + posStart.pos - initPosY);
+			moonMesh.position.x = 0;
+			moonMesh.position.y = 0;
+			moonMesh.position.z = 0.7;
 		});
 		
 		return tween;
@@ -494,7 +506,8 @@ EarthSceneController = function (renderer) {
 		
 		tween.onUpdate(function () {
 			earthMesh.parent.position.x = posStart.pos;
-			console.log('move left=====');
+			moonMesh.position.x = posStart.pos;
+			// console.log('move left=====');
 			earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 			earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
 		});
@@ -514,7 +527,7 @@ EarthSceneController = function (renderer) {
 		
 		var translateBack = translateBackTween();
 		var resumeCone = resumeConeTween();
-		var resumeEarth = resumeEarthTween();
+		// var resumeEarth = resumeEarthTween();
 
 		translateBack.onComplete(function() {
             tweenManager.singleMap.clickedConeAnimation.stop();
@@ -524,8 +537,12 @@ EarthSceneController = function (renderer) {
 		
 		tweenManager.groupMap.resumeScene.push(translateBack);
 		tweenManager.groupMap.resumeScene.push(resumeCone);
-		tweenManager.groupMap.resumeScene.push(resumeEarth);
+		// tweenManager.groupMap.resumeScene.push(resumeEarth);
 		
+		resumeCone.onComplete(function() {
+			tweenManager.moonTween = getMoonTweenPrototype(moonMesh);
+			tweenManager.moonTween.start();
+		});
 		tweenManager.groupMap.resumeScene.forEach(function(tween) {
 			tween.start();
 		});
@@ -542,7 +559,7 @@ EarthSceneController = function (renderer) {
 		tween.to(posEnd, clickConeAnimateTime);
 		
 		tween.onUpdate(function () {
-			console.log('resuming cone+++++');
+			// console.log('resuming cone+++++');
 			earthMesh.rotation.y = posStart.y;
 			atmosphereMesh.rotation.y = posStart.y;
 		});
@@ -561,7 +578,7 @@ EarthSceneController = function (renderer) {
 			.to(obliquityEnd, clickConeAnimateTime);
 		
 		tween.onUpdate(function () {
-			console.log('resuming earth******');
+			// console.log('resuming earth******');
 			earthMesh.parent.rotation.z = obliquityStart.obliquity;
 		});
 		
@@ -581,7 +598,7 @@ EarthSceneController = function (renderer) {
 		tween.to(posEnd, clickConeAnimateTime);
 		
 		tween.onUpdate(function () {
-			console.log('translate back======');
+			// console.log('translate back======');
 			earthMesh.parent.position.x = posStart.pos;
 			earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 			earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
