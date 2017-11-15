@@ -16,7 +16,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li>Worked on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Lights and size</li></ol> | <ol><li>Lights and size</li></ol> | <ol><li>so far so good</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>fix bugs in tween with bo</li></ol> | <ol><li>refactor cone tween will yoyo</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 
