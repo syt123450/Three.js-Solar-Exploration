@@ -188,21 +188,27 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 	                    console.log(planet + " clicked!");
-                        changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
-                        changeSceneTween.onComplete(function() {
-                        	TWEEN.remove(changeSceneTween);
-		                    enableBackLogo();
-		                    activatedScene = planetsList[planet].controller;
-		                    audio.pause();
-		                    planetsList[planet].controller.activateScene();
-		                    camera.position.set(
-			                    camera.positionHistory.x,
-			                    camera.positionHistory.y,
-			                    camera.positionHistory.z
-		                    );
-	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
-                        });
-	                    changeSceneTween.start();
+	                    TWEEN.remove(changeSceneTween);
+	                    enableBackLogo();
+	                    activatedScene = planetsList[planet].controller;
+	                    audio.pause();
+	                    planetsList[planet].controller.activateScene();
+	                    
+	                    // changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
+	                    // changeSceneTween.onComplete(function() {
+                        	// TWEEN.remove(changeSceneTween);
+		                 //    enableBackLogo();
+		                 //    activatedScene = planetsList[planet].controller;
+		                 //    audio.pause();
+		                 //    planetsList[planet].controller.activateScene();
+		                 //    camera.position.set(
+			             //        camera.positionHistory.x,
+			             //        camera.positionHistory.y,
+			             //        camera.positionHistory.z
+		                 //    );
+	                    //     camera.lookAt(new THREE.Vector3(0, 0, 0));
+	                    // });
+	                    // changeSceneTween.start();
 	                    break; // break is very important because of closure!!!
                     }
                 }
