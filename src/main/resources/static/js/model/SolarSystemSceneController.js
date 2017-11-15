@@ -17,6 +17,8 @@ SolarSystemSceneController = function(renderer) {
     var solarSystemRenderer = renderer;
     var solarSystemScene = init();
 
+    var changeSceneTween = null;
+    
     this.setPlanetScene = function (planetName, controller) {
         planetsList[planetName].controller = controller;
     };
@@ -35,10 +37,11 @@ SolarSystemSceneController = function(renderer) {
     };
 
     function animate() {
+        
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
-
+        TWEEN.update();
         rotationAndRevolution();
-
+    
         solarSystemRenderer.render(solarSystemScene, camera);
     }
 
@@ -174,7 +177,7 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function checkAndChangeScene() {
-
+        
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
 
         var intersects = SolarEPUtils.raycaster.intersectObjects(solarAggregation.children, true);
@@ -184,14 +187,55 @@ SolarSystemSceneController = function(renderer) {
 
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
-                        console.log(planet + " clicked!");
-                        enableBackLogo();
-                        activatedScene = planetsList[planet].controller;
-                        audio.pause();
-                        planetsList[planet].controller.activateScene();
+	                    console.log(planet + " clicked!");
+                        changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
+                        changeSceneTween.onComplete(function() {
+                        	TWEEN.remove(changeSceneTween);
+		                    enableBackLogo();
+		                    activatedScene = planetsList[planet].controller;
+		                    audio.pause();
+		                    planetsList[planet].controller.activateScene();
+		                    camera.position.set(
+			                    camera.positionHistory.x,
+			                    camera.positionHistory.y,
+			                    camera.positionHistory.z
+		                    );
+	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
+                        });
+	                    changeSceneTween.start();
+	                    break; // break is very important because of closure!!!
                     }
                 }
             }
         }
     }
 };
+
+function getChangeSceneTween(planetMesh, camera, audio) {
+    var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
+	var distanceEnd = { val: 0.5 };
+	var animationDuration = 5000;
+	
+	var tween = new TWEEN.Tween(distanceStart);
+	tween.to(distanceEnd, animationDuration)
+		.easing(TWEEN.Easing.Quadratic.Out)
+		.onUpdate(function() {
+			var distance = distanceStart.val;
+			var cameraDirection = new THREE.Vector3();
+		    camera.lookAt(planetMesh.position);
+			camera.getWorldDirection(cameraDirection);
+			// audio.setVolume();
+			// Set camera position
+			camera.position.set(
+				planetMesh.position.x - cameraDirection.x * distance,
+				planetMesh.position.y - cameraDirection.y * distance,
+				planetMesh.position.z - cameraDirection.z * distance
+			);
+	    })
+		.onStart(function() {
+			// TODO: save the initial position of the camera to a global variable
+			camera.positionHistory = Object.assign({}, camera.position);
+			camera.directionHistory = Object.assign({}, camera.getWorldDirection());
+		});
+    return tween;
+}

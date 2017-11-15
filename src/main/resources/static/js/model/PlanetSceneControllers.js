@@ -66,6 +66,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function activateScene() {
+        console.log('scene activated');
         audio.play();
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
