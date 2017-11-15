@@ -17,7 +17,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Chenhua | <ol><li>Scale redesign</li><li>light configs</li></ol> | <ol><li>EarthScene light configs</li><li>PlanetScene planet resize</li></ol> | <ol><li>so far so good</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>refactor all animation to tween</li></ol> | <ol><li>joint debugging with bo</li></ol> | <ol><li>some problem with tween</li></ol> |
 
 ***
 
