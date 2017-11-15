@@ -1,11 +1,22 @@
 
+### [Nov.15.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
 
+### [Nov.14.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
+* Generated more mock data
+
+### [Nov.13.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
 
 ### [Nov.06.2017 - Nov.12.2017] Core Values
 * Simplicity
   * Build the explosion effects bit by bit starting with lesser debris and no texture mapping.
   * Planned before generating the mock data to get best result
   * Did multiple refinements on the cone and explosion to get best result
+
+### [Nov.11.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
 
 ### [Nov.10.2017] Theme design/Storyboard
 * Worked on theme design / storyboard
