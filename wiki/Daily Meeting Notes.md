@@ -1,10 +1,20 @@
+### [Nov. 15th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Worked on theme design</li><li>Generated more mock data</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
+| Chenhua | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+
+***
 
 ### [Nov. 14th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Worked on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Lights and size</li></ol> | <ol><li>Lights and size</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 
@@ -15,7 +25,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Worked on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Scale redesign</li><li>light configs</li></ol> | <ol><li>EarthScene light configs</li><li>PlanetScene planet resize</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li>refactor all animation to tween</li></ol> | <ol><li>joint debugging with bo</li></ol> | <ol><li>some problem with tween</li></ol> |
 
@@ -26,7 +36,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li>Weekly meeting.</li></ol> | <ol><li>Update team wiki.</li></ol> | <ol><li>Went well.</li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Came up with theme design</li></ol> | <ol><li>Work on theme design</li><li></li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>fix light issue with sun mesh</li><li>resize solar system</li><li>Meeting</li></ol> | <ol><li>feedback on resized solar system</li></ol> | <ol><li>May need to resize solar system even smaller</li></ol> |
 | Yuntian | <ol><li>meeting</li></ol> | <ol><li>combine some tweens</li><li>write cone tween</li></ol> | <ol><li>load a little bit heavy</li></ol> |
 
