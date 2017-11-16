@@ -24,6 +24,7 @@ SolarSystemSceneController = function(renderer) {
     };
 
     this.activateScene = activateScene;
+    // this.deactivateScene = deactivateScene;
     this.name = "SolarSystemSceneController";
 
     // Camera position settings (NOT COMPLETE, N/A)
@@ -52,6 +53,11 @@ SolarSystemSceneController = function(renderer) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
+    }
+
+    function deactivateScene() {
+        audio.pause();
+        EventManager.removeEvents();
     }
 
     function init() {
@@ -188,11 +194,13 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 	                    console.log(planet + " clicked!");
+
 	                    // TWEEN.remove(changeSceneTween);
 	                    // enableBackLogo();
 	                    // activatedScene = planetsList[planet].controller;
-	                    // audio.pause();
+	                    // deactivateScene();
 	                    // planetsList[planet].controller.activateScene();
+
 	                    
 	                    changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
 	                    changeSceneTween.onComplete(function() {

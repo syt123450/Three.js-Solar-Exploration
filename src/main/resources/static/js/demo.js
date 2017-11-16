@@ -65,6 +65,7 @@ $(function () {
         });
         $(this).attr("class", "checked");
         googleEarth = true;
+        earthSceneController.deactivateScene();
         globe.activateScene();
 
     });
@@ -78,7 +79,8 @@ $(function () {
 
         if (googleEarth) {
             googleEarth = false;
-            earthSceneController.activateScene()
+            globe.deactivateScene();
+            earthSceneController.activateScene();
         }
 
         getYearData(year);
@@ -146,7 +148,7 @@ function loadData() {
 
 function backToSolar() {
     disableBackLogo();
-    activatedScene.pauseAudio();
+    activatedScene.deactivateScene();
     solarSystemSceneController.playAudio();
     solarSystemSceneController.activateScene();
     $("#timeLine").hide();
