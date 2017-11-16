@@ -69,7 +69,7 @@ PlanetSceneController = function (renderer, config) {
 
 	    tweenManager.starsFlashing = stars.createFlashTween();
 	    
-        tweenManager.rotationTween = tweenUtils.createPlanetRotationTween(mesh, planetAggregation);
+        tweenManager.rotationTween = TweenUtils.createPlanetRotationTween(mesh, planetAggregation);
     }
 
     function activateScene() {
