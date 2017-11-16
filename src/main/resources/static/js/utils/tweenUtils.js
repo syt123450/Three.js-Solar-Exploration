@@ -103,11 +103,11 @@ var TweenUtils = (function () {
             moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
             moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
 
-            moonMesh.position.x = (Math.sin(-timer) * moonRotateRadius) * Math.cos(Math.PI * 23.5/180);
-            moonMesh.position.y = (Math.sin(-timer) * moonRotateRadius) * Math.sin(Math.PI * 23.5/180);
+            moonMesh.position.x = (Math.sin(-timer) * moonRotateRadius) * Math.cos(Math.PI * 23.5 / 180);
+            moonMesh.position.y = (Math.sin(-timer) * moonRotateRadius) * Math.sin(Math.PI * 23.5 / 180);
             moonMesh.position.z = -Math.sqrt(Math.pow(moonRotateRadius, 2) - Math.pow(moonMesh.position.x, 2) - Math.pow(moonMesh.position.y, 2));
 
-            if (timer % (2 * Math.PI) >= (Math.PI / 2) && timer % (2 * Math.PI) <= (3 * Math.PI /2)){
+            if (timer % (2 * Math.PI) >= (Math.PI / 2) && timer % (2 * Math.PI) <= (3 * Math.PI / 2)) {
                 moonMesh.position.z = -moonMesh.position.z;
             }
         });
@@ -117,13 +117,59 @@ var TweenUtils = (function () {
         return rotateTween;
     }
 
+    function createStarFlashingTween(stars) {
+
+        var flashTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
+
+        flashTween.onUpdate(function () {
+
+            stars.forEach(function (star) {
+                star.count += Math.random() > 0.5 ? 2 : 3;
+                if (star.count > 30) {
+                    star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
+                    star.count = 0;
+                }
+            });
+        });
+
+        flashTween.repeat(Infinity);
+
+        return flashTween;
+    }
+
+    function createMeteorsSweepTween(meteors) {
+
+        var sweepTween = new TWEEN.Tween({x: 0})
+            .to({x: 1}, 6000);
+
+        sweepTween.onUpdate(function () {
+
+            meteors.forEach(function (meteor) {
+                meteor.position.x -= 0.01;
+                meteor.position.y -= 0.01;
+                if (meteor.position.x <= -4 || meteor.position.y <= -4) {
+                    meteor.position.x = 3 * Math.random();
+                    meteor.position.y = 3 * Math.random();
+                }
+            });
+        });
+
+        sweepTween.repeat(Infinity);
+
+        return sweepTween;
+    }
+
     this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
     this.createEarthInertiaTween = createEarthInertiaTween;
     this.createEarthMeshRotationTween = createEarthMeshRotationTween;
     this.createAtmosphereRotationTween = createAtmosphereRotationTween;
     this.createMoonRotationTween = createMoonRotationTween;
+    this.createStarFlashingTween = createStarFlashingTween;
+    this.createMeteorsSweepTween = createMeteorsSweepTween;
 
     return this;
+
 })();
 

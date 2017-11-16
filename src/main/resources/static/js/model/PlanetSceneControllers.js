@@ -10,9 +10,6 @@ PlanetSceneController = function (renderer, config) {
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
-    // Utils
-    // var TweenUtils = new TweenUtils();
-
     // Universe, stars and meteors
     var universeMesh = UniverseUtils.createDefaultUniverse();
     var stars = UniverseUtils.createDefaultStars();
