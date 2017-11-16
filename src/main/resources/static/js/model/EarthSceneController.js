@@ -103,6 +103,7 @@ EarthSceneController = function (renderer) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
+        activeTween();
     }
 
     function animate() {
@@ -314,14 +315,17 @@ EarthSceneController = function (renderer) {
 
     function initTween() {
         tweenManager.singleMap.meteorsSweep = meteors.createSweepTween();
-        tweenManager.singleMap.meteorsSweep.start();
         tweenManager.singleMap.starsFlashing = stars.createFlashTween();
-        tweenManager.singleMap.starsFlashing.start();
         tweenManager.singleMap.meshRotation = tweenUtils.createEarthMeshRotationTween(earthMesh);
-        tweenManager.singleMap.meshRotation.start();
         tweenManager.singleMap.atmosphereRotation = tweenUtils.createAtmosphereRotationTween(atmosphereMesh);
-        tweenManager.singleMap.atmosphereRotation.start();
         tweenManager.singleMap.moonRotation = tweenUtils.createMoonRotationTween(moonMesh);
+    }
+
+    function activeTween() {
+        tweenManager.singleMap.meteorsSweep.start();
+        tweenManager.singleMap.starsFlashing.start();
+        tweenManager.singleMap.meshRotation.start();
+        tweenManager.singleMap.atmosphereRotation.start();
         tweenManager.singleMap.moonRotation.start();
     }
 
@@ -367,58 +371,6 @@ EarthSceneController = function (renderer) {
 
         tweenManager.singleMap.conesAnimation = createConeGrowTween(coneList);
         tweenManager.singleMap.conesAnimation.start();
-    }
-
-    function createMeshRotationTween(earthMesh) {
-        var rotateTween = new TWEEN.Tween({x: 0})
-            .to({x: 1}, 6000);
-        coneCount++;
-        rotateTween.name = 'Earth ' + coneCount;
-        rotateTween.onUpdate(function () {
-
-            earthMesh.rotation.y += 0.003;
-        }).onStart(function () {
-            console.log("start mesh rotation tween.");
-        });
-
-        rotateTween.repeat(Infinity);
-
-        return rotateTween;
-    }
-
-    function createAtmosphereRotationTween(atmosphereMesh) {
-        var rotateTween = new TWEEN.Tween({x: 0})
-            .to({x: 1}, 6000);
-        coneCount++;
-        rotateTween.name = 'atmosphere ' + coneCount;
-        rotateTween.onUpdate(function () {
-
-            atmosphereMesh.rotation.y += 0.004;
-        });
-
-        rotateTween.repeat(Infinity);
-
-        return rotateTween;
-    }
-
-    function createMoonRotationTween(moonMesh) {
-
-        var moonRotateRadius = 0.7;
-        var rotateTween = new TWEEN.Tween({x: 0})
-            .to({x: 1}, 6000);
-        coneCount++;
-        rotateTween.name = 'moon ' + coneCount;
-        rotateTween.onUpdate(function () {
-
-            moonMesh.rotateY(0.01);
-            var timer = Date.now() * 0.0001;
-            moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
-            moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
-        });
-
-        rotateTween.repeat(Infinity);
-
-        return rotateTween;
     }
 
     function createConeGrowTween(coneList) {
