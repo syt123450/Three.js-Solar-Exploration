@@ -4,7 +4,7 @@
 
 var SolarConfig = {
 
-    sunRadius: 0.25,
+    sunRadius: 0.05,
     revolutionSpeed: -1,
     audio: "../music/Epic.mp3",
 
@@ -21,7 +21,7 @@ var SolarConfig = {
         mercury: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'mercury',
-                orbitRadius: sunRadius + 0.125,
+                orbitRadius: sunRadius + 0.025,
                 orbitAngle: 0,
                 // orbitSpeed: (365/88) * revolutionSpeed,
                 // orbitSpeed: 4.148 * revolutionSpeed,
@@ -29,48 +29,48 @@ var SolarConfig = {
                 rotateSpeed: 0.05,
                 map: '../images/planets/mercurymap.jpg',
                 bumpMap: '../images/planets/mercurybump.jpg',
-                radius: 0.025
+                radius: 0.005
             }
         },
 
         venus: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'venus',
-                orbitRadius: sunRadius + 0.22,
+                orbitRadius: sunRadius + 0.044,
                 orbitAngle: 0,
                 // orbitSpeed: (365/224.7) * revolutionSpeed,
                 orbitSpeed: 1.624 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/planets/venusmap.jpg',
                 bumpMap: '../images/planets/venusbump.jpg',
-                radius: 0.04
+                radius: 0.008
             }
         },
 
         earth: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'earth',
-                orbitRadius: sunRadius + 0.365,
+                orbitRadius: sunRadius + 0.073,
                 orbitAngle: 0,
                 orbitSpeed: 1.0 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/earthmap1k.jpg',
                 bumpMap: '../images/earthbump1k.jpg',
-                radius: 0.045
+                radius: 0.009
             }
         },
 
         mars: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'mars',
-                orbitRadius: sunRadius + 0.4625,
+                orbitRadius: sunRadius + 0.0925,
                 orbitAngle: 0,
                 // orbitSpeed: (365/687) * revolutionSpeed,
                 orbitSpeed: 0.531 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/planets/marsmap1k.jpg',
                 bumpMap: '../images/planets/marsbump1k.jpg',
-                radius: 0.0275
+                radius: 0.0055
             }
         },
 
@@ -78,12 +78,12 @@ var SolarConfig = {
             return {
                 name: 'asteroidBelt',
                 color: 0xffffcc,
-                size: 0.001,
+                size: 0.0001,
                 cloudNumber: 9,
                 cloudSize: 500,
-                orbitRadius: sunRadius + 0.6,
-                orbitRadiusWidth: 0.2,
-                orbitRadiusThickness: 0.01,
+                orbitRadius: sunRadius + 0.12,
+                orbitRadiusWidth: 0.04,
+                orbitRadiusThickness: 0.002,
                 orbitSpeed: 0.00001
             }
         },
@@ -91,48 +91,48 @@ var SolarConfig = {
         jupiter: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'jupiter',
-                orbitRadius: sunRadius + 1,
+                orbitRadius: sunRadius + 0.2,
                 orbitAngle: 0,
                 // orbitSpeed: (365/4332) * revolutionSpeed,
                 // orbitSpeed: 0.0843 * revolutionSpeed,
                 orbitSpeed: 0.125 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/planets/jupitermap.jpg',
-                radius: 0.1
+                radius: 0.02
             }
         },
 
         saturn: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'saturn',
-                orbitRadius: sunRadius + 1.375,
+                orbitRadius: sunRadius + 0.275,
                 orbitAngle: 0,
                 // orbitSpeed: (365/10760) * revolutionSpeed,
                 // orbitSpeed: 0.0339 * revolutionSpeed,
                 orbitSpeed: 0.085 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/planets/saturnmap.jpg',
-                radius: 0.09,
+                radius: 0.018,
                 ringMap: '../images/planets/saturnringcolortransRing.png',
-                ringInnerRadius: 0.108,
-                ringOuterRadius: 0.216
+                ringInnerRadius: 0.0216,
+                ringOuterRadius: 0.0432
             }
         },
 
         uranus: function (sunRadius, revolutionSpeed) {
             return {
                 name: 'uranus',
-                orbitRadius: sunRadius + 1.75,
+                orbitRadius: sunRadius + 0.35,
                 orbitAngle: 0,
                 // orbitSpeed: (365/30700) * revolutionSpeed,
                 // orbitSpeed: 0.0119 * revolutionSpeed,
                 orbitSpeed: 0.05 * revolutionSpeed,
                 rotateSpeed: 0.05,
                 map: '../images/planets/uranusmap.jpg',
-                radius: 0.06,
+                radius: 0.012,
                 ringMap: '../images/planets/uranusringcolortransRing.png',
-                ringInnerRadius: 0.078,
-                ringOuterRadius: 0.12
+                ringInnerRadius: 0.0156,
+                ringOuterRadius: 0.024
             }
         },
 
@@ -140,14 +140,14 @@ var SolarConfig = {
 
             return {
                 name: 'neptune',
-                orbitRadius: sunRadius + 2.075,
+                orbitRadius: sunRadius + 0.415,
                 orbitAngle: 0,
                 // orbitSpeed: (365/60200) * revolutionSpeed,
                 // orbitSpeed: 0.00606 * revolutionSpeed,
                 orbitSpeed: 0.03 * revolutionSpeed,
-                rotateSpeed: 0.05,
+                rotateSpeed: 0.01,
                 map: '../images/planets/neptunemap.jpg',
-                radius: 0.06
+                radius: 0.012
             }
         },
 
@@ -155,7 +155,7 @@ var SolarConfig = {
 
             return {
                 name: 'pluto',
-                orbitRadius: sunRadius + 2.3,
+                orbitRadius: sunRadius + 0.46,
                 orbitAngle: 0,
                 // orbitSpeed: (365/90600) * revolutionSpeed,
                 // orbitSpeed: (0.00403) * revolutionSpeed,
@@ -163,7 +163,7 @@ var SolarConfig = {
                 rotateSpeed: 0.05,
                 map: '../images/planets/plutomap1k.jpg',
                 bumpMap: '../images/planets/plutobump1k.jpg',
-                radius: 0.015
+                radius: 0.003
             }
         }
     },

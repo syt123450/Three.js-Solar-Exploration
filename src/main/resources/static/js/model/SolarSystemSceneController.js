@@ -163,15 +163,15 @@ SolarSystemSceneController = function(renderer) {
 
         // From the top of the system
         if (mode == 1) {
-            camera.position.set(0, 4.5, 0);
+            camera.position.set(0, 0.9, 0);
         }
         // From the horizontal position
         else if (mode == 2) {
-            camera.position.set(0, 0, 10);
+            camera.position.set(0, 0, 0.9);
         }
         // From the up-forward position
         else {
-            camera.position.set(0, 1.8, 3);
+            camera.position.set(0, 0.3, 0.9);
         }
 
         camera.lookAt(solarAggregation.position);
@@ -238,7 +238,7 @@ SolarSystemSceneController = function(renderer) {
 
 function getChangeSceneTween(planetMesh, camera, audio) {
     var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
-	var distanceEnd = { val: 0.5 };
+	var distanceEnd = { val: 0.15 };
 	var animationDuration = 5000;
 	
 	var tween = new TWEEN.Tween(distanceStart);
