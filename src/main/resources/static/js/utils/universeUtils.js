@@ -277,7 +277,7 @@ UniverseUtils = function () {
     this.createAsteroidBelt = createAsteroidBelt;
 
     this.addDoubleHalos = function (target, innerColor, outerColor) {
-        console.log('target++++', target);
+        // console.log('target++++', target);
         // innerGlowMesh settings
         var _innerGlowMesh;
         var INNER_GLOW_MESH_COLOR = innerColor;

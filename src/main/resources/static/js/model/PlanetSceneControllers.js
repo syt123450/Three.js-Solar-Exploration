@@ -12,6 +12,7 @@ PlanetSceneController = function (renderer, config) {
 
     // Utils
     var universeUtils = new UniverseUtils();
+    var tweenUtils = new TweenUtils();
 
     // Universe, stars and meteors
     var universeMesh = universeUtils.createDefaultUniverse();
@@ -38,16 +39,17 @@ PlanetSceneController = function (renderer, config) {
 
     var speed;
 
+    var inertiaControls = {
+        isInertia: false
+    };
+
     var isStoppedRotation = false;
     var isPlanetClicked = false;
-    var isInertia = false;
 
     // Interfaces
     this.activateScene = activateScene;
+    this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
-    this.pauseAudio = function () {
-        audio.pause();
-    };
 
     /* Action Functions */
     function animate() {
@@ -62,31 +64,35 @@ PlanetSceneController = function (renderer, config) {
 
         tweenManager.meteorsSweep = meteors.createSweepTween();
         tweenManager.starsFlashing = stars.createFlashTween();
-        tweenManager.rotationTween = createRotationTween();
+        // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
+        tweenManager.rotationTween = tweenUtils.createPlanetRotationTween(mesh, planetAggregation);
     }
 
     function activateScene() {
+        console.log('scene activated');
         audio.play();
-        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-        startTween();
+        activateTween();
     }
 
-    function createRotationTween() {
-        var rotateTween = new TWEEN.Tween({x: 0})
-            .to({x: 1}, 6000);
+    function deactivateScene() {
+        audio.pause();
+        deactivateTween();
+        EventManager.removeEvents();
+    }
 
-        rotateTween.onUpdate(function () {
+    function activateTween() {
+        tweenManager.meteorsSweep.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.rotationTween.start();
+    }
 
-            mesh.rotation.y += 0.0005;
-            planetAggregation.rotation.y += 0.001;
-        });
-
-        rotateTween.repeat(Infinity);
-
-        return rotateTween;
+    function deactivateTween() {
+        tweenManager.meteorsSweep.stop();
+        tweenManager.starsFlashing.stop();
+        tweenManager.rotationTween.stop();
     }
 
     /* Initialization Functions */
@@ -114,11 +120,11 @@ PlanetSceneController = function (renderer, config) {
         return scene;
     }
 
-    function startTween() {
-        tweenManager.meteorsSweep.start();
-        tweenManager.starsFlashing.start();
-        tweenManager.rotationTween.start();
-    }
+    // function startTween() {
+    //     tweenManager.meteorsSweep.start();
+    //     tweenManager.starsFlashing.start();
+    //     tweenManager.rotationTween.start();
+    // }
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();
@@ -181,8 +187,8 @@ PlanetSceneController = function (renderer, config) {
 
         if (isPlanetClicked) {
             isPlanetClicked = false;
-            isInertia = true;
-            tweenManager.inertia = createInertiaTween();
+            inertiaControls.isInertia = true;
+            tweenManager.inertia = tweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -205,7 +211,7 @@ PlanetSceneController = function (renderer, config) {
             var step = 1.5 * speed;
             rotateWithStep(step);
 
-        } else if (isInertia) {
+        } else if (inertiaControls.isInertia) {
 
         } else {
 
@@ -226,22 +232,6 @@ PlanetSceneController = function (renderer, config) {
     function rotateWithStep(step) {
 
         planetAggregation.rotation.y += step;
-    }
-
-    function createInertiaTween() {
-
-        var startSpeed = {speed: speed};
-        var endSpeed = {speed: 0};
-
-        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
-        inertiaTween.easing(TWEEN.Easing.Linear.None);
-        inertiaTween.onUpdate(function () {
-            planetAggregation.rotation.y += this.speed;
-        }).onComplete(function () {
-            isInertia = false;
-        });
-
-        return inertiaTween;
     }
 
     function onMouseWheel() {

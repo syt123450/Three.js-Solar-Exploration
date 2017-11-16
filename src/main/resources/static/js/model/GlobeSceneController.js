@@ -144,6 +144,10 @@ DAT.Globe = function (renderer, colorFn) {
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.scale.set(1.1, 1.1, 1.1);
+	
+	    // var enlargeEarthTween = getEnlargeEarthTween(mesh);
+	    // enlargeEarthTween.start();
+	    //
         scene.add(mesh);
 
         geometry = new THREE.CubeGeometry(0.75, 0.75, 1);
@@ -368,7 +372,7 @@ DAT.Globe = function (renderer, colorFn) {
     }
 
     function animate() {
-
+        // TWEEN.update();
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         render();
     }
@@ -406,8 +410,32 @@ DAT.Globe = function (renderer, colorFn) {
         renderer.render(scene, camera);
 
     }
-
-    this.__defineGetter__('time', function () {
+	
+	// /** Tween **/
+	// function getEnlargeEarthTween(mesh) {
+	// 	var distance = 0.5;
+	// 	var initPosZ = mesh.position.z;
+	// 	var finalPosZ = mesh.position.z + distance;
+	// 	var posStart = {pos: initPosZ};
+	// 	var posEnd = {pos: finalPosZ};
+	// 	var clickConeAnimateTime = 3000;
+	//
+	// 	var tween = new TWEEN.Tween(posStart);
+	// 	coneCount++;
+	// 	tween.name = 'move google earth closer ' + coneCount;
+	//
+	// 	tween.to(posEnd, clickConeAnimateTime);
+	// 	tween.onStart(function() {
+	// 	    console.log('google earth tween started');
+     //    });
+	// 	// tween.onUpdate(function () {
+	// 	// 	mesh.position.z = posStart.pos;
+	// 	// });
+	// 	return tween;
+	// }
+	// /** Tween end**/
+	//
+	this.__defineGetter__('time', function () {
         return this._time || 0;
     });
 
@@ -446,6 +474,9 @@ DAT.Globe = function (renderer, colorFn) {
     this.init = init;
     // this.animate = animate;
     this.activateScene = activateScene;
+    this.deactivateScene = function() {
+        EventManager.removeEvents();
+    };
 
     return this;
 
