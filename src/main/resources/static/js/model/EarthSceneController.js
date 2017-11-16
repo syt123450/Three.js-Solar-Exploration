@@ -97,7 +97,6 @@ EarthSceneController = function (renderer) {
 
         audio.play();
         $("#timeLine").show();
-        EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
@@ -107,6 +106,7 @@ EarthSceneController = function (renderer) {
     function deactivateScene() {
         audio.pause();
         deactivateTween();
+        EventManager.removeEvents();
     }
 
     function animate() {

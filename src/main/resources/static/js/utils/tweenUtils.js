@@ -106,7 +106,6 @@ TweenUtils = function () {
         return rotateTween;
     }
 
-
     this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
     this.createEarthInertiaTween = createEarthInertiaTween;
