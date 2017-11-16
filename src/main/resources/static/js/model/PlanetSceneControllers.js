@@ -11,7 +11,7 @@ PlanetSceneController = function (renderer, config) {
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
     // Utils
-    var tweenUtils = new TweenUtils();
+    // var TweenUtils = new TweenUtils();
 
     // Universe, stars and meteors
     var universeMesh = UniverseUtils.createDefaultUniverse();
@@ -64,7 +64,7 @@ PlanetSceneController = function (renderer, config) {
         tweenManager.meteorsSweep = meteors.createSweepTween();
         tweenManager.starsFlashing = stars.createFlashTween();
         // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
-        tweenManager.rotationTween = tweenUtils.createPlanetRotationTween(mesh, planetAggregation);
+        tweenManager.rotationTween = TweenUtils.createPlanetRotationTween(mesh, planetAggregation);
     }
 
     function activateScene() {
@@ -187,7 +187,7 @@ PlanetSceneController = function (renderer, config) {
         if (isPlanetClicked) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
-            tweenManager.inertia = tweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
+            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }

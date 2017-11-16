@@ -16,7 +16,7 @@ EarthSceneController = function (renderer) {
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};
 
-    var tweenUtils = new TweenUtils();
+    // var TweenUtils = new TweenUtils();
     var lights = lightsInit();
     var camera = UniverseUtils.createDefaultCamera();
     var universeMesh = UniverseUtils.createDefaultUniverse();
@@ -217,7 +217,7 @@ EarthSceneController = function (renderer) {
         if (isClickEarth) {
             isClickEarth = false;
             inertiaControls.isInertia = true;
-            tweenManager.inertia = tweenUtils.createEarthInertiaTween(earthMesh, atmosphereMesh, speed, inertiaControls);
+            tweenManager.inertia = TweenUtils.createEarthInertiaTween(earthMesh, atmosphereMesh, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -316,11 +316,11 @@ EarthSceneController = function (renderer) {
     }
 
     function initTween() {
-        tweenManager.singleMap.meshRotation = tweenUtils.createEarthMeshRotationTween(earthMesh);
+        tweenManager.singleMap.meshRotation = TweenUtils.createEarthMeshRotationTween(earthMesh);
         tweenManager.singleMap.starsFlashing = stars.createFlashTween();
         tweenManager.singleMap.meteorsSweep = meteors.createSweepTween();
-        tweenManager.singleMap.atmosphereRotation = tweenUtils.createAtmosphereRotationTween(atmosphereMesh);
-        tweenManager.singleMap.moonRotation = tweenUtils.createMoonRotationTween(moonMesh);
+        tweenManager.singleMap.atmosphereRotation = TweenUtils.createAtmosphereRotationTween(atmosphereMesh);
+        tweenManager.singleMap.moonRotation = TweenUtils.createMoonRotationTween(moonMesh);
     }
 
     function activateTween() {

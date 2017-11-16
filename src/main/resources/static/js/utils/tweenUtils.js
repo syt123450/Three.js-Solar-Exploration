@@ -2,7 +2,7 @@
  * Created by ss on 2017/11/9.
  */
 
-TweenUtils = function () {
+var TweenUtils = (function () {
 
     function createRotationTween(planetMesh, planetAggregation) {
         var rotateTween = new TWEEN.Tween({x: 0})
@@ -123,5 +123,7 @@ TweenUtils = function () {
     this.createEarthMeshRotationTween = createEarthMeshRotationTween;
     this.createAtmosphereRotationTween = createAtmosphereRotationTween;
     this.createMoonRotationTween = createMoonRotationTween;
-};
+
+    return this;
+})();
 
