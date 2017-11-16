@@ -61,6 +61,9 @@ PlanetSceneController = function (renderer, config) {
     function initTween() {
 
         tweenManager.meteorsSweep = meteors.createSweepTween();
+	    tweenManager.meteorsSweep.onStart(function() {
+	        console.log('meteor sweep tween started........');
+        });
         tweenManager.starsFlashing = stars.createFlashTween();
         tweenManager.rotationTween = createRotationTween();
     }
@@ -72,7 +75,8 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-        startTween();
+	    startTweenThis();
+        // startTween();
     }
 
     function createRotationTween() {
@@ -116,10 +120,13 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function startTween() {
+        console.log('startTween() of ' + this.name + ' called=====');
+        console.log('meteors weep tween: ', tweenManager.meteorsSweep);
         tweenManager.meteorsSweep.start();
         tweenManager.starsFlashing.start();
         tweenManager.rotationTween.start();
     }
+	var startTweenThis = startTween.bind(this);
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();
