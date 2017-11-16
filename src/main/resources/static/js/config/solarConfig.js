@@ -78,7 +78,7 @@ var SolarConfig = {
             return {
                 name: 'asteroidBelt',
                 color: 0xffffcc,
-                size: 0.01,
+                size: 0.001,
                 cloudNumber: 9,
                 cloudSize: 500,
                 orbitRadius: sunRadius + 0.6,
