@@ -17,6 +17,7 @@ EarthSceneController = function (renderer) {
     var clickedConeLastTweenSize = {size: 1};
 
     var universeUtils = new UniverseUtils();
+    var tweenUtils = new TweenUtils();
     var lights = lightsInit();
     var camera = universeUtils.createDefaultCamera();
     var universeMesh = universeUtils.createDefaultUniverse();
@@ -54,10 +55,13 @@ EarthSceneController = function (renderer) {
 
     var speed;
 
+    var inertiaControls = {
+        isInertia: false
+    };
+
     var isInfoBoard;
     var isStoppedRotation = false;
     var isClickEarth = false;
-    var isInertia = false;
     // var xHistory = {x: initPosX};
 
     this.activateScene = activateScene;
@@ -209,8 +213,8 @@ EarthSceneController = function (renderer) {
 
         if (isClickEarth) {
             isClickEarth = false;
-            isInertia = true;
-            tweenManager.inertia = createInertiaTween();
+            inertiaControls.isInertia = true;
+            tweenManager.inertia = tweenUtils.createEarthInertiaTween(earthMesh, atmosphereMesh, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -232,7 +236,7 @@ EarthSceneController = function (renderer) {
 
             if (isClickEarth) {
                 rotateWithSpeed(speed);
-            } else if (isInertia) {
+            } else if (inertiaControls.isInertia) {
 
             } else {
                 if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
@@ -258,25 +262,6 @@ EarthSceneController = function (renderer) {
 
         earthMesh.rotation.y += speed;
         atmosphereMesh.rotation.y += speed;
-    }
-
-    function createInertiaTween() {
-
-        var startSpeed = {speed: speed};
-        var endSpeed = {speed: 0};
-
-        var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
-        coneCount++;
-        inertiaTween.name = 'inertia ' + coneCount;
-        inertiaTween.easing(TWEEN.Easing.Linear.None);
-        inertiaTween.onUpdate(function () {
-            earthMesh.rotation.y += this.speed;
-            atmosphereMesh.rotation.y += this.speed;
-        }).onComplete(function () {
-            isInertia = false;
-        });
-
-        return inertiaTween;
     }
 
     function onMouseWheel() {
@@ -332,11 +317,11 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.meteorsSweep.start();
         tweenManager.singleMap.starsFlashing = stars.createFlashTween();
         tweenManager.singleMap.starsFlashing.start();
-        tweenManager.singleMap.meshRotation = createMeshRotationTween(earthMesh);
+        tweenManager.singleMap.meshRotation = tweenUtils.createEarthMeshRotationTween(earthMesh);
         tweenManager.singleMap.meshRotation.start();
-        tweenManager.singleMap.atmosphereRotation = createAtmosphereRotationTween(atmosphereMesh);
+        tweenManager.singleMap.atmosphereRotation = tweenUtils.createAtmosphereRotationTween(atmosphereMesh);
         tweenManager.singleMap.atmosphereRotation.start();
-        tweenManager.singleMap.moonRotation = createMoonRotationTween(moonMesh);
+        tweenManager.singleMap.moonRotation = tweenUtils.createMoonRotationTween(moonMesh);
         tweenManager.singleMap.moonRotation.start();
     }
 

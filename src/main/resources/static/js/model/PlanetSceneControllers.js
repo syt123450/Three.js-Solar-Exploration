@@ -39,7 +39,7 @@ PlanetSceneController = function (renderer, config) {
 
     var speed;
 
-    var tweenControls = {
+    var inertiaControls = {
         isInertia: false
     };
 
@@ -172,8 +172,8 @@ PlanetSceneController = function (renderer, config) {
 
         if (isPlanetClicked) {
             isPlanetClicked = false;
-            tweenControls.isInertia = true;
-            tweenManager.inertia = tweenUtils.createPlanetInertiaTween(planetAggregation, speed, tweenControls);
+            inertiaControls.isInertia = true;
+            tweenManager.inertia = tweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -196,7 +196,7 @@ PlanetSceneController = function (renderer, config) {
             var step = 1.5 * speed;
             rotateWithStep(step);
 
-        } else if (tweenControls.isInertia) {
+        } else if (inertiaControls.isInertia) {
 
         } else {
 
