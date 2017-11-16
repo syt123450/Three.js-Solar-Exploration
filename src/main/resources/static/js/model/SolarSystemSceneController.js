@@ -4,15 +4,13 @@
 
 SolarSystemSceneController = function(renderer) {
 
-    // Light and Camera
-    var universeUtils = new UniverseUtils();
-    var camera = universeUtils.createDefaultCamera();
+    var camera = UniverseUtils.createDefaultCamera();
 
-    var universeMesh = universeUtils.createSolarUniverse();
-    var solarAggregation = universeUtils.createSolarAggregation();
-    var asteroidBeltPoints = universeUtils.createAsteroidBelt();
-    var planetsList = universeUtils.createPlanetsList();
-    var audio = universeUtils.loadSolarAudio(SolarConfig.audio);
+    var universeMesh = UniverseUtils.createSolarUniverse();
+    var solarAggregation = UniverseUtils.createSolarAggregation();
+    var asteroidBeltPoints = UniverseUtils.createAsteroidBelt();
+    var planetsList = UniverseUtils.createPlanetsList();
+    var audio = UniverseUtils.loadSolarAudio(SolarConfig.audio);
 
     var solarSystemRenderer = renderer;
     var solarSystemScene = init();

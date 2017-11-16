@@ -16,17 +16,16 @@ EarthSceneController = function (renderer) {
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};
 
-    var universeUtils = new UniverseUtils();
     var tweenUtils = new TweenUtils();
     var lights = lightsInit();
-    var camera = universeUtils.createDefaultCamera();
-    var universeMesh = universeUtils.createDefaultUniverse();
-    var stars = universeUtils.createDefaultStars();
-    var meteors = universeUtils.createDefaultMeteors();
-    var earthMesh = universeUtils.createDefaultEarthMesh();
-    var atmosphereMesh = universeUtils.createDefaultAtmosphere();
-    var moonMesh = universeUtils.createDefaultMoon();
-    var audio = universeUtils.loadAudio(audioSource);
+    var camera = UniverseUtils.createDefaultCamera();
+    var universeMesh = UniverseUtils.createDefaultUniverse();
+    var stars = UniverseUtils.createDefaultStars();
+    var meteors = UniverseUtils.createDefaultMeteors();
+    var earthMesh = UniverseUtils.createDefaultEarthMesh();
+    var atmosphereMesh = UniverseUtils.createDefaultAtmosphere();
+    var moonMesh = UniverseUtils.createDefaultMoon();
+    var audio = UniverseUtils.loadAudio(audioSource);
 
     var coneList = [];
     var tweenManager = {
@@ -164,7 +163,7 @@ EarthSceneController = function (renderer) {
         aggregation.add(earthMesh);
         aggregation.add(atmosphereMesh);
         aggregation.rotateZ(-Math.PI * obliquity / 180);
-        universeUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
+        UniverseUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
         console.log('earth aggregation:', aggregation);
         moonMesh.rotateZ(Math.PI * obliquity / 180);
         aggregation.add(moonMesh);
@@ -174,7 +173,7 @@ EarthSceneController = function (renderer) {
 
     function addOneCone(coneParameter) {
         console.log("add one cone");
-        var coneObject = universeUtils.createOneCone(coneParameter);
+        var coneObject = UniverseUtils.createOneCone(coneParameter);
         coneObject.lookAt(earthMesh.position);
         coneObject.rotateX(Math.PI / 2);
         coneList.push(coneObject);

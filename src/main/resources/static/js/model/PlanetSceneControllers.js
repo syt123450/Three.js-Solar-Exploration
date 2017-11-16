@@ -11,18 +11,17 @@ PlanetSceneController = function (renderer, config) {
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
     // Utils
-    var universeUtils = new UniverseUtils();
     var tweenUtils = new TweenUtils();
 
     // Universe, stars and meteors
-    var universeMesh = universeUtils.createDefaultUniverse();
-    var stars = universeUtils.createDefaultStars();
-    var meteors = universeUtils.createDefaultMeteors();
+    var universeMesh = UniverseUtils.createDefaultUniverse();
+    var stars = UniverseUtils.createDefaultStars();
+    var meteors = UniverseUtils.createDefaultMeteors();
 
     // Mesh and Aggregation
-    var mesh = universeUtils.createPlanetMesh(config);
+    var mesh = UniverseUtils.createPlanetMesh(config);
     var planetAggregation = aggregationInit();
-    var audio = universeUtils.loadAudio(config.audio);
+    var audio = UniverseUtils.loadAudio(config.audio);
 
     var tweenManager = {
         rotationTween: null,
@@ -32,7 +31,7 @@ PlanetSceneController = function (renderer, config) {
     };
 
     // Camera and Lights
-    var camera = universeUtils.createDefaultCamera();
+    var camera = UniverseUtils.createDefaultCamera();
     var lights = lightsInit();
     // Init. Scene
     var scene = init();
@@ -132,9 +131,9 @@ PlanetSceneController = function (renderer, config) {
         aggregation.name = config.planetName + "Aggregation";
         aggregation.add(mesh);
         if (config.planetName === 'Saturn' || config.planetName === 'Uranus') {
-            aggregation.add(universeUtils.createRing(config));
+            aggregation.add(UniverseUtils.createRing(config));
         }
-        universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
+        UniverseUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
         aggregation.rotateX(0.105 * Math.PI);
         return aggregation;
     }

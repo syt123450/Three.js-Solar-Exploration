@@ -32,7 +32,7 @@ EarthSceneController = function (renderer) {
         scene.add(initEarthAggregation());
         // scene.add(createFilter());
 
-        scene.fog(0x000000, 1, 100);
+        // scene.fog(0xffffff, 1, 100);
 
         return scene;
     }

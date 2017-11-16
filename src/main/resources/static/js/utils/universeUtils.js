@@ -2,7 +2,7 @@
  * Created by ss on 2017/9/30.
  */
 
-UniverseUtils = function () {
+var UniverseUtils = (function () {
 
     var coneRadius = 0.55;
     var coneInitSize = 0.02;
@@ -145,17 +145,6 @@ UniverseUtils = function () {
             stars[i] = createOneStar();
             stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
-
-        // stars.flashStars = function () {
-        //
-        //     this.forEach(function (star) {
-        //         star.count += Math.random() > 0.5 ? 2 : 3;
-        //         if (star.count > 30) {
-        //             star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
-        //             star.count = 0;
-        //         }
-        //     });
-        // };
 
         stars.createFlashTween = function () {
 
@@ -561,4 +550,6 @@ UniverseUtils = function () {
 
         return meteor;
     }
-};
+
+    return this;
+})();
