@@ -17,22 +17,13 @@ $(function () {
     $.getScript("../js/config/planetConfig.js", function () {
         $.getScript("../js/model/PlanetSceneControllers.js", function () {
             mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
-	        venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
-	        marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
-	        jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
-	        saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
-	        uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
-	        neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
-	        plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
-	
-	        // mercurySceneController.name = 'mercury scene controller';
-	        // venusSceneController.name = 'venus scene controller';
-	        // marsSceneController.name = 'mars scene controller';
-	        // jupiterSceneController.name = 'jupiter scene controller';
-	        // saturnSceneController.name = 'saturn scene controller';
-	        // uranusSceneController.name = 'uranus scene controller';
-	        // neptuneSceneController.name = 'neptune scene controller';
-	        // plutoSceneController.name = 'pluto scene controller';
+            venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
+            marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
+            jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
+            saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
+            uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
+            neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
+            plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 
             solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
             solarSystemSceneController.setPlanetScene("venus", venusSceneController);

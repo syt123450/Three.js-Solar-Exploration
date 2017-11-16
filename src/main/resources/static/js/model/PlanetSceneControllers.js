@@ -3,7 +3,6 @@
  */
 
 // PlanetSceneController
-
 PlanetSceneController = function (renderer, config) {
     // Renderer
 
@@ -31,8 +30,7 @@ PlanetSceneController = function (renderer, config) {
     // Camera and Lights
     var camera = UniverseUtils.createDefaultCamera();
     var lights = lightsInit();
-
-	// var initTweenBindThis = initTween.bind(this);
+    // Init. Scene
     var scene = init();
 
     var speed;
@@ -48,11 +46,6 @@ PlanetSceneController = function (renderer, config) {
     this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
-	
-	this.activateMeteors = function() {
-		console.log(111);
-		tweenManager.meteorsSweep.start();
-	};
 
     /* Action Functions */
     function animate() {
@@ -62,13 +55,17 @@ PlanetSceneController = function (renderer, config) {
 
         renderer.render(scene, camera);
     }
-    
-    function initTween() {
-	    
-        tweenManager.meteorsSweep = meteors.createSweepTween();
 
-	    tweenManager.starsFlashing = stars.createFlashTween();
-	    
+    function initTween() {
+
+// <<<<<<< HEAD
+// 	    tweenManager.starsFlashing = stars.createFlashTween();
+//
+// =======
+        tweenManager.meteorsSweep = meteors.createSweepTween();
+        tweenManager.starsFlashing = stars.createFlashTween();
+        // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
+// >>>>>>> parent of db035ce... resolved conflict
         tweenManager.rotationTween = TweenUtils.createPlanetRotationTween(mesh, planetAggregation);
     }
 
@@ -78,9 +75,7 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-	    startTweenBindThis();
-	    // startTween();
-        // activateTween();
+        activateTween();
     }
 
     function deactivateScene() {
@@ -122,17 +117,9 @@ PlanetSceneController = function (renderer, config) {
         scene.add(planetAggregation);
 
         initTween();
-        // initTweenBindThis();
-	    
+
         return scene;
     }
-	
-    function startTween() {
-        tweenManager.meteorsSweep.start();
-        tweenManager.starsFlashing.start();
-        tweenManager.rotationTween.start();
-    }
-	var startTweenBindThis = startTween.bind(this);
 
     // function startTween() {
     //     tweenManager.meteorsSweep.start();

@@ -111,25 +111,6 @@ var UniverseUtils = (function () {
         meteors[1] = createOneMeteor();
 
         meteors.createSweepTween = function() {
-            var meteors = this;
-            
-            var sweepTween = new TWEEN.Tween({x: 0})
-                .to({x: 1}, 6000);
-	        sweepTween.getId();
-            sweepTween.onUpdate(function() {
-                // console.log('onupdate called======');
-                meteors.forEach(function(meteor) {
-                    meteor.position.x -= 0.01;
-                    meteor.position.y -= 0.01;
-                    if (meteor.position.x <= -4 || meteor.position.y <= -4) {
-                        meteor.position.x = 3 * Math.random();
-                        meteor.position.y = 3 * Math.random();
-                    }
-                });
-            });
-
-            sweepTween.repeat(Infinity);
-            
             return TweenUtils.createMeteorsSweepTween(this);
         };
 
@@ -144,39 +125,7 @@ var UniverseUtils = (function () {
             stars[i] = createOneStar();
             stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
-        
-        // stars.flashStars = function () {
-        //
-        //     this.forEach(function (star) {
-        //         star.count += Math.random() > 0.5 ? 2 : 3;
-        //         if (star.count > 30) {
-        //             star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
-        //             star.count = 0;
-        //         }
-        //     });
-        // };
 
-        // stars.createFlashTween = function () {
-        //
-        //     var stars = this;
-	     //    // console.log('stars this====', this);
-        //     var flashTween = new TWEEN.Tween({x: 0})
-        //         .to({x: 1}, 6000);
-        //
-        //     flashTween.onUpdate(function() {
-        //
-        //         stars.forEach(function(star) {
-        //             star.count += Math.random() > 0.5 ? 2 : 3;
-        //             if (star.count > 30) {
-        //                 star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
-        //                 star.count = 0;
-        //             }
-        //         });
-        //     });
-        //
-        //     flashTween.repeat(Infinity);
-        //
-        //     return flashTween;
         stars.createFlashTween = function() {
             return TweenUtils.createStarFlashingTween(this);
         };

@@ -206,13 +206,17 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 	                    console.log(planet + " clicked!");
+	                    // TWEEN.remove(changeSceneTween);
+	                    // enableBackLogo();
+	                    // activatedScene = planetsList[planet].controller;
+                        // deactivateScene();
+	                    // planetsList[planet].controller.activateScene();
 	                    
 	                    changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
 	                    changeSceneTween.onComplete(function() {
                         	TWEEN.remove(changeSceneTween);
 		                    enableBackLogo();
 		                    activatedScene = planetsList[planet].controller;
-
                             deactivateScene();
 		                    planetsList[planet].controller.activateScene();
 		                    camera.position.set(
@@ -223,6 +227,7 @@ SolarSystemSceneController = function(renderer) {
 	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
 	                    });
 	                    changeSceneTween.start();
+
 	                    break; // break is very important because of closure!!!
                     }
                 }
@@ -234,7 +239,7 @@ SolarSystemSceneController = function(renderer) {
 function getChangeSceneTween(planetMesh, camera, audio) {
     var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
 	var distanceEnd = { val: 0.5 };
-	var animationDuration = 1000;
+	var animationDuration = 5000;
 	
 	var tween = new TWEEN.Tween(distanceStart);
 	tween.to(distanceEnd, animationDuration)
