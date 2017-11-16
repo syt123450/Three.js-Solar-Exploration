@@ -16,7 +16,7 @@
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
 | Bou-Yu | <ol><li>Worked on theme design</li><li>Generated more mock data</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>System resize</li></ol> | <ol><li>Pluto and Moon orbits tilt</li></ol> | <ol><li>fine</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>meeting</li><li>refactor tween to tweenuitls</li></ol> | <ol><li>try fog</li></ol> | <ol><li>the tween bug is so strange</li></ol> |
 
 ***
 
