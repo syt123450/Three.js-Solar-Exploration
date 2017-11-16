@@ -56,6 +56,7 @@ $(function () {
         });
         $(this).attr("class", "checked");
         googleEarth = true;
+        earthSceneController.deactivateScene();
         globe.activateScene();
 
     });
@@ -69,7 +70,8 @@ $(function () {
 
         if (googleEarth) {
             googleEarth = false;
-            earthSceneController.activateScene()
+            globe.deactivateScene();
+            earthSceneController.activateScene();
         }
 
         getYearData(year);

@@ -474,6 +474,9 @@ DAT.Globe = function (renderer, colorFn) {
     this.init = init;
     // this.animate = animate;
     this.activateScene = activateScene;
+    this.deactivateScene = function() {
+        EventManager.removeEvents();
+    };
 
     return this;
 
