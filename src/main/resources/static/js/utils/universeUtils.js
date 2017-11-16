@@ -259,7 +259,7 @@ UniverseUtils = function () {
 
         for (var planet in planetsList) {
             planetsList[planet].orbit = createOrbit(SolarConfig[planet].orbitRadius);
-            planetsList[planet].mesh.position.x = SolarConfig[planet].orbitRadius;
+            planetsList[planet].mesh.position.z = SolarConfig[planet].orbitRadius;
         }
 
         // Add ring to Saturn and Uranus
@@ -507,6 +507,7 @@ UniverseUtils = function () {
             new THREE.LineBasicMaterial({color: 0x6d4587, linewidth: 0.2})
         );
         orbit.rotateX(0.5 * Math.PI);
+        // orbit.rotateY(Math.PI * 17 /180);
         return orbit;
     }
 

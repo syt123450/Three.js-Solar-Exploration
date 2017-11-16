@@ -11,6 +11,7 @@ var SolarConfig = {
     ConfigHelper: {
         sun: function (sunRadius) {
             return {
+                name: 'sun',
                 rotateSpeed: 0.001,
                 map: '../images/fire2.jpg',
                 radius: sunRadius
@@ -19,6 +20,7 @@ var SolarConfig = {
 
         mercury: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'mercury',
                 orbitRadius: sunRadius + 0.125,
                 orbitAngle: 0,
                 // orbitSpeed: (365/88) * revolutionSpeed,
@@ -33,6 +35,7 @@ var SolarConfig = {
 
         venus: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'venus',
                 orbitRadius: sunRadius + 0.22,
                 orbitAngle: 0,
                 // orbitSpeed: (365/224.7) * revolutionSpeed,
@@ -46,6 +49,7 @@ var SolarConfig = {
 
         earth: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'earth',
                 orbitRadius: sunRadius + 0.365,
                 orbitAngle: 0,
                 orbitSpeed: 1.0 * revolutionSpeed,
@@ -58,6 +62,7 @@ var SolarConfig = {
 
         mars: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'mars',
                 orbitRadius: sunRadius + 0.4625,
                 orbitAngle: 0,
                 // orbitSpeed: (365/687) * revolutionSpeed,
@@ -71,6 +76,7 @@ var SolarConfig = {
 
         asteroidBelt: function (sunRadius) {
             return {
+                name: 'asteroidBelt',
                 color: 0xffffcc,
                 size: 0.01,
                 cloudNumber: 9,
@@ -84,6 +90,7 @@ var SolarConfig = {
 
         jupiter: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'jupiter',
                 orbitRadius: sunRadius + 1,
                 orbitAngle: 0,
                 // orbitSpeed: (365/4332) * revolutionSpeed,
@@ -97,6 +104,7 @@ var SolarConfig = {
 
         saturn: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'saturn',
                 orbitRadius: sunRadius + 1.375,
                 orbitAngle: 0,
                 // orbitSpeed: (365/10760) * revolutionSpeed,
@@ -113,6 +121,7 @@ var SolarConfig = {
 
         uranus: function (sunRadius, revolutionSpeed) {
             return {
+                name: 'uranus',
                 orbitRadius: sunRadius + 1.75,
                 orbitAngle: 0,
                 // orbitSpeed: (365/30700) * revolutionSpeed,
@@ -130,6 +139,7 @@ var SolarConfig = {
         neptune: function (sunRadius, revolutionSpeed) {
 
             return {
+                name: 'neptune',
                 orbitRadius: sunRadius + 2.075,
                 orbitAngle: 0,
                 // orbitSpeed: (365/60200) * revolutionSpeed,
@@ -144,6 +154,7 @@ var SolarConfig = {
         pluto: function (sunRadius, revolutionSpeed) {
 
             return {
+                name: 'pluto',
                 orbitRadius: sunRadius + 2.3,
                 orbitAngle: 0,
                 // orbitSpeed: (365/90600) * revolutionSpeed,

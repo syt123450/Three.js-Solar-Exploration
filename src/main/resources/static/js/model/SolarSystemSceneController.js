@@ -60,25 +60,24 @@ SolarSystemSceneController = function(renderer) {
         lights[0].position.set(0, 0, 0);
         lights[1] = new THREE.AmbientLight(0xf7f7f7, 0.45);
 
-        var distance = 0.25;
         var density = 1;
-        lights[2] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 1);
-        lights[2].position.set(0, (distance * Math.sqrt(2)), 0);
+        lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[2].position.set(0, (SolarConfig.sunRadius * Math.sqrt(2)), 0);
         lights[2].target = solarAggregation;
-        lights[3] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 1);
-        lights[3].position.set(0, -(distance * Math.sqrt(2)), 0);
+        lights[3] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[3].position.set(0, -(SolarConfig.sunRadius * Math.sqrt(2)), 0);
         lights[3].target = solarAggregation;
-        lights[4] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[4].position.set(0, 0, (distance * Math.sqrt(2)));
+        lights[4] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[4].position.set(0, 0, (SolarConfig.sunRadius * Math.sqrt(2)));
         lights[4].target = solarAggregation;
-        lights[5] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[5].position.set(0, 0, -(distance * Math.sqrt(2)));
+        lights[5] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[5].position.set(0, 0, -(SolarConfig.sunRadius * Math.sqrt(2)));
         lights[5].target = solarAggregation;
-        lights[6] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[6].position.set((distance * Math.sqrt(2)), 0, 0);
+        lights[6] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[6].position.set((SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
         lights[6].target = solarAggregation;
-        lights[7] = new THREE.SpotLight(0xffffff, density, distance, Math.PI/2, 0);
-        lights[7].position.set(-(distance * Math.sqrt(2)), 0, 0);
+        lights[7] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[7].position.set(-(SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
         lights[7].target = solarAggregation;
 
 
@@ -108,6 +107,7 @@ SolarSystemSceneController = function(renderer) {
 
     function initSystemPositions() {
 
+        planetsList["pluto"].orbit.rotateY(Math.PI * 17 / 180);
         for (var planet in planetsList) {
             // Add planet to the sun
             solarAggregation.add(planetsList[planet].mesh);
@@ -125,13 +125,27 @@ SolarSystemSceneController = function(renderer) {
         for (var planet in planetsList) {
             // Rotations
             planetsList[planet].mesh.rotateY(SolarConfig[planet].rotateSpeed);
+
             // Revolutions
             SolarConfig[planet].orbitAngle += SolarConfig[planet].orbitSpeed;
             var radians = SolarConfig[planet].orbitAngle * Math.PI / 180;
             planetsList[planet].mesh.position.x = Math.cos(radians) * SolarConfig[planet].orbitRadius;
             planetsList[planet].mesh.position.z = Math.sin(radians) * SolarConfig[planet].orbitRadius;
+
+            if (SolarConfig[planet].name == 'pluto'){
+                planetsList[planet].mesh.position.x = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.cos(Math.PI * 17/180);
+                planetsList[planet].mesh.position.y = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.sin(Math.PI * 17/180);
+                planetsList[planet].mesh.position.z = -Math.sqrt(Math.pow(SolarConfig[planet].orbitRadius, 2) - Math.pow(planetsList[planet].mesh.position.x, 2) - Math.pow(planetsList[planet].mesh.position.y, 2));
+
+                if (SolarConfig[planet].orbitAngle % 360 <= -90 && SolarConfig[planet].orbitAngle % 360 >= -270){
+                    planetsList[planet].mesh.position.z = -planetsList[planet].mesh.position.z;
+                }
+            }
+
+
         }
 
+        // Asteroid Belt revolutions
         var k;
         for (k=0; k <asteroidBeltPoints.length; k++){
             asteroidBeltPoints[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k+1));
@@ -146,7 +160,7 @@ SolarSystemSceneController = function(renderer) {
         }
         // From the horizontal position
         else if (mode == 2) {
-            camera.position.set(0, 0, 3);
+            camera.position.set(0, 0, 10);
         }
         // From the up-forward position
         else {
