@@ -95,10 +95,21 @@ TweenUtils = function () {
         rotateTween.name = 'moon ' + coneCount;
         rotateTween.onUpdate(function () {
 
+            // Moon Rotation
             moonMesh.rotateY(0.01);
+
+            // Moon Revolution
             var timer = Date.now() * 0.0001;
             moonMesh.position.x = Math.cos(-timer) * moonRotateRadius;
             moonMesh.position.z = Math.sin(-timer) * moonRotateRadius;
+
+            moonMesh.position.x = (Math.sin(-timer) * moonRotateRadius) * Math.cos(Math.PI * 23.5/180);
+            moonMesh.position.y = (Math.sin(-timer) * moonRotateRadius) * Math.sin(Math.PI * 23.5/180);
+            moonMesh.position.z = -Math.sqrt(Math.pow(moonRotateRadius, 2) - Math.pow(moonMesh.position.x, 2) - Math.pow(moonMesh.position.y, 2));
+
+            if (timer % (2 * Math.PI) >= (Math.PI / 2) && timer % (2 * Math.PI) <= (3 * Math.PI /2)){
+                moonMesh.position.z = -moonMesh.position.z;
+            }
         });
 
         rotateTween.repeat(Infinity);
