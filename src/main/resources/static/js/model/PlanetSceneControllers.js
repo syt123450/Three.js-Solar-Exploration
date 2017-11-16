@@ -48,10 +48,8 @@ PlanetSceneController = function (renderer, config) {
 
     // Interfaces
     this.activateScene = activateScene;
+    this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
-    this.pauseAudio = function () {
-        audio.pause();
-    };
 
     /* Action Functions */
     function animate() {
@@ -77,7 +75,24 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-        startTween();
+        activateTween();
+    }
+
+    function deactivateScene() {
+        audio.pause();
+        deactivateTween();
+    }
+
+    function activateTween() {
+        tweenManager.meteorsSweep.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.rotationTween.start();
+    }
+
+    function deactivateTween() {
+        tweenManager.meteorsSweep.stop();
+        tweenManager.starsFlashing.stop();
+        tweenManager.rotationTween.stop();
     }
 
     /* Initialization Functions */
@@ -105,11 +120,11 @@ PlanetSceneController = function (renderer, config) {
         return scene;
     }
 
-    function startTween() {
-        tweenManager.meteorsSweep.start();
-        tweenManager.starsFlashing.start();
-        tweenManager.rotationTween.start();
-    }
+    // function startTween() {
+    //     tweenManager.meteorsSweep.start();
+    //     tweenManager.starsFlashing.start();
+    //     tweenManager.rotationTween.start();
+    // }
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();

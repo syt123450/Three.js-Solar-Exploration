@@ -137,7 +137,7 @@ function loadData() {
 
 function backToSolar() {
     disableBackLogo();
-    activatedScene.pauseAudio();
+    activatedScene.deactivateScene();
     solarSystemSceneController.playAudio();
     solarSystemSceneController.activateScene();
     $("#timeLine").hide();

@@ -65,9 +65,7 @@ EarthSceneController = function (renderer) {
     // var xHistory = {x: initPosX};
 
     this.activateScene = activateScene;
-    this.pauseAudio = function () {
-        audio.pause();
-    };
+    this.deactivateScene = deactivateScene;
 
     this.addCones = function (conesParameter) {
         coneList.forEach(function (cone) {
@@ -103,7 +101,12 @@ EarthSceneController = function (renderer) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-        activeTween();
+        activateTween();
+    }
+
+    function deactivateScene() {
+        audio.pause();
+        deactivateTween();
     }
 
     function animate() {
@@ -321,12 +324,20 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.moonRotation = tweenUtils.createMoonRotationTween(moonMesh);
     }
 
-    function activeTween() {
+    function activateTween() {
         tweenManager.singleMap.meteorsSweep.start();
         tweenManager.singleMap.starsFlashing.start();
         tweenManager.singleMap.meshRotation.start();
         tweenManager.singleMap.atmosphereRotation.start();
         tweenManager.singleMap.moonRotation.start();
+    }
+
+    function deactivateTween() {
+        tweenManager.singleMap.meteorsSweep.stop();
+        tweenManager.singleMap.starsFlashing.stop();
+        tweenManager.singleMap.meshRotation.stop();
+        tweenManager.singleMap.atmosphereRotation.stop();
+        tweenManager.singleMap.moonRotation.stop();
     }
 
     function processBeforeMove(cone) {
