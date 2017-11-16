@@ -213,8 +213,10 @@ var UniverseUtils = (function () {
         }
 
         // Add ring to Saturn and Uranus
-        planetsList["saturn"].mesh.add(createRing(SolarConfig.saturn));
-        planetsList["uranus"].mesh.add(createRing(SolarConfig.uranus));
+	    planetsList["saturn"].mesh.ring = createRing(SolarConfig.saturn);
+        planetsList["saturn"].mesh.add(planetsList["saturn"].mesh.ring);
+	    planetsList["uranus"].mesh.ring = createRing(SolarConfig.uranus);
+	    planetsList["uranus"].mesh.add(planetsList["uranus"].mesh.ring);
 
         return planetsList;
     };

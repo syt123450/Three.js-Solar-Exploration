@@ -237,8 +237,22 @@ SolarSystemSceneController = function(renderer) {
 };
 
 function getChangeSceneTween(planetMesh, camera, audio) {
+	console.log('planetMesh ===', planetMesh);
+	
     var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
-	var distanceEnd = { val: 0.12 };
+    
+    // https://threejs.org/docs/#api/cameras/PerspectiveCamera
+	// To get a full view of the planet, the minimum value of finalDistance must be greater or equal to
+	// NF + R
+	// NF = camera frustum near plane (default 0.1)
+	// R: radius of the planet
+	var finalDistance = typeof planetMesh.ring === 'undefined' ?
+		Math.max(6 * planetMesh.geometry.parameters.radius, camera.near +  1.05 * planetMesh.geometry.parameters.radius) :
+		Math.max(12 * planetMesh.geometry.parameters.radius, camera.near + 1.05 *  planetMesh.geometry.parameters.radius);
+
+	console.log('final distance ===', finalDistance);
+	var distanceEnd = { val: finalDistance };
+	
 	var animationDuration = 5000;
 	
 	var tween = new TWEEN.Tween(distanceStart);
