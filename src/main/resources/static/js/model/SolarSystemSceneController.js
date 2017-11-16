@@ -238,7 +238,7 @@ SolarSystemSceneController = function(renderer) {
 
 function getChangeSceneTween(planetMesh, camera, audio) {
     var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
-	var distanceEnd = { val: 0.15 };
+	var distanceEnd = { val: 0.12 };
 	var animationDuration = 5000;
 	
 	var tween = new TWEEN.Tween(distanceStart);
