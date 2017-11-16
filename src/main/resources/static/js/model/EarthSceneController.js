@@ -166,7 +166,7 @@ EarthSceneController = function (renderer) {
         aggregation.rotateZ(-Math.PI * obliquity / 180);
         universeUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
         console.log('earth aggregation:', aggregation);
-
+        moonMesh.rotateZ(Math.PI * obliquity / 180);
         aggregation.add(moonMesh);
 
         return aggregation;
@@ -317,25 +317,25 @@ EarthSceneController = function (renderer) {
     }
 
     function initTween() {
-        tweenManager.singleMap.meteorsSweep = meteors.createSweepTween();
-        tweenManager.singleMap.starsFlashing = stars.createFlashTween();
         tweenManager.singleMap.meshRotation = tweenUtils.createEarthMeshRotationTween(earthMesh);
+        tweenManager.singleMap.starsFlashing = stars.createFlashTween();
+        tweenManager.singleMap.meteorsSweep = meteors.createSweepTween();
         tweenManager.singleMap.atmosphereRotation = tweenUtils.createAtmosphereRotationTween(atmosphereMesh);
         tweenManager.singleMap.moonRotation = tweenUtils.createMoonRotationTween(moonMesh);
     }
 
     function activateTween() {
-        tweenManager.singleMap.meteorsSweep.start();
-        tweenManager.singleMap.starsFlashing.start();
         tweenManager.singleMap.meshRotation.start();
+        tweenManager.singleMap.starsFlashing.start();
+        tweenManager.singleMap.meteorsSweep.start();
         tweenManager.singleMap.atmosphereRotation.start();
         tweenManager.singleMap.moonRotation.start();
     }
 
     function deactivateTween() {
-        tweenManager.singleMap.meteorsSweep.stop();
-        tweenManager.singleMap.starsFlashing.stop();
         tweenManager.singleMap.meshRotation.stop();
+        tweenManager.singleMap.starsFlashing.stop();
+        tweenManager.singleMap.meteorsSweep.stop();
         tweenManager.singleMap.atmosphereRotation.stop();
         tweenManager.singleMap.moonRotation.stop();
     }
@@ -349,7 +349,6 @@ EarthSceneController = function (renderer) {
 
         tweenManager.singleMap.meshRotation.stop();
         tweenManager.singleMap.moonRotation.stop();
-
 
         coneList.forEach(function (coneMesh) {
             coneMesh.setConeInitPos();

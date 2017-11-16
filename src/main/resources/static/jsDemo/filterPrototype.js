@@ -30,7 +30,9 @@ EarthSceneController = function (renderer) {
         scene.add(camera);
         scene.add(universeMesh);
         scene.add(initEarthAggregation());
-        scene.add(createFilter());
+        // scene.add(createFilter());
+
+        scene.fog(0x000000, 1, 100);
 
         return scene;
     }
@@ -51,30 +53,19 @@ EarthSceneController = function (renderer) {
         atmosphereMesh.rotation.y += 0.013;
     }
 
-    function createFilter() {
-
-        var filter = new THREE.Mesh();
-
-        // filter.material = new THREE.SpriteMaterial({
-        //     color: 0x000000,
-        //     // opacity: 0.9,
-        //     // transparent: true,
-        //     // map: new THREE.TextureLoader().load('../images/glow.png')
-        // });
-
-        filter.geometry = new THREE.BoxGeometry(5, 5, 0.001);
-        filter.material = new THREE.MeshBasicMaterial({
-            // map: new THREE.TextureLoader().load('../images/meteor.png'),
-            color: 0x000000,
-            // opacity: 0.9,
-            // transparent: true
-        });
-
-        // filter.scale.set(100, 100, 1);
-        filter.position.x = 0;
-        filter.position.x = 0;
-        filter.position.x = 1;
-
-        return filter;
-    }
+    // function createFilter() {
+    //
+    //     var filter = new THREE.Mesh();
+    //     filter.geometry = new THREE.SphereGeometry(90, 0.01, 0.01);
+    //     filter.material = new THREE.MeshBasicMaterial({
+    //         map: new THREE.TextureLoader().load(
+    //             '../images/galaxy_starfield.png'
+    //         ),
+    //         side: THREE.BackSide
+    //     });
+    //
+    //     filter.position.set(0, 0, 1.5);
+    //
+    //     return filter;
+    // }
 };

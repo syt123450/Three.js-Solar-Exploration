@@ -24,7 +24,7 @@ SolarSystemSceneController = function(renderer) {
     };
 
     this.activateScene = activateScene;
-    // this.deactivateScene = deactivateScene;
+    this.deactivateScene = deactivateScene;
     this.name = "SolarSystemSceneController";
 
     // Camera position settings (NOT COMPLETE, N/A)

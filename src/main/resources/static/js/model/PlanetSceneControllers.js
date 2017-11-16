@@ -84,15 +84,15 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function activateTween() {
-        tweenManager.meteorsSweep.start();
-        tweenManager.starsFlashing.start();
         tweenManager.rotationTween.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.meteorsSweep.start();
     }
 
     function deactivateTween() {
-        tweenManager.meteorsSweep.stop();
-        tweenManager.starsFlashing.stop();
         tweenManager.rotationTween.stop();
+        tweenManager.starsFlashing.stop();
+        tweenManager.meteorsSweep.stop();
     }
 
     /* Initialization Functions */
