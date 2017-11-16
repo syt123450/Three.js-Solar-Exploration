@@ -209,6 +209,7 @@ SolarSystemSceneController = function(renderer) {
 		                    activatedScene = planetsList[planet].controller;
 		                    audio.pause();
 		                    planetsList[planet].controller.activateScene();
+		                    // planetsList[planet].controller.activateMeteors();
 		                    camera.position.set(
 			                    camera.positionHistory.x,
 			                    camera.positionHistory.y,

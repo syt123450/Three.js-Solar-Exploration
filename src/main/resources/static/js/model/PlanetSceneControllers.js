@@ -3,6 +3,8 @@
  */
 
 // PlanetSceneController
+var tweenCounter = 0;
+
 PlanetSceneController = function (renderer, config) {
     // Renderer
 
@@ -34,7 +36,8 @@ PlanetSceneController = function (renderer, config) {
     // Camera and Lights
     var camera = universeUtils.createDefaultCamera();
     var lights = lightsInit();
-    // Init. Scene
+
+	// var initTweenBindThis = initTween.bind(this);
     var scene = init();
 
     var speed;
@@ -50,6 +53,11 @@ PlanetSceneController = function (renderer, config) {
     this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
+	
+	this.activateMeteors = function() {
+		console.log(111);
+		tweenManager.meteorsSweep.start();
+	};
 
     /* Action Functions */
     function animate() {
@@ -59,16 +67,18 @@ PlanetSceneController = function (renderer, config) {
 
         renderer.render(scene, camera);
     }
-
+    
     function initTween() {
-
+	    
         tweenManager.meteorsSweep = meteors.createSweepTween();
-	    tweenManager.meteorsSweep.onStart(function() {
-	        console.log('meteor sweep tween started........');
-        });
-        tweenManager.starsFlashing = stars.createFlashTween();
+	    tweenManager.meteorsSweep.name = 'meteor tween: ' + tweenCounter++;
+	    
+	    tweenManager.starsFlashing = stars.createFlashTween();
+	    tweenManager.starsFlashing.name = 'stars flashing tween: ' + tweenCounter++;
+	    
         // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
         tweenManager.rotationTween = tweenUtils.createPlanetRotationTween(mesh, planetAggregation);
+	    tweenManager.rotationTween.name = 'rotation tween: ' + tweenCounter++;
     }
 
     function activateScene() {
@@ -77,8 +87,8 @@ PlanetSceneController = function (renderer, config) {
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
-	    startTweenThis();
-        // startTween();
+	    startTweenBindThis();
+	    // startTween();
         // activateTween();
     }
 
@@ -121,18 +131,17 @@ PlanetSceneController = function (renderer, config) {
         scene.add(planetAggregation);
 
         initTween();
-
+        // initTweenBindThis();
+	    
         return scene;
     }
 	
     function startTween() {
-        console.log('startTween() of ' + this.name + ' called=====');
-        console.log('meteors weep tween: ', tweenManager.meteorsSweep);
         tweenManager.meteorsSweep.start();
         tweenManager.starsFlashing.start();
         tweenManager.rotationTween.start();
     }
-	var startTweenThis = startTween.bind(this);
+	var startTweenBindThis = startTween.bind(this);
 
     // function startTween() {
     //     tweenManager.meteorsSweep.start();

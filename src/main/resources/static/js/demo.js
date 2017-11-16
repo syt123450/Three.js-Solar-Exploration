@@ -25,14 +25,14 @@ $(function () {
 	        neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
 	        plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 	
-	        mercurySceneController.name = 'mercury scene controller';
-	        venusSceneController.name = 'venus scene controller';
-	        marsSceneController.name = 'mars scene controller';
-	        jupiterSceneController.name = 'jupiter scene controller';
-	        saturnSceneController.name = 'saturn scene controller';
-	        uranusSceneController.name = 'uranus scene controller';
-	        neptuneSceneController.name = 'neptune scene controller';
-	        plutoSceneController.name = 'pluto scene controller';
+	        // mercurySceneController.name = 'mercury scene controller';
+	        // venusSceneController.name = 'venus scene controller';
+	        // marsSceneController.name = 'mars scene controller';
+	        // jupiterSceneController.name = 'jupiter scene controller';
+	        // saturnSceneController.name = 'saturn scene controller';
+	        // uranusSceneController.name = 'uranus scene controller';
+	        // neptuneSceneController.name = 'neptune scene controller';
+	        // plutoSceneController.name = 'pluto scene controller';
 
             solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
             solarSystemSceneController.setPlanetScene("venus", venusSceneController);

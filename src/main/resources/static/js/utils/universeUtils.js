@@ -113,12 +113,12 @@ UniverseUtils = function () {
         meteors.createSweepTween = function() {
 
             var meteors = this;
-
+            
             var sweepTween = new TWEEN.Tween({x: 0})
                 .to({x: 1}, 6000);
-
+	        sweepTween.getId();
             sweepTween.onUpdate(function() {
-
+                // console.log('onupdate called======');
                 meteors.forEach(function(meteor) {
                     meteor.position.x -= 0.01;
                     meteor.position.y -= 0.01;
@@ -160,7 +160,7 @@ UniverseUtils = function () {
         stars.createFlashTween = function () {
 
             var stars = this;
-
+	        // console.log('stars this====', this);
             var flashTween = new TWEEN.Tween({x: 0})
                 .to({x: 1}, 6000);
 

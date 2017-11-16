@@ -66,6 +66,11 @@ EarthSceneController = function (renderer) {
 
     this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
+    
+    this.activateMeteors = function() {
+        console.log(111);
+	    tweenManager.singleMap.meteorsSweep.start();
+    };
 
     this.addCones = function (conesParameter) {
         coneList.forEach(function (cone) {
@@ -464,7 +469,7 @@ EarthSceneController = function (renderer) {
         tween.name = 'Single cone up ' + coneCount;
 
         tween.onUpdate(function () {
-            console.log(this.size);
+            // console.log(this.size);
             clickedCone.scale.set(this.size, this.size, this.size);
             clickedCone.translateY(-clickedCone.initSize / 30);
             clickedCone.rotateY(0.05);
