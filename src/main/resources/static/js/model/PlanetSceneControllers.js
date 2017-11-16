@@ -3,7 +3,6 @@
  */
 
 // PlanetSceneController
-var tweenCounter = 0;
 
 PlanetSceneController = function (renderer, config) {
     // Renderer
@@ -12,19 +11,15 @@ PlanetSceneController = function (renderer, config) {
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
-    // Utils
-    var universeUtils = new UniverseUtils();
-    var tweenUtils = new TweenUtils();
-
     // Universe, stars and meteors
-    var universeMesh = universeUtils.createDefaultUniverse();
-    var stars = universeUtils.createDefaultStars();
-    var meteors = universeUtils.createDefaultMeteors();
+    var universeMesh = UniverseUtils.createDefaultUniverse();
+    var stars = UniverseUtils.createDefaultStars();
+    var meteors = UniverseUtils.createDefaultMeteors();
 
     // Mesh and Aggregation
-    var mesh = universeUtils.createPlanetMesh(config);
+    var mesh = UniverseUtils.createPlanetMesh(config);
     var planetAggregation = aggregationInit();
-    var audio = universeUtils.loadAudio(config.audio);
+    var audio = UniverseUtils.loadAudio(config.audio);
 
     var tweenManager = {
         rotationTween: null,
@@ -34,7 +29,7 @@ PlanetSceneController = function (renderer, config) {
     };
 
     // Camera and Lights
-    var camera = universeUtils.createDefaultCamera();
+    var camera = UniverseUtils.createDefaultCamera();
     var lights = lightsInit();
 
 	// var initTweenBindThis = initTween.bind(this);
@@ -71,14 +66,10 @@ PlanetSceneController = function (renderer, config) {
     function initTween() {
 	    
         tweenManager.meteorsSweep = meteors.createSweepTween();
-	    tweenManager.meteorsSweep.name = 'meteor tween: ' + tweenCounter++;
-	    
+
 	    tweenManager.starsFlashing = stars.createFlashTween();
-	    tweenManager.starsFlashing.name = 'stars flashing tween: ' + tweenCounter++;
 	    
-        // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
         tweenManager.rotationTween = tweenUtils.createPlanetRotationTween(mesh, planetAggregation);
-	    tweenManager.rotationTween.name = 'rotation tween: ' + tweenCounter++;
     }
 
     function activateScene() {
@@ -99,15 +90,15 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function activateTween() {
-        tweenManager.meteorsSweep.start();
-        tweenManager.starsFlashing.start();
         tweenManager.rotationTween.start();
+        tweenManager.starsFlashing.start();
+        tweenManager.meteorsSweep.start();
     }
 
     function deactivateTween() {
-        tweenManager.meteorsSweep.stop();
-        tweenManager.starsFlashing.stop();
         tweenManager.rotationTween.stop();
+        tweenManager.starsFlashing.stop();
+        tweenManager.meteorsSweep.stop();
     }
 
     /* Initialization Functions */
@@ -155,9 +146,9 @@ PlanetSceneController = function (renderer, config) {
         aggregation.name = config.planetName + "Aggregation";
         aggregation.add(mesh);
         if (config.planetName === 'Saturn' || config.planetName === 'Uranus') {
-            aggregation.add(universeUtils.createRing(config));
+            aggregation.add(UniverseUtils.createRing(config));
         }
-        universeUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
+        UniverseUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
         aggregation.rotateX(0.105 * Math.PI);
         return aggregation;
     }
@@ -211,7 +202,7 @@ PlanetSceneController = function (renderer, config) {
         if (isPlanetClicked) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
-            tweenManager.inertia = tweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
+            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }

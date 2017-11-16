@@ -2,7 +2,7 @@
  * Created by ss on 2017/9/30.
  */
 
-UniverseUtils = function () {
+var UniverseUtils = (function () {
 
     var coneRadius = 0.55;
     var coneInitSize = 0.02;
@@ -111,7 +111,6 @@ UniverseUtils = function () {
         meteors[1] = createOneMeteor();
 
         meteors.createSweepTween = function() {
-
             var meteors = this;
             
             var sweepTween = new TWEEN.Tween({x: 0})
@@ -130,8 +129,8 @@ UniverseUtils = function () {
             });
 
             sweepTween.repeat(Infinity);
-
-            return sweepTween;
+            
+            return TweenUtils.createMeteorsSweepTween(this);
         };
 
         meteors.name = 'meteors';
@@ -145,7 +144,7 @@ UniverseUtils = function () {
             stars[i] = createOneStar();
             stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
-
+        
         // stars.flashStars = function () {
         //
         //     this.forEach(function (star) {
@@ -157,27 +156,29 @@ UniverseUtils = function () {
         //     });
         // };
 
-        stars.createFlashTween = function () {
-
-            var stars = this;
-	        // console.log('stars this====', this);
-            var flashTween = new TWEEN.Tween({x: 0})
-                .to({x: 1}, 6000);
-
-            flashTween.onUpdate(function() {
-
-                stars.forEach(function(star) {
-                    star.count += Math.random() > 0.5 ? 2 : 3;
-                    if (star.count > 30) {
-                        star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
-                        star.count = 0;
-                    }
-                });
-            });
-
-            flashTween.repeat(Infinity);
-
-            return flashTween;
+        // stars.createFlashTween = function () {
+        //
+        //     var stars = this;
+	     //    // console.log('stars this====', this);
+        //     var flashTween = new TWEEN.Tween({x: 0})
+        //         .to({x: 1}, 6000);
+        //
+        //     flashTween.onUpdate(function() {
+        //
+        //         stars.forEach(function(star) {
+        //             star.count += Math.random() > 0.5 ? 2 : 3;
+        //             if (star.count > 30) {
+        //                 star.material.color.set(Math.round(Math.random() * 256) * 0x010101);
+        //                 star.count = 0;
+        //             }
+        //         });
+        //     });
+        //
+        //     flashTween.repeat(Infinity);
+        //
+        //     return flashTween;
+        stars.createFlashTween = function() {
+            return TweenUtils.createStarFlashingTween(this);
         };
 
         return stars;
@@ -259,7 +260,7 @@ UniverseUtils = function () {
 
         for (var planet in planetsList) {
             planetsList[planet].orbit = createOrbit(SolarConfig[planet].orbitRadius);
-            planetsList[planet].mesh.position.x = SolarConfig[planet].orbitRadius;
+            planetsList[planet].mesh.position.z = SolarConfig[planet].orbitRadius;
         }
 
         // Add ring to Saturn and Uranus
@@ -507,6 +508,7 @@ UniverseUtils = function () {
             new THREE.LineBasicMaterial({color: 0x6d4587, linewidth: 0.2})
         );
         orbit.rotateX(0.5 * Math.PI);
+        // orbit.rotateY(Math.PI * 17 /180);
         return orbit;
     }
 
@@ -560,4 +562,6 @@ UniverseUtils = function () {
 
         return meteor;
     }
-};
+
+    return this;
+})();
