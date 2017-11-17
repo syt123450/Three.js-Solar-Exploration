@@ -1,3 +1,14 @@
+### [Nov. 17th, 2017]
+
+| Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
+| ------ | ------ | ------ | ------ |
+| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Chenhua | <ol><li>resize solar system</li></ol> | <ol><li>data decoration</li></ol> | <ol><li>so far so good</li></ol> |
+| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+
+***
+
 ### [Nov. 16th, 2017]
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |

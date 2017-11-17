@@ -1,3 +1,8 @@
+### [Nov. 16th, 2017]
+Development:
+  * Change the scale of solar system
+    * Background now is 0.8
+***
 ### [Nov. 15th, 2017]
 Development:
   * Update Pluto orbit tilt
