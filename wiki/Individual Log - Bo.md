@@ -1,4 +1,23 @@
 ## XP Core Values: Communication
+### [Nov 18, 2017] - Weekly meeting<br/>
+1. Group project meeting
+2. Updated documentation.
+
+### [Nov 17, 2017] - Update camera zoom in tween<br/>
+1. Updated camera zoom in tween.
+
+### [Nov 16, 2017] - Create camera zoom in tween<br/>
+1. Camera zoom in tween.
+
+### [Nov 15, 2017] - Finished debugging<br/>
+1. Finished debugging earth tween.
+
+### [Nov 14, 2017] - Debug<br/>
+1. SDebug earth rotation tween.
+
+### [Nov 13, 2017] - Debug<br/>
+1. Debug earth rotation tween animation.
+
 
 ### [Nov 10, 2017] - Update documentation<br/>
 1. Updated weekly meeting notes, xp core values, burndown chart and etc.
