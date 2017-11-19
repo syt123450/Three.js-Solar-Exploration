@@ -172,7 +172,7 @@ var UniverseUtils = (function () {
     this.createSolarUniverse = function () {
 
         var universeMesh = new THREE.Mesh();
-        universeMesh.geometry = new THREE.SphereGeometry(0.8, 128, 128);
+        universeMesh.geometry = new THREE.SphereGeometry(3, 128, 128);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/background_2.jpg'

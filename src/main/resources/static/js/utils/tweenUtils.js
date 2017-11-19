@@ -10,8 +10,8 @@ var TweenUtils = (function () {
 
         rotateTween.onUpdate(function () {
 
-            planetMesh.rotation.y += 0.0005;
-            planetAggregation.rotation.y += 0.001;
+            planetMesh.rotation.y += 0.001;
+            // planetAggregation.rotation.y += 0.001;
         });
 
         rotateTween.repeat(Infinity);

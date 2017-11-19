@@ -1,3 +1,12 @@
+### [Nov. 18th, 2017]
+Development:
+  * Planet description
+  * Decorated data
+***
+### [Nov. 17th, 2017]
+Development:
+  * Search planet rotation data
+***
 ### [Nov. 16th, 2017]
 Development:
   * Change the scale of solar system
