@@ -1,7 +1,21 @@
+### [Week 8 XP Core Values (or Lean/Kanban Principle)] 
+  * See the whole
+    * Keep the development process for both front end and back end
+      * Solar scene updates: orbit angles, rotation/revolution speed and inclinations
+      * Planet scene updates: inclinations and lights
+      * Data decorations
+      * Refresh DB dump
+    * Coordinate the progress among different parts
+      * Bugs from tweens
+      * Final reviews and debugs
+***
 ### [Nov. 18th, 2017]
 Development:
   * Planet description
-  * Decorated data
+  * Inclinations
+    * for the solar system scene
+    * for each planet scene
+  * Earth directional light angle 
 ***
 ### [Nov. 17th, 2017]
 Development:
