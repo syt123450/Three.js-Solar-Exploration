@@ -1,3 +1,7 @@
+### [Nov.13.2017 - Nov.19.2017] Core Values
+* Simplicity
+  * Came up with different styles of storyboard to choose from
+
 ### [Nov.17.2017] Theme design/Storyboard
 * Worked on theme design / storyboard
 
