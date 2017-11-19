@@ -1,3 +1,48 @@
+## Week 8 Summaries - [Nov 13  - Nov 18, 2017]
+### XP Core Values
+
+
+|| Content | 
+| ------| ------ | 
+| Bou-yu | **Simplicity**</br>1.Came up with different styles of storyboard to choose from.|
+| Chenhua| **See the whole**</br>1. Make sure frontend and backend interface correctly.</br>2. Coordinate the progress among different parts.</br></br>**Decide as late as possible**</br>Code refactor after all functionalities have been implemented.</br>
+| Yuntian| **See the whole**</br>1. Make sure code change will not affect other functionalities. </br></br>**Communication**</br>1.Communicate with Bo and Chenhua to fix tween animation bug.</br>3.Communicate with the UI designer to fix the size of the resource.</br></br>**Decide as late as possible**</br>1. Refactored tween manager and tween utils in the end.|
+| Bo| **Communication**</br>1. Met Yuntian in the libary for 4 hours to do code refactor. </br>2. Keep communicating technical issues with team member in the chat group. </br>|
+
+### Bou-Yu
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Planet theme design. | Presentation Preps | 1. Went well|
+| 2. Story board design. | Presentation Preps | |
+| 3. Finalize the explosion effect. | Presentation Preps | |
+
+
+### Chenhua
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Adapted size of the planets to the image resource.| Presentation Preps | 1.|
+| 2. Updated lighting in all planet scenes. | Presentation Preps | 2.|
+| 3. Adjusted the tilt of Pluto's revolution orbit. | Presentation Preps | 3.|
+
+### Yuntian
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Create Tween utils to manage the creation of all Tween animation. | Presentation Preps | 1.|
+| 2. Wrote new Tweens for animation. | Presentation Preps | 2.|
+| 3. Code Refactor.| Presentation Preps | 3.|
+
+### Bo
+
+| Done (Last Week) | To Do (Next Week) | Challenges (Last Week) |
+| ------| ------ | ------ |
+| 1. Created camera zoom in tween. | Presentation Preps | 1.|
+| 2. Fixed bug in earth rotation tween. | Presentation Preps | 2.|
+| 3. Managed document. | Presentation Preps | 3.|
+
+***
 ## Week 7 Summaries - [Nov 6  - Nov 11, 2017]
 ### XP Core Values
 

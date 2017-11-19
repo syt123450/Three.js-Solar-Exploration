@@ -3,6 +3,22 @@
 Scheduled meeting time: every Saturday
 Location: TBD EB376 or Library
 
+# **Week 8 Meeting**
+* Host: Chenhua
+* Attendees: Bou-yu, Bo, Chenhua, Yuntian
+* Time: 11/18/2017 (2 hours)
+* Recorder: Bo
+
+Topic 1: </br>
+* What did we accomplished last week
+* Assigned tasks for next week
+* A lot of challenges we have last week<br/>
+
+Topic 2: </br>
+* Discussed how to wrap up the code.
+* Discussed how to prepare for the demo.
+* Summarized design patterns in the project.
+
 # **Week 7 Meeting**
 * Host: Chenhua
 * Attendees: Bou-yu, Bo, Chenhua, Yuntian
