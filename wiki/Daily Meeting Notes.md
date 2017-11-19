@@ -3,7 +3,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Work on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>resize solar system</li></ol> | <ol><li>data decoration</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li>fix tween bug</li></ol> | <ol><li>meeting</li></ol> | <ol><li>go well</li></ol> |
 
@@ -14,7 +14,7 @@
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
 | Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bou-Yu | <ol><li>Work on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Pluto and Moon orbits tilt</li></ol> | <ol><li>solar system background resize</li><li>data decoration</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li>add fog to solar scene</li></ol> | <ol><li>fix tween bug</li></ol> | <ol><li>go well</li></ol> |
 

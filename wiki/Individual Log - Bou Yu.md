@@ -1,3 +1,8 @@
+### [Nov.17.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
+
+### [Nov.16.2017] Theme design/Storyboard
+* Worked on theme design / storyboard
 
 ### [Nov.15.2017] Theme design/Storyboard
 * Worked on theme design / storyboard
