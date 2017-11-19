@@ -148,7 +148,7 @@ EarthSceneController = function (renderer) {
         lights[1] = new THREE.DirectionalLight(0xf9f9f9, 0.45);
         // lights[1] = new THREE.SpotLight( 0xf7f7f7 );
         // lights[1] = new THREE.PointLight(0xf7f7f7);
-        lights[1].position.set(-25, 0, -1);
+        lights[1].position.set(-25, 12, -2);
         // lights[1].target = planetAggregation;
         lights[1].castShadow = true;            // default is false
 
@@ -158,8 +158,8 @@ EarthSceneController = function (renderer) {
     function initEarthAggregation() {
 
         var aggregation = new THREE.Object3D();
-        var sphereAxis = new THREE.AxisHelper(0.8);
-        earthMesh.add(sphereAxis);
+        // var sphereAxis = new THREE.AxisHelper(0.8);
+        // earthMesh.add(sphereAxis);
         aggregation.add(earthMesh);
         aggregation.add(atmosphereMesh);
         aggregation.rotateZ(-Math.PI * obliquity / 180);
