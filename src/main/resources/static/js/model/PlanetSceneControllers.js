@@ -136,7 +136,7 @@ PlanetSceneController = function (renderer, config) {
         UniverseUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
 
         // Coordinate inclination
-        aggregation.rotateY(config.inclination * Math.PI /180);
+        aggregation.rotateZ(config.inclination * Math.PI /180);
 
         // Coordinate axis angle for camera
         aggregation.rotateX(0.105 * Math.PI);

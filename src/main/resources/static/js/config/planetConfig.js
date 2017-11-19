@@ -50,7 +50,7 @@ var PlanetConfig = {
         planetName: 'Saturn',
         map: '../images/planets/saturnmap.jpg',
         radius: 0.32,
-        inclination: 26.73,
+        inclination: -26.73,
         ringMap: '../images/planets/saturnringcolortransRing.png',
         ringInnerRadius: 0.42,
         ringOuterRadius: 0.84,
