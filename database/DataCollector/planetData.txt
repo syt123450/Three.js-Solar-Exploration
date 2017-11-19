@@ -1,4 +1,10 @@
+Planet Symbols: https://en.wikipedia.org/wiki/Astronomical_symbols
+
 Mercury
+Mercury is the smallest and innermost planet in the Solar System.
+It is named after the Roman deity Mercury, the messenger to the gods.
+Mercury is gravitationally locked with the Sun in a 3:2 spin-orbit resonance,[15] and rotates in a way that is unique in the Solar System.
+The astronomical symbol for Mercury is a stylized version of Hermes' caduceus, ☿.
 Discovery: Known to the ancients and visible to the naked eye
 Named for: Messenger of the Roman gods
 Diameter: 3031 miles (4,878 km)
@@ -14,6 +20,11 @@ Composition by volume:
 Trace amounts of argon, nitrogen, carbon dioxide, water vapor, xenon, krypton, and neon
 
 Venus
+Venus is the second planet from the Sun, orbiting it every 224.7 Earth days.
+It is named after the Roman goddess of love and beauty.
+It is the second-brightest natural object in the night sky after the Moon, reaching an apparent magnitude of −4.6 – bright enough to cast shadows at night and, rarely, visible to the naked eye in broad daylight.
+Venus is a terrestrial planet and is sometimes called Earth's "sister planet" because of their similar size, mass, proximity to the Sun, and bulk composition.
+The astronomical symbol for Venus is the same as that used in biology for the female sex: a circle with a small cross beneath, ♀.
 Discovery: Known to the ancients and visible to the naked eye
 Named for: Roman goddess of love and beauty
 Diameter: 7,521 miles (12,104 km)
@@ -32,6 +43,10 @@ Composition by volume:
 Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride
 
 Earth
+Earth is the third planet from the Sun and the only object in the Universe known to harbor life.
+According to radiometric dating and other sources of evidence, Earth formed over 4 billion years ago.
+Earth is the densest planet in the Solar System and the largest of the four terrestrial planets.
+The standard astronomical symbol of Earth consists of a cross circumscribed by a circle, 🜨, representing the four corners of the world.
 Diameter: 7,926 miles (12,760 km)
 Mass: 5.97237×10^24kg
 Orbital Period: 365.24 days
@@ -44,6 +59,10 @@ Composition by volume:
 ~ 1% water vapor (climate-variable)
 
 Mars
+Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System.
+Mars is a terrestrial planet with a thin atmosphere, having surface features reminiscent both of the impact craters of the Moon and the valleys, deserts, and polar ice caps of Earth.
+Mars can easily be seen from Earth with the naked eye, as can its reddish coloring.
+Its symbol, a circle with an arrow pointing out to the upper right, is used as a symbol for the male gender, ♂.
 Discovery: Known to the ancients and visible to the naked eye
 Named for: Roman god of war
 Diameter: 4,217 miles (6,787 km)
@@ -58,6 +77,11 @@ Composition by volume:
 0.0557% carbon monoxide
 
 Jupiter
+Jupiter is the fifth planet from the Sun and the largest in the Solar System.
+It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined.
+Jupiter is primarily composed of hydrogen with a quarter of its mass being helium, though helium comprises only about a tenth of the number of molecules.
+A prominent result is the Great Red Spot, a giant storm that is known to have existed since at least the 17th century when it was first seen by telescope.
+The astronomical symbol for the planet, ♃, is a stylized representation of the god's lightning bolt.
 Discovery: Known to the ancients and visible to the naked eye
 Named for: Ruler of the Roman gods
 Diameter: 86,881 miles (139,822 km)
@@ -74,6 +98,10 @@ Composition by volume:
 0.0004±0.0004%	water (H2O)
 
 Saturn
+Saturn is the sixth planet from the Sun and the second-largest in the Solar System.
+Saturn is a gas giant because it is predominantly composed of hydrogen and helium.
+The planet's most famous feature is its prominent ring system that is composed mostly of ice particles, with a smaller amount of rocky debris and dust.
+Saturn is named after the Roman god of agriculture; its astronomical symbol (♄) represents the god's sickle.
 Discovery: Known to the ancients and visible to the naked eye
 Named for: Roman god of agriculture
 Diameter: 74,900 miles (120,500 km)
@@ -89,6 +117,10 @@ Composition by volume:
 0.0007±0.00015%	ethane (C2H6)
 
 Uranus
+Uranus is the seventh planet from the Sun.
+It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System.
+Uranus is the only planet whose name is derived directly from a figure from Greek mythology, from the Latinised version of the Greek god of the sky Ouranos.
+Uranus has two astronomical symbols. The first to be proposed, ♅ and a later proposal, ⛢.
 Discovery: 1781 by William Herschel (was thought previously to be a star)
 Named for: Personification of heaven in ancient myth
 Diameter: 31,763 miles (51,120 km)
@@ -102,6 +134,10 @@ Composition by volume:
 0.009% (0.007–0.015%) hydrogen deuteride (HD)
 
 Neptune
+Neptune is the eighth and farthest known planet from the Sun in the Solar System.
+In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet.
+Neptune is not visible to the unaided eye and is the only planet in the Solar System found by mathematical prediction rather than by empirical observation.
+It is named after the Roman god of the sea and has the astronomical symbol ♆, a stylised version of the god Neptune's trident.
 Discovery: 1846
 Named for: Roman god of water
 Diameter: 30,775 miles (49,530 km)
@@ -116,6 +152,10 @@ Composition by volume	Gases:
 ~0.00015% ethane (C2H6)
 
 Pluto
+Pluto is a dwarf planet in the Kuiper belt, a ring of bodies beyond Neptune.
+Pluto is the largest and second-most-massive known dwarf planet in the Solar System, and the ninth-largest and tenth-most-massive known object directly orbiting the Sun.
+Light from the Sun takes about 5.5 hours to reach Pluto at its average distance (39.5 AU).
+Pluto's astronomical symbol (♇, Unicode U+2647, ♇) was then created as a monogram constructed from the letters "PL".
 Discovery: 1930 by Clyde Tombaugh
 Named for: Roman god of the underworld, Hades
 Diameter: 1,430 miles (2,301 km)
