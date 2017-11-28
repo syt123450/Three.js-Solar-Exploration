@@ -159,7 +159,57 @@ var TweenUtils = (function () {
 
         return sweepTween;
     }
-
+	
+	function createPlanetMoveLeftTween(planetAggregation) {
+		var startPos = { x: planetAggregation.position.x };
+		var endPos = { x: - planetAggregation.children[0].geometry.parameters.radius  };
+		var tween = new TWEEN.Tween(startPos)
+			.to(endPos, 1000);
+		
+		tween.onUpdate(function () {
+			planetAggregation.position.x = startPos.x;
+			
+			// move glow mesh too
+			if (planetAggregation.children.length === 3) {
+				planetAggregation.children[1].position.x = startPos.x * 0.15;
+				planetAggregation.children[2].position.x = startPos.x * 0.15;
+			}
+			
+			if (planetAggregation.children.length === 4) {
+				planetAggregation.children[2].position.x = startPos.x * 0.15;
+				planetAggregation.children[3].position.x = startPos.x * 0.15;
+			}
+			
+		});
+		
+		return tween;
+	}
+	
+	function createPlanetMoveRightTween(planetAggregation) {
+		var startPos = { x: planetAggregation.position.x };
+		var endPos = { x: 0 };
+		var tween = new TWEEN.Tween(startPos)
+			.to(endPos, 1000);
+		
+		tween.onUpdate(function () {
+			planetAggregation.position.x = startPos.x;
+			
+			// move glow mesh too
+			if (planetAggregation.children.length === 3) {
+				planetAggregation.children[1].position.x = startPos.x * 0.15;
+				planetAggregation.children[2].position.x = startPos.x * 0.15;
+			}
+			
+			if (planetAggregation.children.length === 4) {
+				planetAggregation.children[2].position.x = startPos.x * 0.15;
+				planetAggregation.children[3].position.x = startPos.x * 0.15;
+			}
+			
+		});
+		
+		return tween;
+	}
+    
     this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
     this.createEarthInertiaTween = createEarthInertiaTween;
@@ -168,6 +218,9 @@ var TweenUtils = (function () {
     this.createMoonRotationTween = createMoonRotationTween;
     this.createStarFlashingTween = createStarFlashingTween;
     this.createMeteorsSweepTween = createMeteorsSweepTween;
+    
+    this.createPlanetMoveRightTween = createPlanetMoveRightTween;
+    this.createPlanetMoveLeftTween = createPlanetMoveLeftTween;
 
     return this;
 
