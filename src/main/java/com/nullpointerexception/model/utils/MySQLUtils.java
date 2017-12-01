@@ -262,16 +262,16 @@ public class MySQLUtils {
 //            System.out.println(tempBean.getFlagPath());
 //        }
 
-        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
-        Iterator<Double> itr = myList_2.iterator();
-        Double tempDouble;
-        String output = "[";
-        while (itr.hasNext()){
-            tempDouble = itr.next();
-            output +=(tempDouble + ",");
-        }
-        output = output.substring(0, output.length()-1) + "]";
-        System.out.println(output);
-        System.out.println("");
+//        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+//        Iterator<Double> itr = myList_2.iterator();
+//        Double tempDouble;
+//        String output = "[";
+//        while (itr.hasNext()){
+//            tempDouble = itr.next();
+//            output +=(tempDouble + ",");
+//        }
+//        output = output.substring(0, output.length()-1) + "]";
+//        System.out.println(output);
+//        System.out.println("");
     }
 }
