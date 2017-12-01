@@ -125,6 +125,7 @@ SolarSystemSceneController = function(renderer) {
     
     function initSystemPositions() {
 
+        // Tilt Pluto orbit
         planetsList["pluto"].orbit.rotateY(Math.PI * 17 / 180);
         for (var planet in planetsList) {
             // Add planet to the sun
@@ -136,6 +137,7 @@ SolarSystemSceneController = function(renderer) {
 
     function rotationAndRevolution() {
 
+        // Sun Rotations
         solarAggregation.mesh.rotation.x += SolarConfig['sun'].rotateSpeed;
         solarAggregation.mesh.rotation.y += SolarConfig['sun'].rotateSpeed;
         solarAggregation.mesh.rotation.z += SolarConfig['sun'].rotateSpeed;

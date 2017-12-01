@@ -53,6 +53,13 @@ PlanetSceneController = function (renderer, config) {
         tweenManager.rotationTween.start();
     };
 
+    this.hideInfo = hideInfo;
+
+    function hideInfo() {
+        movePlanetRight();
+        hideInfoBoard();
+    }
+
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
@@ -80,6 +87,7 @@ PlanetSceneController = function (renderer, config) {
 
     function deactivateScene() {
         resetPlanetPos();
+        hideInfoBoard();
         audio.pause();
         deactivateTween();
         EventManager.removeEvents();
@@ -195,7 +203,7 @@ PlanetSceneController = function (renderer, config) {
         if (isPlanetClicked) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
-            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
+            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(mesh, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -238,7 +246,7 @@ PlanetSceneController = function (renderer, config) {
 
     function rotateWithStep(step) {
 
-        planetAggregation.rotation.y += step;
+        mesh.rotation.y += step;
     }
 
     function onMouseWheel() {
@@ -279,8 +287,10 @@ PlanetSceneController = function (renderer, config) {
 
 		    if (counter % 2 === 0) {
 			    movePlanetLeft();
+                showInfoBoard();
 		    } else {
 			    movePlanetRight();
+                hideInfoBoard();
 		    }
 		    counter++;
 	    }
@@ -353,5 +363,13 @@ PlanetSceneController = function (renderer, config) {
 	// 		resetPlanetPos();
 	// 	}
 	// },false);
+
+    function showInfoBoard() {
+	    $(config.infoBoard).fadeIn(1000);
+    }
+
+    function hideInfoBoard() {
+	    $(config.infoBoard).fadeOut(1000);
+    }
 	
 };

@@ -26,14 +26,36 @@ public class MySQLUtils {
     private Statement stmt = null;
     private PreparedStatement preStmt = null;
     private ResultSet retSet = null;
+    private final Double modifier = 0.90;
 
     public MySQLUtils(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
+//        System.out.println("=======");
+//        System.out.println(">>>>>>>>>>>>" + mySQLConfig.getURL() + " ; " + mySQLConfig.getUserName());
+//        System.out.println("=======");
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
 //            conn = DriverManager
 //                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+//            conn = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+//        } catch (ClassNotFoundException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            // TODO Auto-generated catch block
+//            System.err.println("SQL ERROR, Exception");
+//            System.err.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+    }
+
+    public void buildConnection(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+//            conn = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -67,6 +89,7 @@ public class MySQLUtils {
     }
 
     public List<FuelInfoBean> getCountryDataByYear() {
+        buildConnection();
 
         if (this.conn !=null){
             String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
@@ -95,6 +118,8 @@ public class MySQLUtils {
     }
 
     public List<Double> getGeoAmountData(){
+        buildConnection();
+
         if (this.conn !=null){
             String query = "SELECT areaName, longitude, latitude, SUM(Quadrillion_BTU) as sum FROM v_totalenergy GROUP BY areaName, longitude, latitude";
             try {
@@ -211,45 +236,18 @@ public class MySQLUtils {
     public List<Double> generateDecoratedData(Double latitude, Double longitude, Double height){
         List<Double> ret = new ArrayList<Double>();
 
-        // North
-        ret.add(latitude +1);
-        ret.add(longitude);
-        ret.add(0.4 *height);
-
-        // North East
-        ret.add(latitude +1);
-        ret.add(longitude +1);
-        ret.add(0.6 *height);
-
-        // East
-        ret.add(latitude);
-        ret.add(longitude +1);
-        ret.add(0.7 *height);
-
-        // South East
-        ret.add(latitude -1);
-        ret.add(longitude +1);
-        ret.add(0.8 *height);
-
-        // South
-        ret.add(latitude -1);
-        ret.add(longitude);
-        ret.add(0.55 *height);
-
-        // South West
-        ret.add(latitude -1);
-        ret.add(longitude -1);
-        ret.add( 0.3 *height);
-
-        // West
-        ret.add(latitude);
-        ret.add(longitude -1);
-        ret.add(0.2 *height);
-
-        // North West
-        ret.add(latitude +1);
-        ret.add(longitude -1);
-        ret.add(0.4 *height);
+        for (int i =0; i <=4; i++){
+            for (int j =i-4; j <=4-i; i++){
+                if (j !=0){
+                    ret.add(latitude +i);
+                    ret.add(longitude +j);
+                    ret.add(height /Math.abs(j) *modifier *Math.random());
+                    ret.add(latitude -i);
+                    ret.add(longitude +j);
+                    ret.add(height /Math.abs(j) *modifier *Math.random());
+                }
+            }
+        }
 
         return ret;
     }
@@ -264,16 +262,16 @@ public class MySQLUtils {
 //            System.out.println(tempBean.getFlagPath());
 //        }
 
-        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
-        Iterator<Double> itr = myList_2.iterator();
-        Double tempDouble;
-        String output = "[";
-        while (itr.hasNext()){
-            tempDouble = itr.next();
-            output +=(tempDouble + ",");
-        }
-        output = output.substring(0, output.length()-1) + "]";
-        System.out.println(output);
-        System.out.println("");
+//        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+//        Iterator<Double> itr = myList_2.iterator();
+//        Double tempDouble;
+//        String output = "[";
+//        while (itr.hasNext()){
+//            tempDouble = itr.next();
+//            output +=(tempDouble + ",");
+//        }
+//        output = output.substring(0, output.length()-1) + "]";
+//        System.out.println(output);
+//        System.out.println("");
     }
 }

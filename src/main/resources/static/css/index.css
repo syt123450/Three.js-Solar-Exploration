@@ -64,6 +64,10 @@ body footer div.unchecked:hover {
     border-radius: 50%;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
     /*cursor: pointer;*/
 }
 
@@ -92,6 +96,10 @@ body footer div.unchecked:hover {
     width: 40px;
     height: 40px;
     cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #infoArea {
@@ -176,4 +184,164 @@ body footer div.unchecked:hover {
     width: 100%;
     display: none;
     z-index: 1;
+}
+
+#mercuryBoard, #venusBoard, #marsBoard, #jupiterBoard,
+#saturnBoard, #uranusBoard, #neptuneBoard, #plutoBoard {
+    position: fixed;
+    right: 100px;
+    width: 450px;
+    height: 80%;
+    margin-top: 5%;
+    box-sizing: border-box;
+    padding: 20px 50px;
+    font-family: PT Serif, sans-serif;
+    color: white;
+    display: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#mercuryBoard h2, #venusBoard h2, #marsBoard h2, #jupiterBoard h2,
+#saturnBoard h2, #uranusBoard h2, #neptuneBoard h2, #plutoBoard h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#mercuryBoard p, #mercuryBoard h3, #venusBoard p, #venusBoard h3,
+#marsBoard p, #marsBoard h3, #jupiterBoard p, #jupiterBoard, h3,
+#saturnBoard p, #saturnBoard h3, #uranusBoard p, #uranusBoard h3,
+#neptuneBoard p, #neptuneBoard h3, #plutoBoard p, #plutoBoard h3 {
+    font-size: 18px;
+}
+
+#mercuryBoard h3, #venusBoard h3, #marsBoard h3, #jupiterBoard h3,
+#saturnBoard h3, #uranusBoard h3, #neptuneBoard h3, #plutoBoard h3 {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+#mercuryBoard img, #venusBoard img, #marsBoard img, #jupiterBoard img,
+#saturnBoard img, #uranusBoard img, #neptuneBoard img, #plutoBoard img {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    transition: 3s;
+}
+
+#mercuryBoard > p, #venusBoard > p, #marsBoard > p, #jupiterBoard > p,
+#saturnBoard > p, #uranusBoard > p, #neptuneBoard > p, #plutoBoard > p {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+#mercuryBoard > p > span, #venusBoard > p > span, #marsBoard > p > span, #jupiterBoard > p > span,
+#saturnBoard > p > span, #uranusBoard > p > span, #neptuneBoard > p > span, #plutoBoard > p > span {
+    margin-right: 10px;
+}
+
+#mercuryBoard > div, #venusBoard > div, #marsBoard > div, #jupiterBoard > div,
+#saturnBoard > div, #uranusBoard > div, #neptuneBoard > div, #plutoBoard > div {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+#mercuryBoard > div > p, #venusBoard > div > p, #marsBoard > div > p, #jupiterBoard > div > p,
+#saturnBoard > div > p, #uranusBoard > div > p, #neptuneBoard > div > p, #plutoBoard > div > p {
+    float: left;
+    margin-top: 5px;
+}
+
+#mercuryBoard > div > p > span:first-child, #venusBoard > div > p > span:first-child,
+#marsBoard > div > p > span:first-child, #jupiterBoard > div > p > span:first-child,
+#saturnBoard > div > p > span:first-child, #uranusBoard > div > p > span:first-child,
+#neptuneBoard > div > p > span:first-child, #plutoBoard > div > p > span:first-child {
+    display: block;
+    margin-left: 20px;
+    width: 150px;
+}
+
+#mercuryBoard > div > p > span, #venusBoard > div > p > span,
+#marsBoard > div > p > span, #jupiterBoard > div > p > span,
+#saturnBoard > div > p > span, #uranusBoard > div > p > span,
+#neptuneBoard > div > p > span, #plutoBoard > div > p > span {
+    display: block;
+    float: left;
+}
+
+#mercuryBoard {
+    border: 1px #ae8045 solid;
+    background-color: rgba(97, 84, 70, 0.4);
+}
+
+#venusBoard {
+    border: 1px #c68424 solid;
+    background-color: rgba(98, 79, 39, 0.4);
+}
+
+#marsBoard {
+    border: 1px #c06536 solid;
+    background-color: rgba(95, 58, 22, 0.4);
+}
+
+#jupiterBoard {
+    border: 1px #c2976d solid;
+    background-color: rgba(96, 85, 71, 0.4);
+}
+
+#saturnBoard {
+    border: 1px #a18778 solid;
+    background-color: rgba(97, 84, 70, 0.4);
+}
+
+#uranusBoard {
+    border: 1px #7795a2 solid;
+    background-color: rgba(56, 69, 74, 0.4);
+}
+
+#neptuneBoard {
+    border: 1px #5c6fbe solid;
+    background-color: rgba(51, 77, 99, 0.4);
+}
+
+#plutoBoard {
+    border: 1px #93a0a7 solid;
+    background-color: rgba(82, 85, 88, 0.4);
+}
+
+#mercuryBoard h2, #mercuryBoard h3, #mercuryBoard > p > span {
+    color: #f8d6b3;
+}
+
+#venusBoard h2, #venusBoard h3, #venusBoard > p > span {
+    color: #fbca64;
+}
+
+#marsBoard h2, #marsBoard h3, #marsBoard > p > span {
+    color: #f29339;
+}
+
+#jupiterBoard h2, #jupiterBoard h3, #jupiterBoard > p > span {
+    color: #f5d8b6;
+}
+
+#saturnBoard h2, #saturnBoard h3, #saturnBoard > p > span {
+    color: #f8d6b3;
+}
+
+#uranusBoard h2, #uranusBoard h3, #uranusBoard > p > span {
+    color: #8eafbd;
+}
+
+#neptuneBoard h2, #neptuneBoard h3, #neptuneBoard > p > span {
+    color: #83c4fc;
+}
+
+#plutoBoard h2, #plutoBoard h3, #plutoBoard > p > span {
+    color: #d0d9e0;
 }
