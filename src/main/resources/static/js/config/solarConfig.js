@@ -165,10 +165,10 @@ var SolarConfig = {
             return {
                 name: 'pluto',
                 orbitRadius: sunRadius + 0.46,
-                orbitAngle: 0,
+                orbitAngle: 89,
                 // orbitSpeed: (365/90600) * revolutionSpeed,
                 // orbitSpeed: (0.00403) * revolutionSpeed,
-                orbitSpeed: 0.055 * revolutionSpeed,
+                orbitSpeed: 0.08 * revolutionSpeed,
                 rotateSpeed: -2 * rotationSpeed,
                 inclination: 58,
                 map: '../images/planets-min/plutomap1k.jpg',
