@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.swing.text.html.HTMLDocument;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -178,14 +179,21 @@ public class MySQLUtils {
 
         max = max /1.5;
         Double temp = 0.0;
+        List<Double> decoratedDataList = new ArrayList<Double>();
         for (int i =2; i <ret.size(); i+=3){
             temp = ret.get(i) /max;
             if (temp < 0.01){
                 temp = 0.01;
             }
+            else {
+                // Add decorated data
+                decoratedDataList.addAll(generateDecoratedData(ret.get(i-2), ret.get(i-1), temp));
+            }
 //            System.out.println("IDX[" + i + "]: " + temp);
             ret.set(i, temp);
         }
+
+        ret.addAll(decoratedDataList);
 
         return ret;
     }
@@ -200,6 +208,52 @@ public class MySQLUtils {
         return ret;
     }
 
+    public List<Double> generateDecoratedData(Double latitude, Double longitude, Double height){
+        List<Double> ret = new ArrayList<Double>();
+
+        // North
+        ret.add(latitude +1);
+        ret.add(longitude);
+        ret.add(0.4 *height);
+
+        // North East
+        ret.add(latitude +1);
+        ret.add(longitude +1);
+        ret.add(0.6 *height);
+
+        // East
+        ret.add(latitude);
+        ret.add(longitude +1);
+        ret.add(0.7 *height);
+
+        // South East
+        ret.add(latitude -1);
+        ret.add(longitude +1);
+        ret.add(0.8 *height);
+
+        // South
+        ret.add(latitude -1);
+        ret.add(longitude);
+        ret.add(0.55 *height);
+
+        // South West
+        ret.add(latitude -1);
+        ret.add(longitude -1);
+        ret.add( 0.3 *height);
+
+        // West
+        ret.add(latitude);
+        ret.add(longitude -1);
+        ret.add(0.2 *height);
+
+        // North West
+        ret.add(latitude +1);
+        ret.add(longitude -1);
+        ret.add(0.4 *height);
+
+        return ret;
+    }
+
     public static void main(String[] args){
         MySQLUtils mySQLUtils = new MySQLUtils();
 //        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
@@ -210,16 +264,16 @@ public class MySQLUtils {
 //            System.out.println(tempBean.getFlagPath());
 //        }
 
-//        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
-//        Iterator<Double> itr = myList_2.iterator();
-//        Double tempDouble;
-//        String output = "[";
-//        while (itr.hasNext()){
-//            tempDouble = itr.next();
-//            output +=(tempDouble + ",");
-//        }
-//        output = output.substring(0, output.length()-1) + "]";
-//        System.out.println(output);
+        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+        Iterator<Double> itr = myList_2.iterator();
+        Double tempDouble;
+        String output = "[";
+        while (itr.hasNext()){
+            tempDouble = itr.next();
+            output +=(tempDouble + ",");
+        }
+        output = output.substring(0, output.length()-1) + "]";
+        System.out.println(output);
         System.out.println("");
     }
 }

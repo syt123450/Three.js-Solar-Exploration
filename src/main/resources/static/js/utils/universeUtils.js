@@ -172,7 +172,7 @@ var UniverseUtils = (function () {
     this.createSolarUniverse = function () {
 
         var universeMesh = new THREE.Mesh();
-        universeMesh.geometry = new THREE.SphereGeometry(0.8, 128, 128);
+        universeMesh.geometry = new THREE.SphereGeometry(3, 128, 128);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
                 '../images/background_2.jpg'
@@ -207,16 +207,17 @@ var UniverseUtils = (function () {
         planetsList["neptune"].mesh = createJovianPlanet(SolarConfig.neptune);
         planetsList["pluto"].mesh = createTerrestrialPlanet(SolarConfig.pluto);
 
+        // Add ring to Saturn and Uranus
+        planetsList["saturn"].mesh.ring = createRing(SolarConfig.saturn);
+        planetsList["saturn"].mesh.add(planetsList["saturn"].mesh.ring);
+        planetsList["uranus"].mesh.ring = createRing(SolarConfig.uranus);
+        planetsList["uranus"].mesh.add(planetsList["uranus"].mesh.ring);
+
         for (var planet in planetsList) {
             planetsList[planet].orbit = createOrbit(SolarConfig[planet].orbitRadius);
             planetsList[planet].mesh.position.z = SolarConfig[planet].orbitRadius;
+            planetsList[planet].mesh.rotateZ(SolarConfig[planet].inclination * Math.PI /180);
         }
-
-        // Add ring to Saturn and Uranus
-	    planetsList["saturn"].mesh.ring = createRing(SolarConfig.saturn);
-        planetsList["saturn"].mesh.add(planetsList["saturn"].mesh.ring);
-	    planetsList["uranus"].mesh.ring = createRing(SolarConfig.uranus);
-	    planetsList["uranus"].mesh.add(planetsList["uranus"].mesh.ring);
 
         return planetsList;
     };

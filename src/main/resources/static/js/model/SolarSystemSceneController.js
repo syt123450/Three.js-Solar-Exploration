@@ -63,10 +63,13 @@ SolarSystemSceneController = function(renderer) {
 
         // Lights
         var lights = [];
+
+        // lights for university environment
         lights[0] = new THREE.PointLight(0xffffff, 0.9, 0);
         lights[0].position.set(0, 0, 0);
         lights[1] = new THREE.AmbientLight(0xf7f7f7, 0.45);
 
+        // lights for lightening the sun
         var density = 1;
         lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
         lights[2].position.set(0, (SolarConfig.sunRadius * Math.sqrt(2)), 0);

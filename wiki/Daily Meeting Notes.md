@@ -2,10 +2,10 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Created camera zoom in tween.</li></ol> | <ol><li>Updated zoom in tween.</li></ol> | <ol><li>Went well</li></ol> |
+| Bou-Yu | <ol><li>Work on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>resize solar system</li></ol> | <ol><li>data decoration</li></ol> | <ol><li>so far so good</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>fix tween bug</li></ol> | <ol><li>meeting</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 
@@ -13,10 +13,10 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
-| Bou-Yu | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Debug earth rotation tween.</li></ol> | <ol><li>Create camera zoom in tween.</li></ol> | <ol><li>Restore camera position and direction.</li></ol> |
+| Bou-Yu | <ol><li>Work on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Pluto and Moon orbits tilt</li></ol> | <ol><li>solar system background resize</li><li>data decoration</li></ol> | <ol><li>so far so good</li></ol> |
-| Yuntian | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Yuntian | <ol><li>add fog to solar scene</li></ol> | <ol><li>fix tween bug</li></ol> | <ol><li>go well</li></ol> |
 
 ***
 
@@ -24,7 +24,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Debug earth rotation tween.</li></ol> | <ol><li>Finish debug</li></ol> | <ol><li>Tweens are tightly coupled.</li></ol> |
 | Bou-Yu | <ol><li>Worked on theme design</li><li>Generated more mock data</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>System resize</li></ol> | <ol><li>Pluto and Moon orbits tilt</li></ol> | <ol><li>fine</li></ol> |
 | Yuntian | <ol><li>meeting</li><li>refactor tween to tweenuitls</li></ol> | <ol><li>try fog</li></ol> | <ol><li>the tween bug is so strange</li></ol> |
@@ -35,7 +35,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li>Debug earth rotation tween.</li></ol> | <ol><li>Keep Debugging earth rotation tween.</li></ol> | <ol><li>Some tween will start twice.</li></ol> |
 | Bou-Yu | <ol><li>Worked on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Lights and size</li></ol> | <ol><li>Lights and size</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li>fix bugs in tween with bo</li></ol> | <ol><li>refactor cone tween will yoyo</li></ol> | <ol><li>go well</li></ol> |
@@ -46,7 +46,7 @@
 
 | Name | Done (Yesterday) | To Do (Today) | Challenge(s) |
 | ------ | ------ | ------ | ------ |
-| Bo | <ol><li></li></ol> | <ol><li></li></ol> | <ol><li></li></ol> |
+| Bo | <ol><li></li></ol> | <ol><li>Debug earth rotation tween.</li></ol> | <ol><li>Can't remove by group.</li></ol> |
 | Bou-Yu | <ol><li>Worked on theme design</li></ol> | <ol><li>Work on theme design</li></ol> | <ol><li>Need more time</li></ol> |
 | Chenhua | <ol><li>Scale redesign</li><li>light configs</li></ol> | <ol><li>EarthScene light configs</li><li>PlanetScene planet resize</li></ol> | <ol><li>so far so good</li></ol> |
 | Yuntian | <ol><li>refactor all animation to tween</li></ol> | <ol><li>joint debugging with bo</li></ol> | <ol><li>some problem with tween</li></ol> |

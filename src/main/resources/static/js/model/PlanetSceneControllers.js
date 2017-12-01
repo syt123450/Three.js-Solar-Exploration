@@ -5,7 +5,7 @@
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
     // Renderer
-
+	var counter = 0;
     var renderer = renderer;
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
@@ -24,7 +24,9 @@ PlanetSceneController = function (renderer, config) {
         rotationTween: null,
         meteorsSweep: null,
         starsFlashing: null,
-        inertia: null
+        inertia: null,
+        moveLeft: null,
+        moveRight: null
     };
 
     // Camera and Lights
@@ -97,8 +99,6 @@ PlanetSceneController = function (renderer, config) {
         lights.forEach(function addLight(light) {
             scene.add(light);
         });
-        // camera.position.set(0, 0.75, 2.5);
-        // camera.lookAt(planetAggregation.position);
         scene.add(camera);
 
         scene.add(universeMesh);
@@ -130,7 +130,13 @@ PlanetSceneController = function (renderer, config) {
             aggregation.add(UniverseUtils.createRing(config));
         }
         UniverseUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
+
+        // Coordinate inclination
+        aggregation.rotateZ(config.inclination * Math.PI /180);
+
+        // Coordinate axis angle for camera
         aggregation.rotateX(0.105 * Math.PI);
+
         return aggregation;
     }
 
@@ -175,6 +181,28 @@ PlanetSceneController = function (renderer, config) {
 
         if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
             isPlanetClicked = true;
+            console.log('planet: ', planetAggregation);
+            if (counter % 2 === 0) {
+            	if (tweenManager.moveRight)
+		            tweenManager.moveRight.stop();
+            	
+	            TWEEN.remove(tweenManager.moveRight);
+	            tweenManager.moveRight = null;
+	            
+	            tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
+	            tweenManager.moveLeft.start();
+	            
+            } else {
+	            if (tweenManager.moveLeft)
+		            tweenManager.moveLeft.stop();
+	
+	            TWEEN.remove(tweenManager.moveLeft);
+	            tweenManager.moveLeft = null;
+	
+	            tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
+	            tweenManager.moveRight.start();
+            }
+            counter++;
         }
     }
 
