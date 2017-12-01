@@ -79,6 +79,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function deactivateScene() {
+        resetPlanetPos();
         audio.pause();
         deactivateTween();
         EventManager.removeEvents();
