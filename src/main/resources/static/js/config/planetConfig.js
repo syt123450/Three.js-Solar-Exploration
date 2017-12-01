@@ -11,7 +11,8 @@ var PlanetConfig = {
         inclination: 0.0,
         innerGlowColor: "#F8D6B3",
         outerGlowColor: "#AE8045",
-        audio: "../music/Mercury.mp3"
+        audio: "../music/Mercury.mp3",
+        infoBoard: "#mercuryBoard"
     },
 
     venus: {
@@ -22,7 +23,8 @@ var PlanetConfig = {
         inclination: -12.6,
 	    innerGlowColor: "#FBCA64",
 	    outerGlowColor: "#C68424",
-        audio: "../music/Venus.mp3"
+        audio: "../music/Venus.mp3",
+        infoBoard: "#venusBoard"
     },
     
     mars: {
@@ -33,7 +35,8 @@ var PlanetConfig = {
         inclination: 23.98,
 	    innerGlowColor: "#F29339",
 	    outerGlowColor: "#C06536",
-        audio: "../music/Mars.mp3"
+        audio: "../music/Mars.mp3",
+        infoBoard: "#marsBoard"
     },
 
     jupiter: {
@@ -43,7 +46,8 @@ var PlanetConfig = {
         inclination: 3.8,
 	    innerGlowColor: "#F5D8B6",
 	    outerGlowColor: "#C2976D",
-        audio: "../music/Jupiter.mp3"
+        audio: "../music/Jupiter.mp3",
+        infoBoard: "#jupiterBoard"
     },
     
     saturn: {
@@ -56,7 +60,8 @@ var PlanetConfig = {
         ringOuterRadius: 0.84,
 	    innerGlowColor: "#F8D6B3",
 	    outerGlowColor: "#A18778",
-        audio: "../music/Saturn.mp3"
+        audio: "../music/Saturn.mp3",
+        infoBoard: "#saturnBoard"
     },
     
     uranus: {
@@ -69,7 +74,8 @@ var PlanetConfig = {
         ringOuterRadius: 0.64,
 	    innerGlowColor: "#8EAFBD",
 	    outerGlowColor: "#7795A2",
-        audio: "../music/Uranus.mp3"
+        audio: "../music/Uranus.mp3",
+        infoBoard: "#uranusBoard"
     },
     
     neptune: {
@@ -79,7 +85,8 @@ var PlanetConfig = {
         inclination: 28.8,
         innerGlowColor: "#83C4FC",
 	    outerGlowColor: "#5C6FBE",
-        audio: "../music/Neptune.mp3"
+        audio: "../music/Neptune.mp3",
+        infoBoard: "#neptuneBoard"
     },
 
     pluto: {
@@ -90,7 +97,8 @@ var PlanetConfig = {
         inclination: 58,
 	    innerGlowColor: "#D0D9E0",
 	    outerGlowColor: "#93A0A7",
-        audio: "../music/Pluto.mp3"
+        audio: "../music/Pluto.mp3",
+        infoBoard: "#plutoBoard"
     }
 	
 	// addHaloToTarget(planetAggregation, "#D0D9E0", "#93A0A7"); // PLUTO
