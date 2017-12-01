@@ -198,6 +198,10 @@ body footer div.unchecked:hover {
     font-family: PT Serif, sans-serif;
     color: white;
     display: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #mercuryBoard h2, #venusBoard h2, #marsBoard h2, #jupiterBoard h2,
@@ -228,10 +232,6 @@ body footer div.unchecked:hover {
     top: 20px;
     cursor: pointer;
     transition: 3s;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 #mercuryBoard > p, #venusBoard > p, #marsBoard > p, #jupiterBoard > p,
