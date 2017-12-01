@@ -26,6 +26,7 @@ public class MySQLUtils {
     private Statement stmt = null;
     private PreparedStatement preStmt = null;
     private ResultSet retSet = null;
+    private final Double modifier = 0.90;
 
     public MySQLUtils(){
 //        System.out.println("=======");
@@ -235,20 +236,53 @@ public class MySQLUtils {
     public List<Double> generateDecoratedData(Double latitude, Double longitude, Double height){
         List<Double> ret = new ArrayList<Double>();
 
-        // North
-        ret.add(latitude +1);
-        ret.add(longitude);
-        ret.add(0.4 *height);
+        // North to South
+        for (int i =-4; i <4; i++){
+            if (i !=0){
+                ret.add(latitude +i);
+                ret.add(longitude);
+                ret.add(modifier *height *Math.random());
+            }
+        }
+
+        // East to West
+        for (int i =-4; i <4; i++){
+            if (i !=0){
+                ret.add(latitude);
+                ret.add(longitude +i);
+                ret.add(modifier *height *Math.random());
+            }
+        }
+
+        // Around
+        for (int i =-3; i <3; i++){
+            if (i !=0){
+                ret.add(latitude +1);
+                ret.add(longitude +i);
+                ret.add(modifier *height *Math.random());
+                ret.add(latitude -1);
+                ret.add(longitude +i);
+                ret.add(modifier *height *Math.random());
+            }
+        }
+        for (int i =-2; i <2; i++){
+            if (i !=0){
+                ret.add(latitude +2);
+                ret.add(longitude +i);
+                ret.add(modifier *height *Math.random());
+                ret.add(latitude -2);
+                ret.add(longitude +i);
+                ret.add(modifier *height *Math.random());
+            }
+        }
+
 
         // North East
         ret.add(latitude +1);
         ret.add(longitude +1);
         ret.add(0.6 *height);
 
-        // East
-        ret.add(latitude);
-        ret.add(longitude +1);
-        ret.add(0.7 *height);
+
 
         // South East
         ret.add(latitude -1);
