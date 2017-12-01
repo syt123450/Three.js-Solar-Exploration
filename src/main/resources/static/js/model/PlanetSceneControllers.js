@@ -80,6 +80,7 @@ PlanetSceneController = function (renderer, config) {
 
     function deactivateScene() {
         resetPlanetPos();
+        hideInfoBoard();
         audio.pause();
         deactivateTween();
         EventManager.removeEvents();
@@ -279,8 +280,10 @@ PlanetSceneController = function (renderer, config) {
 
 		    if (counter % 2 === 0) {
 			    movePlanetLeft();
+                showInfoBoard();
 		    } else {
 			    movePlanetRight();
+                hideInfoBoard();
 		    }
 		    counter++;
 	    }
@@ -353,5 +356,13 @@ PlanetSceneController = function (renderer, config) {
 	// 		resetPlanetPos();
 	// 	}
 	// },false);
+
+    function showInfoBoard() {
+	    $(config.infoBoard).fadeIn(1000);
+    }
+
+    function hideInfoBoard() {
+	    $(config.infoBoard).fadeOut(1000);
+    }
 	
 };

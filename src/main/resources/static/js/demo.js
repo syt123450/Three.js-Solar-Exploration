@@ -79,10 +79,10 @@ $(function () {
 
     $("#closeBoard").hover(
         function () {
-            $(this).attr("src", "../images/close_hover.png");
+            $(this).attr("src", "../images/closeButton/close_hover.png");
         },
         function () {
-            $(this).attr("src", "../images/close.png");
+            $(this).attr("src", "../images/closeButton/close.png");
         });
 
     $("#curtain, #closeBoard").click(function () {
@@ -94,6 +94,55 @@ $(function () {
             infoBoard = false;
         }
     });
+
+    $("#mercuryBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/mercury_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/mercury.png");
+    });
+
+    $("#venusBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/venus_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/venus.png");
+    });
+
+    $("#marsBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/mars_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/mars.png");
+    });
+
+    $("#jupiterBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/jupiter_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/jupiter.png");
+    });
+
+    $("#saturnBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/saturn_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/saturn.png");
+    });
+
+    $("#uranusBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/uranus_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/uranus.png");
+    });
+
+    $("#neptuneBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/neptune_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/neptune.png");
+    });
+
+    $("#plutoBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/pluto_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/pluto.png");
+    });
+
 });
 
 function getYearData(year) {
