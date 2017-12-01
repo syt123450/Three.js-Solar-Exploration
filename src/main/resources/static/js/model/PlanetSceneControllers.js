@@ -170,6 +170,7 @@ PlanetSceneController = function (renderer, config) {
         EventManager.registerEvent('mousedown', onMouseDown);
         EventManager.registerEvent('mousewheel', onMouseWheel);
         EventManager.registerEvent('mouseup', onMouseUp);
+        EventManager.registerEvent('dblclick', onDoubleClick);
     }
 
     function onMouseDown() {
@@ -277,5 +278,9 @@ PlanetSceneController = function (renderer, config) {
         if (delta < 0 && camera.position.z > minScale) {
             camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
         }
+    }
+
+    function onDoubleClick() {
+
     }
 };
