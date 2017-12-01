@@ -96,6 +96,10 @@ body footer div.unchecked:hover {
     width: 40px;
     height: 40px;
     cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #infoArea {
@@ -224,6 +228,10 @@ body footer div.unchecked:hover {
     top: 20px;
     cursor: pointer;
     transition: 3s;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #mercuryBoard > p, #venusBoard > p, #marsBoard > p, #jupiterBoard > p,
