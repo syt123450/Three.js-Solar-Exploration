@@ -9,7 +9,12 @@
 
     <style>
 
-        html, body, h2, h3, p {
+        @font-face {
+            font-family: Dearest;
+            src: url('../font/Dearest.ttf')
+        }
+
+        html, body {
             padding: 0;
             margin: 0;
         }
@@ -17,162 +22,60 @@
         html, body {
             width: 100%;
             height: 100%;
-            background-color: black;
         }
 
-        #mercuryBoard, #venusBoard, #marsBoard, #jupiterBoard,
-        #saturnBoard, #uranusBoard, #neptuneBoard, #plutoBoard {
+        #transition {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #background {
+            width: 100%;
+            height: 100%;
             position: fixed;
-            right: 100px;
-            width: 450px;
-            height: 80%;
-            margin-top: 5%;
-            box-sizing: border-box;
-            padding: 20px 50px;
-            font-family: PT Serif, sans-serif;
-            color: white;
+            left: 0;
+            top: 0;
         }
 
-        #mercuryBoard h2, #venusBoard h2, #marsBoard h2, #jupiterBoard h2,
-        #saturnBoard h2, #uranusBoard h2, #neptuneBoard h2, #plutoBoard h2 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        #mercuryBoard p, #mercuryBoard h3, #venusBoard p, #venusBoard h3,
-        #marsBoard p, #marsBoard h3, #jupiterBoard p, #jupiterBoard, h3,
-        #saturnBoard p, #saturnBoard h3, #uranusBoard p, #uranusBoard h3,
-        #neptuneBoard p, #neptuneBoard h3, #plutoBoard p, #plutoBoard h3 {
-            font-size: 18px;
-        }
-
-        #mercuryBoard h3, #venusBoard h3, #marsBoard h3, #jupiterBoard h3,
-        #saturnBoard h3, #uranusBoard h3, #neptuneBoard h3, #plutoBoard h3 {
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
-
-        #mercuryBoard img, #venusBoard img, #marsBoard img, #jupiterBoard img,
-        #saturnBoard img, #uranusBoard img, #neptuneBoard img, #plutoBoard img {
-            height: 40px;
-            width: 40px;
+        #decorator {
+            left: 160px;
+            height: 60%;
+            width: 400px;
+            margin-top: 12%;
             position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-            transition: 3s;
+            opacity: 0.6;
         }
 
-        #mercuryBoard > p, #venusBoard > p, #marsBoard > p, #jupiterBoard > p,
-        #saturnBoard > p, #uranusBoard > p, #neptuneBoard > p, #plutoBoard > p {
-            clear: both;
-            margin-bottom: 20px;
+        h2 {
+            font-family: Dearest, serif;
+            font-size: 80px;
         }
 
-        #mercuryBoard > p > span, #venusBoard > p > span, #marsBoard > p > span, #jupiterBoard > p > span,
-        #saturnBoard > p > span, #uranusBoard > p > span, #neptuneBoard > p > span, #plutoBoard > p > span {
-            margin-right: 10px;
+        #textArea {
+            position: absolute;
+            left: 600px;
+            top: 180px;
+            font-family: Dearest, serif;
+            color: white;
+            font-size: 30px;
         }
 
-        #mercuryBoard > div, #venusBoard > div, #marsBoard > div, #jupiterBoard > div,
-        #saturnBoard > div, #uranusBoard > div, #neptuneBoard > div, #plutoBoard > div {
-            clear: both;
-            margin-bottom: 20px;
+        #textArea p {
+            margin-top: 50px;
         }
 
-        #mercuryBoard > div > p, #venusBoard > div > p, #marsBoard > div > p, #jupiterBoard > div > p,
-        #saturnBoard > div > p, #uranusBoard > div > p, #neptuneBoard > div > p, #plutoBoard > div > p {
-            float: left;
-            margin-top: 5px;
+        #textArea p:nth-child(2) {
+            margin-left: 60px;
         }
 
-        #mercuryBoard > div > p > span:first-child, #venusBoard > div > p > span:first-child,
-        #marsBoard > div > p > span:first-child, #jupiterBoard > div > p > span:first-child,
-        #saturnBoard > div > p > span:first-child, #uranusBoard > div > p > span:first-child,
-        #neptuneBoard > div > p > span:first-child, #plutoBoard > div > p > span:first-child {
-            display: block;
-            margin-left: 20px;
-            width: 150px;
+        #textArea p:nth-child(3) {
+            margin-left: 120px;
         }
 
-        #mercuryBoard > div > p > span, #venusBoard > div > p > span,
-        #marsBoard > div > p > span, #jupiterBoard > div > p > span,
-        #saturnBoard > div > p > span, #uranusBoard > div > p > span,
-        #neptuneBoard > div > p > span, #plutoBoard > div > p > span {
-            display: block;
-            float: left;
-        }
-
-        #mercuryBoard {
-            border: 1px #ae8045 solid;
-            background-color: rgba(97, 84, 70, 0.4);
-        }
-
-        #venusBoard {
-            border: 1px #c68424 solid;
-            background-color: rgba(98, 79, 39, 0.4);
-        }
-
-        #marsBoard {
-            border: 1px #c06536 solid;
-            background-color: rgba(95, 58, 22, 0.4);
-        }
-
-        #jupiterBoard {
-            border: 1px #c2976d solid;
-            background-color: rgba(96, 85, 71, 0.4);
-        }
-
-        #saturnBoard {
-            border: 1px #a18778 solid;
-            background-color: rgba(97, 84, 70, 0.4);
-        }
-
-        #uranusBoard {
-            border: 1px #7795a2 solid;
-            background-color: rgba(56, 69, 74, 0.4);
-        }
-
-        #neptuneBoard {
-            border: 1px #5c6fbe solid;
-            background-color: rgba(51, 77, 99, 0.4);
-        }
-
-        #plutoBoard {
-            border: 1px #93a0a7 solid;
-            background-color: rgba(82, 85, 88, 0.4);
-        }
-
-        #mercuryBoard h2, #mercuryBoard h3, #mercuryBoard > p > span {
-            color: #f8d6b3;
-        }
-
-        #venusBoard h2, #venusBoard h3, #venusBoard > p > span {
-            color: #fbca64;
-        }
-
-        #marsBoard h2, #marsBoard h3, #marsBoard > p > span {
-            color: #f29339;
-        }
-
-        #jupiterBoard h2, #jupiterBoard h3, #jupiterBoard > p > span {
-            color: #f5d8b6;
-        }
-
-        #saturnBoard h2, #saturnBoard h3, #saturnBoard > p > span {
-            color: #f8d6b3;
-        }
-
-        #uranusBoard h2, #uranusBoard h3, #uranusBoard > p > span {
-            color: #8eafbd;
-        }
-
-        #neptuneBoard h2, #neptuneBoard h3, #neptuneBoard > p > span {
-            color: #83c4fc;
-        }
-
-        #plutoBoard h2, #plutoBoard h3, #plutoBoard > p > span {
-            color: #d0d9e0;
+        #textArea p:nth-child(4) {
+            margin-left: 320px;
+            margin-top: 70px;
         }
 
     </style>
@@ -180,221 +83,19 @@
 </head>
 <body>
 
-<div id="mercuryBoard">
-    <h2>Mercury</h2>
 
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
+<div id="transition">
+    <img id="background" src="../images/PoemBack/earth.jpg">
+    <img id="decorator" src="../images/decorator/earth.jpg">
+
+    <div id="textArea">
+
+        <p>Love and Beauty, Spring time</p>
+        <p>What better symbol of the venus</p>
+        <p>What better symbol of the venus</p>
+        <p style="color: #ff6c00">—— To Venus</p>
     </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/mercury.png">
 </div>
-
-<div id="venusBoard" style="display: none">
-
-    <h2>Venus</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/venus.png">
-</div>
-
-<div id="marsBoard" style="display: none">
-    <h2>Mars</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/mars.png">
-</div>
-
-<div id="jupiterBoard" style="display: none">
-    <h2>Jupiter</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/jupiter.png">
-</div>
-
-<div id="saturnBoard" style="display: none">
-    <h2>Saturn</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/saturn.png">
-</div>
-
-<div id="uranusBoard" style="display: none">
-    <h2>Uranus</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/uranus.png">
-</div>
-
-<div id="neptuneBoard" style="display: none">
-    <h2>Neptune</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/neptune.png">
-</div>
-
-<div id="plutoBoard" style="display: none">
-    <h2>Pluto</h2>
-
-    <p><span>Diameter:</span>7,521 miles (12,104 km)</p>
-    <p><span>Mass:</span>4.8675x️10^24kg (0.815 Earths)</p>
-    <div>
-        <h3>Composition by volume:</h3>
-        <p><span>96.5%</span><span>carbon dioxide</span></p>
-        <p><span>3.5%</span><span>nitrogen</span></p>
-        <p><span>0.015%</span><span>sulfur dioxide</span></p>
-        <p><span>0.007%</span><span>argon</span></p>
-        <p><span>0.002%</span><span>water vapour</span></p>
-        <p><span>0.0017%</span><span>carbon monoxide</span></p>
-        <p>Trace amounts of carbonyl sulfide, hydrogen chloride, hydrogen fluoride</p>
-    </div>
-    <div></div>
-    <p><span>Cost:</span>2,256,300 Credits</p>
-    <img src="../images/closeButton/pluto.png">
-</div>
-
-<script>
-
-    $(function() {
-        $("#mercuryBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/mercury_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/mercury.png");
-        });
-
-        $("#venusBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/venus_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/venus.png");
-        });
-
-        $("#marsBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/mars_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/mars.png");
-        });
-
-        $("#jupiterBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/jupiter_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/jupiter.png");
-        });
-
-        $("#saturnBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/saturn_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/saturn.png");
-        });
-
-        $("#uranusBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/uranus_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/uranus.png");
-        });
-
-        $("#neptuneBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/neptune_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/neptune.png");
-        });
-
-        $("#plutoBoard img").hover(function() {
-            $(this).attr("src", "../images/closeButton/pluto_hover.png");
-        }, function() {
-            $(this).attr("src", "../images/closeButton/pluto.png");
-        });
-    });
-
-
-</script>
 
 </body>
 </html>
