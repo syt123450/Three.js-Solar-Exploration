@@ -372,4 +372,8 @@ PlanetSceneController = function (renderer, config) {
 	    $(config.infoBoard).fadeOut(1000);
     }
 	
+    this.getPlanetAggregation = getPlanetAggregation;
+    function getPlanetAggregation() {
+		return planetAggregation;
+    }
 };

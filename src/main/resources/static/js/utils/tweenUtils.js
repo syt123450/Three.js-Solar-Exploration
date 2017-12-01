@@ -208,13 +208,52 @@ var TweenUtils = (function () {
 		});
 		return tween;
 	}
- 
+	
+	/**
+	 * Move the planet closer to the screen
+	 * @param planetAggregation
+	 */
+	function createPlanetMoveCloserTween(planetAggregation) {
+		var startPos = { z: - planetAggregation.children[0].geometry.parameters.radius * 3 };
+		var endPos = { z: 0 };
+		var tween = new TWEEN.Tween(startPos)
+			.easing(TWEEN.easeInOutBounce())
+			.to(endPos, 500);
+		
+		tween.onStart(function() {
+			console.log('createPlanetMoveCloserTween started');
+			
+		}).onUpdate(function () {
+			console.log('planet position', planetAggregation.position);
+			console.log('planet position', planetAggregation.position);
+			planetAggregation.position.set(0, 0, startPos.z);
+			
+			// // move glow mesh too
+			// if (planetAggregation.children.length === 3) {
+			// 	planetAggregation.children[1].position.x = startPos.x * 0.15;
+			// 	planetAggregation.children[2].position.x = startPos.x * 0.15;
+			// }
+			//
+			// if (planetAggregation.children.length === 4) {
+			// 	planetAggregation.children[2].position.x = startPos.x * 0.15;
+			// 	planetAggregation.children[3].position.x = startPos.x * 0.15;
+			// }
+			
+		});
+		return tween;
+	}
+	
+	/**
+	 * Transition of the camera perspective when enter the solar scene
+	 * @param camera
+	 * @param solarAggregation
+	 */
 	function createEnterSolarSceneTween(camera, solarAggregation) {
 		var startPos = { y: 0.9, z: 0.0};
 		var endPos = { y: 0.3, z: 0.9};
 		// var startPosZ = { z: 0 };
 		// var endPosZ = { z: 0.9 };
-		var animationTime = 10000;
+		var animationTime = 1000;
 		var tween = new TWEEN.Tween(startPos)
 			.to(endPos, animationTime);
 		
@@ -239,6 +278,8 @@ var TweenUtils = (function () {
     
     this.createPlanetMoveRightTween = createPlanetMoveRightTween;
     this.createPlanetMoveLeftTween = createPlanetMoveLeftTween;
+	this.createPlanetMoveCloserTween = createPlanetMoveCloserTween;
+	
 	this.createEnterSolarSceneTween = createEnterSolarSceneTween;
     
     return this;

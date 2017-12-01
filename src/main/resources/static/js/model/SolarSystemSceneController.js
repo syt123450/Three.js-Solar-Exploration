@@ -240,6 +240,11 @@ SolarSystemSceneController = function(renderer) {
 			                    camera.positionHistory.z
 		                    );
 	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
+	                        
+	                        var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
+		                        planetsList[planet].controller.getPlanetAggregation()
+	                        );
+		                    movePlanetCloserTween.start();
 	                    });
 	                    changeSceneTween.start();
 	                    fogTween.start();
