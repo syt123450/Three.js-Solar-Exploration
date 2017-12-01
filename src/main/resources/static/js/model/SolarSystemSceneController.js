@@ -222,6 +222,7 @@ SolarSystemSceneController = function(renderer) {
 		                    activatedScene = planetsList[planet].controller;
                             deactivateScene();
 		                    planetsList[planet].controller.activateScene();
+                            planetsList[planet].controller.workAround();
 		                    camera.position.set(
 			                    camera.positionHistory.x,
 			                    camera.positionHistory.y,

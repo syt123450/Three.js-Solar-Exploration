@@ -49,6 +49,10 @@ PlanetSceneController = function (renderer, config) {
     this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
 
+    this.workAround = function() {
+        tweenManager.rotationTween.start();
+    };
+
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);

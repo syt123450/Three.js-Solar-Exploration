@@ -92,6 +92,10 @@ EarthSceneController = function (renderer) {
         resumeScene();
     };
 
+    this.workAround = function() {
+        tweenManager.singleMap.meshRotation.start();
+    };
+
     function activateScene() {
 
         audio.play();
