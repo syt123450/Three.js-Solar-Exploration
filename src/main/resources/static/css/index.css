@@ -64,6 +64,10 @@ body footer div.unchecked:hover {
     border-radius: 50%;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
     /*cursor: pointer;*/
 }
 
