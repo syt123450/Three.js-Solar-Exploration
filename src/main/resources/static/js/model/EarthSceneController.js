@@ -66,6 +66,9 @@ EarthSceneController = function (renderer) {
     this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
 
+    this.stopScene = stopScene;
+    this.startScene = startScene;
+
     this.addCones = function (conesParameter) {
         coneList.forEach(function (cone) {
             earthMesh.remove(cone);
@@ -92,7 +95,7 @@ EarthSceneController = function (renderer) {
         resumeScene();
     };
 
-    this.workAround = function() {
+    this.workAround = function () {
         tweenManager.singleMap.meshRotation.start();
     };
 
@@ -108,6 +111,18 @@ EarthSceneController = function (renderer) {
 
     function deactivateScene() {
         audio.pause();
+        deactivateTween();
+        EventManager.removeEvents();
+    }
+
+    function startScene() {
+        window.cancelAnimationFrame(SolarEPUtils.animationFrame);
+        addEvent();
+        animate();
+        activateTween();
+    }
+
+    function stopScene() {
         deactivateTween();
         EventManager.removeEvents();
     }
