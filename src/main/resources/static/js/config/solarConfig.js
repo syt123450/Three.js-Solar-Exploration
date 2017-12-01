@@ -23,7 +23,7 @@ var SolarConfig = {
             return {
                 name: 'mercury',
                 orbitRadius: sunRadius + 0.025,
-                orbitAngle: 0,
+                orbitAngle: 18,
                 // orbitSpeed: (365/88) * revolutionSpeed,
                 // orbitSpeed: 4.148 * revolutionSpeed,
                 orbitSpeed: 1.2 * revolutionSpeed,
@@ -39,7 +39,7 @@ var SolarConfig = {
             return {
                 name: 'venus',
                 orbitRadius: sunRadius + 0.044,
-                orbitAngle: 0,
+                orbitAngle: 183,
                 // orbitSpeed: (365/224.7) * revolutionSpeed,
                 orbitSpeed: 0.8 * revolutionSpeed,
                 rotateSpeed: -3 * rotationSpeed,
@@ -54,7 +54,7 @@ var SolarConfig = {
             return {
                 name: 'earth',
                 orbitRadius: sunRadius + 0.073,
-                orbitAngle: 0,
+                orbitAngle: 72,
                 orbitSpeed: 0.6 * revolutionSpeed,
                 rotateSpeed: rotationSpeed,
                 inclination: 23.5,
@@ -68,7 +68,7 @@ var SolarConfig = {
             return {
                 name: 'mars',
                 orbitRadius: sunRadius + 0.0925,
-                orbitAngle: 0,
+                orbitAngle: 291,
                 // orbitSpeed: (365/687) * revolutionSpeed,
                 orbitSpeed: 0.531 * revolutionSpeed,
                 rotateSpeed: 1.03 * rotationSpeed,
@@ -97,7 +97,7 @@ var SolarConfig = {
             return {
                 name: 'jupiter',
                 orbitRadius: sunRadius + 0.2,
-                orbitAngle: 0,
+                orbitAngle: 233,
                 // orbitSpeed: (365/4332) * revolutionSpeed,
                 // orbitSpeed: 0.0843 * revolutionSpeed,
                 orbitSpeed: 0.125 * revolutionSpeed,
@@ -112,7 +112,7 @@ var SolarConfig = {
             return {
                 name: 'saturn',
                 orbitRadius: sunRadius + 0.275,
-                orbitAngle: 0,
+                orbitAngle: 355,
                 // orbitSpeed: (365/10760) * revolutionSpeed,
                 // orbitSpeed: 0.0339 * revolutionSpeed,
                 orbitSpeed: 0.105 * revolutionSpeed,
@@ -130,7 +130,7 @@ var SolarConfig = {
             return {
                 name: 'uranus',
                 orbitRadius: sunRadius + 0.35,
-                orbitAngle: 0,
+                orbitAngle: 102,
                 // orbitSpeed: (365/30700) * revolutionSpeed,
                 // orbitSpeed: 0.0119 * revolutionSpeed,
                 orbitSpeed: 0.080 * revolutionSpeed,
@@ -149,7 +149,7 @@ var SolarConfig = {
             return {
                 name: 'neptune',
                 orbitRadius: sunRadius + 0.415,
-                orbitAngle: 0,
+                orbitAngle: 47,
                 // orbitSpeed: (365/60200) * revolutionSpeed,
                 // orbitSpeed: 0.00606 * revolutionSpeed,
                 orbitSpeed: 0.070 * revolutionSpeed,
