@@ -186,28 +186,28 @@ PlanetSceneController = function (renderer, config) {
 
         if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
             isPlanetClicked = true;
-            console.log('planet: ', planetAggregation);
-            if (counter % 2 === 0) {
-            	if (tweenManager.moveRight)
-		            tweenManager.moveRight.stop();
-            	
-	            TWEEN.remove(tweenManager.moveRight);
-	            tweenManager.moveRight = null;
-	            
-	            tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
-	            tweenManager.moveLeft.start();
-	            
-            } else {
-	            if (tweenManager.moveLeft)
-		            tweenManager.moveLeft.stop();
-	
-	            TWEEN.remove(tweenManager.moveLeft);
-	            tweenManager.moveLeft = null;
-	
-	            tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
-	            tweenManager.moveRight.start();
-            }
-            counter++;
+            // console.log('planet: ', planetAggregation);
+            // if (counter % 2 === 0) {
+            // 	if (tweenManager.moveRight)
+		     //        tweenManager.moveRight.stop();
+            //
+	         //    TWEEN.remove(tweenManager.moveRight);
+	         //    tweenManager.moveRight = null;
+	         //
+	         //    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
+	         //    tweenManager.moveLeft.start();
+	         //
+            // } else {
+	         //    if (tweenManager.moveLeft)
+		     //        tweenManager.moveLeft.stop();
+            //
+	         //    TWEEN.remove(tweenManager.moveLeft);
+	         //    tweenManager.moveLeft = null;
+            //
+	         //    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
+	         //    tweenManager.moveRight.start();
+            // }
+            // counter++;
         }
     }
 
@@ -285,6 +285,36 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function onDoubleClick() {
-
+	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+	
+	    SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+	    var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
+	
+	    if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
+		    // isPlanetClicked = true;
+		    console.log('planet: ', planetAggregation);
+		    if (counter % 2 === 0) {
+			    if (tweenManager.moveRight)
+				    tweenManager.moveRight.stop();
+			
+			    TWEEN.remove(tweenManager.moveRight);
+			    tweenManager.moveRight = null;
+			
+			    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
+			    tweenManager.moveLeft.start();
+			
+		    } else {
+			    if (tweenManager.moveLeft)
+				    tweenManager.moveLeft.stop();
+			
+			    TWEEN.remove(tweenManager.moveLeft);
+			    tweenManager.moveLeft = null;
+			
+			    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
+			    tweenManager.moveRight.start();
+		    }
+		    counter++;
+	    }
     }
 };
