@@ -236,78 +236,18 @@ public class MySQLUtils {
     public List<Double> generateDecoratedData(Double latitude, Double longitude, Double height){
         List<Double> ret = new ArrayList<Double>();
 
-        // North to South
-        for (int i =-4; i <4; i++){
-            if (i !=0){
-                ret.add(latitude +i);
-                ret.add(longitude);
-                ret.add(modifier *height *Math.random());
+        for (int i =0; i <=4; i++){
+            for (int j =i-4; j <=4-i; i++){
+                if (j !=0){
+                    ret.add(latitude +i);
+                    ret.add(longitude +j);
+                    ret.add(modifier *height *Math.random());
+                    ret.add(latitude -i);
+                    ret.add(longitude +j);
+                    ret.add(modifier *height *Math.random());
+                }
             }
         }
-
-        // East to West
-        for (int i =-4; i <4; i++){
-            if (i !=0){
-                ret.add(latitude);
-                ret.add(longitude +i);
-                ret.add(modifier *height *Math.random());
-            }
-        }
-
-        // Around
-        for (int i =-3; i <3; i++){
-            if (i !=0){
-                ret.add(latitude +1);
-                ret.add(longitude +i);
-                ret.add(modifier *height *Math.random());
-                ret.add(latitude -1);
-                ret.add(longitude +i);
-                ret.add(modifier *height *Math.random());
-            }
-        }
-        for (int i =-2; i <2; i++){
-            if (i !=0){
-                ret.add(latitude +2);
-                ret.add(longitude +i);
-                ret.add(modifier *height *Math.random());
-                ret.add(latitude -2);
-                ret.add(longitude +i);
-                ret.add(modifier *height *Math.random());
-            }
-        }
-
-
-        // North East
-        ret.add(latitude +1);
-        ret.add(longitude +1);
-        ret.add(0.6 *height);
-
-
-
-        // South East
-        ret.add(latitude -1);
-        ret.add(longitude +1);
-        ret.add(0.8 *height);
-
-        // South
-        ret.add(latitude -1);
-        ret.add(longitude);
-        ret.add(0.55 *height);
-
-        // South West
-        ret.add(latitude -1);
-        ret.add(longitude -1);
-        ret.add( 0.3 *height);
-
-        // West
-        ret.add(latitude);
-        ret.add(longitude -1);
-        ret.add(0.2 *height);
-
-        // North West
-        ret.add(latitude +1);
-        ret.add(longitude -1);
-        ret.add(0.4 *height);
 
         return ret;
     }
