@@ -11,6 +11,7 @@ $(function () {
 
     solarSystemSceneController = new SolarSystemSceneController(renderer);
     solarSystemSceneController.activateScene();
+    solarSystemSceneController.initStartTween();
 
     activatedScene = solarSystemSceneController;
 

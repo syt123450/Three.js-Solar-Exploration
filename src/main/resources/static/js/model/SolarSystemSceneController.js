@@ -26,8 +26,9 @@ SolarSystemSceneController = function(renderer) {
     this.deactivateScene = deactivateScene;
     this.name = "SolarSystemSceneController";
 
+    this.initStartTween = initStartTween;
     // Camera position settings (NOT COMPLETE, N/A)
-    this.upForwardView = updateCameraPosition(-1);
+    // this.upForwardView = updateCameraPosition(-1);
     // this.topView = updateCameraPosition(1);
     // this.sideView = updateCameraPosition(2);
 
@@ -46,7 +47,6 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function activateScene(){
-
         // audio.play();
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
@@ -99,8 +99,8 @@ SolarSystemSceneController = function(renderer) {
 
         // Camera
         scene.add(camera);
-        updateCameraPosition(-1);
-
+        updateCameraPosition(1);
+		
         // Background
         scene.add(universeMesh);
 
@@ -118,6 +118,11 @@ SolarSystemSceneController = function(renderer) {
         return scene;
     }
 
+    function initStartTween() {
+	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
+	    tween.start();
+    }
+    
     function initSystemPositions() {
 
         planetsList["pluto"].orbit.rotateY(Math.PI * 17 / 180);

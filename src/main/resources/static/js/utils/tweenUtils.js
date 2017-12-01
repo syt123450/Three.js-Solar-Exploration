@@ -206,10 +206,28 @@ var TweenUtils = (function () {
 			}
 			
 		});
-		
 		return tween;
 	}
-    
+ 
+	function createEnterSolarSceneTween(camera, solarAggregation) {
+		var startPos = { y: 0.9, z: 0.0};
+		var endPos = { y: 0.3, z: 0.9};
+		// var startPosZ = { z: 0 };
+		// var endPosZ = { z: 0.9 };
+		var animationTime = 10000;
+		var tween = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime);
+		
+		tween.onStart(function() {
+			console.log('tween started');
+		}).onUpdate(function () {
+			console.log('camera position', camera.position);
+			camera.position.set(0, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		return tween;
+	}
+	
     this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
     this.createEarthInertiaTween = createEarthInertiaTween;
@@ -221,7 +239,8 @@ var TweenUtils = (function () {
     
     this.createPlanetMoveRightTween = createPlanetMoveRightTween;
     this.createPlanetMoveLeftTween = createPlanetMoveLeftTween;
-
+	this.createEnterSolarSceneTween = createEnterSolarSceneTween;
+    
     return this;
 
 })();
