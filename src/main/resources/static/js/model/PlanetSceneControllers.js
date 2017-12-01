@@ -186,28 +186,6 @@ PlanetSceneController = function (renderer, config) {
 
         if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
             isPlanetClicked = true;
-            // console.log('planet: ', planetAggregation);
-            // if (counter % 2 === 0) {
-            // 	if (tweenManager.moveRight)
-		     //        tweenManager.moveRight.stop();
-            //
-	         //    TWEEN.remove(tweenManager.moveRight);
-	         //    tweenManager.moveRight = null;
-	         //
-	         //    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
-	         //    tweenManager.moveLeft.start();
-	         //
-            // } else {
-	         //    if (tweenManager.moveLeft)
-		     //        tweenManager.moveLeft.stop();
-            //
-	         //    TWEEN.remove(tweenManager.moveLeft);
-	         //    tweenManager.moveLeft = null;
-            //
-	         //    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
-	         //    tweenManager.moveRight.start();
-            // }
-            // counter++;
         }
     }
 
@@ -284,7 +262,8 @@ PlanetSceneController = function (renderer, config) {
         }
     }
 
-    function onDoubleClick() {
+    function onDoubleClick(event) {
+
 	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 	
@@ -317,4 +296,46 @@ PlanetSceneController = function (renderer, config) {
 		    counter++;
 	    }
     }
+	
+	/**
+	 * Stop and remove moveRight and moveLeft tweens
+	 * Reset planet position to (0, 0, 0)
+	 * @param planetAggregation
+	 */
+	function resetPlanetPos() {
+	    if (tweenManager.moveRight) {
+		    tweenManager.moveRight.stop();
+	    }
+	    TWEEN.remove(tweenManager.moveRight);
+		tweenManager.moveRight = null;
+		
+		if (tweenManager.moveLeft) {
+			tweenManager.moveLeft.stop();
+		}
+		TWEEN.remove(tweenManager.moveLeft);
+		tweenManager.moveLeft = null;
+		
+	    planetAggregation.position.x = 0;
+		
+		// Make sure halo is also reset to (0, 0, 0)
+		if (planetAggregation.children.length === 3) {
+			planetAggregation.children[1].position.x = 0;
+			planetAggregation.children[2].position.x = 0;
+		}
+		
+		if (planetAggregation.children.length === 4) {
+			planetAggregation.children[2].position.x = 0;
+			planetAggregation.children[3].position.x = 0;
+		}
+	    
+	    counter = 0;
+    }
+	
+	// // For testing
+	// document.addEventListener('keydown',function(event) {
+	// 	if (event.keyCode === 38) {
+	// 		resetPlanetPos();
+	// 	}
+	// },false);
+	
 };
