@@ -261,8 +261,12 @@ PlanetSceneController = function (renderer, config) {
             camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
         }
     }
-
-    function onDoubleClick(event) {
+	
+	/**
+	 * move planet to left side when double clicked
+	 * @param event
+	 */
+	function onDoubleClick(event) {
 
 	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -271,32 +275,43 @@ PlanetSceneController = function (renderer, config) {
 	    var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
 	
 	    if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
-		    // isPlanetClicked = true;
-		    console.log('planet: ', planetAggregation);
+
 		    if (counter % 2 === 0) {
-			    if (tweenManager.moveRight)
-				    tweenManager.moveRight.stop();
-			
-			    TWEEN.remove(tweenManager.moveRight);
-			    tweenManager.moveRight = null;
-			
-			    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
-			    tweenManager.moveLeft.start();
-			
+			    movePlanetLeft();
 		    } else {
-			    if (tweenManager.moveLeft)
-				    tweenManager.moveLeft.stop();
-			
-			    TWEEN.remove(tweenManager.moveLeft);
-			    tweenManager.moveLeft = null;
-			
-			    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
-			    tweenManager.moveRight.start();
+			    movePlanetRight();
 		    }
 		    counter++;
 	    }
     }
 	
+	/**
+	 * Move planet to left side with tween
+	 */
+	function movePlanetLeft() {
+	    if (tweenManager.moveRight)
+		    tweenManager.moveRight.stop();
+	
+	    TWEEN.remove(tweenManager.moveRight);
+	    tweenManager.moveRight = null;
+	
+	    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
+	    tweenManager.moveLeft.start();
+    }
+	
+	/**
+	 * MOve planet to the right side with tween
+	 */
+	function movePlanetRight() {
+	    if (tweenManager.moveLeft)
+		    tweenManager.moveLeft.stop();
+	
+	    TWEEN.remove(tweenManager.moveLeft);
+	    tweenManager.moveLeft = null;
+	
+	    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
+	    tweenManager.moveRight.start();
+    }
 	/**
 	 * Stop and remove moveRight and moveLeft tweens
 	 * Reset planet position to (0, 0, 0)
