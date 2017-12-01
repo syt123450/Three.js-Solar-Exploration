@@ -16,6 +16,7 @@ SolarSystemSceneController = function(renderer) {
     var solarSystemScene = init();
 
     var changeSceneTween = null;
+    var fogTween = null;
     
     this.setPlanetScene = function (planetName, controller) {
         planetsList[planetName].controller = controller;
@@ -111,6 +112,8 @@ SolarSystemSceneController = function(renderer) {
         asteroidBeltPoints.forEach(function addPoints(points) {
             scene.add(points);
         });
+
+        scene.fog = new THREE.Fog(0x000000, 0, 100);
 
         return scene;
     }
@@ -216,6 +219,7 @@ SolarSystemSceneController = function(renderer) {
 	                    // planetsList[planet].controller.activateScene();
 	                    
 	                    changeSceneTween = getChangeSceneTween(planetsList[planet].mesh, camera);
+	                    fogTween = getFogTween(solarSystemScene);
 	                    changeSceneTween.onComplete(function() {
                         	TWEEN.remove(changeSceneTween);
 		                    enableBackLogo();
@@ -231,6 +235,8 @@ SolarSystemSceneController = function(renderer) {
 	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
 	                    });
 	                    changeSceneTween.start();
+	                    fogTween.start();
+
 
 	                    break; // break is very important because of closure!!!
                     }
@@ -280,5 +286,22 @@ function getChangeSceneTween(planetMesh, camera, audio) {
 			camera.positionHistory = Object.assign({}, camera.position);
 			camera.directionHistory = Object.assign({}, camera.getWorldDirection());
 		});
+    return tween;
+}
+
+function getFogTween(solarSystemScene) {
+
+    var initFog = {density: 0};
+    var finalDensity = {density: -500};
+
+    var tween = new TWEEN.Tween(initFog).to(finalDensity, 5000)
+        .easing(TWEEN.Easing.Quadratic.In)
+        .onUpdate(function() {
+            solarSystemScene.fog.near = initFog.density;
+        })
+        .onComplete(function() {
+            solarSystemScene.fog.near = 0;
+        });
+
     return tween;
 }
