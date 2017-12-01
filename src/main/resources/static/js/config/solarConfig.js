@@ -27,8 +27,8 @@ var SolarConfig = {
                 // orbitSpeed: 4.148 * revolutionSpeed,
                 orbitSpeed: 3 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/mercurymap.jpg',
-                bumpMap: '../images/planets/mercurybump.jpg',
+                map: '../images/planets-min/mercurymap.jpg',
+                bumpMap: '../images/planets-min/mercurybump.jpg',
                 radius: 0.005
             }
         },
@@ -41,8 +41,8 @@ var SolarConfig = {
                 // orbitSpeed: (365/224.7) * revolutionSpeed,
                 orbitSpeed: 1.624 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/venusmap.jpg',
-                bumpMap: '../images/planets/venusbump.jpg',
+                map: '../images/planets-min/venusmap.jpg',
+                bumpMap: '../images/planets-min/venusbump.jpg',
                 radius: 0.008
             }
         },
@@ -68,8 +68,8 @@ var SolarConfig = {
                 // orbitSpeed: (365/687) * revolutionSpeed,
                 orbitSpeed: 0.531 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/marsmap1k.jpg',
-                bumpMap: '../images/planets/marsbump1k.jpg',
+                map: '../images/planets-min/marsmap1k.jpg',
+                bumpMap: '../images/planets-min/marsbump1k.jpg',
                 radius: 0.0055
             }
         },
@@ -97,7 +97,7 @@ var SolarConfig = {
                 // orbitSpeed: 0.0843 * revolutionSpeed,
                 orbitSpeed: 0.125 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/jupitermap.jpg',
+                map: '../images/planets-min/jupitermap.jpg',
                 radius: 0.02
             }
         },
@@ -111,9 +111,9 @@ var SolarConfig = {
                 // orbitSpeed: 0.0339 * revolutionSpeed,
                 orbitSpeed: 0.085 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/saturnmap.jpg',
+                map: '../images/planets-min/saturnmap.jpg',
                 radius: 0.018,
-                ringMap: '../images/planets/saturnringcolortransRing.png',
+                ringMap: '../images/planets-min/saturnringcolortransRing.png',
                 ringInnerRadius: 0.0216,
                 ringOuterRadius: 0.0432
             }
@@ -128,9 +128,9 @@ var SolarConfig = {
                 // orbitSpeed: 0.0119 * revolutionSpeed,
                 orbitSpeed: 0.05 * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/uranusmap.jpg',
+                map: '../images/planets-min/uranusmap.jpg',
                 radius: 0.012,
-                ringMap: '../images/planets/uranusringcolortransRing.png',
+                ringMap: '../images/planets-min/uranusringcolortransRing.png',
                 ringInnerRadius: 0.0156,
                 ringOuterRadius: 0.024
             }
@@ -146,7 +146,7 @@ var SolarConfig = {
                 // orbitSpeed: 0.00606 * revolutionSpeed,
                 orbitSpeed: 0.03 * revolutionSpeed,
                 rotateSpeed: 0.01,
-                map: '../images/planets/neptunemap.jpg',
+                map: '../images/planets-min/neptunemap.jpg',
                 radius: 0.012
             }
         },
@@ -161,8 +161,8 @@ var SolarConfig = {
                 // orbitSpeed: (0.00403) * revolutionSpeed,
                 orbitSpeed: (0.01) * revolutionSpeed,
                 rotateSpeed: 0.05,
-                map: '../images/planets/plutomap1k.jpg',
-                bumpMap: '../images/planets/plutobump1k.jpg',
+                map: '../images/planets-min/plutomap1k.jpg',
+                bumpMap: '../images/planets-min/plutobump1k.jpg',
                 radius: 0.003
             }
         }

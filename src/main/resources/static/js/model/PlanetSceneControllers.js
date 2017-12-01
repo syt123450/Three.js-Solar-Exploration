@@ -58,14 +58,8 @@ PlanetSceneController = function (renderer, config) {
 
     function initTween() {
 
-// <<<<<<< HEAD
-// 	    tweenManager.starsFlashing = stars.createFlashTween();
-//
-// =======
         tweenManager.meteorsSweep = meteors.createSweepTween();
         tweenManager.starsFlashing = stars.createFlashTween();
-        // tweenManager.rotationTween = createRotationTween(mesh, planetAggregation);
-// >>>>>>> parent of db035ce... resolved conflict
         tweenManager.rotationTween = TweenUtils.createPlanetRotationTween(mesh, planetAggregation);
     }
 
