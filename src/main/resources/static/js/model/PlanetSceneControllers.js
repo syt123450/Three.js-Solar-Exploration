@@ -195,7 +195,7 @@ PlanetSceneController = function (renderer, config) {
         if (isPlanetClicked) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
-            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(planetAggregation, speed, inertiaControls);
+            tweenManager.inertia = TweenUtils.createPlanetInertiaTween(mesh, speed, inertiaControls);
             tweenManager.inertia.start();
         }
     }
@@ -238,7 +238,7 @@ PlanetSceneController = function (renderer, config) {
 
     function rotateWithStep(step) {
 
-        planetAggregation.rotation.y += step;
+        mesh.rotation.y += step;
     }
 
     function onMouseWheel() {

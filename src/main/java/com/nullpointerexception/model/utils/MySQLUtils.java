@@ -28,12 +28,33 @@ public class MySQLUtils {
     private ResultSet retSet = null;
 
     public MySQLUtils(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
+//        System.out.println("=======");
+//        System.out.println(">>>>>>>>>>>>" + mySQLConfig.getURL() + " ; " + mySQLConfig.getUserName());
+//        System.out.println("=======");
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
 //            conn = DriverManager
 //                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+//            conn = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+//        } catch (ClassNotFoundException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            // TODO Auto-generated catch block
+//            System.err.println("SQL ERROR, Exception");
+//            System.err.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+    }
+
+    public void buildConnection(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+//            conn = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -67,6 +88,7 @@ public class MySQLUtils {
     }
 
     public List<FuelInfoBean> getCountryDataByYear() {
+        buildConnection();
 
         if (this.conn !=null){
             String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
@@ -95,6 +117,8 @@ public class MySQLUtils {
     }
 
     public List<Double> getGeoAmountData(){
+        buildConnection();
+
         if (this.conn !=null){
             String query = "SELECT areaName, longitude, latitude, SUM(Quadrillion_BTU) as sum FROM v_totalenergy GROUP BY areaName, longitude, latitude";
             try {

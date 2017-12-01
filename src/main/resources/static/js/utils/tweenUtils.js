@@ -19,7 +19,7 @@ var TweenUtils = (function () {
         return rotateTween;
     }
 
-    function createInertiaTween(planetAggregation, speed, inertiaControls) {
+    function createInertiaTween(planetMesh, speed, inertiaControls) {
 
         var startSpeed = {speed: speed};
         var endSpeed = {speed: 0};
@@ -27,7 +27,7 @@ var TweenUtils = (function () {
         var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
         inertiaTween.easing(TWEEN.Easing.Linear.None);
         inertiaTween.onUpdate(function () {
-            planetAggregation.rotation.y += this.speed;
+            planetMesh.rotation.y += this.speed;
         }).onComplete(function () {
             inertiaControls.isInertia = false;
         });
