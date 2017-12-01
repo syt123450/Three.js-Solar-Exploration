@@ -53,6 +53,13 @@ PlanetSceneController = function (renderer, config) {
         tweenManager.rotationTween.start();
     };
 
+    this.hideInfo = hideInfo;
+
+    function hideInfo() {
+        movePlanetRight();
+        hideInfoBoard();
+    }
+
     /* Action Functions */
     function animate() {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
