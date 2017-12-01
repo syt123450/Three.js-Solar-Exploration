@@ -241,10 +241,10 @@ public class MySQLUtils {
                 if (j !=0){
                     ret.add(latitude +i);
                     ret.add(longitude +j);
-                    ret.add(modifier *height *Math.random());
+                    ret.add(height /Math.abs(j) *modifier *Math.random());
                     ret.add(latitude -i);
                     ret.add(longitude +j);
-                    ret.add(modifier *height *Math.random());
+                    ret.add(height /Math.abs(j) *modifier *Math.random());
                 }
             }
         }
