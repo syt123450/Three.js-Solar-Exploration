@@ -222,7 +222,10 @@ SolarSystemSceneController = function(renderer) {
 
 	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera);
 	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
-	                    
+	                    changeSceneTween.onStart(function () {
+	                        // console.log()
+                            setTransitionImage(TransitionConfig[SolarConfig[planet].name]);
+	                    });
 	                    changeSceneTween.onComplete(function() {
 
                             var inputVariable = function(controller, camera, onCompleteSetup) {
