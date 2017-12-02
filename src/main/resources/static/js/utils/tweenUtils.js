@@ -216,11 +216,11 @@ var TweenUtils = (function () {
 	 */
 	function createEnterSolarSceneTween(camera, solarAggregation) {
 		
-		var radius = Math.sqrt(0.81 + 0.09) * 2;
+		var radius = Math.sqrt(0.81 + 0.09) * 1.5;
 		// seg.1
-		var animationTime_1 = 5000;
-        var startPos_1 = { x:0.0, y: -radius, z: 0.0};
-        var endPos_1 = { x:0.0, y: radius * Math.cos((60 / 180) * Math.PI), z: radius * Math.sin((60 / 180) * Math.PI)};
+		var animationTime_1 = 6000;
+        var startPos_1 = { x:0.0, y: 1.2 *radius, z: 0.0};
+        var endPos_1 = { x:0.0, y: radius * Math.cos( 0.75 *Math.PI ), z: radius * Math.sin( 0.75 *Math.PI )};
 		var tween_1 = new TWEEN.Tween(startPos_1)
 			.easing(TWEEN.Easing.Quadratic.InOut)
 			.to(endPos_1, animationTime_1);
@@ -232,9 +232,9 @@ var TweenUtils = (function () {
 		});
 		
 		// seg.2
-		var animationTime_2 = 10000;
-        var startPos_2 = { r: radius, theta: (60 / 180) * Math.PI, phi: 0.0 };
-        var endPos_2 = { r: 0.5 * radius, theta: (60 / 180) * Math.PI, phi: Math.PI * 2  };
+		var animationTime_2 = 18000;
+        var startPos_2 = { r: radius, theta: 0.75 *Math.PI, phi: 0.0 };
+        var endPos_2 = { r: 2 * radius/3, theta: 0.3 *Math.PI, phi: Math.PI * 2  };
 		var tween_2 = new TWEEN.Tween(startPos_2)
 			.easing(TWEEN.Easing.Quadratic.InOut)
 			.to(endPos_2, animationTime_2);
