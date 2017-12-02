@@ -241,10 +241,12 @@ SolarSystemSceneController = function(renderer) {
 		                    );
 	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
 	                        
-	                        var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
-		                        planetsList[planet].controller.getPlanetAggregation()
-	                        );
-		                    movePlanetCloserTween.start();
+                            // var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
+		                    //     planetsList[planet].controller.getPlanetAggregation()
+                            // );
+		                    // movePlanetCloserTween.start();
+                            planetsList[planet].controller.zoomIn();
+
 	                    });
 	                    changeSceneTween.start();
 	                    fogTween.start();

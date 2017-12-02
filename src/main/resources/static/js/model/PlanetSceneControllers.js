@@ -55,6 +55,13 @@ PlanetSceneController = function (renderer, config) {
 
     this.hideInfo = hideInfo;
 
+    this.zoomIn = function() {
+        var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
+        var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
+        moveCloserTween.start();
+        fadeInTween.start();
+    };
+
     function hideInfo() {
         movePlanetRight();
         hideInfoBoard();
@@ -124,6 +131,8 @@ PlanetSceneController = function (renderer, config) {
         scene.add(planetAggregation);
 
         initTween();
+
+        scene.fog = new THREE.Fog(0x000000, -500, 500);
 
         return scene;
     }
