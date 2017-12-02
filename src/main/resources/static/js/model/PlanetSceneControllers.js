@@ -97,6 +97,9 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function deactivateScene() {
+
+        console.log("deactivate planet scene");
+
         resetPlanetPos();
         hideInfoBoard();
         audio.pause();

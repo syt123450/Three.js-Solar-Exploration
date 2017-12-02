@@ -217,7 +217,9 @@ function loadData() {
 }
 
 function backToSolar() {
+    console.log(111);
     disableBackLogo();
+    console.log(activatedScene);
     activatedScene.deactivateScene();
     solarSystemSceneController.playAudio();
     solarSystemSceneController.activateScene();

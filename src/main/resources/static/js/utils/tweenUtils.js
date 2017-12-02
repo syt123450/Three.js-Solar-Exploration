@@ -226,7 +226,7 @@ var TweenUtils = (function () {
 			.to(endPos_1, animationTime_1);
 		
 		tween_1.onUpdate(function () {
-			console.log('t1 cam', camera.position);
+			// console.log('t1 cam', camera.position);
 			camera.position.set(startPos_1.x, startPos_1.y, startPos_1.z);
 			camera.lookAt(solarAggregation.position);
 		});
@@ -240,7 +240,7 @@ var TweenUtils = (function () {
 			.to(endPos_2, animationTime_2);
 
 		tween_2.onUpdate(function () {
-			console.log('t2 cam', camera.position);
+			// console.log('t2 cam', camera.position);
 			x = startPos_2.r * Math.sin(startPos_2.theta) * Math.sin(startPos_2.phi);
 			z = startPos_2.r * Math.sin(startPos_2.theta) * Math.cos(startPos_2.phi);
 			y = startPos_2.r * Math.cos(startPos_2.theta);
