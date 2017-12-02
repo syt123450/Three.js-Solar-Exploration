@@ -224,8 +224,8 @@ var TweenUtils = (function () {
 			console.log('createPlanetMoveCloserTween started');
 			
 		}).onUpdate(function () {
-			console.log('planet position', planetAggregation.position);
-			console.log('planet position', planetAggregation.position);
+			// console.log('planet position', planetAggregation.position);
+			// console.log('planet position', planetAggregation.position);
 			planetAggregation.position.set(0, 0, startPos.z);
 			
 			// // move glow mesh too
@@ -266,6 +266,22 @@ var TweenUtils = (function () {
 		});
 		return tween;
 	}
+
+    function createPlanetFadeInTween(scene) {
+
+        var initFog = {density: -500};
+        var finalDensity = {density: 0};
+
+        var tween = new TWEEN.Tween(initFog).to(finalDensity, 1000)
+            // .easing(TWEEN.Easing.Quadratic.In)
+            .onUpdate(function() {
+                scene.fog.near = initFog.density;
+                console.log(scene.fog.near);
+                console.log(initFog.density);
+            });
+
+        return tween;
+    }
 	
     this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
@@ -281,6 +297,8 @@ var TweenUtils = (function () {
 	this.createPlanetMoveCloserTween = createPlanetMoveCloserTween;
 	
 	this.createEnterSolarSceneTween = createEnterSolarSceneTween;
+
+	this.createPlanetFadeInTween = createPlanetFadeInTween;
     
     return this;
 
