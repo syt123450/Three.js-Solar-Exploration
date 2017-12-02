@@ -53,7 +53,8 @@
 --   c1.countryID <> c2.countryID
 
 
-
+SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy
+WHERE year = 2007 AND areaName NOT IN ("World","OPEC","OECD","Non OECD","OPEC-South America","OECD-North America","OECD-Asia And Oceania") ORDER BY Quadrillion_BTU DESC LIMIT 10;
 
 
 

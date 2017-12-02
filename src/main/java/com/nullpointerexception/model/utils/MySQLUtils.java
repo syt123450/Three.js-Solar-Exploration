@@ -88,14 +88,14 @@ public class MySQLUtils {
         }
     }
 
-    public List<FuelInfoBean> getCountryDataByYear() {
+    public List<FuelInfoBean> getCountryDataByYear(int year) {
         buildConnection();
 
         if (this.conn !=null){
-            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
+            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy WHERE year = ? AND areaName NOT IN (\"World\",\"OPEC\",\"OECD\",\"Non OECD\",\"OPEC-South America\",\"OECD-North America\",\"OECD-Asia And Oceania\") ORDER BY Quadrillion_BTU DESC LIMIT 10;";
             try {
                 preStmt = conn.prepareStatement(query);
-
+                preStmt.setInt(1, year);
                 retSet = preStmt.executeQuery();
 
             } catch (SQLException e) {
@@ -254,13 +254,13 @@ public class MySQLUtils {
 
     public static void main(String[] args){
         MySQLUtils mySQLUtils = new MySQLUtils();
-//        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
-//        Iterator<FuelInfoBean> itr = myList_1.iterator();
-//        FuelInfoBean tempBean;
-//        while (itr.hasNext()){
-//            tempBean = itr.next();
-//            System.out.println(tempBean.getFlagPath());
-//        }
+        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear(2007);
+        Iterator<FuelInfoBean> itr = myList_1.iterator();
+        FuelInfoBean tempBean;
+        while (itr.hasNext()){
+            tempBean = itr.next();
+            System.out.println(tempBean.getAreaName());
+        }
 
 //        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
 //        Iterator<Double> itr = myList_2.iterator();
