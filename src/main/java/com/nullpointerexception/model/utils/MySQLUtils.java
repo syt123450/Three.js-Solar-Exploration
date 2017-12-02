@@ -52,10 +52,10 @@ public class MySQLUtils {
     public void buildConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager
-                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
 //            conn = DriverManager
-//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+//                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+            conn = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -207,8 +207,8 @@ public class MySQLUtils {
         List<Double> decoratedDataList = new ArrayList<Double>();
         for (int i =2; i <ret.size(); i+=3){
             temp = ret.get(i) /max;
-            if (temp < 0.01){
-                temp = 0.01;
+            if (temp < 0.02){
+                temp = 0.02;
             }
             else {
                 // Add decorated data
@@ -237,14 +237,30 @@ public class MySQLUtils {
         List<Double> ret = new ArrayList<Double>();
 
         for (int i =0; i <=4; i++){
-            for (int j =i-4; j <=4-i; i++){
+            for (int j =0; j <=4-i; j++){
                 if (j !=0){
                     ret.add(latitude +i);
                     ret.add(longitude +j);
                     ret.add(height /Math.abs(j) *modifier *Math.random());
+                    ret.add(latitude +i);
+                    ret.add(longitude -j);
+                    ret.add(height /Math.abs(j) *modifier *Math.random());
+                    if (i!=0){
+                        ret.add(latitude -i);
+                        ret.add(longitude +j);
+                        ret.add(height /Math.abs(j) *modifier *Math.random());
+                        ret.add(latitude -i);
+                        ret.add(longitude -j);
+                        ret.add(height /Math.abs(j) *modifier *Math.random());
+                    }
+                }
+                else if(i !=0){
+                    ret.add(latitude +i);
+                    ret.add(longitude +j);
+                    ret.add(height /Math.abs(i) *modifier *Math.random());
                     ret.add(latitude -i);
                     ret.add(longitude +j);
-                    ret.add(height /Math.abs(j) *modifier *Math.random());
+                    ret.add(height /Math.abs(i) *modifier *Math.random());
                 }
             }
         }
@@ -254,24 +270,24 @@ public class MySQLUtils {
 
     public static void main(String[] args){
         MySQLUtils mySQLUtils = new MySQLUtils();
-        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear(2007);
-        Iterator<FuelInfoBean> itr = myList_1.iterator();
-        FuelInfoBean tempBean;
-        while (itr.hasNext()){
-            tempBean = itr.next();
-            System.out.println(tempBean.getAreaName());
-        }
-
-//        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
-//        Iterator<Double> itr = myList_2.iterator();
-//        Double tempDouble;
-//        String output = "[";
+//        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear(2007);
+//        Iterator<FuelInfoBean> itr = myList_1.iterator();
+//        FuelInfoBean tempBean;
 //        while (itr.hasNext()){
-//            tempDouble = itr.next();
-//            output +=(tempDouble + ",");
+//            tempBean = itr.next();
+//            System.out.println(tempBean.getAreaName());
 //        }
-//        output = output.substring(0, output.length()-1) + "]";
-//        System.out.println(output);
-//        System.out.println("");
+
+        List<Double> myList_2 =mySQLUtils.getGeoAmountData();
+        Iterator<Double> itr = myList_2.iterator();
+        Double tempDouble;
+        String output = "[";
+        while (itr.hasNext()){
+            tempDouble = itr.next();
+            output +=(tempDouble + ",");
+        }
+        output = output.substring(0, output.length()-1) + "]";
+        System.out.println(output);
+        System.out.println("");
     }
 }
