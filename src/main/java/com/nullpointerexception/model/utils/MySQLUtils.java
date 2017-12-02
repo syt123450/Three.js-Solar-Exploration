@@ -52,6 +52,7 @@ public class MySQLUtils {
     public void buildConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            System.out.println(mySQLConfig);
             conn = DriverManager
                     .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
 //            conn = DriverManager
@@ -88,13 +89,15 @@ public class MySQLUtils {
         }
     }
 
-    public List<FuelInfoBean> getCountryDataByYear() {
+    public List<FuelInfoBean> getCountryDataByYear(int year) {
         buildConnection();
 
         if (this.conn !=null){
-            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy";
+            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount " +
+                    "FROM v_totalenergy WHERE year = ? ORDER BY Quadrillion_BTU desc limit 10";
             try {
                 preStmt = conn.prepareStatement(query);
+                preStmt.setInt(1, year);
 
                 retSet = preStmt.executeQuery();
 
@@ -253,7 +256,7 @@ public class MySQLUtils {
     }
 
     public static void main(String[] args){
-        MySQLUtils mySQLUtils = new MySQLUtils();
+//        MySQLUtils mySQLUtils = new MySQLUtils();
 //        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
 //        Iterator<FuelInfoBean> itr = myList_1.iterator();
 //        FuelInfoBean tempBean;

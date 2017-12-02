@@ -14,16 +14,130 @@ public class MockFuelDataService implements FuelDataService {
     @Override
     public List<FuelInfoBean> getYearlyData(int year) {
 
+        System.out.println("111");
+
         List<FuelInfoBean> infoList = new ArrayList<>();
-        for (int i = 1; i < 11; i++) {
-            infoList.add(new FuelInfoBean(
-                    "country" + i, i, year,
-                    i * i,
-                    i + 1,
-                    i + 2,
-                    i + 3,
-                    "../images/flags/Abkhazia.png"));
-        }
+
+        FuelInfoBean fuelInfoBean1 = new FuelInfoBean(
+                "Africa",
+                -8.783195,
+                34.508523,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean2 = new FuelInfoBean(
+                "Africa",
+                -10,
+                20.508523,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean3 = new FuelInfoBean(
+                "Africa",
+                8,
+                33,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean4 = new FuelInfoBean(
+                "Africa",
+                40,
+                70,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean5 = new FuelInfoBean(
+                "Africa",
+                12,
+                66,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean6 = new FuelInfoBean(
+                "Africa",
+                77,
+                22,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean7 = new FuelInfoBean(
+                "Africa",
+                14,
+                56,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean8 = new FuelInfoBean(
+                "Africa",
+                22,
+                78,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean9 = new FuelInfoBean(
+                "Africa",
+                0,
+                11,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        FuelInfoBean fuelInfoBean10 = new FuelInfoBean(
+                "Africa",
+                19,
+                25,
+                536.53,
+                0,
+                57,
+                211,
+                "../images/flags/World.png"
+        );
+
+        infoList.add(fuelInfoBean1);
+        infoList.add(fuelInfoBean2);
+        infoList.add(fuelInfoBean3);
+        infoList.add(fuelInfoBean4);
+        infoList.add(fuelInfoBean5);
+        infoList.add(fuelInfoBean6);
+        infoList.add(fuelInfoBean7);
+        infoList.add(fuelInfoBean8);
+        infoList.add(fuelInfoBean9);
+        infoList.add(fuelInfoBean10);
 
         return infoList;
     }

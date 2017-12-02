@@ -37,6 +37,10 @@ public class Presenter {
         YearRequestBean yearRequestBean = gson.fromJson(body, YearRequestBean.class);
         List<FuelInfoBean> infoList = fuelDataService.getYearlyData(yearRequestBean.getYear());
 
+        System.out.println(infoList.size());
+
+        System.out.println(infoList);
+
         return gson.toJson(infoList);
     }
 

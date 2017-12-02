@@ -24,6 +24,6 @@ public class FuelDataImpl implements FuelDataService {
     @Override
     public List<FuelInfoBean> getYearlyData(int year) {
 
-        return mySQLUtils.getCountryDataByYear();
+        return mySQLUtils.getCountryDataByYear(year);
     }
 }
