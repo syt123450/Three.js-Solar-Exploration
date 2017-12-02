@@ -26,6 +26,8 @@ SolarSystemSceneController = function(renderer) {
     this.deactivateScene = deactivateScene;
     this.name = "SolarSystemSceneController";
 
+    var clickedPlanet;
+
     this.initStartTween = initStartTween;
     // Camera position settings (NOT COMPLETE, N/A)
     // this.upForwardView = updateCameraPosition(-1);
@@ -220,6 +222,8 @@ SolarSystemSceneController = function(renderer) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 	                    console.log(planet + " clicked!");
 
+                        clickedPlanet = planetsList[planet].controller;
+
 	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera);
 	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
 	                    changeSceneTween.onStart(function () {
@@ -228,27 +232,9 @@ SolarSystemSceneController = function(renderer) {
 	                    });
 	                    changeSceneTween.onComplete(function() {
 
-                            var inputVariable = function(controller, camera, onCompleteSetup) {
-                                this.execute = function() {
-                                    onCompleteSetup(controller, camera);
-                                }
-                            };
-
-
 		                    onCompleteCleanup(changeSceneTween);
 
-		                    var input = new inputVariable(planetsList[planet].controller, camera, onCompleteSetup);
-		                    console.log(input);
-
-                            showTransition(SolarConfig[planet].name, input);
-                            // var inputVariable = {};
-                            // inputVariable.controller = planetsList[planet].controller;
-                            // inputVariable.camera = camera;
-                            // inputVariable.onCompleteSetup = function() {
-		                     //    onCompleteSetup();
-                            // };
-
-
+                            showTransition(SolarConfig[planet].name, this);
 
 
 
@@ -270,7 +256,12 @@ SolarSystemSceneController = function(renderer) {
 	    TWEEN.remove(changeSceneTween);
 	    deactivateScene();
     }
-    
+
+    this.onCompleteSetup = function() {
+        console.log(camera);
+        onCompleteSetup(clickedPlanet, camera);
+    };
+
     function onCompleteSetup(planetSceneController, camera) {
 	    planetSceneController.activateScene();
 	    planetSceneController.workAround();
