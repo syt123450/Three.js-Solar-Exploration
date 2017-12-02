@@ -217,7 +217,7 @@ var TweenUtils = (function () {
 		var startPos = { z: - planetAggregation.children[0].geometry.parameters.radius * 3 };
 		var endPos = { z: 0 };
 		var tween = new TWEEN.Tween(startPos)
-			.easing(TWEEN.easeInOutBounce())
+			.easing(TWEEN.Easing.Quadratic.InOut)
 			.to(endPos, 500);
 		
 		tween.onStart(function() {
