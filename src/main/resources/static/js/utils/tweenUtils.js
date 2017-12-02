@@ -218,7 +218,7 @@ var TweenUtils = (function () {
 		// seg.1
 		var animationTime_1 = 5000;
         var startPos_1 = { x:0.0, y: -0.9, z: 0.0};
-        var endPos_1 = { x:0.0, y: -0.3, z: 0.9};
+        var endPos_1 = { x:0.0, y: 0.0, z: 0.9};
 		var tween_1 = new TWEEN.Tween(startPos_1)
 			.to(endPos_1, animationTime_1);
 		
@@ -230,68 +230,71 @@ var TweenUtils = (function () {
 		
 		// seg.2
 		var animationTime_2 = 5000;
-        var startPos_2 = { x:0.0, y: -0.3, z: 0.9};
-        var endPos_2 = { x: -0.9, y: -0.15, z: 0.0 };
+        var startPos_2 = { r: 0.9, theta: 0.0, phi: 0.0 };
+        var endPos_2 = { r: 0.9, theta: Math.PI * 2, phi: 0.0  };
 		var tween_2 = new TWEEN.Tween(startPos_2)
 			.to(endPos_2, animationTime_2);
 
 		tween_2.onUpdate(function () {
-			console.log('t2 cam', camera.position);
-			camera.position.set(startPos_2.x, startPos_2.y, startPos_2.z);
+			// console.log('t2 cam', camera.position);
+			x = startPos_2.r * Math.sin(startPos_2.theta) * Math.cos(startPos_2.phi);
+			y = startPos_2.r * Math.sin(startPos_2.theta) * Math.sin(startPos_2.phi);
+			z = startPos_2.r * Math.cos(startPos_2.theta);
+			camera.position.set(x, y, z);
 			camera.lookAt(solarAggregation.position);
 		});
 
-		// seg.3
-		var animationTime_3 = 5000;
-        var startPos_3 = { x: -0.9, y: -0.15, z: 0.0 };
-        var endPos_3 = { x: 0.0, y: 0.0, z: -0.9 };
-		var tween_3 = new TWEEN.Tween(startPos_3)
-			.to(endPos_3, animationTime_3);
-
-		tween_3.onUpdate(function () {
-			console.log('t3 cam', camera.position);
-			camera.position.set(startPos_3.x, startPos_3.y, startPos_3.z);
-			camera.lookAt(solarAggregation.position);
-		});
-
-		// seg.4
-		var animationTime_4 = 5000;
-        var startPos_4 = { x: 0.0, y: 0.0, z: -0.9 };
-        var endPos_4 = { x: 0.9, y: 0.15, z: 0.0 };
-		var tween_4 = new TWEEN.Tween(startPos_4)
-			.to(endPos_4, animationTime_4);
-
-		tween_4.onUpdate(function () {
-			console.log('t4 cam', camera.position);
-			camera.position.set(startPos_4.x, startPos_4.y, startPos_4.z);
-			camera.lookAt(solarAggregation.position);
-		});
-
-		// seg.5
-		var animationTime_5 = 5000;
-        var startPos_5 = { x: 0.9, y: 0.15, z: 0.0 };
-        var endPos_5 = { x: 0.0, y: 0.3, z: 0.9 };
-		var tween_5 = new TWEEN.Tween(startPos_5)
-			.to(endPos_5, animationTime_5);
-
-		tween_5.onUpdate(function () {
-			console.log('t5 cam', camera.position);
-			camera.position.set(startPos_5.x, startPos_5.y, startPos_5.z);
-			camera.lookAt(solarAggregation.position);
-		});
-		
+		// // seg.3
+		// var animationTime_3 = 5000;
+		// var startPos_3 = { x: -0.9, y: -0.15, z: 0.0 };
+		// var endPos_3 = { x: 0.0, y: 0.0, z: -0.9 };
+		// var tween_3 = new TWEEN.Tween(startPos_3)
+		// 	.to(endPos_3, animationTime_3);
+		//
+		// tween_3.onUpdate(function () {
+		// 	console.log('t3 cam', camera.position);
+		// 	camera.position.set(startPos_3.x, startPos_3.y, startPos_3.z);
+		// 	camera.lookAt(solarAggregation.position);
+		// });
+		//
+		// // seg.4
+		// var animationTime_4 = 5000;
+		// var startPos_4 = { x: 0.0, y: 0.0, z: -0.9 };
+		// var endPos_4 = { x: 0.9, y: 0.15, z: 0.0 };
+		// var tween_4 = new TWEEN.Tween(startPos_4)
+		// 	.to(endPos_4, animationTime_4);
+		//
+		// tween_4.onUpdate(function () {
+		// 	console.log('t4 cam', camera.position);
+		// 	camera.position.set(startPos_4.x, startPos_4.y, startPos_4.z);
+		// 	camera.lookAt(solarAggregation.position);
+		// });
+		//
+		// // seg.5
+		// var animationTime_5 = 5000;
+		// var startPos_5 = { x: 0.9, y: 0.15, z: 0.0 };
+		// var endPos_5 = { x: 0.0, y: 0.3, z: 0.9 };
+		// var tween_5 = new TWEEN.Tween(startPos_5)
+		// 	.to(endPos_5, animationTime_5);
+		//
+		// tween_5.onUpdate(function () {
+		// 	console.log('t5 cam', camera.position);
+		// 	camera.position.set(startPos_5.x, startPos_5.y, startPos_5.z);
+		// 	camera.lookAt(solarAggregation.position);
+		// });
+		//
 		tween_1.onComplete(function () {
 			tween_2.start();
 		});
-		tween_2.onComplete(function () {
-			tween_3.start();
-		});
-		tween_3.onComplete(function () {
-			tween_4.start();
-		});
-		tween_4.onComplete(function () {
-			tween_5.start();
-		});
+		// tween_2.onComplete(function () {
+		// 	tween_3.start();
+		// });
+		// tween_3.onComplete(function () {
+		// 	tween_4.start();
+		// });
+		// tween_4.onComplete(function () {
+		// 	tween_5.start();
+		// });
 
 		return tween_1;
 	}
