@@ -232,9 +232,9 @@ var TweenUtils = (function () {
 		});
 		
 		// seg.2
-		var animationTime_2 = 18000;
+		var animationTime_2 = 20000;
         var startPos_2 = { r: radius, theta: 0.75 *Math.PI, phi: 0.0 };
-        var endPos_2 = { r: 2 * radius/3, theta: 0.3 *Math.PI, phi: Math.PI * 2  };
+        var endPos_2 = { r: 2 * radius/3, theta: Math.PI/3, phi: Math.PI * 2  };
 		var tween_2 = new TWEEN.Tween(startPos_2)
 			.easing(TWEEN.Easing.Quadratic.InOut)
 			.to(endPos_2, animationTime_2);
