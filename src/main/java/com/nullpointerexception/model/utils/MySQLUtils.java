@@ -52,16 +52,14 @@ public class MySQLUtils {
     public void buildConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< HEAD
             System.out.println(mySQLConfig);
             conn = DriverManager
                     .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
-=======
->>>>>>> 6914a1c17a69363699714d710946412a7ee6d6a1
+
 //            conn = DriverManager
 //                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
-            conn = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+//            conn = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -98,19 +96,11 @@ public class MySQLUtils {
         buildConnection();
 
         if (this.conn !=null){
-<<<<<<< HEAD
-            String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount " +
-                    "FROM v_totalenergy WHERE year = ? ORDER BY Quadrillion_BTU desc limit 10";
-            try {
-                preStmt = conn.prepareStatement(query);
-                preStmt.setInt(1, year);
 
-=======
             String query = "SELECT areaName, longitude, latitude, ifFlagImage, Quadrillion_BTU, Coal_Amount, CrudeOil_Amount, NaturalGas_Amount FROM v_totalenergy WHERE year = ? AND areaName NOT IN (\"World\",\"OPEC\",\"OECD\",\"Non OECD\",\"OPEC-South America\",\"OECD-North America\",\"OECD-Asia And Oceania\") ORDER BY Quadrillion_BTU DESC LIMIT 10;";
             try {
                 preStmt = conn.prepareStatement(query);
                 preStmt.setInt(1, year);
->>>>>>> 6914a1c17a69363699714d710946412a7ee6d6a1
                 retSet = preStmt.executeQuery();
 
             } catch (SQLException e) {
@@ -284,13 +274,9 @@ public class MySQLUtils {
     }
 
     public static void main(String[] args){
-<<<<<<< HEAD
-//        MySQLUtils mySQLUtils = new MySQLUtils();
-//        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear();
-=======
+
         MySQLUtils mySQLUtils = new MySQLUtils();
 //        List<FuelInfoBean> myList_1 =mySQLUtils.getCountryDataByYear(2007);
->>>>>>> 6914a1c17a69363699714d710946412a7ee6d6a1
 //        Iterator<FuelInfoBean> itr = myList_1.iterator();
 //        FuelInfoBean tempBean;
 //        while (itr.hasNext()){
