@@ -211,13 +211,19 @@ function backToSolar() {
     $("#timeLine").hide();
 }
 
+function showTransition(planetName, input) {
+    $("#transition").fadeIn(3000);
+    configureArea(TransitionConfig[planetName]);
+    typeMessage(TransitionConfig[planetName], input);
+}
+
 function configureArea(config) {
     $("#transition>img:eq(0)").attr("src", config.backgroundImg);
     $("#transition>img:eq(1)").attr("src", config.decoratorImg);
     $("#transition>div>p:eq(3)").css("color", config.color);
 }
 
-function typeMessage(config) {
+function typeMessage(config, inputVariable) {
 
     var typingSpeed = 60;
     var signatureSpeed = 200;
@@ -251,6 +257,9 @@ function typeMessage(config) {
         output: $("#transition>div>p>span:eq(3)")[0],
         delay: signatureSpeed,
         done: function () {
+            console.log(inputVariable);
+            $("#transition").fadeOut(3000);
+            inputVariable.execute();
             $("#transition>div>p>span:eq(0)").empty();
             $("#transition>div>p>span:eq(1)").empty();
             $("#transition>div>p>span:eq(2)").empty();

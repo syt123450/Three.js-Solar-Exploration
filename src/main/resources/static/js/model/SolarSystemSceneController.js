@@ -224,8 +224,32 @@ SolarSystemSceneController = function(renderer) {
 	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
 	                    
 	                    changeSceneTween.onComplete(function() {
+
+                            var inputVariable = function(controller, camera, onCompleteSetup) {
+                                this.execute = function() {
+                                    onCompleteSetup(controller, camera);
+                                }
+                            };
+
+
 		                    onCompleteCleanup(changeSceneTween);
-		                    onCompleteSetup(planetsList[planet].controller, camera);
+
+		                    var input = new inputVariable(planetsList[planet].controller, camera, onCompleteSetup);
+		                    console.log(input);
+
+                            showTransition(SolarConfig[planet].name, input);
+                            // var inputVariable = {};
+                            // inputVariable.controller = planetsList[planet].controller;
+                            // inputVariable.camera = camera;
+                            // inputVariable.onCompleteSetup = function() {
+		                     //    onCompleteSetup();
+                            // };
+
+
+
+
+
+		                    // onCompleteSetup(planetsList[planet].controller, camera);
 	                    });
 	                    
 	                    changeSceneTween.start();
