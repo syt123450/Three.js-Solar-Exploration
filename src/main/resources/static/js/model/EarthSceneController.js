@@ -48,8 +48,10 @@ EarthSceneController = function (renderer) {
     var clickedCone;
 
     var earthRenderer = renderer;
+	var earthAggregation = null;
+	
     var earthScene = init();
-    var earthAggregation = null;
+    
 
     var yHistory;
 
@@ -112,7 +114,8 @@ EarthSceneController = function (renderer) {
 	};
 	
     function activateScene() {
-
+	    // console.log('activate agg===', earthAggregation);
+	    // console.log('activate scene===', earthScene);
         $("#timeLine").show();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
@@ -165,8 +168,8 @@ EarthSceneController = function (renderer) {
         scene.add(earthAggregation);
         // scene.add(moonMesh);
         initTween();
-
-
+	
+	    scene.fog = new THREE.Fog(0x000000, -500, 500);
         return scene;
     }
 
@@ -493,7 +496,6 @@ EarthSceneController = function (renderer) {
         tween.name = 'Single cone up ' + coneCount;
 
         tween.onUpdate(function () {
-            console.log(this.size);
             clickedCone.scale.set(this.size, this.size, this.size);
             clickedCone.translateY(-clickedCone.initSize / 30);
             clickedCone.rotateY(0.05);
