@@ -341,6 +341,47 @@ var TweenUtils = (function () {
         return tween;
     }
 	
+    /** Earth tween **/
+	/**
+	 * Move the earth closer to the screen
+	 * @param planetAggregation
+	 */
+	function createEarthMoveCloserTween(earthAggregation) {
+		var startPos = { z: - earthAggregation.children[0].geometry.parameters.radius * 10 };
+		var endPos = { z: 0 };
+		var animationTime = 3000;
+		var tween = new TWEEN.Tween(startPos)
+		// .easing(TWEEN.Easing.Quadratic.InOut)
+			.to(endPos, animationTime);
+		
+		tween.onStart(function() {
+			console.log('createPlanetMoveCloserTween started');
+			
+		}).onUpdate(function () {
+			earthAggregation.position.set(0, 0, startPos.z);
+		});
+		return tween;
+	}
+	
+	function createEarthFadeInTween(earthScene) {
+		
+		var initFog = {density: -5000};
+		var finalDensity = {density: 0};
+		var animationTime = 3000;
+		var tween = new TWEEN.Tween(initFog)
+			.to(finalDensity, animationTime)
+			// .easing(TWEEN.Easing.Quadratic.InOut)
+			.onUpdate(function() {
+				earthScene.fog.near = initFog.density;
+				console.log(earthScene.fog.near);
+				console.log(initFog.density);
+			});
+		
+		return tween;
+	}
+	/** Earth tween **/
+	
+	
 	/** Solar scene tween **/
 	function getChangeSolarSceneTween(planetMesh, camera, audio) {
 		console.log('planetMesh ===', planetMesh);
@@ -381,28 +422,6 @@ var TweenUtils = (function () {
 				camera.positionHistory = Object.assign({}, camera.position);
 				camera.directionHistory = Object.assign({}, camera.getWorldDirection());
 			});
-		
-		// tween.onComplete(function() {
-		// 	TWEEN.remove(changeSceneTween);
-		// 	enableBackLogo();
-		// 	activatedScene = planetsList[planet].controller;
-		// 	deactivateScene();
-		// 	planetsList[planet].controller.activateScene();
-		// 	planetsList[planet].controller.workAround();
-		// 	camera.position.set(
-		// 		camera.positionHistory.x,
-		// 		camera.positionHistory.y,
-		// 		camera.positionHistory.z
-		// 	);
-		// 	camera.lookAt(new THREE.Vector3(0, 0, 0));
-		//
-		// 	// var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
-		// 	//     planetsList[planet].controller.getPlanetAggregation()
-		// 	// );
-		// 	// movePlanetCloserTween.start();
-		// 	planetsList[planet].controller.zoomIn();
-		//
-		// });
 		return tween;
 	}
 	
@@ -441,7 +460,10 @@ var TweenUtils = (function () {
 	this.getChangeSolarSceneTween = getChangeSolarSceneTween;
 	
 	this.createPlanetFadeInTween = createPlanetFadeInTween;
-    
+ 
+	this.createEarthMoveCloserTween = createEarthMoveCloserTween;
+	this.createEarthFadeInTween = createEarthFadeInTween;
+	
     return this;
 
 })();

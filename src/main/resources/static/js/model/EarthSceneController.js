@@ -49,6 +49,7 @@ EarthSceneController = function (renderer) {
 
     var earthRenderer = renderer;
     var earthScene = init();
+    var earthAggregation = null;
 
     var yHistory;
 
@@ -98,7 +99,14 @@ EarthSceneController = function (renderer) {
     this.workAround = function () {
         tweenManager.singleMap.meshRotation.start();
     };
-
+	
+	this.zoomIn = function() {
+		var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
+		var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
+		moveCloserTween.start();
+		fadeInTween.start();
+	};
+	
     function activateScene() {
 
         audio.play();
@@ -150,7 +158,8 @@ EarthSceneController = function (renderer) {
         meteors.forEach(function addMeteor(meteor) {
             scene.add(meteor);
         });
-        scene.add(initEarthAggregation());
+        earthAggregation = initEarthAggregation();
+        scene.add(earthAggregation);
         // scene.add(moonMesh);
         initTween();
 

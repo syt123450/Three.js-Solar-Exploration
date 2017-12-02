@@ -226,7 +226,6 @@ SolarSystemSceneController = function(renderer) {
 	                    changeSceneTween.onComplete(function() {
 		                    onCompleteCleanup(changeSceneTween);
 		                    onCompleteSetup(planetsList[planet].controller, camera);
-
 	                    });
 	                    
 	                    changeSceneTween.start();
