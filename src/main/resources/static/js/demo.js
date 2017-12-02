@@ -212,14 +212,19 @@ function backToSolar() {
 }
 
 function showTransition(planetName, input) {
-    $("#transition").fadeIn(3000);
+    // $("#transition").show();
     configureArea(TransitionConfig[planetName]);
     typeMessage(TransitionConfig[planetName], input);
+    $("#transition").css("display", "block");
+}
+
+function setTransitionImage() {
+    $("#transition>img:eq(0)").attr("src", config.backgroundImg);
+    $("#transition>img:eq(1)").attr("src", config.decoratorImg);
 }
 
 function configureArea(config) {
-    $("#transition>img:eq(0)").attr("src", config.backgroundImg);
-    $("#transition>img:eq(1)").attr("src", config.decoratorImg);
+
     $("#transition>div>p:eq(3)").css("color", config.color);
 }
 
@@ -258,7 +263,7 @@ function typeMessage(config, inputVariable) {
         delay: signatureSpeed,
         done: function () {
             console.log(inputVariable);
-            $("#transition").fadeOut(3000);
+            $("#transition").hide();
             inputVariable.execute();
             $("#transition>div>p>span:eq(0)").empty();
             $("#transition>div>p>span:eq(1)").empty();
