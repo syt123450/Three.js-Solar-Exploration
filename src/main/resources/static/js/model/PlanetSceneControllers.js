@@ -53,6 +53,10 @@ PlanetSceneController = function (renderer, config) {
         tweenManager.rotationTween.start();
     };
 
+    this.playAudio = function() {
+        audio.play();
+    };
+
     this.hideInfo = hideInfo;
 
     this.zoomIn = function() {
@@ -85,7 +89,6 @@ PlanetSceneController = function (renderer, config) {
 
     function activateScene() {
         console.log('scene activated');
-        audio.play();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();

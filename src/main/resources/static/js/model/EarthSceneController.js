@@ -99,7 +99,11 @@ EarthSceneController = function (renderer) {
     this.workAround = function () {
         tweenManager.singleMap.meshRotation.start();
     };
-	
+
+    this.playAudio = function() {
+        audio.play();
+    };
+
 	this.zoomIn = function() {
 		var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
 		var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
@@ -109,7 +113,6 @@ EarthSceneController = function (renderer) {
 	
     function activateScene() {
 
-        audio.play();
         $("#timeLine").show();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();

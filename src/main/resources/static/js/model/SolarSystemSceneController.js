@@ -233,6 +233,7 @@ SolarSystemSceneController = function(renderer) {
 	                    changeSceneTween.onComplete(function() {
 
 		                    onCompleteCleanup(changeSceneTween);
+                            planetsList[planet].controller.playAudio();
 
                             showTransition(SolarConfig[planet].name, this);
 
