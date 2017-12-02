@@ -1,6 +1,7 @@
 /**
  * Created by ss on 2017/11/9.
  */
+var earthCounter = 0;
 
 var TweenUtils = (function () {
 
@@ -60,12 +61,16 @@ var TweenUtils = (function () {
         coneCount++;
         rotateTween.name = 'Earth ' + coneCount;
         rotateTween.onUpdate(function () {
-
             earthMesh.rotation.y += 0.003;
+            console.log('update&&&&&&&&&&&&&&&', earthCounter);
         }).onStart(function () {
-            console.log("start mesh rotation tween.");
+	        earthCounter++;
+            console.log("start*************", earthCounter);
         });
-
+	    rotateTween.onStop(function() {
+		    earthCounter--;
+	    	console.log('stop----------', earthCounter);
+	    });
         rotateTween.repeat(Infinity);
 
         return rotateTween;
@@ -355,7 +360,7 @@ var TweenUtils = (function () {
 			.to(endPos, animationTime);
 		
 		tween.onStart(function() {
-			console.log('createPlanetMoveCloserTween started');
+			// console.log('createPlanetMoveCloserTween started');
 			
 		}).onUpdate(function () {
 			earthAggregation.position.set(0, 0, startPos.z);
@@ -384,7 +389,7 @@ var TweenUtils = (function () {
 	
 	/** Solar scene tween **/
 	function getChangeSolarSceneTween(planetMesh, camera, planetName) {
-		console.log('planetMesh ===', planetMesh);
+		// console.log('planetMesh ===', planetMesh);
 		var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
 		
 		// https://threejs.org/docs/#api/cameras/PerspectiveCamera
@@ -396,7 +401,7 @@ var TweenUtils = (function () {
 			Math.max(6 * planetMesh.geometry.parameters.radius, camera.near +  1.05 * planetMesh.geometry.parameters.radius) :
 			Math.max(12 * planetMesh.geometry.parameters.radius, camera.near + 1.05 *  planetMesh.geometry.parameters.radius);
 		
-		console.log('final distance ===', finalDistance);
+		// console.log('final distance ===', finalDistance);
 		var distanceEnd = { val: finalDistance };
 		
 		var animationDuration = 5000;
@@ -438,7 +443,7 @@ var TweenUtils = (function () {
 				solarSystemScene.fog.near = initFog.density;
 			})
 			.onComplete(function() {
-				console.log('1111111');
+				// console.log('1111111');
 				solarSystemScene.fog.near = 0;
 			});
 		

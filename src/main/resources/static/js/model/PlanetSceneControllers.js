@@ -50,7 +50,7 @@ PlanetSceneController = function (renderer, config) {
     this.name = config.planetName + "Controller";
 
     this.workAround = function() {
-        tweenManager.rotationTween.start();
+        // tweenManager.rotationTween.start();
     };
 
     this.playAudio = function() {
