@@ -89,7 +89,7 @@ var SolarConfig = {
                 orbitRadius: sunRadius + 0.12,
                 orbitRadiusWidth: 0.04,
                 orbitRadiusThickness: 0.002,
-                orbitSpeed: 0.00001
+                orbitSpeed: 0.00002
             }
         },
 
