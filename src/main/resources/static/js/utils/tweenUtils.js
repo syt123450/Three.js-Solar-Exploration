@@ -334,8 +334,8 @@ var TweenUtils = (function () {
             // .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(function() {
                 scene.fog.near = initFog.density;
-                console.log(scene.fog.near);
-                console.log(initFog.density);
+                // console.log(scene.fog.near);
+                // console.log(initFog.density);
             });
 
         return tween;
@@ -383,7 +383,7 @@ var TweenUtils = (function () {
 	
 	
 	/** Solar scene tween **/
-	function getChangeSolarSceneTween(planetMesh, camera, audio) {
+	function getChangeSolarSceneTween(planetMesh, camera, planetName) {
 		console.log('planetMesh ===', planetMesh);
 		var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
 		
@@ -419,6 +419,8 @@ var TweenUtils = (function () {
 			})
 			.onStart(function() {
 				// TODO: save the initial position of the camera to a global variable
+				console.log('change scene camera', camera);
+				setTransitionImage(TransitionConfig[planetName]);
 				camera.positionHistory = Object.assign({}, camera.position);
 				camera.directionHistory = Object.assign({}, camera.getWorldDirection());
 			});

@@ -60,6 +60,7 @@ PlanetSceneController = function (renderer, config) {
     this.hideInfo = hideInfo;
 
     this.zoomIn = function() {
+	    console.log('***********:');
         var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
         var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
         moveCloserTween.start();
