@@ -438,6 +438,7 @@ var TweenUtils = (function () {
 				solarSystemScene.fog.near = initFog.density;
 			})
 			.onComplete(function() {
+				console.log('1111111');
 				solarSystemScene.fog.near = 0;
 			});
 		

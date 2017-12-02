@@ -122,7 +122,7 @@ SolarSystemSceneController = function(renderer) {
 
     function initStartTween() {
 	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
-	    // tween.start();
+	    tween.start();
     }
     
     function initSystemPositions() {
@@ -269,7 +269,7 @@ SolarSystemSceneController = function(renderer) {
 		    camera.positionHistory.y,
 		    camera.positionHistory.z
 	    );
-	
+	    solarSystemScene.fog.near = 0;
 	    camera.lookAt(new THREE.Vector3(0, 0, 0));
 	    planetSceneController.zoomIn();
 	    enableBackLogo();
