@@ -210,70 +210,122 @@ var TweenUtils = (function () {
 	}
 	
 	/**
-	 * Move the planet closer to the screen
-	 * @param planetAggregation
-	 */
-	function createPlanetMoveCloserTween(planetAggregation) {
-		var startPos = { z: - planetAggregation.children[0].geometry.parameters.radius * 3 };
-		var endPos = { z: 0 };
-		var tween = new TWEEN.Tween(startPos)
-			.easing(TWEEN.Easing.Quadratic.InOut)
-			.to(endPos, 500);
-		
-		tween.onStart(function() {
-			console.log('createPlanetMoveCloserTween started');
-			
-		}).onUpdate(function () {
-			// console.log('planet position', planetAggregation.position);
-			// console.log('planet position', planetAggregation.position);
-			planetAggregation.position.set(0, 0, startPos.z);
-			
-			// // move glow mesh too
-			// if (planetAggregation.children.length === 3) {
-			// 	planetAggregation.children[1].position.x = startPos.x * 0.15;
-			// 	planetAggregation.children[2].position.x = startPos.x * 0.15;
-			// }
-			//
-			// if (planetAggregation.children.length === 4) {
-			// 	planetAggregation.children[2].position.x = startPos.x * 0.15;
-			// 	planetAggregation.children[3].position.x = startPos.x * 0.15;
-			// }
-			
-		});
-		return tween;
-	}
-	
-	/**
 	 * Transition of the camera perspective when enter the solar scene
 	 * @param camera
 	 * @param solarAggregation
 	 */
 	function createEnterSolarSceneTween(camera, solarAggregation) {
-		var startPos = { y: 0.9, z: 0.0};
-		var endPos = { y: 0.3, z: 0.9};
-		// var startPosZ = { z: 0 };
-		// var endPosZ = { z: 0.9 };
-		var animationTime = 1000;
+		var startPos = { x:0.0, y: -0.9, z: 0.0};
+		var endPos = { x:0.0, y: -0.3, z: 0.9};
+		
+		// seg.1
+		var animationTime1 = 5000;
+		var tween1 = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime1);
+		
+		tween1.onUpdate(function () {
+			console.log('t1 cam', camera.position);
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		
+		// seg.2
+		var animationTime2 = 5000;
+		startPos = Object();
+		endPos = { x: -0.9, y: -0.15, z: 0.0 };
+		var tween2 = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime2);
+		
+		tween2.onUpdate(function () {
+			console.log('t2 cam', camera.position);
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		
+		// seg.3
+		var animationTime3 = 5000;
+		startPos = endPos;
+		endPos = { x: 0.0, y: 0.0, z: -0.9 };
+		var tween3 = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime3);
+		
+		tween3.onUpdate(function () {
+			console.log('t3 cam', camera.position);
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		
+		// seg.4
+		var animationTime4 = 5000;
+		startPos = endPos;
+		endPos = { x: 0.9, y: 0.15, z: 0.0 };
+		var tween4 = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime4);
+		
+		tween4.onUpdate(function () {
+			console.log('t4 cam', camera.position);
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		
+		// seg.5
+		var animationTime5 = 5000;
+		startPos = endPos;
+		endPos = { x: 0.0, y: 0.3, z: 0.9 };
+		var tween5 = new TWEEN.Tween(startPos)
+			.to(endPos, animationTime5);
+		
+		tween5.onUpdate(function () {
+			console.log('t5 cam', camera.position);
+			camera.position.set(startPos.x, startPos.y, startPos.z);
+			camera.lookAt(solarAggregation.position);
+		});
+		
+		// tween1.onComplete(function () {
+		// 	tween2.start();
+		// });
+		// tween2.onComplete(function () {
+		// 	tween3.start();
+		// });
+		// tween3.onComplete(function () {
+		// 	tween4.start();
+		// });
+		// tween4.onComplete(function () {
+		// 	tween5.start();
+		// });
+
+		return tween1;
+	}
+	
+	/**
+	 * Move the planet closer to the screen
+	 * @param planetAggregation
+	 */
+	function createPlanetMoveCloserTween(planetAggregation) {
+		var startPos = { z: - planetAggregation.children[0].geometry.parameters.radius * 10 };
+		var endPos = { z: 0 };
+		var animationTime = 3000;
 		var tween = new TWEEN.Tween(startPos)
+		// .easing(TWEEN.Easing.Quadratic.InOut)
 			.to(endPos, animationTime);
 		
 		tween.onStart(function() {
-			console.log('tween started');
+			console.log('createPlanetMoveCloserTween started');
+			
 		}).onUpdate(function () {
-			console.log('camera position', camera.position);
-			camera.position.set(0, startPos.y, startPos.z);
-			camera.lookAt(solarAggregation.position);
+			planetAggregation.position.set(0, 0, startPos.z);
 		});
 		return tween;
 	}
-
+	
     function createPlanetFadeInTween(scene) {
 
-        var initFog = {density: -500};
+        var initFog = {density: -5000};
         var finalDensity = {density: 0};
-
-        var tween = new TWEEN.Tween(initFog).to(finalDensity, 1000)
-            // .easing(TWEEN.Easing.Quadratic.In)
+		var animationTime = 3000;
+        var tween = new TWEEN.Tween(initFog)
+	        .to(finalDensity, animationTime)
+            // .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(function() {
                 scene.fog.near = initFog.density;
                 console.log(scene.fog.near);
