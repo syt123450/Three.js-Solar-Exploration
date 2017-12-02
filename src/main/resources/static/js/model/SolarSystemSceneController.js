@@ -120,7 +120,7 @@ SolarSystemSceneController = function(renderer) {
 
     function initStartTween() {
 	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
-	    tween.start();
+	    // tween.start();
     }
     
     function initSystemPositions() {
@@ -219,37 +219,18 @@ SolarSystemSceneController = function(renderer) {
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 	                    console.log(planet + " clicked!");
-	                    // TWEEN.remove(changeSceneTween);
-	                    // enableBackLogo();
-	                    // activatedScene = planetsList[planet].controller;
-                        // deactivateScene();
-	                    // planetsList[planet].controller.activateScene();
-	                    
+
 	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera);
 	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
+	                    
 	                    changeSceneTween.onComplete(function() {
-                        	TWEEN.remove(changeSceneTween);
-		                    enableBackLogo();
-		                    activatedScene = planetsList[planet].controller;
-                            deactivateScene();
-		                    planetsList[planet].controller.activateScene();
-                            planetsList[planet].controller.workAround();
-		                    camera.position.set(
-			                    camera.positionHistory.x,
-			                    camera.positionHistory.y,
-			                    camera.positionHistory.z
-		                    );
-	                        camera.lookAt(new THREE.Vector3(0, 0, 0));
-	                        
-                            // var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
-		                    //     planetsList[planet].controller.getPlanetAggregation()
-                            // );
-		                    // movePlanetCloserTween.start();
-                            planetsList[planet].controller.zoomIn();
+		                    onCompleteCleanup(changeSceneTween);
+		                    onCompleteSetup(planetsList[planet].controller, camera);
 
 	                    });
+	                    
 	                    changeSceneTween.start();
-	                    // fogTween.start();
+	                    fogTween.start();
 
 
 	                    break; // break is very important because of closure!!!
@@ -257,5 +238,24 @@ SolarSystemSceneController = function(renderer) {
                 }
             }
         }
+    }
+    
+    function onCompleteCleanup(changeSceneTween) {
+	    TWEEN.remove(changeSceneTween);
+	    deactivateScene();
+    }
+    
+    function onCompleteSetup(planetSceneController, camera) {
+	    planetSceneController.activateScene();
+	    planetSceneController.workAround();
+	    camera.position.set(
+		    camera.positionHistory.x,
+		    camera.positionHistory.y,
+		    camera.positionHistory.z
+	    );
+	
+	    camera.lookAt(new THREE.Vector3(0, 0, 0));
+	    planetSceneController.zoomIn();
+	    enableBackLogo();
     }
 };
