@@ -218,7 +218,7 @@ function showTransition(planetName, input) {
     $("#transition").css("display", "block");
 }
 
-function setTransitionImage() {
+function setTransitionImage(config) {
     $("#transition>img:eq(0)").attr("src", config.backgroundImg);
     $("#transition>img:eq(1)").attr("src", config.decoratorImg);
 }
