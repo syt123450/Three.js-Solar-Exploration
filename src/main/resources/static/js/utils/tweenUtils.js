@@ -341,7 +341,89 @@ var TweenUtils = (function () {
         return tween;
     }
 	
-    this.createPlanetRotationTween = createRotationTween;
+	/** Solar scene tween **/
+	function getChangeSolarSceneTween(planetMesh, camera, audio) {
+		console.log('planetMesh ===', planetMesh);
+		var distanceStart = { val: camera.position.distanceTo(planetMesh.position) };
+		
+		// https://threejs.org/docs/#api/cameras/PerspectiveCamera
+		// To get a full view of the planet, the minimum value of finalDistance must be greater or equal to
+		// NF + R
+		// NF = camera frustum near plane (default 0.1)
+		// R: radius of the planet
+		var finalDistance = typeof planetMesh.ring === 'undefined' ?
+			Math.max(6 * planetMesh.geometry.parameters.radius, camera.near +  1.05 * planetMesh.geometry.parameters.radius) :
+			Math.max(12 * planetMesh.geometry.parameters.radius, camera.near + 1.05 *  planetMesh.geometry.parameters.radius);
+		
+		console.log('final distance ===', finalDistance);
+		var distanceEnd = { val: finalDistance };
+		
+		var animationDuration = 5000;
+		
+		var tween = new TWEEN.Tween(distanceStart);
+		tween.to(distanceEnd, animationDuration)
+			.easing(TWEEN.Easing.Quadratic.Out)
+			.onUpdate(function() {
+				var distance = distanceStart.val;
+				var cameraDirection = new THREE.Vector3();
+				camera.lookAt(planetMesh.position);
+				camera.getWorldDirection(cameraDirection);
+				// audio.setVolume();
+				// Set camera position
+				camera.position.set(
+					planetMesh.position.x - cameraDirection.x * distance,
+					planetMesh.position.y - cameraDirection.y * distance,
+					planetMesh.position.z - cameraDirection.z * distance
+				);
+			})
+			.onStart(function() {
+				// TODO: save the initial position of the camera to a global variable
+				camera.positionHistory = Object.assign({}, camera.position);
+				camera.directionHistory = Object.assign({}, camera.getWorldDirection());
+			});
+		
+		// tween.onComplete(function() {
+		// 	TWEEN.remove(changeSceneTween);
+		// 	enableBackLogo();
+		// 	activatedScene = planetsList[planet].controller;
+		// 	deactivateScene();
+		// 	planetsList[planet].controller.activateScene();
+		// 	planetsList[planet].controller.workAround();
+		// 	camera.position.set(
+		// 		camera.positionHistory.x,
+		// 		camera.positionHistory.y,
+		// 		camera.positionHistory.z
+		// 	);
+		// 	camera.lookAt(new THREE.Vector3(0, 0, 0));
+		//
+		// 	// var movePlanetCloserTween = TweenUtils.createPlanetMoveCloserTween(
+		// 	//     planetsList[planet].controller.getPlanetAggregation()
+		// 	// );
+		// 	// movePlanetCloserTween.start();
+		// 	planetsList[planet].controller.zoomIn();
+		//
+		// });
+		return tween;
+	}
+	
+	function getFogTween(solarSystemScene) {
+		
+		var initFog = {density: 0};
+		var finalDensity = {density: -500};
+		
+		var tween = new TWEEN.Tween(initFog).to(finalDensity, 5000)
+			.easing(TWEEN.Easing.Quadratic.In)
+			.onUpdate(function() {
+				solarSystemScene.fog.near = initFog.density;
+			})
+			.onComplete(function() {
+				solarSystemScene.fog.near = 0;
+			});
+		
+		return tween;
+	}
+	/** Solar scene tween **/
+	this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
     this.createEarthInertiaTween = createEarthInertiaTween;
     this.createEarthMeshRotationTween = createEarthMeshRotationTween;
@@ -355,7 +437,9 @@ var TweenUtils = (function () {
 	this.createPlanetMoveCloserTween = createPlanetMoveCloserTween;
 	
 	this.createEnterSolarSceneTween = createEnterSolarSceneTween;
-
+	this.getFogTween = getFogTween;
+	this.getChangeSolarSceneTween = getChangeSolarSceneTween;
+	
 	this.createPlanetFadeInTween = createPlanetFadeInTween;
     
     return this;
