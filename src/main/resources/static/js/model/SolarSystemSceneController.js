@@ -235,9 +235,7 @@ SolarSystemSceneController = function(renderer) {
 		                    onCompleteCleanup(changeSceneTween);
                             planetsList[planet].controller.playAudio();
 
-                            showTransition(SolarConfig[planet].name, this);
-
-
+                            showTransition(SolarConfig[planet].name);
 
 		                    // onCompleteSetup(planetsList[planet].controller, camera);
 	                    });

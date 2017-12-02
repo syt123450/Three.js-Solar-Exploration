@@ -169,6 +169,19 @@ function getYearData(year) {
     } else {
         earthSceneController.clearCones();
     }
+    // $.ajax({
+    //     url: '/api/year',
+    //     type: 'POST',
+    //     contentType: "application/json; charset=utf-8",
+    //     async: true,
+    //     data: JSON.stringify({"year": year}),
+    //     dataType: 'json',
+    //     success: function (data) {
+    //         earthSceneController.clearCones();
+    //         earthSceneController.addCones(data);
+    //     }
+    // });
+
 }
 
 function enableBackLogo() {
