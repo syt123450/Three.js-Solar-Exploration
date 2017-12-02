@@ -210,3 +210,52 @@ function backToSolar() {
     solarSystemSceneController.activateScene();
     $("#timeLine").hide();
 }
+
+function configureArea(config) {
+    $("#transition>img:eq(0)").attr("src", config.backgroundImg);
+    $("#transition>img:eq(1)").attr("src", config.decoratorImg);
+    $("#transition>div>p:eq(3)").css("color", config.color);
+}
+
+function typeMessage(config) {
+
+    var typingSpeed = 60;
+    var signatureSpeed = 200;
+
+    var typing1 = new Typing({
+        source: $(config.messageArea + ">div:eq(0)")[0],
+        output: $("#transition>div>p>span:eq(0)")[0],
+        delay: typingSpeed,
+        done: function () {
+            typing2.start();
+        }
+    });
+    var typing2 = new Typing({
+        source: $(config.messageArea + ">div:eq(1)")[0],
+        output: $("#transition>div>p>span:eq(1)")[0],
+        delay: typingSpeed,
+        done: function () {
+            typing3.start();
+        }
+    });
+    var typing3 = new Typing({
+        source: $(config.messageArea + ">div:eq(2)")[0],
+        output: $("#transition>div>p>span:eq(2)")[0],
+        delay: typingSpeed,
+        done: function () {
+            typing4.start();
+        }
+    });
+    var typing4 = new Typing({
+        source: $(config.messageArea + ">div:eq(3)")[0],
+        output: $("#transition>div>p>span:eq(3)")[0],
+        delay: signatureSpeed,
+        done: function () {
+            $("#transition>div>p>span:eq(0)").empty();
+            $("#transition>div>p>span:eq(1)").empty();
+            $("#transition>div>p>span:eq(2)").empty();
+            $("#transition>div>p>span:eq(3)").empty();
+        }
+    });
+    typing1.start();
+}
