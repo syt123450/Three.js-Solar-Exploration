@@ -29,24 +29,7 @@ public class MySQLUtils {
     private final Double modifier = 0.90;
 
     public MySQLUtils(){
-//        System.out.println("=======");
-//        System.out.println(">>>>>>>>>>>>" + mySQLConfig.getURL() + " ; " + mySQLConfig.getUserName());
-//        System.out.println("=======");
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            conn = DriverManager
-//                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
-//            conn = DriverManager
-//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
-//        } catch (ClassNotFoundException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            System.err.println("SQL ERROR, Exception");
-//            System.err.println(e.getMessage());
-//            e.printStackTrace();
-//        }
+
     }
 
     public void buildConnection(){
@@ -164,9 +147,10 @@ public class MySQLUtils {
         boolean ifFlagImage = false;
         try {
             while (resultSet.next()){
+                // Fix bug for incorrect latitude and longitude order
                 areaName = resultSet.getString("areaName");
-                longitude = resultSet.getDouble("longitude");
-                latitude = resultSet.getDouble("latitude");
+                longitude = resultSet.getDouble("latitude");
+                latitude = resultSet.getDouble("longitude");
                 ifFlagImage = resultSet.getBoolean("ifFlagImage");
                 amount = resultSet.getDouble("Quadrillion_BTU");
                 coalAmount = resultSet.getDouble("Coal_Amount");
@@ -191,8 +175,9 @@ public class MySQLUtils {
         Double max = 0.0;
         try {
             while (resultSet.next()){
-                longitude = resultSet.getDouble("longitude");
-                latitude = resultSet.getDouble("latitude");
+                // Fix bug for incorrect latitude and longitude order
+                longitude = resultSet.getDouble("latitude");
+                latitude = resultSet.getDouble("longitude");
                 amount = resultSet.getDouble("sum");
 //                System.out.println("Row[" + resultSet.getRow() + "]:\t" + longitude + "\t" + latitude + "\t" + amount);
                 ret.add(longitude);
