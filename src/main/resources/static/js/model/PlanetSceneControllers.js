@@ -49,10 +49,6 @@ PlanetSceneController = function (renderer, config) {
     this.deactivateScene = deactivateScene;
     this.name = config.planetName + "Controller";
 
-    this.workAround = function() {
-        // tweenManager.rotationTween.start();
-    };
-
     this.playAudio = function() {
         audio.play();
     };
@@ -143,12 +139,6 @@ PlanetSceneController = function (renderer, config) {
 
         return scene;
     }
-
-    // function startTween() {
-    //     tweenManager.meteorsSweep.start();
-    //     tweenManager.starsFlashing.start();
-    //     tweenManager.rotationTween.start();
-    // }
 
     function aggregationInit() {
         var aggregation = new THREE.Object3D();

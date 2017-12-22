@@ -264,7 +264,6 @@ SolarSystemSceneController = function(renderer) {
 
     function onCompleteSetup(planetSceneController, camera) {
 	    planetSceneController.activateScene();
-	    planetSceneController.workAround();
 	    camera.position.set(
 		    camera.positionHistory.x,
 		    camera.positionHistory.y,

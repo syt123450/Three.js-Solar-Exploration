@@ -17,15 +17,15 @@ var UniverseUtils = (function () {
         [8, -4, -15], [7, -2, -15], [10, 0, -15],
         [8, -4, -13], [6, -3, -15]];
 
-    this.createSolarAggregation = function () {
+    function createSolarAggregation() {
         var aggregation = new THREE.Object3D();
         aggregation.mesh = createDefaultSun();
         aggregation.add(aggregation.mesh);
 
         return aggregation;
-    };
+    }
 
-    this.createDefaultUniverse = function () {
+    function createDefaultUniverse() {
 
         var universeMesh = new THREE.Mesh();
         universeMesh.geometry = new THREE.SphereGeometry(90, 64, 64);
@@ -37,9 +37,9 @@ var UniverseUtils = (function () {
         });
         universeMesh.name = 'universeMesh';
         return universeMesh;
-    };
+    }
 
-    this.createDefaultCamera = function () {
+    function createDefaultCamera() {
 
         var camera = new THREE.PerspectiveCamera();
         camera.fov = 45;
@@ -50,9 +50,9 @@ var UniverseUtils = (function () {
         camera.updateProjectionMatrix();
         camera.name = 'defaultCamera';
         return camera;
-    };
+    }
 
-    this.createDefaultEarthMesh = function () {
+    function createDefaultEarthMesh() {
 
         var earthMesh = new THREE.Mesh();
         earthMesh.geometry = new THREE.SphereGeometry(0.5, 64, 64);
@@ -70,10 +70,11 @@ var UniverseUtils = (function () {
             )
         });
         earthMesh.name = 'defaultEarthMesh';
-        return earthMesh;
-    };
 
-    this.createDefaultAtmosphere = function () {
+        return earthMesh;
+    }
+
+    function createDefaultAtmosphere() {
 
         var atmosphereMesh = new THREE.Mesh();
         atmosphereMesh.geometry = new THREE.SphereGeometry(0.51, 64, 64);
@@ -84,10 +85,11 @@ var UniverseUtils = (function () {
             transparent: true
         });
         atmosphereMesh.name = 'atmosphereMesh';
-        return atmosphereMesh;
-    };
 
-    this.createDefaultMoon = function () {
+        return atmosphereMesh;
+    }
+
+    function createDefaultMoon() {
 
         var moonMesh = new THREE.Mesh();
         moonMesh.geometry = new THREE.SphereGeometry(0.05, 64, 64);
@@ -101,24 +103,26 @@ var UniverseUtils = (function () {
             )
         });
         moonMesh.name = 'moonMesh';
-        return moonMesh;
-    };
 
-    this.createDefaultMeteors = function () {
+        return moonMesh;
+    }
+
+    function createDefaultMeteors() {
 
         var meteors = [];
         meteors[0] = createOneMeteor();
         meteors[1] = createOneMeteor();
 
-        meteors.createSweepTween = function() {
+        meteors.createSweepTween = function () {
             return TweenUtils.createMeteorsSweepTween(this);
         };
 
         meteors.name = 'meteors';
-        return meteors;
-    };
 
-    this.createDefaultStars = function () {
+        return meteors;
+    }
+
+    function createDefaultStars() {
 
         var stars = [];
         for (var i = 0; i < starPositions.length; i++) {
@@ -126,14 +130,14 @@ var UniverseUtils = (function () {
             stars[i].position.set(starPositions[i][0], starPositions[i][1], starPositions[i][2]);
         }
 
-        stars.createFlashTween = function() {
+        stars.createFlashTween = function () {
             return TweenUtils.createStarFlashingTween(this);
         };
 
         return stars;
-    };
+    }
 
-    this.createOneCone = function (coneParameters) {
+    function createOneCone(coneParameters) {
 
         var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
         texture.flipY = false;
@@ -160,16 +164,16 @@ var UniverseUtils = (function () {
         coneMesh.basicPos = [coneMesh.position.x, coneMesh.position.y, coneMesh.position.z];
         coneMesh.initSize = coneInitSize;
 
-        coneMesh.setConeInitPos = function() {
+        coneMesh.setConeInitPos = function () {
             this.position.x = this.basicPos[0];
             this.position.y = this.basicPos[1];
             this.position.z = this.basicPos[2];
         };
 
         return coneMesh;
-    };
+    }
 
-    this.createSolarUniverse = function () {
+    function createSolarUniverse() {
 
         var universeMesh = new THREE.Mesh();
         universeMesh.geometry = new THREE.SphereGeometry(3, 128, 128);
@@ -181,9 +185,9 @@ var UniverseUtils = (function () {
         });
 
         return universeMesh;
-    };
+    }
 
-    this.createPlanetsList = function () {
+    function createPlanetsList() {
 
         var planetsList = {
             "mercury": {},
@@ -216,20 +220,13 @@ var UniverseUtils = (function () {
         for (var planet in planetsList) {
             planetsList[planet].orbit = createOrbit(SolarConfig[planet].orbitRadius);
             planetsList[planet].mesh.position.z = SolarConfig[planet].orbitRadius;
-            planetsList[planet].mesh.rotateZ(SolarConfig[planet].inclination * Math.PI /180);
+            planetsList[planet].mesh.rotateZ(SolarConfig[planet].inclination * Math.PI / 180);
         }
 
         return planetsList;
-    };
+    }
 
-    this.createPlanetMesh = createPlanetMesh;
-    this.createTerrestrialPlanet = createTerrestrialPlanet;
-    this.createJovianPlanet = createJovianPlanet;
-
-    this.createRing = createRing;
-    this.createAsteroidBelt = createAsteroidBelt;
-
-    this.addDoubleHalos = function (target, innerColor, outerColor) {
+    function addDoubleHalos(target, innerColor, outerColor) {
         // console.log('target++++', target);
         // innerGlowMesh settings
         var _innerGlowMesh;
@@ -264,7 +261,7 @@ var UniverseUtils = (function () {
         //The init function is used to put object into the scene
         function _initInnerGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
             _innerGlowMesh = new THREE.Mesh();
-	        _innerGlowMesh.name = 'inner glow mesh';
+            _innerGlowMesh.name = 'inner glow mesh';
             _innerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
             _innerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, innerFragmentShaderIntensity);
             _innerGlowMesh.scale.set(1.2, 1.2, 1.2);
@@ -272,7 +269,7 @@ var UniverseUtils = (function () {
 
         function _initOuterGlowMesh(glowMeshColor, opacity, glowMeshRadius) {
             _outerGlowMesh = new THREE.Mesh();
-	        _outerGlowMesh.name = 'outer glow mesh';
+            _outerGlowMesh.name = 'outer glow mesh';
             _outerGlowMesh.geometry = new THREE.SphereGeometry(glowMeshRadius, 32, 32);
             _outerGlowMesh.material = _getShaderMaterial(glowMeshColor, opacity, outerFragmentShaderIntensity);
             _outerGlowMesh.scale.set(1.2, 1.2, 1.2);
@@ -317,9 +314,9 @@ var UniverseUtils = (function () {
             };
         }
 
-    };
+    }
 
-    this.loadAudio = function (audioSource) {
+    function loadAudio(audioSource) {
 
         var sound = new THREE.Audio(SolarEPUtils.listener);
         sound.setLoop(true);
@@ -333,9 +330,9 @@ var UniverseUtils = (function () {
         );
 
         return sound;
-    };
+    }
 
-    this.loadSolarAudio = function(audioSource) {
+    function loadSolarAudio(audioSource) {
 
         var sound = new THREE.Audio(SolarEPUtils.listener);
         sound.setLoop(true);
@@ -350,14 +347,9 @@ var UniverseUtils = (function () {
         );
 
         return sound;
-    };
+    }
 
     function createDefaultSun() {
-        // return new THREE.Mesh(
-        //     new THREE.SphereGeometry(SolarConfig.sunRadius, 32, 32),
-        //     new THREE.MeshBasicMaterial({
-        //         color: 'yellow'
-        //     }));
 
         var sphereMesh = new THREE.Mesh();
         sphereMesh.geometry = new THREE.SphereGeometry(SolarConfig['sun'].radius, 64, 64);
@@ -369,8 +361,8 @@ var UniverseUtils = (function () {
         return sphereMesh;
     }
 
-    function createPlanetMesh(planetParameters){
-        if(planetParameters.bumpMap){
+    function createPlanetMesh(planetParameters) {
+        if (planetParameters.bumpMap) {
             return createTerrestrialPlanet(planetParameters);
         }
         else {
@@ -417,12 +409,12 @@ var UniverseUtils = (function () {
         });
         ringMesh.castShadow = true;         //default is false
         ringMesh.receiveShadow = true;      //default is false
-        ringMesh.rotateX( 0.5 * Math.PI );  //rotate to fit actual angle
+        ringMesh.rotateX(0.5 * Math.PI);  //rotate to fit actual angle
 
         return ringMesh;
     }
 
-    function createAsteroidBelt(){
+    function createAsteroidBelt() {
         var points = [];
         // var material = new THREE.PointCloudMaterial({
         //     color: SolarConfig["asteroidBelt"].color,
@@ -435,13 +427,13 @@ var UniverseUtils = (function () {
         });
 
         var i, j, r, theta, x, y, z;
-        for (j =0; j <SolarConfig["asteroidBelt"].cloudNumber; j++){
+        for (j = 0; j < SolarConfig["asteroidBelt"].cloudNumber; j++) {
             var geometry = new THREE.Geometry();
-            for (i =0; i <SolarConfig["asteroidBelt"].cloudSize; i++){
-                r = SolarConfig["asteroidBelt"].orbitRadius + (Math.random() *  SolarConfig["asteroidBelt"].orbitRadiusWidth);
-                theta =  (Math.random() * 2 * Math.PI);
+            for (i = 0; i < SolarConfig["asteroidBelt"].cloudSize; i++) {
+                r = SolarConfig["asteroidBelt"].orbitRadius + (Math.random() * SolarConfig["asteroidBelt"].orbitRadiusWidth);
+                theta = (Math.random() * 2 * Math.PI);
                 x = Math.cos(theta) * r;
-                y = ( -1 * Math.random() +0.5) * SolarConfig["asteroidBelt"].orbitRadiusThickness;
+                y = ( -1 * Math.random() + 0.5) * SolarConfig["asteroidBelt"].orbitRadiusThickness;
                 z = Math.sin(theta) * r;
 
                 geometry.vertices.push(new THREE.Vector3(x, y, z));
@@ -514,6 +506,26 @@ var UniverseUtils = (function () {
 
         return meteor;
     }
+
+    this.createSolarAggregation = createSolarAggregation;
+    this.createDefaultUniverse = createDefaultUniverse;
+    this.createDefaultCamera = createDefaultCamera;
+    this.createDefaultEarthMesh = createDefaultEarthMesh;
+    this.createDefaultAtmosphere = createDefaultAtmosphere;
+    this.createDefaultMoon = createDefaultMoon;
+    this.createDefaultMeteors = createDefaultMeteors;
+    this.createDefaultStars = createDefaultStars;
+    this.createOneCone = createOneCone;
+    this.createSolarUniverse = createSolarUniverse;
+    this.createPlanetsList = createPlanetsList;
+    this.createPlanetMesh = createPlanetMesh;
+    this.createTerrestrialPlanet = createTerrestrialPlanet;
+    this.createJovianPlanet = createJovianPlanet;
+    this.createRing = createRing;
+    this.createAsteroidBelt = createAsteroidBelt;
+    this.addDoubleHalos = addDoubleHalos;
+    this.loadAudio = loadAudio;
+    this.loadSolarAudio = loadSolarAudio;
 
     return this;
 })();

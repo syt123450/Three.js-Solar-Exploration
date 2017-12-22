@@ -16,7 +16,6 @@ EarthSceneController = function (renderer) {
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};
 
-    // var TweenUtils = new TweenUtils();
     var lights = lightsInit();
     var camera = UniverseUtils.createDefaultCamera();
     var universeMesh = UniverseUtils.createDefaultUniverse();
@@ -96,10 +95,6 @@ EarthSceneController = function (renderer) {
 
     this.restoreScene = function () {
         resumeScene();
-    };
-
-    this.workAround = function () {
-        // tweenManager.singleMap.meshRotation.start();
     };
 
     this.playAudio = function() {
