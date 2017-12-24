@@ -44,24 +44,7 @@ PlanetSceneController = function (renderer, config) {
     var isStoppedRotation = false;
     var isPlanetClicked = false;
 
-    // Interfaces
-    this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
-    this.name = config.planetName + "Controller";
-
-    this.playAudio = function() {
-        audio.play();
-    };
-
-    this.hideInfo = hideInfo;
-
-    this.zoomIn = function() {
-	    console.log('***********:');
-        var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
-        var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
-        moveCloserTween.start();
-        fadeInTween.start();
-    };
+    var name = config.planetName + "Controller";
 
     function hideInfo() {
         movePlanetRight();
@@ -378,8 +361,30 @@ PlanetSceneController = function (renderer, config) {
 	    $(config.infoBoard).fadeOut(1000);
     }
 	
-    this.getPlanetAggregation = getPlanetAggregation;
+
     function getPlanetAggregation() {
 		return planetAggregation;
     }
+
+    function playAudio() {
+        audio.play();
+    }
+
+    function zoomIn() {
+        console.log('***********:');
+        var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
+        var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
+        moveCloserTween.start();
+        fadeInTween.start();
+    }
+
+    // Interfaces
+    this.activateScene = activateScene;
+    this.deactivateScene = deactivateScene;
+    this.name = name;
+    this.playAudio = playAudio;
+    this.hideInfo = hideInfo;
+    this.zoomIn = zoomIn;
+    this.getPlanetAggregation = getPlanetAggregation;
+
 };

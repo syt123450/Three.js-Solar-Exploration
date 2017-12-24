@@ -17,27 +17,18 @@ SolarSystemSceneController = function(renderer) {
 
     var changeSceneTween = null;
     var fogTween = null;
-    
-    this.setPlanetScene = function (planetName, controller) {
-        planetsList[planetName].controller = controller;
-    };
 
-    this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
-    this.name = "SolarSystemSceneController";
+    var name = "SolarSystemSceneController";
 
     var clickedPlanet;
 
-    this.initStartTween = initStartTween;
-    // Camera position settings (NOT COMPLETE, N/A)
-    // this.upForwardView = updateCameraPosition(-1);
-    // this.topView = updateCameraPosition(1);
-    // this.sideView = updateCameraPosition(2);
+    function setPlanetScene(planetName, controller) {
+        planetsList[planetName].controller = controller;
+    }
 
-
-    this.playAudio = function() {
+    function playAudio() {
         audio.play();
-    };
+    }
 
     function animate() {
         
@@ -257,6 +248,7 @@ SolarSystemSceneController = function(renderer) {
 	    deactivateScene();
     }
 
+    //can do some change to onCompleteSetup to let simplify the function call
     this.onCompleteSetup = function() {
         // console.log(camera);
         onCompleteSetup(clickedPlanet, camera);
@@ -274,4 +266,14 @@ SolarSystemSceneController = function(renderer) {
 	    planetSceneController.zoomIn();
 	    enableBackLogo();
     }
+
+    //interface
+
+    this.setPlanetScene = setPlanetScene;
+    this.activateScene = activateScene;
+    this.deactivateScene = deactivateScene;
+    this.initStartTween = initStartTween;
+    this.playAudio = playAudio;
+
+    this.name = name;
 };

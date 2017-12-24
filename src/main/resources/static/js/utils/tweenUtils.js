@@ -345,6 +345,22 @@ var TweenUtils = (function () {
 
         return tween;
     }
+
+    function createPlanetFadeOutTween(scene) {
+
+		var initFog = {density: 0};
+		var finalDensity = {density: -5000};
+
+		var animationTime = 3000;
+
+		var tween = new TWEEN.Tween(initFog)
+			.to(finalDensity, animationTime)
+			.onUpdate(function() {
+				scene.fog.near = initFog.density;
+			});
+
+		return tween;
+	}
 	
     /** Earth tween **/
 	/**
@@ -449,6 +465,7 @@ var TweenUtils = (function () {
 		
 		return tween;
 	}
+
 	/** Solar scene tween **/
 	this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
@@ -468,6 +485,7 @@ var TweenUtils = (function () {
 	this.getChangeSolarSceneTween = getChangeSolarSceneTween;
 	
 	this.createPlanetFadeInTween = createPlanetFadeInTween;
+	this.createPlanetFadeOutTween = createPlanetFadeOutTween;
  
 	this.createEarthMoveCloserTween = createEarthMoveCloserTween;
 	this.createEarthFadeInTween = createEarthFadeInTween;
@@ -475,4 +493,3 @@ var TweenUtils = (function () {
     return this;
 
 })();
-

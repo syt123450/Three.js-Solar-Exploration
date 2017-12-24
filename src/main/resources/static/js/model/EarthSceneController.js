@@ -65,13 +65,7 @@ EarthSceneController = function (renderer) {
     var isClickEarth = false;
     // var xHistory = {x: initPosX};
 
-    this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
-
-    this.stopScene = stopScene;
-    this.startScene = startScene;
-
-    this.addCones = function (conesParameter) {
+    function addCones(conesParameter) {
         coneList.forEach(function (cone) {
             earthMesh.remove(cone);
         });
@@ -84,30 +78,27 @@ EarthSceneController = function (renderer) {
         }
         tweenManager.singleMap.conesAnimation = createConeGrowTween(coneList);
         tweenManager.singleMap.conesAnimation.start();
-    };
+    }
 
-    this.clearCones = function () {
+    function clearCones() {
         coneList.forEach(function (cone) {
             earthMesh.remove(cone);
         });
         coneList = [];
-    };
+    }
 
-    this.restoreScene = function () {
-        resumeScene();
-    };
-
-    this.playAudio = function() {
+    function playAudio() {
         audio.play();
-    };
+    }
 
-	this.zoomIn = function() {
-		var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
-		var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
-		moveCloserTween.start();
-		fadeInTween.start();
-	};
-	
+    function zoomIn() {
+        var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
+        var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
+        moveCloserTween.start();
+        fadeInTween.start();
+    }
+
+
     function activateScene() {
 	    // console.log('activate agg===', earthAggregation);
 	    // console.log('activate scene===', earthScene);
@@ -757,4 +748,28 @@ EarthSceneController = function (renderer) {
         });
         return tween;
     }
+
+
+    //interface
+
+    //used for change between this scene and solar scene
+    this.activateScene = activateScene;
+    this.deactivateScene = deactivateScene;
+
+    //used for change between google earth
+    this.stopScene = stopScene;
+    this.startScene = startScene;
+
+    //used when click the time line to add the cones to the earth
+    this.addCones = addCones;
+    this.clearCones = clearCones;
+
+    //used for animation when hiding the info board
+    this.restoreScene = resumeScene;
+
+    //used when begin the typing borad
+    this.playAudio = playAudio;
+
+    //used when jump into the earth scene
+    this.zoomIn = zoomIn;
 };
