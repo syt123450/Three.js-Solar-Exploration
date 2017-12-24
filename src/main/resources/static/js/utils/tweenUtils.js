@@ -454,7 +454,6 @@ var TweenUtils = (function () {
         easeTween.easing(TWEEN.Easing.Linear.None);
         easeTween.onUpdate(function () {
             sound.setVolume(startVolume.volume);
-            console.log(sound.volume);
         }).onStart(function () {
             sound.setVolume(startVolume.volume);
         }).onComplete(function () {
@@ -473,7 +472,6 @@ var TweenUtils = (function () {
         magnifyTween.easing(TWEEN.Easing.Linear.None);
         magnifyTween.onUpdate(function () {
             sound.setVolume(startVolume.volume);
-            console.log(sound.volume);
         }).onStart(function () {
             console.log("play audio");
             sound.setVolume(startVolume.volume);

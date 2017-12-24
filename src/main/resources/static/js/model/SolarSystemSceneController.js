@@ -22,7 +22,8 @@ SolarSystemSceneController = function(renderer) {
 
     var name = "SolarSystemSceneController";
 
-    var clickedPlanet;
+    // var clickedPlanet;
+    var clickedPlanetName;
 
     function setPlanetScene(planetName, controller) {
         planetsList[planetName].controller = controller;
@@ -185,31 +186,14 @@ SolarSystemSceneController = function(renderer) {
 
                 for (var planet in planetsList) {
                     if (intersects[i].object === planetsList[planet].mesh) {
-	                    console.log(planet + " clicked!");
 
-                        clickedPlanet = planetsList[planet].controller;
-                        activatedScene = planetsList[planet].controller;
-                        // console.log('camera 2', camera);
-	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera, SolarConfig[planet].name);
-	                    fogTween = TweenUtils.createSolarFogOutTween(solarSystemScene);
-                        easingVolumeTween = TweenUtils.createEaseVolumeTween(audio);
-	                    // changeSceneTween.onStart(function () {
-	                    //     // console.log()
-                         //    setTransitionImage(TransitionConfig[SolarConfig[planet].name]);
-	                    // });
-	                    changeSceneTween.onComplete(function() {
+                        clickedPlanetName = planet;
 
-		                    onCompleteCleanup(changeSceneTween);
-                            planetsList[planet].controller.playAudio();
+	                    console.log(clickedPlanetName + " clicked!");
 
-                            showTransition(SolarConfig[planet].name);
+                        activatedScene = planetsList[clickedPlanetName].controller;
 
-		                    // onCompleteSetup(planetsList[planet].controller, camera);
-	                    });
-	                    // console.log('==========');
-	                    changeSceneTween.start();
-	                    fogTween.start();
-                        easingVolumeTween.start();
+                        fadeSceneOut();
 
 	                    break; // break is very important because of closure!!!
                     }
@@ -217,44 +201,43 @@ SolarSystemSceneController = function(renderer) {
             }
         }
     }
-    
-    function onCompleteCleanup(changeSceneTween) {
-	    TWEEN.remove(changeSceneTween);
-	    deactivateScene();
-    }
-
-    //can do some change to onCompleteSetup to let simplify the function call
-    this.onCompleteSetup = function() {
-        // console.log(camera);
-        onCompleteSetup(clickedPlanet, camera);
-    };
-
-    function onCompleteSetup(planetSceneController, camera) {
-	    // planetSceneController.activateScene();
-	    camera.position.set(
-		    camera.positionHistory.x,
-		    camera.positionHistory.y,
-		    camera.positionHistory.z
-	    );
-	    solarSystemScene.fog.near = 0;
-	    camera.lookAt(new THREE.Vector3(0, 0, 0));
-	    planetSceneController.fadeSceneIn();
-	    enableBackLogo();
-    }
-
-    function fadeSceneIn() {
-
-    }
 
     function fadeSceneOut() {
 
+        changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[clickedPlanetName].mesh,
+            camera,
+            SolarConfig[clickedPlanetName].name);
+        fogTween = TweenUtils.createSolarFogOutTween(solarSystemScene);
+        easingVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+
+        changeSceneTween.onComplete(onFadeOutSceneComplete);
+
+        changeSceneTween.start();
+        fogTween.start();
+        easingVolumeTween.start();
     }
 
-    function onFadeSceneInComplete() {
-
+    function onFadeOutSceneComplete() {
+        TWEEN.remove(changeSceneTween);
+        deactivateScene();
+        planetsList[clickedPlanetName].controller.playAudio();
+        showTransition(SolarConfig[clickedPlanetName].name);
     }
 
-    function onFadeSceneOutComplete() {
+    function onTransitionComplete() {
+
+        camera.position.set(
+            camera.positionHistory.x,
+            camera.positionHistory.y,
+            camera.positionHistory.z
+        );
+        solarSystemScene.fog.near = 0;
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        planetsList[clickedPlanetName].controller.fadeSceneIn();
+        enableBackLogo();
+    }
+
+    function fadeSceneIn() {
 
     }
 
@@ -266,9 +249,10 @@ SolarSystemSceneController = function(renderer) {
     this.initStartTween = initStartTween;
     this.playAudio = playAudio;
 
+    this.onTransitionComplete = onTransitionComplete;
+
     this.name = name;
 
     //API for fade in and out the solar scene
     this.fadeSceneIn = fadeSceneIn;
-    this.fadeSceneOut = fadeSceneOut;
 };
