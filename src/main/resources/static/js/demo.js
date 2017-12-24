@@ -164,24 +164,24 @@ $(function () {
 
 function getYearData(year) {
 
-    // if (Math.random() > 0.5) {
-    //     earthSceneController.addCones(geographicData);
-    // } else {
-    //     earthSceneController.clearCones();
-    // }
-    $.ajax({
-        url: '/api/year',
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
-        async: true,
-        data: JSON.stringify({"year": year}),
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            earthSceneController.clearCones();
-            earthSceneController.addCones(data);
-        }
-    });
+    if (Math.random() > 0.5) {
+        earthSceneController.addCones(geographicData);
+    } else {
+        earthSceneController.clearCones();
+    }
+    // $.ajax({
+    //     url: '/api/year',
+    //     type: 'POST',
+    //     contentType: "application/json; charset=utf-8",
+    //     async: true,
+    //     data: JSON.stringify({"year": year}),
+    //     dataType: 'json',
+    //     success: function (data) {
+    //         console.log(data);
+    //         earthSceneController.clearCones();
+    //         earthSceneController.addCones(data);
+    //     }
+    // });
 
 }
 
@@ -204,8 +204,8 @@ function disableBackLogo() {
 function loadData() {
 
     $.ajax({
-        // url: '../data/rank.json',
-        url: '/api/all',
+        url: '../data/rank.json',
+        // url: '/api/all',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         async: true,

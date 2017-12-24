@@ -31,7 +31,7 @@ PlanetSceneController = function (renderer, config) {
 
     // Camera and Lights
     var camera = UniverseUtils.createDefaultCamera();
-    var lights = lightsInit();
+    var lights = UniverseUtils.createPlanetLights(planetAggregation);
     // Init. Scene
     var scene = init();
 
@@ -140,30 +140,6 @@ PlanetSceneController = function (renderer, config) {
         aggregation.rotateX(0.105 * Math.PI);
 
         return aggregation;
-    }
-
-    function lightsInit() {
-        var lights = [];
-
-        // Lights Combination
-        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
-
-        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
-        lights[1].position.set(30, 12, 3);
-        lights[1].target = planetAggregation;
-        lights[1].castShadow = true;            // default is false
-        //Set up shadow properties for the light
-        // lights[1].shadow.mapSize.width = 1024;  // default
-        // lights[1].shadow.mapSize.height = 1024; // default
-        // lights[1].shadow.camera.near = 0.5;    // default
-        // lights[1].shadow.camera.far = 500;     // default
-
-        // Legacy setting
-        // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
-        // lights[1].position.set(30, 30, -6);
-        // lights[1].lookAt(planetAggregation.position);
-
-        return lights;
     }
 
     function addEvent() {
@@ -367,7 +343,14 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function playAudio() {
+        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        magnifyVolumeTween.start();
         audio.play();
+    }
+
+    function stopAudio() {
+	    var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+	    easeVolumeTween.start();
     }
 
     function zoomIn() {

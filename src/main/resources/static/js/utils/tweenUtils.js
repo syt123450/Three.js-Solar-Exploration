@@ -466,6 +466,46 @@ var TweenUtils = (function () {
 		return tween;
 	}
 
+    function createEaseVolumeTween(sound) {
+
+        var startVolume = {volume: 0.5};
+        var endVolume = {volume: 0};
+
+        var easeTween = new TWEEN.Tween(startVolume).to(endVolume, 5000);
+        easeTween.easing(TWEEN.Easing.Linear.None);
+        easeTween.onUpdate(function () {
+            sound.setVolume(startVolume.volume);
+            console.log(sound.volume);
+        }).onStart(function() {
+        	sound.setVolume(startVolume.volume);
+		}).onComplete(function () {
+            sound.pause();
+        });
+
+        return easeTween;
+    }
+
+    function createMagnifyVolumeTween(sound) {
+
+        var startVolume = {volume: 0};
+        var endVolume = {volume: 0.5};
+
+        var magnifyTween = new TWEEN.Tween(startVolume).to(endVolume, 5000);
+        magnifyTween.easing(TWEEN.Easing.Linear.None);
+        magnifyTween.onUpdate(function() {
+            sound.setVolume(startVolume.volume);
+            console.log(sound.volume);
+        }).onStart(function() {
+        	console.log("play audio");
+        	sound.setVolume(startVolume.volume);
+        	sound.play();
+		}).onComplete(function() {
+            //for test
+        });
+
+        return magnifyTween;
+    }
+
 	/** Solar scene tween **/
 	this.createPlanetRotationTween = createRotationTween;
     this.createPlanetInertiaTween = createInertiaTween;
@@ -489,7 +529,11 @@ var TweenUtils = (function () {
  
 	this.createEarthMoveCloserTween = createEarthMoveCloserTween;
 	this.createEarthFadeInTween = createEarthFadeInTween;
-	
+
+	//tween for ease and magnify volume in all scenes
+	this.createEaseVolumeTween = createEaseVolumeTween;
+	this.createMagnifyVolumeTween = createMagnifyVolumeTween;
+
     return this;
 
 })();

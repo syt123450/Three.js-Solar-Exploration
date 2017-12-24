@@ -16,7 +16,7 @@ EarthSceneController = function (renderer) {
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};
 
-    var lights = lightsInit();
+    var lights = UniverseUtils.createEarthLights();
     var camera = UniverseUtils.createDefaultCamera();
     var universeMesh = UniverseUtils.createDefaultUniverse();
     var stars = UniverseUtils.createDefaultStars();
@@ -88,7 +88,13 @@ EarthSceneController = function (renderer) {
     }
 
     function playAudio() {
-        audio.play();
+        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        magnifyVolumeTween.start();
+    }
+
+    function stopAudio() {
+        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+        easeVolumeTween.start();
     }
 
     function zoomIn() {
@@ -97,7 +103,6 @@ EarthSceneController = function (renderer) {
         moveCloserTween.start();
         fadeInTween.start();
     }
-
 
     function activateScene() {
 	    // console.log('activate agg===', earthAggregation);
@@ -157,22 +162,6 @@ EarthSceneController = function (renderer) {
 	
 	    scene.fog = new THREE.Fog(0x000000, -500, 500);
         return scene;
-    }
-
-    function lightsInit() {
-        var lights = [];
-
-        // Lights Combination
-        lights[0] = new THREE.HemisphereLight(0xffffff, 0x000000, 1.3);
-
-        lights[1] = new THREE.DirectionalLight(0xf9f9f9, 0.45);
-        // lights[1] = new THREE.SpotLight( 0xf7f7f7 );
-        // lights[1] = new THREE.PointLight(0xf7f7f7);
-        lights[1].position.set(-25, 12, -2);
-        // lights[1].target = planetAggregation;
-        lights[1].castShadow = true;            // default is false
-
-        return lights;
     }
 
     function initEarthAggregation() {

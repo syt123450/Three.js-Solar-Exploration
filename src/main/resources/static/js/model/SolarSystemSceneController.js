@@ -8,6 +8,7 @@ SolarSystemSceneController = function(renderer) {
 
     var universeMesh = UniverseUtils.createSolarUniverse();
     var solarAggregation = UniverseUtils.createSolarAggregation();
+    var lights = UniverseUtils.createSolarLights(solarAggregation);
     var asteroidBeltPoints = UniverseUtils.createAsteroidBelt();
     var planetsList = UniverseUtils.createPlanetsList();
     var audio = UniverseUtils.loadSolarAudio(SolarConfig.audio);
@@ -17,6 +18,7 @@ SolarSystemSceneController = function(renderer) {
 
     var changeSceneTween = null;
     var fogTween = null;
+    var easingVolumeTween = null;
 
     var name = "SolarSystemSceneController";
 
@@ -27,7 +29,8 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function playAudio() {
-        audio.play();
+        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        magnifyVolumeTween.start();
     }
 
     function animate() {
@@ -55,40 +58,9 @@ SolarSystemSceneController = function(renderer) {
     function init() {
         var scene = new THREE.Scene();
 
-        // Lights
-        var lights = [];
-
-        // lights for university environment
-        lights[0] = new THREE.PointLight(0xffffff, 0.9, 0);
-        lights[0].position.set(0, 0, 0);
-        lights[1] = new THREE.AmbientLight(0xf7f7f7, 0.45);
-
-        // lights for lightening the sun
-        var density = 1;
-        lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
-        lights[2].position.set(0, (SolarConfig.sunRadius * Math.sqrt(2)), 0);
-        lights[2].target = solarAggregation;
-        lights[3] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
-        lights[3].position.set(0, -(SolarConfig.sunRadius * Math.sqrt(2)), 0);
-        lights[3].target = solarAggregation;
-        lights[4] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
-        lights[4].position.set(0, 0, (SolarConfig.sunRadius * Math.sqrt(2)));
-        lights[4].target = solarAggregation;
-        lights[5] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
-        lights[5].position.set(0, 0, -(SolarConfig.sunRadius * Math.sqrt(2)));
-        lights[5].target = solarAggregation;
-        lights[6] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
-        lights[6].position.set((SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
-        lights[6].target = solarAggregation;
-        lights[7] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
-        lights[7].position.set(-(SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
-        lights[7].target = solarAggregation;
-
-
-        lights.forEach(function addLight(light) {
+        lights.forEach(function(light) {
             scene.add(light);
         });
-
 
         // Camera
         scene.add(camera);
@@ -102,7 +74,7 @@ SolarSystemSceneController = function(renderer) {
         scene.add(solarAggregation);
 
         // Apply Asteroid Belt
-        asteroidBeltPoints.forEach(function addPoints(points) {
+        asteroidBeltPoints.forEach(function(points) {
             scene.add(points);
         });
 
@@ -110,6 +82,8 @@ SolarSystemSceneController = function(renderer) {
 
         return scene;
     }
+
+
 
     function initStartTween() {
 	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
@@ -218,6 +192,7 @@ SolarSystemSceneController = function(renderer) {
                         // console.log('camera 2', camera);
 	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera, SolarConfig[planet].name);
 	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
+                        easingVolumeTween = TweenUtils.createEaseVolumeTween(audio);
 	                    // changeSceneTween.onStart(function () {
 	                    //     // console.log()
                          //    setTransitionImage(TransitionConfig[SolarConfig[planet].name]);
@@ -234,7 +209,7 @@ SolarSystemSceneController = function(renderer) {
 	                    // console.log('==========');
 	                    changeSceneTween.start();
 	                    fogTween.start();
-
+                        easingVolumeTween.start();
 
 	                    break; // break is very important because of closure!!!
                     }

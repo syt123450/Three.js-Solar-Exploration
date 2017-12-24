@@ -444,6 +444,80 @@ var UniverseUtils = (function () {
         return points;
     }
 
+    function createSolarLights(solarAggregation) {
+        // Lights
+        var lights = [];
+
+        // lights for university environment
+        lights[0] = new THREE.PointLight(0xffffff, 0.9, 0);
+        lights[0].position.set(0, 0, 0);
+        lights[1] = new THREE.AmbientLight(0xf7f7f7, 0.45);
+
+        // lights for lightening the sun
+        var density = 1;
+        lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[2].position.set(0, (SolarConfig.sunRadius * Math.sqrt(2)), 0);
+        lights[2].target = solarAggregation;
+        lights[3] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[3].position.set(0, -(SolarConfig.sunRadius * Math.sqrt(2)), 0);
+        lights[3].target = solarAggregation;
+        lights[4] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[4].position.set(0, 0, (SolarConfig.sunRadius * Math.sqrt(2)));
+        lights[4].target = solarAggregation;
+        lights[5] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[5].position.set(0, 0, -(SolarConfig.sunRadius * Math.sqrt(2)));
+        lights[5].target = solarAggregation;
+        lights[6] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[6].position.set((SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
+        lights[6].target = solarAggregation;
+        lights[7] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[7].position.set(-(SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
+        lights[7].target = solarAggregation;
+
+        return lights;
+    }
+
+    function createPlanetLights(planetAggregation) {
+
+        var lights = [];
+
+        // Lights Combination
+        lights[0] = new THREE.HemisphereLight(0xf3f3f3, 0x1e1e1e, 0.75);
+
+        lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
+        lights[1].position.set(30, 12, 3);
+        lights[1].target = planetAggregation;
+        lights[1].castShadow = true;            // default is false
+        //Set up shadow properties for the light
+        // lights[1].shadow.mapSize.width = 1024;  // default
+        // lights[1].shadow.mapSize.height = 1024; // default
+        // lights[1].shadow.camera.near = 0.5;    // default
+        // lights[1].shadow.camera.far = 500;     // default
+
+        // Legacy setting
+        // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
+        // lights[1].position.set(30, 30, -6);
+        // lights[1].lookAt(planetAggregation.position);
+
+        return lights;
+    }
+
+    function createEarthLights() {
+        var lights = [];
+
+        // Lights Combination
+        lights[0] = new THREE.HemisphereLight(0xffffff, 0x000000, 1.3);
+
+        lights[1] = new THREE.DirectionalLight(0xf9f9f9, 0.45);
+        // lights[1] = new THREE.SpotLight( 0xf7f7f7 );
+        // lights[1] = new THREE.PointLight(0xf7f7f7);
+        lights[1].position.set(-25, 12, -2);
+        // lights[1].target = planetAggregation;
+        lights[1].castShadow = true;            // default is false
+
+        return lights;
+    }
+
     function createOrbit(radius) {
         var geometry = new THREE.CircleGeometry(radius, 256, 0, 2.01 * Math.PI);
         geometry.vertices.shift();
@@ -526,6 +600,11 @@ var UniverseUtils = (function () {
     this.addDoubleHalos = addDoubleHalos;
     this.loadAudio = loadAudio;
     this.loadSolarAudio = loadSolarAudio;
+
+    //interface for create lights in scenes
+    this.createSolarLights = createSolarLights;
+    this.createPlanetLights = createPlanetLights;
+    this.createEarthLights = createEarthLights;
 
     return this;
 })();
