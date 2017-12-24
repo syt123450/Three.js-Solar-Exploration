@@ -348,20 +348,19 @@ PlanetSceneController = function (renderer, config) {
         audio.play();
     }
 
-    function stopAudio() {
-	    var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
-	    easeVolumeTween.start();
-    }
-
     function fadeSceneIn() {
+	    activateScene();
         var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
-        var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
+        var fogInTween = TweenUtils.createPlanetFogInTween(scene);
         moveCloserTween.start();
-        fadeInTween.start();
+        fogInTween.start();
     }
 
     function fadeSceneOut() {
-
+        var fogOutTween = TweenUtils.createPlanetFogOutTween(scene);
+        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+        fogOutTween.start();
+        easeVolumeTween.start();
     }
 
     function onFadeSceneOutComplete() {
@@ -369,7 +368,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     // Interfaces
-    this.activateScene = activateScene;
+    // this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
     this.name = name;
     this.playAudio = playAudio;

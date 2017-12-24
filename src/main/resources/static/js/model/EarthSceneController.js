@@ -92,11 +92,6 @@ EarthSceneController = function (renderer) {
         magnifyVolumeTween.start();
     }
 
-    function stopAudio() {
-        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
-        easeVolumeTween.start();
-    }
-
     function activateScene() {
 	    // console.log('activate agg===', earthAggregation);
 	    // console.log('activate scene===', earthScene);
@@ -732,14 +727,18 @@ EarthSceneController = function (renderer) {
     }
 
     function fadeSceneIn() {
+        activateScene();
         var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
-        var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
+        var fogInTween = TweenUtils.createPlanetFogInTween(earthScene);
         moveCloserTween.start();
-        fadeInTween.start();
+        fogInTween.start();
     }
 
     function fadeSceneOut() {
-
+        var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
+        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+        fogOutTween.start();
+        easeVolumeTween.start();
     }
 
     function onFadeSceneOutComplete() {
@@ -749,7 +748,7 @@ EarthSceneController = function (renderer) {
     //interface
 
     //used for change between this scene and solar scene
-    this.activateScene = activateScene;
+    // this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
 
     //used for change between google earth

@@ -191,7 +191,7 @@ SolarSystemSceneController = function(renderer) {
                         activatedScene = planetsList[planet].controller;
                         // console.log('camera 2', camera);
 	                    changeSceneTween = TweenUtils.getChangeSolarSceneTween(planetsList[planet].mesh, camera, SolarConfig[planet].name);
-	                    fogTween = TweenUtils.getFogTween(solarSystemScene);
+	                    fogTween = TweenUtils.createSolarFogOutTween(solarSystemScene);
                         easingVolumeTween = TweenUtils.createEaseVolumeTween(audio);
 	                    // changeSceneTween.onStart(function () {
 	                    //     // console.log()
@@ -230,7 +230,7 @@ SolarSystemSceneController = function(renderer) {
     };
 
     function onCompleteSetup(planetSceneController, camera) {
-	    planetSceneController.activateScene();
+	    // planetSceneController.activateScene();
 	    camera.position.set(
 		    camera.positionHistory.x,
 		    camera.positionHistory.y,
