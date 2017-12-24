@@ -279,7 +279,7 @@ function typeMessage(config) {
         delay: signatureSpeed,
         done: function () {
             $("#transition").hide();
-            solarSystemSceneController.onCompleteSetup();
+            solarSystemSceneController.onTransitionComplete();
             $("#transition>div>p>span:eq(0)").empty();
             $("#transition>div>p>span:eq(1)").empty();
             $("#transition>div>p>span:eq(2)").empty();

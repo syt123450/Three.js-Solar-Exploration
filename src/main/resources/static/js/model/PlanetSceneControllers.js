@@ -345,7 +345,6 @@ PlanetSceneController = function (renderer, config) {
     function playAudio() {
         var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
         magnifyVolumeTween.start();
-        audio.play();
     }
 
     function fadeSceneIn() {
