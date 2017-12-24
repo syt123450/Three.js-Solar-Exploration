@@ -213,6 +213,8 @@ SolarSystemSceneController = function(renderer) {
 
     function onFadeOutSceneComplete() {
         TWEEN.remove(changeSceneTween);
+        TWEEN.remove(fogTween);
+        TWEEN.remove(easingVolumeTween);
         deactivateScene();
         planetsList[clickedPlanetName].controller.playAudio();
         showTransition(SolarConfig[clickedPlanetName].name);

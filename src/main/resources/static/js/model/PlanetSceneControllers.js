@@ -29,6 +29,8 @@ PlanetSceneController = function (renderer, config) {
         moveRight: null
     };
 
+    var easeTween;
+
     // Camera and Lights
     var camera = UniverseUtils.createDefaultCamera();
     var lights = UniverseUtils.createPlanetLights(planetAggregation);
@@ -81,7 +83,7 @@ PlanetSceneController = function (renderer, config) {
 
         resetPlanetPos();
         hideInfoBoard();
-        audio.pause();
+        // audio.pause();
         deactivateTween();
         EventManager.removeEvents();
     }
@@ -336,13 +338,15 @@ PlanetSceneController = function (renderer, config) {
     function hideInfoBoard() {
 	    $(config.infoBoard).fadeOut(1000);
     }
-	
 
     function getPlanetAggregation() {
 		return planetAggregation;
     }
 
     function playAudio() {
+
+	    console.log("start planet audio.");
+
         var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
         magnifyVolumeTween.start();
     }
@@ -356,14 +360,20 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function fadeSceneOut() {
+	    console.log("In fade out.");
         var fogOutTween = TweenUtils.createPlanetFogOutTween(scene);
-        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+        easeTween = TweenUtils.createEaseVolumeTween(audio);
         fogOutTween.start();
-        easeVolumeTween.start();
+        easeTween.start();
+        easeTween.onComplete(onFadeSceneOutComplete);
     }
 
     function onFadeSceneOutComplete() {
-
+        TWEEN.remove(easeTween);
+	    console.log(111);
+        deactivateScene();
+        solarSystemSceneController.fadeSceneIn();
+        $("#timeLine").hide();
     }
 
     // Interfaces
@@ -376,5 +386,5 @@ PlanetSceneController = function (renderer, config) {
 
     //API for fade in and out
     this.fadeSceneIn = fadeSceneIn;
-    this.fadeSceneOUt = fadeSceneOut;
+    this.fadeSceneOut = fadeSceneOut;
 };

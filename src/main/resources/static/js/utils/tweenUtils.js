@@ -466,13 +466,15 @@ var TweenUtils = (function () {
         var startVolume = {volume: 0.5};
         var endVolume = {volume: 0};
 
-        var easeTween = new TWEEN.Tween(startVolume).to(endVolume, 5000);
+        var easeTween = new TWEEN.Tween(startVolume).to(endVolume, 3000);
         easeTween.easing(TWEEN.Easing.Linear.None);
         easeTween.onUpdate(function () {
             sound.setVolume(startVolume.volume);
         }).onStart(function () {
             sound.setVolume(startVolume.volume);
+            console.log("Start easing volume.");
         }).onComplete(function () {
+            console.log(222);
             sound.pause();
         });
 
@@ -481,12 +483,16 @@ var TweenUtils = (function () {
 
     function createMagnifyVolumeTween(sound) {
 
+        console.log("Create magnify tween.");
+
         var startVolume = {volume: 0};
         var endVolume = {volume: 0.5};
 
         var magnifyTween = new TWEEN.Tween(startVolume).to(endVolume, 5000);
         magnifyTween.easing(TWEEN.Easing.Linear.None);
         magnifyTween.onUpdate(function () {
+            console.log(66666);
+
             sound.setVolume(startVolume.volume);
         }).onStart(function () {
             console.log("play audio");
@@ -494,6 +500,8 @@ var TweenUtils = (function () {
             sound.play();
         }).onComplete(function () {
             //for test
+            console.log(7777);
+            TWEEN.remove(this);
         });
 
         return magnifyTween;
