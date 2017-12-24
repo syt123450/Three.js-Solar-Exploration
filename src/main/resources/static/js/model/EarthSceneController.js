@@ -6,7 +6,7 @@ var coneCount = 0;
 EarthSceneController = function (renderer) {
 
     var obliquity = 23.5;
-    var clickConeAnimateTime = 3000;
+    // var clickConeAnimateTime = 3000;
     var controlParameter = -40;
     var audioSource = "../music/Earth.mp3";
 
@@ -353,7 +353,7 @@ EarthSceneController = function (renderer) {
         });
         clickedConeTweenSize.size = 1;
 
-        tweenManager.singleMap.clickedConeAnimation = createClickedConeTween();
+        tweenManager.singleMap.clickedConeAnimation = TweenUtils.createClickedConeTween(clickedCone);
         tweenManager.singleMap.clickedConeAnimation.start();
 
         addTextToBoard(cone.parameters);
@@ -376,121 +376,10 @@ EarthSceneController = function (renderer) {
         });
         conesLastTweenSize.size = 1;
 
-        tweenManager.singleMap.conesAnimation = createConeGrowTween(coneList);
+        tweenManager.singleMap.conesAnimation = TweenUtils.createConeGrowTween(coneList);
         tweenManager.singleMap.conesAnimation.start();
     }
-
-    function createConeGrowTween(coneList) {
-
-        var initPos = {size: 1};
-        var endPos = {size: 1.2};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'All cone grow ' + coneCount;
-        var name = tween.name;
-        tween.repeat(Infinity)
-            .yoyo(true)
-            .onUpdate(function () {
-                coneList.forEach(function (coneMesh) {
-                    coneMesh.scale.set(initPos.size, initPos.size, initPos.size);
-                    // console.log((conesTweenSize.size - conesLastTweenSize.size) >= 0);
-                    coneMesh.translateY(((initPos.size - conesLastTweenSize.size) >= 0 ? -1 : 1) * coneMesh.initSize / 30);
-                    coneMesh.rotateY(0.05);
-                });
-                conesLastTweenSize.size = initPos.size;
-                // console.log(TWEEN.getAll());
-            })
-            .onStart(function () {
-                coneList.forEach(function (coneMesh) {
-                    coneMesh.setConeInitPos();
-                    coneMesh.scale.set(1, 1, 1);
-                });
-                conesLastTweenSize.size = 1;
-                // console.log(tweenManager);
-
-                // console.log(initPos);
-                // console.log(endPos);
-                // console.log("start " + name);
-            });
-
-        return tween;
-    }
-
-    function createClickedConeTween() {
-
-        // do not know why can not combine together, if combine together, the onComplete function will be called twice
-
-        // var initPos = {size: 1};
-        // var endPos = {size: 1.5};
-        //
-        // var tween = new TWEEN.Tween(initPos)
-        //     .to(endPos, 1000);
-        //
-        // tween.repeat(Infinity)
-        //     .yoyo(true)
-        //     .onUpdate(function () {
-        //         clickedCone.scale.set(this.size, this.size, this.size);
-        //         clickedCone.translateY(((initPos.size - clickedConeLastTweenSize.size) >= 0 ? -1 : 1) * clickedCone.initSize / 30);
-        //         clickedConeLastTweenSize.size = initPos.size;
-        //         clickedCone.rotateY(0.05);
-        //     })
-        // .onStart(function () {
-        //     clickedCone.setConeInitPos();
-        //     // clickedCone.translateY(0.01);
-        //     conesLastTweenSize.size = 1;
-        // });
-
-        var tween = clickedConeGrowUpTween();
-        var backTween = clickedConeGrowDownTween();
-        tween.chain(backTween);
-        backTween.chain(tween);
-        return tween;
-    }
-
-    function clickedConeGrowUpTween() {
-
-        var initPos = clickedConeTweenSize;
-        var endPos = {size: 1.5};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'Single cone up ' + coneCount;
-
-        tween.onUpdate(function () {
-            clickedCone.scale.set(this.size, this.size, this.size);
-            clickedCone.translateY(-clickedCone.initSize / 30);
-            clickedCone.rotateY(0.05);
-        }).onStart(function () {
-            clickedCone.setConeInitPos();
-            // clickedCone.translateY(0.01);
-            // conesLastTweenSize.size = 1;
-        });
-
-        return tween;
-    }
-
-    function clickedConeGrowDownTween() {
-
-        var initPos = clickedConeTweenSize;
-        var endPos = {size: 1};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'Single cone down ' + coneCount;
-
-        tween.onUpdate(function () {
-            clickedCone.scale.set(this.size, this.size, this.size);
-            clickedCone.translateY(clickedCone.initSize / 30);
-            clickedCone.rotateY(0.05);
-        });
-
-        return tween;
-    }
-
+    
     function moveEarthAggregation(coneLongitude) {
         tweenManager.groupMap.resumeScene.forEach(function (tween) {
             if (tween && typeof tween !== 'undefined') {
@@ -499,10 +388,10 @@ EarthSceneController = function (renderer) {
         });
         tweenManager.groupMap.resumeScene = [];
 
-        var adjustEarth = adjustEarthTween();
-        var adjustCone = adjustConeTween(coneLongitude);
-        var translate = translateTween();
-        var moveCloser = moveEarthCloserTween();
+        var adjustEarth = TweenUtils.adjustEarthTween(earthMesh);
+        var adjustCone = TweenUtils.adjustConeTween(coneLongitude, earthMesh, atmosphereMesh);
+        var translate = TweenUtils.translateTween(earthMesh);
+        var moveCloser = TweenUtils.moveEarthCloserTween(earthMesh);
 
         tweenManager.groupMap.moveEarthAggregation.push(adjustEarth);
         tweenManager.groupMap.moveEarthAggregation.push(adjustCone);
@@ -513,10 +402,7 @@ EarthSceneController = function (renderer) {
             tween.start();
         });
     }
-
-    /**************
-     * Resume
-     **************/
+	
     function resumeScene() {
         // console.log('before remove:', tweenManager.groupMap.moveEarthAggregation);
         tweenManager.groupMap.moveEarthAggregation.forEach(function (tween) {
@@ -528,10 +414,10 @@ EarthSceneController = function (renderer) {
         tweenManager.groupMap.moveEarthAggregation = [];
         // console.log('after remove:', tweenManager.groupMap.moveEarthAggregation);
 
-        var translateBack = translateBackTween();
-        var resumeCone = resumeConeTween();
-        var resumeEarth = resumeEarthTween();
-        var moveFurther = moveEarthFurtherTween();
+        var translateBack = TweenUtils.translateBackTween(earthMesh);
+        var resumeCone = TweenUtils.resumeConeTween(earthMesh, atmosphereMesh);
+        var resumeEarth = TweenUtils.resumeEarthTween(earthMesh);
+        var moveFurther = TweenUtils.moveEarthFurtherTween(earthMesh);
 
         tweenManager.groupMap.resumeScene.push(translateBack);
         tweenManager.groupMap.resumeScene.push(resumeCone);
@@ -548,185 +434,8 @@ EarthSceneController = function (renderer) {
             processAfterResume();
         });
     }
-
-    // Rotate earthAggregation around its Z-axis CCW
-    function adjustEarthTween() {
-        var initObliquity = earthMesh.parent.rotation.z;
-
-        var finalObliquity = 0;
-        var obliquityStart = {obliquity: initObliquity};
-        var obliquityEnd = {obliquity: finalObliquity};
-
-        var tween = new TWEEN.Tween(obliquityStart);
-        coneCount++;
-        tween.name = 'adjust earth ' + coneCount;
-
-        tween.to(obliquityEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            // console.log('adjust earth******');
-            earthMesh.parent.rotation.z = obliquityStart.obliquity;
-        });
-
-        return tween;
-    }
-
-    // Rotate earth mesh around Y-axis CW
-    function adjustConeTween(coneLongitude) {
-        yHistory = earthMesh.rotation.y;
-        var initPosY = earthMesh.rotation.y;
-        var finalPosY = -(90 + coneLongitude + controlParameter) / 180 * Math.PI;
-        while (initPosY - finalPosY >= Math.PI * 2) {
-            finalPosY += Math.PI * 2;
-        }
-        var posStart = {pos: initPosY};
-        var posEnd = {pos: finalPosY};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'adjust cone ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            // console.log('adjust cone++++++');
-            earthMesh.rotation.y = posStart.pos;
-            atmosphereMesh.rotation.y = posStart.pos;
-        });
-
-        return tween;
-    }
-
-    // Move the earth aggregation to the left
-    function translateTween() {
-        var translationDis = 0.6;
-        translationDis = translationDis || 0.8;
-        var initPosX = earthMesh.parent.position.x;
-        var finalPosX = -translationDis;
-        var posStart = {pos: initPosX};
-        var posEnd = {pos: finalPosX};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'translate ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            earthMesh.parent.position.x = posStart.pos;
-            // console.log('move left=====');
-            earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
-            earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
-        });
-        return tween;
-    }
-
-    // Move the earth closer
-    function moveEarthCloserTween() {
-        var translationDis = 0.5;
-        var initPosX = earthMesh.parent.position.z;
-        var finalPosX = earthMesh.parent.position.z + translationDis;
-        var posStart = {pos: initPosX};
-        var posEnd = {pos: finalPosX};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'move earth closer ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            earthMesh.parent.position.z = posStart.pos;
-        });
-        return tween;
-    }
-
-    // Rotate earth mesh around Y-axis CCW
-    function resumeConeTween() {
-        var startY = earthMesh.rotation.y;
-        var posStart = {y: startY};
-        // var endY = yHistory + (- controlParameter / 180 * Math.PI);
-        var endY = yHistory;
-        var posEnd = {y: endY};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'resume cone ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            // console.log('resuming cone+++++');
-            earthMesh.rotation.y = posStart.y;
-            atmosphereMesh.rotation.y = posStart.y;
-        });
-        return tween;
-    }
-
-    // Rotate earthAggregation around its Z-axis CW
-    function resumeEarthTween() {
-
-        var initObliquity = 0;
-        var finalObliquity = -obliquity / 180 * Math.PI;
-        var obliquityStart = {obliquity: initObliquity};
-        var obliquityEnd = {obliquity: finalObliquity};
-
-        var tween = new TWEEN.Tween(obliquityStart)
-            .to(obliquityEnd, clickConeAnimateTime);
-        coneCount++;
-        tween.name = 'resume earth ' + coneCount;
-
-        tween.onUpdate(function () {
-            // console.log('resuming earth******');
-            earthMesh.parent.rotation.z = obliquityStart.obliquity;
-        });
-
-        return tween;
-    }
-
-    // Move the earth aggregation to the right
-    function translateBackTween() {
-
-        var initPosX = earthMesh.parent.position.x;
-        var finalPosX = 0;
-        var posStart = {pos: initPosX};
-        var posEnd = {pos: finalPosX};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'translate back ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-
-        tween.onUpdate(function () {
-            // console.log('translate back======');
-            earthMesh.parent.position.x = posStart.pos;
-            earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
-            earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
-        });
-        // tween.onComplete(function() {
-        //    posStart.pos = initPosX;
-        //
-        // });
-        //
-
-        return tween;
-    }
-
-    // Move the earth closer
-    function moveEarthFurtherTween() {
-        var initPosX = earthMesh.parent.position.z;
-        var finalPosX = 0;
-        var posStart = {pos: initPosX};
-        var posEnd = {pos: finalPosX};
-
-        var tween = new TWEEN.Tween(posStart);
-        coneCount++;
-        tween.name = 'move earth further ' + coneCount;
-
-        tween.to(posEnd, clickConeAnimateTime);
-        tween.onUpdate(function () {
-            earthMesh.parent.position.z = posStart.pos;
-        });
-        return tween;
-    }
-
-    function fadeSceneIn() {
+	
+    function sceneFadeInTween() {
         activateScene();
         var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
         var fogInTween = TweenUtils.createPlanetFogInTween(earthScene);
@@ -734,7 +443,7 @@ EarthSceneController = function (renderer) {
         fogInTween.start();
     }
 
-    function fadeSceneOut() {
+    function sceneFadeOutTween() {
         var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
         var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
         fogOutTween.start();
@@ -766,6 +475,6 @@ EarthSceneController = function (renderer) {
     this.playAudio = playAudio;
 
     //API for fade in and out
-    this.fadeSceneIn = fadeSceneIn;
-    this.fadeSceneOut = fadeSceneOut;
+    this.fadeSceneIn = sceneFadeInTween;
+    this.fadeSceneOut = sceneFadeOutTween;
 };
