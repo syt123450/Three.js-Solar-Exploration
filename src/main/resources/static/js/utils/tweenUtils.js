@@ -445,6 +445,22 @@ var TweenUtils = (function () {
         return tween;
     }
 
+    function createSolarFogInTween(solarSystemScene) {
+
+        var initFog = {density: -500};
+        var finalDensity = {density: 0};
+
+        var tween = new TWEEN.Tween(initFog).to(finalDensity, 3000)
+            .easing(TWEEN.Easing.Quadratic.In)
+            .onUpdate(function () {
+                solarSystemScene.fog.near = initFog.density;
+            }).onStart(function() {
+                solarSystemScene.fog.near = -500;
+            });
+
+        return tween;
+    }
+
     function createEaseVolumeTween(sound) {
 
         var startVolume = {volume: 0.5};
@@ -498,7 +514,7 @@ var TweenUtils = (function () {
     this.createPlanetMoveCloserTween = createPlanetMoveCloserTween;
 
     this.createEnterSolarSceneTween = createEnterSolarSceneTween;
-    this.createSolarFogOutTween = createSolarFogOutTween;
+
     this.getChangeSolarSceneTween = getChangeSolarSceneTween;
 
     this.createEarthMoveCloserTween = createEarthMoveCloserTween;
@@ -506,6 +522,10 @@ var TweenUtils = (function () {
     //tween for planet fade in and out in fog level
     this.createPlanetFogInTween = createPlanetFogInTween;
     this.createPlanetFogOutTween = createPlanetFogOutTween;
+
+    //tween for fade in and out for solar in fog level
+    this.createSolarFogOutTween = createSolarFogOutTween;
+    this.createSolarFogInTween = createSolarFogInTween;
 
     //tween for ease and magnify volume in all scenes
     this.createEaseVolumeTween = createEaseVolumeTween;
