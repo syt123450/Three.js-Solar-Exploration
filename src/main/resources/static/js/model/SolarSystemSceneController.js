@@ -238,8 +238,24 @@ SolarSystemSceneController = function(renderer) {
 	    );
 	    solarSystemScene.fog.near = 0;
 	    camera.lookAt(new THREE.Vector3(0, 0, 0));
-	    planetSceneController.zoomIn();
+	    planetSceneController.fadeSceneIn();
 	    enableBackLogo();
+    }
+
+    function fadeSceneIn() {
+
+    }
+
+    function fadeSceneOut() {
+
+    }
+
+    function onFadeSceneInComplete() {
+
+    }
+
+    function onFadeSceneOutComplete() {
+
     }
 
     //interface
@@ -251,4 +267,8 @@ SolarSystemSceneController = function(renderer) {
     this.playAudio = playAudio;
 
     this.name = name;
+
+    //API for fade in and out the solar scene
+    this.fadeSceneIn = fadeSceneIn;
+    this.fadeSceneOut = fadeSceneOut;
 };

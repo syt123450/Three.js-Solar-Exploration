@@ -242,7 +242,7 @@ body footer div.unchecked:hover {
 #mercuryBoard > p, #venusBoard > p, #marsBoard > p, #jupiterBoard > p,
 #saturnBoard > p, #uranusBoard > p, #neptuneBoard > p, #plutoBoard > p {
     clear: both;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #mercuryBoard > p > span, #venusBoard > p > span, #marsBoard > p > span, #jupiterBoard > p > span,
@@ -258,6 +258,7 @@ body footer div.unchecked:hover {
 
 #mercuryBoard > div > p, #venusBoard > div > p, #marsBoard > div > p, #jupiterBoard > div > p,
 #saturnBoard > div > p, #uranusBoard > div > p, #neptuneBoard > div > p, #plutoBoard > div > p {
+    height: 15px;
     float: left;
     margin-top: 5px;
 }

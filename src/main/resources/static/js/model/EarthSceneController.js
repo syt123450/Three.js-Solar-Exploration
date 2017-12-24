@@ -97,13 +97,6 @@ EarthSceneController = function (renderer) {
         easeVolumeTween.start();
     }
 
-    function zoomIn() {
-        var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
-        var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
-        moveCloserTween.start();
-        fadeInTween.start();
-    }
-
     function activateScene() {
 	    // console.log('activate agg===', earthAggregation);
 	    // console.log('activate scene===', earthScene);
@@ -738,6 +731,20 @@ EarthSceneController = function (renderer) {
         return tween;
     }
 
+    function fadeSceneIn() {
+        var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
+        var fadeInTween = TweenUtils.createEarthFadeInTween(earthScene);
+        moveCloserTween.start();
+        fadeInTween.start();
+    }
+
+    function fadeSceneOut() {
+
+    }
+
+    function onFadeSceneOutComplete() {
+
+    }
 
     //interface
 
@@ -756,9 +763,10 @@ EarthSceneController = function (renderer) {
     //used for animation when hiding the info board
     this.restoreScene = resumeScene;
 
-    //used when begin the typing borad
+    //used when begin the typing board
     this.playAudio = playAudio;
 
-    //used when jump into the earth scene
-    this.zoomIn = zoomIn;
+    //API for fade in and out
+    this.fadeSceneIn = fadeSceneIn;
+    this.fadeSceneOut = fadeSceneOut;
 };

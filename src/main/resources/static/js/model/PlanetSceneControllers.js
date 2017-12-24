@@ -353,12 +353,19 @@ PlanetSceneController = function (renderer, config) {
 	    easeVolumeTween.start();
     }
 
-    function zoomIn() {
-        console.log('***********:');
+    function fadeSceneIn() {
         var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
         var fadeInTween = TweenUtils.createPlanetFadeInTween(scene);
         moveCloserTween.start();
         fadeInTween.start();
+    }
+
+    function fadeSceneOut() {
+
+    }
+
+    function onFadeSceneOutComplete() {
+
     }
 
     // Interfaces
@@ -367,7 +374,9 @@ PlanetSceneController = function (renderer, config) {
     this.name = name;
     this.playAudio = playAudio;
     this.hideInfo = hideInfo;
-    this.zoomIn = zoomIn;
     this.getPlanetAggregation = getPlanetAggregation;
 
+    //API for fade in and out
+    this.fadeSceneIn = fadeSceneIn;
+    this.fadeSceneOUt = fadeSceneOut;
 };
