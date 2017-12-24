@@ -11,7 +11,7 @@ EarthSceneController = function (renderer) {
     var audioSource = "../music/Earth.mp3";
 
     // var conesTweenSize = {size: 1};
-    // var conesLastTweenSize = {size: 1};
+    var conesLastTweenSize = {size: 1};
 
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};

@@ -64,14 +64,14 @@ var TweenUtils = (function () {
         rotateTween.name = 'Earth ' + coneCount;
         rotateTween.onUpdate(function () {
             earthMesh.rotation.y += 0.003;
-            console.log('update&&&&&&&&&&&&&&&', earthCounter);
+            // console.log('update&&&&&&&&&&&&&&&', earthCounter);
         }).onStart(function () {
             earthCounter++;
-            console.log("start*************", earthCounter);
+            // console.log("start*************", earthCounter);
         });
         rotateTween.onStop(function () {
             earthCounter--;
-            console.log('stop----------', earthCounter);
+            // console.log('stop----------', earthCounter);
         });
         rotateTween.repeat(Infinity);
 
