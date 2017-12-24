@@ -223,8 +223,9 @@ function backToSolar() {
     disableBackLogo();
     console.log(activatedScene);
     activatedScene.deactivateScene();
-    solarSystemSceneController.playAudio();
-    solarSystemSceneController.activateScene();
+    // solarSystemSceneController.playAudio();
+    // solarSystemSceneController.activateScene();
+    solarSystemSceneController.fadeSceneIn();
     $("#timeLine").hide();
 }
 

@@ -22,16 +22,10 @@ SolarSystemSceneController = function(renderer) {
 
     var name = "SolarSystemSceneController";
 
-    // var clickedPlanet;
     var clickedPlanetName;
 
     function setPlanetScene(planetName, controller) {
         planetsList[planetName].controller = controller;
-    }
-
-    function playAudio() {
-        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
-        magnifyVolumeTween.start();
     }
 
     function animate() {
@@ -231,14 +225,18 @@ SolarSystemSceneController = function(renderer) {
             camera.positionHistory.y,
             camera.positionHistory.z
         );
-        solarSystemScene.fog.near = 0;
+        // solarSystemScene.fog.near = 0;
         camera.lookAt(new THREE.Vector3(0, 0, 0));
         planetsList[clickedPlanetName].controller.fadeSceneIn();
         enableBackLogo();
     }
 
     function fadeSceneIn() {
-
+        activateScene();
+        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        magnifyVolumeTween.start();
+        var solarFogInTween = TweenUtils.createSolarFogInTween(solarSystemScene);
+        solarFogInTween.start();
     }
 
     //interface
@@ -247,7 +245,6 @@ SolarSystemSceneController = function(renderer) {
     this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
     this.initStartTween = initStartTween;
-    this.playAudio = playAudio;
 
     this.onTransitionComplete = onTransitionComplete;
 
