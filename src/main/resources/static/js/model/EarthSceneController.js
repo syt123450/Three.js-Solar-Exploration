@@ -11,7 +11,7 @@ EarthSceneController = function (renderer) {
     var audioSource = "../music/Earth.mp3";
 
     // var conesTweenSize = {size: 1};
-    var conesLastTweenSize = {size: 1};
+    // var conesLastTweenSize = {size: 1};
 
     var clickedConeTweenSize = {size: 1};
     var clickedConeLastTweenSize = {size: 1};
@@ -376,47 +376,47 @@ EarthSceneController = function (renderer) {
         });
         conesLastTweenSize.size = 1;
 
-        tweenManager.singleMap.conesAnimation = createConeGrowTween(coneList);
+        tweenManager.singleMap.conesAnimation = TweenUtils.createConeGrowTween(coneList);
         tweenManager.singleMap.conesAnimation.start();
     }
 
-    function createConeGrowTween(coneList) {
-
-        var initPos = {size: 1};
-        var endPos = {size: 1.2};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'All cone grow ' + coneCount;
-        var name = tween.name;
-        tween.repeat(Infinity)
-            .yoyo(true)
-            .onUpdate(function () {
-                coneList.forEach(function (coneMesh) {
-                    coneMesh.scale.set(initPos.size, initPos.size, initPos.size);
-                    // console.log((conesTweenSize.size - conesLastTweenSize.size) >= 0);
-                    coneMesh.translateY(((initPos.size - conesLastTweenSize.size) >= 0 ? -1 : 1) * coneMesh.initSize / 30);
-                    coneMesh.rotateY(0.05);
-                });
-                conesLastTweenSize.size = initPos.size;
-                // console.log(TWEEN.getAll());
-            })
-            .onStart(function () {
-                coneList.forEach(function (coneMesh) {
-                    coneMesh.setConeInitPos();
-                    coneMesh.scale.set(1, 1, 1);
-                });
-                conesLastTweenSize.size = 1;
-                // console.log(tweenManager);
-
-                // console.log(initPos);
-                // console.log(endPos);
-                // console.log("start " + name);
-            });
-
-        return tween;
-    }
+    // function createConeGrowTween(coneList) {
+    //
+    //     var initPos = {size: 1};
+    //     var endPos = {size: 1.2};
+    //
+    //     var tween = new TWEEN.Tween(initPos)
+    //         .to(endPos, 1000);
+    //     coneCount++;
+    //     tween.name = 'All cone grow ' + coneCount;
+    //     var name = tween.name;
+    //     tween.repeat(Infinity)
+    //         .yoyo(true)
+    //         .onUpdate(function () {
+    //             coneList.forEach(function (coneMesh) {
+    //                 coneMesh.scale.set(initPos.size, initPos.size, initPos.size);
+    //                 // console.log((conesTweenSize.size - conesLastTweenSize.size) >= 0);
+    //                 coneMesh.translateY(((initPos.size - conesLastTweenSize.size) >= 0 ? -1 : 1) * coneMesh.initSize / 30);
+    //                 coneMesh.rotateY(0.05);
+    //             });
+    //             conesLastTweenSize.size = initPos.size;
+    //             // console.log(TWEEN.getAll());
+    //         })
+    //         .onStart(function () {
+    //             coneList.forEach(function (coneMesh) {
+    //                 coneMesh.setConeInitPos();
+    //                 coneMesh.scale.set(1, 1, 1);
+    //             });
+    //             conesLastTweenSize.size = 1;
+    //             // console.log(tweenManager);
+    //
+    //             // console.log(initPos);
+    //             // console.log(endPos);
+    //             // console.log("start " + name);
+    //         });
+    //
+    //     return tween;
+    // }
 
     function createClickedConeTween() {
 
@@ -442,52 +442,10 @@ EarthSceneController = function (renderer) {
         //     conesLastTweenSize.size = 1;
         // });
 
-        var tween = clickedConeGrowUpTween();
-        var backTween = clickedConeGrowDownTween();
+        var tween = TweenUtils.clickedConeGrowUpTween(clickedCone);
+        var backTween = TweenUtils.clickedConeGrowDownTween(clickedCone);
         tween.chain(backTween);
         backTween.chain(tween);
-        return tween;
-    }
-
-    function clickedConeGrowUpTween() {
-
-        var initPos = clickedConeTweenSize;
-        var endPos = {size: 1.5};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'Single cone up ' + coneCount;
-
-        tween.onUpdate(function () {
-            clickedCone.scale.set(this.size, this.size, this.size);
-            clickedCone.translateY(-clickedCone.initSize / 30);
-            clickedCone.rotateY(0.05);
-        }).onStart(function () {
-            clickedCone.setConeInitPos();
-            // clickedCone.translateY(0.01);
-            // conesLastTweenSize.size = 1;
-        });
-
-        return tween;
-    }
-
-    function clickedConeGrowDownTween() {
-
-        var initPos = clickedConeTweenSize;
-        var endPos = {size: 1};
-
-        var tween = new TWEEN.Tween(initPos)
-            .to(endPos, 1000);
-        coneCount++;
-        tween.name = 'Single cone down ' + coneCount;
-
-        tween.onUpdate(function () {
-            clickedCone.scale.set(this.size, this.size, this.size);
-            clickedCone.translateY(clickedCone.initSize / 30);
-            clickedCone.rotateY(0.05);
-        });
-
         return tween;
     }
 
@@ -726,7 +684,7 @@ EarthSceneController = function (renderer) {
         return tween;
     }
 
-    function fadeSceneIn() {
+    function sceneFadeInTween() {
         activateScene();
         var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
         var fogInTween = TweenUtils.createPlanetFogInTween(earthScene);
@@ -734,7 +692,7 @@ EarthSceneController = function (renderer) {
         fogInTween.start();
     }
 
-    function fadeSceneOut() {
+    function sceneFadeOutTween() {
         var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
         var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
         fogOutTween.start();
@@ -766,6 +724,6 @@ EarthSceneController = function (renderer) {
     this.playAudio = playAudio;
 
     //API for fade in and out
-    this.fadeSceneIn = fadeSceneIn;
-    this.fadeSceneOut = fadeSceneOut;
+    this.fadeSceneIn = sceneFadeInTween;
+    this.fadeSceneOut = sceneFadeOutTween;
 };

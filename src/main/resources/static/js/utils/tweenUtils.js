@@ -4,7 +4,9 @@
 var earthCounter = 0;
 
 var TweenUtils = (function () {
-
+		var conesLastTweenSize = {size: 1};
+		var clickedConeTweenSize = {size: 1};
+		
     function createRotationTween(planetMesh, planetAggregation) {
         var rotateTween = new TWEEN.Tween({x: 0})
             .to({x: 1}, 6000);
@@ -484,6 +486,105 @@ var TweenUtils = (function () {
 
         return magnifyTween;
     }
+	
+    /** EarthSceneController **/
+		function createConeGrowTween(coneList) {
+			
+			var initPos = {size: 1};
+			var endPos = {size: 1.2};
+			
+			var tween = new TWEEN.Tween(initPos)
+				.to(endPos, 1000);
+			coneCount++;
+			tween.name = 'All cone grow ' + coneCount;
+			var name = tween.name;
+			tween.repeat(Infinity)
+				.yoyo(true)
+				.onUpdate(function () {
+					coneList.forEach(function (coneMesh) {
+						coneMesh.scale.set(initPos.size, initPos.size, initPos.size);
+						// console.log((conesTweenSize.size - conesLastTweenSize.size) >= 0);
+						coneMesh.translateY(((initPos.size - conesLastTweenSize.size) >= 0 ? -1 : 1) * coneMesh.initSize / 30);
+						coneMesh.rotateY(0.05);
+					});
+					conesLastTweenSize.size = initPos.size;
+					// console.log(TWEEN.getAll());
+				})
+				.onStart(function () {
+					coneList.forEach(function (coneMesh) {
+						coneMesh.setConeInitPos();
+						coneMesh.scale.set(1, 1, 1);
+					});
+					conesLastTweenSize.size = 1;
+					// console.log(tweenManager);
+					
+					// console.log(initPos);
+					// console.log(endPos);
+					// console.log("start " + name);
+				});
+			
+			return tween;
+		}
+	
+		function clickedConeGrowUpTween(clickedCone) {
+			
+			var initPos = clickedConeTweenSize;
+			var endPos = {size: 1.5};
+			
+			var tween = new TWEEN.Tween(initPos)
+				.to(endPos, 1000);
+			coneCount++;
+			tween.name = 'Single cone up ' + coneCount;
+			
+			tween.onUpdate(function () {
+				clickedCone.scale.set(this.size, this.size, this.size);
+				clickedCone.translateY(-clickedCone.initSize / 30);
+				clickedCone.rotateY(0.05);
+			}).onStart(function () {
+				clickedCone.setConeInitPos();
+				// clickedCone.translateY(0.01);
+				// conesLastTweenSize.size = 1;
+			});
+			
+			return tween;
+		}
+		
+		function clickedConeGrowDownTween(clickedCone) {
+			
+			var initPos = clickedConeTweenSize;
+			var endPos = {size: 1};
+			
+			var tween = new TWEEN.Tween(initPos)
+				.to(endPos, 1000);
+			coneCount++;
+			tween.name = 'Single cone down ' + coneCount;
+			
+			tween.onUpdate(function () {
+				clickedCone.scale.set(this.size, this.size, this.size);
+				clickedCone.translateY(clickedCone.initSize / 30);
+				clickedCone.rotateY(0.05);
+			});
+			
+			return tween;
+		}
+	
+		// function sceneFadeInTween() {
+		// 	activateScene();
+		// 	var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
+		// 	var fogInTween = TweenUtils.createPlanetFogInTween(earthScene);
+		// 	moveCloserTween.start();
+		// 	fogInTween.start();
+		// }
+		//
+		// function sceneFadeOutTween() {
+		// 	var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
+		// 	var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+		// 	fogOutTween.start();
+		// 	easeVolumeTween.start();
+		// }
+	
+		
+		/** EarthSceneController End**/
 
     /** Solar scene tween **/
     this.createPlanetRotationTween = createRotationTween;
@@ -513,6 +614,14 @@ var TweenUtils = (function () {
     this.createEaseVolumeTween = createEaseVolumeTween;
     this.createMagnifyVolumeTween = createMagnifyVolumeTween;
 
+    /** EarthSceneController **/
+    this.createConeGrowTween = createConeGrowTween;
+    this.clickedConeGrowUpTween = clickedConeGrowUpTween;
+    this.clickedConeGrowDownTween = clickedConeGrowDownTween;
+    // this.sceneFadeInTween = sceneFadeInTween;
+    // this.sceneFadeOutTween = sceneFadeOutTween;
+    /** EarthSceneController End **/
+    
     return this;
 
 })();

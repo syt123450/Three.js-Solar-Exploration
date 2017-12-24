@@ -36,13 +36,13 @@ public class MySQLUtils {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println(mySQLConfig);
-            conn = DriverManager
-                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
+//            conn = DriverManager
+//                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
 
 //            conn = DriverManager
 //                    .getConnection(mySQLConfig.getURL(), mySQLConfig.getUserName(), mySQLConfig.getPassword());
-//            conn = DriverManager
-//                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "sesame");
+            conn = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/cmpe202?serverTimezone=GMT&useSSL=false", "cmpe202usr", "cmpe202pw");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
