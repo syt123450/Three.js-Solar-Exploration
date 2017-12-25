@@ -44,6 +44,8 @@ EarthSceneController = function (renderer) {
         }
     };
 
+    var easeVolumeTween;
+
     var clickedCone;
 
     var earthRenderer = renderer;
@@ -445,13 +447,18 @@ EarthSceneController = function (renderer) {
 
     function sceneFadeOutTween() {
         var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
-        var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
+        easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
         fogOutTween.start();
         easeVolumeTween.start();
+        easeVolumeTween.onComplete(onFadeSceneOutComplete);
     }
 
     function onFadeSceneOutComplete() {
-
+        TWEEN.remove(easeVolumeTween);
+        console.log(111);
+        deactivateScene();
+        solarSystemSceneController.fadeSceneIn();
+        $("#timeLine").hide();
     }
 
     //interface

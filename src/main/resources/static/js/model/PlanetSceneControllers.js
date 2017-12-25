@@ -299,15 +299,17 @@ PlanetSceneController = function (renderer, config) {
 	function resetPlanetPos() {
 	    if (tweenManager.moveRight) {
 		    tweenManager.moveRight.stop();
+		    TWEEN.remove(tweenManager.moveRight);
+		    tweenManager.moveRight = null;
 	    }
-	    TWEEN.remove(tweenManager.moveRight);
-		tweenManager.moveRight = null;
+	    
 		
 		if (tweenManager.moveLeft) {
 			tweenManager.moveLeft.stop();
+			TWEEN.remove(tweenManager.moveLeft);
+			tweenManager.moveLeft = null;
 		}
-		TWEEN.remove(tweenManager.moveLeft);
-		tweenManager.moveLeft = null;
+		
 		
 	    planetAggregation.position.x = 0;
 		
@@ -349,13 +351,6 @@ PlanetSceneController = function (renderer, config) {
 	    console.log("start planet audio.");
 
         magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
-        console.log(magnifyVolumeTween);
-        magnifyVolumeTween.start();
-    }
-
-    function workAround() {
-        magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
-	    console.log(magnifyVolumeTween);
         magnifyVolumeTween.start();
     }
 
@@ -392,7 +387,6 @@ PlanetSceneController = function (renderer, config) {
     this.name = name;
 
     this.playAudio = playAudio;
-    this.workAround = workAround;
 
     this.hideInfo = hideInfo;
     this.getPlanetAggregation = getPlanetAggregation;
