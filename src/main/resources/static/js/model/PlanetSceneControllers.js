@@ -298,15 +298,17 @@ PlanetSceneController = function (renderer, config) {
 	function resetPlanetPos() {
 	    if (tweenManager.moveRight) {
 		    tweenManager.moveRight.stop();
+		    TWEEN.remove(tweenManager.moveRight);
+		    tweenManager.moveRight = null;
 	    }
-	    TWEEN.remove(tweenManager.moveRight);
-		tweenManager.moveRight = null;
+	    
 		
 		if (tweenManager.moveLeft) {
 			tweenManager.moveLeft.stop();
+			TWEEN.remove(tweenManager.moveLeft);
+			tweenManager.moveLeft = null;
 		}
-		TWEEN.remove(tweenManager.moveLeft);
-		tweenManager.moveLeft = null;
+		
 		
 	    planetAggregation.position.x = 0;
 		
