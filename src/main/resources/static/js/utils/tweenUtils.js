@@ -489,23 +489,17 @@ var TweenUtils = (function () {
 
         console.log("Create magnify tween.");
 
-        var startVolume = {volume: 0};
-        var endVolume = {volume: 0.5};
-
-        var magnifyTween = new TWEEN.Tween(startVolume).to(endVolume, 5000);
+        var magnifyTween = new TWEEN.Tween({volume: 0}).to({volume: 0.5}, 5000);
         magnifyTween.easing(TWEEN.Easing.Linear.None);
         magnifyTween.onUpdate(function () {
-            console.log(66666);
-
-            sound.setVolume(startVolume.volume);
+            sound.setVolume(this.volume);
         }).onStart(function () {
             console.log("play audio");
-            sound.setVolume(startVolume.volume);
+            sound.setVolume(this.volume);
             sound.play();
         }).onComplete(function () {
             //for test
             console.log(7777);
-            TWEEN.remove(this);
         });
 
         return magnifyTween;

@@ -30,6 +30,7 @@ PlanetSceneController = function (renderer, config) {
     };
 
     var easeTween;
+    var magnifyVolumeTween;
 
     // Camera and Lights
     var camera = UniverseUtils.createDefaultCamera();
@@ -347,7 +348,14 @@ PlanetSceneController = function (renderer, config) {
 
 	    console.log("start planet audio.");
 
-        var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+        console.log(magnifyVolumeTween);
+        magnifyVolumeTween.start();
+    }
+
+    function workAround() {
+        magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
+	    console.log(magnifyVolumeTween);
         magnifyVolumeTween.start();
     }
 
@@ -357,6 +365,8 @@ PlanetSceneController = function (renderer, config) {
         var fogInTween = TweenUtils.createPlanetFogInTween(scene);
         moveCloserTween.start();
         fogInTween.start();
+
+        TWEEN.remove(magnifyVolumeTween);
     }
 
     function fadeSceneOut() {
@@ -380,7 +390,10 @@ PlanetSceneController = function (renderer, config) {
     // this.activateScene = activateScene;
     this.deactivateScene = deactivateScene;
     this.name = name;
+
     this.playAudio = playAudio;
+    this.workAround = workAround;
+
     this.hideInfo = hideInfo;
     this.getPlanetAggregation = getPlanetAggregation;
 

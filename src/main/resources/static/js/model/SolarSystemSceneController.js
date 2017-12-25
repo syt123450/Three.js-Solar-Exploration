@@ -78,8 +78,6 @@ SolarSystemSceneController = function(renderer) {
         return scene;
     }
 
-
-
     function initStartTween() {
 	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
 	    tween.start();
@@ -217,6 +215,7 @@ SolarSystemSceneController = function(renderer) {
         TWEEN.remove(easingVolumeTween);
         deactivateScene();
         planetsList[clickedPlanetName].controller.playAudio();
+        planetsList[clickedPlanetName].controller.workAround();
         showTransition(SolarConfig[clickedPlanetName].name);
     }
 
