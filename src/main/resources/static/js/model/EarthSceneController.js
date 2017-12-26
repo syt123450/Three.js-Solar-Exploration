@@ -45,7 +45,7 @@ EarthSceneController = function (renderer) {
     var clickedCone;
 
     var earthRenderer = renderer;
-	
+
     var earthScene = init();
 
     var speed;
@@ -138,8 +138,8 @@ EarthSceneController = function (renderer) {
         scene.add(earthAggregation);
 
         initTween();
-	
-	    scene.fog = new THREE.Fog(0x000000, -500, 500);
+
+        scene.fog = new THREE.Fog(0x000000, -500, 500);
         return scene;
     }
 
@@ -270,7 +270,7 @@ EarthSceneController = function (renderer) {
     }
 
     function addTextToBoard(coneParameters) {
-	    
+
         $("#infoTitle").text(coneParameters.areaName);
         $("#flag img").attr("src", coneParameters.flagPath);
         $("#latitude").text("Latitude: " + coneParameters.latitude);
@@ -323,40 +323,40 @@ EarthSceneController = function (renderer) {
 
         tweenManager.singleMap.conesAnimation.stop();
         TWEEN.remove(tweenManager.singleMap.conesAnimation);
-	    tweenManager.singleMap.conesAnimation = null;
+        tweenManager.singleMap.conesAnimation = null;
 
         tweenManager.singleMap.meshRotation.stop();
         tweenManager.singleMap.moonRotation.stop();
-	    
+
         coneList.forEach(function (coneMesh) {
             coneMesh.setConeInitPos();
             coneMesh.scale.set(1, 1, 1);
         });
         clickedConeTweenSize.size = 1;
 
-	    var clickedConeGrowUpTween = TweenUtils.clickedConeGrowUpTween(clickedCone);
-	    var clickedConeGrowDownTween = TweenUtils.clickedConeGrowDownTween(clickedCone);
-	    clickedConeGrowUpTween.chain(clickedConeGrowDownTween);
-	    clickedConeGrowDownTween.chain(clickedConeGrowUpTween);
-	
-	    tweenManager.singleMap.clickedConeGrowUpTween = clickedConeGrowUpTween;
-	    tweenManager.singleMap.clickedConeGrowDownTween = clickedConeGrowDownTween;
-	
-	    tweenManager.singleMap.clickedConeGrowUpTween.start();
+        var clickedConeGrowUpTween = TweenUtils.clickedConeGrowUpTween(clickedCone);
+        var clickedConeGrowDownTween = TweenUtils.clickedConeGrowDownTween(clickedCone);
+        clickedConeGrowUpTween.chain(clickedConeGrowDownTween);
+        clickedConeGrowDownTween.chain(clickedConeGrowUpTween);
+
+        tweenManager.singleMap.clickedConeGrowUpTween = clickedConeGrowUpTween;
+        tweenManager.singleMap.clickedConeGrowDownTween = clickedConeGrowDownTween;
+
+        tweenManager.singleMap.clickedConeGrowUpTween.start();
 
         addTextToBoard(cone.parameters);
         showInfo(cone.parameters.latitude, cone.parameters.longitude);
     }
 
     function processAfterResume() {
-	
-	    tweenManager.singleMap.clickedConeGrowUpTween.stop();
-	    tweenManager.singleMap.clickedConeGrowDownTween.stop();
+
+        tweenManager.singleMap.clickedConeGrowUpTween.stop();
+        tweenManager.singleMap.clickedConeGrowDownTween.stop();
         TWEEN.remove(tweenManager.singleMap.clickedConeGrowUpTween);
-	    TWEEN.remove(tweenManager.singleMap.clickedConeGrowDownTween);
-	
-	    tweenManager.singleMap.clickedConeGrowUpTween = null;
-	    tweenManager.singleMap.clickedConeGrowDownTween = null;
+        TWEEN.remove(tweenManager.singleMap.clickedConeGrowDownTween);
+
+        tweenManager.singleMap.clickedConeGrowUpTween = null;
+        tweenManager.singleMap.clickedConeGrowDownTween = null;
 
         tweenManager.singleMap.meshRotation.start();
         tweenManager.singleMap.moonRotation.start();
@@ -370,7 +370,7 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.conesAnimation = TweenUtils.createConeGrowTween(coneList);
         tweenManager.singleMap.conesAnimation.start();
     }
-    
+
     function moveEarthAggregation(coneLongitude) {
         tweenManager.groupMap.resumeScene.forEach(function (tween) {
             if (tween && typeof tween !== 'undefined') {
@@ -393,7 +393,7 @@ EarthSceneController = function (renderer) {
             tween.start();
         });
     }
-	
+
     function resumeScene() {
 
         tweenManager.groupMap.moveEarthAggregation.forEach(function (tween) {
@@ -422,7 +422,7 @@ EarthSceneController = function (renderer) {
             processAfterResume();
         });
     }
-	
+
     function sceneFadeInTween() {
         activateScene();
         var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);

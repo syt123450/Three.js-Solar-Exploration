@@ -5,7 +5,7 @@
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
     // Renderer
-	var isPlanetAtLeftSide = false;
+    var isPlanetAtLeftSide = false;
     var renderer = renderer;
 
     // Universe, stars and meteors
@@ -130,7 +130,7 @@ PlanetSceneController = function (renderer, config) {
         UniverseUtils.addDoubleHalos(aggregation, config.innerGlowColor, config.outerGlowColor);
 
         // Coordinate inclination
-        aggregation.rotateZ(config.inclination * Math.PI /180);
+        aggregation.rotateZ(config.inclination * Math.PI / 180);
 
         // Coordinate axis angle for camera
         aggregation.rotateX(0.105 * Math.PI);
@@ -145,7 +145,16 @@ PlanetSceneController = function (renderer, config) {
         EventManager.registerEvent('mousewheel', onMouseWheel);
         EventManager.registerEvent('mouseup', onMouseUp);
         EventManager.registerEvent('dblclick', onDoubleClick);
+
+        $(config.closeInfoId).hover(function () {
+            $(this).attr("src", config.closeHoverImg);
+        }, function () {
+            $(this).attr("src", config.closeNormalImg);
+        }).click(function () {
+            hideInfo();
+        });
     }
+
 
     function onMouseDown() {
         SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -153,10 +162,10 @@ PlanetSceneController = function (renderer, config) {
 
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
-	    if (intersects !== null
-		    && intersects.length > 1 && intersects[1].object !== undefined
-		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
-	    ) {
+        if (intersects !== null
+            && intersects.length > 1 && intersects[1].object !== undefined
+            && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
+        ) {
             isPlanetClicked = true;
         }
     }
@@ -233,102 +242,103 @@ PlanetSceneController = function (renderer, config) {
             camera.position.z = Math.max(minScale, camera.position.z + delta * speed);
         }
     }
-	
-	/**
-	 * move planet to left side when double clicked
-	 * @param event
-	 */
-	function onDoubleClick(event) {
-	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-	    SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
-	    var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
-	    if (intersects !== null
-		    && intersects.length > 1 && intersects[1].object !== undefined
-		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
-	    ) {
-		    if (!isPlanetAtLeftSide) {
-			    movePlanetLeft();
-			    showInfoBoard();
-		    } else {
-			    movePlanetRight();
-			    hideInfoBoard();
-		    }
-	    }
-    }
-	
-	/**
-	 * Move planet to left side with tween
-	 */
-	function movePlanetLeft() {
-		
-	    if (tweenManager.moveRight) {
-		    tweenManager.moveRight.stop();
-		    TWEEN.remove(tweenManager.moveRight);
-		    tweenManager.moveRight = null;
-	    }
-		
-	    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
-	    tweenManager.moveLeft.start();
-    }
-	
-	/**
-	 * MOve planet to the right side with tween
-	 */
-	function movePlanetRight() {
-	    if (tweenManager.moveLeft) {
-		    tweenManager.moveLeft.stop();
-		    TWEEN.remove(tweenManager.moveLeft);
-		    tweenManager.moveLeft = null;
-	    }
-		
-	    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
-	    tweenManager.moveRight.start();
-    }
-	/**
-	 * Stop and remove moveRight and moveLeft tweens
-	 * Reset planet position to (0, 0, 0)
-	 * @param planetAggregation
-	 */
-	function resetPlanetPos() {
-	    if (tweenManager.moveRight) {
-		    tweenManager.moveRight.stop();
-		    TWEEN.remove(tweenManager.moveRight);
-		    tweenManager.moveRight = null;
-	    }
-	    
-		
-		if (tweenManager.moveLeft) {
-			tweenManager.moveLeft.stop();
-			TWEEN.remove(tweenManager.moveLeft);
-			tweenManager.moveLeft = null;
-		}
+    /**
+     * move planet to left side when double clicked
+     * @param event
+     */
+    function onDoubleClick(event) {
+        SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-	    planetAggregation.position.x = 0;
-		
-		// Make sure halo is also reset to (0, 0, 0)
-		if (planetAggregation.children.length === 3) {
-			planetAggregation.children[1].position.x = 0;
-			planetAggregation.children[2].position.x = 0;
-		}
-		
-		if (planetAggregation.children.length === 4) {
-			planetAggregation.children[2].position.x = 0;
-			planetAggregation.children[3].position.x = 0;
-		}
-	    
-	    isPlanetAtLeftSide = 0;
+        SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
+        var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
+        if (intersects !== null
+            && intersects.length > 1 && intersects[1].object !== undefined
+            && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
+        ) {
+            if (!isPlanetAtLeftSide) {
+                movePlanetLeft();
+                showInfoBoard();
+            } else {
+                movePlanetRight();
+                hideInfoBoard();
+            }
+        }
+    }
+
+    /**
+     * Move planet to left side with tween
+     */
+    function movePlanetLeft() {
+
+        if (tweenManager.moveRight) {
+            tweenManager.moveRight.stop();
+            TWEEN.remove(tweenManager.moveRight);
+            tweenManager.moveRight = null;
+        }
+
+        tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
+        tweenManager.moveLeft.start();
+    }
+
+    /**
+     * MOve planet to the right side with tween
+     */
+    function movePlanetRight() {
+        if (tweenManager.moveLeft) {
+            tweenManager.moveLeft.stop();
+            TWEEN.remove(tweenManager.moveLeft);
+            tweenManager.moveLeft = null;
+        }
+
+        tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
+        tweenManager.moveRight.start();
+    }
+
+    /**
+     * Stop and remove moveRight and moveLeft tweens
+     * Reset planet position to (0, 0, 0)
+     * @param planetAggregation
+     */
+    function resetPlanetPos() {
+        if (tweenManager.moveRight) {
+            tweenManager.moveRight.stop();
+            TWEEN.remove(tweenManager.moveRight);
+            tweenManager.moveRight = null;
+        }
+
+
+        if (tweenManager.moveLeft) {
+            tweenManager.moveLeft.stop();
+            TWEEN.remove(tweenManager.moveLeft);
+            tweenManager.moveLeft = null;
+        }
+
+        planetAggregation.position.x = 0;
+
+        // Make sure halo is also reset to (0, 0, 0)
+        if (planetAggregation.children.length === 3) {
+            planetAggregation.children[1].position.x = 0;
+            planetAggregation.children[2].position.x = 0;
+        }
+
+        if (planetAggregation.children.length === 4) {
+            planetAggregation.children[2].position.x = 0;
+            planetAggregation.children[3].position.x = 0;
+        }
+
+        isPlanetAtLeftSide = 0;
     }
 
     function showInfoBoard() {
-	    isPlanetAtLeftSide = true;
-	    $(config.infoBoard).fadeIn(1000);
+        isPlanetAtLeftSide = true;
+        $(config.infoBoard).fadeIn(1000);
     }
 
     function hideInfoBoard() {
-	    isPlanetAtLeftSide = false;
-	    $(config.infoBoard).fadeOut(1000);
+        isPlanetAtLeftSide = false;
+        $(config.infoBoard).fadeOut(1000);
     }
 
     function playAudio() {
@@ -337,7 +347,7 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function fadeSceneIn() {
-	    activateScene();
+        activateScene();
         var moveCloserTween = TweenUtils.createPlanetMoveCloserTween(planetAggregation);
         var fogInTween = TweenUtils.createPlanetFogInTween(scene);
         moveCloserTween.start();

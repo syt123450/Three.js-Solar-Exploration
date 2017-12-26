@@ -10,30 +10,25 @@ $(function () {
     renderer = SolarEPUtils.getDefaultRenderer();
 
     solarSystemSceneController = new SolarSystemSceneController(renderer);
-    solarSystemSceneController.activateScene();
-    solarSystemSceneController.initStartTween();
+    solarSystemSceneController.initialFadeSceneIn();
 
     activatedScene = solarSystemSceneController;
 
+    var PlanetControllers = {};
+
     $.getScript("../js/config/planetConfig.js", function () {
         $.getScript("../js/model/PlanetSceneControllers.js", function () {
-            mercurySceneController = new PlanetSceneController(renderer, PlanetConfig.mercury);
-            venusSceneController = new PlanetSceneController(renderer, PlanetConfig.venus);
-            marsSceneController = new PlanetSceneController(renderer, PlanetConfig.mars);
-            jupiterSceneController = new PlanetSceneController(renderer, PlanetConfig.jupiter);
-            saturnSceneController = new PlanetSceneController(renderer, PlanetConfig.saturn);
-            uranusSceneController = new PlanetSceneController(renderer, PlanetConfig.uranus);
-            neptuneSceneController = new PlanetSceneController(renderer, PlanetConfig.neptune);
-            plutoSceneController = new PlanetSceneController(renderer, PlanetConfig.pluto);
 
-            solarSystemSceneController.setPlanetScene("mercury", mercurySceneController);
-            solarSystemSceneController.setPlanetScene("venus", venusSceneController);
-            solarSystemSceneController.setPlanetScene("mars", marsSceneController);
-            solarSystemSceneController.setPlanetScene("jupiter", jupiterSceneController);
-            solarSystemSceneController.setPlanetScene("saturn", saturnSceneController);
-            solarSystemSceneController.setPlanetScene("uranus", uranusSceneController);
-            solarSystemSceneController.setPlanetScene("neptune", neptuneSceneController);
-            solarSystemSceneController.setPlanetScene("pluto", plutoSceneController);
+            PlanetControllers.mercury = new PlanetSceneController(renderer, PlanetConfig.mercury);
+            PlanetControllers.venus = new PlanetSceneController(renderer, PlanetConfig.venus);
+            PlanetControllers.mars = new PlanetSceneController(renderer, PlanetConfig.mars);
+            PlanetControllers.jupiter = new PlanetSceneController(renderer, PlanetConfig.jupiter);
+            PlanetControllers.saturn = new PlanetSceneController(renderer, PlanetConfig.saturn);
+            PlanetControllers.uranus = new PlanetSceneController(renderer, PlanetConfig.uranus);
+            PlanetControllers.neptune = new PlanetSceneController(renderer, PlanetConfig.neptune);
+            PlanetControllers.pluto = new PlanetSceneController(renderer, PlanetConfig.pluto);
+
+            solarSystemSceneController.setPlanetScenes(PlanetControllers);
         });
     });
 
@@ -44,11 +39,11 @@ $(function () {
 
     $.getScript("../js/model/GlobeSceneController.js", function () {
         globe = new DAT.Globe(renderer);
-        globe.setSurfaceImg("../images/world.jpg");
         globe.init();
         loadData();
     });
 
+    // $.getScript("../data/mockTop10Data.js");
 
     $("#all").click(function () {
         $("body footer div").each(function () {
@@ -94,71 +89,6 @@ $(function () {
             infoBoard = false;
         }
     });
-
-    $("#mercuryBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/mercury_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/mercury.png");
-    }).click(function () {
-        mercurySceneController.hideInfo();
-    });
-
-    $("#venusBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/venus_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/venus.png");
-    }).click(function () {
-        venusSceneController.hideInfo();
-    });
-
-    $("#marsBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/mars_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/mars.png");
-    }).click(function () {
-        marsSceneController.hideInfo();
-    });
-
-    $("#jupiterBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/jupiter_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/jupiter.png");
-    }).click(function () {
-        jupiterSceneController.hideInfo();
-    });
-
-    $("#saturnBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/saturn_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/saturn.png");
-    }).click(function () {
-        saturnSceneController.hideInfo();
-    });
-
-    $("#uranusBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/uranus_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/uranus.png");
-    }).click(function () {
-        uranusSceneController.hideInfo();
-    });
-
-    $("#neptuneBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/neptune_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/neptune.png");
-    }).click(function () {
-        neptuneSceneController.hideInfo();
-    });
-
-    $("#plutoBoard img").hover(function () {
-        $(this).attr("src", "../images/closeButton/pluto_hover.png");
-    }, function () {
-        $(this).attr("src", "../images/closeButton/pluto.png");
-    }).click(function () {
-        plutoSceneController.hideInfo();
-    });
-
 });
 
 function getYearData(year) {
@@ -181,7 +111,6 @@ function getYearData(year) {
             earthSceneController.addCones(data);
         }
     });
-
 }
 
 function enableBackLogo() {
@@ -210,7 +139,6 @@ function loadData() {
         async: true,
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             globe.addData(data, {format: 'magnitude'});
             globe.createPoints();
         }
@@ -218,13 +146,8 @@ function loadData() {
 }
 
 function backToSolar() {
-    console.log(111);
     disableBackLogo();
-    console.log(activatedScene);
-    activatedScene.deactivateScene();
-    solarSystemSceneController.playAudio();
-    solarSystemSceneController.activateScene();
-    $("#timeLine").hide();
+    activatedScene.fadeSceneOut();
 }
 
 function showTransition(planetName) {
@@ -278,7 +201,7 @@ function typeMessage(config) {
         delay: signatureSpeed,
         done: function () {
             $("#transition").hide();
-            solarSystemSceneController.onCompleteSetup();
+            solarSystemSceneController.onTransitionComplete();
             $("#transition>div>p>span:eq(0)").empty();
             $("#transition>div>p>span:eq(1)").empty();
             $("#transition>div>p>span:eq(2)").empty();

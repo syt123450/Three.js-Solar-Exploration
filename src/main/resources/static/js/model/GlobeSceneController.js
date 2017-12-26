@@ -405,8 +405,8 @@ DAT.Globe = function (renderer, colorFn) {
         renderer.render(scene, camera);
 
     }
-    
-	this.__defineGetter__('time', function () {
+
+    this.__defineGetter__('time', function () {
         return this._time || 0;
     });
 
@@ -444,7 +444,7 @@ DAT.Globe = function (renderer, colorFn) {
     this.scene = scene;
     this.init = init;
     this.activateScene = activateScene;
-    this.deactivateScene = function() {
+    this.deactivateScene = function () {
         EventManager.removeEvents();
     };
 
