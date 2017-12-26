@@ -58,8 +58,8 @@ var SolarConfig = {
                 orbitSpeed: 0.6 * revolutionSpeed,
                 rotateSpeed: rotationSpeed,
                 inclination: 23.5,
-                map: '../images/earthmap1k.jpg',
-                bumpMap: '../images/earthbump1k.jpg',
+                map: '../images/earth/earthmap1k.jpg',
+                bumpMap: '../images/earth/earthbump1k.jpg',
                 radius: 0.0095
             }
         },
