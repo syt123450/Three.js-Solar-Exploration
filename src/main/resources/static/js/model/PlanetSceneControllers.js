@@ -360,8 +360,6 @@ PlanetSceneController = function (renderer, config) {
         var fogInTween = TweenUtils.createPlanetFogInTween(scene);
         moveCloserTween.start();
         fogInTween.start();
-
-        TWEEN.remove(magnifyVolumeTween);
     }
 
     function fadeSceneOut() {
@@ -375,21 +373,15 @@ PlanetSceneController = function (renderer, config) {
 
     function onFadeSceneOutComplete() {
         TWEEN.remove(easeTween);
-	    console.log(111);
         deactivateScene();
         solarSystemSceneController.fadeSceneIn();
-        $("#timeLine").hide();
     }
 
     // Interfaces
-    // this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
     this.name = name;
 
     this.playAudio = playAudio;
-
     this.hideInfo = hideInfo;
-    this.getPlanetAggregation = getPlanetAggregation;
 
     //API for fade in and out
     this.fadeSceneIn = fadeSceneIn;

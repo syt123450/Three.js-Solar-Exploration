@@ -211,7 +211,6 @@ function loadData() {
         async: true,
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             globe.addData(data, {format: 'magnitude'});
             globe.createPoints();
         }
@@ -220,11 +219,6 @@ function loadData() {
 
 function backToSolar() {
     disableBackLogo();
-    // activatedScene.deactivateScene();
-    // // solarSystemSceneController.playAudio();
-    // // solarSystemSceneController.activateScene();
-    // solarSystemSceneController.fadeSceneIn();
-    // $("#timeLine").hide();
     activatedScene.fadeSceneOut();
 }
 

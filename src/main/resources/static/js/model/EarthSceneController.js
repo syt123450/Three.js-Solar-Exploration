@@ -1,20 +1,17 @@
 /**
  * Created by ss on 2017/9/29.
  */
+
 var coneCount = 0;
 
 EarthSceneController = function (renderer) {
 
     var obliquity = 23.5;
-    // var clickConeAnimateTime = 3000;
-    var controlParameter = -40;
+
     var audioSource = "../music/Earth.mp3";
 
-    // var conesTweenSize = {size: 1};
     var conesLastTweenSize = {size: 1};
-
     var clickedConeTweenSize = {size: 1};
-    var clickedConeLastTweenSize = {size: 1};
 
     var lights = UniverseUtils.createEarthLights();
     var camera = UniverseUtils.createDefaultCamera();
@@ -24,6 +21,7 @@ EarthSceneController = function (renderer) {
     var earthMesh = UniverseUtils.createDefaultEarthMesh();
     var atmosphereMesh = UniverseUtils.createDefaultAtmosphere();
     var moonMesh = UniverseUtils.createDefaultMoon();
+    var earthAggregation = initEarthAggregation();
     var audio = UniverseUtils.loadAudio(audioSource);
 
     var coneList = [];
@@ -49,12 +47,8 @@ EarthSceneController = function (renderer) {
     var clickedCone;
 
     var earthRenderer = renderer;
-	var earthAggregation = null;
 	
     var earthScene = init();
-    
-
-    var yHistory;
 
     var speed;
 
@@ -65,7 +59,6 @@ EarthSceneController = function (renderer) {
     var isInfoBoard;
     var isStoppedRotation = false;
     var isClickEarth = false;
-    // var xHistory = {x: initPosX};
 
     function addCones(conesParameter) {
         coneList.forEach(function (cone) {
@@ -95,8 +88,7 @@ EarthSceneController = function (renderer) {
     }
 
     function activateScene() {
-	    // console.log('activate agg===', earthAggregation);
-	    // console.log('activate scene===', earthScene);
+
         $("#timeLine").show();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
@@ -145,9 +137,9 @@ EarthSceneController = function (renderer) {
         meteors.forEach(function addMeteor(meteor) {
             scene.add(meteor);
         });
-        earthAggregation = initEarthAggregation();
+
         scene.add(earthAggregation);
-        // scene.add(moonMesh);
+
         initTween();
 	
 	    scene.fog = new THREE.Fog(0x000000, -500, 500);
@@ -157,13 +149,11 @@ EarthSceneController = function (renderer) {
     function initEarthAggregation() {
 
         var aggregation = new THREE.Object3D();
-        // var sphereAxis = new THREE.AxisHelper(0.8);
-        // earthMesh.add(sphereAxis);
+
         aggregation.add(earthMesh);
         aggregation.add(atmosphereMesh);
         aggregation.rotateZ(-Math.PI * obliquity / 180);
         UniverseUtils.addDoubleHalos(aggregation, "#A6C8DA", "#0C6097");
-        // console.log('earth aggregation:', aggregation);
         moonMesh.rotateZ(Math.PI * obliquity / 180);
         aggregation.add(moonMesh);
 
@@ -194,12 +184,8 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
 
-        // console.log('all===', intersects);
-        // console.log('0====', intersects[0].object);
-
         coneList.forEach(function (cone) {
-            // console.log("in");
-            // console.log('earth x=====', earthMesh.parent.position.x);
+
             if (intersects[0].object === cone) {
                 console.log("find a clicked cone.");
                 processBeforeMove(cone);
@@ -367,8 +353,6 @@ EarthSceneController = function (renderer) {
         tweenManager.singleMap.clickedConeAnimation.stop();
         TWEEN.remove(tweenManager.singleMap.clickedConeAnimation);
 
-        // console.log(111);
-
         tweenManager.singleMap.meshRotation.start();
         tweenManager.singleMap.moonRotation.start();
 
@@ -406,7 +390,7 @@ EarthSceneController = function (renderer) {
     }
 	
     function resumeScene() {
-        // console.log('before remove:', tweenManager.groupMap.moveEarthAggregation);
+
         tweenManager.groupMap.moveEarthAggregation.forEach(function (tween) {
             if (tween && typeof tween !== 'undefined') {
                 tween.stop();
@@ -414,7 +398,6 @@ EarthSceneController = function (renderer) {
             }
         });
         tweenManager.groupMap.moveEarthAggregation = [];
-        // console.log('after remove:', tweenManager.groupMap.moveEarthAggregation);
 
         var translateBack = TweenUtils.translateBackTween(earthMesh);
         var resumeCone = TweenUtils.resumeConeTween(earthMesh, atmosphereMesh);
@@ -430,9 +413,7 @@ EarthSceneController = function (renderer) {
             tween.start();
         });
 
-        // console.log(333);
         translateBack.onComplete(function () {
-            // console.log(222);
             processAfterResume();
         });
     }
@@ -455,17 +436,12 @@ EarthSceneController = function (renderer) {
 
     function onFadeSceneOutComplete() {
         TWEEN.remove(easeVolumeTween);
-        console.log(111);
         deactivateScene();
         solarSystemSceneController.fadeSceneIn();
         $("#timeLine").hide();
     }
 
     //interface
-
-    //used for change between this scene and solar scene
-    // this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
 
     //used for change between google earth
     this.stopScene = stopScene;

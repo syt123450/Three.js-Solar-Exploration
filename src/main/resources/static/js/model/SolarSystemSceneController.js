@@ -38,7 +38,7 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function activateScene(){
-        // audio.play();
+
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
@@ -57,18 +57,14 @@ SolarSystemSceneController = function(renderer) {
             scene.add(light);
         });
 
-        // Camera
         scene.add(camera);
         updateCameraPosition(1);
-		
-        // Background
+
         scene.add(universeMesh);
 
-        // Apply the Sun
         initSystemPositions();
         scene.add(solarAggregation);
 
-        // Apply Asteroid Belt
         asteroidBeltPoints.forEach(function(points) {
             scene.add(points);
         });
@@ -158,9 +154,6 @@ SolarSystemSceneController = function(renderer) {
 
     // mouse down event handler
     function onMouseDown() {
-
-        console.log("mouse down");
-
         SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         SolarEPUtils.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
@@ -180,9 +173,6 @@ SolarSystemSceneController = function(renderer) {
                     if (intersects[i].object === planetsList[planet].mesh) {
 
                         clickedPlanetName = planet;
-
-	                    console.log(clickedPlanetName + " clicked!");
-
                         activatedScene = planetsList[clickedPlanetName].controller;
 
                         fadeSceneOut();
@@ -210,10 +200,9 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function onFadeOutSceneComplete() {
-        TWEEN.remove(changeSceneTween);
-        TWEEN.remove(fogTween);
-        TWEEN.remove(easingVolumeTween);
+
         deactivateScene();
+        console.log(clickedPlanetName);
         planetsList[clickedPlanetName].controller.playAudio();
         showTransition(SolarConfig[clickedPlanetName].name);
     }
@@ -225,7 +214,6 @@ SolarSystemSceneController = function(renderer) {
             camera.positionHistory.y,
             camera.positionHistory.z
         );
-        // solarSystemScene.fog.near = 0;
         camera.lookAt(new THREE.Vector3(0, 0, 0));
         planetsList[clickedPlanetName].controller.fadeSceneIn();
         enableBackLogo();
@@ -243,9 +231,7 @@ SolarSystemSceneController = function(renderer) {
 
     this.setPlanetScene = setPlanetScene;
     this.activateScene = activateScene;
-    this.deactivateScene = deactivateScene;
     this.initStartTween = initStartTween;
-
     this.onTransitionComplete = onTransitionComplete;
 
     this.name = name;
