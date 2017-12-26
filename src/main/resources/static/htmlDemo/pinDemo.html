@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Point Demo</title>
+
+    <style>
+
+        html, body, canvas {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id = "sceneArea"></canvas>
+
+<script src="../js/lib/three.min.js"></script>
+<script src="../js/utils/utils.js"></script>
+<script src="../js/utils/universeUtils.js"></script>
+<script src="../jsDemo/pinPrototype.js"></script>
+
+<script>
+
+    var renderer = SolarEPUtils.getDefaultRenderer();
+
+    var pinController = new PinController(renderer);
+    pinController.animate();
+
+</script>
+
+</body>
+</html>
