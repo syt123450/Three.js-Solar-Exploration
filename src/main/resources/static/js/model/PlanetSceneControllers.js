@@ -175,7 +175,7 @@ PlanetSceneController = function (renderer, config) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
             tweenManager.inertia = TweenUtils.createPlanetInertiaTween(mesh, speed, inertiaControls);
-            // tweenManager.inertia.start();
+            tweenManager.inertia.start();
         }
     }
 
@@ -254,7 +254,7 @@ PlanetSceneController = function (renderer, config) {
 	    SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
 	    var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
 	    if (intersects !== null
-		    && intersects.length !== 0
+		    && intersects.length > 1 && intersects[1].object !== undefined
 		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
 	    ) {
 	    	// for (var intersect in intersects) {

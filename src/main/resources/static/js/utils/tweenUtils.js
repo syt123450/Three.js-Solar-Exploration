@@ -25,16 +25,19 @@ var TweenUtils = (function () {
     }
 
     function createInertiaTween(planetMesh, speed, inertiaControls) {
-
+		
         var startSpeed = {speed: speed};
         var endSpeed = {speed: 0};
 
         var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
         inertiaTween.easing(TWEEN.Easing.Linear.None);
+        
         inertiaTween.onUpdate(function () {
-            planetMesh.rotation.y += this.speed;
+            planetMesh.rotation.y += startSpeed.speed;
+            
         }).onComplete(function () {
             inertiaControls.isInertia = false;
+            
         });
 
         return inertiaTween;
@@ -67,7 +70,6 @@ var TweenUtils = (function () {
         });
         rotateTween.onStop(function () {
             earthCounter--;
-            // console.log('stop----------', earthCounter);
         });
         rotateTween.repeat(Infinity);
 
@@ -162,8 +164,6 @@ var TweenUtils = (function () {
     function createPlanetMoveLeftTween(planetAggregation) {
     	var initX = planetAggregation.position.x;
         var startPos = {x: initX};
-	    console.log("before move left=====", planetAggregation.position);
-	    console.log("planet aggregation+++++++", planetAggregation);
         var endPos = {x: -planetAggregation.children[0].geometry.parameters.radius};
         var tween = new TWEEN.Tween(startPos)
             .to(endPos, 1000);
@@ -228,7 +228,6 @@ var TweenUtils = (function () {
             .to(endPos_1, animationTime_1);
 
         tween_1.onUpdate(function () {
-            // console.log('t1 cam', camera.position);
             camera.position.set(startPos_1.x, startPos_1.y, startPos_1.z);
             camera.lookAt(solarAggregation.position);
         });
@@ -242,7 +241,6 @@ var TweenUtils = (function () {
             .to(endPos_2, animationTime_2);
 
         tween_2.onUpdate(function () {
-            // console.log('t2 cam', camera.position);
             x = startPos_2.r * Math.sin(startPos_2.theta) * Math.sin(startPos_2.phi);
             z = startPos_2.r * Math.sin(startPos_2.theta) * Math.cos(startPos_2.phi);
             y = startPos_2.r * Math.cos(startPos_2.theta);
@@ -317,10 +315,7 @@ var TweenUtils = (function () {
         // .easing(TWEEN.Easing.Quadratic.InOut)
             .to(endPos, animationTime);
 
-        tween.onStart(function () {
-            console.log('createPlanetMoveCloserTween started');
-
-        }).onUpdate(function () {
+        tween.onUpdate(function () {
             planetAggregation.position.set(0, 0, startPos.z);
         });
         return tween;
@@ -333,7 +328,6 @@ var TweenUtils = (function () {
         var animationTime = 3000;
         var tween = new TWEEN.Tween(initFog)
             .to(finalDensity, animationTime)
-            // .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(function () {
                 scene.fog.near = initFog.density;
             });
@@ -368,12 +362,9 @@ var TweenUtils = (function () {
         var endPos = {z: 0};
         var animationTime = 3000;
         var tween = new TWEEN.Tween(startPos)
-        // .easing(TWEEN.Easing.Quadratic.InOut)
             .to(endPos, animationTime);
 
         tween.onStart(function () {
-            // console.log('createPlanetMoveCloserTween started');
-
         }).onUpdate(function () {
             earthAggregation.position.set(0, 0, startPos.z);
         });
@@ -382,7 +373,6 @@ var TweenUtils = (function () {
 
     /** Solar scene tween **/
     function getChangeSolarSceneTween(planetMesh, camera, planetName) {
-        // console.log('planetMesh ===', planetMesh);
         var distanceStart = {val: camera.position.distanceTo(planetMesh.position)};
 
         // https://threejs.org/docs/#api/cameras/PerspectiveCamera
@@ -393,8 +383,7 @@ var TweenUtils = (function () {
         var finalDistance = typeof planetMesh.ring === 'undefined' ?
             Math.max(6 * planetMesh.geometry.parameters.radius, camera.near + 1.05 * planetMesh.geometry.parameters.radius) :
             Math.max(12 * planetMesh.geometry.parameters.radius, camera.near + 1.05 * planetMesh.geometry.parameters.radius);
-
-        // console.log('final distance ===', finalDistance);
+	    
         var distanceEnd = {val: finalDistance};
 
         var animationDuration = 5000;
@@ -417,7 +406,6 @@ var TweenUtils = (function () {
             })
             .onStart(function () {
                 // TODO: save the initial position of the camera to a global variable
-                // console.log('change scene camera', camera);
                 setTransitionImage(TransitionConfig[planetName]);
                 camera.positionHistory = Object.assign({}, camera.position);
                 camera.directionHistory = Object.assign({}, camera.getWorldDirection());
@@ -436,7 +424,6 @@ var TweenUtils = (function () {
                 solarSystemScene.fog.near = initFog.density;
             })
             .onComplete(function () {
-                // console.log('1111111');
                 solarSystemScene.fog.near = 0;
             });
 
@@ -470,7 +457,6 @@ var TweenUtils = (function () {
             sound.setVolume(startVolume.volume);
         }).onStart(function () {
             sound.setVolume(startVolume.volume);
-            console.log("Start easing volume.");
         }).onComplete(function () {
             console.log(222);
             sound.pause();
