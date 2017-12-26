@@ -23,7 +23,6 @@ body footer {
     position: absolute;
     bottom: 0;
     background-color: #000;
-    /*display: block;*/
     box-sizing: border-box;
     padding: 0 30px;
     display: none;
@@ -73,12 +72,7 @@ body footer div.unchecked:hover {
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    /*cursor: pointer;*/
 }
-
-/*#backLogo:hover {*/
-    /*border: 1px solid #414141;*/
-/*}*/
 
 #infoBoard {
     position: fixed;
@@ -86,7 +80,6 @@ body footer div.unchecked:hover {
     width: 100%;
     height: 350px;
     background-color: red;
-    display: block;
     box-sizing: border-box;
     border: 1px solid #5e9abe;
     background-color: rgba(178, 178, 178, 0.4);
