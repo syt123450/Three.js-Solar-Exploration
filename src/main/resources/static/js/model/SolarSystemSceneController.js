@@ -158,7 +158,6 @@ SolarSystemSceneController = function (renderer) {
         EventManager.registerEvent('mousedown', onMouseDown);
     }
 
-    // mouse down event handler
     function onMouseDown() {
         SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
