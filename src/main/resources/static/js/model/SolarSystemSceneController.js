@@ -28,6 +28,12 @@ SolarSystemSceneController = function(renderer) {
         planetsList[planetName].controller = controller;
     }
 
+    function setPlanetScenes(planetControllers) {
+        for (var planetName in planetControllers) {
+            planetsList[planetName].controller = planetControllers[planetName];
+        }
+    }
+
     function animate() {
         
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
@@ -202,7 +208,6 @@ SolarSystemSceneController = function(renderer) {
     function onFadeOutSceneComplete() {
 
         deactivateScene();
-        console.log(clickedPlanetName);
         planetsList[clickedPlanetName].controller.playAudio();
         showTransition(SolarConfig[clickedPlanetName].name);
     }
@@ -229,8 +234,9 @@ SolarSystemSceneController = function(renderer) {
 
     //interface
 
+    this.setPlanetScenes = setPlanetScenes;
     this.setPlanetScene = setPlanetScene;
-    this.activateScene = activateScene;
+
     this.initStartTween = initStartTween;
     this.onTransitionComplete = onTransitionComplete;
 

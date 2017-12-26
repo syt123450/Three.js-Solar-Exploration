@@ -12,7 +12,10 @@ var PlanetConfig = {
         innerGlowColor: "#F8D6B3",
         outerGlowColor: "#AE8045",
         audio: "../music/Mercury.mp3",
-        infoBoard: "#mercuryBoard"
+        infoBoard: "#mercuryBoard",
+        closeInfoId: "#mercuryBoard img",
+        closeHoverImg: "../images/closeButton/mercury_hover.png",
+        closeNormalImg: "../images/closeButton/mercury.png"
     },
 
     venus: {
@@ -24,7 +27,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#FBCA64",
 	    outerGlowColor: "#C68424",
         audio: "../music/Venus.mp3",
-        infoBoard: "#venusBoard"
+        infoBoard: "#venusBoard",
+        closeInfoId: "#venusBoard img",
+        closeHoverImg: "../images/closeButton/venus_hover.png",
+        closeNormalImg: "../images/closeButton/venus.png"
     },
     
     mars: {
@@ -36,7 +42,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#F29339",
 	    outerGlowColor: "#C06536",
         audio: "../music/Mars.mp3",
-        infoBoard: "#marsBoard"
+        infoBoard: "#marsBoard",
+        closeInfoId: "#marsBoard img",
+        closeHoverImg: "../images/closeButton/mars_hover.png",
+        closeNormalImg: "../images/closeButton/mars.png"
     },
 
     jupiter: {
@@ -47,7 +56,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#F5D8B6",
 	    outerGlowColor: "#C2976D",
         audio: "../music/Jupiter.mp3",
-        infoBoard: "#jupiterBoard"
+        infoBoard: "#jupiterBoard",
+        closeInfoId: "#jupiterBoard img",
+        closeHoverImg: "../images/closeButton/jupiter_hover.png",
+        closeNormalImg: "../images/closeButton/jupiter.png"
     },
     
     saturn: {
@@ -61,7 +73,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#F8D6B3",
 	    outerGlowColor: "#A18778",
         audio: "../music/Saturn.mp3",
-        infoBoard: "#saturnBoard"
+        infoBoard: "#saturnBoard",
+        closeInfoId: "#saturnBoard img",
+        closeHoverImg: "../images/closeButton/saturn_hover.png",
+        closeNormalImg: "../images/closeButton/saturn.png"
     },
     
     uranus: {
@@ -75,7 +90,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#8EAFBD",
 	    outerGlowColor: "#7795A2",
         audio: "../music/Uranus.mp3",
-        infoBoard: "#uranusBoard"
+        infoBoard: "#uranusBoard",
+        closeInfoId: "#uranusBoard img",
+        closeHoverImg: "../images/closeButton/uranus_hover.png",
+        closeNormalImg: "../images/closeButton/uranus.png"
     },
     
     neptune: {
@@ -86,7 +104,10 @@ var PlanetConfig = {
         innerGlowColor: "#83C4FC",
 	    outerGlowColor: "#5C6FBE",
         audio: "../music/Neptune.mp3",
-        infoBoard: "#neptuneBoard"
+        infoBoard: "#neptuneBoard",
+        closeInfoId: "#neptuneBoard img",
+        closeHoverImg: "../images/closeButton/neptune_hover.png",
+        closeNormalImg: "../images/closeButton/neptune.png"
     },
 
     pluto: {
@@ -98,7 +119,10 @@ var PlanetConfig = {
 	    innerGlowColor: "#D0D9E0",
 	    outerGlowColor: "#93A0A7",
         audio: "../music/Pluto.mp3",
-        infoBoard: "#plutoBoard"
+        infoBoard: "#plutoBoard",
+        closeInfoId: "#plutoBoard img",
+        closeHoverImg: "../images/closeButton/pluto_hover.png",
+        closeNormalImg: "../images/closeButton/pluto.png"
     }
 	
 	// addHaloToTarget(planetAggregation, "#D0D9E0", "#93A0A7"); // PLUTO

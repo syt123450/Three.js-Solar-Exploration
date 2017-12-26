@@ -79,7 +79,7 @@ DAT.Globe = function (renderer, colorFn) {
     var k = ROTATIONSPEED;
     var f = false;
 
-    var surfaceImg;
+    var surfaceImg = "../images/world.jpg";
 
     function init() {
 
