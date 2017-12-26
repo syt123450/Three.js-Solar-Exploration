@@ -106,7 +106,6 @@ function getYearData(year) {
         data: JSON.stringify({"year": year}),
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             earthSceneController.clearCones();
             earthSceneController.addCones(data);
         }
