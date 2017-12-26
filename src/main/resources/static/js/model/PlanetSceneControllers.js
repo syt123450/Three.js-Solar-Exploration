@@ -7,8 +7,6 @@ PlanetSceneController = function (renderer, config) {
     // Renderer
 	var isPlanetAtLeftSide = false;
     var renderer = renderer;
-    // renderer.shadowMap.enabled = true;
-    // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 
     // Universe, stars and meteors
     var universeMesh = UniverseUtils.createDefaultUniverse();
@@ -35,7 +33,7 @@ PlanetSceneController = function (renderer, config) {
     // Camera and Lights
     var camera = UniverseUtils.createDefaultCamera();
     var lights = UniverseUtils.createPlanetLights(planetAggregation);
-    // Init. Scene
+
     var scene = init();
 
     var speed;
@@ -306,8 +304,7 @@ PlanetSceneController = function (renderer, config) {
 			TWEEN.remove(tweenManager.moveLeft);
 			tweenManager.moveLeft = null;
 		}
-		
-		
+
 	    planetAggregation.position.x = 0;
 		
 		// Make sure halo is also reset to (0, 0, 0)
@@ -323,13 +320,6 @@ PlanetSceneController = function (renderer, config) {
 	    
 	    isPlanetAtLeftSide = 0;
     }
-	
-	// // For testing
-	// document.addEventListener('keydown',function(event) {
-	// 	if (event.keyCode === 38) {
-	// 		resetPlanetPos();
-	// 	}
-	// },false);
 
     function showInfoBoard() {
 	    isPlanetAtLeftSide = true;
@@ -339,10 +329,6 @@ PlanetSceneController = function (renderer, config) {
     function hideInfoBoard() {
 	    isPlanetAtLeftSide = false;
 	    $(config.infoBoard).fadeOut(1000);
-    }
-
-    function getPlanetAggregation() {
-		return planetAggregation;
     }
 
     function playAudio() {

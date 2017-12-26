@@ -2,8 +2,6 @@
  * Created by ss on 2017/9/29.
  */
 
-var coneCount = 0;
-
 EarthSceneController = function (renderer) {
 
     var obliquity = 23.5;

@@ -80,11 +80,6 @@ SolarSystemSceneController = function (renderer) {
         return scene;
     }
 
-    function initStartTween() {
-        var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
-        tween.start();
-    }
-
     function initSystemPositions() {
 
         // Tilt Pluto orbit
@@ -231,10 +226,12 @@ SolarSystemSceneController = function (renderer) {
         solarFogInTween.start();
     }
 
-    function initFadeSceneIn() {
+    function initialFadeSceneIn() {
         activateScene();
         var solarFogInTween = TweenUtils.createSolarFogInTween(solarSystemScene);
         solarFogInTween.start();
+        var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
+        tween.start();
     }
 
     //interface
@@ -242,12 +239,11 @@ SolarSystemSceneController = function (renderer) {
     this.setPlanetScenes = setPlanetScenes;
     this.setPlanetScene = setPlanetScene;
 
-    this.initStartTween = initStartTween;
     this.onTransitionComplete = onTransitionComplete;
 
     this.name = name;
 
     //API for fade in and out the solar scene
     this.fadeSceneIn = fadeSceneIn;
-    this.initFadeSceneIn = initFadeSceneIn;
+    this.initialFadeSceneIn = initialFadeSceneIn;
 };

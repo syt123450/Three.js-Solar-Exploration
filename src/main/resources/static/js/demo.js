@@ -10,8 +10,7 @@ $(function () {
     renderer = SolarEPUtils.getDefaultRenderer();
 
     solarSystemSceneController = new SolarSystemSceneController(renderer);
-    solarSystemSceneController.initFadeSceneIn();
-    solarSystemSceneController.initStartTween();
+    solarSystemSceneController.initialFadeSceneIn();
 
     activatedScene = solarSystemSceneController;
 

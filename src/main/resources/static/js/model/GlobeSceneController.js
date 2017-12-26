@@ -114,7 +114,6 @@ DAT.Globe = function (renderer, colorFn) {
         uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
         uniforms['texture'].value = new new THREE.TextureLoader().load(surfaceImg);
-            // THREE.ImageUtils.loadTexture(surfaceImg);
 
         material = new THREE.ShaderMaterial({
 
@@ -144,10 +143,7 @@ DAT.Globe = function (renderer, colorFn) {
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.scale.set(1.1, 1.1, 1.1);
-	
-	    // var enlargeEarthTween = getEnlargeEarthTween(mesh);
-	    // enlargeEarthTween.start();
-	    //
+
         scene.add(mesh);
 
         geometry = new THREE.CubeGeometry(0.75, 0.75, 1);
@@ -279,7 +275,6 @@ DAT.Globe = function (renderer, colorFn) {
 
         }
 
-        // THREE.GeometryUtils.merge(subgeo, point);
         subgeo.merge(point.geometry, point.matrix);
     }
 
@@ -448,7 +443,6 @@ DAT.Globe = function (renderer, colorFn) {
     this.renderer = renderer;
     this.scene = scene;
     this.init = init;
-    // this.animate = animate;
     this.activateScene = activateScene;
     this.deactivateScene = function() {
         EventManager.removeEvents();
