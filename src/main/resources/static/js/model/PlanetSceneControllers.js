@@ -50,6 +50,7 @@ PlanetSceneController = function (renderer, config) {
     var name = config.planetName + "Controller";
 
     function hideInfo() {
+        console.log("hide info.");
         movePlanetRight();
         hideInfoBoard();
     }

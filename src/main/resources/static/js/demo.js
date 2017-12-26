@@ -31,15 +31,17 @@ $(function () {
 
             solarSystemSceneController.setPlanetScenes(PlanetControllers);
 
-            for (var planetName in PlanetControllers) {
-                $(PlanetConfig[planetName].closeInfoId).hover(function() {
-                    $(this).attr("src", PlanetConfig[planetName].closeHoverImg);
-                }, function() {
-                    $(this).attr("src", PlanetConfig[planetName].closeNormalImg);
-                }).click(function() {
-                    PlanetControllers[planetName].hideInfo();
-                });
-            }
+            // for (var planetName in PlanetControllers) {
+            //     console.log(planetName);
+            //     $(PlanetConfig[planetName].closeInfoId).hover(function() {
+            //         console.log(planetName);
+            //         $(this).attr("src", PlanetConfig[planetName].closeHoverImg);
+            //     }, function() {
+            //         $(this).attr("src", PlanetConfig[planetName].closeNormalImg);
+            //     }).click(function() {
+            //         PlanetControllers[planetName].hideInfo();
+            //     });
+            // }
         });
     });
 
@@ -101,69 +103,69 @@ $(function () {
         }
     });
 
-    // $("#mercuryBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/mercury_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/mercury.png");
-    // }).click(function() {
-    //     PlanetControllers.mercury.hideInfo();
-    // });
-    //
-    // $("#venusBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/venus_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/venus.png");
-    // }).click(function() {
-    //     PlanetControllers.venus.hideInfo();
-    // });
-    //
-    // $("#marsBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/mars_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/mars.png");
-    // }).click(function() {
-    //     PlanetControllers.mars.hideInfo();
-    // });
-    //
-    // $("#jupiterBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/jupiter_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/jupiter.png");
-    // }).click(function() {
-    //     PlanetControllers.jupiter.hideInfo();
-    // });
-    //
-    // $("#saturnBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/saturn_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/saturn.png");
-    // }).click(function() {
-    //     PlanetControllers.saturn.hideInfo();
-    // });
-    //
-    // $("#uranusBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/uranus_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/uranus.png");
-    // }).click(function() {
-    //     PlanetControllers.uranus.hideInfo();
-    // });
-    //
-    // $("#neptuneBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/neptune_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/neptune.png");
-    // }).click(function() {
-    //     PlanetControllers.neptune.hideInfo();
-    // });
-    //
-    // $("#plutoBoard img").hover(function() {
-    //     $(this).attr("src", "../images/closeButton/pluto_hover.png");
-    // }, function() {
-    //     $(this).attr("src", "../images/closeButton/pluto.png");
-    // }).click(function() {
-    //     PlanetControllers.pluto.hideInfo();
-    // });
+    $("#mercuryBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/mercury_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/mercury.png");
+    }).click(function() {
+        PlanetControllers.mercury.hideInfo();
+    });
+
+    $("#venusBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/venus_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/venus.png");
+    }).click(function() {
+        PlanetControllers.venus.hideInfo();
+    });
+
+    $("#marsBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/mars_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/mars.png");
+    }).click(function() {
+        PlanetControllers.mars.hideInfo();
+    });
+
+    $("#jupiterBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/jupiter_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/jupiter.png");
+    }).click(function() {
+        PlanetControllers.jupiter.hideInfo();
+    });
+
+    $("#saturnBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/saturn_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/saturn.png");
+    }).click(function() {
+        PlanetControllers.saturn.hideInfo();
+    });
+
+    $("#uranusBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/uranus_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/uranus.png");
+    }).click(function() {
+        PlanetControllers.uranus.hideInfo();
+    });
+
+    $("#neptuneBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/neptune_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/neptune.png");
+    }).click(function() {
+        PlanetControllers.neptune.hideInfo();
+    });
+
+    $("#plutoBoard img").hover(function() {
+        $(this).attr("src", "../images/closeButton/pluto_hover.png");
+    }, function() {
+        $(this).attr("src", "../images/closeButton/pluto.png");
+    }).click(function() {
+        PlanetControllers.pluto.hideInfo();
+    });
 });
 
 function getYearData(year) {
