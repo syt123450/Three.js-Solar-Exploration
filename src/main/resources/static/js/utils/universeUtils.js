@@ -31,7 +31,7 @@ var UniverseUtils = (function () {
         universeMesh.geometry = new THREE.SphereGeometry(90, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/galaxy_starfield.png'
+                '../images/galaxy/galaxy_starfield.png'
             ),
             side: THREE.BackSide
         });
@@ -58,15 +58,15 @@ var UniverseUtils = (function () {
         earthMesh.geometry = new THREE.SphereGeometry(0.5, 64, 64);
         earthMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/2_no_clouds_4k.jpg'
+                '../images/earth/2_no_clouds_4k.jpg'
             ),
             bumpScale: 0.05,
             bumpMap: new THREE.TextureLoader().load(
-                '../images/earthbump1k.jpg'
+                '../images/earth/earthbump1k.jpg'
             ),
             specular: new THREE.Color('grey'),
             specularMap: new THREE.TextureLoader().load(
-                '../images/water_4k.png'
+                '../images/earth/water_4k.png'
             )
         });
         earthMesh.name = 'defaultEarthMesh';
@@ -80,7 +80,7 @@ var UniverseUtils = (function () {
         atmosphereMesh.geometry = new THREE.SphereGeometry(0.51, 64, 64);
         atmosphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/fair_clouds_4k.png'
+                '../images/earth/fair_clouds_4k.png'
             ),
             transparent: true
         });
@@ -95,11 +95,11 @@ var UniverseUtils = (function () {
         moonMesh.geometry = new THREE.SphereGeometry(0.05, 64, 64);
         moonMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/moonmap2k.jpg'
+                '../images/earth/moonmap2k.jpg'
             ),
             bumpScale: 0.005,
             bumpMap: new THREE.TextureLoader().load(
-                '../images/elev_bump_4k.jpg'
+                '../images/earth/elev_bump_4k.jpg'
             )
         });
         moonMesh.name = 'moonMesh';
@@ -139,7 +139,7 @@ var UniverseUtils = (function () {
 
     function createOneCone(coneParameters) {
 
-        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        var texture = new THREE.TextureLoader().load('../images/earth/coneFadeTexture.jpg');
         texture.flipY = false;
 
         var coneSide = new THREE.MeshPhongMaterial({
@@ -179,7 +179,7 @@ var UniverseUtils = (function () {
         universeMesh.geometry = new THREE.SphereGeometry(3, 128, 128);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/background_2.jpg'
+                '../images/galaxy/solar_background.jpg'
             ),
             side: THREE.BackSide
         });
@@ -556,7 +556,7 @@ var UniverseUtils = (function () {
             color: 0xffffff,
             opacity: 0.9,
             transparent: true,
-            map: new THREE.TextureLoader().load('../images/glow.png')
+            map: new THREE.TextureLoader().load('../images/galaxy/glow.png')
         });
 
         star.scale.set(0.15, 0.15, 0.0001);
@@ -571,7 +571,7 @@ var UniverseUtils = (function () {
 
         meteor.geometry = new THREE.BoxGeometry(0.4, 0.4, 0.001);
         meteor.material = new THREE.MeshBasicMaterial({
-            map: new THREE.TextureLoader().load('../images/meteor.png'),
+            map: new THREE.TextureLoader().load('../images/galaxy/meteor.png'),
             opacity: 0.9,
             transparent: true
         });

@@ -14,7 +14,7 @@ var SolarConfig = {
             return {
                 name: 'sun',
                 rotateSpeed: 0.001,
-                map: '../images/fire2.jpg',
+                map: '../images/sun/surface.jpg',
                 radius: sunRadius
             }
         },

@@ -79,7 +79,7 @@ DAT.Globe = function (renderer, colorFn) {
     var k = ROTATIONSPEED;
     var f = false;
 
-    var surfaceImg = "../images/world.jpg";
+    var surfaceImg = "../images/earth/world.jpg";
 
     function init() {
 
@@ -101,7 +101,7 @@ DAT.Globe = function (renderer, colorFn) {
         universeMesh.geometry = new THREE.SphereGeometry(1000, 64, 64);
         universeMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(
-                '../images/galaxy_starfield.png'
+                '../images/galaxy/galaxy_starfield.png'
             ),
             side: THREE.BackSide
         });
