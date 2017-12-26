@@ -176,7 +176,7 @@ EarthSceneController = function (renderer) {
 
     function createOneCone(coneParameters) {
 
-        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        var texture = new THREE.TextureLoader().load('../images/coneFadeTexture.jpg');
         texture.flipY = false;
 
         var coneSide = new THREE.MeshPhongMaterial({

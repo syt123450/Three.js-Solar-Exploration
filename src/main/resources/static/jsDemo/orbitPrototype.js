@@ -66,7 +66,7 @@ OrbitDemoController = function (renderer) {
             new THREE.SphereGeometry(1, 32, 32),
             new THREE.MeshPhongMaterial({
                     map: new THREE.TextureLoader().load(
-                        '../images/fire2.jpg'
+                        '../images/sun/surface.jpg'
                         // '../images/earthmap1k.jpg'
                     )
                 }

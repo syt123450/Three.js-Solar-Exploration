@@ -69,7 +69,7 @@ PinController = function (renderer) {
     }
 
     function initCone() {
-        var texture = new THREE.TextureLoader().load('../images/fadeTest2.jpg');
+        var texture = new THREE.TextureLoader().load('../images/coneFadeTexture.jpg');
         texture.flipY = false; //Need to do this to flip texture upside down
         var coneSide = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
         var coneBottom = new THREE.MeshPhongMaterial( { color: 0Xff8533});

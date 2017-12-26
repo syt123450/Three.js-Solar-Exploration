@@ -349,6 +349,7 @@ var TweenUtils = (function () {
         var animationTime = 3000;
 
         var tween = new TWEEN.Tween(initFog)
+            .easing(TWEEN.Easing.Quintic.In)
             .to(finalDensity, animationTime)
             .onUpdate(function () {
                 scene.fog.near = initFog.density;
