@@ -5,7 +5,7 @@
 // PlanetSceneController
 PlanetSceneController = function (renderer, config) {
     // Renderer
-	var counter = 0;
+	var isPlanetAtLeftSide = false;
     var renderer = renderer;
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
@@ -160,8 +160,11 @@ PlanetSceneController = function (renderer, config) {
 
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
-
-        if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
+		console.log('down intersects===', intersects);
+	    if (intersects !== null
+		    && intersects.length > 1 && intersects[1].object !== undefined
+		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
+	    ) {
             isPlanetClicked = true;
         }
     }
@@ -172,7 +175,7 @@ PlanetSceneController = function (renderer, config) {
             isPlanetClicked = false;
             inertiaControls.isInertia = true;
             tweenManager.inertia = TweenUtils.createPlanetInertiaTween(mesh, speed, inertiaControls);
-            tweenManager.inertia.start();
+            // tweenManager.inertia.start();
         }
     }
 
@@ -244,23 +247,36 @@ PlanetSceneController = function (renderer, config) {
 	 * @param event
 	 */
 	function onDoubleClick(event) {
-
+		console.log('double clicked----');
 	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-	
+
 	    SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
 	    var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
-	
-	    if (intersects !== null && intersects.length !== 0 && intersects[0].object === mesh) {
-
-		    if (counter % 2 === 0) {
+	    if (intersects !== null
+		    && intersects.length !== 0
+		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
+	    ) {
+	    	// for (var intersect in intersects) {
+	    	// 	if (intersect.object !== undefined && intersect.object.name === 'inner glow mesh') {
+				//     if (!isPlanetAtLeftSide) {
+				// 	    movePlanetLeft();
+				// 	    showInfoBoard();
+				//     } else {
+				// 	    movePlanetRight();
+				// 	    hideInfoBoard();
+				//     }
+				//     break;
+			 //    }
+		    // }
+		
+		    if (!isPlanetAtLeftSide) {
 			    movePlanetLeft();
-                showInfoBoard();
+			    showInfoBoard();
 		    } else {
 			    movePlanetRight();
-                hideInfoBoard();
+			    hideInfoBoard();
 		    }
-		    counter++;
 	    }
     }
 	
@@ -268,12 +284,13 @@ PlanetSceneController = function (renderer, config) {
 	 * Move planet to left side with tween
 	 */
 	function movePlanetLeft() {
-	    if (tweenManager.moveRight)
+		
+	    if (tweenManager.moveRight) {
 		    tweenManager.moveRight.stop();
-	
-	    TWEEN.remove(tweenManager.moveRight);
-	    tweenManager.moveRight = null;
-	
+		    TWEEN.remove(tweenManager.moveRight);
+		    tweenManager.moveRight = null;
+	    }
+		
 	    tweenManager.moveLeft = TweenUtils.createPlanetMoveLeftTween(planetAggregation);
 	    tweenManager.moveLeft.start();
     }
@@ -282,12 +299,12 @@ PlanetSceneController = function (renderer, config) {
 	 * MOve planet to the right side with tween
 	 */
 	function movePlanetRight() {
-	    if (tweenManager.moveLeft)
+	    if (tweenManager.moveLeft) {
 		    tweenManager.moveLeft.stop();
-	
-	    TWEEN.remove(tweenManager.moveLeft);
-	    tweenManager.moveLeft = null;
-	
+		    TWEEN.remove(tweenManager.moveLeft);
+		    tweenManager.moveLeft = null;
+	    }
+		
 	    tweenManager.moveRight = TweenUtils.createPlanetMoveRightTween(planetAggregation);
 	    tweenManager.moveRight.start();
     }
@@ -324,7 +341,7 @@ PlanetSceneController = function (renderer, config) {
 			planetAggregation.children[3].position.x = 0;
 		}
 	    
-	    counter = 0;
+	    isPlanetAtLeftSide = 0;
     }
 	
 	// // For testing
@@ -335,10 +352,12 @@ PlanetSceneController = function (renderer, config) {
 	// },false);
 
     function showInfoBoard() {
+	    isPlanetAtLeftSide = true;
 	    $(config.infoBoard).fadeIn(1000);
     }
 
     function hideInfoBoard() {
+	    isPlanetAtLeftSide = false;
 	    $(config.infoBoard).fadeOut(1000);
     }
 
