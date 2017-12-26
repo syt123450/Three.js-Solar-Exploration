@@ -227,8 +227,7 @@ var UniverseUtils = (function () {
     }
 
     function addDoubleHalos(target, innerColor, outerColor) {
-        // console.log('target++++', target);
-        // innerGlowMesh settings
+
         var _innerGlowMesh;
         var INNER_GLOW_MESH_COLOR = innerColor;
         var INNER_GLOW_MESH_OPACITY = 0.2;
@@ -243,9 +242,6 @@ var UniverseUtils = (function () {
 
         _init();
 
-        /*************************
-         * @private
-         ************************/
         function _init() {
             if (innerColor !== '') {
                 _initInnerGlowMesh(INNER_GLOW_MESH_COLOR, INNER_GLOW_MESH_OPACITY, INNER_GLOW_MESH_RADIUS);
@@ -344,7 +340,6 @@ var UniverseUtils = (function () {
                 sound.setBuffer(audioBuffer);
                 var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(sound);
                 magnifyVolumeTween.start();
-                // sound.play();
             }
         );
 
@@ -358,16 +353,15 @@ var UniverseUtils = (function () {
         sphereMesh.material = new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load(SolarConfig['sun'].map)
         });
-        sphereMesh.castShadow = false;       //default is false
-        sphereMesh.receiveShadow = false;    //default is false
+        sphereMesh.castShadow = false;
+        sphereMesh.receiveShadow = false;
         return sphereMesh;
     }
 
     function createPlanetMesh(planetParameters) {
         if (planetParameters.bumpMap) {
             return createTerrestrialPlanet(planetParameters);
-        }
-        else {
+        } else {
             return createJovianPlanet(planetParameters);
         }
     }
@@ -380,8 +374,8 @@ var UniverseUtils = (function () {
             bumpScale: 0.05,
             bumpMap: new THREE.TextureLoader().load(planetParameters.bumpMap)
         });
-        sphereMesh.castShadow = true;       //default is false
-        sphereMesh.receiveShadow = true;    //default is false
+        sphereMesh.castShadow = true;
+        sphereMesh.receiveShadow = true;
 
         return sphereMesh;
     }
@@ -392,8 +386,8 @@ var UniverseUtils = (function () {
         sphereMesh.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load(planetParameters.map)
         });
-        sphereMesh.castShadow = true;       //default is false
-        sphereMesh.receiveShadow = true;    //default is false
+        sphereMesh.castShadow = true;
+        sphereMesh.receiveShadow = true;
 
         return sphereMesh;
     }
@@ -409,19 +403,15 @@ var UniverseUtils = (function () {
             transparent: true,
             opacity: 0.65
         });
-        ringMesh.castShadow = true;         //default is false
-        ringMesh.receiveShadow = true;      //default is false
-        ringMesh.rotateX(0.5 * Math.PI);  //rotate to fit actual angle
+        ringMesh.castShadow = true;
+        ringMesh.receiveShadow = true;
+        ringMesh.rotateX(0.5 * Math.PI);
 
         return ringMesh;
     }
 
     function createAsteroidBelt() {
         var points = [];
-        // var material = new THREE.PointCloudMaterial({
-        //     color: SolarConfig["asteroidBelt"].color,
-        //     size: SolarConfig["asteroidBelt"].size
-        // });
 
         var material = new THREE.PointsMaterial({
             color: SolarConfig["asteroidBelt"].color,
@@ -457,22 +447,22 @@ var UniverseUtils = (function () {
 
         // lights for lightening the sun
         var density = 1;
-        lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[2] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 1);
         lights[2].position.set(0, (SolarConfig.sunRadius * Math.sqrt(2)), 0);
         lights[2].target = solarAggregation;
-        lights[3] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 1);
+        lights[3] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 1);
         lights[3].position.set(0, -(SolarConfig.sunRadius * Math.sqrt(2)), 0);
         lights[3].target = solarAggregation;
-        lights[4] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[4] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 0);
         lights[4].position.set(0, 0, (SolarConfig.sunRadius * Math.sqrt(2)));
         lights[4].target = solarAggregation;
-        lights[5] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[5] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 0);
         lights[5].position.set(0, 0, -(SolarConfig.sunRadius * Math.sqrt(2)));
         lights[5].target = solarAggregation;
-        lights[6] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[6] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 0);
         lights[6].position.set((SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
         lights[6].target = solarAggregation;
-        lights[7] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI/2, 0);
+        lights[7] = new THREE.SpotLight(0xffffff, density, SolarConfig.sunRadius, Math.PI / 2, 0);
         lights[7].position.set(-(SolarConfig.sunRadius * Math.sqrt(2)), 0, 0);
         lights[7].target = solarAggregation;
 
@@ -489,17 +479,7 @@ var UniverseUtils = (function () {
         lights[1] = new THREE.DirectionalLight(0xf7f7f7, 0.6);
         lights[1].position.set(30, 12, 3);
         lights[1].target = planetAggregation;
-        lights[1].castShadow = true;            // default is false
-        //Set up shadow properties for the light
-        // lights[1].shadow.mapSize.width = 1024;  // default
-        // lights[1].shadow.mapSize.height = 1024; // default
-        // lights[1].shadow.camera.near = 0.5;    // default
-        // lights[1].shadow.camera.far = 500;     // default
-
-        // Legacy setting
-        // lights[1] = new THREE.SpotLight( 0xf7f7f7, 0.8, 95, Math.PI/4, 1, 1);
-        // lights[1].position.set(30, 30, -6);
-        // lights[1].lookAt(planetAggregation.position);
+        lights[1].castShadow = true;
 
         return lights;
     }
@@ -509,13 +489,9 @@ var UniverseUtils = (function () {
 
         // Lights Combination
         lights[0] = new THREE.HemisphereLight(0xffffff, 0x000000, 1.3);
-
         lights[1] = new THREE.DirectionalLight(0xf9f9f9, 0.45);
-        // lights[1] = new THREE.SpotLight( 0xf7f7f7 );
-        // lights[1] = new THREE.PointLight(0xf7f7f7);
         lights[1].position.set(-25, 12, -2);
-        // lights[1].target = planetAggregation;
-        lights[1].castShadow = true;            // default is false
+        lights[1].castShadow = true;
 
         return lights;
     }
@@ -528,7 +504,7 @@ var UniverseUtils = (function () {
             new THREE.LineBasicMaterial({color: 0x6d4587, linewidth: 0.2})
         );
         orbit.rotateX(0.5 * Math.PI);
-        // orbit.rotateY(Math.PI * 17 /180);
+
         return orbit;
     }
 

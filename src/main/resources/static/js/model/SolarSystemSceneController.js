@@ -2,7 +2,7 @@
  * Created by ss on 2017/10/26.
  */
 
-SolarSystemSceneController = function(renderer) {
+SolarSystemSceneController = function (renderer) {
 
     var camera = UniverseUtils.createDefaultCamera();
 
@@ -35,15 +35,15 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function animate() {
-        
+
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
         TWEEN.update();
         rotationAndRevolution();
-    
+
         solarSystemRenderer.render(solarSystemScene, camera);
     }
 
-    function activateScene(){
+    function activateScene() {
 
         EventManager.removeEvents();
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
@@ -59,7 +59,7 @@ SolarSystemSceneController = function(renderer) {
     function init() {
         var scene = new THREE.Scene();
 
-        lights.forEach(function(light) {
+        lights.forEach(function (light) {
             scene.add(light);
         });
 
@@ -71,7 +71,7 @@ SolarSystemSceneController = function(renderer) {
         initSystemPositions();
         scene.add(solarAggregation);
 
-        asteroidBeltPoints.forEach(function(points) {
+        asteroidBeltPoints.forEach(function (points) {
             scene.add(points);
         });
 
@@ -81,10 +81,10 @@ SolarSystemSceneController = function(renderer) {
     }
 
     function initStartTween() {
-	    var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
-	    tween.start();
+        var tween = TweenUtils.createEnterSolarSceneTween(camera, solarAggregation);
+        tween.start();
     }
-    
+
     function initSystemPositions() {
 
         // Tilt Pluto orbit
@@ -114,12 +114,12 @@ SolarSystemSceneController = function(renderer) {
             planetsList[planet].mesh.position.x = Math.cos(radians) * SolarConfig[planet].orbitRadius;
             planetsList[planet].mesh.position.z = Math.sin(radians) * SolarConfig[planet].orbitRadius;
 
-            if (SolarConfig[planet].name == 'pluto'){
-                planetsList[planet].mesh.position.x = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.cos(Math.PI * 17/180);
-                planetsList[planet].mesh.position.y = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.sin(Math.PI * 17/180);
+            if (SolarConfig[planet].name == 'pluto') {
+                planetsList[planet].mesh.position.x = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.cos(Math.PI * 17 / 180);
+                planetsList[planet].mesh.position.y = (Math.sin(radians) * SolarConfig[planet].orbitRadius) * Math.sin(Math.PI * 17 / 180);
                 planetsList[planet].mesh.position.z = -Math.sqrt(Math.pow(SolarConfig[planet].orbitRadius, 2) - Math.pow(planetsList[planet].mesh.position.x, 2) - Math.pow(planetsList[planet].mesh.position.y, 2));
 
-                if (SolarConfig[planet].orbitAngle % 360 <= -90 && SolarConfig[planet].orbitAngle % 360 >= -270){
+                if (SolarConfig[planet].orbitAngle % 360 <= -90 && SolarConfig[planet].orbitAngle % 360 >= -270) {
                     planetsList[planet].mesh.position.z = -planetsList[planet].mesh.position.z;
                 }
             }
@@ -129,8 +129,8 @@ SolarSystemSceneController = function(renderer) {
 
         // Asteroid Belt revolutions
         var k;
-        for (k=0; k <asteroidBeltPoints.length; k++){
-            asteroidBeltPoints[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k+1));
+        for (k = 0; k < asteroidBeltPoints.length; k++) {
+            asteroidBeltPoints[k].rotateY(SolarConfig["asteroidBelt"].orbitSpeed * (k + 1));
         }
     }
 
@@ -161,18 +161,18 @@ SolarSystemSceneController = function(renderer) {
     // mouse down event handler
     function onMouseDown() {
         SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        SolarEPUtils.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+        SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         checkAndChangeScene();
     }
 
     function checkAndChangeScene() {
-        
+
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
 
         var intersects = SolarEPUtils.raycaster.intersectObjects(solarAggregation.children, true);
 
-        for (var i =0; i < intersects.length; i++) {
+        for (var i = 0; i < intersects.length; i++) {
             if (intersects !== null && intersects.length > 0 && intersects[i].object.type === "Mesh") {
 
                 for (var planet in planetsList) {
@@ -183,7 +183,7 @@ SolarSystemSceneController = function(renderer) {
 
                         fadeSceneOut();
 
-	                    break; // break is very important because of closure!!!
+                        break; // break is very important because of closure!!!
                     }
                 }
             }

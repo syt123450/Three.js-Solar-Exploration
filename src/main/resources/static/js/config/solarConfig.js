@@ -178,7 +178,7 @@ var SolarConfig = {
         }
     },
 
-    init: function() {
+    init: function () {
         this.sun = this.ConfigHelper.sun(this.sunRadius);
         this.mercury = this.ConfigHelper.mercury(this.sunRadius, this.revolutionSpeed, this.rotationSpeed);
         this.venus = this.ConfigHelper.venus(this.sunRadius, this.revolutionSpeed, this.rotationSpeed);
