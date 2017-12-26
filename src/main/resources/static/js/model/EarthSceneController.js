@@ -119,7 +119,6 @@ EarthSceneController = function (renderer) {
         SolarEPUtils.animationFrame = requestAnimationFrame(animate);
 
         TWEEN.update();
-
         earthRenderer.render(earthScene, camera);
     }
 
@@ -161,7 +160,6 @@ EarthSceneController = function (renderer) {
     }
 
     function addOneCone(coneParameter) {
-        console.log("add one cone");
         var coneObject = UniverseUtils.createOneCone(coneParameter);
         coneObject.lookAt(earthMesh.position);
         coneObject.rotateX(Math.PI / 2);
@@ -183,11 +181,9 @@ EarthSceneController = function (renderer) {
 
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(earthScene.children, true);
-
         coneList.forEach(function (cone) {
 
             if (intersects[0].object === cone) {
-                console.log("find a clicked cone.");
                 processBeforeMove(cone);
             }
         });
@@ -195,6 +191,7 @@ EarthSceneController = function (renderer) {
         if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
             isClickEarth = true;
         }
+
     }
 
     function onMouseUp() {
@@ -230,7 +227,6 @@ EarthSceneController = function (renderer) {
                 if (intersects !== null && intersects.length !== 0 && intersects[0].object === atmosphereMesh) {
                     if (!isStoppedRotation) {
                         isStoppedRotation = true;
-                        console.log('++++++++');
                         tweenManager.singleMap.meshRotation.stop();
                         tweenManager.singleMap.atmosphereRotation.stop();
                         tweenManager.singleMap.moonRotation.stop();
@@ -276,8 +272,7 @@ EarthSceneController = function (renderer) {
     }
 
     function addTextToBoard(coneParameters) {
-
-        console.log(coneParameters);
+	    
         $("#infoTitle").text(coneParameters.areaName);
         $("#flag img").attr("src", coneParameters.flagPath);
         $("#latitude").text("Latitude: " + coneParameters.latitude);
@@ -297,7 +292,6 @@ EarthSceneController = function (renderer) {
     }
 
     function moveEarth(latitude, longitude) {
-        console.log(latitude + "," + longitude);
         moveEarthAggregation(longitude);
     }
 
@@ -331,27 +325,40 @@ EarthSceneController = function (renderer) {
 
         tweenManager.singleMap.conesAnimation.stop();
         TWEEN.remove(tweenManager.singleMap.conesAnimation);
+	    tweenManager.singleMap.conesAnimation = null;
 
         tweenManager.singleMap.meshRotation.stop();
         tweenManager.singleMap.moonRotation.stop();
-
+	    
         coneList.forEach(function (coneMesh) {
             coneMesh.setConeInitPos();
             coneMesh.scale.set(1, 1, 1);
         });
         clickedConeTweenSize.size = 1;
 
-        tweenManager.singleMap.clickedConeAnimation = TweenUtils.createClickedConeTween(clickedCone);
-        tweenManager.singleMap.clickedConeAnimation.start();
+	    var clickedConeGrowUpTween = TweenUtils.clickedConeGrowUpTween(clickedCone);
+	    var clickedConeGrowDownTween = TweenUtils.clickedConeGrowDownTween(clickedCone);
+	    clickedConeGrowUpTween.chain(clickedConeGrowDownTween);
+	    clickedConeGrowDownTween.chain(clickedConeGrowUpTween);
+	
+	    tweenManager.singleMap.clickedConeGrowUpTween = clickedConeGrowUpTween;
+	    tweenManager.singleMap.clickedConeGrowDownTween = clickedConeGrowDownTween;
+	
+	    tweenManager.singleMap.clickedConeGrowUpTween.start();
 
         addTextToBoard(cone.parameters);
         showInfo(cone.parameters.latitude, cone.parameters.longitude);
     }
 
     function processAfterResume() {
-
-        tweenManager.singleMap.clickedConeAnimation.stop();
-        TWEEN.remove(tweenManager.singleMap.clickedConeAnimation);
+	
+	    tweenManager.singleMap.clickedConeGrowUpTween.stop();
+	    tweenManager.singleMap.clickedConeGrowDownTween.stop();
+        TWEEN.remove(tweenManager.singleMap.clickedConeGrowUpTween);
+	    TWEEN.remove(tweenManager.singleMap.clickedConeGrowDownTween);
+	
+	    tweenManager.singleMap.clickedConeGrowUpTween = null;
+	    tweenManager.singleMap.clickedConeGrowDownTween = null;
 
         tweenManager.singleMap.meshRotation.start();
         tweenManager.singleMap.moonRotation.start();

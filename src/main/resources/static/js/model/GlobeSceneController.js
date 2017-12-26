@@ -410,31 +410,7 @@ DAT.Globe = function (renderer, colorFn) {
         renderer.render(scene, camera);
 
     }
-	
-	// /** Tween **/
-	// function getEnlargeEarthTween(mesh) {
-	// 	var distance = 0.5;
-	// 	var initPosZ = mesh.position.z;
-	// 	var finalPosZ = mesh.position.z + distance;
-	// 	var posStart = {pos: initPosZ};
-	// 	var posEnd = {pos: finalPosZ};
-	// 	var clickConeAnimateTime = 3000;
-	//
-	// 	var tween = new TWEEN.Tween(posStart);
-	// 	coneCount++;
-	// 	tween.name = 'move google earth closer ' + coneCount;
-	//
-	// 	tween.to(posEnd, clickConeAnimateTime);
-	// 	tween.onStart(function() {
-	// 	    console.log('google earth tween started');
-     //    });
-	// 	// tween.onUpdate(function () {
-	// 	// 	mesh.position.z = posStart.pos;
-	// 	// });
-	// 	return tween;
-	// }
-	// /** Tween end**/
-	//
+    
 	this.__defineGetter__('time', function () {
         return this._time || 0;
     });

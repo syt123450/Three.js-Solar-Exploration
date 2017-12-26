@@ -50,7 +50,6 @@ PlanetSceneController = function (renderer, config) {
     var name = config.planetName + "Controller";
 
     function hideInfo() {
-        console.log("hide info.");
         movePlanetRight();
         hideInfoBoard();
     }
@@ -72,7 +71,6 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function activateScene() {
-        console.log('scene activated');
         window.cancelAnimationFrame(SolarEPUtils.animationFrame);
         addEvent();
         animate();
@@ -80,12 +78,8 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function deactivateScene() {
-
-        console.log("deactivate planet scene");
-
         resetPlanetPos();
         hideInfoBoard();
-        // audio.pause();
         deactivateTween();
         EventManager.removeEvents();
     }
@@ -161,7 +155,6 @@ PlanetSceneController = function (renderer, config) {
 
         SolarEPUtils.raycaster.setFromCamera(SolarEPUtils.mouse, camera);
         var intersects = SolarEPUtils.raycaster.intersectObjects(scene.children, true);
-		console.log('down intersects===', intersects);
 	    if (intersects !== null
 		    && intersects.length > 1 && intersects[1].object !== undefined
 		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
@@ -248,7 +241,6 @@ PlanetSceneController = function (renderer, config) {
 	 * @param event
 	 */
 	function onDoubleClick(event) {
-		console.log('double clicked----');
 	    SolarEPUtils.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 	    SolarEPUtils.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -258,19 +250,6 @@ PlanetSceneController = function (renderer, config) {
 		    && intersects.length > 1 && intersects[1].object !== undefined
 		    && ( intersects[1].object.name === 'inner glow mesh' || intersects[1].object.name === 'outer glow mesh')
 	    ) {
-	    	// for (var intersect in intersects) {
-	    	// 	if (intersect.object !== undefined && intersect.object.name === 'inner glow mesh') {
-				//     if (!isPlanetAtLeftSide) {
-				// 	    movePlanetLeft();
-				// 	    showInfoBoard();
-				//     } else {
-				// 	    movePlanetRight();
-				// 	    hideInfoBoard();
-				//     }
-				//     break;
-			 //    }
-		    // }
-		
 		    if (!isPlanetAtLeftSide) {
 			    movePlanetLeft();
 			    showInfoBoard();
@@ -367,9 +346,6 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function playAudio() {
-
-	    console.log("start planet audio.");
-
         magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(audio);
         magnifyVolumeTween.start();
     }
@@ -383,7 +359,6 @@ PlanetSceneController = function (renderer, config) {
     }
 
     function fadeSceneOut() {
-	    console.log("In fade out.");
         var fogOutTween = TweenUtils.createPlanetFogOutTween(scene);
         easeTween = TweenUtils.createEaseVolumeTween(audio);
         fogOutTween.start();

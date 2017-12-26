@@ -4,8 +4,8 @@
 var earthCounter = 0;
 
 var TweenUtils = (function () {
-	var conesLastTweenSize = {size: 1};
 	var clickedConeTweenSize = {size: 1};
+	var conesLastTweenSize = {size: 1};
 	var clickConeAnimateTime = 3000;
 	var obliquity = 23.5;
 		
@@ -47,12 +47,13 @@ var TweenUtils = (function () {
 
         var startSpeed = {speed: speed};
         var endSpeed = {speed: 0};
-
         var inertiaTween = new TWEEN.Tween(startSpeed).to(endSpeed, 500);
         inertiaTween.easing(TWEEN.Easing.Linear.None);
+        
         inertiaTween.onUpdate(function () {
-            earthMesh.rotation.y += this.speed;
-            atmosphereMesh.rotation.y += this.speed;
+            earthMesh.rotation.y += startSpeed.speed;
+            atmosphereMesh.rotation.y += startSpeed.speed;
+
         }).onComplete(function () {
             inertiaControls.isInertia = false;
         });
@@ -247,58 +248,10 @@ var TweenUtils = (function () {
             camera.position.set(x, y, z);
             camera.lookAt(solarAggregation.position);
         });
-
-        // // seg.3
-        // var animationTime_3 = 5000;
-        // var startPos_3 = { x: -0.9, y: -0.15, z: 0.0 };
-        // var endPos_3 = { x: 0.0, y: 0.0, z: -0.9 };
-        // var tween_3 = new TWEEN.Tween(startPos_3)
-        // 	.to(endPos_3, animationTime_3);
-        //
-        // tween_3.onUpdate(function () {
-        // 	console.log('t3 cam', camera.position);
-        // 	camera.position.set(startPos_3.x, startPos_3.y, startPos_3.z);
-        // 	camera.lookAt(solarAggregation.position);
-        // });
-        //
-        // // seg.4
-        // var animationTime_4 = 5000;
-        // var startPos_4 = { x: 0.0, y: 0.0, z: -0.9 };
-        // var endPos_4 = { x: 0.9, y: 0.15, z: 0.0 };
-        // var tween_4 = new TWEEN.Tween(startPos_4)
-        // 	.to(endPos_4, animationTime_4);
-        //
-        // tween_4.onUpdate(function () {
-        // 	console.log('t4 cam', camera.position);
-        // 	camera.position.set(startPos_4.x, startPos_4.y, startPos_4.z);
-        // 	camera.lookAt(solarAggregation.position);
-        // });
-        //
-        // // seg.5
-        // var animationTime_5 = 5000;
-        // var startPos_5 = { x: 0.9, y: 0.15, z: 0.0 };
-        // var endPos_5 = { x: 0.0, y: 0.3, z: 0.9 };
-        // var tween_5 = new TWEEN.Tween(startPos_5)
-        // 	.to(endPos_5, animationTime_5);
-        //
-        // tween_5.onUpdate(function () {
-        // 	console.log('t5 cam', camera.position);
-        // 	camera.position.set(startPos_5.x, startPos_5.y, startPos_5.z);
-        // 	camera.lookAt(solarAggregation.position);
-        // });
-        //
+	    
         tween_1.onComplete(function () {
             tween_2.start();
         });
-        // tween_2.onComplete(function () {
-        // 	tween_3.start();
-        // });
-        // tween_3.onComplete(function () {
-        // 	tween_4.start();
-        // });
-        // tween_4.onComplete(function () {
-        // 	tween_5.start();
-        // });
 
         return tween_1;
     }
@@ -312,7 +265,6 @@ var TweenUtils = (function () {
         var endPos = {z: 0};
         var animationTime = 3000;
         var tween = new TWEEN.Tween(startPos)
-        // .easing(TWEEN.Easing.Quadratic.InOut)
             .to(endPos, animationTime);
 
         tween.onUpdate(function () {
@@ -396,7 +348,7 @@ var TweenUtils = (function () {
                 var cameraDirection = new THREE.Vector3();
                 camera.lookAt(planetMesh.position);
                 camera.getWorldDirection(cameraDirection);
-                // audio.setVolume();
+
                 // Set camera position
                 camera.position.set(
                     planetMesh.position.x - cameraDirection.x * distance,
@@ -458,7 +410,6 @@ var TweenUtils = (function () {
         }).onStart(function () {
             sound.setVolume(startVolume.volume);
         }).onComplete(function () {
-            console.log(222);
             sound.pause();
         });
 
@@ -466,24 +417,17 @@ var TweenUtils = (function () {
     }
 
     function createMagnifyVolumeTween(sound) {
-
-        console.log("Create magnify tween.");
-
+	    
         var startVolume = {volume: 0};
-        var endVolume = {volume: 0.5};
 
         var magnifyTween = new TWEEN.Tween(startVolume).to({volume: 0.5}, 5000);
         magnifyTween.easing(TWEEN.Easing.Linear.None);
+        
         magnifyTween.onUpdate(function () {
             sound.setVolume(startVolume.volume);
         }).onStart(function () {
-            console.log("play audio");
             sound.setVolume(startVolume.volume);
             sound.play();
-        }).onComplete(function () {
-            //for test
-            console.log(7777);
-            // TWEEN.remove(this);
         });
 
         return magnifyTween;
@@ -503,12 +447,10 @@ var TweenUtils = (function () {
 				.onUpdate(function () {
 					coneList.forEach(function (coneMesh) {
 						coneMesh.scale.set(initPos.size, initPos.size, initPos.size);
-						// console.log((conesTweenSize.size - conesLastTweenSize.size) >= 0);
 						coneMesh.translateY(((initPos.size - conesLastTweenSize.size) >= 0 ? -1 : 1) * coneMesh.initSize / 30);
 						coneMesh.rotateY(0.05);
 					});
 					conesLastTweenSize.size = initPos.size;
-					// console.log(TWEEN.getAll());
 				})
 				.onStart(function () {
 					coneList.forEach(function (coneMesh) {
@@ -516,18 +458,12 @@ var TweenUtils = (function () {
 						coneMesh.scale.set(1, 1, 1);
 					});
 					conesLastTweenSize.size = 1;
-					// console.log(tweenManager);
-					
-					// console.log(initPos);
-					// console.log(endPos);
-					// console.log("start " + name);
 				});
-			
+	        tween.name = 'All cone down tween';
 			return tween;
 		}
 	
 		function clickedConeGrowUpTween(clickedCone) {
-			
 			var initPos = clickedConeTweenSize;
 			var endPos = {size: 1.5};
 			
@@ -535,15 +471,13 @@ var TweenUtils = (function () {
 				.to(endPos, 1000);
 			
 			tween.onUpdate(function () {
-				clickedCone.scale.set(this.size, this.size, this.size);
+				clickedCone.scale.set(initPos.size, initPos.size, initPos.size);
 				clickedCone.translateY(-clickedCone.initSize / 30);
 				clickedCone.rotateY(0.05);
 			}).onStart(function () {
 				clickedCone.setConeInitPos();
-				// clickedCone.translateY(0.01);
-				// conesLastTweenSize.size = 1;
 			});
-			
+			tween.name = 'clicked cone grow tween';
 			return tween;
 		}
 		
@@ -556,44 +490,21 @@ var TweenUtils = (function () {
 				.to(endPos, 1000);
 			
 			tween.onUpdate(function () {
-				clickedCone.scale.set(this.size, this.size, this.size);
+				clickedCone.scale.set(initPos.size, initPos.size, initPos.size);
 				clickedCone.translateY(clickedCone.initSize / 30);
 				clickedCone.rotateY(0.05);
 			});
-			
+			tween.name = 'clicked cone down tween';
 			return tween;
 		}
 	
-		function createClickedConeTween(clickedCone) {
-			
-			// do not know why can not combine together, if combine together, the onComplete function will be called twice
-			
-			// var initPos = {size: 1};
-			// var endPos = {size: 1.5};
-			//
-			// var tween = new TWEEN.Tween(initPos)
-			//     .to(endPos, 1000);
-			//
-			// tween.repeat(Infinity)
-			//     .yoyo(true)
-			//     .onUpdate(function () {
-			//         clickedCone.scale.set(this.size, this.size, this.size);
-			//         clickedCone.translateY(((initPos.size - clickedConeLastTweenSize.size) >= 0 ? -1 : 1) * clickedCone.initSize / 30);
-			//         clickedConeLastTweenSize.size = initPos.size;
-			//         clickedCone.rotateY(0.05);
-			//     })
-			// .onStart(function () {
-			//     clickedCone.setConeInitPos();
-			//     // clickedCone.translateY(0.01);
-			//     conesLastTweenSize.size = 1;
-			// });
-			
-			var tween = clickedConeGrowUpTween(clickedCone);
-			var backTween = clickedConeGrowDownTween(clickedCone);
-			tween.chain(backTween);
-			backTween.chain(tween);
-			return tween;
-		}
+		// function createClickedConeTween(clickedCone) {
+		// 	var tween = clickedConeGrowUpTween(clickedCone);
+		// 	var backTween = clickedConeGrowDownTween(clickedCone);
+		// 	tween.chain(backTween);
+		// 	backTween.chain(tween);
+		// 	return tween;
+		// }
 	
 		// Rotate earthAggregation around its Z-axis CCW
 		function adjustEarthTween(earthMesh) {
@@ -606,7 +517,6 @@ var TweenUtils = (function () {
 			var tween = new TWEEN.Tween(obliquityStart);
 			tween.to(obliquityEnd, clickConeAnimateTime);
 			tween.onUpdate(function () {
-				// console.log('adjust earth******');
 				earthMesh.parent.rotation.z = obliquityStart.obliquity;
 			});
 			
@@ -628,7 +538,6 @@ var TweenUtils = (function () {
 			var tween = new TWEEN.Tween(posStart);
 			tween.to(posEnd, clickConeAnimateTime);
 			tween.onUpdate(function () {
-				// console.log('adjust cone++++++');
 				earthMesh.rotation.y = posStart.pos;
 				atmosphereMesh.rotation.y = posStart.pos;
 			});
@@ -649,7 +558,6 @@ var TweenUtils = (function () {
 			tween.to(posEnd, clickConeAnimateTime);
 			tween.onUpdate(function () {
 				earthMesh.parent.position.x = posStart.pos;
-				// console.log('move left=====');
 				earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 				earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
 			});
@@ -676,14 +584,12 @@ var TweenUtils = (function () {
 		function resumeConeTween(earthMesh, atmosphereMesh) {
 			var startY = earthMesh.rotation.y;
 			var posStart = {y: startY};
-			// var endY = yHistory + (- controlParameter / 180 * Math.PI);
 			var endY = yHistory;
 			var posEnd = {y: endY};
 			
 			var tween = new TWEEN.Tween(posStart);
 			tween.to(posEnd, clickConeAnimateTime);
 			tween.onUpdate(function () {
-				// console.log('resuming cone+++++');
 				earthMesh.rotation.y = posStart.y;
 				atmosphereMesh.rotation.y = posStart.y;
 			});
@@ -700,7 +606,6 @@ var TweenUtils = (function () {
 			var tween = new TWEEN.Tween(obliquityStart)
 				.to(obliquityEnd, clickConeAnimateTime);
 			tween.onUpdate(function () {
-				// console.log('resuming earth******');
 				earthMesh.parent.rotation.z = obliquityStart.obliquity;
 			});
 			
@@ -719,17 +624,11 @@ var TweenUtils = (function () {
 			tween.to(posEnd, clickConeAnimateTime);
 			
 			tween.onUpdate(function () {
-				// console.log('translate back======');
 				earthMesh.parent.position.x = posStart.pos;
 				earthMesh.parent.children[2].position.x = posStart.pos * 0.3;
 				earthMesh.parent.children[3].position.x = posStart.pos * 0.3;
 			});
-			// tween.onComplete(function() {
-			//    posStart.pos = initPosX;
-			//
-			// });
-			//
-			
+
 			return tween;
 		}
 		
@@ -747,23 +646,6 @@ var TweenUtils = (function () {
 			});
 			return tween;
 		}
-		
-		// function sceneFadeInTween() {
-		// 	activateScene();
-		// 	var moveCloserTween = TweenUtils.createEarthMoveCloserTween(earthAggregation);
-		// 	var fogInTween = TweenUtils.createPlanetFogInTween(earthScene);
-		// 	moveCloserTween.start();
-		// 	fogInTween.start();
-		// }
-		//
-		// function sceneFadeOutTween() {
-		// 	var fogOutTween = TweenUtils.createPlanetFogOutTween(earthScene);
-		// 	var easeVolumeTween = TweenUtils.createEaseVolumeTween(audio);
-		// 	fogOutTween.start();
-		// 	easeVolumeTween.start();
-		// }
-	
-		/** EarthSceneController End**/
 		
 
     /** Solar scene tween **/
@@ -802,7 +684,7 @@ var TweenUtils = (function () {
     this.createConeGrowTween = createConeGrowTween;
     this.clickedConeGrowUpTween = clickedConeGrowUpTween;
     this.clickedConeGrowDownTween = clickedConeGrowDownTween;
-    this.createClickedConeTween = createClickedConeTween;
+    // this.createClickedConeTween = createClickedConeTween;
     this.adjustEarthTween = adjustEarthTween;
     this.adjustConeTween = adjustConeTween;
     this.translateTween = translateTween;
@@ -811,8 +693,6 @@ var TweenUtils = (function () {
     this.resumeEarthTween =resumeEarthTween;
     this.translateBackTween = translateBackTween;
     this.moveEarthFurtherTween = moveEarthFurtherTween;
-    // this.sceneFadeInTween = sceneFadeInTween;
-    // this.sceneFadeOutTween = sceneFadeOutTween;
     /** EarthSceneController End **/
     
     return this;
