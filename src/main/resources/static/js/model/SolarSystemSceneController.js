@@ -232,6 +232,12 @@ SolarSystemSceneController = function(renderer) {
         solarFogInTween.start();
     }
 
+    function initFadeSceneIn() {
+        activateScene();
+        var solarFogInTween = TweenUtils.createSolarFogInTween(solarSystemScene);
+        solarFogInTween.start();
+    }
+
     //interface
 
     this.setPlanetScenes = setPlanetScenes;
@@ -244,4 +250,5 @@ SolarSystemSceneController = function(renderer) {
 
     //API for fade in and out the solar scene
     this.fadeSceneIn = fadeSceneIn;
+    this.initFadeSceneIn = initFadeSceneIn;
 };

@@ -342,7 +342,9 @@ var UniverseUtils = (function () {
             audioSource,
             function (audioBuffer) {
                 sound.setBuffer(audioBuffer);
-                sound.play();
+                var magnifyVolumeTween = TweenUtils.createMagnifyVolumeTween(sound);
+                magnifyVolumeTween.start();
+                // sound.play();
             }
         );
 
