@@ -275,10 +275,10 @@ EarthSceneController = function (renderer) {
         $("#flag img").attr("src", coneParameters.flagPath);
         $("#latitude").text("Latitude: " + coneParameters.latitude);
         $("#longitude").text("Longitude: " + coneParameters.longitude);
-        $("#total").text("Total Amount: " + coneParameters.amount);
-        $("#coal").text("Coal Amount: " + coneParameters.coalAmount);
-        $("#oil").text("Oil Amount: " + coneParameters.oilAmount);
-        $("#gas").text("Gas Amount: " + coneParameters.gasAmount);
+        $("#total").text("Total Amount: " + coneParameters.amount + " BTU");
+        $("#coal").text("Coal Amount: " + coneParameters.coalAmount + " BTU");
+        $("#oil").text("Oil Amount: " + coneParameters.oilAmount + " BTU");
+        $("#gas").text("Gas Amount: " + coneParameters.gasAmount + " BTU");
     }
 
     function showInfo(latitude, longitude) {
