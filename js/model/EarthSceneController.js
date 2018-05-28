@@ -6,7 +6,7 @@ EarthSceneController = function (renderer) {
 
     var obliquity = 23.5;
 
-    var audioSource = "../music/Earth.mp3";
+    var audioSource = "music/Earth.mp3";
 
     var conesLastTweenSize = {size: 1};
     var clickedConeTweenSize = {size: 1};
@@ -275,10 +275,10 @@ EarthSceneController = function (renderer) {
         $("#flag img").attr("src", coneParameters.flagPath);
         $("#latitude").text("Latitude: " + coneParameters.latitude);
         $("#longitude").text("Longitude: " + coneParameters.longitude);
-        $("#total").text("Total Amount: " + coneParameters.amount + " BTU");
-        $("#coal").text("Coal Amount: " + coneParameters.coalAmount + " BTU");
-        $("#oil").text("Oil Amount: " + coneParameters.oilAmount + " BTU");
-        $("#gas").text("Gas Amount: " + coneParameters.gasAmount + " BTU");
+        $("#total").text("Total Amount: " + coneParameters.amount);
+        $("#coal").text("Coal Amount: " + coneParameters.coalAmount);
+        $("#oil").text("Oil Amount: " + coneParameters.oilAmount);
+        $("#gas").text("Gas Amount: " + coneParameters.gasAmount);
     }
 
     function showInfo(latitude, longitude) {

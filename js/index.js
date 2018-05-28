@@ -16,8 +16,8 @@ $(function () {
 
     var PlanetControllers = {};
 
-    $.getScript("../js/config/planetConfig.js", function () {
-        $.getScript("../js/model/PlanetSceneControllers.js", function () {
+    $.getScript("js/config/planetConfig.js", function () {
+        $.getScript("js/model/PlanetSceneControllers.js", function () {
 
             PlanetControllers.mercury = new PlanetSceneController(renderer, PlanetConfig.mercury);
             PlanetControllers.venus = new PlanetSceneController(renderer, PlanetConfig.venus);
@@ -32,18 +32,16 @@ $(function () {
         });
     });
 
-    $.getScript("../js/model/EarthSceneController.js", function () {
+    $.getScript("js/model/EarthSceneController.js", function () {
         earthSceneController = new EarthSceneController(renderer);
         solarSystemSceneController.setPlanetScene("earth", earthSceneController);
     });
 
-    $.getScript("../js/model/GlobeSceneController.js", function () {
+    $.getScript("js/model/GlobeSceneController.js", function () {
         globe = new DAT.Globe(renderer);
         globe.init();
         loadData();
     });
-
-    // $.getScript("../data/mockTop10Data.js");
 
     $("#all").click(function () {
         $("body footer div").each(function () {
@@ -74,10 +72,10 @@ $(function () {
 
     $("#closeBoard").hover(
         function () {
-            $(this).attr("src", "../images/closeButton/close_hover.png");
+            $(this).attr("src", "images/closeButton/close_hover.png");
         },
         function () {
-            $(this).attr("src", "../images/closeButton/close.png");
+            $(this).attr("src", "images/closeButton/close.png");
         });
 
     $("#curtain, #closeBoard").click(function () {
@@ -91,27 +89,10 @@ $(function () {
     });
 });
 
-// $.getScript("../data/mockTop10Data.js");
-
 function getYearData(year) {
 
-    // if (Math.random() > 0.5) {
-    //     earthSceneController.addCones(geographicData);
-    // } else {
-    //     earthSceneController.clearCones();
-    // }
-    $.ajax({
-        url: '/api/year',
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
-        async: true,
-        data: JSON.stringify({"year": year}),
-        dataType: 'json',
-        success: function (data) {
-            earthSceneController.clearCones();
-            earthSceneController.addCones(data);
-        }
-    });
+    earthSceneController.clearCones();
+    earthSceneController.addCones(yearTop10[year]);
 }
 
 function enableBackLogo() {
@@ -133,8 +114,7 @@ function disableBackLogo() {
 function loadData() {
 
     $.ajax({
-        // url: '../data/rank.json',
-        url: '/api/all',
+        url: 'data/all.json',
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         async: true,
@@ -144,6 +124,17 @@ function loadData() {
             globe.createPoints();
         }
     });
+
+	$.ajax({
+		url: 'data/yearTop10Data.json',
+		type: 'GET',
+		contentType: "application/json; charset=utf-8",
+		async: true,
+		dataType: 'json',
+		success: function (data) {
+			yearTop10 = data;
+		}
+	});
 }
 
 function backToSolar() {

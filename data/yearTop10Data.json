@@ -1,0 +1,1022 @@
+{
+  "2008": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.29,
+      "amount": 6786.27,
+      "coalAmount": 0.0,
+      "oilAmount": 743.0,
+      "gasAmount": 2549.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 6665.96,
+      "coalAmount": 0.0,
+      "oilAmount": 732.0,
+      "gasAmount": 2492.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2629.85,
+      "coalAmount": 0.0,
+      "oilAmount": 99.0,
+      "gasAmount": 2015.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2066.4,
+      "coalAmount": 0.0,
+      "oilAmount": 60.0,
+      "gasAmount": 1680.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 1749.24,
+      "coalAmount": 0.0,
+      "oilAmount": 138.0,
+      "gasAmount": 948.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1738.99,
+      "coalAmount": 0.0,
+      "oilAmount": 264.0,
+      "gasAmount": 253.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1725.05,
+      "coalAmount": 0.0,
+      "oilAmount": 217.0,
+      "gasAmount": 495.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1517.7,
+      "coalAmount": 0.0,
+      "oilAmount": 214.0,
+      "gasAmount": 310.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Africa",
+      "longitude": 34.51,
+      "latitude": -8.78,
+      "amount": 1144.13,
+      "coalAmount": 0.0,
+      "oilAmount": 114.0,
+      "gasAmount": 491.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Canada",
+      "longitude": -106.35,
+      "latitude": 56.13,
+      "amount": 1062.14,
+      "coalAmount": 0.0,
+      "oilAmount": 179.0,
+      "gasAmount": 58.0,
+      "flagPath": "images/flags/Canada.png"
+    }
+  ],
+  "2009": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 6819.36,
+      "coalAmount": 0.0,
+      "oilAmount": 741.0,
+      "gasAmount": 2592.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 6699.05,
+      "coalAmount": 0.0,
+      "oilAmount": 730.0,
+      "gasAmount": 2535.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2608.22,
+      "coalAmount": 0.0,
+      "oilAmount": 99.0,
+      "gasAmount": 1994.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2066.4,
+      "coalAmount": 0.0,
+      "oilAmount": 60.0,
+      "gasAmount": 1680.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 1783.36,
+      "coalAmount": 0.0,
+      "oilAmount": 136.0,
+      "gasAmount": 992.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1744.14,
+      "coalAmount": 0.0,
+      "oilAmount": 264.0,
+      "gasAmount": 258.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1705.74,
+      "coalAmount": 0.0,
+      "oilAmount": 213.0,
+      "gasAmount": 498.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1501.48,
+      "coalAmount": 0.0,
+      "oilAmount": 210.0,
+      "gasAmount": 316.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Africa",
+      "longitude": 34.51,
+      "latitude": -8.78,
+      "amount": 1165.05,
+      "coalAmount": 0.0,
+      "oilAmount": 117.0,
+      "gasAmount": 495.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Canada",
+      "longitude": -106.35,
+      "latitude": 56.13,
+      "amount": 1056.54,
+      "coalAmount": 0.0,
+      "oilAmount": 178.0,
+      "gasAmount": 58.0,
+      "flagPath": "images/flags/Canada.png"
+    }
+  ],
+  "2010": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 6954.54,
+      "coalAmount": 0.0,
+      "oilAmount": 753.0,
+      "gasAmount": 2658.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 6835.26,
+      "coalAmount": 0.0,
+      "oilAmount": 742.0,
+      "gasAmount": 2602.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2784.35,
+      "coalAmount": 0.0,
+      "oilAmount": 99.0,
+      "gasAmount": 2165.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2066.4,
+      "coalAmount": 0.0,
+      "oilAmount": 60.0,
+      "gasAmount": 1680.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 1850.18,
+      "coalAmount": 0.0,
+      "oilAmount": 138.0,
+      "gasAmount": 1046.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1818.01,
+      "coalAmount": 0.0,
+      "oilAmount": 213.0,
+      "gasAmount": 607.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1750.32,
+      "coalAmount": 0.0,
+      "oilAmount": 264.0,
+      "gasAmount": 264.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1516.61,
+      "coalAmount": 0.0,
+      "oilAmount": 207.0,
+      "gasAmount": 347.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Africa",
+      "longitude": 34.51,
+      "latitude": -8.78,
+      "amount": 1171.68,
+      "coalAmount": 0.0,
+      "oilAmount": 118.0,
+      "gasAmount": 496.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Qatar",
+      "longitude": 51.18,
+      "latitude": 25.35,
+      "amount": 1065.97,
+      "coalAmount": 0.0,
+      "oilAmount": 25.0,
+      "gasAmount": 899.0,
+      "flagPath": "images/flags/Qatar.png"
+    }
+  ],
+  "2011": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 6977.78,
+      "coalAmount": 0.0,
+      "oilAmount": 752.0,
+      "gasAmount": 2686.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 6852.32,
+      "coalAmount": 0.0,
+      "oilAmount": 741.0,
+      "gasAmount": 2624.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2784.35,
+      "coalAmount": 0.0,
+      "oilAmount": 99.0,
+      "gasAmount": 2165.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2066.4,
+      "coalAmount": 0.0,
+      "oilAmount": 60.0,
+      "gasAmount": 1680.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 1844.58,
+      "coalAmount": 0.0,
+      "oilAmount": 137.0,
+      "gasAmount": 1046.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1844.21,
+      "coalAmount": 0.0,
+      "oilAmount": 214.0,
+      "gasAmount": 627.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1762.68,
+      "coalAmount": 0.0,
+      "oilAmount": 264.0,
+      "gasAmount": 276.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 1604.27,
+      "coalAmount": 0.0,
+      "oilAmount": 237.0,
+      "gasAmount": 269.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1566.37,
+      "coalAmount": 0.0,
+      "oilAmount": 210.0,
+      "gasAmount": 379.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1365.97,
+      "coalAmount": 0.0,
+      "oilAmount": 211.0,
+      "gasAmount": 179.0,
+      "flagPath": "images/flags/Venezuela.png"
+    }
+  ],
+  "2012": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7336.0,
+      "coalAmount": 0.0,
+      "oilAmount": 795.0,
+      "gasAmount": 2800.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7207.45,
+      "coalAmount": 0.0,
+      "oilAmount": 784.0,
+      "gasAmount": 2735.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2784.35,
+      "coalAmount": 0.0,
+      "oilAmount": 99.0,
+      "gasAmount": 2165.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2066.4,
+      "coalAmount": 0.0,
+      "oilAmount": 60.0,
+      "gasAmount": 1680.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 2048.64,
+      "coalAmount": 0.0,
+      "oilAmount": 151.0,
+      "gasAmount": 1168.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1788.01,
+      "coalAmount": 0.0,
+      "oilAmount": 215.0,
+      "gasAmount": 567.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1776.52,
+      "coalAmount": 0.0,
+      "oilAmount": 265.0,
+      "gasAmount": 284.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1617.16,
+      "coalAmount": 0.0,
+      "oilAmount": 213.0,
+      "gasAmount": 412.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 1616.5,
+      "coalAmount": 0.0,
+      "oilAmount": 239.0,
+      "gasAmount": 270.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1382.45,
+      "coalAmount": 0.0,
+      "oilAmount": 211.0,
+      "gasAmount": 195.0,
+      "flagPath": "images/flags/Venezuela.png"
+    }
+  ],
+  "2013": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7370.89,
+      "coalAmount": 0.0,
+      "oilAmount": 797.0,
+      "gasAmount": 2823.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7242.34,
+      "coalAmount": 0.0,
+      "oilAmount": 786.0,
+      "gasAmount": 2758.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2909.74,
+      "coalAmount": 0.0,
+      "oilAmount": 119.0,
+      "gasAmount": 2178.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2186.64,
+      "coalAmount": 0.0,
+      "oilAmount": 80.0,
+      "gasAmount": 1688.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 2102.67,
+      "coalAmount": 0.0,
+      "oilAmount": 326.0,
+      "gasAmount": 269.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 2090.61,
+      "coalAmount": 0.0,
+      "oilAmount": 155.0,
+      "gasAmount": 1187.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1869.65,
+      "coalAmount": 0.0,
+      "oilAmount": 298.0,
+      "gasAmount": 195.0,
+      "flagPath": "images/flags/Venezuela.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1797.6,
+      "coalAmount": 0.0,
+      "oilAmount": 218.0,
+      "gasAmount": 560.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1780.64,
+      "coalAmount": 0.0,
+      "oilAmount": 265.0,
+      "gasAmount": 288.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1614.39,
+      "coalAmount": 0.0,
+      "oilAmount": 216.0,
+      "gasAmount": 393.0,
+      "flagPath": "images/flags/World.png"
+    }
+  ],
+  "2014": [
+    {
+      "areaName": "Asia \u0026 Oceania",
+      "longitude": 100.62,
+      "latitude": 34.05,
+      "amount": 13272.089,
+      "coalAmount": 549070.0,
+      "oilAmount": 45.0,
+      "gasAmount": 540.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 12738.8092,
+      "coalAmount": 479896.0,
+      "oilAmount": 223.0,
+      "gasAmount": 579.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 9354.4062,
+      "coalAmount": 283906.0,
+      "oilAmount": 119.0,
+      "gasAmount": 2178.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 7671.8996,
+      "coalAmount": 264548.0,
+      "oilAmount": 220.0,
+      "gasAmount": 422.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7401.8902,
+      "coalAmount": 1326.0,
+      "oilAmount": 799.0,
+      "gasAmount": 2813.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7287.7602,
+      "coalAmount": 1326.0,
+      "oilAmount": 788.0,
+      "gasAmount": 2762.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "China",
+      "longitude": 104.20,
+      "latitude": 35.86,
+      "amount": 6691.591,
+      "coalAmount": 281830.0,
+      "oilAmount": 24.0,
+      "gasAmount": 155.0,
+      "flagPath": "images/flags/China.png"
+    },
+    {
+      "areaName": "United States",
+      "longitude": -95.71,
+      "latitude": 37.09,
+      "amount": 6360.9785,
+      "coalAmount": 255755.0,
+      "oilAmount": 37.0,
+      "gasAmount": 338.0,
+      "flagPath": "images/flags/United States.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 6199.3417,
+      "coalAmount": 176771.0,
+      "oilAmount": 80.0,
+      "gasAmount": 1688.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Australia",
+      "longitude": 133.78,
+      "latitude": -25.27,
+      "amount": 2710.981,
+      "coalAmount": 117130.0,
+      "oilAmount": 1.4,
+      "gasAmount": 43.0,
+      "flagPath": "images/flags/Australia.png"
+    }
+  ],
+  "2015": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7404.94,
+      "coalAmount": 0.0,
+      "oilAmount": 804.0,
+      "gasAmount": 2818.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7284.63,
+      "coalAmount": 0.0,
+      "oilAmount": 793.0,
+      "gasAmount": 2761.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2909.74,
+      "coalAmount": 0.0,
+      "oilAmount": 119.0,
+      "gasAmount": 2178.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2186.64,
+      "coalAmount": 0.0,
+      "oilAmount": 80.0,
+      "gasAmount": 1688.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 2130.22,
+      "coalAmount": 0.0,
+      "oilAmount": 330.0,
+      "gasAmount": 274.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 2121.83,
+      "coalAmount": 0.0,
+      "oilAmount": 158.0,
+      "gasAmount": 1201.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1871.71,
+      "coalAmount": 0.0,
+      "oilAmount": 298.0,
+      "gasAmount": 197.0,
+      "flagPath": "images/flags/Venezuela.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1868.28,
+      "coalAmount": 0.0,
+      "oilAmount": 224.0,
+      "gasAmount": 596.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1792.42,
+      "coalAmount": 0.0,
+      "oilAmount": 266.0,
+      "gasAmount": 294.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1713.91,
+      "coalAmount": 0.0,
+      "oilAmount": 222.0,
+      "gasAmount": 457.0,
+      "flagPath": "images/flags/World.png"
+    }
+  ],
+  "2016": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7404.94,
+      "coalAmount": 0.0,
+      "oilAmount": 804.0,
+      "gasAmount": 2818.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7284.63,
+      "coalAmount": 0.0,
+      "oilAmount": 793.0,
+      "gasAmount": 2761.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2909.74,
+      "coalAmount": 0.0,
+      "oilAmount": 119.0,
+      "gasAmount": 2178.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2186.64,
+      "coalAmount": 0.0,
+      "oilAmount": 80.0,
+      "gasAmount": 1688.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 2136.85,
+      "coalAmount": 0.0,
+      "oilAmount": 331.0,
+      "gasAmount": 275.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 2121.83,
+      "coalAmount": 0.0,
+      "oilAmount": 158.0,
+      "gasAmount": 1201.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1883.94,
+      "coalAmount": 0.0,
+      "oilAmount": 300.0,
+      "gasAmount": 198.0,
+      "flagPath": "images/flags/Venezuela.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1804.2,
+      "coalAmount": 0.0,
+      "oilAmount": 267.0,
+      "gasAmount": 300.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "IEA",
+      "longitude": -71.07,
+      "latitude": 42.45,
+      "amount": 1752.86,
+      "coalAmount": 0.0,
+      "oilAmount": 217.0,
+      "gasAmount": 522.0,
+      "flagPath": "images/flags/IEA.png"
+    },
+    {
+      "areaName": "North America",
+      "longitude": -105.26,
+      "latitude": 54.53,
+      "amount": 1614.39,
+      "coalAmount": 0.0,
+      "oilAmount": 216.0,
+      "gasAmount": 393.0,
+      "flagPath": "images/flags/World.png"
+    }
+  ],
+  "2017": [
+    {
+      "areaName": "Middle East",
+      "longitude": 42.55,
+      "latitude": 29.30,
+      "amount": 7374.62,
+      "coalAmount": 0.0,
+      "oilAmount": 803.0,
+      "gasAmount": 2794.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Persian Gulf",
+      "longitude": 51.68,
+      "latitude": 26.75,
+      "amount": 7256.37,
+      "coalAmount": 0.0,
+      "oilAmount": 792.0,
+      "gasAmount": 2739.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Eurasia",
+      "longitude": 68.83,
+      "latitude": 45.45,
+      "amount": 2909.74,
+      "coalAmount": 0.0,
+      "oilAmount": 119.0,
+      "gasAmount": 2178.0,
+      "flagPath": "images/flags/Eurasia.png"
+    },
+    {
+      "areaName": "Russia",
+      "longitude": 105.32,
+      "latitude": 61.52,
+      "amount": 2186.64,
+      "coalAmount": 0.0,
+      "oilAmount": 80.0,
+      "gasAmount": 1688.0,
+      "flagPath": "images/flags/Russia.png"
+    },
+    {
+      "areaName": "Central \u0026 South America",
+      "longitude": -108.15,
+      "latitude": 32.78,
+      "amount": 2117.99,
+      "coalAmount": 0.0,
+      "oilAmount": 328.0,
+      "gasAmount": 273.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Iran",
+      "longitude": 53.69,
+      "latitude": 32.43,
+      "amount": 2103.29,
+      "coalAmount": 0.0,
+      "oilAmount": 158.0,
+      "gasAmount": 1183.0,
+      "flagPath": "images/flags/Iran.png"
+    },
+    {
+      "areaName": "Venezuela",
+      "longitude": -66.59,
+      "latitude": 6.42,
+      "amount": 1892.63,
+      "coalAmount": 0.0,
+      "oilAmount": 301.0,
+      "gasAmount": 201.0,
+      "flagPath": "images/flags/Venezuela.png"
+    },
+    {
+      "areaName": "Saudi Arabia",
+      "longitude": 45.08,
+      "latitude": 23.89,
+      "amount": 1802.72,
+      "coalAmount": 0.0,
+      "oilAmount": 266.0,
+      "gasAmount": 304.0,
+      "flagPath": "images/flags/Saudi Arabia.png"
+    },
+    {
+      "areaName": "Africa",
+      "longitude": 34.51,
+      "latitude": -8.78,
+      "amount": 1329.33,
+      "coalAmount": 0.0,
+      "oilAmount": 125.0,
+      "gasAmount": 611.0,
+      "flagPath": "images/flags/World.png"
+    },
+    {
+      "areaName": "Canada",
+      "longitude": -106.35,
+      "latitude": 56.13,
+      "amount": 1031.31,
+      "coalAmount": 0.0,
+      "oilAmount": 170.0,
+      "gasAmount": 77.0,
+      "flagPath": "images/flags/Canada.png"
+    }
+  ]
+}

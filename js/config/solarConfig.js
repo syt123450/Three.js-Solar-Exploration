@@ -7,14 +7,14 @@ var SolarConfig = {
     sunRadius: 0.05,
     revolutionSpeed: -0.5,
     rotationSpeed: 0.025,
-    audio: "../music/Epic.mp3",
+    audio: "music/Epic.mp3",
 
     ConfigHelper: {
         sun: function (sunRadius) {
             return {
                 name: 'sun',
                 rotateSpeed: 0.001,
-                map: '../images/sun/surface.jpg',
+                map: 'images/sun/surface.jpg',
                 radius: sunRadius
             }
         },
@@ -29,8 +29,8 @@ var SolarConfig = {
                 orbitSpeed: 1.2 * revolutionSpeed,
                 rotateSpeed: 2 * rotationSpeed,
                 inclination: 0.0,
-                map: '../images/planets-min/mercurymap.jpg',
-                bumpMap: '../images/planets-min/mercurybump.jpg',
+                map: 'images/planets-min/mercurymap.jpg',
+                bumpMap: 'images/planets-min/mercurybump.jpg',
                 radius: 0.006
             }
         },
@@ -44,8 +44,8 @@ var SolarConfig = {
                 orbitSpeed: 0.8 * revolutionSpeed,
                 rotateSpeed: -3 * rotationSpeed,
                 inclination: -12.6,
-                map: '../images/planets-min/venusmap.jpg',
-                bumpMap: '../images/planets-min/venusbump.jpg',
+                map: 'images/planets-min/venusmap.jpg',
+                bumpMap: 'images/planets-min/venusbump.jpg',
                 radius: 0.0085
             }
         },
@@ -58,8 +58,8 @@ var SolarConfig = {
                 orbitSpeed: 0.6 * revolutionSpeed,
                 rotateSpeed: rotationSpeed,
                 inclination: 23.5,
-                map: '../images/earth/earthmap1k.jpg',
-                bumpMap: '../images/earth/earthbump1k.jpg',
+                map: 'images/earth/earthmap1k.jpg',
+                bumpMap: 'images/earth/earthbump1k.jpg',
                 radius: 0.0095
             }
         },
@@ -73,8 +73,8 @@ var SolarConfig = {
                 orbitSpeed: 0.531 * revolutionSpeed,
                 rotateSpeed: 1.03 * rotationSpeed,
                 inclination: 23.98,
-                map: '../images/planets-min/marsmap1k.jpg',
-                bumpMap: '../images/planets-min/marsbump1k.jpg',
+                map: 'images/planets-min/marsmap1k.jpg',
+                bumpMap: 'images/planets-min/marsbump1k.jpg',
                 radius: 0.006
             }
         },
@@ -103,7 +103,7 @@ var SolarConfig = {
                 orbitSpeed: 0.125 * revolutionSpeed,
                 rotateSpeed: 0.4 * rotationSpeed,
                 inclination: 3.8,
-                map: '../images/planets-min/jupitermap.jpg',
+                map: 'images/planets-min/jupitermap.jpg',
                 radius: 0.02
             }
         },
@@ -118,9 +118,9 @@ var SolarConfig = {
                 orbitSpeed: 0.105 * revolutionSpeed,
                 rotateSpeed: 0.44 * rotationSpeed,
                 inclination: 26.73,
-                map: '../images/planets-min/saturnmap.jpg',
+                map: 'images/planets-min/saturnmap.jpg',
                 radius: 0.018,
-                ringMap: '../images/planets-min/saturnringcolortransRing.png',
+                ringMap: 'images/planets-min/saturnringcolortransRing.png',
                 ringInnerRadius: 0.0216,
                 ringOuterRadius: 0.0432
             }
@@ -136,9 +136,9 @@ var SolarConfig = {
                 orbitSpeed: 0.080 * revolutionSpeed,
                 rotateSpeed: -0.72 * rotationSpeed,
                 inclination: -7.92,
-                map: '../images/planets-min/uranusmap.jpg',
+                map: 'images/planets-min/uranusmap.jpg',
                 radius: 0.012,
-                ringMap: '../images/planets-min/uranusringcolortransRing.png',
+                ringMap: 'images/planets-min/uranusringcolortransRing.png',
                 ringInnerRadius: 0.0156,
                 ringOuterRadius: 0.024
             }
@@ -155,7 +155,7 @@ var SolarConfig = {
                 orbitSpeed: 0.070 * revolutionSpeed,
                 rotateSpeed: 0.72 * rotationSpeed,
                 inclination: 28.8,
-                map: '../images/planets-min/neptunemap.jpg',
+                map: 'images/planets-min/neptunemap.jpg',
                 radius: 0.012
             }
         },
@@ -171,8 +171,8 @@ var SolarConfig = {
                 orbitSpeed: 0.08 * revolutionSpeed,
                 rotateSpeed: -2 * rotationSpeed,
                 inclination: 58,
-                map: '../images/planets-min/plutomap1k.jpg',
-                bumpMap: '../images/planets-min/plutobump1k.jpg',
+                map: 'images/planets-min/plutomap1k.jpg',
+                bumpMap: 'images/planets-min/plutobump1k.jpg',
                 radius: 0.01
             }
         }
